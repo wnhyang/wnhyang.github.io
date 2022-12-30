@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="baidu-site-verification" content="fe6bba1d0d4e906fed87c9f7c2d1d09d">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="因为内容太多了，所以将其拆分为以下内容  JUC并发编程(一) JUC并发编程(二) JUC并发编程(三) JUC并发编程(四)（当前） JUC并发编程(五)  参考 https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1B7411L7tE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JUC并发编程(四)">
+<meta property="og:url" content="https://wnhyang.github.io/article/d021f5dd.html">
+<meta property="og:site_name" content="无奈和杨（wnhyang）">
+<meta property="og:description" content="因为内容太多了，所以将其拆分为以下内容  JUC并发编程(一) JUC并发编程(二) JUC并发编程(三) JUC并发编程(四)（当前） JUC并发编程(五)  参考 https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1B7411L7tE">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-01-26T02:16:57.000Z">
+<meta property="article:modified_time" content="2022-12-30T13:39:17.452Z">
+<meta property="article:author" content="无奈和杨（wnhyang）">
+<meta property="article:tag" content="JavaSE">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://wnhyang.github.io/article/d021f5dd.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wnhyang.github.io/article/d021f5dd.html","path":"article/d021f5dd.html","title":"JUC并发编程(四)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>JUC并发编程(四) | 无奈和杨（wnhyang）</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="无奈和杨（wnhyang）" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">无奈和杨（wnhyang）</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">I will keep to fight</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">37</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">0</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">142</span></a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">1.</span> <span class="nav-text">参考</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E5%A4%A7%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3%E5%BF%85%E9%A1%BB%E6%8E%8C%E6%8F%A1"><span class="nav-number">1.1.</span> <span class="nav-text">四大函数式接口（必须掌握）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#stream%E6%B5%81%E5%BC%8F%E8%AE%A1%E7%AE%97"><span class="nav-number">1.2.</span> <span class="nav-text">Stream流式计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#forkjoin"><span class="nav-number">1.3.</span> <span class="nav-text">ForkJoin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5%E5%9B%9E%E8%B0%83"><span class="nav-number">1.4.</span> <span class="nav-text">异步回调</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jmm"><span class="nav-number">1.5.</span> <span class="nav-text">JMM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#volatile"><span class="nav-number">1.6.</span> <span class="nav-text">Volatile</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="无奈和杨（wnhyang）"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">无奈和杨（wnhyang）</p>
+  <div class="site-description" itemprop="description">学习记录所用</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">142</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wnhyang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wnhyang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wnhyang@qq.com" title="E-Mail → mailto:wnhyang@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://example.com/" title="https:&#x2F;&#x2F;example.com" rel="noopener" target="_blank">Title</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/d021f5dd.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="无奈和杨（wnhyang）">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无奈和杨（wnhyang）">
+      <meta itemprop="description" content="学习记录所用">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="JUC并发编程(四) | 无奈和杨（wnhyang）">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JUC并发编程(四)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-01-26 10:16:57" itemprop="dateCreated datePublished" datetime="2021-01-26T10:16:57+08:00">2021-01-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-12-30 21:39:17" itemprop="dateModified" datetime="2022-12-30T21:39:17+08:00">2022-12-30</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>9 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>因为内容太多了，所以将其拆分为以下内容</p>
+<ul>
+<li><a href="https://wnhyang.github.io/article/fba0a19b.html">JUC并发编程(一)</a></li>
+<li><a href="https://wnhyang.github.io/article/54913af9.html">JUC并发编程(二)</a></li>
+<li><a href="https://wnhyang.github.io/article/2a621ad2.html">JUC并发编程(三)</a></li>
+<li><a href="https://wnhyang.github.io/article/d021f5dd.html">JUC并发编程(四)（当前）</a></li>
+<li><a href="https://wnhyang.github.io/article/d68aa2a0.html">JUC并发编程(五)</a></li>
+</ul>
+<h2 id="参考">参考</h2>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1B7411L7tE" class="uri">https://www.bilibili.com/video/BV1B7411L7tE</a></p>
+<span id="more"></span>
+<h3 id="四大函数式接口必须掌握">四大函数式接口（必须掌握）</h3>
+<p>现代程序员：Lambda表达式，链式编程，函数式接口，Stream流式计算</p>
+<blockquote>
+<p>函数式接口：只有一个方法的接口</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Runnable</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 超级多FunctionalInterface</span></span><br><span class="line"><span class="comment">// 简化编程模型，在新版本的框架层大量应用</span></span><br><span class="line"><span class="comment">// forEach(消费者类型的函数式接口)</span></span><br></pre></td></tr></table></figure>
+<p><strong>代码测试</strong></p>
+<blockquote>
+<p>Function 函数式接口</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 函数型接口：有一个输入参数，有一个输出</span></span><br><span class="line"><span class="comment"> * 只要是函数式接口，可以用 lambda表达式 简化</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Function&lt;String,String&gt; function = new Function&lt;String,String&gt;()&#123;</span></span><br><span class="line">        <span class="comment">//     @Override</span></span><br><span class="line">        <span class="comment">//     public String apply(String str) &#123;</span></span><br><span class="line">        <span class="comment">//         return str;</span></span><br><span class="line">        <span class="comment">//     &#125;</span></span><br><span class="line">        <span class="comment">// &#125;;</span></span><br><span class="line"></span><br><span class="line">        Function&lt;String,String&gt; function=(str)-&gt;&#123;</span><br><span class="line">            <span class="keyword">return</span> str;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        System.out.println(function.apply(<span class="string">&quot;abc&quot;</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Predicate 断言型接口</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 断言型接口：有一个输入参数，返回值只能是 布尔值！</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo2</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// Predicate&lt;String&gt; predicate = new Predicate&lt;String&gt;()&#123;</span></span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="comment">//     @Override</span></span><br><span class="line">        <span class="comment">//     public boolean test(String str) &#123;</span></span><br><span class="line">        <span class="comment">//         return str.isEmpty();</span></span><br><span class="line">        <span class="comment">//     &#125;</span></span><br><span class="line">        <span class="comment">// &#125;;</span></span><br><span class="line"></span><br><span class="line">        Predicate&lt;String&gt; predicate=(str)-&gt;&#123;</span><br><span class="line">          <span class="keyword">return</span> str.isEmpty();</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        System.out.println(predicate.test(<span class="string">&quot;&quot;</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Consumer 消费型接口</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 消费性接口：只有输入，没有返回</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo3</span> &#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// Consumer&lt;String&gt; consumer = new Consumer&lt;String&gt;()&#123;</span></span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="comment">//     @Override</span></span><br><span class="line">        <span class="comment">//     public void accept(String str) &#123;</span></span><br><span class="line">        <span class="comment">//         System.out.println(str);</span></span><br><span class="line">        <span class="comment">//     &#125;</span></span><br><span class="line">        <span class="comment">// &#125;;</span></span><br><span class="line"></span><br><span class="line">            Consumer&lt;String&gt; consumer=(str)-&gt;&#123;</span><br><span class="line">                System.out.println(str);</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line">        consumer.accept(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Supplier 供给型接口</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 供给型接口：没有参数，有返回值</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo4</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// Supplier&lt;String&gt; supplier = new Supplier&lt;String&gt;()&#123;</span></span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="comment">//     @Override</span></span><br><span class="line">        <span class="comment">//     public String get() &#123;</span></span><br><span class="line">        <span class="comment">//         System.out.println(&quot;get()&quot;);</span></span><br><span class="line">        <span class="comment">//         return &quot;1024&quot;;</span></span><br><span class="line">        <span class="comment">//     &#125;</span></span><br><span class="line">        <span class="comment">// &#125;;</span></span><br><span class="line"></span><br><span class="line">        Supplier&lt;String&gt; supplier = () -&gt; &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;get()&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;1024&quot;</span>;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        System.out.println(supplier.get());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="stream流式计算">Stream流式计算</h3>
+<blockquote>
+<p>什么是Stream流式计算</p>
+</blockquote>
+<p>大数据：存储 + 计算</p>
+<p>集合、MySQL 本质就是存储</p>
+<p>计算都应该交给流来操作！</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 题目要求：</span></span><br><span class="line"><span class="comment"> * 现有5个用户！筛选：</span></span><br><span class="line"><span class="comment"> * 1、ID 必须是偶数</span></span><br><span class="line"><span class="comment"> * 2、年龄必须大于23岁</span></span><br><span class="line"><span class="comment"> * 3、用户名转为大写字母</span></span><br><span class="line"><span class="comment"> * 4、用户名字母倒序排列</span></span><br><span class="line"><span class="comment"> * 5、只输出一个用户</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">User</span> <span class="variable">u1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>(<span class="number">1</span>, <span class="string">&quot;a&quot;</span>, <span class="number">21</span>);</span><br><span class="line">        <span class="type">User</span> <span class="variable">u2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>(<span class="number">2</span>, <span class="string">&quot;b&quot;</span>, <span class="number">22</span>);</span><br><span class="line">        <span class="type">User</span> <span class="variable">u3</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>(<span class="number">3</span>, <span class="string">&quot;c&quot;</span>, <span class="number">23</span>);</span><br><span class="line">        <span class="type">User</span> <span class="variable">u4</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>(<span class="number">4</span>, <span class="string">&quot;d&quot;</span>, <span class="number">24</span>);</span><br><span class="line">        <span class="type">User</span> <span class="variable">u5</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>(<span class="number">6</span>, <span class="string">&quot;e&quot;</span>, <span class="number">25</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 集合负责存储</span></span><br><span class="line">        List&lt;User&gt; list = Arrays.asList(u1, u2, u3, u4, u5);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 计算交给Stream</span></span><br><span class="line">        list.stream()</span><br><span class="line">                .filter(u -&gt; &#123;</span><br><span class="line">                    <span class="keyword">return</span> u.getId() % <span class="number">2</span> == <span class="number">0</span>;</span><br><span class="line">                &#125;)</span><br><span class="line">                .filter(u -&gt; &#123;</span><br><span class="line">                    <span class="keyword">return</span> u.getAge() &gt; <span class="number">23</span>;</span><br><span class="line">                &#125;)</span><br><span class="line">                .map(u -&gt; &#123;</span><br><span class="line">                    <span class="keyword">return</span> u.getName().toUpperCase();</span><br><span class="line">                &#125;)</span><br><span class="line">                .sorted((A, B) -&gt; &#123;</span><br><span class="line">                    <span class="keyword">return</span> B.compareTo(A);</span><br><span class="line">                &#125;)</span><br><span class="line">                .limit(<span class="number">1</span>)</span><br><span class="line">                .forEach(System.out::println);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="forkjoin">ForkJoin</h3>
+<blockquote>
+<p>什么是ForkJoin</p>
+</blockquote>
+<p>JDK1.7，并行执行任务！提高效率，大数据量！</p>
+<p>大数据：Map Reduce（把大任务拆分为小任务）</p>
+<blockquote>
+<p>ForkJoin 特点：工作窃取</p>
+</blockquote>
+<p>这里维护的的是双向队列</p>
+<blockquote>
+<p>ForkJoin</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ExecutionException, InterruptedException &#123;</span><br><span class="line">        test1();</span><br><span class="line">        test2();</span><br><span class="line">        test3();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">test1</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">long</span> <span class="variable">start</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">        <span class="type">Long</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0L</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">Long</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1L</span>; i &lt;= <span class="number">1000_0000L</span>; i++) &#123;</span><br><span class="line">            sum += i;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">long</span> <span class="variable">end</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line">        System.out.println(<span class="string">&quot;test1结果：&quot;</span> + sum + <span class="string">&quot;耗时：&quot;</span> + (end - start));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">test2</span><span class="params">()</span> <span class="keyword">throws</span> ExecutionException, InterruptedException &#123;</span><br><span class="line">        <span class="type">long</span> <span class="variable">start</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">        <span class="type">ForkJoinPool</span> <span class="variable">forkJoinPool</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ForkJoinPool</span>();</span><br><span class="line">        ForkJoinTask&lt;Long&gt; task = <span class="keyword">new</span> <span class="title class_">ForkJoinDemo</span>(<span class="number">1L</span>, <span class="number">1000_0000L</span>);</span><br><span class="line">        ForkJoinTask&lt;Long&gt; submit = forkJoinPool.submit(task);<span class="comment">// 提交任务</span></span><br><span class="line">        <span class="type">Long</span> <span class="variable">sum</span> <span class="operator">=</span> submit.get();</span><br><span class="line"></span><br><span class="line">        <span class="type">long</span> <span class="variable">end</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line">        System.out.println(<span class="string">&quot;test2结果：&quot;</span> + sum + <span class="string">&quot;耗时：&quot;</span> + (end - start));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">test3</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">long</span> <span class="variable">start</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">        <span class="type">long</span> <span class="variable">sum</span> <span class="operator">=</span> LongStream.rangeClosed(<span class="number">0L</span>, <span class="number">1000_0000L</span>).parallel().reduce(<span class="number">0</span>, Long::sum);</span><br><span class="line"></span><br><span class="line">        <span class="type">long</span> <span class="variable">end</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line">        System.out.println(<span class="string">&quot;test3结果：&quot;</span> + sum + <span class="string">&quot;耗时：&quot;</span> + (end - start));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Demo</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 使用 ForkJoin</span></span><br><span class="line"><span class="comment"> * 1、ForkJoinPool 通过它来执行</span></span><br><span class="line"><span class="comment"> * 2、计算任务 ForkJoinPool.execute(ForkJoinTask&lt;?&gt; task)</span></span><br><span class="line"><span class="comment"> * 3、计算类继承</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ForkJoinDemo</span> <span class="keyword">extends</span> <span class="title class_">RecursiveTask</span>&lt;Long&gt; &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Long start;</span><br><span class="line">    <span class="keyword">private</span> Long end;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">Long</span> <span class="variable">temp</span> <span class="operator">=</span> <span class="number">10000L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ForkJoinDemo</span><span class="params">(Long start, Long end)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.start = start;</span><br><span class="line">        <span class="built_in">this</span>.end = end;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> Long <span class="title function_">compute</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (end - start &lt; temp) &#123;</span><br><span class="line">            <span class="type">Long</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0L</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">Long</span> <span class="variable">i</span> <span class="operator">=</span> start; i &lt;= end; i++) &#123;</span><br><span class="line">                sum += i;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> sum;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="type">long</span> <span class="variable">middle</span> <span class="operator">=</span> (start + end) / <span class="number">2</span>;</span><br><span class="line">            <span class="type">ForkJoinDemo</span> <span class="variable">task1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ForkJoinDemo</span>(start, middle);</span><br><span class="line">            task1.fork();   <span class="comment">//拆分任务，把任务压入线程队列</span></span><br><span class="line">            <span class="type">ForkJoinDemo</span> <span class="variable">task2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ForkJoinDemo</span>(middle + <span class="number">1</span>, end);</span><br><span class="line">            task2.fork();</span><br><span class="line">            <span class="keyword">return</span> task1.join() + task2.join();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="异步回调">异步回调</h3>
+<blockquote>
+<p>Future 设计初衷，对将来某个事件</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 异步调用：CompletableFuture</span></span><br><span class="line"><span class="comment"> * 异步执行</span></span><br><span class="line"><span class="comment"> * 成功回调</span></span><br><span class="line"><span class="comment"> * 失败回调</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ExecutionException, InterruptedException &#123;</span><br><span class="line">        <span class="comment">// 没有返回值的 runAsync 异步回调</span></span><br><span class="line">        <span class="comment">// CompletableFuture&lt;Void&gt; completableFuture = CompletableFuture.runAsync(() -&gt; &#123;</span></span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="comment">//     try &#123;</span></span><br><span class="line">        <span class="comment">//         TimeUnit.SECONDS.sleep(2);</span></span><br><span class="line">        <span class="comment">//     &#125; catch (InterruptedException e) &#123;</span></span><br><span class="line">        <span class="comment">//         e.printStackTrace();</span></span><br><span class="line">        <span class="comment">//     &#125;</span></span><br><span class="line">        <span class="comment">//     System.out.println(Thread.currentThread().getName() + &quot; runAsync=&gt;Void&quot;);</span></span><br><span class="line">        <span class="comment">// &#125;);</span></span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="comment">// System.out.println(&quot;abc&quot;);</span></span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="comment">// completableFuture.get();</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 有返回值的supplyAsync 异步回调</span></span><br><span class="line">        CompletableFuture&lt;Integer&gt; completableFuture1 = CompletableFuture.supplyAsync(() -&gt; &#123;</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">&quot; supplyAsync=&gt;Integer&quot;</span>);</span><br><span class="line">            <span class="type">int</span> i=<span class="number">10</span>/<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1024</span>;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        System.out.println(completableFuture1.whenComplete((t, u) -&gt; &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;t=&gt;&quot;</span> + t);<span class="comment">// 正常的返回值</span></span><br><span class="line">            System.out.println(<span class="string">&quot;u=&gt;&quot;</span> + u);<span class="comment">// 错误的信息：java.util.concurrent.CompletionException: java.lang.ArithmeticException: / by zero</span></span><br><span class="line">        &#125;).exceptionally((e) -&gt; &#123;</span><br><span class="line">            System.out.println(e.getMessage());</span><br><span class="line">            <span class="keyword">return</span> <span class="number">233</span>;</span><br><span class="line">        &#125;).get());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="jmm">JMM</h3>
+<blockquote>
+<p>请你谈谈对 Volatile 的理解</p>
+</blockquote>
+<p>Volatile 是 java 虚拟机提供的<strong>轻量级同步机制</strong></p>
+<ol type="1">
+<li>保证可见性</li>
+<li>不保证原子性</li>
+<li>禁止指令重排</li>
+</ol>
+<blockquote>
+<p>什么是JMM</p>
+</blockquote>
+<p>JMM：java内存模型，不存在的东西，概念！约定！</p>
+<p><strong>关于JMM的一些同步约定：</strong></p>
+<ol type="1">
+<li>线程解锁前，必须把共享变量<strong>立即</strong>刷回主存。</li>
+<li>线程加锁前，必须读取主存中的最新值到工作内存中！</li>
+<li>加锁和解锁是统一把锁</li>
+</ol>
+<p>线程：<strong>工作内存</strong>，<strong>主存</strong></p>
+<p>内存交互操作有8种，虚拟机实现必须保证每一个操作都是原子的，不可在分的（对于double和long类型的变量来说，load、store、read和write操作在某些平台上允许例外）</p>
+<ul>
+<li><ul>
+<li>lock （锁定）：作用于主内存的变量，把一个变量标识为线程独占状态</li>
+<li>unlock （解锁）：作用于主内存的变量，它把一个处于锁定状态的变量释放出来，释放后的变量才可以被其他线程锁定</li>
+<li>read （读取）：作用于主内存变量，它把一个变量的值从主内存传输到线程的工作内存中，以便随后的load动作使用</li>
+<li>load （载入）：作用于工作内存的变量，它把read操作从主存中变量放入工作内存中</li>
+<li>use （使用）：作用于工作内存中的变量，它把工作内存中的变量传输给执行引擎，每当虚拟机遇到一个需要使用到变量的值，就会使用到这个指令</li>
+<li>assign （赋值）：作用于工作内存中的变量，它把一个从执行引擎中接受到的值放入工作内存的变量副本中</li>
+<li>store （存储）：作用于主内存中的变量，它把一个从工作内存中一个变量的值传送到主内存中，以便后续的write使用</li>
+<li>write 　（写入）：作用于主内存中的变量，它把store操作从工作内存中得到的变量的值放入主内存的变量中</li>
+</ul></li>
+</ul>
+<p>JMM对这八种指令的使用，制定了如下规则：</p>
+<ul>
+<li><ul>
+<li>不允许read和load、store和write操作之一单独出现。即使用了read必须load，使用了store必须write</li>
+<li>不允许线程丢弃他最近的assign操作，即工作变量的数据改变了之后，必须告知主存</li>
+<li>不允许一个线程将没有assign的数据从工作内存同步回主内存</li>
+<li>一个新的变量必须在主内存中诞生，不允许工作内存直接使用一个未被初始化的变量。就是怼变量实施use、store操作之前，必须经过assign和load操作</li>
+<li>一个变量同一时间只有一个线程能对其进行lock。多次lock后，必须执行相同次数的unlock才能解锁</li>
+<li>如果对一个变量进行lock操作，会清空所有工作内存中此变量的值，在执行引擎使用这个变量前，必须重新load或assign操作初始化变量的值</li>
+<li>如果一个变量没有被lock，就不能对其进行unlock操作。也不能unlock一个被其他线程锁住的变量</li>
+<li>对一个变量进行unlock操作之前，必须把此变量同步回主内存</li>
+</ul></li>
+</ul>
+<p>　　JMM对这八种操作规则和对<a target="_blank" rel="noopener" href="https://www.cnblogs.com/null-qige/p/8569131.html">volatile的一些特殊规则</a>就能确定哪里操作是线程安全，哪些操作是线程不安全的了。但是这些规则实在复杂，很难在实践中直接分析。所以一般我们也不会通过上述规则进行分析。更多的时候，使用java的happen-before规则来进行分析。</p>
+<h3 id="volatile">Volatile</h3>
+<blockquote>
+<p>1、保证可见性</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JMMDemo</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 不加 volatile 程序进入死循环</span></span><br><span class="line"><span class="comment">     * 加 volatile 可以保证可见性</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">num</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Thread</span>(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">while</span> (num == <span class="number">0</span>) &#123;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;).start();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            TimeUnit.SECONDS.sleep(<span class="number">1</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        num = <span class="number">1</span>;</span><br><span class="line">        System.out.println(num);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2、不保证原子性</p>
+</blockquote>
+<p>原子性：不可分割</p>
+<p>线程在执行时，不能被打扰，要么成功，要么失败。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JMMDemo2</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * volatile 不保证原子性</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> <span class="type">int</span> num=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span>  <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">add</span><span class="params">()</span>&#123;</span><br><span class="line">        num++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 理论结果为 20000</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">20</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">new</span> <span class="title class_">Thread</span>(()-&gt;&#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; <span class="number">1000</span>; j++) &#123;</span><br><span class="line">                    add();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;).start();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (Thread.activeCount()&gt;<span class="number">2</span>)&#123;</span><br><span class="line">            Thread.<span class="keyword">yield</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(Thread.currentThread().getName()+<span class="string">&quot; &quot;</span>+num);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>不加 Lock 和 synchronized ，怎样保证原子性</strong></p>
+<p>使用原子类，解决原子性问题</p>
+<blockquote>
+<p>原子类</p>
+</blockquote>
+<p>java.util.concurrent.atomic</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JMMDemo2</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * volatile 不保证原子性</span></span><br><span class="line"><span class="comment">     * AtomicInteger 原子类的 Integer</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> AtomicInteger num=<span class="keyword">new</span> <span class="title class_">AtomicInteger</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">add</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="comment">// num++; // 不是原子性操作</span></span><br><span class="line">        num.getAndIncrement(); <span class="comment">// AtomicInteger + 1 方法 CAS</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 理论结果为 20000</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">20</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">new</span> <span class="title class_">Thread</span>(()-&gt;&#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; <span class="number">1000</span>; j++) &#123;</span><br><span class="line">                    add();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;).start();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (Thread.activeCount()&gt;<span class="number">2</span>)&#123;</span><br><span class="line">            Thread.<span class="keyword">yield</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(Thread.currentThread().getName()+<span class="string">&quot; &quot;</span>+num);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这些类的底层都直接与操作系统挂钩！在内存中修改！Unsafe类是一个很特殊的存在</p>
+<blockquote>
+<p>3、指令重排</p>
+</blockquote>
+<p>什么是 指令重排：<strong>计算机并不是按你写的那样去执行的</strong></p>
+<p>源代码 ---&gt; 编译器优化重排 ---&gt; 指令并行也可能重排 ---&gt; 内存系统也会重排 ---&gt; 执行</p>
+<p>处理机在进行指令重排时，考虑：数据之间的依赖性！</p>
+<p><strong>Volatile可以避免指令重排：</strong></p>
+<p>内存屏障，CPU指令，作用：</p>
+<p>1、保证特定操作的执行顺序！</p>
+<p>2、可以保证某些变量内存可见性！（利用这些特性 Volatile 实现了可见性）</p>
+<p>因为内容太多了，所以将其拆分为以下内容</p>
+<ul>
+<li><a href="https://wnhyang.github.io/article/fba0a19b.html">JUC并发编程(一)</a></li>
+<li><a href="https://wnhyang.github.io/article/54913af9.html">JUC并发编程(二)</a></li>
+<li><a href="https://wnhyang.github.io/article/2a621ad2.html">JUC并发编程(三)</a></li>
+<li><a href="https://wnhyang.github.io/article/d021f5dd.html">JUC并发编程(四)（当前）</a></li>
+<li><a href="https://wnhyang.github.io/article/d68aa2a0.html">JUC并发编程(五)</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.jpg" alt="无奈和杨（wnhyang） 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="无奈和杨（wnhyang） 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>无奈和杨（wnhyang）
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://wnhyang.github.io/article/d021f5dd.html" title="JUC并发编程(四)">https://wnhyang.github.io/article/d021f5dd.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/JavaSE/" rel="tag"># JavaSE</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/article/2a621ad2.html" rel="prev" title="JUC并发编程(三)">
+                  <i class="fa fa-chevron-left"></i> JUC并发编程(三)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/article/d68aa2a0.html" rel="next" title="JUC并发编程(五)">
+                  JUC并发编程(五) <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">无奈和杨（wnhyang）</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">169k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">10:15</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/wnhyang" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.2.2/mermaid.min.js","integrity":"sha256-o5AUfgOkNFWuInA78GVCoVdGoN9eTaB3Hxu+ep7TTrY="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

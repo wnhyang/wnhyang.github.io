@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="baidu-site-verification" content="fe6bba1d0d4e906fed87c9f7c2d1d09d">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="在计算机和互联网技术中，文本压缩就是一个非常重要的技术。玩电脑的人几乎都会应用压缩和解压缩软件来处理文档。因为它除了可以减少文档在磁盘上的空间外，还有重要的一点， 就是我们可以在网络上以压缩的形式传输大量数据，使得保存和传递都更加高效。 那么压缩而不出错是如何做到的呢?简单说，就是把我们要压缩的文本进行重新编码，以减少不必要的空间。尽管现在最新技术在编码上已经很好很强大，但这一切都来自于曾经的技">
+<meta property="og:type" content="article">
+<meta property="og:title" content="哈夫曼树及应用">
+<meta property="og:url" content="https://wnhyang.github.io/article/29d55788.html">
+<meta property="og:site_name" content="无奈和杨（wnhyang）">
+<meta property="og:description" content="在计算机和互联网技术中，文本压缩就是一个非常重要的技术。玩电脑的人几乎都会应用压缩和解压缩软件来处理文档。因为它除了可以减少文档在磁盘上的空间外，还有重要的一点， 就是我们可以在网络上以压缩的形式传输大量数据，使得保存和传递都更加高效。 那么压缩而不出错是如何做到的呢?简单说，就是把我们要压缩的文本进行重新编码，以减少不必要的空间。尽管现在最新技术在编码上已经很好很强大，但这一切都来自于曾经的技">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/WPL.png">
+<meta property="og:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/w1.png">
+<meta property="og:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/w2.png">
+<meta property="og:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/w3.png">
+<meta property="og:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/w4.png">
+<meta property="og:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/w5.png">
+<meta property="og:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/w6.png">
+<meta property="og:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/w7.png">
+<meta property="og:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/w8.png">
+<meta property="article:published_time" content="2020-07-25T07:15:42.000Z">
+<meta property="article:modified_time" content="2022-08-20T03:19:42.477Z">
+<meta property="article:author" content="无奈和杨（wnhyang）">
+<meta property="article:tag" content="数据结构&amp;算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/WPL.png">
+
+
+<link rel="canonical" href="https://wnhyang.github.io/article/29d55788.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wnhyang.github.io/article/29d55788.html","path":"article/29d55788.html","title":"哈夫曼树及应用"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>哈夫曼树及应用 | 无奈和杨（wnhyang）</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="无奈和杨（wnhyang）" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">无奈和杨（wnhyang）</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">I will keep to fight</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">37</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">0</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">142</span></a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91%E7%9A%84%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD"><span class="nav-number">1.</span> <span class="nav-text">哈夫曼树的相关术语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">2.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91%E7%9A%84%E6%9E%84%E9%80%A0%E8%BF%87%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">哈夫曼树的构造过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%8B"><span class="nav-number">4.</span> <span class="nav-text">例：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%93%88%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81"><span class="nav-number">5.</span> <span class="nav-text">哈夫曼编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91%E5%8F%8A%E7%BC%96%E7%A0%81%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="nav-number">6.</span> <span class="nav-text">哈夫曼树及编码存储结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91%E5%BB%BA%E7%AB%8B"><span class="nav-number">7.</span> <span class="nav-text">哈夫曼树建立</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%94%E5%9B%9E%E4%B8%A4%E4%B8%AA%E5%8F%8C%E4%BA%B2%E5%9F%9F%E4%B8%BA0%E4%B8%94%E6%9D%83%E5%80%BC%E6%9C%80%E5%B0%8F%E7%9A%84%E7%82%B9%E7%9A%84%E4%B8%8B%E6%A0%87"><span class="nav-number">8.</span> <span class="nav-text">返回两个双亲域为0且权值最小的点的下标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E6%A0%91"><span class="nav-number">9.</span> <span class="nav-text">建树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%93%88%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81-1"><span class="nav-number">10.</span> <span class="nav-text">哈夫曼编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AE%E6%A0%91%E5%AF%B9%E6%AF%8F%E4%B8%AA%E5%85%83%E7%B4%A0%E7%BC%96%E7%A0%81"><span class="nav-number">11.</span> <span class="nav-text">根据树对每个元素编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%93%88%E5%A4%AB%E6%9B%BC%E8%A7%A3%E7%A0%81"><span class="nav-number">12.</span> <span class="nav-text">哈夫曼解码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%93%88%E5%A4%AB%E6%9B%BC%E8%AF%91%E7%A0%81"><span class="nav-number">13.</span> <span class="nav-text">哈夫曼译码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">14.</span> <span class="nav-text">总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="无奈和杨（wnhyang）"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">无奈和杨（wnhyang）</p>
+  <div class="site-description" itemprop="description">学习记录所用</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">142</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wnhyang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wnhyang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wnhyang@qq.com" title="E-Mail → mailto:wnhyang@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://example.com/" title="https:&#x2F;&#x2F;example.com" rel="noopener" target="_blank">Title</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/29d55788.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="无奈和杨（wnhyang）">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无奈和杨（wnhyang）">
+      <meta itemprop="description" content="学习记录所用">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="哈夫曼树及应用 | 无奈和杨（wnhyang）">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          哈夫曼树及应用
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-07-25 15:15:42" itemprop="dateCreated datePublished" datetime="2020-07-25T15:15:42+08:00">2020-07-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-08-20 11:19:42" itemprop="dateModified" datetime="2022-08-20T11:19:42+08:00">2022-08-20</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>7 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>在计算机和互联网技术中，文本压缩就是一个非常重要的技术。玩电脑的人几乎都会应用压缩和解压缩软件来处理文档。因为它除了可以减少文档在磁盘上的空间外，还有重要的一点， 就是我们可以在网络上以压缩的形式传输大量数据，使得保存和传递都更加高效。</p>
+<p>那么压缩而不出错是如何做到的呢?简单说，就是把我们要压缩的文本进行重新编码，以减少不必要的空间。尽管现在最新技术在编码上已经很好很强大，但这一切都来自于曾经的技术积累，我们今天就来介绍一下最基本的压缩编码方法-赫夫曼编码。</p>
+<span id="more"></span>
+<p>在介绍赫夫曼编码前，我们必须得介绍赫夫曼树，而介绍赫夫曼树，我们不得不提这样一个人，美国数学家赫夫曼(David Huffman)， 也有的翻译为哈夫曼。他在1952年发明了赫夫曼编码，为了纪念他的成就，于是就把他在编码中用到的特殊的C叉树称之为赫夫曼树，他的编码方法称为赫夫曼编码。也就是说，我们现在介绍的知识全都来自于近60年前这位伟大科学家的研究成果，而我们平时所用的压缩和解压缩技术也都是基于赫夫曼的研究之上发展而来，我们应该要记住他。</p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/acd06b8ed06b">部分显示问题，请参考</a></p>
+<h2 id="哈夫曼树的相关术语">哈夫曼树的相关术语</h2>
+<blockquote>
+<p>路径</p>
+</blockquote>
+<ul>
+<li>从树中一个结点到另一个结点之间的分支构成这两个结点间的路径</li>
+</ul>
+<blockquote>
+<p>路径长度</p>
+</blockquote>
+<ul>
+<li>路径上的分支数目</li>
+</ul>
+<blockquote>
+<p>带权路径长度</p>
+</blockquote>
+<ul>
+<li>结点到根的路径长度与结点上权的乘积</li>
+</ul>
+<blockquote>
+<p>树的带权路径长度(weighted path length)</p>
+</blockquote>
+<ul>
+<li>树中所有叶子结点的带权路径长度之和</li>
+</ul>
+<figure>
+<img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/WPL.png" alt="WPL" /><figcaption>WPL</figcaption>
+</figure>
+<h2 id="定义">定义</h2>
+<p>设有n个权值{w1,w2,…,wn}，构造一棵有n个叶子结点的二叉树，每个叶子的权值为wi，则wpl最小的二叉树叫哈夫曼树。</p>
+<h2 id="哈夫曼树的构造过程">哈夫曼树的构造过程</h2>
+<p>(1). 初始化：根据给定的n个权值{w1,w2,…,wn}，构成n棵二叉树的集合F={T1,T2,…,Tn}，其中每棵二叉树Ti只有一个带权为wi的根结点，其左右子树均空。</p>
+<p>(2). 选取与合并：在 F 中选取两棵根结点的权值最小的树作为左右子树，构造一棵新的二叉树，且置新的二叉树的根结点的权值为其左、右子树上根结点的权值之和。</p>
+<p>(3). 删除与加入：在 F 中删除这两棵树，同时将新得到的二叉树加入 F 中。</p>
+<p>(4). 重复(2)和(3)，直到 F 只含一棵树为止。这棵树便是所求的哈夫曼树。</p>
+<h2 id="例">例：</h2>
+<p>w={5, 29, 7, 8, 14, 23, 3, 11}的构造过程</p>
+<p><img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/w1.png" alt="w1" /> <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/w2.png" alt="w2" /> <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/w3.png" alt="w3" /> <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/w4.png" alt="w4" /> <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/w5.png" alt="w5" /> <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/w6.png" alt="w6" /> <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/w7.png" alt="w7" /> <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/w8.png" alt="w8" /></p>
+<h2 id="哈夫曼编码">哈夫曼编码</h2>
+<p>一般地， 设需要编码的字符集为{ d1,d2,···,dn }，各个字符在电文中出现的次数或频率集合为{ W1,W2,···,Wn},以d1,d2,···,dn作为叶子结点，以W1,W,···,Wn作为相应叶子结点的权值来构造一棵哈夫曼树。规定哈夫曼树的左分支代表0，右分支代表1,则从根结点到叶子结点所经过的路径分支组成的0和1的序列便为该结点对应字符的编码，这就是哈夫曼编码。</p>
+<h2 id="哈夫曼树及编码存储结构">哈夫曼树及编码存储结构</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">char</span> data;</span><br><span class="line">    <span class="type">int</span> weight;</span><br><span class="line">    <span class="type">int</span> parent, lchild, rchild;</span><br><span class="line">&#125;HTNode, * HuffmanTree;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">char</span>** HuffmanCode;<span class="comment">//动态分配数组存储哈夫曼编码</span></span><br></pre></td></tr></table></figure>
+<h2 id="哈夫曼树建立">哈夫曼树建立</h2>
+<h2 id="返回两个双亲域为0且权值最小的点的下标">返回两个双亲域为0且权值最小的点的下标</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">Select</span><span class="params">(HuffmanTree HT, <span class="type">int</span> n, <span class="type">int</span>&amp; s1, <span class="type">int</span>&amp; s2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">/*n代表HT数组的长度*/</span></span><br><span class="line">    <span class="comment">//前两个for循环找所有结点中权值最小的点（字符）</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (HT[i].parent == <span class="number">0</span>)<span class="comment">//利用for循环找出一个双亲为0的结点</span></span><br><span class="line">        &#123;</span><br><span class="line">            s1 = i;<span class="comment">//s1初始化为i</span></span><br><span class="line">            <span class="keyword">break</span>;<span class="comment">//找到一个后立即退出循环</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">/*利用for循环找到所有结点（字符）权值最小的一个并且保证该结点的双亲为0*/</span></span><br><span class="line">        <span class="keyword">if</span> (HT[i].weight &lt; HT[s1].weight &amp;&amp; HT[i].parent == <span class="number">0</span>)</span><br><span class="line">            s1 = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//后两个for循环所有结点中权值第二小的点（字符）</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (HT[i].parent == <span class="number">0</span> &amp;&amp; i != s1)<span class="comment">//利用for循环找出一个双亲为0的结点，并且不能是s1</span></span><br><span class="line">        &#123;</span><br><span class="line">            s2 = i;<span class="comment">//s2初始化为i</span></span><br><span class="line">            <span class="keyword">break</span>;<span class="comment">//找到一个后立即退出循环</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">/*利用for循环找到所有结点（字符）权值第二小的一个，该结点满足不能是s1且双亲是0*/</span></span><br><span class="line">        <span class="keyword">if</span> (HT[i].weight &lt; HT[s2].weight &amp;&amp; HT[i].parent == <span class="number">0</span> &amp;&amp; i != s1)</span><br><span class="line">            s2 = i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="建树">建树</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">CreateHuffmanTree</span><span class="params">(HuffmanTree&amp; HT, <span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt;= <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="type">int</span> m = <span class="number">2</span> * n - <span class="number">1</span>;  <span class="comment">//总结点数2n-1</span></span><br><span class="line">    HT = <span class="keyword">new</span> HTNode[m + <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//将1~m号单元中的双亲，左孩子，右孩子的下标都初始化为0</span></span><br><span class="line">        HT[i].data = <span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line">        HT[i].parent = <span class="number">0</span>;</span><br><span class="line">        HT[i].lchild = <span class="number">0</span>;</span><br><span class="line">        HT[i].rchild = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;输入结点信息和权值：&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin &gt;&gt; HT[i].data &gt;&gt; HT[i].weight; <span class="comment">//输入前n个单元中叶子结点的信息和权值</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*-----------初始化工作结束，下面建树---------------------------*/</span></span><br><span class="line">    <span class="type">int</span> s1, s2;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = n + <span class="number">1</span>; i &lt;= m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">Select</span>(HT, i - <span class="number">1</span>, s1, s2);</span><br><span class="line">        HT[s1].parent = i;</span><br><span class="line">        HT[s2].parent = i;</span><br><span class="line">        HT[i].lchild = s1;</span><br><span class="line">        HT[i].rchild = s2;</span><br><span class="line">        HT[i].weight = HT[s1].weight + HT[s2].weight;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="哈夫曼编码-1">哈夫曼编码</h2>
+<h2 id="根据树对每个元素编码">根据树对每个元素编码</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">CreateHuffmanCode</span><span class="params">(HuffmanTree HT, HuffmanCode&amp; HC, <span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    HC = <span class="keyword">new</span> <span class="type">char</span>* [n + <span class="number">1</span>]; <span class="comment">//分配储存n个字符编码的编码表空间</span></span><br><span class="line">    <span class="type">char</span>* cd = <span class="keyword">new</span> <span class="type">char</span>[n]; <span class="comment">//分配临时存储字符编码的动态空间</span></span><br><span class="line">    cd[n - <span class="number">1</span>] = <span class="string">&#x27;\0&#x27;</span>;       <span class="comment">//编码结束符</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)<span class="comment">//逐个求字符编码</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> start = n - <span class="number">1</span>; <span class="comment">//start 开始指向最后，即编码结束符位置</span></span><br><span class="line">        <span class="type">int</span> c = i;</span><br><span class="line">        <span class="type">int</span> f = HT[c].parent;<span class="comment">//f指向结点c的双亲</span></span><br><span class="line">        <span class="keyword">while</span> (f != <span class="number">0</span>)<span class="comment">//从叶子结点开始回溯，直到根结点</span></span><br><span class="line">        &#123;</span><br><span class="line">            --start;<span class="comment">//回溯一次，start向前指向一个位置</span></span><br><span class="line">            <span class="keyword">if</span> (HT[f].lchild == c)</span><br><span class="line">                cd[start] = <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                cd[start] = <span class="string">&#x27;1&#x27;</span>;</span><br><span class="line">            c = f;</span><br><span class="line">            f = HT[c].parent;</span><br><span class="line">        &#125;</span><br><span class="line">        HC[i] = <span class="keyword">new</span> <span class="type">char</span>[n - start];<span class="comment">//为第i个字符编码分配空间</span></span><br><span class="line">        <span class="built_in">strcpy</span>(HC[i], &amp;cd[start]);<span class="comment">//把求得编码的首地址从cd[start]复制到HC的当前行中</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">delete</span>[] cd;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="哈夫曼解码">哈夫曼解码</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">DeCode</span><span class="params">(HuffmanTree HT, string a, string&amp; b, <span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    b = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="type">int</span> q = <span class="number">2</span> * n - <span class="number">1</span>;<span class="comment">//q初始化为根结点的下标</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; a.<span class="built_in">length</span>(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//for循环结束条件是读入的字符是结束符（二进制编码）</span></span><br><span class="line">        <span class="comment">//此代码块用来判断读入的二进制字符是0还是1</span></span><br><span class="line">        <span class="keyword">if</span> (a[i] == <span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">/*读入0，把根结点(HT[q])的左孩子的下标值赋给q下次循环的时候把HT[q]的左孩子作为新的根结点*/</span></span><br><span class="line">            q = HT[q].lchild;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (a[i] == <span class="string">&#x27;1&#x27;</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            q = HT[q].rchild;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//此代码块用来判断HT[q]是否为叶子结点</span></span><br><span class="line">        <span class="keyword">if</span> (HT[q].lchild == <span class="number">0</span> &amp;&amp; HT[q].rchild == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">/*是叶子结点，说明已经译出一个字符该字符的下标就是找到的叶子结点的下标*/</span></span><br><span class="line">            b += HT[q].data;<span class="comment">//把下标为q的字符赋给字符数组b[] q = 2 * n - 1;//初始化q为根结点的下标</span></span><br><span class="line">            q = <span class="number">2</span> * n - <span class="number">1</span>;<span class="comment">//继续译下一个字符的时候从哈夫曼树的根结点开始</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="哈夫曼译码">哈夫曼译码</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">Code</span><span class="params">(HuffmanTree HT, HuffmanCode HC, string c, string&amp; d, <span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    d = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; c.<span class="built_in">length</span>(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (c[i] == HT[j].data)  <span class="comment">//找到字符后再d后追加编码</span></span><br><span class="line">                d.<span class="built_in">append</span>(HC[j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="总结">总结</h2>
+<p>学习哈夫曼树和哈夫曼编码有助于初步理解数据压缩原理。</p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/acd06b8ed06b">部分显示问题，请参考</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.jpg" alt="无奈和杨（wnhyang） 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="无奈和杨（wnhyang） 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>无奈和杨（wnhyang）
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://wnhyang.github.io/article/29d55788.html" title="哈夫曼树及应用">https://wnhyang.github.io/article/29d55788.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%AE%97%E6%B3%95/" rel="tag"># 数据结构&算法</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/article/7b216a3b.html" rel="prev" title="树">
+                  <i class="fa fa-chevron-left"></i> 树
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/article/e85d694a.html" rel="next" title="二叉树">
+                  二叉树 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">无奈和杨（wnhyang）</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">169k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">10:15</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/wnhyang" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.2.2/mermaid.min.js","integrity":"sha256-o5AUfgOkNFWuInA78GVCoVdGoN9eTaB3Hxu+ep7TTrY="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

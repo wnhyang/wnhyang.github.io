@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>无奈和杨（wnhyang）</title>
+  <icon>https://wnhyang.github.io/icon.png</icon>
+  <subtitle>I will keep to fight</subtitle>
+  <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://wnhyang.github.io/"/>
+  <updated>2022-12-28T13:49:08.816Z</updated>
+  <id>https://wnhyang.github.io/</id>
+  
+  <author>
+    <name>无奈和杨（wnhyang）</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>docker部署nacos</title>
+    <link href="https://wnhyang.github.io/article/604142d6.html"/>
+    <id>https://wnhyang.github.io/article/604142d6.html</id>
+    <published>2022-12-27T01:37:29.000Z</published>
+    <updated>2022-12-28T13:49:08.816Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;https://nacos.io/zh-cn/docs/v2/quickstart/quick-start-docker.html&lt;/p&gt;
+&lt;p&gt;更新ing&lt;/p&gt;
+</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Docker" scheme="https://wnhyang.github.io/tags/Docker/"/>
+    
+    <category term="Spring Cloud Alibaba" scheme="https://wnhyang.github.io/tags/Spring-Cloud-Alibaba/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux邮件发送</title>
+    <link href="https://wnhyang.github.io/article/51f254be.html"/>
+    <id>https://wnhyang.github.io/article/51f254be.html</id>
+    <published>2022-12-24T15:10:21.000Z</published>
+    <updated>2022-12-25T12:43:46.367Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;简介&quot;&gt;简介&lt;/h2&gt;
+&lt;p&gt;最近在折腾&lt;code&gt;Linux&lt;/code&gt;，想做一点有趣的事情，首先想到就是通过定时任务，做一些通知，原来我就做过&lt;code&gt;Java&lt;/code&gt;整合邮件，做一些邮件发送，直到最近我才知道，原来&lt;code&gt;Linux&lt;/code&gt;本身就能发送邮件的。&lt;/p&gt;
+&lt;p&gt;那更好了，直接开始。&lt;/p&gt;
+&lt;p&gt;参考：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;https://linux.cn/article-11663-1.html&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;https://www.jianshu.com/p/d1f757c89826&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    
+    <category term="Linux" scheme="https://wnhyang.github.io/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>江南遇雪</title>
+    <link href="https://wnhyang.github.io/article/2feea1bf.html"/>
+    <id>https://wnhyang.github.io/article/2feea1bf.html</id>
+    <published>2022-12-04T12:26:11.000Z</published>
+    <updated>2022-12-26T09:31:40.828Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;对我来说还是很惊喜的，毕竟在我的印象，南方很少能见到雪，况且这么大的雪。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="记录" scheme="https://wnhyang.github.io/tags/%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>RocketMQ部署</title>
+    <link href="https://wnhyang.github.io/article/28a4cb58.html"/>
+    <id>https://wnhyang.github.io/article/28a4cb58.html</id>
+    <published>2022-11-27T07:51:33.000Z</published>
+    <updated>2022-12-03T14:34:28.167Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;简介&quot;&gt;简介&lt;/h2&gt;
+&lt;p&gt;最近在学习&lt;code&gt;RocketMQ&lt;/code&gt;，但一直苦于没有合适的环境学习。我的电脑是&lt;code&gt;Windows&lt;/code&gt;系统，虽然换上了专业版装上了&lt;code&gt;Docker&lt;/code&gt;，而且也有虚拟机，平常也会通过这些环境学习，但是还是太不方便了，为了方便终于又用上了云服务器，这次是阿里的。&lt;/p&gt;
+&lt;p&gt;配置如下&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;CPU&amp;amp;内存 1核(vCPU)2 GiB&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;操作系统 CentOS 7.8 64位&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;当前使用带宽 1Mbps&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这次&lt;code&gt;RocketMQ&lt;/code&gt;的配置包括，&lt;code&gt;RocketMQ（NameServer、Broker）&lt;/code&gt;和控制台&lt;code&gt;RocketMQ-Dashboard&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;提要：基础的&lt;code&gt;JDK&lt;/code&gt;和&lt;code&gt;Maven&lt;/code&gt;这里不多提了，都安装配置好了，另外后面的&lt;code&gt;RocketMQ-Dashboard&lt;/code&gt;采用&lt;code&gt;Docker&lt;/code&gt;部署方式，&lt;code&gt;Docker&lt;/code&gt;安装查看官网装上就好。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="Linux" scheme="https://wnhyang.github.io/tags/Linux/"/>
+    
+    <category term="RocketMQ" scheme="https://wnhyang.github.io/tags/RocketMQ/"/>
+    
+    <category term="Docker" scheme="https://wnhyang.github.io/tags/Docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>习惯说明书</title>
+    <link href="https://wnhyang.github.io/article/7b04ce94.html"/>
+    <id>https://wnhyang.github.io/article/7b04ce94.html</id>
+    <published>2022-10-24T11:52:18.000Z</published>
+    <updated>2022-12-19T10:07:21.901Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;习惯说明书，听起来好像很奇怪，是习惯（的）说明书？还是习惯（用）说明书？&lt;/p&gt;
+&lt;p&gt;习惯的说明说，是个什么鬼？习惯还有说明说的？&lt;/p&gt;
+&lt;p&gt;尽量接受默认设置&lt;/p&gt;
+&lt;p&gt;学习编程以来，越来越习惯区从官网上找资料、查问题，这是个好习惯，可以肯定。这个习惯也渐渐带入到生活中了，尤其是更习惯看说明书，这&lt;/p&gt;
+&lt;p&gt;现在每当我买东西时，第一步就是去看商品说明，尽量把这个商品了解到一定程度，反复思考自己是不是需要才会去购买。 还有就是下载app时，装上之后，第一步一定是打开设置，以尽量接受默认设置为目标，修改必要的设置，也许是我现在的精力不多了，不愿意去折腾这些玩意了，不再以“所有app得适应我的使用习惯”为目标，更多的是去接受它们想要给我看到的、听到的。&lt;/p&gt;
+&lt;p&gt;更新ing&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ruoyi学习多数据源</title>
+    <link href="https://wnhyang.github.io/article/9a440dda.html"/>
+    <id>https://wnhyang.github.io/article/9a440dda.html</id>
+    <published>2022-10-12T07:15:50.000Z</published>
+    <updated>2022-11-16T09:10:49.792Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;这几天看了一些关于&lt;code&gt;MySQL&lt;/code&gt;主从复制，读写分离的文章，对于数据库这方面的知识很有兴趣。主要还是之前真的没有做过，想学习一下。这下好了，&lt;code&gt;ruoyi&lt;/code&gt;入手吧。&lt;/p&gt;
+&lt;h2 id=&quot;参考&quot;&gt;参考&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;https://zhuanlan.zhihu.com/p/199217698&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;https://blog.csdn.net/qq_37502106/article/details/91044952&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    
+    <category term="ruoyi" scheme="https://wnhyang.github.io/tags/ruoyi/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>不要摆烂</title>
+    <link href="https://wnhyang.github.io/article/5ea43f48.html"/>
+    <id>https://wnhyang.github.io/article/5ea43f48.html</id>
+    <published>2022-09-21T09:31:00.000Z</published>
+    <updated>2022-10-12T08:59:54.639Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;不要摆烂！不要摆烂！不要摆烂！&lt;/p&gt;
+&lt;p&gt;重要的事情说三遍。&lt;/p&gt;
+&lt;p&gt;之前还可以调侃自己说“ 偶尔摆烂，经常偶尔”。虽说没有那么严重但确实差不多😂&lt;/p&gt;
+&lt;p&gt;提醒事项和稍后再看&lt;/p&gt;
+&lt;p&gt;有一说一，这两个东西可真是帮了我的大忙了&lt;/p&gt;
+&lt;p&gt;提醒事项我每天都在用，因为现在记性越来越差，加上现在事情越来越多，很容易被其他事情弄得分心，时常忘记上一秒要做些什么，所以非常需要把一些事情记录下来。&lt;/p&gt;
+&lt;p&gt;稍后再看&lt;/p&gt;
+&lt;p&gt;现在越来越难抽出时间做自己的事了,&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="思考" scheme="https://wnhyang.github.io/tags/%E6%80%9D%E8%80%83/"/>
+    
+    <category term="自己" scheme="https://wnhyang.github.io/tags/%E8%87%AA%E5%B7%B1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ruoyi学习Quartz</title>
+    <link href="https://wnhyang.github.io/article/796c508a.html"/>
+    <id>https://wnhyang.github.io/article/796c508a.html</id>
+    <published>2022-09-07T09:34:26.000Z</published>
+    <updated>2022-09-19T10:23:32.072Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;依旧是从&lt;code&gt;ruoyi&lt;/code&gt;学习，这次是任务调度框架&lt;code&gt;Quartz&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&quot;参考&quot;&gt;参考&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.w3cschool.cn/quartz_doc/&quot;&gt;Quartz官方文档&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/lkl_csdn/article/details/73613033&quot;&gt;quartz （从原理到应用）详解篇&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/306591082&quot;&gt;Quartz 是什么？一文带你入坑 - 知乎&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;任务调度，也可说是定时任务，其实还是很常见的在我们的生活中，最常见的莫过于闹钟了，这就是一种定时任务，其他还有提醒事项，消息订阅等等&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="ruoyi" scheme="https://wnhyang.github.io/tags/ruoyi/"/>
+    
+    <category term="定时任务" scheme="https://wnhyang.github.io/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ThreadLocal理解</title>
+    <link href="https://wnhyang.github.io/article/362db54f.html"/>
+    <id>https://wnhyang.github.io/article/362db54f.html</id>
+    <published>2022-09-05T11:37:59.000Z</published>
+    <updated>2022-09-06T10:35:09.457Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;相信熟悉&lt;code&gt;JUC&lt;/code&gt;（&lt;code&gt;java.util.concurrent&lt;/code&gt;）的，都应该知道&lt;code&gt;ThreadLocal&lt;/code&gt;，尤其是在各种面试题库中经常遇到。谈起这个的主要原因还是在项目中遇到了“利用&lt;code&gt;ThreadL</summary>
+        
+      
+    
+    
+    
+    
+    <category term="JavaSE" scheme="https://wnhyang.github.io/tags/JavaSE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>健康生活</title>
+    <link href="https://wnhyang.github.io/article/3b29100a.html"/>
+    <id>https://wnhyang.github.io/article/3b29100a.html</id>
+    <published>2022-08-28T15:37:38.000Z</published>
+    <updated>2022-09-04T14:34:10.073Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在未工作之前，总是对工作充满美好的畅想，想象那时我就可以完全独立，能很好地处理工作和生活。等到真的工作后就发现真的很难的啦🤧&lt;/p&gt;
+&lt;p&gt;work life balance 没那么容易的。&lt;/p&gt;
+&lt;p&gt;当代年轻人（这个定语可能不对），对于工作生活确实是：自己嗨、自己玩，再晚也不累，一旦工作上班就马上焉了。这没有夸大其谈，确实如此啊！只要到了工作场地，规定时间内，就算任务很轻松，还是会感到累🥱可一旦下班和朋友聚在一起，就很快乐，不知疲倦🥰&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="思考" scheme="https://wnhyang.github.io/tags/%E6%80%9D%E8%80%83/"/>
+    
+    <category term="自己" scheme="https://wnhyang.github.io/tags/%E8%87%AA%E5%B7%B1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>人类确实不如动物有血性</title>
+    <link href="https://wnhyang.github.io/article/7b6feb78.html"/>
+    <id>https://wnhyang.github.io/article/7b6feb78.html</id>
+    <published>2022-08-26T15:00:26.000Z</published>
+    <updated>2022-09-03T15:34:33.242Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;最近看到一则有关大象🐘因被迫工作怒将其主人杀死的新闻，想就此谈一谈。&lt;/p&gt;
+&lt;p&gt;点开新闻，原来是炎炎夏日下，主人强迫大象🐘在橡胶园内搬运木材导致大象不堪忍受，“发疯”，用象牙将其主人杀死。&lt;/p&gt;
+&lt;p&gt;当时感慨的一句，“人类确实不如动物有血性”。既是说动物比人类豁得出去，能在重压下直接进行反抗，不像人类，在生活的重压下，还要想一想家人朋友，或是其他的什么牵挂，是少一些血性；又是说人类和动物好像是换了身份，动物不再是我们印象中凶残冷血的动物，更像是我们自认为高贵的自己，他，被束缚，被要求为它们工作，同时我们人类也不是高贵的自己，更像是眼里瞧不起的低级生物，它，强迫他们工作，为了个人利益，这样一想，动物还是有温存的血性，忍受我们的压迫，而我们却没有该有的血性，只会为自己想。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="思考" scheme="https://wnhyang.github.io/tags/%E6%80%9D%E8%80%83/"/>
+    
+    <category term="杂谈" scheme="https://wnhyang.github.io/tags/%E6%9D%82%E8%B0%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mybatis-Plus-Generator使用</title>
+    <link href="https://wnhyang.github.io/article/52ebbcb.html"/>
+    <id>https://wnhyang.github.io/article/52ebbcb.html</id>
+    <published>2022-08-24T03:19:24.000Z</published>
+    <updated>2022-12-30T13:39:17.447Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;简介&quot;&gt;简介&lt;/h2&gt;
+&lt;p&gt;之前有文章&lt;a href=&quot;https://wnhyang.github.io/article/524c985a.html&quot;&gt;Mybatis-Generator使用&lt;/a&gt;，现在体验了&lt;code&gt;Mybatis-Plus-Generator&lt;/code&gt;，真心觉得有了它开发效率提高太多了，用起来是真的爽，爽！&lt;/p&gt;
+&lt;p&gt;参考：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://baomidou.com/pages/779a6e/&quot; class=&quot;uri&quot;&gt;https://baomidou.com/pages/779a6e/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/qq_20185737/article/details/121456598&quot; class=&quot;uri&quot;&gt;https://blog.csdn.net/qq_20185737/article/details/121456598&lt;/a&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="Mybatis/Mybatis-plus" scheme="https://wnhyang.github.io/tags/Mybatis-Mybatis-plus/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>简易短链接项目</title>
+    <link href="https://wnhyang.github.io/article/68b36ea9.html"/>
+    <id>https://wnhyang.github.io/article/68b36ea9.html</id>
+    <published>2022-08-21T13:15:41.000Z</published>
+    <updated>2022-12-30T13:39:17.432Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;简介&quot;&gt;简介&lt;/h2&gt;
+&lt;p&gt;前面已经预告（&lt;a href=&quot;https://wnhyang.github.io/article/3df251b7.html&quot;&gt;MurmurHash算法初探&lt;/a&gt;）过了，现在也是完成了，但是确实时没时间写，只能抽空“填坑”了🥱&lt;/p&gt;
+&lt;p&gt;关于这次从打算做到做完，应该是执行力最强的一次，仅仅不到一周时间就完成了，要是在过去，估计还要拖个几周甚至个把月。&lt;/p&gt;
+&lt;h3 id=&quot;参考&quot;&gt;参考：&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://mp.weixin.qq.com/s/YTrBaERcyjvw7A0Fg2Iegw&quot;&gt;高性能短链设计&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/tianyaleixiaowu/article/details/74739827&quot;&gt;BloomFilter布隆过滤器使用&lt;/a&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MurmurHash算法初探</title>
+    <link href="https://wnhyang.github.io/article/3df251b7.html"/>
+    <id>https://wnhyang.github.io/article/3df251b7.html</id>
+    <published>2022-08-17T12:43:00.000Z</published>
+    <updated>2022-12-30T13:39:17.448Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;简介&quot;&gt;简介&lt;/h2&gt;
+&lt;p&gt;简单讨论一下&lt;code&gt;MurmurHash&lt;/code&gt;算法，之后会依此做一个简易的短链接项目，尽量快些做出来，分享出来😁&lt;/p&gt;
+&lt;p&gt;既然是初探，我只会去说怎么使用，至于原理，就留到有机会（&lt;code&gt;doge&lt;/code&gt;）再来探究吧😂&lt;/p&gt;
+&lt;p&gt;在一周前我对这个算法也是闻所未闻，至到我看了这篇&lt;a href=&quot;https://mp.weixin.qq.com/s/YTrBaERcyjvw7A0Fg2Iegw&quot;&gt;高性能短链设计&lt;/a&gt;文章，才有所了解。&lt;/p&gt;
+&lt;p&gt;关于&lt;code&gt;MurmurHash&lt;/code&gt;算法，可参考&lt;a href=&quot;https://blog.csdn.net/thinkmo/article/details/26833565&quot;&gt;Murmurhash介绍与实现&lt;/a&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="数据结构&amp;算法" scheme="https://wnhyang.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="JavaSE" scheme="https://wnhyang.github.io/tags/JavaSE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>软件推荐</title>
+    <link href="https://wnhyang.github.io/article/c92482f1.html"/>
+    <id>https://wnhyang.github.io/article/c92482f1.html</id>
+    <published>2022-08-09T13:51:28.000Z</published>
+    <updated>2022-12-30T13:39:17.429Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;推荐好用的软件&quot;&gt;推荐好用的软件&lt;/h2&gt;
+&lt;p&gt;因为平台不同我会标注&lt;code&gt;PC&lt;/code&gt;：&lt;code&gt;Win/Mac/Linux&lt;/code&gt;，移动：&lt;code&gt;Android/iOS&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;目前分类，基础软件、记录写作、学习提升、编程、浏览器插件、小程序。。。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="软件/工具" scheme="https://wnhyang.github.io/tags/%E8%BD%AF%E4%BB%B6-%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>书单</title>
+    <link href="https://wnhyang.github.io/article/e8a1470d.html"/>
+    <id>https://wnhyang.github.io/article/e8a1470d.html</id>
+    <published>2022-08-09T13:51:11.000Z</published>
+    <updated>2022-12-04T13:30:05.919Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;推荐一些书籍吧&quot;&gt;推荐一些书籍吧&lt;/h2&gt;
+&lt;p&gt;目前分类：人文历史、小说、编程&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="读书" scheme="https://wnhyang.github.io/tags/%E8%AF%BB%E4%B9%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>规矩</title>
+    <link href="https://wnhyang.github.io/article/1e97111a.html"/>
+    <id>https://wnhyang.github.io/article/1e97111a.html</id>
+    <published>2022-07-18T11:37:20.000Z</published>
+    <updated>2022-08-07T12:52:43.729Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;简介&quot;&gt;简介&lt;/h2&gt;
+&lt;p&gt;俗话说的好，没有规矩不成方圆。随着一个人的成长，就会发现，规矩的制约性越来越强大。现在我也是深有体会啊！&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="思考" scheme="https://wnhyang.github.io/tags/%E6%80%9D%E8%80%83/"/>
+    
+    <category term="杂谈" scheme="https://wnhyang.github.io/tags/%E6%9D%82%E8%B0%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>消失的农村学校</title>
+    <link href="https://wnhyang.github.io/article/cdf251be.html"/>
+    <id>https://wnhyang.github.io/article/cdf251be.html</id>
+    <published>2022-07-14T10:03:32.000Z</published>
+    <updated>2022-08-07T12:51:32.215Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;学校去哪了&quot;&gt;学校去哪了？&lt;/h2&gt;
+&lt;p&gt;如题，不知道你们有没有感受到农村学校越来越少了。从我的经历出发，在小学2年级大概，我们班突然来了将近十个新同学，他们都是从我们隔壁村过来的，听说好像是他们村的小学不办了，只能转到我们这里来上小学了。这是我第一次感受到身边的农村小学在减少。之后4、5年级的时候，又转来了一批新同学，他们则是来自更远的隔着几里地村子，原因也是一样。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="思考" scheme="https://wnhyang.github.io/tags/%E6%80%9D%E8%80%83/"/>
+    
+    <category term="杂谈" scheme="https://wnhyang.github.io/tags/%E6%9D%82%E8%B0%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>好想为农村做点什么</title>
+    <link href="https://wnhyang.github.io/article/d36a1c6.html"/>
+    <id>https://wnhyang.github.io/article/d36a1c6.html</id>
+    <published>2022-07-14T10:03:14.000Z</published>
+    <updated>2022-08-15T02:46:50.347Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;简介&quot;&gt;简介&lt;/h2&gt;
+&lt;p&gt;更新ing&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="思考" scheme="https://wnhyang.github.io/tags/%E6%80%9D%E8%80%83/"/>
+    
+    <category term="杂谈" scheme="https://wnhyang.github.io/tags/%E6%9D%82%E8%B0%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>租房记</title>
+    <link href="https://wnhyang.github.io/article/59d8ee3f.html"/>
+    <id>https://wnhyang.github.io/article/59d8ee3f.html</id>
+    <published>2022-07-14T07:30:08.000Z</published>
+    <updated>2022-07-14T10:59:25.449Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;简介&quot;&gt;简介&lt;/h2&gt;
+&lt;p&gt;从我的租房经历给点租房建议。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="自己" scheme="https://wnhyang.github.io/tags/%E8%87%AA%E5%B7%B1/"/>
+    
+    <category term="记录" scheme="https://wnhyang.github.io/tags/%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
+  
+</feed>

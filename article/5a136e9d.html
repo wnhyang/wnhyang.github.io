@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="baidu-site-verification" content="fe6bba1d0d4e906fed87c9f7c2d1d09d">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="简介 从若依项目学习AOP。 首先，ruoyi对于一个项目的规划已经做得非常好了，我所说的项目规划是指ruoyi-vue中pom项目的规划，包括父项目、子项目、包管理、类管理等等。ruoyi项目的规范是让人很舒服，每个模块的职责就很明晰，是非常值得学习的。ruoyi中有很多封装，不管是工具类的，还是配置类的，挺多的。对于项目经验不足的初学者还是很有帮助的。 下面我简单从ruoyi项目出发学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ruoyi学习AOP">
+<meta property="og:url" content="https://wnhyang.github.io/article/5a136e9d.html">
+<meta property="og:site_name" content="无奈和杨（wnhyang）">
+<meta property="og:description" content="简介 从若依项目学习AOP。 首先，ruoyi对于一个项目的规划已经做得非常好了，我所说的项目规划是指ruoyi-vue中pom项目的规划，包括父项目、子项目、包管理、类管理等等。ruoyi项目的规范是让人很舒服，每个模块的职责就很明晰，是非常值得学习的。ruoyi中有很多封装，不管是工具类的，还是配置类的，挺多的。对于项目经验不足的初学者还是很有帮助的。 下面我简单从ruoyi项目出发学习">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.imgdb.cn/item/62f10bfb16f2c2beb1cf3531.jpg">
+<meta property="article:published_time" content="2022-05-03T13:17:55.000Z">
+<meta property="article:modified_time" content="2022-12-04T13:43:45.429Z">
+<meta property="article:author" content="无奈和杨（wnhyang）">
+<meta property="article:tag" content="ruoyi">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/62f10bfb16f2c2beb1cf3531.jpg">
+
+
+<link rel="canonical" href="https://wnhyang.github.io/article/5a136e9d.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wnhyang.github.io/article/5a136e9d.html","path":"article/5a136e9d.html","title":"ruoyi学习AOP"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ruoyi学习AOP | 无奈和杨（wnhyang）</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="无奈和杨（wnhyang）" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">无奈和杨（wnhyang）</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">I will keep to fight</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">37</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">0</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">142</span></a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#aop%E6%A6%82%E5%BF%B5"><span class="nav-number">2.</span> <span class="nav-text">AOP概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ruoyi%E5%81%9A%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">ruoyi做法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%87%E9%9D%A2%E5%85%A5%E5%8F%A3"><span class="nav-number">4.</span> <span class="nav-text">切面入口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%87%E9%9D%A2%E6%B3%A8%E8%A7%A3"><span class="nav-number">5.</span> <span class="nav-text">切面注解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%87%E9%9D%A2advices"><span class="nav-number">6.</span> <span class="nav-text">切面Advices</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93"><span class="nav-number">7.</span> <span class="nav-text">结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="无奈和杨（wnhyang）"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">无奈和杨（wnhyang）</p>
+  <div class="site-description" itemprop="description">学习记录所用</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">142</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wnhyang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wnhyang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wnhyang@qq.com" title="E-Mail → mailto:wnhyang@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://example.com/" title="https:&#x2F;&#x2F;example.com" rel="noopener" target="_blank">Title</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/5a136e9d.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="无奈和杨（wnhyang）">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无奈和杨（wnhyang）">
+      <meta itemprop="description" content="学习记录所用">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ruoyi学习AOP | 无奈和杨（wnhyang）">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ruoyi学习AOP
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-05-03 21:17:55" itemprop="dateCreated datePublished" datetime="2022-05-03T21:17:55+08:00">2022-05-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-12-04 21:43:45" itemprop="dateModified" datetime="2022-12-04T21:43:45+08:00">2022-12-04</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="简介">简介</h2>
+<p>从若依项目学习<code>AOP</code>。</p>
+<p>首先，<code>ruoyi</code>对于一个项目的规划已经做得非常好了，我所说的项目规划是指<code>ruoyi-vue</code>中<code>pom</code>项目的规划，包括父项目、子项目、包管理、类管理等等。<code>ruoyi</code>项目的规范是让人很舒服，每个模块的职责就很明晰，是非常值得学习的。<code>ruoyi</code>中有很多封装，不管是工具类的，还是配置类的，挺多的。对于项目经验不足的初学者还是很有帮助的。</p>
+<p>下面我简单从<code>ruoyi</code>项目出发学习一下<code>ruoyi</code>是如何做<code>AOP</code>的。</p>
+<span id="more"></span>
+<h2 id="aop概念">AOP概念</h2>
+<p><code>AOP</code>的概念对于有一定项目基础的一定不陌生。</p>
+<p>“面向切面编程嘛”🤓🤓🤓</p>
+<p>面向对象将程序抽象，分为不同模块，各司其职，能有力促进工程开发分工协作，但是不同模块有时会有公共行为，这种行为不适合用继承来实现，维护也比较复杂。切面（<code>AOP</code>）的引入就是为了解决这个问题的，要达到目的就是，在不改变源码的情况下，为不同组件添加公用功能。</p>
+<h2 id="ruoyi做法">ruoyi做法</h2>
+<p>其实<code>ruoyi</code>有很多地方都用到了<code>AOP</code>，包括数据源确认、数据范围确认、权限认证、限流、防重复提交、<code>Excel</code>表格处理等等，很多的。</p>
+<p>它们的原理做法几乎一样，这次就<code>log</code>（日志）学习一下。</p>
+<h2 id="切面入口">切面入口</h2>
+<p>可以在<code>ruoyi-admin</code>项目中<code>com.ruoyi.web.controller.system.SysDeptController</code>看到<code>@Log</code></p>
+<p>很明显<code>ruoyi</code>是通过自定义注解的方式实现<code>AOP</code>的，当然还有另一种方式：正则。比较注解和正则来说，注解的方式更加方便一些，哪里需要就在哪里添加就好；正则的话，首先对于规范的正则要熟悉，然后包结构要明晰，随意修改很可能出现问题。</p>
+<p>这里就不做过多讨论了，来看<code>ruoyi</code>的实现吧。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/system/dept&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SysDeptController</span> <span class="keyword">extends</span> <span class="title class_">BaseController</span> &#123;</span><br><span class="line"></span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 新增部门</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="meta">@PreAuthorize(&quot;@ss.hasPermi(&#x27;system:dept:add&#x27;)&quot;)</span></span><br><span class="line">  <span class="meta">@Log(title = &quot;部门管理&quot;, businessType = BusinessType.INSERT)</span></span><br><span class="line">  <span class="meta">@PostMapping</span></span><br><span class="line">  <span class="keyword">public</span> AjaxResult <span class="title function_">add</span><span class="params">(<span class="meta">@Validated</span> <span class="meta">@RequestBody</span> SysDept dept)</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (UserConstants.NOT_UNIQUE.equals(deptService.checkDeptNameUnique(dept))) &#123;</span><br><span class="line">          <span class="keyword">return</span> AjaxResult.error(<span class="string">&quot;新增部门&#x27;&quot;</span> + dept.getDeptName() + <span class="string">&quot;&#x27;失败，部门名称已存在&quot;</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      dept.setCreateBy(getUsername());</span><br><span class="line">      <span class="keyword">return</span> toAjax(deptService.insertDept(dept));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="切面注解">切面注解</h2>
+<p>这个<code>@Log</code>就是日志切面的标记</p>
+<blockquote>
+<p><span class="citation" data-cites="Log">@Log</span>(title = &quot;部门管理&quot;, businessType = BusinessType.INSERT)</p>
+</blockquote>
+<p>点进去，到达<code>ruoyi-common</code>中<code>com.ruoyi.common.annotation.Log</code>，这里定义了<code>Log</code>注解，注释也写得非常明白。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target(&#123;ElementType.PARAMETER, ElementType.METHOD&#125;)</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Log &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 模块</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">title</span><span class="params">()</span> <span class="keyword">default</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 功能</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> BusinessType <span class="title function_">businessType</span><span class="params">()</span> <span class="keyword">default</span> BusinessType.OTHER;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 操作人类别</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> OperatorType <span class="title function_">operatorType</span><span class="params">()</span> <span class="keyword">default</span> OperatorType.MANAGE;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 是否保存请求的参数</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isSaveRequestData</span><span class="params">()</span> <span class="keyword">default</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>日志的基本信息都有了，对于后期发现定位问题很有帮助。</p>
+<p>其中，功能和操作人类别都是<code>com.ruoyi.common.enums</code>下定义的枚举。</p>
+<h2 id="切面advices">切面Advices</h2>
+<p>如果使用的是<code>Ultimate</code>版的<code>IDEA</code>，就可以在前面“新增部门”的add方法上进行智能跳转，直接跳到对应的切面处理方法</p>
+<p><img data-src="https://pic.imgdb.cn/item/62f10bfb16f2c2beb1cf3531.jpg" /></p>
+<p><code>ruoyi-framework</code>项目的<code>com.ruoyi.framework.aspectj.LogAspect</code>就是日志切面的具体处理类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 操作日志记录处理</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> ruoyi</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LogAspect</span> &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Logger</span> <span class="variable">log</span> <span class="operator">=</span> LoggerFactory.getLogger(LogAspect.class);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 配置织入点</span></span><br><span class="line">  <span class="meta">@Pointcut(&quot;@annotation(com.ruoyi.common.annotation.Log)&quot;)</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">logPointCut</span><span class="params">()</span> &#123;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 处理完请求后执行</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> joinPoint 切点</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">  <span class="meta">@AfterReturning(pointcut = &quot;logPointCut()&quot;, returning = &quot;jsonResult&quot;)</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doAfterReturning</span><span class="params">(JoinPoint joinPoint, Object jsonResult)</span> &#123;</span><br><span class="line">      handleLog(joinPoint, <span class="literal">null</span>, jsonResult);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>@Pointcut</code>配置织入点，这里使用的是自定义注解，所以是<code>(&quot;@annotation(com.ruoyi.common.annotation.Log)&quot;)</code>，是<code>Log</code>注解的完整类路径。</p>
+<p>对于切面如何处理，AOP本身有很多种实现，包括前置、中置、后置、环绕等之类的，可以根据不同的业务做不同的处理，这里是做日志记录，所以是后置处理。除了正常的处理外，这里还包括拦截异常的操作。可以看到都是通过<code>handleLog</code>方法来做的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">handleLog</span><span class="params">(<span class="keyword">final</span> JoinPoint joinPoint, <span class="keyword">final</span> Exception e, Object jsonResult)</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// 获得注解</span></span><br><span class="line">        <span class="type">Log</span> <span class="variable">controllerLog</span> <span class="operator">=</span> getAnnotationLog(joinPoint);</span><br><span class="line">        <span class="keyword">if</span> (controllerLog == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取当前的用户</span></span><br><span class="line">        <span class="type">LoginUser</span> <span class="variable">loginUser</span> <span class="operator">=</span> SecurityUtils.getLoginUser();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// *========数据库日志=========*//</span></span><br><span class="line">        <span class="type">SysOperLog</span> <span class="variable">operLog</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SysOperLog</span>();</span><br><span class="line">        operLog.setStatus(BusinessStatus.SUCCESS.ordinal());</span><br><span class="line">        <span class="comment">// 请求的地址</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">ip</span> <span class="operator">=</span> IpUtils.getIpAddr(ServletUtils.getRequest());</span><br><span class="line">        operLog.setOperIp(ip);</span><br><span class="line">        <span class="comment">// 返回参数</span></span><br><span class="line">        operLog.setJsonResult(JSON.toJSONString(jsonResult));</span><br><span class="line"></span><br><span class="line">        operLog.setOperUrl(ServletUtils.getRequest().getRequestURI());</span><br><span class="line">        <span class="keyword">if</span> (loginUser != <span class="literal">null</span>) &#123;</span><br><span class="line">            operLog.setOperName(loginUser.getUsername());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (e != <span class="literal">null</span>) &#123;</span><br><span class="line">            operLog.setStatus(BusinessStatus.FAIL.ordinal());</span><br><span class="line">            operLog.setErrorMsg(StringUtils.substring(e.getMessage(), <span class="number">0</span>, <span class="number">2000</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 设置方法名称</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">className</span> <span class="operator">=</span> joinPoint.getTarget().getClass().getName();</span><br><span class="line">        <span class="type">String</span> <span class="variable">methodName</span> <span class="operator">=</span> joinPoint.getSignature().getName();</span><br><span class="line">        operLog.setMethod(className + <span class="string">&quot;.&quot;</span> + methodName + <span class="string">&quot;()&quot;</span>);</span><br><span class="line">        <span class="comment">// 设置请求方式</span></span><br><span class="line">        operLog.setRequestMethod(ServletUtils.getRequest().getMethod());</span><br><span class="line">        <span class="comment">// 处理设置注解上的参数</span></span><br><span class="line">        getControllerMethodDescription(joinPoint, controllerLog, operLog);</span><br><span class="line">        <span class="comment">// 保存数据库</span></span><br><span class="line">        AsyncManager.me().execute(AsyncFactory.recordOper(operLog));</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception exp) &#123;</span><br><span class="line">        <span class="comment">// 记录本地异常日志</span></span><br><span class="line">        log.error(<span class="string">&quot;==前置通知异常==&quot;</span>);</span><br><span class="line">        log.error(<span class="string">&quot;异常信息:&#123;&#125;&quot;</span>, exp.getMessage());</span><br><span class="line">        exp.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面每一步都有注释，非常清晰，很容易看明白。</p>
+<ol type="1">
+<li><p>获取注解，这一步我是有点疑问的，既然通过<code>AOP</code>进入该方法，还需要验证是否有这个注解吗？有必要吗，是我太浅薄了吗？有懂的大佬可以跟我说明一下😂</p></li>
+<li><p>获取当前用户，通过封装的<code>Spring Security</code>工具类获取到。</p></li>
+<li><p>完善日志数据，包括请求地址、用户名、返回参数、<code>URL</code>、状态、错误信息、类名、方法名、参数信息、注解业务数据等。</p></li>
+<li><p>异步插入数据库。</p></li>
+</ol>
+<p>需要知道<code>getControllerMethodDescription</code>、<code>setRequestValue</code>、<code>getAnnotationLog</code>、<code>argsArrayToString</code>、<code>isFilterObject</code>这些方法没有细说，也没有太大必要，这些都是辅助功能的。</p>
+<p>另外一提，我这个版本的<code>ruoyi</code>代码也是有点小问题的，比如这里有一个<code>String</code>拼接可以用<code>StringBuilder</code>优化的问题，可能还有。我希望所有人在在看他人代码学习时，都应该带着思考，带着质疑去看，能发现并提出问题就很好。</p>
+<p>最后，这里异步插入数据库很值得关注，这种日志数据落库做成异步对于业务来说是很有必要的，它本身并不属于业务，如果做成同步会影响业务<code>RT</code>，没有什么好处，异步的话不仅能充分利用<code>CPU</code>，而且还不影响业务，是很棒的🥰</p>
+<h2 id="结">结</h2>
+<p><code>ruoyi</code>设计的<code>AOP</code>风格大差不差，其他的也可以比较着学习，能够学到精髓，并有一定实践就更好了。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.jpg" alt="无奈和杨（wnhyang） 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="无奈和杨（wnhyang） 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>无奈和杨（wnhyang）
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://wnhyang.github.io/article/5a136e9d.html" title="ruoyi学习AOP">https://wnhyang.github.io/article/5a136e9d.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/ruoyi/" rel="tag"># ruoyi</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/article/98052ade.html" rel="prev" title="Dubbo捕获自定义异常问题">
+                  <i class="fa fa-chevron-left"></i> Dubbo捕获自定义异常问题
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/article/8366968a.html" rel="next" title="设计模式-行为模式-观察者模式">
+                  设计模式-行为模式-观察者模式 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">无奈和杨（wnhyang）</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">169k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">10:15</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/wnhyang" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.2.2/mermaid.min.js","integrity":"sha256-o5AUfgOkNFWuInA78GVCoVdGoN9eTaB3Hxu+ep7TTrY="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

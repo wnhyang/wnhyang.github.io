@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="baidu-site-verification" content="fe6bba1d0d4e906fed87c9f7c2d1d09d">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="提要 如题，之前做过“新闻发布”这个项目，这里讲一下复现 之前文章如下 https:&#x2F;&#x2F;wnhyang.github.io&#x2F;article&#x2F;48213f39.html https:&#x2F;&#x2F;wnhyang.github.io&#x2F;article&#x2F;54805cfd.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="复现&#39;新闻发布&#39;项目">
+<meta property="og:url" content="https://wnhyang.github.io/article/716baca7.html">
+<meta property="og:site_name" content="无奈和杨（wnhyang）">
+<meta property="og:description" content="提要 如题，之前做过“新闻发布”这个项目，这里讲一下复现 之前文章如下 https:&#x2F;&#x2F;wnhyang.github.io&#x2F;article&#x2F;48213f39.html https:&#x2F;&#x2F;wnhyang.github.io&#x2F;article&#x2F;54805cfd.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-01-15T14:20:17.000Z">
+<meta property="article:modified_time" content="2022-12-30T13:39:17.435Z">
+<meta property="article:author" content="无奈和杨（wnhyang）">
+<meta property="article:tag" content="Spring Boot">
+<meta property="article:tag" content="Dubbo">
+<meta property="article:tag" content="Git&#x2F;GitHub&#x2F;Gitee">
+<meta property="article:tag" content="MySQL">
+<meta property="article:tag" content="Mybatis&#x2F;Mybatis-plus">
+<meta property="article:tag" content="Redis">
+<meta property="article:tag" content="RocketMQ">
+<meta property="article:tag" content="Apollo">
+<meta property="article:tag" content="项目">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://wnhyang.github.io/article/716baca7.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wnhyang.github.io/article/716baca7.html","path":"article/716baca7.html","title":"复现'新闻发布'项目"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>复现'新闻发布'项目 | 无奈和杨（wnhyang）</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="无奈和杨（wnhyang）" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">无奈和杨（wnhyang）</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">I will keep to fight</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">37</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">0</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">142</span></a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%90%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">提要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B"><span class="nav-number">2.</span> <span class="nav-text">开始</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%B6%E6%9E%84%E5%9B%BE"><span class="nav-number">3.</span> <span class="nav-text">架构图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="nav-number">4.</span> <span class="nav-text">数据库设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3%E8%AE%BE%E8%AE%A1"><span class="nav-number">5.</span> <span class="nav-text">接口设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E9%97%BB%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2%E5%9B%BE"><span class="nav-number">6.</span> <span class="nav-text">新闻状态转换图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%83%A8%E5%88%86%E6%95%B0%E6%8D%AE%E6%B5%81%E8%BD%AC%E5%9B%BE"><span class="nav-number">7.</span> <span class="nav-text">部分数据流转图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%93%E5%AD%98%E8%AE%BE%E8%AE%A1"><span class="nav-number">8.</span> <span class="nav-text">缓存设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B2%A1%E5%81%9A%E7%9A%84"><span class="nav-number">8.1.</span> <span class="nav-text">没做的</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">9.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E9%9C%80%E8%A6%81%E6%94%B9%E8%BF%9B"><span class="nav-number">10.</span> <span class="nav-text">问题&#x2F;需要改进</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%95%E6%9C%9B"><span class="nav-number">11.</span> <span class="nav-text">展望</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="无奈和杨（wnhyang）"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">无奈和杨（wnhyang）</p>
+  <div class="site-description" itemprop="description">学习记录所用</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">142</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wnhyang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wnhyang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wnhyang@qq.com" title="E-Mail → mailto:wnhyang@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://example.com/" title="https:&#x2F;&#x2F;example.com" rel="noopener" target="_blank">Title</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/716baca7.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="无奈和杨（wnhyang）">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无奈和杨（wnhyang）">
+      <meta itemprop="description" content="学习记录所用">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="复现'新闻发布'项目 | 无奈和杨（wnhyang）">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          复现'新闻发布'项目
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-01-15 22:20:17" itemprop="dateCreated datePublished" datetime="2022-01-15T22:20:17+08:00">2022-01-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-12-30 21:39:17" itemprop="dateModified" datetime="2022-12-30T21:39:17+08:00">2022-12-30</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>8 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="提要">提要</h2>
+<p>如题，之前做过“新闻发布”这个项目，这里讲一下复现</p>
+<p>之前文章如下</p>
+<p>https://wnhyang.github.io/article/48213f39.html</p>
+<p>https://wnhyang.github.io/article/54805cfd.html</p>
+<span id="more"></span>
+<p>之前也说过我的一些设计是参考<a target="_blank" rel="noopener" href="https://www.jianshu.com/">简书</a>的，所以下面展示的也是很像</p>
+<h2 id="开始">开始</h2>
+<p>一个简易的新闻发布系统，前台可实现，新闻的在线编辑（富文本编辑器实现），查看新闻，评论新闻，问题反馈，个人信息修改等功能，后台就是实现包括用户、新闻分类、新闻信息、评论等管理</p>
+<p>首页参考下图</p>
+<figure>
+<embed src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/首页.1me80kgmur9c.webp" /><figcaption>首页</figcaption>
+</figure>
+<p>反馈参考下图</p>
+<figure>
+<embed src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/反馈.6d7hvnr6llw0.webp" /><figcaption>反馈</figcaption>
+</figure>
+<h2 id="架构图">架构图</h2>
+<figure>
+<embed src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/系统架构图.25aidkaka5pc.webp" /><figcaption>系统架构图</figcaption>
+</figure>
+<h2 id="数据库设计">数据库设计</h2>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `<span class="keyword">user</span>` (</span><br><span class="line">	`id` <span class="type">BIGINT</span> ( <span class="number">20</span> ) UNSIGNED <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT COMMENT <span class="string">&#x27;自增主键id&#x27;</span>,</span><br><span class="line">	`user_name` <span class="type">VARCHAR</span> ( <span class="number">20</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;&#x27;</span> COMMENT <span class="string">&#x27;用户名&#x27;</span>,</span><br><span class="line">	`password` <span class="type">VARCHAR</span> ( <span class="number">100</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;123456&#x27;</span> COMMENT <span class="string">&#x27;密码&#x27;</span>,</span><br><span class="line">	`email` <span class="type">VARCHAR</span> ( <span class="number">30</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;&#x27;</span> COMMENT <span class="string">&#x27;邮箱&#x27;</span>,</span><br><span class="line">	`user_type` TINYINT ( <span class="number">4</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;用户类型（0:普通用户，1:媒体人，2:管理员）&#x27;</span>,</span><br><span class="line">	`phone` <span class="type">VARCHAR</span> ( <span class="number">50</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;&#x27;</span> COMMENT <span class="string">&#x27;手机号&#x27;</span>,</span><br><span class="line">	`show_phone` TINYINT ( <span class="number">1</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;是否展示手机号（0:是，1否）&#x27;</span>,</span><br><span class="line">	`sign` <span class="type">VARCHAR</span> ( <span class="number">30</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;&#x27;</span> COMMENT <span class="string">&#x27;签名&#x27;</span>,</span><br><span class="line">	`intro` <span class="type">VARCHAR</span> ( <span class="number">100</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;&#x27;</span> COMMENT <span class="string">&#x27;介绍&#x27;</span>,</span><br><span class="line">	`valid` TINYINT ( <span class="number">1</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;1&#x27;</span> COMMENT <span class="string">&#x27;是否有效（0:无效，1有效）&#x27;</span>,</span><br><span class="line">	`create_time` datetime <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span> COMMENT <span class="string">&#x27;创建时间&#x27;</span>,</span><br><span class="line">	`update_time` datetime <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span> <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="built_in">CURRENT_TIMESTAMP</span> COMMENT <span class="string">&#x27;更新时间&#x27;</span>,</span><br><span class="line">	<span class="keyword">PRIMARY</span> KEY ( `id` ),</span><br><span class="line">	<span class="keyword">UNIQUE</span> KEY `idx_user_name` ( `user_name` ),</span><br><span class="line">	<span class="keyword">UNIQUE</span> KEY `idx_email` ( `email` ),</span><br><span class="line">	KEY `idx_update_time` ( `update_time` ) </span><br><span class="line">) ENGINE <span class="operator">=</span> INNODB AUTO_INCREMENT <span class="operator">=</span> <span class="number">20</span> <span class="keyword">DEFAULT</span> CHARSET <span class="operator">=</span> utf8mb4 COMMENT <span class="operator">=</span> <span class="string">&#x27;新闻用户表&#x27;</span>;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `user_cert` (</span><br><span class="line">	`id` <span class="type">BIGINT</span> ( <span class="number">20</span> ) UNSIGNED <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT COMMENT <span class="string">&#x27;自增主键id&#x27;</span>,</span><br><span class="line">	`user_id` <span class="type">BIGINT</span> ( <span class="number">20</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;-1&#x27;</span> COMMENT <span class="string">&#x27;用户id&#x27;</span>,</span><br><span class="line">	`cert_info` <span class="type">VARCHAR</span> ( <span class="number">50</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;&#x27;</span> COMMENT <span class="string">&#x27;认证信息&#x27;</span>,</span><br><span class="line">	`cert_material` <span class="type">VARCHAR</span> ( <span class="number">255</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;&#x27;</span> COMMENT <span class="string">&#x27;认证材料&#x27;</span>,</span><br><span class="line">	`state` TINYINT ( <span class="number">4</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;认证状态（0:待审核，1:通过，2:未通过）&#x27;</span>,</span><br><span class="line">	`remark` <span class="type">VARCHAR</span> ( <span class="number">50</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;&#x27;</span> COMMENT <span class="string">&#x27;备注&#x27;</span>,</span><br><span class="line">	`valid` TINYINT ( <span class="number">1</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;1&#x27;</span> COMMENT <span class="string">&#x27;是否有效（0:无效，1有效）&#x27;</span>,</span><br><span class="line">	`create_time` datetime <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span> COMMENT <span class="string">&#x27;创建时间&#x27;</span>,</span><br><span class="line">	`update_time` datetime <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span> <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="built_in">CURRENT_TIMESTAMP</span> COMMENT <span class="string">&#x27;更新时间&#x27;</span>,</span><br><span class="line">	<span class="keyword">PRIMARY</span> KEY ( `id` ),</span><br><span class="line">	KEY `idx_update_time` ( `update_time` ),</span><br><span class="line">	KEY `idx_user_id` ( `user_id` ) </span><br><span class="line">) ENGINE <span class="operator">=</span> INNODB AUTO_INCREMENT <span class="operator">=</span> <span class="number">12</span> <span class="keyword">DEFAULT</span> CHARSET <span class="operator">=</span> utf8mb4 COMMENT <span class="operator">=</span> <span class="string">&#x27;用户认证表&#x27;</span>;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `news` (</span><br><span class="line">	`id` <span class="type">BIGINT</span> ( <span class="number">20</span> ) UNSIGNED <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT COMMENT <span class="string">&#x27;自增主键id&#x27;</span>,</span><br><span class="line">	`category_id` <span class="type">BIGINT</span> ( <span class="number">20</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;-1&#x27;</span> COMMENT <span class="string">&#x27;新闻分类id&#x27;</span>,</span><br><span class="line">	`user_id` <span class="type">BIGINT</span> ( <span class="number">20</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;-1&#x27;</span> COMMENT <span class="string">&#x27;作者id&#x27;</span>,</span><br><span class="line">	`title` <span class="type">VARCHAR</span> ( <span class="number">50</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;&#x27;</span> COMMENT <span class="string">&#x27;新闻标题&#x27;</span>,</span><br><span class="line">	`summary` <span class="type">VARCHAR</span> ( <span class="number">30</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;&#x27;</span> COMMENT <span class="string">&#x27;新闻摘要&#x27;</span>,</span><br><span class="line">	`content` <span class="type">VARCHAR</span> ( <span class="number">1000</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;&#x27;</span> COMMENT <span class="string">&#x27;新闻内容&#x27;</span>,</span><br><span class="line">	`state` TINYINT ( <span class="number">4</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;新闻状态（0:未操作，草稿状态，1:等待，2:通过，3:不通过）&#x27;</span>,</span><br><span class="line">	`remark` <span class="type">VARCHAR</span> ( <span class="number">50</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;&#x27;</span> COMMENT <span class="string">&#x27;备注&#x27;</span>,</span><br><span class="line">	`comment_count` <span class="type">INT</span> ( <span class="number">10</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;评论数，只计算一级评论&#x27;</span>,</span><br><span class="line">	`star_count` <span class="type">INT</span> ( <span class="number">10</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;收藏数&#x27;</span>,</span><br><span class="line">	`like_count` <span class="type">INT</span> ( <span class="number">10</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;喜欢数&#x27;</span>,</span><br><span class="line">	`valid` TINYINT ( <span class="number">1</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;1&#x27;</span> COMMENT <span class="string">&#x27;是否有效（0:无效，1有效）&#x27;</span>,</span><br><span class="line">	`create_time` datetime <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span> COMMENT <span class="string">&#x27;创建时间&#x27;</span>,</span><br><span class="line">	`update_time` datetime <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span> <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="built_in">CURRENT_TIMESTAMP</span> COMMENT <span class="string">&#x27;更新时间&#x27;</span>,</span><br><span class="line">	<span class="keyword">PRIMARY</span> KEY ( `id` ),</span><br><span class="line">	KEY `idx_news_title` ( `title` ),</span><br><span class="line">	KEY `idx_update_time` ( `update_time` ),</span><br><span class="line">	KEY `idx_user_id` ( `user_id` ),</span><br><span class="line">	KEY `idx_category_id` ( `category_id` ) </span><br><span class="line">) ENGINE <span class="operator">=</span> INNODB AUTO_INCREMENT <span class="operator">=</span> <span class="number">32</span> <span class="keyword">DEFAULT</span> CHARSET <span class="operator">=</span> utf8mb4 COMMENT <span class="operator">=</span> <span class="string">&#x27;新闻表&#x27;</span>;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `news_category` (</span><br><span class="line">	`id` <span class="type">BIGINT</span> ( <span class="number">20</span> ) UNSIGNED <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT COMMENT <span class="string">&#x27;自增主键id&#x27;</span>,</span><br><span class="line">	`category_name` <span class="type">VARCHAR</span> ( <span class="number">10</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;&#x27;</span> COMMENT <span class="string">&#x27;新闻分类名&#x27;</span>,</span><br><span class="line">	`valid` TINYINT ( <span class="number">1</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;1&#x27;</span> COMMENT <span class="string">&#x27;是否有效（0:无效，1有效）&#x27;</span>,</span><br><span class="line">	`create_time` datetime <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span> COMMENT <span class="string">&#x27;创建时间&#x27;</span>,</span><br><span class="line">	`update_time` datetime <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span> <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="built_in">CURRENT_TIMESTAMP</span> COMMENT <span class="string">&#x27;更新时间&#x27;</span>,</span><br><span class="line">	<span class="keyword">PRIMARY</span> KEY ( `id` ),</span><br><span class="line">	KEY `idx_update_time` ( `update_time` ) </span><br><span class="line">) ENGINE <span class="operator">=</span> INNODB AUTO_INCREMENT <span class="operator">=</span> <span class="number">23</span> <span class="keyword">DEFAULT</span> CHARSET <span class="operator">=</span> utf8mb4 COMMENT <span class="operator">=</span> <span class="string">&#x27;新闻分类表&#x27;</span>;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `news_comment` (</span><br><span class="line">	`id` <span class="type">BIGINT</span> ( <span class="number">20</span> ) UNSIGNED <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT COMMENT <span class="string">&#x27;自增主键id&#x27;</span>,</span><br><span class="line">	`news_id` <span class="type">BIGINT</span> ( <span class="number">20</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;-1&#x27;</span> COMMENT <span class="string">&#x27;新闻id&#x27;</span>,</span><br><span class="line">	`user_id` <span class="type">BIGINT</span> ( <span class="number">20</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;-1&#x27;</span> COMMENT <span class="string">&#x27;作者id&#x27;</span>,</span><br><span class="line">	`parent_id` <span class="type">BIGINT</span> ( <span class="number">20</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;-1&#x27;</span> COMMENT <span class="string">&#x27;父评论id&#x27;</span>,</span><br><span class="line">	`is_top` TINYINT ( <span class="number">1</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;1&#x27;</span> COMMENT <span class="string">&#x27;是否一级评论，只有两级评论&#x27;</span>,</span><br><span class="line">	`content` <span class="type">VARCHAR</span> ( <span class="number">100</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;&#x27;</span> COMMENT <span class="string">&#x27;评论内容&#x27;</span>,</span><br><span class="line">	`valid` TINYINT ( <span class="number">1</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;1&#x27;</span> COMMENT <span class="string">&#x27;是否有效（0:无效，1有效）&#x27;</span>,</span><br><span class="line">	`create_time` datetime <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span> COMMENT <span class="string">&#x27;创建时间&#x27;</span>,</span><br><span class="line">	`update_time` datetime <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span> <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="built_in">CURRENT_TIMESTAMP</span> COMMENT <span class="string">&#x27;更新时间&#x27;</span>,</span><br><span class="line">	<span class="keyword">PRIMARY</span> KEY ( `id` ),</span><br><span class="line">	KEY `idx_update_time` ( `update_time` ),</span><br><span class="line">	KEY `idx_news_id` ( `news_id` ) </span><br><span class="line">) ENGINE <span class="operator">=</span> INNODB AUTO_INCREMENT <span class="operator">=</span> <span class="number">20</span> <span class="keyword">DEFAULT</span> CHARSET <span class="operator">=</span> utf8mb4 COMMENT <span class="operator">=</span> <span class="string">&#x27;新闻评论表&#x27;</span>;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `user_like_news` (</span><br><span class="line">	`id` <span class="type">BIGINT</span> ( <span class="number">20</span> ) UNSIGNED <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT COMMENT <span class="string">&#x27;自增主键id&#x27;</span>,</span><br><span class="line">	`news_id` <span class="type">BIGINT</span> ( <span class="number">20</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;-1&#x27;</span> COMMENT <span class="string">&#x27;新闻id&#x27;</span>,</span><br><span class="line">	`user_id` <span class="type">BIGINT</span> ( <span class="number">20</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;-1&#x27;</span> COMMENT <span class="string">&#x27;用户id&#x27;</span>,</span><br><span class="line">	`valid` TINYINT ( <span class="number">1</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;1&#x27;</span> COMMENT <span class="string">&#x27;是否有效（0:无效，1有效）&#x27;</span>,</span><br><span class="line">	`create_time` datetime <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span> COMMENT <span class="string">&#x27;创建时间&#x27;</span>,</span><br><span class="line">	`update_time` datetime <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span> <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="built_in">CURRENT_TIMESTAMP</span> COMMENT <span class="string">&#x27;更新时间&#x27;</span>,</span><br><span class="line">	<span class="keyword">PRIMARY</span> KEY ( `id` ),</span><br><span class="line">	KEY `idx_update_time` ( `update_time` ),</span><br><span class="line">	KEY `idx_user_id` ( `user_id` ),</span><br><span class="line">	KEY `idx_news_id` ( `news_id` ) </span><br><span class="line">) ENGINE <span class="operator">=</span> INNODB AUTO_INCREMENT <span class="operator">=</span> <span class="number">25</span> <span class="keyword">DEFAULT</span> CHARSET <span class="operator">=</span> utf8mb4 COMMENT <span class="operator">=</span> <span class="string">&#x27;用户喜欢新闻表&#x27;</span>;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `user_star_news` (</span><br><span class="line">	`id` <span class="type">BIGINT</span> ( <span class="number">20</span> ) UNSIGNED <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT COMMENT <span class="string">&#x27;自增主键id&#x27;</span>,</span><br><span class="line">	`news_id` <span class="type">BIGINT</span> ( <span class="number">20</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;-1&#x27;</span> COMMENT <span class="string">&#x27;新闻id&#x27;</span>,</span><br><span class="line">	`user_id` <span class="type">BIGINT</span> ( <span class="number">20</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;-1&#x27;</span> COMMENT <span class="string">&#x27;用户id&#x27;</span>,</span><br><span class="line">	`valid` TINYINT ( <span class="number">1</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;1&#x27;</span> COMMENT <span class="string">&#x27;是否有效（0:无效，1有效）&#x27;</span>,</span><br><span class="line">	`create_time` datetime <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span> COMMENT <span class="string">&#x27;创建时间&#x27;</span>,</span><br><span class="line">	`update_time` datetime <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span> <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="built_in">CURRENT_TIMESTAMP</span> COMMENT <span class="string">&#x27;更新时间&#x27;</span>,</span><br><span class="line">	<span class="keyword">PRIMARY</span> KEY ( `id` ),</span><br><span class="line">	KEY `idx_update_time` ( `update_time` ),</span><br><span class="line">	KEY `idx_user_id` ( `user_id` ),</span><br><span class="line">	KEY `idx_news_id` ( `news_id` ) </span><br><span class="line">) ENGINE <span class="operator">=</span> INNODB AUTO_INCREMENT <span class="operator">=</span> <span class="number">14</span> <span class="keyword">DEFAULT</span> CHARSET <span class="operator">=</span> utf8mb4 COMMENT <span class="operator">=</span> <span class="string">&#x27;用户收藏新闻表&#x27;</span>;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `feedback` (</span><br><span class="line">	`id` <span class="type">BIGINT</span> ( <span class="number">20</span> ) UNSIGNED <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT COMMENT <span class="string">&#x27;自增主键id&#x27;</span>,</span><br><span class="line">	`user_id` <span class="type">BIGINT</span> ( <span class="number">20</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;-1&#x27;</span> COMMENT <span class="string">&#x27;反馈人id&#x27;</span>,</span><br><span class="line">	`type_id` <span class="type">BIGINT</span> ( <span class="number">20</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;-1&#x27;</span> COMMENT <span class="string">&#x27;反馈类型id&#x27;</span>,</span><br><span class="line">	`content` <span class="type">VARCHAR</span> ( <span class="number">100</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;&#x27;</span> COMMENT <span class="string">&#x27;反馈内容&#x27;</span>,</span><br><span class="line">	`state` TINYINT ( <span class="number">1</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;反馈状态（0:未处理，1:处理）&#x27;</span>,</span><br><span class="line">	`remark` <span class="type">VARCHAR</span> ( <span class="number">50</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;&#x27;</span> COMMENT <span class="string">&#x27;备注&#x27;</span>,</span><br><span class="line">	`valid` TINYINT ( <span class="number">1</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;1&#x27;</span> COMMENT <span class="string">&#x27;是否有效（0:无效，1有效）&#x27;</span>,</span><br><span class="line">	`create_time` datetime <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span> COMMENT <span class="string">&#x27;创建时间&#x27;</span>,</span><br><span class="line">	`update_time` datetime <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span> <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="built_in">CURRENT_TIMESTAMP</span> COMMENT <span class="string">&#x27;更新时间&#x27;</span>,</span><br><span class="line">	<span class="keyword">PRIMARY</span> KEY ( `id` ),</span><br><span class="line">	KEY `idx_update_time` ( `update_time` ),</span><br><span class="line">	KEY `idx_user_id` ( `user_id` ),</span><br><span class="line">	KEY `idx_type_id` ( `type_id` ) </span><br><span class="line">) ENGINE <span class="operator">=</span> INNODB AUTO_INCREMENT <span class="operator">=</span> <span class="number">9</span> <span class="keyword">DEFAULT</span> CHARSET <span class="operator">=</span> utf8mb4 COMMENT <span class="operator">=</span> <span class="string">&#x27;反馈表&#x27;</span>;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `feedback_type` (</span><br><span class="line">	`id` <span class="type">BIGINT</span> ( <span class="number">20</span> ) UNSIGNED <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT COMMENT <span class="string">&#x27;自增主键id&#x27;</span>,</span><br><span class="line">	`type_name` <span class="type">VARCHAR</span> ( <span class="number">20</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;&#x27;</span> COMMENT <span class="string">&#x27;反馈类型名&#x27;</span>,</span><br><span class="line">	`valid` TINYINT ( <span class="number">1</span> ) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;1&#x27;</span> COMMENT <span class="string">&#x27;是否有效（0:无效，1有效）&#x27;</span>,</span><br><span class="line">	`create_time` datetime <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span> COMMENT <span class="string">&#x27;创建时间&#x27;</span>,</span><br><span class="line">	`update_time` datetime <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span> <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="built_in">CURRENT_TIMESTAMP</span> COMMENT <span class="string">&#x27;更新时间&#x27;</span>,</span><br><span class="line">	<span class="keyword">PRIMARY</span> KEY ( `id` ),</span><br><span class="line">KEY `idx_update_time` ( `update_time` ) </span><br><span class="line">) ENGINE <span class="operator">=</span> INNODB AUTO_INCREMENT <span class="operator">=</span> <span class="number">21</span> <span class="keyword">DEFAULT</span> CHARSET <span class="operator">=</span> utf8mb4 COMMENT <span class="operator">=</span> <span class="string">&#x27;反馈类型表&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="接口设计">接口设计</h2>
+<table>
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 31%" />
+<col style="width: 31%" />
+<col style="width: 31%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>操作人</th>
+<th>可</th>
+<th>主要接口</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>管理员</td>
+<td>对几乎所有内容的管理<br />用户认证审核<br />用户管理<br />新闻分类管理<br />新闻审核<br />新闻管理<br />新闻评论管理<br />反馈管理</td>
+<td>/user/info/(list/update/add/delete)<br />/user/cert/(list/update/delete)<br />/news/category/(list/update/add/delete)<br />/news/info/(list/update/add/delete)<br />/comment/info/list<br />/comment/delete<br />/feedback/type/(list/update/add/delete)<br />/feedback/info/(list/update/delete)</td>
+<td>就正常管理界面</td>
+</tr>
+<tr class="even">
+<td>媒体人</td>
+<td>新闻来源<br />需要通过认证审核可发新闻（可限制时间，一段时间后还需认证）<br />个人新闻增删改<br />个人信息修改提交认证<br />查看新闻<br />喜欢收藏新闻<br />评论新闻<br />反馈</td>
+<td>/news/add<br />/news/delete<br />/news/{userId}/news<br />/news/{userId}/content<br />/news/{userId}/submit<br />/news/{userId}/cancel</td>
+<td>编辑界面参考如下在此可看到自己所有新闻（所有状态），可编辑修改<br /><embed src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/编辑.2mpj1wfngrs0.webp" /><br /><embed src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/认证成功.62egr4bsnf40.webp" /><br /><embed src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/认证失败.rzhztkdrykg.webp" /></td>
+</tr>
+<tr class="odd">
+<td>一般用户</td>
+<td>普通用户<br />个人信息修改<br />提交认证，通过认证可变为媒体人<br />查看新闻<br />喜欢收藏新闻<br />评论新闻<br />反馈</td>
+<td>/news/{newsId}/comment<br />/news/{newsId}/star<br />/news/{newsId}/like<br />/news/{newsId}/unlike<br />/user/update<br />/user/delete<br />/user/cert/add<br />/user/{userId}/cert<br />/feedback/all<br />/feedback/add<br />/user/{userId}/feedback</td>
+<td>个人主页参考如下展示基本个人信息同时，显示已过审核新闻，喜欢收藏新闻<br /><embed src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/个人主页.9simffpbemw.webp" /></td>
+</tr>
+<tr class="even">
+<td>游客</td>
+<td>查看新闻</td>
+<td>/news/{newsId}<br />/comment/list<br />/user/{userId}<br />/user/{userId}/like<br />/user/like/list<br />/user/{userId}/star<br />/user/star/list<br />/news/category/all<br />/{cId}</td>
+<td>查看新闻参考如下显示新闻标题、内容、分类、评论、推荐新闻等<br /><embed src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/新闻详情.60zybiv50vg0.webp" /></td>
+</tr>
+</tbody>
+</table>
+<h2 id="新闻状态转换图">新闻状态转换图</h2>
+<figure>
+<embed src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/流程图.ty73c13oxog.webp" /><figcaption>流程图</figcaption>
+</figure>
+<h2 id="部分数据流转图">部分数据流转图</h2>
+<figure>
+<embed src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/数据流转.7gr37ncgogw0.webp" /><figcaption>数据流转</figcaption>
+</figure>
+<h2 id="缓存设计">缓存设计</h2>
+<p>新闻点赞缓存设计</p>
+<p>https://wnhyang.github.io/article/1e9afcf1.html</p>
+<p>新闻分类名和反馈类型名转为JSON字符串存储，因为这部分只由管理员修改，而且几乎不变，所以没有设置过期时间，并在修改时删除缓存，以做到数据一致</p>
+<p>单个新闻分类名、单个反馈类型名、用户名、新闻标题、用户邮箱存对应字符串，有过期时间，也会在删除修改时删除缓存</p>
+<h3 id="没做的">没做的</h3>
+<p>新闻评论数、点击量的缓存hash</p>
+<p>每个用户的新闻列表缓存set/zset</p>
+<p>新闻简单信息缓存hash</p>
+<p>热门新闻内容缓存hash</p>
+<p>推荐列表list</p>
+<p>收藏夹set/zset</p>
+<p>新闻总热榜，分类热榜set/zset</p>
+<h2 id="总结">总结</h2>
+<h2 id="问题需要改进">问题/需要改进</h2>
+<p>评论关联其他评论（一级评论或回复之间的），数据库需要再设计，删除需要重新考虑逻辑</p>
+<p>在扩展功能时要考虑数据库表是否需要重新设计</p>
+<p>简单的关联表（两个id组成的），可以省去关联表的id，由关联的两个id组成复合主键</p>
+<h2 id="展望">展望</h2>
+<ul>
+<li>用户权限，可使用SpringSecurity等安全框架，同时对敏感信息加密存储</li>
+<li><p>单个服务过大时，考虑拆分服务</p></li>
+<li>分布式场景考虑，事务问题，定时任务同样也要考虑分布式下的问题</li>
+<li><p>加入ES优化查询</p></li>
+<li><p>数据表结构，索引优化</p></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.jpg" alt="无奈和杨（wnhyang） 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="无奈和杨（wnhyang） 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>无奈和杨（wnhyang）
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://wnhyang.github.io/article/716baca7.html" title="复现&#39;新闻发布&#39;项目">https://wnhyang.github.io/article/716baca7.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Spring-Boot/" rel="tag"># Spring Boot</a>
+              <a href="/tags/Dubbo/" rel="tag"># Dubbo</a>
+              <a href="/tags/Git-GitHub-Gitee/" rel="tag"># Git/GitHub/Gitee</a>
+              <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+              <a href="/tags/Mybatis-Mybatis-plus/" rel="tag"># Mybatis/Mybatis-plus</a>
+              <a href="/tags/Redis/" rel="tag"># Redis</a>
+              <a href="/tags/RocketMQ/" rel="tag"># RocketMQ</a>
+              <a href="/tags/Apollo/" rel="tag"># Apollo</a>
+              <a href="/tags/%E9%A1%B9%E7%9B%AE/" rel="tag"># 项目</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/article/1e9afcf1.html" rel="prev" title="Redis大key问题与scan命令">
+                  <i class="fa fa-chevron-left"></i> Redis大key问题与scan命令
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/article/bc5ba5ee.html" rel="next" title="我最想拥有的超能力">
+                  我最想拥有的超能力 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">无奈和杨（wnhyang）</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">169k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">10:15</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/wnhyang" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.2.2/mermaid.min.js","integrity":"sha256-o5AUfgOkNFWuInA78GVCoVdGoN9eTaB3Hxu+ep7TTrY="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

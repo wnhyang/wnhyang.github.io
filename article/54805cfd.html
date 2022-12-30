@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="baidu-site-verification" content="fe6bba1d0d4e906fed87c9f7c2d1d09d">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="终于有机会写这篇文章了，写博客这东西还真不能拖啊，当时很有激情，很清楚自己要写一些什么，重点强调些什么，拖到现在，都不知道该怎么写了。 项目介绍 首先这个项目是作为这学期的Java Web大作业的，我们小组共三个人，我主要负责前台功能及界面，我们的选题是“在线新闻发布系统”。前台需要实现，新闻浏览，新闻筛选（按类型或关键字），登录后用户可以新闻增删改，新闻评论，问题反馈，信息密码修改等；后台实">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java Web 大作业（在线新闻发布系统）总结">
+<meta property="og:url" content="https://wnhyang.github.io/article/54805cfd.html">
+<meta property="og:site_name" content="无奈和杨（wnhyang）">
+<meta property="og:description" content="终于有机会写这篇文章了，写博客这东西还真不能拖啊，当时很有激情，很清楚自己要写一些什么，重点强调些什么，拖到现在，都不知道该怎么写了。 项目介绍 首先这个项目是作为这学期的Java Web大作业的，我们小组共三个人，我主要负责前台功能及界面，我们的选题是“在线新闻发布系统”。前台需要实现，新闻浏览，新闻筛选（按类型或关键字），登录后用户可以新闻增删改，新闻评论，问题反馈，信息密码修改等；后台实">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.imgdb.cn/item/600254c33ffa7d37b3b653b6.gif">
+<meta property="og:image" content="https://img.imgdb.cn/item/600258593ffa7d37b3b913f8.jpg">
+<meta property="article:published_time" content="2020-12-23T06:42:45.000Z">
+<meta property="article:modified_time" content="2022-12-30T13:39:17.456Z">
+<meta property="article:author" content="无奈和杨（wnhyang）">
+<meta property="article:tag" content="JavaWeb">
+<meta property="article:tag" content="MySQL">
+<meta property="article:tag" content="Spring Framework">
+<meta property="article:tag" content="Mybatis&#x2F;Mybatis-plus">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.imgdb.cn/item/600254c33ffa7d37b3b653b6.gif">
+
+
+<link rel="canonical" href="https://wnhyang.github.io/article/54805cfd.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wnhyang.github.io/article/54805cfd.html","path":"article/54805cfd.html","title":"Java Web 大作业（在线新闻发布系统）总结"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Java Web 大作业（在线新闻发布系统）总结 | 无奈和杨（wnhyang）</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="无奈和杨（wnhyang）" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">无奈和杨（wnhyang）</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">I will keep to fight</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">37</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">0</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">142</span></a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">项目介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%95%E7%A4%BA"><span class="nav-number">2.</span> <span class="nav-text">展示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%B7%A5%E5%85%B7"><span class="nav-number">3.</span> <span class="nav-text">环境&#x2F;工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="nav-number">4.</span> <span class="nav-text">项目结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E9%83%A8%E5%88%86"><span class="nav-number">5.</span> <span class="nav-text">关键部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dao%E5%B1%82"><span class="nav-number">5.1.</span> <span class="nav-text">DAO层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#service%E5%B1%82"><span class="nav-number">5.2.</span> <span class="nav-text">Service层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#controller%E5%B1%82"><span class="nav-number">5.3.</span> <span class="nav-text">Controller层</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E4%B8%8E%E5%B1%95%E6%9C%9B"><span class="nav-number">6.1.</span> <span class="nav-text">问题与展望</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%88%E4%BD%9C%E5%BC%80%E5%8F%91%E9%87%8D%E8%A6%81%E6%80%A7"><span class="nav-number">6.2.</span> <span class="nav-text">合作开发重要性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9D%9F"><span class="nav-number">6.3.</span> <span class="nav-text">结束</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E9%93%BE%E6%8E%A5"><span class="nav-number">7.</span> <span class="nav-text">相关链接</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="无奈和杨（wnhyang）"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">无奈和杨（wnhyang）</p>
+  <div class="site-description" itemprop="description">学习记录所用</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">142</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wnhyang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wnhyang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wnhyang@qq.com" title="E-Mail → mailto:wnhyang@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://example.com/" title="https:&#x2F;&#x2F;example.com" rel="noopener" target="_blank">Title</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/54805cfd.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="无奈和杨（wnhyang）">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无奈和杨（wnhyang）">
+      <meta itemprop="description" content="学习记录所用">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Java Web 大作业（在线新闻发布系统）总结 | 无奈和杨（wnhyang）">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java Web 大作业（在线新闻发布系统）总结
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-12-23 14:42:45" itemprop="dateCreated datePublished" datetime="2020-12-23T14:42:45+08:00">2020-12-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-12-30 21:39:17" itemprop="dateModified" datetime="2022-12-30T21:39:17+08:00">2022-12-30</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>9 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>终于有机会写这篇文章了，写博客这东西还真不能拖啊，当时很有激情，很清楚自己要写一些什么，重点强调些什么，拖到现在，都不知道该怎么写了。</p>
+<h2 id="项目介绍">项目介绍</h2>
+<p>首先这个项目是作为这学期的Java Web大作业的，我们小组共三个人，我主要负责前台功能及界面，我们的选题是“在线新闻发布系统”。前台需要实现，新闻浏览，新闻筛选（按类型或关键字），登录后用户可以新闻增删改，新闻评论，问题反馈，信息密码修改等；后台实现新闻、用户、评论、反馈的增删改，还有新闻审核功能，我们有个特色是控制首页推送的新闻，也就是说首页并不是展示最近添加的新闻，而是我们所控制的，就像一些大网站是靠某些数据计算判断这些内容是否推送到首页一样，控制首页的轮播图，很有趣！当然我也只是介绍我的这部分，至于其他部分由我们小组其他成员完成，我不会去介绍这部分。</p>
+<span id="more"></span>
+<h2 id="展示">展示</h2>
+<p>展示的主要有某一类的新闻，具体内容，评论区，个人主页，个人资料，反馈页。。。</p>
+<figure>
+<img data-src="https://img.imgdb.cn/item/600254c33ffa7d37b3b653b6.gif" alt="展示" /><figcaption>展示</figcaption>
+</figure>
+<h2 id="环境工具">环境/工具</h2>
+<ul>
+<li>构建工具：Maven3.6.3</li>
+<li>数据库：MySQL5.5</li>
+<li>基础环境：SSM，Spring5.0.6、Mybatis3.5.3</li>
+<li>前台设计：<a target="_blank" rel="noopener" href="https://www.layui.com/">layui</a></li>
+<li>富文本编辑器：<a target="_blank" rel="noopener" href="https://ckeditor.com/">CKEditor</a></li>
+<li>图标来源：<a target="_blank" rel="noopener" href="https://www.iconfont.cn/">阿里巴巴矢量图标库</a></li>
+<li>工具：IDEA、Tomcat9.0、Navicat Premium15、Chrome、Edge</li>
+</ul>
+<h2 id="项目结构">项目结构</h2>
+<figure>
+<img data-src="https://img.imgdb.cn/item/600258593ffa7d37b3b913f8.jpg" alt="项目结构" /><figcaption>项目结构</figcaption>
+</figure>
+<p>从图中已经可以看出整个项目是怎样的了，还是比较清晰的。</p>
+<h2 id="关键部分">关键部分</h2>
+<p>因为项目之前我也见拆成许多部分了（链接会放在文末），所以我只会提一些关键的或是很有趣的部分。</p>
+<ul>
+<li>JSTL与EL的使用</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ taglib prefix=&quot;c&quot; uri=&quot;http://java.sun.com/jsp/jstl/core&quot; %&gt;</span><br></pre></td></tr></table></figure>
+<p>本项目很多数据展示都是靠JSTL与EL实现的，c标签下的if、forEach、choose、when等也是经常使用，个人感受还是挺方便的，虽然并不符合一些开发标准。</p>
+<ul>
+<li>首页div跳转</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;$&#123;pageContext.request.contextPath&#125;/Static/js/lib/jquery-3.5.1.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> cPage = <span class="number">0</span>;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> uid = <span class="string">&#x27;$&#123;sessionScope.userS.userId&#125;&#x27;</span>;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    $(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        $(<span class="string">&quot;#index&quot;</span>).<span class="title function_">trigger</span>(<span class="string">&quot;click&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">        $(<span class="string">&quot;#search&quot;</span>).<span class="title function_">click</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">var</span> key = $(<span class="string">&quot;#key&quot;</span>).<span class="title function_">val</span>();</span></span><br><span class="line"><span class="language-javascript">            <span class="title function_">main</span>(<span class="string">&quot;$&#123;pageContext.request.contextPath&#125;/queryNewsByKey?key=&quot;</span> + key + <span class="string">&quot;&amp;cPage=&quot;</span> + cPage);</span></span><br><span class="line"><span class="language-javascript">        &#125;);</span></span><br><span class="line"><span class="language-javascript">        $(<span class="string">&#x27;#key&#x27;</span>).<span class="title function_">bind</span>(<span class="string">&#x27;keypress&#x27;</span>, <span class="keyword">function</span> (<span class="params">event</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">if</span> (event.<span class="property">keyCode</span> === <span class="number">13</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">                $(<span class="string">&quot;#search&quot;</span>).<span class="title function_">click</span>();</span></span><br><span class="line"><span class="language-javascript">            &#125;</span></span><br><span class="line"><span class="language-javascript">        &#125;);</span></span><br><span class="line"><span class="language-javascript">    &#125;);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">byCid</span>(<span class="params">cid</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="title function_">main</span>(<span class="string">&quot;$&#123;pageContext.request.contextPath&#125;/queryNewsByCId?cid=&quot;</span> + cid + <span class="string">&quot;&amp;cPage=&quot;</span> + cPage);</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">toEdit</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> myForm = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;form&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">        myForm.<span class="property">method</span> = <span class="string">&quot;post&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">        myForm.<span class="property">target</span> = <span class="string">&quot;_blank&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">        myForm.<span class="property">action</span> = <span class="string">&quot;$&#123;pageContext.request.contextPath&#125;/toEdit&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> myInput = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;input&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">        myInput.<span class="title function_">setAttribute</span>(<span class="string">&quot;name&quot;</span>, <span class="string">&quot;uid&quot;</span>); <span class="comment">// 为input对象设置name</span></span></span><br><span class="line"><span class="language-javascript">        myInput.<span class="title function_">setAttribute</span>(<span class="string">&quot;value&quot;</span>, uid); <span class="comment">// 为input对象设置value</span></span></span><br><span class="line"><span class="language-javascript">        myForm.<span class="title function_">appendChild</span>(myInput);</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(myForm);</span></span><br><span class="line"><span class="language-javascript">        myForm.<span class="title function_">submit</span>();</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">removeChild</span>(myForm); <span class="comment">// 提交后移除创建的form</span></span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">main</span>(<span class="params">href</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        $(<span class="string">&quot;#main&quot;</span>).<span class="title function_">html</span>(<span class="string">&#x27;&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">        $(<span class="string">&quot;#main&quot;</span>).<span class="title function_">load</span>(href);</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这里用的还是挺有意思的，将需要的内容放入名为“main”的div中，实现头部尾部不变，只有中间部分变化。还有那个toEdit()方法写文章按钮，将a标签get变为form的post实现，增强了安全性，同时可以将对应的Controller方法改为只接受post请求，这样就保障了未登录用户的写文章和登录用户编辑他人文章。</p>
+<ul>
+<li>处理JSON数据</li>
+</ul>
+<p>除了正常拼接成html元素外，往往需要增加到页面或从页面删除</p>
+<p>比如下面的评论删除实现，cid是comment_id是评论的唯一标识符，将评论的id设置为“div_cid”，因为每条评论cid不同，所以存在不同id的div，这时我们删除评论，关键代码就是<code>$(&quot;#div_&quot; + cid).remove();</code>，这样的操作方便且简单。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">delComment</span>(<span class="params">cid</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">if</span> (<span class="title function_">confirm</span>(<span class="string">&quot;确定要删除吗？&quot;</span>)) &#123;</span></span><br><span class="line"><span class="language-javascript">                $.<span class="title function_">ajax</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">                    <span class="attr">url</span>: <span class="string">&quot;$&#123;pageContext.request.contextPath&#125;/deleteComment&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                    <span class="attr">type</span>: <span class="string">&quot;post&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                    <span class="comment">//注意序列化的值一定要放在最前面,并且不需要头部变量,不然获取的值得格式会有问题</span></span></span><br><span class="line"><span class="language-javascript">                    <span class="attr">data</span>: &#123;<span class="attr">cid</span>: cid&#125;,</span></span><br><span class="line"><span class="language-javascript">                    <span class="attr">dataType</span>: <span class="string">&quot;json&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                    <span class="attr">success</span>: <span class="keyword">function</span> (<span class="params">data</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">                        <span class="keyword">if</span> (data.<span class="property">result</span> === <span class="string">&#x27;success&#x27;</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">                            $(<span class="string">&quot;#div_&quot;</span> + cid).<span class="title function_">remove</span>();</span></span><br><span class="line"><span class="language-javascript">                        &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="language-javascript">                            <span class="title function_">alert</span>(<span class="string">&quot;评论删除失败&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">                        &#125;</span></span><br><span class="line"><span class="language-javascript">                    &#125;</span></span><br><span class="line"><span class="language-javascript">                &#125;);</span></span><br><span class="line"><span class="language-javascript">                <span class="keyword">return</span> <span class="literal">true</span>;</span></span><br><span class="line"><span class="language-javascript">            &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="language-javascript">                <span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line"><span class="language-javascript">            &#125;</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>评论删除也类同，JSON数据处理成html能识别的s，然后<code>$(&quot;#newComment&quot;).prepend(s);</code>，这要注意是使用.prepend在元素前，还是append在元素后。</p>
+<ul>
+<li>后端代码</li>
+</ul>
+<h3 id="dao层">DAO层</h3>
+<p>后端并没有用到什么特牛逼的技术，让我用我也不会啊。所以后端很朴素简单，主要过程是，写Mapper中的sql语句，这些都是原子操作，无非就是些增删改，下面是分页查询某类新闻</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Select(&quot;select * from news where category_id=#&#123;cid&#125; and state=1 and news_id&lt;=(select news_id from news where category_id=#&#123;cid&#125; and state=1 order by news_id desc limit $&#123;cPage&#125;,1)order by news_id desc limit 10&quot;)</span></span><br><span class="line"><span class="meta">@ResultMap(&quot;News&quot;)</span></span><br><span class="line">List&lt;News&gt; <span class="title function_">QueryNewsByCId</span><span class="params">(<span class="meta">@Param(&quot;cid&quot;)</span> <span class="type">long</span> cid, <span class="meta">@Param(&quot;cPage&quot;)</span> <span class="type">int</span> cPage)</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="service层">Service层</h3>
+<p>前面说了DAO是原子操作，Service层则是将DAO层的操作组合形成我们真正需要的操作。举个例子：DAO已经实现了，查询用户是否存在和用户创建操作，现在我需要创建一个新用户，这时我需要的是先查询这个用户是否存在，若存在则提示已存在，若不存在则创建。就是这样的道理，Service是DAO的组合，形成有逻辑的操作。下面是删除某条新闻，连带着删除这条新闻的评论和图片。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">DeleteNews</span><span class="params">(<span class="type">long</span> nid)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.frontMapper.DeleteNews(nid) + <span class="built_in">this</span>.frontMapper.DeleteCommentN(nid) + <span class="built_in">this</span>.frontMapper.DeletePic(nid);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="controller层">Controller层</h3>
+<p>简单的说就是Servlet，只不过有了框架的加持使我们编程更加容易且方便，Controller就是除了ModelAndView离用户最近的了，这时要处理用户的Request，并Response，调用关系就是，通过前端交互交由Controller处理，Controller调用Service，Service调用Dao，Dao完成数据库操作。下面是利用layui上传用户头像示例，图片命名方式是用户id_icon.xxx，这样可保证用户头像唯一性，同时设置了上传限制为1M。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    layui.<span class="title function_">use</span>(<span class="string">&#x27;upload&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> $ = layui.<span class="property">jquery</span></span></span><br><span class="line"><span class="language-javascript">            , upload = layui.<span class="property">upload</span>;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="comment">//普通图片上传</span></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> uploadInst = upload.<span class="title function_">render</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">elem</span>: <span class="string">&#x27;#test1&#x27;</span></span></span><br><span class="line"><span class="language-javascript">            , <span class="attr">url</span>: <span class="string">&#x27;/NEWS_war_exploded/uploadUserIcon/&#x27;</span> <span class="comment">//改成您自己的上传接口</span></span></span><br><span class="line"><span class="language-javascript">            ,<span class="attr">accept</span>:<span class="string">&#x27;images&#x27;</span></span></span><br><span class="line"><span class="language-javascript">            ,<span class="attr">size</span>:<span class="number">1024</span></span></span><br><span class="line"><span class="language-javascript">            , <span class="attr">before</span>: <span class="keyword">function</span> (<span class="params">obj</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">                <span class="comment">//预读本地文件示例，不支持ie8</span></span></span><br><span class="line"><span class="language-javascript">                obj.<span class="title function_">preview</span>(<span class="keyword">function</span> (<span class="params">index, file, result</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">                    $(<span class="string">&#x27;#demo1&#x27;</span>).<span class="title function_">attr</span>(<span class="string">&#x27;src&#x27;</span>, result); <span class="comment">//图片链接（base64）</span></span></span><br><span class="line"><span class="language-javascript">                &#125;);</span></span><br><span class="line"><span class="language-javascript">            &#125;</span></span><br><span class="line"><span class="language-javascript">            , <span class="attr">done</span>: <span class="keyword">function</span> (<span class="params">res</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">                <span class="comment">//如果上传失败</span></span></span><br><span class="line"><span class="language-javascript">                <span class="keyword">if</span> (res.<span class="property">code</span> &gt; <span class="number">0</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">                    <span class="keyword">return</span> layer.<span class="title function_">msg</span>(<span class="string">&#x27;上传失败&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">                &#125;</span></span><br><span class="line"><span class="language-javascript">                <span class="comment">//上传成功</span></span></span><br><span class="line"><span class="language-javascript">                <span class="keyword">var</span> demoText = $(<span class="string">&#x27;#demoText&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">                demoText.<span class="title function_">html</span>(<span class="string">&#x27;&lt;span style=&quot;color: #4cae4c;&quot;&gt;上传成功&lt;/span&gt;&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">                <span class="keyword">var</span> fileupload = $(<span class="string">&quot;.image&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">                fileupload.<span class="title function_">attr</span>(<span class="string">&quot;value&quot;</span>,res.<span class="property">data</span>.<span class="property">src</span>);</span></span><br><span class="line"><span class="language-javascript">                <span class="variable language_">console</span>.<span class="title function_">log</span>(fileupload.<span class="title function_">attr</span>(<span class="string">&quot;value&quot;</span>));</span></span><br><span class="line"><span class="language-javascript">                $(<span class="string">&quot;#userIcon&quot;</span>).<span class="title function_">val</span>(res.<span class="property">data</span>.<span class="property">src</span>);</span></span><br><span class="line"><span class="language-javascript">            &#125;</span></span><br><span class="line"><span class="language-javascript">            , <span class="attr">error</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">                <span class="comment">//演示失败状态，并实现重传</span></span></span><br><span class="line"><span class="language-javascript">                <span class="keyword">var</span> demoText = $(<span class="string">&#x27;#demoText&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">                demoText.<span class="title function_">html</span>(<span class="string">&#x27;&lt;span style=&quot;color: #FF5722;&quot;&gt;上传失败&lt;/span&gt; &lt;a class=&quot;layui-btn layui-btn-xs demo-reload&quot;&gt;重试&lt;/a&gt;&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">                demoText.<span class="title function_">find</span>(<span class="string">&#x27;.demo-reload&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">                    uploadInst.<span class="title function_">upload</span>();</span></span><br><span class="line"><span class="language-javascript">                &#125;);</span></span><br><span class="line"><span class="language-javascript">            &#125;</span></span><br><span class="line"><span class="language-javascript">        &#125;);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    &#125;);</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;uploadUserIcon&quot;)</span></span><br><span class="line"><span class="keyword">public</span> Map <span class="title function_">upload</span><span class="params">(MultipartFile file, HttpSession session)</span>&#123;</span><br><span class="line"></span><br><span class="line">    Users users= (Users) session.getAttribute(<span class="string">&quot;userS&quot;</span>);</span><br><span class="line">    String prefix=<span class="string">&quot;&quot;</span>;</span><br><span class="line">    String myFileName=users.getUserId()+<span class="string">&quot;_icon&quot;</span>;</span><br><span class="line">    <span class="comment">//保存上传</span></span><br><span class="line">    <span class="type">OutputStream</span> <span class="variable">out</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    InputStream fileInput=<span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(file!=<span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">originalName</span> <span class="operator">=</span> file.getOriginalFilename();</span><br><span class="line">            prefix=originalName.substring(originalName.lastIndexOf(<span class="string">&quot;.&quot;</span>)+<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">            <span class="type">String</span> <span class="variable">filepath</span> <span class="operator">=</span> session.getServletContext().getRealPath(<span class="string">&quot;/Static/img&quot;</span>);</span><br><span class="line">            <span class="type">String</span> <span class="variable">fileName</span> <span class="operator">=</span> filepath +<span class="string">&quot;\\&quot;</span>+myFileName+<span class="string">&quot;.&quot;</span> + prefix;</span><br><span class="line"></span><br><span class="line">            File files=<span class="keyword">new</span> <span class="title class_">File</span>(fileName);</span><br><span class="line">            <span class="comment">//打印查看上传路径</span></span><br><span class="line">            System.out.println(filepath);</span><br><span class="line">            <span class="keyword">if</span>(!files.getParentFile().exists())&#123;</span><br><span class="line">                files.getParentFile().mkdirs();</span><br><span class="line">            &#125;</span><br><span class="line">            file.transferTo(files);</span><br><span class="line">            Map&lt;String,Object&gt; map2=<span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">            Map&lt;String,Object&gt; map=<span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">            map.put(<span class="string">&quot;code&quot;</span>,<span class="number">0</span>);</span><br><span class="line">            map.put(<span class="string">&quot;msg&quot;</span>,<span class="string">&quot;&quot;</span>);</span><br><span class="line">            map.put(<span class="string">&quot;data&quot;</span>,map2);</span><br><span class="line">            map2.put(<span class="string">&quot;src&quot;</span>,<span class="string">&quot;/Static/img/&quot;</span>+myFileName+<span class="string">&quot;.&quot;</span> + prefix);</span><br><span class="line">            <span class="keyword">return</span> map;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">    &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">if</span>(out!=<span class="literal">null</span>)&#123;</span><br><span class="line">                out.close();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(fileInput!=<span class="literal">null</span>)&#123;</span><br><span class="line">                fileInput.close();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    Map&lt;String,Object&gt; map=<span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">    map.put(<span class="string">&quot;code&quot;</span>,<span class="number">1</span>);</span><br><span class="line">    map.put(<span class="string">&quot;msg&quot;</span>,<span class="string">&quot;&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> map;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="总结">总结</h2>
+<p>说实话开发过程遇到很多问题，小组内还出现过矛盾，不过一切都过去了，结局还是很不错的，所有失败和教训都是最宝贵的财富，它会帮助我走好接下的每一步。</p>
+<h3 id="问题与展望">问题与展望</h3>
+<p>项目到最终提交的时候还不是我满意的样子，我知道的就存在一些问题，比如：权限安全方面并没有做好，应该设置一个拦截器，拦截未登录用户所有增删改操作，在我们这个系统中是支持游客访问的，不过只能查看新闻，其他什么也不能操作，不过最终这个也是没有完全实现，是个遗憾；还有就是对于数据库方面有很大的遗憾，因为对于Mybatis和MySQL理解并不到位，导致数据库设计的很糟糕，对之后的造成了很大影响；还有前端设计实在是搞不来，基本上都是东拼西凑，最后导致一些js矛盾，或是极其复杂，可读性极差。这些都是已经存在的问题。</p>
+<p>说一说展望吧，前台功能太少了，记得当时我们提交的选题报告中的功能还有新闻收藏、点赞、转发，用户等级系统，用户关注等。最后都没有实现，当时可能没有什么想法，不知道怎么做，但到现在，怎么做我已经有那个框架了，如果有机会真的可以打这些功能加上去。</p>
+<h3 id="合作开发重要性">合作开发重要性</h3>
+<p>这学期还有一门课“软件工程”，虽然这门课有些水，但还是有些收获的。</p>
+<p>合作开发，需求分析太重要了，一定要统一的开发环境，什么MySQL版本统一了，JDK统一，Spring统一等等太重要了，不然的话就会遇到许许多多的问题。</p>
+<p>代码规范也是非常重要的，命名、类、接口等这是系统能不能走的远的评判标准。如果设计得当那么接下来的开发会很顺利，包括之后的维护升级等；如果设计不当那么接下来就像从头开始一样麻烦。</p>
+<h3 id="结束">结束</h3>
+<p>这篇文章干货不多，将整个项目介绍完也不太现实，源码全摆上去也没太大意义。所以这里主要说的是这次项目的感受与总结。</p>
+<h2 id="相关链接">相关链接</h2>
+<p><a href="https://wnhyang.github.io/article/f5984dab.html">maven与npm使用镜像</a></p>
+<p><a href="https://wnhyang.github.io/article/48213f39.html">Java Web 大作业（在线新闻发布系统）数据库设计</a></p>
+<p><a href="https://wnhyang.github.io/article/254393f0.html">SSM整合</a></p>
+<p><a href="https://wnhyang.github.io/article/f2ba51cc.html">富文本编辑器CKEditor配置与使用</a></p>
+<p><a href="https://wnhyang.github.io/article/933adcc2.html">AJAX与JSON初次使用</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.jpg" alt="无奈和杨（wnhyang） 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="无奈和杨（wnhyang） 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>无奈和杨（wnhyang）
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://wnhyang.github.io/article/54805cfd.html" title="Java Web 大作业（在线新闻发布系统）总结">https://wnhyang.github.io/article/54805cfd.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/JavaWeb/" rel="tag"># JavaWeb</a>
+              <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+              <a href="/tags/Spring-Framework/" rel="tag"># Spring Framework</a>
+              <a href="/tags/Mybatis-Mybatis-plus/" rel="tag"># Mybatis/Mybatis-plus</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/article/933adcc2.html" rel="prev" title="AJAX与JSON初次使用">
+                  <i class="fa fa-chevron-left"></i> AJAX与JSON初次使用
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/article/48213f39.html" rel="next" title="Java Web 大作业（在线新闻发布系统）数据库设计">
+                  Java Web 大作业（在线新闻发布系统）数据库设计 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">无奈和杨（wnhyang）</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">169k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">10:15</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/wnhyang" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.2.2/mermaid.min.js","integrity":"sha256-o5AUfgOkNFWuInA78GVCoVdGoN9eTaB3Hxu+ep7TTrY="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

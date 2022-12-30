@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="baidu-site-verification" content="fe6bba1d0d4e906fed87c9f7c2d1d09d">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="定义 树是由n个结点组成的有限集。n&#x3D;0时称为空树。且对于非空树：  有且仅有一个特定的称为根的结点； 当n&gt;1时，其余结点可分为m(m&gt;0)个互不相交的有限集T1,T2,…,Tm，其中每一个集合本身又是一棵树，称为根的子树(subtree)。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树">
+<meta property="og:url" content="https://wnhyang.github.io/article/7b216a3b.html">
+<meta property="og:site_name" content="无奈和杨（wnhyang）">
+<meta property="og:description" content="定义 树是由n个结点组成的有限集。n&#x3D;0时称为空树。且对于非空树：  有且仅有一个特定的称为根的结点； 当n&gt;1时，其余结点可分为m(m&gt;0)个互不相交的有限集T1,T2,…,Tm，其中每一个集合本身又是一棵树，称为根的子树(subtree)。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/%E6%A0%91.png">
+<meta property="article:published_time" content="2020-07-21T06:07:42.000Z">
+<meta property="article:modified_time" content="2022-08-20T03:19:42.471Z">
+<meta property="article:author" content="无奈和杨（wnhyang）">
+<meta property="article:tag" content="数据结构&amp;算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/%E6%A0%91.png">
+
+
+<link rel="canonical" href="https://wnhyang.github.io/article/7b216a3b.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wnhyang.github.io/article/7b216a3b.html","path":"article/7b216a3b.html","title":"树"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>树 | 无奈和杨（wnhyang）</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="无奈和杨（wnhyang）" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">无奈和杨（wnhyang）</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">I will keep to fight</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">37</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">0</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">142</span></a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%9C%AF%E8%AF%AD"><span class="nav-number">2.</span> <span class="nav-text">基本术语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%91%E7%9A%84%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">树的抽象数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%91%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="nav-number">4.</span> <span class="nav-text">树的存储结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8C%E4%BA%B2%E8%A1%A8%E7%A4%BA%E6%B3%95"><span class="nav-number">5.</span> <span class="nav-text">双亲表示法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%A9%E5%AD%90%E8%A1%A8%E7%A4%BA%E6%B3%95"><span class="nav-number">6.</span> <span class="nav-text">孩子表示法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%A9%E5%AD%90%E5%85%84%E5%BC%9F%E8%A1%A8%E7%A4%BA%E6%B3%95"><span class="nav-number">7.</span> <span class="nav-text">孩子兄弟表示法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%91%E5%85%B3%E8%81%94%E4%BA%8C%E5%8F%89%E6%A0%91%E5%8F%8A%E5%85%B6%E4%BB%96%E5%86%85%E5%AE%B9%E5%BE%85%E5%88%B0%E4%BA%8C%E5%8F%89%E6%A0%91%E5%AE%8C%E6%88%90"><span class="nav-number">8.</span> <span class="nav-text">树关联二叉树及其他内容待到二叉树完成</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="无奈和杨（wnhyang）"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">无奈和杨（wnhyang）</p>
+  <div class="site-description" itemprop="description">学习记录所用</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">142</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wnhyang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wnhyang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wnhyang@qq.com" title="E-Mail → mailto:wnhyang@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://example.com/" title="https:&#x2F;&#x2F;example.com" rel="noopener" target="_blank">Title</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/7b216a3b.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="无奈和杨（wnhyang）">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无奈和杨（wnhyang）">
+      <meta itemprop="description" content="学习记录所用">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="树 | 无奈和杨（wnhyang）">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          树
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-07-21 14:07:42" itemprop="dateCreated datePublished" datetime="2020-07-21T14:07:42+08:00">2020-07-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-08-20 11:19:42" itemprop="dateModified" datetime="2022-08-20T11:19:42+08:00">2022-08-20</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>6 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="定义">定义</h2>
+<p>树是由n个结点组成的有限集。n=0时称为空树。且对于非空树：</p>
+<ul>
+<li><p>有且仅有一个特定的称为根的结点；</p></li>
+<li><p>当n&gt;1时，其余结点可分为m(m&gt;0)个互不相交的有限集T1,T2,…,Tm，其中每一个集合本身又是一棵树，称为根的子树(subtree)。</p></li>
+</ul>
+<span id="more"></span>
+<h2 id="基本术语">基本术语</h2>
+<figure>
+<img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/树.png" alt="树" /><figcaption>树</figcaption>
+</figure>
+<blockquote>
+<p>结点：一个数据元素+若干指向子树的分支</p>
+</blockquote>
+<blockquote>
+<p>结点拥有的子树数（或分支数）称为结点的度。</p>
+</blockquote>
+<ul>
+<li>结点A的度是3，C的是1，G的是零。度为零的结点称为叶子结点/终端结点。K，L，F，G，M，I，J是叶子结点。度不为零的结点称为分支结点/非终端结点。</li>
+</ul>
+<blockquote>
+<p>结点的子树的根称为该结点的孩子，该结点称为孩子的双亲</p>
+</blockquote>
+<ul>
+<li>D的孩子是H，I和J；D的双亲是A。</li>
+</ul>
+<blockquote>
+<p>同一个双亲的孩子是兄弟。</p>
+</blockquote>
+<ul>
+<li>H，I和J是兄弟。</li>
+</ul>
+<blockquote>
+<p>双亲在同一层的结点称为堂兄弟</p>
+</blockquote>
+<blockquote>
+<p>结点的祖先是从根到该结点所经过的所有结点。</p>
+</blockquote>
+<ul>
+<li>M的祖先是A、D和H。</li>
+</ul>
+<blockquote>
+<p>结点的子孙是该结点下层子树中的任意结点。</p>
+</blockquote>
+<ul>
+<li>B的子孙为E、F、K和L。</li>
+</ul>
+<blockquote>
+<p>结点的层次</p>
+</blockquote>
+<ul>
+<li>从根到该结点的层数（根结点为第一层）。</li>
+</ul>
+<blockquote>
+<p>树的深度</p>
+</blockquote>
+<ul>
+<li>指所有结点最大的层数（Max{各结点的层数}）。</li>
+</ul>
+<blockquote>
+<p>树的度</p>
+</blockquote>
+<ul>
+<li>所有结点度的最大值（Max{各结点的度}）。</li>
+<li>上图中树的度为3</li>
+</ul>
+<blockquote>
+<p>有序树</p>
+</blockquote>
+<ul>
+<li>结点各子树从左至右有序，不能互换（左为第一）</li>
+<li>家谱</li>
+</ul>
+<blockquote>
+<p>无序树</p>
+</blockquote>
+<ul>
+<li>结点各子树可互换位置</li>
+<li>机构</li>
+</ul>
+<blockquote>
+<p>森林</p>
+</blockquote>
+<ul>
+<li>指m棵互不相交的树的集合</li>
+</ul>
+<blockquote>
+<p>任何一棵非空树是一个二元组Tree =（root，F）</p>
+</blockquote>
+<ul>
+<li>root 被称为根结点，F 被称为子树森林</li>
+</ul>
+<h2 id="树的抽象数据类型">树的抽象数据类型</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">ADT树(tree )</span><br><span class="line"></span><br><span class="line">Data</span><br><span class="line">    树是由一个根结点和若干棵子树构成。树中结点具有相同数据类型及层次关</span><br><span class="line"></span><br><span class="line"><span class="function">Operation</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">    <span class="title">InitTree</span> <span class="params">(&amp;T)</span> :构造空树T。</span></span><br><span class="line"><span class="function">    DestroyTree (&amp;T) :销毁树T。</span></span><br><span class="line"><span class="function">    CreateTree ( &amp;T, definition) :按definition中给出树的定义来构造树。ClearTree(&amp;T):若树T存在，则将树T清为空树。</span></span><br><span class="line"><span class="function">    TreeEmpty (T):若T为空树，返回true,否则返回false.</span></span><br><span class="line"><span class="function">    TreeDepth(T) :返回T的深度。</span></span><br><span class="line"><span class="function">    Root (T) :返回T的根结点。</span></span><br><span class="line"><span class="function">    Value (T,cur e): cur e是树T中一个结点，返回此结点的值。</span></span><br><span class="line"><span class="function">    Assign (T,cur _e,value) :给树T的结点cur_ e赋值为value。</span></span><br><span class="line"><span class="function">    Parent (T,cur e):若cur_ e是树T的非根结点，则返回它的双亲，否则返回空。LeftChild(T,cur e):若cur_ e是树T的非叶结点，则返回它的最左孩子，否则返空。</span></span><br><span class="line"><span class="function">    Rightsibling (T,cur e) :若cur_ e有右兄弟，则返回它的右兄弟，否则返回空。InsertChild(&amp;T,&amp;p,i,c):其中p指向树T的某个结点，i为所指结点P的度加上<span class="number">1</span>，非空树c与T不相交，操作结果为插入c为树T中p指结点的第i棵子树。</span></span><br><span class="line"><span class="function">    DeleteChild(&amp;T,&amp;p,i) :其中p指向树T的某个结点，i为所指结点p的度，操作结果为删除T中p所指结点的第i棵子树。</span></span><br><span class="line"><span class="function">endADT</span></span><br></pre></td></tr></table></figure>
+<h2 id="树的存储结构">树的存储结构</h2>
+<p>说到存储结构，就会想到我们前面章节讲过的顺序存储和链式存储两种结构。</p>
+<p>先来看看顺序存储结构，用一段地址连续的存储单元依次存储线性表的数据元素。这对于线性表来说是很自然的，对于树这样多对的结构呢?</p>
+<p>树中某个结点的孩子可以有多个，这就意味着，无论按何种顺序将树中所有结点存储到数组中，结点的存储位置都无法直接反映逻辑关系，你想想看，数据元素挨个的存储，谁是谁的双亲，谁是谁的孩子呢?简单的顺序存储结构是不能满足树的实现要求的。</p>
+<p>不过充分利用顺序存储和链式存储结构的特点，完全可以实现对树的存储结构的表示。我们这里要介绍三种不同的表示法:双亲表示法、孩子表示法、孩子兄弟表示法。</p>
+<h2 id="双亲表示法">双亲表示法</h2>
+<p>在每个结点中，附设一个指示器指示其双亲结点在数组中的位置。也就是说，每个结点除了知道自己是谁以外，还知道它的双亲在哪里。</p>
+<div class="line-block">data | parent |</div>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_TREE_SIZE 100</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> TElemType;      <span class="comment">/*树结点的数据类型，目前暂定为int*/</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">PTNode</span>&#123;      <span class="comment">/*结点结构*/</span></span><br><span class="line">     TElemType  data;       <span class="comment">/*结点数据*/</span></span><br><span class="line">      <span class="type">int</span>  parent;          <span class="comment">/*双亲位置*/</span></span><br><span class="line">&#125;PTNode;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span>&#123;             <span class="comment">/*树结构*/</span></span><br><span class="line">    PTNode nodes[MAX_TREE_SIZE];    <span class="comment">/*结点数组*/</span></span><br><span class="line">    <span class="type">int</span> r,n;                <span class="comment">/*根的位置和结点数*/</span></span><br><span class="line">&#125;PTree；</span><br></pre></td></tr></table></figure>
+<h2 id="孩子表示法">孩子表示法</h2>
+<p>每个结点有多个指针域，其中每个指针指向一颗子树的根结点，我们把这种方法叫做多重链表表示法。</p>
+<blockquote>
+<p>结点同构</p>
+</blockquote>
+<ul>
+<li>结点的指针个数相等，为树的度D</li>
+<li>缺点：容易造成空间浪费</li>
+</ul>
+<div class="line-block">data | child1 | child2 | … | childD |</div>
+<blockquote>
+<p>结点不同构</p>
+</blockquote>
+<ul>
+<li>结点指针个数不等，为该结点的度d</li>
+<li>缺点：操作不方便</li>
+</ul>
+<div class="line-block">data | degree | child1 | child2 | … | childd|</div>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_TREE_SIZE 100</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">CTNode</span> &#123;</span><br><span class="line">    <span class="type">int</span> child;              <span class="comment">/*孩子结点的序号*/</span></span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">CTNode</span> *next;    <span class="comment">/*孩子结点的指针域*/</span>　　</span><br><span class="line">&#125; *ChildPtr;                <span class="comment">/*孩子链表的结点*/</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> &#123;</span><br><span class="line">    ElemType data;          <span class="comment">/* 结点的数据元素*/</span></span><br><span class="line">    ChildPtr firstchild;    <span class="comment">/* 孩子链表头指针*/</span></span><br><span class="line">&#125; CTBox;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> &#123;</span><br><span class="line">    CTBox nodes[MAX_TREE_SIZE];</span><br><span class="line">    <span class="type">int</span> n, r; 　            <span class="comment">/* 结点数和根结点的位置*/</span>　　</span><br><span class="line">&#125; CTree;                    <span class="comment">/*树结构*/</span></span><br></pre></td></tr></table></figure>
+<h2 id="孩子兄弟表示法">孩子兄弟表示法</h2>
+<p>任意一棵树，它的结点的第一个孩子如果存在就是唯一的，它的右兄弟如果存在也是唯一的。因此，我们设置两个指针，分别指向该结点的第一个孩子和此结点的右兄弟。</p>
+<div class="line-block">data | firstchild | rightsib |</div>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">CSNode</span>&#123;</span><br><span class="line">    ElemType data;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">CSNode</span> * firstson,* nextsibling;	</span><br><span class="line">&#125;CSNode,*CSTree;</span><br></pre></td></tr></table></figure>
+<h2 id="树关联二叉树及其他内容待到二叉树完成">树关联二叉树及其他内容待到二叉树完成</h2>
+<p>欢迎批评指正！</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.jpg" alt="无奈和杨（wnhyang） 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="无奈和杨（wnhyang） 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>无奈和杨（wnhyang）
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://wnhyang.github.io/article/7b216a3b.html" title="树">https://wnhyang.github.io/article/7b216a3b.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%AE%97%E6%B3%95/" rel="tag"># 数据结构&算法</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/article/40f24371.html" rel="prev" title="线性表">
+                  <i class="fa fa-chevron-left"></i> 线性表
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/article/29d55788.html" rel="next" title="哈夫曼树及应用">
+                  哈夫曼树及应用 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">无奈和杨（wnhyang）</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">169k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">10:15</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/wnhyang" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.2.2/mermaid.min.js","integrity":"sha256-o5AUfgOkNFWuInA78GVCoVdGoN9eTaB3Hxu+ep7TTrY="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
