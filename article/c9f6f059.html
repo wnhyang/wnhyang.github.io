@@ -22,15 +22,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="参考 菜鸟教程：https:&#x2F;&#x2F;www.runoob.com&#x2F;redis&#x2F;redis-tutorial.html 下载地址：http:&#x2F;&#x2F;download.redis.io&#x2F;releases&#x2F; 博文：https:&#x2F;&#x2F;blog.csdn.net&#x2F;u022812849&#x2F;article&#x2F;details&#x2F;108021517">
+    <meta name="description" content="参考 菜鸟教程：https:&#x2F;&#x2F;www.runoob.com&#x2F;redis&#x2F;redis-tutorial.html 下载地址：http:&#x2F;&#x2F;download.redis.io&#x2F;releases&#x2F; 博文：https:&#x2F;&#x2F;blog.csdn.net&#x2F;u022812849&#x2F;article&#x2F;details&#x2F;108021517">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redis安装">
 <meta property="og:url" content="https://wnhyang.github.io/article/c9f6f059.html">
 <meta property="og:site_name" content="无奈和杨（wnhyang）">
-<meta property="og:description" content="参考 菜鸟教程：https:&#x2F;&#x2F;www.runoob.com&#x2F;redis&#x2F;redis-tutorial.html 下载地址：http:&#x2F;&#x2F;download.redis.io&#x2F;releases&#x2F; 博文：https:&#x2F;&#x2F;blog.csdn.net&#x2F;u022812849&#x2F;article&#x2F;details&#x2F;108021517">
+<meta property="og:description" content="参考 菜鸟教程：https:&#x2F;&#x2F;www.runoob.com&#x2F;redis&#x2F;redis-tutorial.html 下载地址：http:&#x2F;&#x2F;download.redis.io&#x2F;releases&#x2F; 博文：https:&#x2F;&#x2F;blog.csdn.net&#x2F;u022812849&#x2F;article&#x2F;details&#x2F;108021517">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-04-15T05:54:13.000Z">
-<meta property="article:modified_time" content="2022-05-11T15:45:39.802Z">
+<meta property="article:modified_time" content="2022-05-11T15:45:40.000Z">
 <meta property="article:author" content="无奈和杨（wnhyang）">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="Redis">
@@ -254,7 +254,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-05-11 23:45:39" itemprop="dateModified" datetime="2022-05-11T23:45:39+08:00">2022-05-11</time>
+      <time title="修改时间：2022-05-11 23:45:40" itemprop="dateModified" datetime="2022-05-11T23:45:40+08:00">2022-05-11</time>
     </span>
 
   
@@ -290,17 +290,23 @@
     
     <div class="post-body" itemprop="articleBody">
         <h2 id="参考">参考</h2>
-<p>菜鸟教程：<a target="_blank" rel="noopener" href="https://www.runoob.com/redis/redis-tutorial.html" class="uri">https://www.runoob.com/redis/redis-tutorial.html</a></p>
+<p>菜鸟教程：<a
+target="_blank" rel="noopener" href="https://www.runoob.com/redis/redis-tutorial.html">https://www.runoob.com/redis/redis-tutorial.html</a></p>
 <p>下载地址：http://download.redis.io/releases/</p>
-<p>博文：<a target="_blank" rel="noopener" href="https://blog.csdn.net/u022812849/article/details/108021517" class="uri">https://blog.csdn.net/u022812849/article/details/108021517</a></p>
+<p>博文：<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/u022812849/article/details/108021517">https://blog.csdn.net/u022812849/article/details/108021517</a></p>
 <span id="more"></span>
 <p><strong>解压</strong></p>
-<p>这⾥下载的是 <code>redis-6.0.6.tar.gz</code> 安装包，并将其直接放在了 <code>root</code> ⽬录下</p>
-<p>1、在 <code>/usr/local/</code> 下创建 <code>redis</code> ⽂件夹并进⼊</p>
+<p>这⾥下载的是 <code>redis-6.0.6.tar.gz</code> 安装包，并将其直接放在了
+<code>root</code> ⽬录下</p>
+<p>1、在 <code>/usr/local/</code> 下创建 <code>redis</code>
+⽂件夹并进⼊</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/</span><br><span class="line">mkdir redis</span><br><span class="line">cd redis</span><br></pre></td></tr></table></figure>
-<p>2、将 <code>Redis</code> 安装包解压到 <code>/usr/local/redis</code> 中即可</p>
+<p>2、将 <code>Redis</code> 安装包解压到 <code>/usr/local/redis</code>
+中即可</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf /root/redis-5.0.8.tar.gz -C ./</span><br></pre></td></tr></table></figure>
-<p>解压完之后， <code>/usr/local/redis</code> ⽬录中会出现⼀个 <code>redis-6.0.6</code> 的⽬录</p>
+<p>解压完之后， <code>/usr/local/redis</code> ⽬录中会出现⼀个
+<code>redis-6.0.6</code> 的⽬录</p>
 <p><strong>安装</strong></p>
 <p>如果没有安装<code>wget</code>，先安装<code>yum install -y wget</code>。</p>
 <p>make之前确保安装了gcc，未安装则需安装<code>yum install -y gcc</code>。</p>
@@ -323,10 +329,12 @@
 <p><code>ping</code> - <code>PONG</code></p>
 <p><strong>设置远程连接和访问密码</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/redis/6379.conf</span><br></pre></td></tr></table></figure>
-<p>将 <code>bind 127.0.0.1</code> 修改为 <code>0.0.0.0</code>完成允许远程连接</p>
+<p>将 <code>bind 127.0.0.1</code> 修改为
+<code>0.0.0.0</code>完成允许远程连接</p>
 <p>找到如下内容：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">requirepass foobared</span></span><br></pre></td></tr></table></figure>
-<p>去掉注释，将 <code>foobared</code> 修改为⾃⼰想要的密码，保存即可。</p>
+<p>去掉注释，将 <code>foobared</code>
+修改为⾃⼰想要的密码，保存即可。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">requirepass root</span><br></pre></td></tr></table></figure>
 <p>保存，重启 Redis 服务即可</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart redis_6379.service</span><br></pre></td></tr></table></figure>
@@ -336,11 +344,13 @@
 <p>想要远程连接还需要</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">开放防火墙端口</span></span><br><span class="line">firewall-cmd --zone=public --add-port=8080/tcp --permanent</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">重新加载</span></span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
 <p><strong>测试</strong></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/uglide/RedisDesktopManager/releases/tag/0.8.8" class="uri">https://github.com/uglide/RedisDesktopManager/releases/tag/0.8.8</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://github.com/uglide/RedisDesktopManager/releases/tag/0.8.8">https://github.com/uglide/RedisDesktopManager/releases/tag/0.8.8</a></p>
 <h2 id="命令">命令</h2>
 <p>Redis 客户端的基本语法为：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">redis-cli</span></span><br><span class="line">redis 127.0.0.1:6379&gt;</span><br><span class="line">redis 127.0.0.1:6379&gt; PING</span><br><span class="line"></span><br><span class="line">PONG</span><br></pre></td></tr></table></figure>
-<p>执行 <strong>PING</strong> 命令，该命令用于检测 redis 服务是否启动。</p>
+<p>执行 <strong>PING</strong> 命令，该命令用于检测 redis
+服务是否启动。</p>
 <p>远程连接</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ redis-cli -h host -p port -a password</span><br><span class="line"></span><br><span class="line">$ redis-cli -h 127.0.0.1 -p 6379 -a <span class="string">&quot;mypass&quot;</span></span><br><span class="line">redis 127.0.0.1:6379&gt;</span><br><span class="line">redis 127.0.0.1:6379&gt; PING</span><br><span class="line"></span><br><span class="line">PONG</span><br></pre></td></tr></table></figure>
 <p>默认16个数据库，选择数据库</p>
@@ -431,7 +441,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

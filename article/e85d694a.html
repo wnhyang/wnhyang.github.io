@@ -22,18 +22,18 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="树的基本概念和存储结构已经介绍过了，现在介绍数据结构中极其重要的二叉树。 部分显示问题，请参考">
+    <meta name="description" content="树的基本概念和存储结构已经介绍过了，现在介绍数据结构中极其重要的二叉树。 部分显示问题，请参考">
 <meta property="og:type" content="article">
 <meta property="og:title" content="二叉树">
 <meta property="og:url" content="https://wnhyang.github.io/article/e85d694a.html">
 <meta property="og:site_name" content="无奈和杨（wnhyang）">
-<meta property="og:description" content="树的基本概念和存储结构已经介绍过了，现在介绍数据结构中极其重要的二叉树。 部分显示问题，请参考">
+<meta property="og:description" content="树的基本概念和存储结构已经介绍过了，现在介绍数据结构中极其重要的二叉树。 部分显示问题，请参考">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/%E6%BB%A1%E4%BA%8C%E5%8F%89%E6%A0%91.png">
 <meta property="og:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91.png">
 <meta property="og:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/%E9%81%8D%E5%8E%86.png">
 <meta property="article:published_time" content="2020-07-25T08:11:20.000Z">
-<meta property="article:modified_time" content="2022-08-20T03:19:42.477Z">
+<meta property="article:modified_time" content="2022-08-20T03:19:44.000Z">
 <meta property="article:author" content="无奈和杨（wnhyang）">
 <meta property="article:tag" content="数据结构&amp;算法">
 <meta name="twitter:card" content="summary">
@@ -257,7 +257,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-08-20 11:19:42" itemprop="dateModified" datetime="2022-08-20T11:19:42+08:00">2022-08-20</time>
+      <time title="修改时间：2022-08-20 11:19:44" itemprop="dateModified" datetime="2022-08-20T11:19:44+08:00">2022-08-20</time>
     </span>
 
   
@@ -293,10 +293,12 @@
     
     <div class="post-body" itemprop="articleBody">
         <p>树的基本概念和存储结构已经介绍过了，现在介绍数据结构中极其重要的二叉树。</p>
-<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/3a8aee2ce593">部分显示问题，请参考</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://www.jianshu.com/p/3a8aee2ce593">部分显示问题，请参考</a></p>
 <span id="more"></span>
 <h2 id="定义">定义</h2>
-<p>二叉树（Binary Tree）是n（n&gt;=0）个结点的有限集合，该集合或者为空集（称为空二叉树），或者由一个根结点和两棵互不相交的，分别称为根结点的左子树和右子树的二叉树组成。</p>
+<p>二叉树（Binary
+Tree）是n（n&gt;=0）个结点的有限集合，该集合或者为空集（称为空二叉树），或者由一个根结点和两棵互不相交的，分别称为根结点的左子树和右子树的二叉树组成。</p>
 <h2 id="二叉树的特点有">二叉树的特点有:</h2>
 <p>每个结点最多有两棵子树，所以二又树中不存在度大于2的结点。注意不是只有两棵子树，而是最多有。没有子树或者有棵子树都是可以的。</p>
 <p>左子树和右子树是有顺序的，次序不能任意颠倒。就像人是双手、双脚，但显然左手、左脚和右手、右脚是不一样的，右手戴左手套、右脚穿左鞋都会极其别扭和难受。</p>
@@ -317,7 +319,9 @@
 <p>(2)非叶子结点的度一-定是 2。否则就是“缺胳膊少腿”了。</p>
 <p>(3)在同样深度的二叉树中，满二叉树的结点个数最多，叶子数最多。</p>
 <figure>
-<img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/满二叉树.png" alt="满二叉树" /><figcaption>满二叉树</figcaption>
+<img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/满二叉树.png"
+alt="满二叉树" />
+<figcaption aria-hidden="true">满二叉树</figcaption>
 </figure>
 <h3 id="完全二叉树">完全二叉树</h3>
 <p>对一棵具有n个结点的二叉树按层序编号，如果编号为i（1≤i≤n）的结点与同祥深度的满二叉树中编号为i的结点在二叉树中位置完全相同，则这棵二叉树称为完全二叉树。</p>
@@ -328,19 +332,31 @@
 <p>(4)如果结点度为1，则该结点只有左孩子，即不存在只有右子树的情况。</p>
 <p>(5)同样结点数的二叉树，完全二叉树的深度最小。</p>
 <figure>
-<img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/完全二叉树.png" alt="完全二叉树" /><figcaption>完全二叉树</figcaption>
+<img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/完全二叉树.png"
+alt="完全二叉树" />
+<figcaption aria-hidden="true">完全二叉树</figcaption>
 </figure>
 <h2 id="二叉树的性质">二叉树的性质</h2>
 <h2 id="性质一">性质一</h2>
-<p>在二叉树的第i层上至多有<span class="math inline">\(2^{i-1}\)</span>个结点（i&gt;=1）。</p>
+<p>在二叉树的第i层上至多有<span
+class="math inline">\(2^{i-1}\)</span>个结点（i&gt;=1）。</p>
 <h2 id="性质二">性质二</h2>
-<p>深度为k的二叉树至多有<span class="math inline">\(2^k-1\)</span>个结点（k&gt;=1）。</p>
+<p>深度为k的二叉树至多有<span
+class="math inline">\(2^k-1\)</span>个结点（k&gt;=1）。</p>
 <h2 id="性质三">性质三</h2>
-<p>对任何一棵二叉树T，如果其终端结点数为<span class="math inline">\(n_0\)</span>，度为2的结点数为<span class="math inline">\(n_2\)</span>，则<span class="math inline">\(n_0=n_2+1\)</span>。</p>
+<p>对任何一棵二叉树T，如果其终端结点数为<span
+class="math inline">\(n_0\)</span>，度为2的结点数为<span
+class="math inline">\(n_2\)</span>，则<span
+class="math inline">\(n_0=n_2+1\)</span>。</p>
 <h2 id="性质四">性质四</h2>
-<p>具有n个结点的完全二叉树的深度为<span class="math inline">\([log_2n]\)</span>+1（[x]表示不大于x的最大整数）。</p>
+<p>具有n个结点的完全二叉树的深度为<span
+class="math inline">\([log_2n]\)</span>+1（[x]表示不大于x的最大整数）。</p>
 <h2 id="性质五">性质五</h2>
-<p>对于完全二叉树，若从上至下、从左至右编号，则编号为<span class="math inline">\(i\)</span>的结点，其左孩子编号必为<span class="math inline">\(2i\)</span>，右孩子编号必为<span class="math inline">\(2i＋1\)</span>，双亲的编号必为<span class="math inline">\(i/2\)</span>。</p>
+<p>对于完全二叉树，若从上至下、从左至右编号，则编号为<span
+class="math inline">\(i\)</span>的结点，其左孩子编号必为<span
+class="math inline">\(2i\)</span>，右孩子编号必为<span
+class="math inline">\(2i＋1\)</span>，双亲的编号必为<span
+class="math inline">\(i/2\)</span>。</p>
 <h2 id="二叉树的存储结构">二叉树的存储结构</h2>
 <h2 id="二叉树顺序存储结构">二叉树顺序存储结构</h2>
 <p>一般只用于完全二叉树，不详解。</p>
@@ -350,10 +366,13 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">BiTNode</span></span><br><span class="line">&#123;</span><br><span class="line">    TElemType data;     <span class="comment">/*数据*/</span></span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">BiTNode</span>* lchild, * rchild;   <span class="comment">/*左右孩子指针*/</span></span><br><span class="line">&#125;BiTNode, * BiTree;</span><br></pre></td></tr></table></figure>
 <h2 id="遍历二叉树">遍历二叉树</h2>
 <h2 id="原理">原理</h2>
-<p>二叉树的遍历( traversing binary tree )是指从根结点出发，按照某种次序依次访问二叉树中所有结点，使得每个结点被访问一次且仅被访问一次。</p>
+<p>二叉树的遍历( traversing binary tree
+)是指从根结点出发，按照某种次序依次访问二叉树中所有结点，使得每个结点被访问一次且仅被访问一次。</p>
 <h2 id="遍历方法">遍历方法</h2>
 <figure>
-<img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/遍历.png" alt="遍历" /><figcaption>遍历</figcaption>
+<img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/遍历.png"
+alt="遍历" />
+<figcaption aria-hidden="true">遍历</figcaption>
 </figure>
 <h3 id="前序遍历即先根序的遍历算法">前序遍历即先（根）序的遍历算法</h3>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">PreOrderTraverse</span><span class="params">(BiTree T)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (T == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    cout &lt;&lt; T-&gt;data;</span><br><span class="line">    <span class="built_in">PreOrderTraverse</span>(T-&gt;lchild);</span><br><span class="line">    <span class="built_in">PreOrderTraverse</span>(T-&gt;rchild);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -370,7 +389,8 @@
 <h2 id="二叉树建立">二叉树建立</h2>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">CreateBiTree</span><span class="params">(BiTree&amp; T)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    TElemType c;</span><br><span class="line">    cin &gt;&gt; c;</span><br><span class="line">    <span class="keyword">if</span> (c == <span class="string">&#x27;#&#x27;</span>)</span><br><span class="line">        T = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        T = <span class="keyword">new</span> BiTNode;</span><br><span class="line">        <span class="keyword">if</span> (!T)</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;分配空间失败&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            T-&gt;data = c;</span><br><span class="line">            <span class="built_in">CreateBiTree</span>(T-&gt;lchild);</span><br><span class="line">            <span class="built_in">CreateBiTree</span>(T-&gt;rchild);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="线索二叉树">线索二叉树</h2>
-<p>把指向前驱和后继的指针称为线索，加上线索的二叉链表称为线索链表，相应的二叉树就称为线索二叉树（Threaded Binary Tree）。</p>
+<p>把指向前驱和后继的指针称为线索，加上线索的二叉链表称为线索链表，相应的二叉树就称为线索二叉树（Threaded
+Binary Tree）。</p>
 <div class="line-block">lchild | ltag | data | rtag | rchild |</div>
 <p>其中：</p>
 <p>ltag为0时指向该结点的左孩子，为1时指向该结点的前驱。</p>
@@ -380,13 +400,16 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">BiThrNode</span></span><br><span class="line">&#123;</span><br><span class="line">    TElemType data;</span><br><span class="line">    <span class="keyword">struct</span>  <span class="title class_">BiThrNode</span>* lchild, * rchild;</span><br><span class="line">    <span class="type">int</span> LTag, RTag; <span class="comment">//LTag(RTag)=0表示指向孩子，LTag(RTag)=1表示只是前驱或后继</span></span><br><span class="line">&#125;BiThrNode, * BiThrTree;</span><br><span class="line">BiThrTree pre;<span class="comment">//全局变量，始终指向刚刚访问过的节点</span></span><br></pre></td></tr></table></figure>
 <h3 id="中序遍历进行中序线索化">中序遍历进行中序线索化</h3>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">InThreading</span><span class="params">(BiThrTree p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (p)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">InThreading</span>(p-&gt;lchild);<span class="comment">/* 递归左子树线索化 */</span></span><br><span class="line">        <span class="keyword">if</span> (!p-&gt;lchild)<span class="comment">/* 没有左孩子 */</span></span><br><span class="line">        &#123;</span><br><span class="line">            p-&gt;LTag = <span class="number">1</span>;<span class="comment">/* 前驱线索 */</span></span><br><span class="line">            p-&gt;lchild = pre; <span class="comment">/* 左孩子指针指向前驱 */</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            p-&gt;LTag = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (!pre-&gt;rchild) <span class="comment">/* 前驱没有右孩子 */</span></span><br><span class="line">        &#123;</span><br><span class="line">            pre-&gt;RTag = <span class="number">1</span>;<span class="comment">/* 后继线索 */</span></span><br><span class="line">            pre-&gt;rchild = p;<span class="comment">/* 前驱右孩子指针指向后继(当前结点p) */</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            p-&gt;RTag = <span class="number">0</span>;</span><br><span class="line">        pre = p;<span class="comment">/* 保持pre指向p的前驱 */</span></span><br><span class="line">        <span class="built_in">InThreading</span>(p-&gt;rchild);<span class="comment">/* 递归右子树线索化 */</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="中序线索二叉树遍历带有头节点">中序线索二叉树遍历（带有头节点）</h3>
+<h3
+id="中序线索二叉树遍历带有头节点">中序线索二叉树遍历（带有头节点）</h3>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">InOrderTraverse_Thr</span><span class="params">(BiThrTree T)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    BiThrTree p;</span><br><span class="line">    p = T-&gt;lchild; <span class="comment">/* p指向根结点 */</span></span><br><span class="line">    <span class="keyword">while</span> (p != T)<span class="comment">/* 空树或遍历结束时,p==T */</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span> (p-&gt;LTag == <span class="number">0</span>)</span><br><span class="line">            p = p-&gt;lchild;</span><br><span class="line">        cout &lt;&lt; p-&gt;data;</span><br><span class="line">        <span class="keyword">while</span> (p-&gt;RTag == <span class="number">1</span> &amp;&amp; p-&gt;rchild != T)</span><br><span class="line">        &#123;</span><br><span class="line">            p = p-&gt;rchild;</span><br><span class="line">            cout &lt;&lt; p-&gt;data;</span><br><span class="line">        &#125;</span><br><span class="line">        p = p-&gt;rchild;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="树森林与二叉树的转换">树、森林与二叉树的转换</h2>
 <h2 id="树转换为二叉树">树转换为二叉树</h2>
 <p>1.加线。在所有兄弟结点之间加一条连线。</p>
-<p>2.去线。对树中每个结点，只保留它与第一一个孩子结点的连线， 删除它与其他孩子结点之间的连线。</p>
-<p>3.层次调整。以树的根结点为轴心，将整棵树顺时针旋转定的角度， 使之结构层次分明。注意第一个孩子是二叉树结点的左孩子，兄弟转换过来的孩子是结点的右孩子。</p>
+<p>2.去线。对树中每个结点，只保留它与第一一个孩子结点的连线，
+删除它与其他孩子结点之间的连线。</p>
+<p>3.层次调整。以树的根结点为轴心，将整棵树顺时针旋转定的角度，
+使之结构层次分明。注意第一个孩子是二叉树结点的左孩子，兄弟转换过来的孩子是结点的右孩子。</p>
 <h2 id="森林转换为二叉树">森林转换为二叉树</h2>
 <p>森林是由若干棵树组成的，所以完全可以理解为，森林中的每一棵树都是兄弟，可以按照兄弟的处理办法来操作。步骤如下:</p>
 <p>1.把每个树转换为二叉树。</p>
@@ -397,20 +420,23 @@
 <p>2.去线。删除原二叉树中所有结点与其右孩子结点的连线。</p>
 <p>3.层次调整。使之结构层次分明。</p>
 <h2 id="二叉树转换为森林">二叉树转换为森林</h2>
-<p>判断一棵二叉树能够转换成棵树还是森林， 标准很简单，那就是只要看这棵二叉树的根结点有没有右孩子，有就是森林，没有就是一棵树。那么如果是转换成森林，步骤如下:</p>
+<p>判断一棵二叉树能够转换成棵树还是森林，
+标准很简单，那就是只要看这棵二叉树的根结点有没有右孩子，有就是森林，没有就是一棵树。那么如果是转换成森林，步骤如下:</p>
 <p>1.从根结点开始，若右孩子存在，则把与右孩子结点的连线删除，再查看分离后的二叉树，若右孩子存在，则连线删除....直到所有右孩子连线都删除为止，得到分离的二叉树。</p>
 <p>2.再将每棵分离后的二叉树转换为树即可。</p>
 <h2 id="树与森林的遍历">树与森林的遍历</h2>
 <p>最后我们再谈谈关于树和森林的遍历问题。</p>
 <p>树的遍历分为两种方式。</p>
-<p>1.一种是先根遍历树， 即先访问树的根结点，然后依次先根遍历根的每棵子树。</p>
+<p>1.一种是先根遍历树，
+即先访问树的根结点，然后依次先根遍历根的每棵子树。</p>
 <p>2.另一种是后根遍历》即先依次后根遍历每棵子树，然后再访问根结点。</p>
 <p>森林的遍历也分为两种方式:</p>
 <p>1.前序遍历:先访问森林中第一棵树的根结点，然后再依次先根遍历根的每棵子树，再依次用同样方式遍历除去第一棵树的剩余树构成的森林。</p>
 <p>2.后序遍历:是先访问森林中第一棵树，后根遍历的方式遍历每棵子树，然后再访问根结点，再依次同样方式遍历除去第一棵树的剩余树构成的森林。</p>
 <h2 id="总结">总结</h2>
 <p>二叉树应用很广的。</p>
-<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/3a8aee2ce593">部分显示问题，请参考</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://www.jianshu.com/p/3a8aee2ce593">部分显示问题，请参考</a></p>
 
     </div>
 
@@ -490,7 +516,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

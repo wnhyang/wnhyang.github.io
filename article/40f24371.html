@@ -22,15 +22,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="定义 顾名思义，线性表中的数据是线性排列的，是包括零个或多个数据元素的有限序列。">
+    <meta name="description" content="定义 顾名思义，线性表中的数据是线性排列的，是包括零个或多个数据元素的有限序列。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="线性表">
 <meta property="og:url" content="https://wnhyang.github.io/article/40f24371.html">
 <meta property="og:site_name" content="无奈和杨（wnhyang）">
-<meta property="og:description" content="定义 顾名思义，线性表中的数据是线性排列的，是包括零个或多个数据元素的有限序列。">
+<meta property="og:description" content="定义 顾名思义，线性表中的数据是线性排列的，是包括零个或多个数据元素的有限序列。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-07-18T12:46:02.000Z">
-<meta property="article:modified_time" content="2022-08-20T03:19:42.467Z">
+<meta property="article:modified_time" content="2022-08-20T03:19:44.000Z">
 <meta property="article:author" content="无奈和杨（wnhyang）">
 <meta property="article:tag" content="数据结构&amp;算法">
 <meta name="twitter:card" content="summary">
@@ -253,7 +253,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-08-20 11:19:42" itemprop="dateModified" datetime="2022-08-20T11:19:42+08:00">2022-08-20</time>
+      <time title="修改时间：2022-08-20 11:19:44" itemprop="dateModified" datetime="2022-08-20T11:19:44+08:00">2022-08-20</time>
     </span>
 
   
@@ -319,8 +319,15 @@
 <h2 id="线性表的链式存储结构">线性表的链式存储结构</h2>
 <p>线性表中元素不再是相邻排列，而是由“链”连接成。</p>
 <h2 id="头指针与头结点的异同">头指针与头结点的异同</h2>
-<p>头指针： * 头指针是指链表指向的第一个结点的指针，若链表有头结点，则是指向头结点的指针 * 头指针具有标识作用，所有常用头指针冠以链表的名字 * 无论链表是否为空，头指针均不为空。头指针是链表的必要元素</p>
-<p>头结点： * 头结点是为了操作的统一和方便而设计的，放在第一元素的结点之前，其数据域一般无意义（也存放链表的长度） * 有了头结点，对在第一元素结点前插入结点和删除第一结点，其操作与其他结点的操作就统一了 * 头结点不一定是链式必须要素</p>
+<p>头指针： *
+头指针是指链表指向的第一个结点的指针，若链表有头结点，则是指向头结点的指针
+* 头指针具有标识作用，所有常用头指针冠以链表的名字 *
+无论链表是否为空，头指针均不为空。头指针是链表的必要元素</p>
+<p>头结点： *
+头结点是为了操作的统一和方便而设计的，放在第一元素的结点之前，其数据域一般无意义（也存放链表的长度）
+*
+有了头结点，对在第一元素结点前插入结点和删除第一结点，其操作与其他结点的操作就统一了
+* 头结点不一定是链式必须要素</p>
 <h2 id="定义-2">定义</h2>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> ElemType;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">LNode</span></span><br><span class="line">&#123;</span><br><span class="line">    ElemType   data;       <span class="comment">/*数据域*/</span></span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">LNode</span>* next;   <span class="comment">/*指针域*/</span></span><br><span class="line">&#125; LNode, * LinkList;          <span class="comment">/*LinkList为LNode类型的指针*/</span></span><br></pre></td></tr></table></figure>
 <h2 id="元素获取-1">元素获取</h2>
@@ -342,8 +349,15 @@
 <p><a target="_blank" rel="noopener" href="http://data.biancheng.net/view/7.html">引用</a></p>
 <h2 id="双向链表">双向链表</h2>
 <p><a target="_blank" rel="noopener" href="http://data.biancheng.net/view/166.html">引用</a></p>
-<h2 id="单链表结构与顺序存储结构优缺点">单链表结构与顺序存储结构优缺点</h2>
+<h2
+id="单链表结构与顺序存储结构优缺点">单链表结构与顺序存储结构优缺点</h2>
 <table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th>存储结构</th>
@@ -386,7 +400,8 @@
 </tbody>
 </table>
 <p>---参考《大话数据结构》</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/baidu_39630193/article/details/76526691?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase">详细</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/baidu_39630193/article/details/76526691?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase">详细</a></p>
 
     </div>
 
@@ -466,7 +481,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -22,15 +22,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="简介 最近在学习RocketMQ，但一直苦于没有合适的环境学习。我的电脑是Windows系统，虽然换上了专业版装上了Docker，而且也有虚拟机，平常也会通过这些环境学习，但是还是太不方便了，为了方便终于又用上了云服务器，这次是阿里的。 配置如下  CPU&amp;内存 1核(vCPU)2 GiB   操作系统 CentOS 7.8 64位   当前使用带宽 1Mbps">
+    <meta name="description" content="简介 最近在学习RocketMQ，但一直苦于没有合适的环境学习。我的电脑是Windows系统，虽然换上了专业版装上了Docker，而且也有虚拟机，平常也会通过这些环境学习，但是还是太不方便了，为了方便终于又用上了云服务器，这次是阿里的。 配置如下  CPU&amp;内存 1核(vCPU)2 GiB   操作系统 CentOS 7.8 64位   当前使用带宽 1Mbps  这次RocketMQ的配">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RocketMQ部署">
 <meta property="og:url" content="https://wnhyang.github.io/article/28a4cb58.html">
 <meta property="og:site_name" content="无奈和杨（wnhyang）">
-<meta property="og:description" content="简介 最近在学习RocketMQ，但一直苦于没有合适的环境学习。我的电脑是Windows系统，虽然换上了专业版装上了Docker，而且也有虚拟机，平常也会通过这些环境学习，但是还是太不方便了，为了方便终于又用上了云服务器，这次是阿里的。 配置如下  CPU&amp;内存 1核(vCPU)2 GiB   操作系统 CentOS 7.8 64位   当前使用带宽 1Mbps">
+<meta property="og:description" content="简介 最近在学习RocketMQ，但一直苦于没有合适的环境学习。我的电脑是Windows系统，虽然换上了专业版装上了Docker，而且也有虚拟机，平常也会通过这些环境学习，但是还是太不方便了，为了方便终于又用上了云服务器，这次是阿里的。 配置如下  CPU&amp;内存 1核(vCPU)2 GiB   操作系统 CentOS 7.8 64位   当前使用带宽 1Mbps  这次RocketMQ的配">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-11-27T07:51:33.000Z">
-<meta property="article:modified_time" content="2022-12-03T14:34:28.167Z">
+<meta property="article:modified_time" content="2022-12-03T14:34:30.000Z">
 <meta property="article:author" content="无奈和杨（wnhyang）">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="RocketMQ">
@@ -255,7 +255,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-12-03 22:34:28" itemprop="dateModified" datetime="2022-12-03T22:34:28+08:00">2022-12-03</time>
+      <time title="修改时间：2022-12-03 22:34:30" itemprop="dateModified" datetime="2022-12-03T22:34:30+08:00">2022-12-03</time>
     </span>
 
   
@@ -322,12 +322,12 @@
 <p>官网启动方法在下面，建议先修改启动配置，不然很可能启动失败</p>
 <p>先修改<code>nameserver</code>启动配置</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim bin/runserver.sh</span><br></pre></td></tr></table></figure>
-<p>原有配置我已经注释掉了<code>#JAVA_OPT=&quot;$&#123;JAVA_OPT&#125; -server -Xms4g -Xmx4g -Xmn2g -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=320m&quot;</code></p>
+<p>原有配置我已经注释掉了<code>#JAVA_OPT="$&#123;JAVA_OPT&#125; -server -Xms4g -Xmx4g -Xmn2g -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=320m"</code></p>
 <p>这个配置对于机器配置很高，所以我将配置改成下面的一行了</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">choose_gc_options()</span><br><span class="line">&#123;</span><br><span class="line">    # Example of JAVA_MAJOR_VERSION value : &#x27;1&#x27;, &#x27;9&#x27;, &#x27;10&#x27;, &#x27;11&#x27;, ...</span><br><span class="line">    # &#x27;1&#x27; means releases befor Java 9</span><br><span class="line">    JAVA_MAJOR_VERSION=$(&quot;$JAVA&quot; -version 2&gt;&amp;1 | sed -r -n &#x27;s/.* version &quot;([0-9]*).*$/\1/p&#x27;)</span><br><span class="line">    if [ -z &quot;$JAVA_MAJOR_VERSION&quot; ] || [ &quot;$JAVA_MAJOR_VERSION&quot; -lt &quot;9&quot; ] ; then</span><br><span class="line">      #JAVA_OPT=&quot;$&#123;JAVA_OPT&#125; -server -Xms4g -Xmx4g -Xmn2g -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=320m&quot;</span><br><span class="line">      JAVA_OPT=&quot;$&#123;JAVA_OPT&#125; -server -Xms256m -Xmx256m -Xmn128m -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=320m&quot;</span><br><span class="line">      JAVA_OPT=&quot;$&#123;JAVA_OPT&#125; -XX:+UseConcMarkSweepGC -XX:+UseCMSCompactAtFullCollection -XX:CMSInitiatingOccupancyFraction=70 -XX:+CMSParallelRemarkEnabled -XX:SoftRefLRUPolicyMSPerMB=0 -XX:+CMSClassUnloadingEnabled -XX:SurvivorRatio=8 -XX:-UseParNewGC&quot;</span><br><span class="line">      JAVA_OPT=&quot;$&#123;JAVA_OPT&#125; -verbose:gc -Xloggc:$&#123;GC_LOG_DIR&#125;/rmq_srv_gc_%p_%t.log -XX:+PrintGCDetails -XX:+PrintGCDateStamps&quot;</span><br><span class="line">      JAVA_OPT=&quot;$&#123;JAVA_OPT&#125; -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=5 -XX:GCLogFileSize=30m&quot;</span><br><span class="line">    else</span><br><span class="line">      #JAVA_OPT=&quot;$&#123;JAVA_OPT&#125; -server -Xms4g -Xmx4g -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=320m&quot;</span><br><span class="line">      JAVA_OPT=&quot;$&#123;JAVA_OPT&#125; -server -Xms256m -Xmx256m -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=320m&quot;</span><br><span class="line">      JAVA_OPT=&quot;$&#123;JAVA_OPT&#125; -XX:+UseG1GC -XX:G1HeapRegionSize=16m -XX:G1ReservePercent=25 -XX:InitiatingHeapOccupancyPercent=30 -XX:SoftRefLRUPolicyMSPerMB=0&quot;</span><br><span class="line">      JAVA_OPT=&quot;$&#123;JAVA_OPT&#125; -Xlog:gc*:file=$&#123;GC_LOG_DIR&#125;/rmq_srv_gc_%p_%t.log:time,tags:filecount=5,filesize=30M&quot;</span><br><span class="line">    fi</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>接下来是<code>broker</code>启动配置</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim bin/runbroker.sh</span><br></pre></td></tr></table></figure>
-<p>同样被注释的是<code>#JAVA_OPT=&quot;$&#123;JAVA_OPT&#125; -server -Xms8g -Xmx8g&quot;</code>把参数改小了一些</p>
+<p>同样被注释的是<code>#JAVA_OPT="$&#123;JAVA_OPT&#125; -server -Xms8g -Xmx8g"</code>把参数改小了一些</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">choose_gc_log_directory</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">JAVA_OPT=<span class="string">&quot;<span class="variable">$&#123;JAVA_OPT&#125;</span> -server -Xms8g -Xmx8g&quot;</span></span></span><br><span class="line">JAVA_OPT=&quot;$&#123;JAVA_OPT&#125; -server -Xms256m -Xmx256m&quot;</span><br><span class="line">choose_gc_options</span><br><span class="line">JAVA_OPT=&quot;$&#123;JAVA_OPT&#125; -XX:-OmitStackTraceInFastThrow&quot;</span><br><span class="line">JAVA_OPT=&quot;$&#123;JAVA_OPT&#125; -XX:+AlwaysPreTouch&quot;</span><br><span class="line">JAVA_OPT=&quot;$&#123;JAVA_OPT&#125; -XX:MaxDirectMemorySize=15g&quot;</span><br><span class="line">JAVA_OPT=&quot;$&#123;JAVA_OPT&#125; -XX:-UseLargePages -XX:-UseBiasedLocking&quot;</span><br><span class="line">JAVA_OPT=&quot;$&#123;JAVA_OPT&#125; -Drocketmq.client.logUseSlf4j=true&quot;</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">JAVA_OPT=<span class="string">&quot;<span class="variable">$&#123;JAVA_OPT&#125;</span> -Xdebug -Xrunjdwp:transport=dt_socket,address=9555,server=y,suspend=n&quot;</span></span></span><br><span class="line">JAVA_OPT=&quot;$&#123;JAVA_OPT&#125; $&#123;JAVA_OPT_EXT&#125;&quot;</span><br><span class="line">JAVA_OPT=&quot;$&#123;JAVA_OPT&#125; -cp $&#123;CLASSPATH&#125;&quot;</span><br></pre></td></tr></table></figure>
 <p>最后修改<code>broker</code>配置</p>
 <p>https://blog.csdn.net/zhwyj1019/article/details/81082254</p>
@@ -338,7 +338,12 @@
 <h3 id="启动nameserver">启动NameServer</h3>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">## 启动namesrv</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">nohup</span> sh bin/mqnamesrv &amp;</span></span><br><span class="line"><span class="meta prompt_"> </span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">## 验证namesrv是否启动成功</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">tail</span> -f ~/logs/rocketmqlogs/namesrv.log</span></span><br><span class="line">The Name Server boot success...</span><br></pre></td></tr></table></figure>
 <h3 id="启动brokerproxy">启动Broker+Proxy</h3>
-<p><code>NameServer</code>成功启动后，我们启动<code>Broke</code>r和<code>Proxy，5.x</code> 版本下我们建议使用 <code>Local</code> 模式部署，即 <code>Broker</code> 和 <code>Proxy</code> 同进程部署。<code>5.x</code> 版本也支持 <code>Broker</code> 和 <code>Proxy</code> 分离部署以实现更灵活的集群能力。详情参考<a target="_blank" rel="noopener" href="https://rocketmq.apache.org/zh/docs/deploymentOperations/15deploy">部署教程</a>。</p>
+<p><code>NameServer</code>成功启动后，我们启动<code>Broke</code>r和<code>Proxy，5.x</code>
+版本下我们建议使用 <code>Local</code> 模式部署，即 <code>Broker</code>
+和 <code>Proxy</code> 同进程部署。<code>5.x</code> 版本也支持
+<code>Broker</code> 和 <code>Proxy</code>
+分离部署以实现更灵活的集群能力。详情参考<a
+target="_blank" rel="noopener" href="https://rocketmq.apache.org/zh/docs/deploymentOperations/15deploy">部署教程</a>。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">## 先启动broker</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">nohup</span> sh bin/mqbroker -n localhost:9876 --enable-proxy &amp;</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">## 验证broker是否启动成功, 比如, broker的ip是192.168.1.2 然后名字是broker-a</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">tail</span> -f ~/logs/rocketmqlogs/broker_default.log</span> </span><br><span class="line">The broker[broker-a,192.169.1.2:10911] boot success...</span><br></pre></td></tr></table></figure>
 <h2 id="rocketmq-dashboard">RocketMQ-Dashboard</h2>
 <p>https://github.com/apache/rocketmq-dashboard</p>
@@ -437,7 +442,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

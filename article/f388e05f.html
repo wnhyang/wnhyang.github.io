@@ -22,15 +22,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="参考 谷粒商城p158：https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1np4y1C7Yf?p&#x3D;158 redis官网：http:&#x2F;&#x2F;www.redis.cn&#x2F;commands&#x2F;set.html 提要 分布式场景下将原有的本地锁换为，基于redis的setnx命令的分布式锁  getCatalogJsonFromDb：从数据库查数据 getCatalogJsonF">
+    <meta name="description" content="参考 谷粒商城p158：https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1np4y1C7Yf?p&#x3D;158 redis官网：http:&#x2F;&#x2F;www.redis.cn&#x2F;commands&#x2F;set.html 提要 分布式场景下将原有的本地锁换为，基于redis的setnx命令的分布式锁  getCatalogJsonFromDb：从数据库查数据 getCatalogJsonFromDbWi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="redis做分布式锁的问题">
 <meta property="og:url" content="https://wnhyang.github.io/article/f388e05f.html">
 <meta property="og:site_name" content="无奈和杨（wnhyang）">
-<meta property="og:description" content="参考 谷粒商城p158：https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1np4y1C7Yf?p&#x3D;158 redis官网：http:&#x2F;&#x2F;www.redis.cn&#x2F;commands&#x2F;set.html 提要 分布式场景下将原有的本地锁换为，基于redis的setnx命令的分布式锁  getCatalogJsonFromDb：从数据库查数据 getCatalogJsonF">
+<meta property="og:description" content="参考 谷粒商城p158：https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1np4y1C7Yf?p&#x3D;158 redis官网：http:&#x2F;&#x2F;www.redis.cn&#x2F;commands&#x2F;set.html 提要 分布式场景下将原有的本地锁换为，基于redis的setnx命令的分布式锁  getCatalogJsonFromDb：从数据库查数据 getCatalogJsonFromDbWi">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-11-23T13:10:10.000Z">
-<meta property="article:modified_time" content="2022-12-04T13:42:58.198Z">
+<meta property="article:modified_time" content="2022-12-04T13:43:00.000Z">
 <meta property="article:author" content="无奈和杨（wnhyang）">
 <meta property="article:tag" content="Redis">
 <meta name="twitter:card" content="summary">
@@ -253,7 +253,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-12-04 21:42:58" itemprop="dateModified" datetime="2022-12-04T21:42:58+08:00">2022-12-04</time>
+      <time title="修改时间：2022-12-04 21:43:00" itemprop="dateModified" datetime="2022-12-04T21:43:00+08:00">2022-12-04</time>
     </span>
 
   
@@ -337,7 +337,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Map&lt;String, List&lt;Catalog2Vo&gt;&gt; <span class="title function_">getCatalogJsonFromDbWithRedisLock</span><span class="params">()</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 1、占分布式锁，setnx</span></span><br><span class="line">    <span class="comment">// 同时设置时间</span></span><br><span class="line">	<span class="type">String</span> <span class="variable">uuid</span> <span class="operator">=</span> UUID.randomUUID().toString();</span><br><span class="line">    <span class="type">Boolean</span> <span class="variable">lock</span> <span class="operator">=</span> redisTemplate.opsForValue().setIfAbsent(<span class="string">&quot;lock&quot;</span>, uuid, <span class="number">30</span>, TimeUnit.SECONDS);</span><br><span class="line">    <span class="keyword">if</span>(lock)&#123;</span><br><span class="line">        <span class="comment">// 加锁成功。。。执行任务</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 2、设置过期时间</span></span><br><span class="line">        <span class="comment">// redisTemplate.expire(&quot;lock&quot;, 30, TimeUnit.SECONDS);</span></span><br><span class="line">        </span><br><span class="line">        Map&lt;String, List&lt;Catalog2Vo&gt;&gt; catalogJsonFromDb = getCatalogJsonFromDb();</span><br><span class="line">        <span class="comment">// redisTemplate.delete(&quot;lock&quot;);</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">lockValue</span> <span class="operator">=</span> redisTemplate.opsForValue().get(<span class="string">&quot;lock&quot;</span>);</span><br><span class="line">        <span class="comment">// 验证是否是自己的锁</span></span><br><span class="line">        <span class="keyword">if</span>(uuid.equals(lockValue))&#123;</span><br><span class="line">            <span class="comment">// 是，删锁</span></span><br><span class="line">            redisTemplate.delete(<span class="string">&quot;lock&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> catalogJsonFromDb;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">// 加锁失败。。。重试</span></span><br><span class="line">        <span class="comment">// 休眠100ms重试</span></span><br><span class="line">        <span class="comment">// 自旋方式</span></span><br><span class="line">        <span class="keyword">return</span> getCatalogJsonFromDbWithRedisLock();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="问题-3">问题</h3>
 <ul>
-<li>注意在<code>redis</code>，<code>get</code>锁的值时，即<code>String lockValue = redisTemplate.opsForValue().get(&quot;lock&quot;);</code>，这时可能<code>redis</code>还存在我们的锁，这时返回的正是我们<code>uuid</code>，但是因为网络传输的延时，我们要执行<code>delete</code>操作时，我们的锁已经因为过期策略删除了，所以虽然这是的锁不是我们的，但程序代码仍然会执行删除锁（并非我们的），本质仍是非原子操作问题</li>
+<li>注意在<code>redis</code>，<code>get</code>锁的值时，即<code>String lockValue = redisTemplate.opsForValue().get("lock");</code>，这时可能<code>redis</code>还存在我们的锁，这时返回的正是我们<code>uuid</code>，但是因为网络传输的延时，我们要执行<code>delete</code>操作时，我们的锁已经因为过期策略删除了，所以虽然这是的锁不是我们的，但程序代码仍然会执行删除锁（并非我们的），本质仍是非原子操作问题</li>
 </ul>
 <h3 id="解决-3">解决</h3>
 <ul>
@@ -433,7 +433,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

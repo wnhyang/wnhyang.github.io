@@ -22,18 +22,22 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="简介 毕设用的RuoYi-Vue，其中还学到不少东西，这次分享一下关于ruoyi的代码生成的使用 官方文档链接如下后台手册 | RuoYi">
+    <meta name="description" content="简介 毕设用的RuoYi-Vue，其中还学到不少东西，这次分享一下关于ruoyi的代码生成的使用 官方文档链接如下后台手册 | RuoYi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ruoyi代码生成">
 <meta property="og:url" content="https://wnhyang.github.io/article/cc4237ac.html">
 <meta property="og:site_name" content="无奈和杨（wnhyang）">
-<meta property="og:description" content="简介 毕设用的RuoYi-Vue，其中还学到不少东西，这次分享一下关于ruoyi的代码生成的使用 官方文档链接如下后台手册 | RuoYi">
+<meta property="og:description" content="简介 毕设用的RuoYi-Vue，其中还学到不少东西，这次分享一下关于ruoyi的代码生成的使用 官方文档链接如下后台手册 | RuoYi">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/image.64s4nbm408k0.webp">
+<meta property="og:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/image.2shadp2wg3o0.webp">
+<meta property="og:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/image.7k15bb90r000.webp">
 <meta property="article:published_time" content="2022-03-12T11:53:55.000Z">
-<meta property="article:modified_time" content="2022-08-15T03:07:20.117Z">
+<meta property="article:modified_time" content="2022-08-15T03:07:22.000Z">
 <meta property="article:author" content="无奈和杨（wnhyang）">
 <meta property="article:tag" content="ruoyi">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/image.64s4nbm408k0.webp">
 
 
 <link rel="canonical" href="https://wnhyang.github.io/article/cc4237ac.html">
@@ -253,7 +257,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-08-15 11:07:20" itemprop="dateModified" datetime="2022-08-15T11:07:20+08:00">2022-08-15</time>
+      <time title="修改时间：2022-08-15 11:07:22" itemprop="dateModified" datetime="2022-08-15T11:07:22+08:00">2022-08-15</time>
     </span>
 
   
@@ -289,20 +293,27 @@
     
     <div class="post-body" itemprop="articleBody">
         <h2 id="简介">简介</h2>
-<p>毕设用的<a target="_blank" rel="noopener" href="https://gitee.com/y_project/RuoYi-Vue">RuoYi-Vue</a>，其中还学到不少东西，这次分享一下关于<code>ruoyi</code>的代码生成的使用</p>
-<p>官方文档链接如下<a target="_blank" rel="noopener" href="http://doc.ruoyi.vip/ruoyi-vue/document/htsc.html#代码生成">后台手册 | RuoYi</a></p>
+<p>毕设用的<a
+target="_blank" rel="noopener" href="https://gitee.com/y_project/RuoYi-Vue">RuoYi-Vue</a>，其中还学到不少东西，这次分享一下关于<code>ruoyi</code>的代码生成的使用</p>
+<p>官方文档链接如下<a
+target="_blank" rel="noopener" href="http://doc.ruoyi.vip/ruoyi-vue/document/htsc.html#代码生成">后台手册
+| RuoYi</a></p>
 <span id="more"></span>
 <h2 id="使用">使用</h2>
 <p>1、设计数据表结构</p>
 <p>代码生成自然少不了数据库表的设计，完成了数据库表设计，就可以在系统中利用<code>ruoyi</code>生成代码了</p>
 <figure>
-<embed src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/image.64s4nbm408k0.webp" /><figcaption>image</figcaption>
+<img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/image.64s4nbm408k0.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
 </figure>
 <p>这里是会显示连接的数据库对应的表</p>
 <p>导入后就可以预览、编辑、删除，最后生成代码</p>
 <p>2、点进编辑</p>
 <figure>
-<embed src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/image.2shadp2wg3o0.webp" /><figcaption>image</figcaption>
+<img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/image.2shadp2wg3o0.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
 </figure>
 <p>在这就可以编辑基本信息、字段信息、生成信息</p>
 <p>基本信息，主要包括表名、描述、实体类名、作者等</p>
@@ -318,7 +329,9 @@
 <p>在生成代码之前可以先预览一下</p>
 <p>生成的代码会以压缩包存在</p>
 <figure>
-<embed src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/image.7k15bb90r000.webp" /><figcaption>image</figcaption>
+<img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/image.7k15bb90r000.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
 </figure>
 <p>其中主要有三类文件</p>
 <ul>
@@ -412,7 +425,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

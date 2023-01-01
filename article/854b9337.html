@@ -22,20 +22,24 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="简介 在使用ruoyi中，遇到一个问题，没有一个较为完美的解决方案，最终只能妥协一下完成，这里记录一下。">
+    <meta name="description" content="简介 在使用ruoyi中，遇到一个问题，没有一个较为完美的解决方案，最终只能妥协一下完成，这里记录一下。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Element.Table处理属性列表问题">
 <meta property="og:url" content="https://wnhyang.github.io/article/854b9337.html">
 <meta property="og:site_name" content="无奈和杨（wnhyang）">
-<meta property="og:description" content="简介 在使用ruoyi中，遇到一个问题，没有一个较为完美的解决方案，最终只能妥协一下完成，这里记录一下。">
+<meta property="og:description" content="简介 在使用ruoyi中，遇到一个问题，没有一个较为完美的解决方案，最终只能妥协一下完成，这里记录一下。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/e0807962ee06441d9c57f88a86ae4d9.43bkzf98m380.webp">
+<meta property="og:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/image.1xvh5323b08w.webp">
+<meta property="og:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/image.3ploqxdepee0.webp">
 <meta property="article:published_time" content="2022-03-24T09:45:32.000Z">
-<meta property="article:modified_time" content="2022-12-04T13:33:37.250Z">
+<meta property="article:modified_time" content="2022-12-04T13:33:38.000Z">
 <meta property="article:author" content="无奈和杨（wnhyang）">
 <meta property="article:tag" content="ruoyi">
 <meta property="article:tag" content="Vue">
 <meta property="article:tag" content="Element">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/e0807962ee06441d9c57f88a86ae4d9.43bkzf98m380.webp">
 
 
 <link rel="canonical" href="https://wnhyang.github.io/article/854b9337.html">
@@ -255,7 +259,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-12-04 21:33:37" itemprop="dateModified" datetime="2022-12-04T21:33:37+08:00">2022-12-04</time>
+      <time title="修改时间：2022-12-04 21:33:38" itemprop="dateModified" datetime="2022-12-04T21:33:38+08:00">2022-12-04</time>
     </span>
 
   
@@ -296,12 +300,17 @@
 <h2 id="问题">问题</h2>
 <p>后端返回了这样的数据，如下图</p>
 <figure>
-<embed src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/e0807962ee06441d9c57f88a86ae4d9.43bkzf98m380.webp" /><figcaption>e0807962ee06441d9c57f88a86ae4d9</figcaption>
+<img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/e0807962ee06441d9c57f88a86ae4d9.43bkzf98m380.webp"
+alt="e0807962ee06441d9c57f88a86ae4d9" />
+<figcaption
+aria-hidden="true">e0807962ee06441d9c57f88a86ae4d9</figcaption>
 </figure>
 <p>这就是我说的属性列表，就是说返回的每一行数据都是包含一个是列表的属性。</p>
 <p>如上，就是<code>rows</code>总数据中的一行中的<code>taskList</code>，我希望数据能像下面这样展示出来。</p>
 <figure>
-<embed src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/image.1xvh5323b08w.webp" /><figcaption>image</figcaption>
+<img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/image.1xvh5323b08w.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
 </figure>
 <p>找遍了<code>Element</code>实在是找不到一个满意的方案。</p>
 <p>https://element.eleme.cn/#/zh-CN/component/table#he-bing-xing-huo-lie</p>
@@ -330,7 +339,9 @@
 <p>就是通过这个<code>Element.Table</code>中这个<code>scope</code>来确定范围，再通过<code>scope.row</code>取得需要的数据即可</p>
 <p>可以看一下下面的效果图</p>
 <figure>
-<embed src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/image.3ploqxdepee0.webp" /><figcaption>image</figcaption>
+<img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/image.3ploqxdepee0.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
 </figure>
 <p>其实还是有点不满意的地方的，就是每个属性列都要展示一份独立的<code>Table</code>表头</p>
 <p>我目前也没找到好的方法把他提取出来，🤔🤔🤔</p>
@@ -426,7 +437,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

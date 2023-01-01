@@ -22,19 +22,21 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="简介 还是关于毕设的，现在有个导出复杂Excel的需求，与前面的文章关系很大，感兴趣的看一下哈🥰🥰🥰 https:&#x2F;&#x2F;wnhyang.github.io&#x2F;article&#x2F;854b9337.html">
+    <meta name="description" content="简介 还是关于毕设的，现在有个导出复杂Excel的需求，与前面的文章关系很大，感兴趣的看一下哈🥰🥰🥰 https:&#x2F;&#x2F;wnhyang.github.io&#x2F;article&#x2F;854b9337.html">
 <meta property="og:type" content="article">
 <meta property="og:title" content="EasyPoi导出复杂Excel">
 <meta property="og:url" content="https://wnhyang.github.io/article/755ff4c3.html">
 <meta property="og:site_name" content="无奈和杨（wnhyang）">
-<meta property="og:description" content="简介 还是关于毕设的，现在有个导出复杂Excel的需求，与前面的文章关系很大，感兴趣的看一下哈🥰🥰🥰 https:&#x2F;&#x2F;wnhyang.github.io&#x2F;article&#x2F;854b9337.html">
+<meta property="og:description" content="简介 还是关于毕设的，现在有个导出复杂Excel的需求，与前面的文章关系很大，感兴趣的看一下哈🥰🥰🥰 https:&#x2F;&#x2F;wnhyang.github.io&#x2F;article&#x2F;854b9337.html">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/image.1xvh5323b08w.webp">
 <meta property="article:published_time" content="2022-03-24T09:46:15.000Z">
-<meta property="article:modified_time" content="2022-12-30T13:39:17.456Z">
+<meta property="article:modified_time" content="2022-12-30T13:39:18.000Z">
 <meta property="article:author" content="无奈和杨（wnhyang）">
 <meta property="article:tag" content="Spring Boot">
 <meta property="article:tag" content="ruoyi">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/image.1xvh5323b08w.webp">
 
 
 <link rel="canonical" href="https://wnhyang.github.io/article/755ff4c3.html">
@@ -254,7 +256,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-12-30 21:39:17" itemprop="dateModified" datetime="2022-12-30T21:39:17+08:00">2022-12-30</time>
+      <time title="修改时间：2022-12-30 21:39:18" itemprop="dateModified" datetime="2022-12-30T21:39:18+08:00">2022-12-30</time>
     </span>
 
   
@@ -298,7 +300,9 @@
 <p>随之而来，便是导出<code>Excel</code>的问题了🥱🥱🥱</p>
 <p>看了前面都知道了，我需要能导出这样的<code>Excel</code></p>
 <figure>
-<embed src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/image.1xvh5323b08w.webp" /><figcaption>image</figcaption>
+<img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/image.1xvh5323b08w.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
 </figure>
 <p>然而<code>ruoyi</code>最原生的基于<code>org.apache.poi</code>实现的一种简单的导出，只支持简单的数据，就是一行一行非常规范的那种，不支持复杂类型的<code>Excel</code>导出</p>
 <h2 id="解决">解决</h2>
@@ -309,14 +313,15 @@
 <li>https://blog.51cto.com/u_9771070/2722382</li>
 <li>https://cloud.tencent.com/developer/article/1472607</li>
 </ul>
-<h3 id="excel"><span class="citation" data-cites="Excel">@Excel</span></h3>
+<h3 id="excel"><span class="citation"
+data-cites="Excel">@Excel</span></h3>
 <p>这个是必须使用的注解,如果需求简单只使用这一个注解也是可以的,涵盖了常用的Excel需求,需要大家熟悉这个功能,主要分为基础,图片处理,时间处理,合并处理几块,name_id是上面讲的id用法,这里就不累言了</p>
-<table style="width:100%;">
+<table>
 <colgroup>
 <col style="width: 14%" />
 <col style="width: 8%" />
 <col style="width: 16%" />
-<col style="width: 59%" />
+<col style="width: 61%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -342,7 +347,7 @@
 <tr class="odd">
 <td>orderNum</td>
 <td>String</td>
-<td>&quot;0&quot;</td>
+<td>"0"</td>
 <td>列的排序,支持name_id</td>
 </tr>
 <tr class="even">
@@ -366,31 +371,32 @@
 <tr class="odd">
 <td>exportFormat</td>
 <td>String</td>
-<td>&quot;&quot;</td>
+<td>""</td>
 <td>导出的时间格式,以这个是否为空来判断是否需要格式化日期</td>
 </tr>
 <tr class="even">
 <td>importFormat</td>
 <td>String</td>
-<td>&quot;&quot;</td>
+<td>""</td>
 <td>导入的时间格式,以这个是否为空来判断是否需要格式化日期</td>
 </tr>
 <tr class="odd">
 <td>format</td>
 <td>String</td>
-<td>&quot;&quot;</td>
+<td>""</td>
 <td>时间格式,相当于同时设置了exportFormat 和 importFormat</td>
 </tr>
 <tr class="even">
 <td>databaseFormat</td>
 <td>String</td>
-<td>&quot;yyyyMMddHHmmss&quot;</td>
-<td>导出时间设置,如果字段是Date类型则不需要设置 数据库如果是string 类型,这个需要设置这个数据库格式,用以转换时间格式输出</td>
+<td>"yyyyMMddHHmmss"</td>
+<td>导出时间设置,如果字段是Date类型则不需要设置 数据库如果是string
+类型,这个需要设置这个数据库格式,用以转换时间格式输出</td>
 </tr>
 <tr class="odd">
 <td>suffix</td>
 <td>String</td>
-<td>&quot;&quot;</td>
+<td>""</td>
 <td>文字后缀,如% 90 变成90%</td>
 </tr>
 <tr class="even">
@@ -407,7 +413,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Workload</span> <span class="keyword">extends</span> <span class="title class_">BaseEntity</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">long</span> <span class="variable">serialVersionUID</span> <span class="operator">=</span> <span class="number">1L</span>;</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line">        </span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 工作量id</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 类型</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Excel(name = &quot;类型&quot;, needMerge = true, dict = &quot;workload_type&quot;, width = 10)</span></span><br><span class="line">    <span class="keyword">private</span> String type;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 任务信息</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@ExcelCollection(name = &quot;任务&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> List&lt;Task&gt; taskList;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 工作量</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Excel(name = &quot;工作量&quot;, needMerge = true, width = 10)</span></span><br><span class="line">    <span class="keyword">private</span> BigDecimal workload;</span><br><span class="line">    </span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这里注意</p>
 <ul>
-<li><code>@ExcelCollection(name = &quot;任务&quot;)</code>就是用来标记列表属性的，记得标注了这个，那么对应的类也要加上必要的注解</li>
+<li><code>@ExcelCollection(name = "任务")</code>就是用来标记列表属性的，记得标注了这个，那么对应的类也要加上必要的注解</li>
 <li><code>needMerge = true</code>表示需要合并</li>
 </ul>
 <h3 id="列表属性标记">2、列表属性标记</h3>
@@ -418,7 +424,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 导出工作量列表</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Log(title = &quot;工作量&quot;, businessType = BusinessType.EXPORT)</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/export&quot;)</span></span><br><span class="line"><span class="keyword">public</span> AjaxResult <span class="title function_">export</span><span class="params">(Workload workload)</span> &#123;</span><br><span class="line">    List&lt;Workload&gt; list = workloadService.selectWorkloadList(workload);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ExcelExportUtil.exportExcel(<span class="string">&quot;教师工作量数据&quot;</span>, Workload.class, list);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="导出工具类">导出工具类</h4>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ExcelExportUtil</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Logger</span> <span class="variable">log</span> <span class="operator">=</span> LoggerFactory.getLogger(ExcelExportUtil.class);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">IExcelDictHandler</span> <span class="variable">EXCEL_DICT_HANDLER</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ExcelDictHandlerImpl</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">ExcelExportUtil</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> AjaxResult <span class="title function_">exportExcel</span><span class="params">(String sheetName, Class&lt;?&gt; pojoClass,</span></span><br><span class="line"><span class="params">                                         Collection&lt;?&gt; dataSet)</span> &#123;</span><br><span class="line">        <span class="type">OutputStream</span> <span class="variable">out</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="type">Workbook</span> <span class="variable">wb</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">filename</span> <span class="operator">=</span> ExcelUtil.encodingFilename(sheetName);</span><br><span class="line">            <span class="type">ExportParams</span> <span class="variable">exportParams</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ExportParams</span>(sheetName, sheetName);</span><br><span class="line">            exportParams.setDictHandler(EXCEL_DICT_HANDLER);</span><br><span class="line">            out = <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(ExcelUtil.getAbsoluteFile(filename));</span><br><span class="line">            wb = cn.afterturn.easypoi.excel.ExcelExportUtil.exportExcel(exportParams, pojoClass, dataSet);</span><br><span class="line">            wb.write(out);</span><br><span class="line">            <span class="keyword">return</span> AjaxResult.success(filename);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            log.error(<span class="string">&quot;导出Excel异常&#123;&#125;&quot;</span>, e.getMessage());</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">UtilException</span>(<span class="string">&quot;导出Excel失败，请联系网站管理员！&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            IOUtils.closeQuietly(wb);</span><br><span class="line">            IOUtils.closeQuietly(out);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>不知道我故意遗漏了<code>dict = &quot;workload_type&quot;</code>没说，有注意到没🐶🐶🐶</p>
+<p>不知道我故意遗漏了<code>dict = "workload_type"</code>没说，有注意到没🐶🐶🐶</p>
 <p>这是<code>EasyPoi</code>提供的一个关于字典转换的，简单说就是</p>
 <p>我们导入输入“小明”，会通过字典查询对应的值，生成对应类属性，（小明）-&gt;（0）</p>
 <p>导出也是同样，只要有对应的字典数据，都是可以完成的</p>
@@ -509,7 +515,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

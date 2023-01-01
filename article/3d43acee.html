@@ -22,15 +22,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="这几天看了《大话数据结构》第五章-串，重新了解了串这个数据结构，当然其中最重要的模式匹配算法KMP有了新的认识，或者说是终于理解了。 接下来结合我的理解和CSDN中大佬的详解，讲一讲KMP吧！ 朴素的模式匹配（BF算法、暴力算法） 简介 这是最早、最简单的模式匹配算法，就是简单的暴力算法，思路： * 主串S，模式串T * 从主串S第一位开始和模式串T第一位开始匹配，成功匹配返回匹配成功的">
+    <meta name="description" content="这几天看了《大话数据结构》第五章-串，重新了解了串这个数据结构，当然其中最重要的模式匹配算法KMP有了新的认识，或者说是终于理解了。 接下来结合我的理解和CSDN中大佬的详解，讲一讲KMP吧！ 朴素的模式匹配（BF算法、暴力算法） 简介 这是最早、最简单的模式匹配算法，就是简单的暴力算法，思路： * 主串S，模式串T * 从主串S第一位开始和模式串T第一位开始匹配，成功匹配返回匹配成功的第一位，匹">
 <meta property="og:type" content="article">
 <meta property="og:title" content="重读KMP算法">
 <meta property="og:url" content="https://wnhyang.github.io/article/3d43acee.html">
 <meta property="og:site_name" content="无奈和杨（wnhyang）">
-<meta property="og:description" content="这几天看了《大话数据结构》第五章-串，重新了解了串这个数据结构，当然其中最重要的模式匹配算法KMP有了新的认识，或者说是终于理解了。 接下来结合我的理解和CSDN中大佬的详解，讲一讲KMP吧！ 朴素的模式匹配（BF算法、暴力算法） 简介 这是最早、最简单的模式匹配算法，就是简单的暴力算法，思路： * 主串S，模式串T * 从主串S第一位开始和模式串T第一位开始匹配，成功匹配返回匹配成功的">
+<meta property="og:description" content="这几天看了《大话数据结构》第五章-串，重新了解了串这个数据结构，当然其中最重要的模式匹配算法KMP有了新的认识，或者说是终于理解了。 接下来结合我的理解和CSDN中大佬的详解，讲一讲KMP吧！ 朴素的模式匹配（BF算法、暴力算法） 简介 这是最早、最简单的模式匹配算法，就是简单的暴力算法，思路： * 主串S，模式串T * 从主串S第一位开始和模式串T第一位开始匹配，成功匹配返回匹配成功的第一位，匹">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-07-12T13:15:11.000Z">
-<meta property="article:modified_time" content="2022-08-20T03:19:42.462Z">
+<meta property="article:modified_time" content="2022-08-20T03:19:44.000Z">
 <meta property="article:author" content="无奈和杨（wnhyang）">
 <meta property="article:tag" content="数据结构&amp;算法">
 <meta name="twitter:card" content="summary">
@@ -253,7 +253,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-08-20 11:19:42" itemprop="dateModified" datetime="2022-08-20T11:19:42+08:00">2022-08-20</time>
+      <time title="修改时间：2022-08-20 11:19:44" itemprop="dateModified" datetime="2022-08-20T11:19:44+08:00">2022-08-20</time>
     </span>
 
   
@@ -289,28 +289,33 @@
     
     <div class="post-body" itemprop="articleBody">
         <p>这几天看了《大话数据结构》第五章-串，重新了解了串这个数据结构，当然其中最重要的模式匹配算法KMP有了新的认识，或者说是终于理解了。<br />
-接下来结合我的理解和<a target="_blank" rel="noopener" href="https://blog.csdn.net/v_JULY_v/article/details/7041827">CSDN中大佬</a>的详解，讲一讲KMP吧！</p>
-<h2 id="朴素的模式匹配bf算法暴力算法">朴素的模式匹配（BF算法、暴力算法）</h2>
+接下来结合我的理解和<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/v_JULY_v/article/details/7041827">CSDN中大佬</a>的详解，讲一讲KMP吧！</p>
+<h2
+id="朴素的模式匹配bf算法暴力算法">朴素的模式匹配（BF算法、暴力算法）</h2>
 <h2 id="简介">简介</h2>
 <p>这是最早、最简单的模式匹配算法，就是简单的暴力算法，思路：<br />
-* 主串S，模式串T * 从主串S第一位开始和模式串T第一位开始匹配，成功匹配返回匹配成功的第一位，匹配失败，主串S后移一位，模式串重新从头开始匹配</p>
+* 主串S，模式串T *
+从主串S第一位开始和模式串T第一位开始匹配，成功匹配返回匹配成功的第一位，匹配失败，主串S后移一位，模式串重新从头开始匹配</p>
 <span id="more"></span>
 <h2 id="代码">代码</h2>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//朴素的匹配,从pos位置开始匹配</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">Index</span><span class="params">(string S, string T, <span class="type">int</span> pos)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> i = pos;</span><br><span class="line">    <span class="type">int</span> j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; S.<span class="built_in">length</span>() &amp;&amp; j &lt; T.<span class="built_in">length</span>())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (S[i] == T[j])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//①如果当前字符匹配成功（即S[i] == T[j]），则i++，j++  </span></span><br><span class="line">            ++i;</span><br><span class="line">            ++j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//②如果失配（即S[i]! = T[j]），令i =（i - j） + 1，j = 0  </span></span><br><span class="line">            i = i - j + <span class="number">1</span>;</span><br><span class="line">            j = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">if</span> (j == T.<span class="built_in">length</span>())</span><br><span class="line">        <span class="keyword">return</span> i - j;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="例">例</h2>
-<p>S=&quot;goodgoogle&quot;,T=&quot;google&quot;<br />
+<p>S="goodgoogle",T="google"<br />
 &gt;1. <del>goo</del>dgoogle<br />
 <del>goo</del>gle &gt;2. goodgoogle<br />
   google &gt;3. goodgoogle<br />
     google &gt;4. goodgoogle<br />
       google &gt;5. good<del>google</del><br />
         <del>google</del></p>
-<p>朴素的模式匹配就是这个过程，可以看出这种算法的时间复杂度很大，为了优化模式匹配就有了KMP算法 ## KMP算法</p>
+<p>朴素的模式匹配就是这个过程，可以看出这种算法的时间复杂度很大，为了优化模式匹配就有了KMP算法
+## KMP算法</p>
 <h2 id="简介-1">简介</h2>
-<p>KMP是由三位前辈研究出来的避免重复遍历的高效率模式匹配算法，它们分别是D.E.Knuth、J.H.Morris、V.R.Pratt。知道了吧KMP是来自这三位前辈的名字，我们在称之为克努特-莫里斯-普拉特算法。 ## 原理</p>
+<p>KMP是由三位前辈研究出来的避免重复遍历的高效率模式匹配算法，它们分别是D.E.Knuth、J.H.Morris、V.R.Pratt。知道了吧KMP是来自这三位前辈的名字，我们在称之为克努特-莫里斯-普拉特算法。
+## 原理</p>
 <p>通俗的讲，KMP算法利用已匹配的现有信息，省去不必要的匹配过程，进而优化算法。<br />
 &gt;先上一个例子解释一下<br />
-S=&quot;abcababcax&quot;,T=&quot;abcabx&quot;<br />
+S="abcababcax",T="abcabx"<br />
 &gt;1. <del>abcab</del>abcax<br />
 <del>abcab</del>x<br />
 &gt;2. abcababcax<br />
@@ -323,14 +328,15 @@ S=&quot;abcababcax&quot;,T=&quot;abcabx&quot;<br />
       <del>ab</del>cabx<br />
 &gt;6. abc<del>ab</del>abcax<br />
       <del>ab</del>cabx</p>
-<p>1前5位“abcab”匹配成功，此时S的第i位&quot;a&quot;与T的第j位&quot;x&quot;匹配失败，i=5，j=5，按照朴素的模式匹配算法，接下来要让T串后移一位继续与S匹配，i变为1，j变成0，就是上面的过程，其实从1获取的匹配信息可以知道S的前三位&quot;abc&quot;已与T的相应位匹配成功，且&quot;bc&quot;并不等于&quot;a&quot;，所以23步不可能匹配成功，i在第一步时已经等于5了，但经过2345过程5-&gt;1-&gt;2-&gt;3-&gt;4-&gt;5最后S的第i位&quot;a&quot;与T的第j位&quot;c&quot;匹配失败,i=5，j=2。可以发现之前的2345可以去掉，i在这变化中又回到5，这个过程变化的好像只是j的值，KMP要做的就是省去不必要的匹配过程，直接跳到合适的位置。 ## 代码</p>
+<p>1前5位“abcab”匹配成功，此时S的第i位"a"与T的第j位"x"匹配失败，i=5，j=5，按照朴素的模式匹配算法，接下来要让T串后移一位继续与S匹配，i变为1，j变成0，就是上面的过程，其实从1获取的匹配信息可以知道S的前三位"abc"已与T的相应位匹配成功，且"bc"并不等于"a"，所以23步不可能匹配成功，i在第一步时已经等于5了，但经过2345过程5-&gt;1-&gt;2-&gt;3-&gt;4-&gt;5最后S的第i位"a"与T的第j位"c"匹配失败,i=5，j=2。可以发现之前的2345可以去掉，i在这变化中又回到5，这个过程变化的好像只是j的值，KMP要做的就是省去不必要的匹配过程，直接跳到合适的位置。
+## 代码</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//KMP</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">KmpSearch</span><span class="params">(string S, string T, <span class="type">int</span> pos)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> i = pos;</span><br><span class="line">    <span class="type">int</span> j = <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> Sl = S.<span class="built_in">length</span>();</span><br><span class="line">    <span class="type">int</span> Tl = T.<span class="built_in">length</span>();</span><br><span class="line">    <span class="keyword">while</span> (i &lt; Sl &amp;&amp; j &lt; Tl)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//①如果j = -1，或者当前字符匹配成功（即S[i] == T[j]），都令i++，j++</span></span><br><span class="line">        <span class="keyword">if</span> (j == <span class="number">-1</span> || S[i] == T[j])</span><br><span class="line">        &#123;</span><br><span class="line">            i++;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//②如果j != -1，且当前字符匹配失败（即S[i] != T[j]），则令 i 不变，j = next[j]    </span></span><br><span class="line">            <span class="comment">//next[j]即为j所对应的next值      </span></span><br><span class="line">            j = next[j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (j == Tl)</span><br><span class="line">        <span class="keyword">return</span> i - j;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="next数组">next数组</h2>
 <p>前面提到合适的位置，什么叫做合适的位置呢，就是主串S与模式串T失配时，i不变，只移动模式串T到合适的位置再与S匹配，这个合适的位置就存在next数组中。<br />
-上例中第一次在i=5，j=5失配，省去不必要的过程后i=5，j=2，也就是i不变，j从5变成2，这个过程中省去的是T前两位&quot;ab&quot;与S的45位&quot;ab&quot;匹配的过程，省去的原因是在第一次已经匹配过了，S的&quot;abcab&quot;与T的&quot;abcab&quot;匹配，可以发现，T的前缀和后缀都有&quot;ab&quot;，则下次匹配可以从T的第2位&quot;c&quot;开始与S上次失配的第5位开始重新匹配。</p>
+上例中第一次在i=5，j=5失配，省去不必要的过程后i=5，j=2，也就是i不变，j从5变成2，这个过程中省去的是T前两位"ab"与S的45位"ab"匹配的过程，省去的原因是在第一次已经匹配过了，S的"abcab"与T的"abcab"匹配，可以发现，T的前缀和后缀都有"ab"，则下次匹配可以从T的第2位"c"开始与S上次失配的第5位开始重新匹配。</p>
 <h2 id="最大相同前后缀">最大相同前后缀</h2>
 <p>要计算next数组一定要知道最大相同前后缀，从上面的解释可以知道，j的变化与模式串T有关，在失配时j=next[j]，所以要知道T最大前后缀与next数组的关系。</p>
-<h2 id="对于模式串tabcabx">对于模式串T=&quot;abcabx&quot;</h2>
+<h2 id="对于模式串tabcabx">对于模式串T="abcabx"</h2>
 <table>
 <thead>
 <tr class="header">
@@ -364,7 +370,9 @@ S=&quot;abcababcax&quot;,T=&quot;abcabx&quot;<br />
 </tr>
 </tbody>
 </table>
-<p>串为&quot;a&quot;，&quot;ab&quot;，&quot;abc&quot;，时最大相同前后缀为0，&quot;abca&quot;为1及前后的&quot;a&quot;，&quot;abcab&quot;为2及前后的&quot;ab&quot;。把next 数组跟求得的最大相同前后缀对比后，不难发现，next 数组相当于“最大相同前后缀” 整体向右移动一位，然后初始值赋为-1。</p>
+<p>串为"a"，"ab"，"abc"，时最大相同前后缀为0，"abca"为1及前后的"a"，"abcab"为2及前后的"ab"。把next
+数组跟求得的最大相同前后缀对比后，不难发现，next
+数组相当于“最大相同前后缀” 整体向右移动一位，然后初始值赋为-1。</p>
 <h2 id="代码-1">代码</h2>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//next数组</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">GetNext</span><span class="params">(string T, <span class="type">int</span> next[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    next[<span class="number">0</span>] = <span class="number">-1</span>;</span><br><span class="line">    <span class="type">int</span> k = <span class="number">-1</span>;</span><br><span class="line">    <span class="type">int</span> j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (j &lt;T.<span class="built_in">length</span>() - <span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//T[k]表示前缀，T[j]表示后缀</span></span><br><span class="line">        <span class="keyword">if</span> (k == <span class="number">-1</span> || T[j] == T[k])</span><br><span class="line">        &#123;</span><br><span class="line">            ++k;</span><br><span class="line">            ++j;</span><br><span class="line">            next[j] = k;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            k = next[k];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>代码有点难理解，我简单解释一下，这里涉及了已知next[0,...,j],求next[j+1]的问题。<br />
@@ -372,23 +380,46 @@ S=&quot;abcababcax&quot;,T=&quot;abcabx&quot;<br />
 <ul>
 <li>若T[k] == T[j]，则next[j + 1 ] = next [j] + 1 = k + 1；<br />
 </li>
-<li>若T[k ] ≠ T[j]，如果此时T[ next[k] ] == T[j ]，则next[ j + 1 ] =  next[k] + 1，否则继续递归前缀索引k = next[k]，而后重复此过程。 相当于在字符T[j+1]之前不存在长度为k+1的前缀&quot;T0 T1, …, Tk-1 Tk&quot;跟后缀“Tj-k Tj-k+1, …, Tj-1 Tj&quot;相等，那么是否可能存在另一个值t+1 &lt; k+1，使得长度更小的前缀 “T0 T1, …, Tt-1 Tt” 等于长度更小的后缀 “Tj-t Tj-t+1, …, Tj-1 Tj” 呢？如果存在，那么这个t+1 便是next[ j+1]的值，此相当于利用已经求得的next 数组（next [0, ..., k, ..., j]）进行T串前缀跟T串后缀的匹配。</li>
+<li>若T[k ] ≠ T[j]，如果此时T[ next[k] ] == T[j ]，则next[ j + 1 ] =
+ next[k] + 1，否则继续递归前缀索引k =
+next[k]，而后重复此过程。 相当于在字符T[j+1]之前不存在长度为k+1的前缀"T0
+T1, …, Tk-1 Tk"跟后缀“Tj-k Tj-k+1, …, Tj-1
+Tj"相等，那么是否可能存在另一个值t+1 &lt; k+1，使得长度更小的前缀 “T0
+T1, …, Tt-1 Tt” 等于长度更小的后缀 “Tj-t Tj-t+1, …, Tj-1 Tj”
+呢？如果存在，那么这个t+1 便是next[ j+1]的值，此相当于利用已经求得的next
+数组（next [0, ..., k, ..., j]）进行T串前缀跟T串后缀的匹配。</li>
 <li>原文链接：https://blog.csdn.net/v_JULY_v/article/details/7041827</li>
 </ul>
 <h2 id="next数组的优化">next数组的优化</h2>
 <h2 id="问题的出现">问题的出现</h2>
 <p>后来有人发现，KMP算法还是有缺陷的。<br />
-如果用之前的next 数组方法求模式串“abab”的next 数组，可得其next 数组为-1 0 0 1（0 0 1 2整体右移一位，初值赋为-1），当它跟下图中的文本串去匹配的时候，发现b跟c失配，于是模式串j = next[j] =1。 &gt; <del>aba</del>cabababc<br />
+如果用之前的next 数组方法求模式串“abab”的next 数组，可得其next 数组为-1
+0 0 1（0 0 1
+2整体右移一位，初值赋为-1），当它跟下图中的文本串去匹配的时候，发现b跟c失配，于是模式串j
+= next[j] =1。 &gt; <del>aba</del>cabababc<br />
 <del>aba</del>b</p>
-<p>右移2位后，b又跟c失配。事实上，因为在上一步的匹配中，已经得知p[3] = b，与s[3] = c失配，而右移两位之后，让p[ next[3] ] = p[1] = b 再跟s[3]匹配时，必然失配。<br />
+<p>右移2位后，b又跟c失配。事实上，因为在上一步的匹配中，已经得知p[3] =
+b，与s[3] = c失配，而右移两位之后，让p[ next[3] ] = p[1] = b
+再跟s[3]匹配时，必然失配。<br />
 &gt; ab<del>a</del>cabababc     ab<del>a</del>b</p>
-<p>问题出在不该出现T[j] = T[ next[j] ]。为什么呢？理由是：当T[j] != S[i] 时，下次匹配必然是T[ next [j]] 跟S[i]匹配，如果T[j] = T[ next[j] ]，必然导致后一步匹配失败（因为T[j]已经跟S[i]失配，然后你还用跟T[j]等同的值T[next[j]]去跟S[i]匹配，很显然，必然失配），所以不能允许T[j] = T[ next[j ]]。如果出现了T[j] = T[ next[j] ]咋办呢？如果出现了，则需要再次递归，即令next[j] = next[ next[j] ]。<br />
+<p>问题出在不该出现T[j] = T[ next[j] ]。为什么呢？理由是：当T[j] != S[i]
+时，下次匹配必然是T[ next [j]] 跟S[i]匹配，如果T[j] = T[ next[j]
+]，必然导致后一步匹配失败（因为T[j]已经跟S[i]失配，然后你还用跟T[j]等同的值T[next[j]]去跟S[i]匹配，很显然，必然失配），所以不能允许T[j]
+= T[ next[j ]]。如果出现了T[j] = T[ next[j]
+]咋办呢？如果出现了，则需要再次递归，即令next[j] = next[ next[j]
+]。<br />
 原文链接：https://blog.csdn.net/v_JULY_v/article/details/7041827</p>
 <h2 id="代码-2">代码</h2>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//优化过后的next 数组求法</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">GetNextval</span><span class="params">(string T, <span class="type">int</span> next[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    next[<span class="number">0</span>] = <span class="number">-1</span>;</span><br><span class="line">    <span class="type">int</span> k = <span class="number">-1</span>;</span><br><span class="line">    <span class="type">int</span> j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (j &lt; T.<span class="built_in">length</span>()- <span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//T[k]表示前缀，T[j]表示后缀  </span></span><br><span class="line">        <span class="keyword">if</span> (k == <span class="number">-1</span> || T[j] == T[k])</span><br><span class="line">        &#123;</span><br><span class="line">            ++j;</span><br><span class="line">            ++k;</span><br><span class="line">            <span class="comment">//较之前next数组求法，改动在下面4行</span></span><br><span class="line">            <span class="keyword">if</span> (T[j] != T[k])</span><br><span class="line">                next[j] = k;   <span class="comment">//之前只有这一行</span></span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="comment">//因为不能出现T[j] = T[ next[j ]]，所以当出现时需要继续递归，k = next[k] = next[next[k]]</span></span><br><span class="line">                next[j] = next[k];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            k = next[k];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="kmp算法时间复杂度分析">KMP算法时间复杂度分析</h2>
-<p>朴素的模式匹配算法时间复杂度分析如下：（n为主串长度 ，m为模式串长度）</p>
+<p>朴素的模式匹配算法时间复杂度分析如下：（n为主串长度
+，m为模式串长度）</p>
 <table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th>情况</th>
@@ -496,7 +527,7 @@ S=&quot;abcababcax&quot;,T=&quot;abcabx&quot;<br />
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

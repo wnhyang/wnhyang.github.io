@@ -22,15 +22,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="参考 B站：https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV15a411A7kP 官网：https:&#x2F;&#x2F;spring.io&#x2F;projects&#x2F;spring-security 简介 Spring 是非常流行和成功的 Java 应用开发框架，Spring Security 正是 Spring 家族中的 成员。Spring Security 基于 Spring 框架，提供了一套">
+    <meta name="description" content="参考 B站：https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV15a411A7kP 官网：https:&#x2F;&#x2F;spring.io&#x2F;projects&#x2F;spring-security 简介 Spring 是非常流行和成功的 Java 应用开发框架，Spring Security 正是 Spring 家族中的 成员。Spring Security 基于 Spring 框架，提供了一套 Web">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringSecurity学习">
 <meta property="og:url" content="https://wnhyang.github.io/article/330297af.html">
 <meta property="og:site_name" content="无奈和杨（wnhyang）">
-<meta property="og:description" content="参考 B站：https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV15a411A7kP 官网：https:&#x2F;&#x2F;spring.io&#x2F;projects&#x2F;spring-security 简介 Spring 是非常流行和成功的 Java 应用开发框架，Spring Security 正是 Spring 家族中的 成员。Spring Security 基于 Spring 框架，提供了一套">
+<meta property="og:description" content="参考 B站：https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV15a411A7kP 官网：https:&#x2F;&#x2F;spring.io&#x2F;projects&#x2F;spring-security 简介 Spring 是非常流行和成功的 Java 应用开发框架，Spring Security 正是 Spring 家族中的 成员。Spring Security 基于 Spring 框架，提供了一套 Web">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-06-17T07:11:01.000Z">
-<meta property="article:modified_time" content="2022-12-04T13:45:41.988Z">
+<meta property="article:modified_time" content="2022-12-04T13:45:42.000Z">
 <meta property="article:author" content="无奈和杨（wnhyang）">
 <meta property="article:tag" content="Spring Boot">
 <meta property="article:tag" content="Mybatis&#x2F;Mybatis-plus">
@@ -255,7 +255,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-12-04 21:45:41" itemprop="dateModified" datetime="2022-12-04T21:45:41+08:00">2022-12-04</time>
+      <time title="修改时间：2022-12-04 21:45:42" itemprop="dateModified" datetime="2022-12-04T21:45:42+08:00">2022-12-04</time>
     </span>
 
   
@@ -291,13 +291,24 @@
     
     <div class="post-body" itemprop="articleBody">
         <h2 id="参考">参考</h2>
-<p>B站：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV15a411A7kP" class="uri">https://www.bilibili.com/video/BV15a411A7kP</a></p>
-<p>官网：<a target="_blank" rel="noopener" href="https://spring.io/projects/spring-security" class="uri">https://spring.io/projects/spring-security</a></p>
+<p>B站：<a
+target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV15a411A7kP">https://www.bilibili.com/video/BV15a411A7kP</a></p>
+<p>官网：<a
+target="_blank" rel="noopener" href="https://spring.io/projects/spring-security">https://spring.io/projects/spring-security</a></p>
 <h2 id="简介">简介</h2>
-<p>Spring 是非常流行和成功的 Java 应用开发框架，Spring Security 正是 Spring 家族中的 成员。Spring Security 基于 Spring 框架，提供了一套 Web 应用安全性的完整解决方 案。</p>
-<p>正如你可能知道的关于安全方面的两个主要区域是“认证”和“授权”（或者访问控 制），一般来说，Web 应用的安全性包括用户认证（Authentication）和用户授权 （Authorization）两个部分，这两点也是 Spring Security 重要核心功能。</p>
-<p>（1）用户认证指的是：验证某个用户是否为系统中的合法主体，也就是说用户能否访问 该系统。用户认证一般要求用户提供用户名和密码。系统通过校验用户名和密码来完成认 证过程。通俗点说就是系统认为用户是否能登录</p>
-<p>（2）用户授权指的是验证某个用户是否有权限执行某个操作。在一个系统中，不同用户 所具有的权限是不同的。比如对一个文件来说，有的用户只能进行读取，而有的用户可以 进行修改。一般来说，系统会为不同的用户分配不同的角色，而每个角色则对应一系列的 权限。通俗点讲就是系统判断用户是否有权限去做某些事情。</p>
+<p>Spring 是非常流行和成功的 Java 应用开发框架，Spring Security 正是
+Spring 家族中的 成员。Spring Security 基于 Spring 框架，提供了一套 Web
+应用安全性的完整解决方 案。</p>
+<p>正如你可能知道的关于安全方面的两个主要区域是“认证”和“授权”（或者访问控
+制），一般来说，Web 应用的安全性包括用户认证（Authentication）和用户授权
+（Authorization）两个部分，这两点也是 Spring Security 重要核心功能。</p>
+<p>（1）用户认证指的是：验证某个用户是否为系统中的合法主体，也就是说用户能否访问
+该系统。用户认证一般要求用户提供用户名和密码。系统通过校验用户名和密码来完成认
+证过程。通俗点说就是系统认为用户是否能登录</p>
+<p>（2）用户授权指的是验证某个用户是否有权限执行某个操作。在一个系统中，不同用户
+所具有的权限是不同的。比如对一个文件来说，有的用户只能进行读取，而有的用户可以
+进行修改。一般来说，系统会为不同的用户分配不同的角色，而每个角色则对应一系列的
+权限。通俗点讲就是系统判断用户是否有权限去做某些事情。</p>
 <p>SpringSecurity 特点：</p>
 <ul>
 <li>和 Spring 无缝整合。</li>
@@ -305,7 +316,8 @@
 <li>专门为 Web 开发而设计。
 <ul>
 <li>旧版本不能脱离 Web 环境使用。</li>
-<li>新版本对整个框架进行了分层抽取，分成了核心模块和 Web 模块。单独 引入核心模块就可以脱离 Web 环境。</li>
+<li>新版本对整个框架进行了分层抽取，分成了核心模块和 Web 模块。单独
+引入核心模块就可以脱离 Web 环境。</li>
 </ul></li>
 <li>重量级。</li>
 </ul>
@@ -359,26 +371,37 @@
 <p>判断是否具有角色，另外需要注意的是这里匹配的字符串需要添加前缀“ROLE_“。</p>
 <p>使用注解先要开启注解功能！</p>
 <blockquote>
-<p><span class="citation" data-cites="EnableGlobalMethodSecurity">@EnableGlobalMethodSecurity</span>(securedEnabled=true)</p>
+<p><span class="citation"
+data-cites="EnableGlobalMethodSecurity">@EnableGlobalMethodSecurity</span>(securedEnabled=true)</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping(&quot;/update&quot;)</span></span><br><span class="line"><span class="meta">@Secured(&#123;&quot;ROLE_sale&quot;,&quot;ROLE_manager&quot;&#125;)</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">update</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;hello update&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><span class="citation" data-cites="PreAuthorize">@PreAuthorize</span></p>
-<p>注解适合进入方法前的权限验证， <span class="citation" data-cites="PreAuthorize">@PreAuthorize</span> 可以将登录用 户的 roles/permissions 参数传到方法中。</p>
+<p><span class="citation"
+data-cites="PreAuthorize">@PreAuthorize</span></p>
+<p>注解适合进入方法前的权限验证， <span class="citation"
+data-cites="PreAuthorize">@PreAuthorize</span> 可以将登录用 户的
+roles/permissions 参数传到方法中。</p>
 <p>先开启注解功能：</p>
 <blockquote>
-<p><span class="citation" data-cites="EnableGlobalMethodSecurity">@EnableGlobalMethodSecurity</span>(prePostEnabled = true)</p>
+<p><span class="citation"
+data-cites="EnableGlobalMethodSecurity">@EnableGlobalMethodSecurity</span>(prePostEnabled
+= true)</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping(&quot;/update&quot;)</span></span><br><span class="line"><span class="comment">// @Secured(&#123;&quot;ROLE_sale&quot;,&quot;ROLE_manager&quot;&#125;)</span></span><br><span class="line"><span class="meta">@PreAuthorize(&quot;hasAnyAuthority(&#x27;admins&#x27;)&quot;)</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">update</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;hello update&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><span class="citation" data-cites="PostAuthorize">@PostAuthorize</span></p>
-<p>使用并不多，在方法执行后再进行权限验证，适合验证带有返回值 的权限.</p>
+<p><span class="citation"
+data-cites="PostAuthorize">@PostAuthorize</span></p>
+<p>使用并不多，在方法执行后再进行权限验证，适合验证带有返回值
+的权限.</p>
 <p>先开启注解功能：</p>
 <blockquote>
-<p><span class="citation" data-cites="EnableGlobalMethodSecurity">@EnableGlobalMethodSecurity</span>(prePostEnabled = true)</p>
+<p><span class="citation"
+data-cites="EnableGlobalMethodSecurity">@EnableGlobalMethodSecurity</span>(prePostEnabled
+= true)</p>
 </blockquote>
 <p>先执行，后验证权限，虽无权限，但还是输出了</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping(&quot;/update&quot;)</span></span><br><span class="line"><span class="comment">// @Secured(&#123;&quot;ROLE_sale&quot;,&quot;ROLE_manager&quot;&#125;)</span></span><br><span class="line"><span class="comment">// @PreAuthorize(&quot;hasAnyAuthority(&#x27;admins&#x27;)&quot;)</span></span><br><span class="line"><span class="meta">@PostAuthorize(&quot;hasAnyAuthority(&#x27;admin&#x27;)&quot;)</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">update</span><span class="params">()</span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;update...&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;hello update&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><span class="citation" data-cites="PostFilter">@PostFilter</span></p>
-<p>权限验证之后对数据进行过滤 留下用户名是 admin1 的数据 表达式中的 filterObject 引用的是方法返回值 List 中的某一个元素</p>
+<p>权限验证之后对数据进行过滤 留下用户名是 admin1 的数据 表达式中的
+filterObject 引用的是方法返回值 List 中的某一个元素</p>
 <p><span class="citation" data-cites="PreFilter">@PreFilter</span></p>
 <p>进入控制器之前对数据进行过滤</p>
 <h2 id="注销">注销</h2>
@@ -392,9 +415,21 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;/user/login&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">    用户名：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span>/&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">    密码：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;password&quot;</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span>/&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span> <span class="attr">name</span>=<span class="string">&quot;remember-me&quot;</span>/&gt;</span>自动登录<span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;login&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h2 id="csrf">CSRF</h2>
 <p>CSRF 理解</p>
-<p><strong>跨站请求伪造</strong>（英语：Cross-site request forgery），也被称为 one-click attack 或者 session riding，通常缩写为 CSRF 或者 XSRF， 是一种挟制用户在当前已 登录的 Web 应用程序上执行非本意的操作的攻击方法。跟跨网站脚本（XSS）相比，XSS 利用的是用户对指定网站的信任，CSRF 利用的是网站对用户网页浏览器的信任。</p>
-<p>跨站请求攻击，简单地说，是攻击者通过一些技术手段欺骗用户的浏览器去访问一个 自己曾经认证过的网站并运行一些操作（如发邮件，发消息，甚至财产操作如转账和购买 商品）。由于浏览器曾经认证过，所以被访问的网站会认为是真正的用户操作而去运行。 这利用了 web 中用户身份验证的一个漏洞：<strong>简单的身份验证只能保证请求发自某个用户的 浏览器，却不能保证请求本身是用户自愿发出的。</strong></p>
-<p>从 Spring Security 4.0 开始，默认情况下会启用 CSRF 保护，以防止 CSRF 攻击应用 程序，Spring Security CSRF 会针对 PATCH，POST，PUT 和 DELETE 方法进行防护。</p>
+<p><strong>跨站请求伪造</strong>（英语：Cross-site request
+forgery），也被称为 one-click attack 或者 session riding，通常缩写为
+CSRF 或者 XSRF， 是一种挟制用户在当前已 登录的 Web
+应用程序上执行非本意的操作的攻击方法。跟跨网站脚本（XSS）相比，XSS
+利用的是用户对指定网站的信任，CSRF
+利用的是网站对用户网页浏览器的信任。</p>
+<p>跨站请求攻击，简单地说，是攻击者通过一些技术手段欺骗用户的浏览器去访问一个
+自己曾经认证过的网站并运行一些操作（如发邮件，发消息，甚至财产操作如转账和购买
+商品）。由于浏览器曾经认证过，所以被访问的网站会认为是真正的用户操作而去运行。
+这利用了 web
+中用户身份验证的一个漏洞：<strong>简单的身份验证只能保证请求发自某个用户的
+浏览器，却不能保证请求本身是用户自愿发出的。</strong></p>
+<p>从 Spring Security 4.0 开始，默认情况下会启用 CSRF 保护，以防止 CSRF
+攻击应用 程序，Spring Security CSRF 会针对 PATCH，POST，PUT 和 DELETE
+方法进行防护。</p>
 <p>默认是开启的</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// http.csrf().disable();</span></span><br></pre></td></tr></table></figure>
 <h2 id="总结">总结</h2>
@@ -480,7 +515,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

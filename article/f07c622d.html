@@ -22,15 +22,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="因为内容太多了，所以将其拆分为以下内容  MySQL(一) MySQL(二) MySQL(三)（当前） MySQL(四)  参考 https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1NJ411J79W https:&#x2F;&#x2F;www.runoob.com&#x2F;mysql&#x2F;mysql-tutorial.html">
+    <meta name="description" content="因为内容太多了，所以将其拆分为以下内容  MySQL(一) MySQL(二) MySQL(三)（当前） MySQL(四)  参考 https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1NJ411J79W https:&#x2F;&#x2F;www.runoob.com&#x2F;mysql&#x2F;mysql-tutorial.html">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL（三）">
 <meta property="og:url" content="https://wnhyang.github.io/article/f07c622d.html">
 <meta property="og:site_name" content="无奈和杨（wnhyang）">
-<meta property="og:description" content="因为内容太多了，所以将其拆分为以下内容  MySQL(一) MySQL(二) MySQL(三)（当前） MySQL(四)  参考 https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1NJ411J79W https:&#x2F;&#x2F;www.runoob.com&#x2F;mysql&#x2F;mysql-tutorial.html">
+<meta property="og:description" content="因为内容太多了，所以将其拆分为以下内容  MySQL(一) MySQL(二) MySQL(三)（当前） MySQL(四)  参考 https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1NJ411J79W https:&#x2F;&#x2F;www.runoob.com&#x2F;mysql&#x2F;mysql-tutorial.html">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-02-02T11:14:34.000Z">
-<meta property="article:modified_time" content="2022-12-30T13:39:17.442Z">
+<meta property="article:modified_time" content="2022-12-30T13:39:18.000Z">
 <meta property="article:author" content="无奈和杨（wnhyang）">
 <meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary">
@@ -146,7 +146,8 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">1.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql-%E5%87%BD%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">MySQL 函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0"><span class="nav-number">2.1.</span> <span class="nav-text">字符串函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E5%87%BD%E6%95%B0"><span class="nav-number">2.2.</span> <span class="nav-text">数字函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A5%E6%9C%9F%E5%87%BD%E6%95%B0"><span class="nav-number">2.3.</span> <span class="nav-text">日期函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E5%A4%9A"><span class="nav-number">2.4.</span> <span class="nav-text">更多</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E5%8A%A1"><span class="nav-number">3.</span> <span class="nav-text">事务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5"><span class="nav-number">3.1.</span> <span class="nav-text">事务控制语句：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql-%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86%E4%B8%BB%E8%A6%81%E6%9C%89%E4%B8%A4%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">MYSQL 事务处理主要有两种方法：</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">1.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql-%E5%87%BD%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">MySQL 函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0"><span class="nav-number">2.1.</span> <span class="nav-text">字符串函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E5%87%BD%E6%95%B0"><span class="nav-number">2.2.</span> <span class="nav-text">数字函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A5%E6%9C%9F%E5%87%BD%E6%95%B0"><span class="nav-number">2.3.</span> <span class="nav-text">日期函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E5%A4%9A"><span class="nav-number">2.4.</span> <span class="nav-text">更多</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E5%8A%A1"><span class="nav-number">3.</span> <span class="nav-text">事务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5"><span class="nav-number">3.1.</span> <span class="nav-text">事务控制语句：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql-%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86%E4%B8%BB%E8%A6%81%E6%9C%89%E4%B8%A4%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">MYSQL
+事务处理主要有两种方法：</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -253,7 +254,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-12-30 21:39:17" itemprop="dateModified" datetime="2022-12-30T21:39:17+08:00">2022-12-30</time>
+      <time title="修改时间：2022-12-30 21:39:18" itemprop="dateModified" datetime="2022-12-30T21:39:18+08:00">2022-12-30</time>
     </span>
 
   
@@ -290,20 +291,26 @@
     <div class="post-body" itemprop="articleBody">
         <p>因为内容太多了，所以将其拆分为以下内容</p>
 <ul>
-<li><a href="https://wnhyang.github.io/article/8d742da7.html">MySQL(一)</a></li>
-<li><a href="https://wnhyang.github.io/article/bd62c17f.html">MySQL(二)</a></li>
-<li><a href="https://wnhyang.github.io/article/f07c622d.html">MySQL(三)（当前）</a></li>
-<li><a href="https://wnhyang.github.io/article/47517b48.html">MySQL(四)</a></li>
+<li><a
+href="https://wnhyang.github.io/article/8d742da7.html">MySQL(一)</a></li>
+<li><a
+href="https://wnhyang.github.io/article/bd62c17f.html">MySQL(二)</a></li>
+<li><a
+href="https://wnhyang.github.io/article/f07c622d.html">MySQL(三)（当前）</a></li>
+<li><a
+href="https://wnhyang.github.io/article/47517b48.html">MySQL(四)</a></li>
 </ul>
 <h2 id="参考">参考</h2>
-<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1NJ411J79W" class="uri">https://www.bilibili.com/video/BV1NJ411J79W</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.runoob.com/mysql/mysql-tutorial.html" class="uri">https://www.runoob.com/mysql/mysql-tutorial.html</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1NJ411J79W">https://www.bilibili.com/video/BV1NJ411J79W</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://www.runoob.com/mysql/mysql-tutorial.html">https://www.runoob.com/mysql/mysql-tutorial.html</a></p>
 <span id="more"></span>
 <h2 id="mysql-函数">MySQL 函数</h2>
 <h3 id="字符串函数">字符串函数</h3>
 <table>
 <colgroup>
-<col style="width: 17%" />
+<col style="width: 16%" />
 <col style="width: 41%" />
 <col style="width: 41%" />
 </colgroup>
@@ -318,84 +325,106 @@
 <tr class="odd">
 <td style="text-align: left;">CHAR_LENGTH(s)</td>
 <td style="text-align: left;">返回字符串 s 的字符数</td>
-<td style="text-align: left;">返回字符串 RUNOOB 的字符数<code>SELECT CHAR_LENGTH(&quot;RUNOOB&quot;) AS LengthOfString;</code></td>
+<td style="text-align: left;">返回字符串 RUNOOB
+的字符数<code>SELECT CHAR_LENGTH("RUNOOB") AS LengthOfString;</code></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">CONCAT(s1,s2...sn)</td>
-<td style="text-align: left;">字符串 s1,s2 等多个字符串合并为一个字符串</td>
-<td style="text-align: left;">合并多个字符串<code>SELECT CONCAT(&quot;SQL &quot;, &quot;Runoob &quot;, &quot;Gooogle &quot;, &quot;Facebook&quot;) AS ConcatenatedString;</code></td>
+<td style="text-align: left;">字符串 s1,s2
+等多个字符串合并为一个字符串</td>
+<td
+style="text-align: left;">合并多个字符串<code>SELECT CONCAT("SQL ", "Runoob ", "Gooogle ", "Facebook") AS ConcatenatedString;</code></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">CONCAT_WS(x, s1,s2...sn)</td>
-<td style="text-align: left;">同 CONCAT(s1,s2,...) 函数，但是每个字符串之间要加上 x，x 可以是分隔符</td>
-<td style="text-align: left;">合并多个字符串，并添加分隔符：<code>SELECT CONCAT_WS(&quot;-&quot;, &quot;SQL&quot;, &quot;Tutorial&quot;, &quot;is&quot;, &quot;fun!&quot;)AS ConcatenatedString;</code></td>
+<td style="text-align: left;">同 CONCAT(s1,s2,...)
+函数，但是每个字符串之间要加上 x，x 可以是分隔符</td>
+<td
+style="text-align: left;">合并多个字符串，并添加分隔符：<code>SELECT CONCAT_WS("-", "SQL", "Tutorial", "is", "fun!")AS ConcatenatedString;</code></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">FORMAT(x,n)</td>
-<td style="text-align: left;">函数可以将数字 x 进行格式化 &quot;#,##.##&quot;, 将 x 保留到小数点后 n 位，最后一位四舍五入。</td>
-<td style="text-align: left;">格式化数字 &quot;#,##.##&quot; 形式：<code>SELECT FORMAT(250500.5634, 2);     -- 输出 250,500.56</code></td>
+<td style="text-align: left;">函数可以将数字 x 进行格式化 "#,##.##", 将
+x 保留到小数点后 n 位，最后一位四舍五入。</td>
+<td style="text-align: left;">格式化数字 "#,##.##"
+形式：<code>SELECT FORMAT(250500.5634, 2);     -- 输出 250,500.56</code></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">INSERT(s1,x,len,s2)</td>
-<td style="text-align: left;">字符串 s2 替换 s1 的 x 位置开始长度为 len 的字符串</td>
-<td style="text-align: left;">从字符串第一个位置开始的 6 个字符替换为 runoob：<code>SELECT INSERT(&quot;google.com&quot;, 1, 6, &quot;runoob&quot;);  -- 输出：runoob.com</code></td>
+<td style="text-align: left;">字符串 s2 替换 s1 的 x 位置开始长度为 len
+的字符串</td>
+<td style="text-align: left;">从字符串第一个位置开始的 6 个字符替换为
+runoob：<code>SELECT INSERT("google.com", 1, 6, "runoob");  -- 输出：runoob.com</code></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">LEFT(s,n)</td>
 <td style="text-align: left;">返回字符串 s 的前 n 个字符</td>
-<td style="text-align: left;">返回字符串 runoob 中的前两个字符：<code>SELECT LEFT('runoob',2) -- ru</code></td>
+<td style="text-align: left;">返回字符串 runoob
+中的前两个字符：<code>SELECT LEFT('runoob',2) -- ru</code></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">LOWER(s)</td>
 <td style="text-align: left;">将字符串 s 的所有字母变成小写字母</td>
-<td style="text-align: left;">字符串 RUNOOB 转换为小写：<code>SELECT LOWER('RUNOOB') -- runoob</code></td>
+<td style="text-align: left;">字符串 RUNOOB
+转换为小写：<code>SELECT LOWER('RUNOOB') -- runoob</code></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">LTRIM(s)</td>
 <td style="text-align: left;">去掉字符串 s 开始处的空格</td>
-<td style="text-align: left;">去掉字符串 RUNOOB开始处的空格：<code>SELECT LTRIM(&quot;    RUNOOB&quot;) AS LeftTrimmedString;-- RUNOOB</code></td>
+<td style="text-align: left;">去掉字符串
+RUNOOB开始处的空格：<code>SELECT LTRIM("    RUNOOB") AS LeftTrimmedString;-- RUNOOB</code></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">REPLACE(s,s1,s2)</td>
-<td style="text-align: left;">将字符串 s2 替代字符串 s 中的字符串 s1</td>
-<td style="text-align: left;">将字符串 abc 中的字符 a 替换为字符 x：<code>SELECT REPLACE('abc','a','x') --xbc</code></td>
+<td style="text-align: left;">将字符串 s2 替代字符串 s 中的字符串
+s1</td>
+<td style="text-align: left;">将字符串 abc 中的字符 a 替换为字符
+x：<code>SELECT REPLACE('abc','a','x') --xbc</code></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">REVERSE(s)</td>
 <td style="text-align: left;">将字符串s的顺序反过来</td>
-<td style="text-align: left;">将字符串 abc 的顺序反过来：<code>SELECT REVERSE('abc') -- cba</code></td>
+<td style="text-align: left;">将字符串 abc
+的顺序反过来：<code>SELECT REVERSE('abc') -- cba</code></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">RIGHT(s,n)</td>
 <td style="text-align: left;">返回字符串 s 的后 n 个字符</td>
-<td style="text-align: left;">返回字符串 runoob 的后两个字符：<code>SELECT RIGHT('runoob',2) -- ob</code></td>
+<td style="text-align: left;">返回字符串 runoob
+的后两个字符：<code>SELECT RIGHT('runoob',2) -- ob</code></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">RTRIM(s)</td>
 <td style="text-align: left;">去掉字符串 s 结尾处的空格</td>
-<td style="text-align: left;">去掉字符串 RUNOOB 的末尾空格：<code>SELECT RTRIM(&quot;RUNOOB     &quot;) AS RightTrimmedString;   -- RUNOOB</code></td>
+<td style="text-align: left;">去掉字符串 RUNOOB
+的末尾空格：<code>SELECT RTRIM("RUNOOB     ") AS RightTrimmedString;   -- RUNOOB</code></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">STRCMP(s1,s2)</td>
-<td style="text-align: left;">比较字符串 s1 和 s2，如果 s1 与 s2 相等返回 0 ，如果 s1&gt;s2 返回 1，如果 s1&lt;s2 返回 -1</td>
-<td style="text-align: left;">比较字符串：<code>SELECT STRCMP(&quot;runoob&quot;, &quot;runoob&quot;);  -- 0</code></td>
+<td style="text-align: left;">比较字符串 s1 和 s2，如果 s1 与 s2
+相等返回 0 ，如果 s1&gt;s2 返回 1，如果 s1&lt;s2 返回 -1</td>
+<td
+style="text-align: left;">比较字符串：<code>SELECT STRCMP("runoob", "runoob");  -- 0</code></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">SUBSTR(s, start, length)</td>
-<td style="text-align: left;">从字符串 s 的 start 位置截取长度为 length 的子字符串</td>
-<td style="text-align: left;">从字符串 RUNOOB 中的第 2 个位置截取 3个 字符：<code>SELECT SUBSTR(&quot;RUNOOB&quot;, 2, 3) AS ExtractString; -- UNO</code></td>
+<td style="text-align: left;">从字符串 s 的 start 位置截取长度为 length
+的子字符串</td>
+<td style="text-align: left;">从字符串 RUNOOB 中的第 2 个位置截取 3个
+字符：<code>SELECT SUBSTR("RUNOOB", 2, 3) AS ExtractString; -- UNO</code></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">UPPER(s)</td>
 <td style="text-align: left;">将字符串转换为大写</td>
-<td style="text-align: left;">将字符串 runoob 转换为大写：<code>SELECT UPPER(&quot;runoob&quot;); -- RUNOOB</code></td>
+<td style="text-align: left;">将字符串 runoob
+转换为大写：<code>SELECT UPPER("runoob"); -- RUNOOB</code></td>
 </tr>
 </tbody>
 </table>
 <h3 id="数字函数">数字函数</h3>
-<table style="width:100%;">
+<table>
 <colgroup>
-<col style="width: 13%" />
+<col style="width: 12%" />
 <col style="width: 41%" />
 <col style="width: 45%" />
 </colgroup>
@@ -410,52 +439,64 @@
 <tr class="odd">
 <td style="text-align: left;">SUM(expression)</td>
 <td style="text-align: left;">返回指定字段的总和</td>
-<td style="text-align: left;">计算 OrderDetails 表中字段 Quantity 的总和：<code>SELECT SUM(Quantity) AS TotalItemsOrdered FROM OrderDetails;</code></td>
+<td style="text-align: left;">计算 OrderDetails 表中字段 Quantity
+的总和：<code>SELECT SUM(Quantity) AS TotalItemsOrdered FROM OrderDetails;</code></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">ABS(x)</td>
 <td style="text-align: left;">返回 x 的绝对值</td>
-<td style="text-align: left;">返回 -1 的绝对值：<code>SELECT ABS(-1) -- 返回1</code></td>
+<td style="text-align: left;">返回 -1
+的绝对值：<code>SELECT ABS(-1) -- 返回1</code></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">AVG(expression)</td>
-<td style="text-align: left;">返回一个表达式的平均值，expression 是一个字段</td>
-<td style="text-align: left;">返回 Products 表中Price 字段的平均值：<code>SELECT AVG(Price) AS AveragePrice FROM Products;</code></td>
+<td style="text-align: left;">返回一个表达式的平均值，expression
+是一个字段</td>
+<td style="text-align: left;">返回 Products 表中Price
+字段的平均值：<code>SELECT AVG(Price) AS AveragePrice FROM Products;</code></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">CEIL(x)</td>
 <td style="text-align: left;">返回大于或等于 x 的最小整数</td>
-<td style="text-align: left;"><code>SELECT CEIL(1.5) -- 返回2</code></td>
+<td
+style="text-align: left;"><code>SELECT CEIL(1.5) -- 返回2</code></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">COUNT(expression)</td>
-<td style="text-align: left;">返回查询的记录总数，expression 参数是一个字段或者 * 号</td>
-<td style="text-align: left;">返回 Products 表中 products 字段总共有多少条记录：<code>SELECT COUNT(ProductID) AS NumberOfProducts FROM Products;</code></td>
+<td style="text-align: left;">返回查询的记录总数，expression
+参数是一个字段或者 * 号</td>
+<td style="text-align: left;">返回 Products 表中 products
+字段总共有多少条记录：<code>SELECT COUNT(ProductID) AS NumberOfProducts FROM Products;</code></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">FLOOR(x)</td>
 <td style="text-align: left;">返回小于或等于 x 的最大整数</td>
-<td style="text-align: left;">小于或等于 1.5 的整数：<code>SELECT FLOOR(1.5) -- 返回1</code></td>
+<td style="text-align: left;">小于或等于 1.5
+的整数：<code>SELECT FLOOR(1.5) -- 返回1</code></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">MAX(expression)</td>
 <td style="text-align: left;">返回字段 expression 中的最大值</td>
-<td style="text-align: left;">返回数据表 Products 中字段 Price 的最大值：<code>SELECT MAX(Price) AS LargestPrice FROM Products;</code></td>
+<td style="text-align: left;">返回数据表 Products 中字段 Price
+的最大值：<code>SELECT MAX(Price) AS LargestPrice FROM Products;</code></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">MIN(expression)</td>
 <td style="text-align: left;">返回字段 expression 中的最小值</td>
-<td style="text-align: left;">返回数据表 Products 中字段 Price 的最小值：<code>SELECT MIN(Price) AS MinPrice FROM Products;</code></td>
+<td style="text-align: left;">返回数据表 Products 中字段 Price
+的最小值：<code>SELECT MIN(Price) AS MinPrice FROM Products;</code></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">RAND()</td>
 <td style="text-align: left;">返回 0 到 1 的随机数</td>
-<td style="text-align: left;"><code>SELECT RAND() --0.93099315644334</code></td>
+<td
+style="text-align: left;"><code>SELECT RAND() --0.93099315644334</code></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">ROUND(x)</td>
 <td style="text-align: left;">返回离 x 最近的整数</td>
-<td style="text-align: left;"><code>SELECT ROUND(1.23456) --1</code></td>
+<td
+style="text-align: left;"><code>SELECT ROUND(1.23456) --1</code></td>
 </tr>
 </tbody>
 </table>
@@ -477,31 +518,37 @@
 <tr class="odd">
 <td style="text-align: left;">CURRENT_DATE()</td>
 <td style="text-align: left;">返回当前日期</td>
-<td style="text-align: left;"><code>SELECT CURRENT_DATE(); -&gt; 2018-09-19</code></td>
+<td
+style="text-align: left;"><code>SELECT CURRENT_DATE(); -&gt; 2018-09-19</code></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">CURRENT_TIME</td>
 <td style="text-align: left;">返回当前时间</td>
-<td style="text-align: left;"><code>SELECT CURRENT_TIME(); -&gt; 19:59:02</code></td>
+<td
+style="text-align: left;"><code>SELECT CURRENT_TIME(); -&gt; 19:59:02</code></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">CURRENT_TIMESTAMP()</td>
 <td style="text-align: left;">返回当前日期和时间</td>
-<td style="text-align: left;"><code>SELECT CURRENT_TIMESTAMP() -&gt; 2018-09-19 20:57:43</code></td>
+<td
+style="text-align: left;"><code>SELECT CURRENT_TIMESTAMP() -&gt; 2018-09-19 20:57:43</code></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">NOW()</td>
 <td style="text-align: left;">返回当前日期和时间</td>
-<td style="text-align: left;"><code>SELECT NOW() -&gt; 2018-09-19 20:57:43</code></td>
+<td
+style="text-align: left;"><code>SELECT NOW() -&gt; 2018-09-19 20:57:43</code></td>
 </tr>
 </tbody>
 </table>
-<h3 id="更多"><a target="_blank" rel="noopener" href="https://www.runoob.com/mysql/mysql-functions.html">更多</a></h3>
+<h3 id="更多"><a
+target="_blank" rel="noopener" href="https://www.runoob.com/mysql/mysql-functions.html">更多</a></h3>
 <h2 id="事务">事务</h2>
 <p>MySQL 事务主要用于处理操作量大，复杂度高的数据。</p>
 <ul>
 <li>在 MySQL 中只有使用了 Innodb 数据库引擎的数据库或表才支持事务。</li>
-<li>事务处理可以用来维护数据库的完整性，保证成批的 SQL 语句要么全部执行，要么全部不执行。</li>
+<li>事务处理可以用来维护数据库的完整性，保证成批的 SQL
+语句要么全部执行，要么全部不执行。</li>
 <li>事务用来管理 insert,update,delete 语句</li>
 </ul>
 <blockquote>
@@ -511,7 +558,9 @@
 <ul>
 <li><strong>原子性：</strong>一个事务（transaction）中的所有操作，要么全部完成，要么全部不完成，不会结束在中间某个环节。事务在执行过程中发生错误，会被回滚（Rollback）到事务开始前的状态，就像这个事务从来没有执行过一样。</li>
 <li><strong>一致性：</strong>在事务开始之前和事务结束以后，数据库的完整性没有被破坏。这表示写入的资料必须完全符合所有的预设规则，这包含资料的精确度、串联性以及后续数据库可以自发性地完成预定的工作。</li>
-<li><strong>隔离性：</strong>数据库允许多个并发事务同时对其数据进行读写和修改的能力，隔离性可以防止多个事务并发执行时由于交叉执行而导致数据的不一致。事务隔离分为不同级别，包括读未提交（Read uncommitted）、读提交（read committed）、可重复读（repeatable read）和串行化（Serializable）。</li>
+<li><strong>隔离性：</strong>数据库允许多个并发事务同时对其数据进行读写和修改的能力，隔离性可以防止多个事务并发执行时由于交叉执行而导致数据的不一致。事务隔离分为不同级别，包括读未提交（Read
+uncommitted）、读提交（read committed）、可重复读（repeatable
+read）和串行化（Serializable）。</li>
 <li><strong>持久性：</strong>事务处理结束后，对数据的修改就是永久的，即便系统故障也不会丢失。</li>
 </ul>
 <blockquote>
@@ -524,19 +573,29 @@
 <p><strong>虚读（幻读）：</strong></p>
 <p>在事务A中按照某个条件先后两次查询数据库，两次查询结果的条数不同，这种现象称为幻读。</p>
 <blockquote>
-<p>在 MySQL 命令行的默认设置下，事务都是自动提交的，即执行 SQL 语句后就会马上执行 COMMIT 操作。因此要显式地开启一个事务务须使用命令 BEGIN 或 START TRANSACTION，或者执行命令 SET AUTOCOMMIT=0，用来禁止使用当前会话的自动提交。</p>
+<p>在 MySQL 命令行的默认设置下，事务都是自动提交的，即执行 SQL
+语句后就会马上执行 COMMIT 操作。因此要显式地开启一个事务务须使用命令
+BEGIN 或 START TRANSACTION，或者执行命令 SET
+AUTOCOMMIT=0，用来禁止使用当前会话的自动提交。</p>
 </blockquote>
 <h3 id="事务控制语句">事务控制语句：</h3>
 <ul>
 <li>BEGIN 或 START TRANSACTION 显式地开启一个事务；</li>
-<li>COMMIT 也可以使用 COMMIT WORK，不过二者是等价的。COMMIT 会提交事务，并使已对数据库进行的所有修改成为永久性的；</li>
-<li>ROLLBACK 也可以使用 ROLLBACK WORK，不过二者是等价的。回滚会结束用户的事务，并撤销正在进行的所有未提交的修改；</li>
-<li>SAVEPOINT identifier，SAVEPOINT 允许在事务中创建一个保存点，一个事务中可以有多个 SAVEPOINT；</li>
-<li>RELEASE SAVEPOINT identifier 删除一个事务的保存点，当没有指定的保存点时，执行该语句会抛出一个异常；</li>
+<li>COMMIT 也可以使用 COMMIT WORK，不过二者是等价的。COMMIT
+会提交事务，并使已对数据库进行的所有修改成为永久性的；</li>
+<li>ROLLBACK 也可以使用 ROLLBACK
+WORK，不过二者是等价的。回滚会结束用户的事务，并撤销正在进行的所有未提交的修改；</li>
+<li>SAVEPOINT identifier，SAVEPOINT
+允许在事务中创建一个保存点，一个事务中可以有多个 SAVEPOINT；</li>
+<li>RELEASE SAVEPOINT identifier
+删除一个事务的保存点，当没有指定的保存点时，执行该语句会抛出一个异常；</li>
 <li>ROLLBACK TO identifier 把事务回滚到标记点；</li>
-<li>SET TRANSACTION 用来设置事务的隔离级别。InnoDB 存储引擎提供事务的隔离级别有READ UNCOMMITTED、READ COMMITTED、REPEATABLE READ 和 SERIALIZABLE。</li>
+<li>SET TRANSACTION 用来设置事务的隔离级别。InnoDB
+存储引擎提供事务的隔离级别有READ UNCOMMITTED、READ COMMITTED、REPEATABLE
+READ 和 SERIALIZABLE。</li>
 </ul>
-<h3 id="mysql-事务处理主要有两种方法">MYSQL 事务处理主要有两种方法：</h3>
+<h3 id="mysql-事务处理主要有两种方法">MYSQL
+事务处理主要有两种方法：</h3>
 <p>1、用 BEGIN, ROLLBACK, COMMIT来实现</p>
 <ul>
 <li><strong>BEGIN</strong> 开始一个事务</li>
@@ -552,10 +611,14 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 模拟转账</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> `account`(</span><br><span class="line">	`id` <span class="type">int</span>(<span class="number">3</span>) <span class="keyword">not</span> <span class="keyword">null</span> AUTO_INCREMENT,</span><br><span class="line">	`name` <span class="type">varchar</span>(<span class="number">30</span>) <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line">	`money` <span class="type">decimal</span>(<span class="number">9</span>,<span class="number">2</span>) <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line">	<span class="keyword">primary</span> key(`id`)</span><br><span class="line">)engine<span class="operator">=</span>innodb <span class="keyword">default</span> charset<span class="operator">=</span>utf8</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> account (`name`,`money`)</span><br><span class="line"><span class="keyword">VALUES</span>(<span class="string">&#x27;a&#x27;</span>,<span class="number">2000.00</span>),(<span class="string">&#x27;b&#x27;</span>,<span class="number">10000.00</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span> AUTOCOMMIT <span class="operator">=</span> <span class="number">0</span>;	<span class="comment">-- 关闭自动提交</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">update</span> account <span class="keyword">set</span> money<span class="operator">=</span>money<span class="number">-500</span> <span class="keyword">where</span> name<span class="operator">=</span><span class="string">&#x27;a&#x27;</span></span><br><span class="line"><span class="keyword">update</span> account <span class="keyword">set</span> money<span class="operator">=</span>money<span class="operator">+</span><span class="number">500</span> <span class="keyword">where</span> name<span class="operator">=</span><span class="string">&#x27;b&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">commit</span>;</span><br><span class="line"><span class="keyword">rollback</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span> AUTOCOMMIT <span class="operator">=</span> <span class="number">1</span>;	<span class="comment">-- 开启自动提交</span></span><br></pre></td></tr></table></figure>
 <p>因为内容太多了，所以将其拆分为以下内容</p>
 <ul>
-<li><a href="https://wnhyang.github.io/article/8d742da7.html">MySQL(一)</a></li>
-<li><a href="https://wnhyang.github.io/article/bd62c17f.html">MySQL(二)</a></li>
-<li><a href="https://wnhyang.github.io/article/f07c622d.html">MySQL(三)（当前）</a></li>
-<li><a href="https://wnhyang.github.io/article/47517b48.html">MySQL(四)</a></li>
+<li><a
+href="https://wnhyang.github.io/article/8d742da7.html">MySQL(一)</a></li>
+<li><a
+href="https://wnhyang.github.io/article/bd62c17f.html">MySQL(二)</a></li>
+<li><a
+href="https://wnhyang.github.io/article/f07c622d.html">MySQL(三)（当前）</a></li>
+<li><a
+href="https://wnhyang.github.io/article/47517b48.html">MySQL(四)</a></li>
 </ul>
 
     </div>
@@ -636,7 +699,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

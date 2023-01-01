@@ -22,12 +22,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="在计算机和互联网技术中，文本压缩就是一个非常重要的技术。玩电脑的人几乎都会应用压缩和解压缩软件来处理文档。因为它除了可以减少文档在磁盘上的空间外，还有重要的一点， 就是我们可以在网络上以压缩的形式传输大量数据，使得保存和传递都更加高效。 那么压缩而不出错是如何做到的呢?简单说，就是把我们要压缩的文本进行重新编码，以减少不必要的空间。尽管现在最新技术在编码上已经很好很强大，但这一切都来自于曾经的技">
+    <meta name="description" content="在计算机和互联网技术中，文本压缩就是一个非常重要的技术。玩电脑的人几乎都会应用压缩和解压缩软件来处理文档。因为它除了可以减少文档在磁盘上的空间外，还有重要的一点， 就是我们可以在网络上以压缩的形式传输大量数据，使得保存和传递都更加高效。 那么压缩而不出错是如何做到的呢?简单说，就是把我们要压缩的文本进行重新编码，以减少不必要的空间。尽管现在最新技术在编码上已经很好很强大，但这一切都来自于曾经的技术">
 <meta property="og:type" content="article">
 <meta property="og:title" content="哈夫曼树及应用">
 <meta property="og:url" content="https://wnhyang.github.io/article/29d55788.html">
 <meta property="og:site_name" content="无奈和杨（wnhyang）">
-<meta property="og:description" content="在计算机和互联网技术中，文本压缩就是一个非常重要的技术。玩电脑的人几乎都会应用压缩和解压缩软件来处理文档。因为它除了可以减少文档在磁盘上的空间外，还有重要的一点， 就是我们可以在网络上以压缩的形式传输大量数据，使得保存和传递都更加高效。 那么压缩而不出错是如何做到的呢?简单说，就是把我们要压缩的文本进行重新编码，以减少不必要的空间。尽管现在最新技术在编码上已经很好很强大，但这一切都来自于曾经的技">
+<meta property="og:description" content="在计算机和互联网技术中，文本压缩就是一个非常重要的技术。玩电脑的人几乎都会应用压缩和解压缩软件来处理文档。因为它除了可以减少文档在磁盘上的空间外，还有重要的一点， 就是我们可以在网络上以压缩的形式传输大量数据，使得保存和传递都更加高效。 那么压缩而不出错是如何做到的呢?简单说，就是把我们要压缩的文本进行重新编码，以减少不必要的空间。尽管现在最新技术在编码上已经很好很强大，但这一切都来自于曾经的技术">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/WPL.png">
 <meta property="og:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/w1.png">
@@ -39,7 +39,7 @@
 <meta property="og:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/w7.png">
 <meta property="og:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/w8.png">
 <meta property="article:published_time" content="2020-07-25T07:15:42.000Z">
-<meta property="article:modified_time" content="2022-08-20T03:19:42.477Z">
+<meta property="article:modified_time" content="2022-08-20T03:19:44.000Z">
 <meta property="article:author" content="无奈和杨（wnhyang）">
 <meta property="article:tag" content="数据结构&amp;算法">
 <meta name="twitter:card" content="summary">
@@ -263,7 +263,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-08-20 11:19:42" itemprop="dateModified" datetime="2022-08-20T11:19:42+08:00">2022-08-20</time>
+      <time title="修改时间：2022-08-20 11:19:44" itemprop="dateModified" datetime="2022-08-20T11:19:44+08:00">2022-08-20</time>
     </span>
 
   
@@ -298,11 +298,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>在计算机和互联网技术中，文本压缩就是一个非常重要的技术。玩电脑的人几乎都会应用压缩和解压缩软件来处理文档。因为它除了可以减少文档在磁盘上的空间外，还有重要的一点， 就是我们可以在网络上以压缩的形式传输大量数据，使得保存和传递都更加高效。</p>
+        <p>在计算机和互联网技术中，文本压缩就是一个非常重要的技术。玩电脑的人几乎都会应用压缩和解压缩软件来处理文档。因为它除了可以减少文档在磁盘上的空间外，还有重要的一点，
+就是我们可以在网络上以压缩的形式传输大量数据，使得保存和传递都更加高效。</p>
 <p>那么压缩而不出错是如何做到的呢?简单说，就是把我们要压缩的文本进行重新编码，以减少不必要的空间。尽管现在最新技术在编码上已经很好很强大，但这一切都来自于曾经的技术积累，我们今天就来介绍一下最基本的压缩编码方法-赫夫曼编码。</p>
 <span id="more"></span>
-<p>在介绍赫夫曼编码前，我们必须得介绍赫夫曼树，而介绍赫夫曼树，我们不得不提这样一个人，美国数学家赫夫曼(David Huffman)， 也有的翻译为哈夫曼。他在1952年发明了赫夫曼编码，为了纪念他的成就，于是就把他在编码中用到的特殊的C叉树称之为赫夫曼树，他的编码方法称为赫夫曼编码。也就是说，我们现在介绍的知识全都来自于近60年前这位伟大科学家的研究成果，而我们平时所用的压缩和解压缩技术也都是基于赫夫曼的研究之上发展而来，我们应该要记住他。</p>
-<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/acd06b8ed06b">部分显示问题，请参考</a></p>
+<p>在介绍赫夫曼编码前，我们必须得介绍赫夫曼树，而介绍赫夫曼树，我们不得不提这样一个人，美国数学家赫夫曼(David
+Huffman)，
+也有的翻译为哈夫曼。他在1952年发明了赫夫曼编码，为了纪念他的成就，于是就把他在编码中用到的特殊的C叉树称之为赫夫曼树，他的编码方法称为赫夫曼编码。也就是说，我们现在介绍的知识全都来自于近60年前这位伟大科学家的研究成果，而我们平时所用的压缩和解压缩技术也都是基于赫夫曼的研究之上发展而来，我们应该要记住他。</p>
+<p><a
+target="_blank" rel="noopener" href="https://www.jianshu.com/p/acd06b8ed06b">部分显示问题，请参考</a></p>
 <h2 id="哈夫曼树的相关术语">哈夫曼树的相关术语</h2>
 <blockquote>
 <p>路径</p>
@@ -329,24 +333,41 @@
 <li>树中所有叶子结点的带权路径长度之和</li>
 </ul>
 <figure>
-<img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/WPL.png" alt="WPL" /><figcaption>WPL</figcaption>
+<img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/WPL.png"
+alt="WPL" />
+<figcaption aria-hidden="true">WPL</figcaption>
 </figure>
 <h2 id="定义">定义</h2>
 <p>设有n个权值{w1,w2,…,wn}，构造一棵有n个叶子结点的二叉树，每个叶子的权值为wi，则wpl最小的二叉树叫哈夫曼树。</p>
 <h2 id="哈夫曼树的构造过程">哈夫曼树的构造过程</h2>
-<p>(1). 初始化：根据给定的n个权值{w1,w2,…,wn}，构成n棵二叉树的集合F={T1,T2,…,Tn}，其中每棵二叉树Ti只有一个带权为wi的根结点，其左右子树均空。</p>
-<p>(2). 选取与合并：在 F 中选取两棵根结点的权值最小的树作为左右子树，构造一棵新的二叉树，且置新的二叉树的根结点的权值为其左、右子树上根结点的权值之和。</p>
-<p>(3). 删除与加入：在 F 中删除这两棵树，同时将新得到的二叉树加入 F 中。</p>
-<p>(4). 重复(2)和(3)，直到 F 只含一棵树为止。这棵树便是所求的哈夫曼树。</p>
+<p>(1).
+初始化：根据给定的n个权值{w1,w2,…,wn}，构成n棵二叉树的集合F={T1,T2,…,Tn}，其中每棵二叉树Ti只有一个带权为wi的根结点，其左右子树均空。</p>
+<p>(2). 选取与合并：在 F
+中选取两棵根结点的权值最小的树作为左右子树，构造一棵新的二叉树，且置新的二叉树的根结点的权值为其左、右子树上根结点的权值之和。</p>
+<p>(3). 删除与加入：在 F 中删除这两棵树，同时将新得到的二叉树加入 F
+中。</p>
+<p>(4). 重复(2)和(3)，直到 F
+只含一棵树为止。这棵树便是所求的哈夫曼树。</p>
 <h2 id="例">例：</h2>
 <p>w={5, 29, 7, 8, 14, 23, 3, 11}的构造过程</p>
-<p><img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/w1.png" alt="w1" /> <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/w2.png" alt="w2" /> <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/w3.png" alt="w3" /> <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/w4.png" alt="w4" /> <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/w5.png" alt="w5" /> <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/w6.png" alt="w6" /> <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/w7.png" alt="w7" /> <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/w8.png" alt="w8" /></p>
+<p><img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/w1.png"
+alt="w1" /> <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/w2.png"
+alt="w2" /> <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/w3.png"
+alt="w3" /> <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/w4.png"
+alt="w4" /> <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/w5.png"
+alt="w5" /> <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/w6.png"
+alt="w6" /> <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/w7.png"
+alt="w7" /> <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/w8.png"
+alt="w8" /></p>
 <h2 id="哈夫曼编码">哈夫曼编码</h2>
-<p>一般地， 设需要编码的字符集为{ d1,d2,···,dn }，各个字符在电文中出现的次数或频率集合为{ W1,W2,···,Wn},以d1,d2,···,dn作为叶子结点，以W1,W,···,Wn作为相应叶子结点的权值来构造一棵哈夫曼树。规定哈夫曼树的左分支代表0，右分支代表1,则从根结点到叶子结点所经过的路径分支组成的0和1的序列便为该结点对应字符的编码，这就是哈夫曼编码。</p>
+<p>一般地， 设需要编码的字符集为{ d1,d2,···,dn
+}，各个字符在电文中出现的次数或频率集合为{
+W1,W2,···,Wn},以d1,d2,···,dn作为叶子结点，以W1,W,···,Wn作为相应叶子结点的权值来构造一棵哈夫曼树。规定哈夫曼树的左分支代表0，右分支代表1,则从根结点到叶子结点所经过的路径分支组成的0和1的序列便为该结点对应字符的编码，这就是哈夫曼编码。</p>
 <h2 id="哈夫曼树及编码存储结构">哈夫曼树及编码存储结构</h2>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">char</span> data;</span><br><span class="line">    <span class="type">int</span> weight;</span><br><span class="line">    <span class="type">int</span> parent, lchild, rchild;</span><br><span class="line">&#125;HTNode, * HuffmanTree;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">char</span>** HuffmanCode;<span class="comment">//动态分配数组存储哈夫曼编码</span></span><br></pre></td></tr></table></figure>
 <h2 id="哈夫曼树建立">哈夫曼树建立</h2>
-<h2 id="返回两个双亲域为0且权值最小的点的下标">返回两个双亲域为0且权值最小的点的下标</h2>
+<h2
+id="返回两个双亲域为0且权值最小的点的下标">返回两个双亲域为0且权值最小的点的下标</h2>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">Select</span><span class="params">(HuffmanTree HT, <span class="type">int</span> n, <span class="type">int</span>&amp; s1, <span class="type">int</span>&amp; s2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">/*n代表HT数组的长度*/</span></span><br><span class="line">    <span class="comment">//前两个for循环找所有结点中权值最小的点（字符）</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (HT[i].parent == <span class="number">0</span>)<span class="comment">//利用for循环找出一个双亲为0的结点</span></span><br><span class="line">        &#123;</span><br><span class="line">            s1 = i;<span class="comment">//s1初始化为i</span></span><br><span class="line">            <span class="keyword">break</span>;<span class="comment">//找到一个后立即退出循环</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">/*利用for循环找到所有结点（字符）权值最小的一个并且保证该结点的双亲为0*/</span></span><br><span class="line">        <span class="keyword">if</span> (HT[i].weight &lt; HT[s1].weight &amp;&amp; HT[i].parent == <span class="number">0</span>)</span><br><span class="line">            s1 = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//后两个for循环所有结点中权值第二小的点（字符）</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (HT[i].parent == <span class="number">0</span> &amp;&amp; i != s1)<span class="comment">//利用for循环找出一个双亲为0的结点，并且不能是s1</span></span><br><span class="line">        &#123;</span><br><span class="line">            s2 = i;<span class="comment">//s2初始化为i</span></span><br><span class="line">            <span class="keyword">break</span>;<span class="comment">//找到一个后立即退出循环</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">/*利用for循环找到所有结点（字符）权值第二小的一个，该结点满足不能是s1且双亲是0*/</span></span><br><span class="line">        <span class="keyword">if</span> (HT[i].weight &lt; HT[s2].weight &amp;&amp; HT[i].parent == <span class="number">0</span> &amp;&amp; i != s1)</span><br><span class="line">            s2 = i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="建树">建树</h2>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">CreateHuffmanTree</span><span class="params">(HuffmanTree&amp; HT, <span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt;= <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="type">int</span> m = <span class="number">2</span> * n - <span class="number">1</span>;  <span class="comment">//总结点数2n-1</span></span><br><span class="line">    HT = <span class="keyword">new</span> HTNode[m + <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//将1~m号单元中的双亲，左孩子，右孩子的下标都初始化为0</span></span><br><span class="line">        HT[i].data = <span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line">        HT[i].parent = <span class="number">0</span>;</span><br><span class="line">        HT[i].lchild = <span class="number">0</span>;</span><br><span class="line">        HT[i].rchild = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;输入结点信息和权值：&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin &gt;&gt; HT[i].data &gt;&gt; HT[i].weight; <span class="comment">//输入前n个单元中叶子结点的信息和权值</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*-----------初始化工作结束，下面建树---------------------------*/</span></span><br><span class="line">    <span class="type">int</span> s1, s2;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = n + <span class="number">1</span>; i &lt;= m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">Select</span>(HT, i - <span class="number">1</span>, s1, s2);</span><br><span class="line">        HT[s1].parent = i;</span><br><span class="line">        HT[s2].parent = i;</span><br><span class="line">        HT[i].lchild = s1;</span><br><span class="line">        HT[i].rchild = s2;</span><br><span class="line">        HT[i].weight = HT[s1].weight + HT[s2].weight;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -359,7 +380,8 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">Code</span><span class="params">(HuffmanTree HT, HuffmanCode HC, string c, string&amp; d, <span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    d = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; c.<span class="built_in">length</span>(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (c[i] == HT[j].data)  <span class="comment">//找到字符后再d后追加编码</span></span><br><span class="line">                d.<span class="built_in">append</span>(HC[j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="总结">总结</h2>
 <p>学习哈夫曼树和哈夫曼编码有助于初步理解数据压缩原理。</p>
-<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/acd06b8ed06b">部分显示问题，请参考</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://www.jianshu.com/p/acd06b8ed06b">部分显示问题，请参考</a></p>
 
     </div>
 
@@ -439,7 +461,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
