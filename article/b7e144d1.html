@@ -30,7 +30,7 @@
 <meta property="og:description" content="定义 算法是解决特定问题求解步骤的描述，在计算机中表现为指令的有限序列，并且每条指令表示一个或多个操作。 算法特性 算法具有五个基本特性：输入、输出、有穷性、确定性、可行性。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-07-14T07:15:07.000Z">
-<meta property="article:modified_time" content="2022-08-20T03:19:44.000Z">
+<meta property="article:modified_time" content="2023-01-03T10:04:03.164Z">
 <meta property="article:author" content="无奈和杨（wnhyang）">
 <meta property="article:tag" content="数据结构&amp;算法">
 <meta name="twitter:card" content="summary">
@@ -146,7 +146,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E7%89%B9%E6%80%A7"><span class="nav-number">2.</span> <span class="nav-text">算法特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><span class="nav-number">3.</span> <span class="nav-text">输入输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E7%A9%B7%E6%80%A7"><span class="nav-number">4.</span> <span class="nav-text">有穷性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A1%AE%E5%AE%9A%E6%80%A7"><span class="nav-number">5.</span> <span class="nav-text">确定性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E8%A1%8C%E6%80%A7"><span class="nav-number">6.</span> <span class="nav-text">可行性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E8%A6%81%E6%B1%82"><span class="nav-number">7.</span> <span class="nav-text">算法设计要求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E7%A1%AE%E6%80%A7"><span class="nav-number">8.</span> <span class="nav-text">正确性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E8%AF%BB%E6%80%A7"><span class="nav-number">9.</span> <span class="nav-text">可读性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%81%A5%E5%A3%AE%E6%80%A7"><span class="nav-number">10.</span> <span class="nav-text">健壮性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E6%95%88%E7%8E%87%E9%AB%98%E5%92%8C%E5%AD%98%E5%82%A8%E9%87%8F%E4%BD%8E"><span class="nav-number">11.</span> <span class="nav-text">时间效率高和存储量低</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E6%95%88%E7%8E%87%E5%BA%A6%E9%87%8F%E6%96%B9%E6%B3%95"><span class="nav-number">12.</span> <span class="nav-text">算法效率度量方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E5%90%8E%E7%BB%9F%E8%AE%A1%E6%B3%95"><span class="nav-number">13.</span> <span class="nav-text">事后统计法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E5%89%8D%E5%88%86%E6%9E%90%E4%BC%B0%E7%AE%97%E6%B3%95"><span class="nav-number">14.</span> <span class="nav-text">事前分析估算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">15.</span> <span class="nav-text">算法时间复杂度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-1"><span class="nav-number">16.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A8%E5%AF%BC%E5%A4%A7o%E9%98%B6%E6%96%B9%E6%B3%95"><span class="nav-number">17.</span> <span class="nav-text">推导大O阶方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E6%95%B0%E9%98%B6%E7%BA%BF%E6%80%A7%E9%98%B6%E5%AF%B9%E6%95%B0%E9%98%B6%E7%AD%89"><span class="nav-number">18.</span> <span class="nav-text">常数阶、线性阶、对数阶等</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">19.</span> <span class="nav-text">常见的时间复杂度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%9D%8F%E6%83%85%E5%86%B5%E4%B8%8E%E5%B9%B3%E5%9D%87%E6%83%85%E5%86%B5"><span class="nav-number">20.</span> <span class="nav-text">最坏情况与平均情况</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">21.</span> <span class="nav-text">算法空间复杂度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">22.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E7%89%B9%E6%80%A7"><span class="nav-number">2.</span> <span class="nav-text">算法特性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><span class="nav-number">3.</span> <span class="nav-text">输入输出</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%89%E7%A9%B7%E6%80%A7"><span class="nav-number">4.</span> <span class="nav-text">有穷性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A1%AE%E5%AE%9A%E6%80%A7"><span class="nav-number">5.</span> <span class="nav-text">确定性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%AF%E8%A1%8C%E6%80%A7"><span class="nav-number">6.</span> <span class="nav-text">可行性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E8%A6%81%E6%B1%82"><span class="nav-number">7.</span> <span class="nav-text">算法设计要求</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A3%E7%A1%AE%E6%80%A7"><span class="nav-number">8.</span> <span class="nav-text">正确性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%AF%E8%AF%BB%E6%80%A7"><span class="nav-number">9.</span> <span class="nav-text">可读性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%81%A5%E5%A3%AE%E6%80%A7"><span class="nav-number">10.</span> <span class="nav-text">健壮性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E6%95%88%E7%8E%87%E9%AB%98%E5%92%8C%E5%AD%98%E5%82%A8%E9%87%8F%E4%BD%8E"><span class="nav-number">11.</span> <span class="nav-text">时间效率高和存储量低</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E6%95%88%E7%8E%87%E5%BA%A6%E9%87%8F%E6%96%B9%E6%B3%95"><span class="nav-number">12.</span> <span class="nav-text">算法效率度量方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8B%E5%90%8E%E7%BB%9F%E8%AE%A1%E6%B3%95"><span class="nav-number">13.</span> <span class="nav-text">事后统计法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8B%E5%89%8D%E5%88%86%E6%9E%90%E4%BC%B0%E7%AE%97%E6%B3%95"><span class="nav-number">14.</span> <span class="nav-text">事前分析估算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">15.</span> <span class="nav-text">算法时间复杂度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-1"><span class="nav-number">16.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%A8%E5%AF%BC%E5%A4%A7o%E9%98%B6%E6%96%B9%E6%B3%95"><span class="nav-number">17.</span> <span class="nav-text">推导大O阶方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E6%95%B0%E9%98%B6%E7%BA%BF%E6%80%A7%E9%98%B6%E5%AF%B9%E6%95%B0%E9%98%B6%E7%AD%89"><span class="nav-number">18.</span> <span class="nav-text">常数阶、线性阶、对数阶等</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">19.</span> <span class="nav-text">常见的时间复杂度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E5%9D%8F%E6%83%85%E5%86%B5%E4%B8%8E%E5%B9%B3%E5%9D%87%E6%83%85%E5%86%B5"><span class="nav-number">20.</span> <span class="nav-text">最坏情况与平均情况</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">21.</span> <span class="nav-text">算法空间复杂度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">22.</span> <span class="nav-text">总结</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -253,7 +253,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-08-20 11:19:44" itemprop="dateModified" datetime="2022-08-20T11:19:44+08:00">2022-08-20</time>
+      <time title="修改时间：2023-01-03 18:04:03" itemprop="dateModified" datetime="2023-01-03T18:04:03+08:00">2023-01-03</time>
     </span>
 
   
@@ -288,21 +288,21 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="定义">定义</h2>
+        <h1 id="定义">定义</h1>
 <p>算法是解决特定问题求解步骤的描述，在计算机中表现为指令的有限序列，并且每条指令表示一个或多个操作。</p>
-<h2 id="算法特性">算法特性</h2>
+<h1 id="算法特性">算法特性</h1>
 <p>算法具有五个基本特性：输入、输出、有穷性、确定性、可行性。</p>
 <span id="more"></span>
-<h2 id="输入输出">输入输出</h2>
+<h1 id="输入输出">输入输出</h1>
 <p>算法至少有一个或多个输出。</p>
-<h2 id="有穷性">有穷性</h2>
+<h1 id="有穷性">有穷性</h1>
 <p>有穷性：指算法在执行有限的步骤之后，自动结束而不会出现无限循环，并且每个步骤在可以接受的时间内完成。</p>
-<h2 id="确定性">确定性</h2>
+<h1 id="确定性">确定性</h1>
 <p>确定性：算法的每个步骤都具有确定的含义，不会出现二义性。</p>
-<h2 id="可行性">可行性</h2>
+<h1 id="可行性">可行性</h1>
 <p>可行性：算法的每一步都必须是可行的，也就是说，每一步都能够通过执行有限次数完成。</p>
-<h2 id="算法设计要求">算法设计要求</h2>
-<h2 id="正确性">正确性</h2>
+<h1 id="算法设计要求">算法设计要求</h1>
+<h1 id="正确性">正确性</h1>
 <p>正确性：算法的正确性是指算法至少应该具有输入、输出和加工处理无歧义性、能正确反映问题的需求、能够得到问题的正确答案。
 大体分为以下层次：</p>
 <ol type="1">
@@ -311,28 +311,28 @@
 <li>算法程序对于非法的输入数据能够得出满足规格说明的结果。</li>
 <li>算法程序对于精心选择的，甚至刁难的测试数据都有满足要求的输出结果。</li>
 </ol>
-<h2 id="可读性">可读性</h2>
+<h1 id="可读性">可读性</h1>
 <p>可读性：算法设计的另一个目的是为了便于阅读、理解和交流。</p>
-<h2 id="健壮性">健壮性</h2>
+<h1 id="健壮性">健壮性</h1>
 <p>健壮性：当输入数据不合法时，算法也能做出相关处理，而不是产生异常或莫名其奥妙的结果。</p>
-<h2 id="时间效率高和存储量低">时间效率高和存储量低</h2>
+<h1 id="时间效率高和存储量低">时间效率高和存储量低</h1>
 <p>设计算法应该尽量满足时间效率高和存储量低的需求。</p>
-<h2 id="算法效率度量方法">算法效率度量方法</h2>
-<h2 id="事后统计法">事后统计法</h2>
+<h1 id="算法效率度量方法">算法效率度量方法</h1>
+<h1 id="事后统计法">事后统计法</h1>
 <p>事后统计方法:这种方法主要是通过设计好的测试程序和数据，利用计算机计时器对不同算法编制的程序的运行时间进行比较，从而确定算法效率的高低。</p>
-<h2 id="事前分析估算法">事前分析估算法</h2>
+<h1 id="事前分析估算法">事前分析估算法</h1>
 <p>事前分析估算法：在计算机程序编制前，依据统计方法对算法进行估算。</p>
-<h2 id="算法时间复杂度">算法时间复杂度</h2>
-<h2 id="定义-1">定义</h2>
+<h1 id="算法时间复杂度">算法时间复杂度</h1>
+<h1 id="定义-1">定义</h1>
 <p>在进行算法分析时，语句总的执行次数T(n)是关于问题规模n的函数，进行分析T(n)随n的变化情况并确定T(n)的数量级。算法的时间复杂度，也就是算法的时间量度，记作：T(n)=O(f(n))。它表示随问题规模n增大，算法执行时间的增长率和f(n)的增长率相同，称作算法的渐进时间复杂度，简称为时间复杂度。其中f(n)是问题规模n的某个函数。</p>
-<h2 id="推导大o阶方法">推导大O阶方法</h2>
+<h1 id="推导大o阶方法">推导大O阶方法</h1>
 <ol type="1">
 <li>用常数1取代运行时间中的所有加法常数。</li>
 <li>在修改后的运行次数函数中，只保留最高阶项。</li>
 <li>如果最高阶项存在且不是1，则去除与这个项相乘的常数。得到的结果就是大O阶。</li>
 </ol>
-<h2 id="常数阶线性阶对数阶等">常数阶、线性阶、对数阶等</h2>
-<h2 id="常见的时间复杂度">常见的时间复杂度</h2>
+<h1 id="常数阶线性阶对数阶等">常数阶、线性阶、对数阶等</h1>
+<h1 id="常见的时间复杂度">常见的时间复杂度</h1>
 <table>
 <thead>
 <tr class="header">
@@ -390,12 +390,12 @@ class="math inline">\(n!\)</span>)&lt; O(<span
 class="math inline">\(n^n\)</span>)</p>
 <p><a
 target="_blank" rel="noopener" href="https://www.jianshu.com/p/def16ee5c8c4">显示问题，参考</a></p>
-<h2 id="最坏情况与平均情况">最坏情况与平均情况</h2>
+<h1 id="最坏情况与平均情况">最坏情况与平均情况</h1>
 <p>最坏情况运行时间是一种保证，那就是运行时间将不会在坏了。在应用中，这是一种最重要的需求，通常，除非特别指定，我们提到的运行时间都是最坏情况的运行时间。</p>
 <p>平均运行时间是所有情况中最有意义，因为它是期望的运行时间。</p>
-<h2 id="算法空间复杂度">算法空间复杂度</h2>
+<h1 id="算法空间复杂度">算法空间复杂度</h1>
 <p>算法空间复杂度通过计算算法所需的存储空间实现，算法空间复杂度的计算公式记作：S(n)=O(f(n)，其中，n为问题规模，f(n)为语句关于n所占存储空间的函数。</p>
-<h2 id="总结">总结</h2>
+<h1 id="总结">总结</h1>
 <p>优化算法，对于计算科学和程序设计有很大意义！！！</p>
 
     </div>
@@ -488,14 +488,14 @@ target="_blank" rel="noopener" href="https://www.jianshu.com/p/def16ee5c8c4">显
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">169k</span>
+    <span title="站点总字数">170k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">10:16</span>
+    <span title="站点阅读时长">10:20</span>
   </span>
 </div>
 <div class="busuanzi-count">

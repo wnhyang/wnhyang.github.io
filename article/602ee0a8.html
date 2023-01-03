@@ -41,7 +41,7 @@
 <meta property="og:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/heapsort.png">
 <meta property="og:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/heapsort-trace.png">
 <meta property="article:published_time" content="2020-08-03T08:15:12.000Z">
-<meta property="article:modified_time" content="2022-12-30T13:39:18.000Z">
+<meta property="article:modified_time" content="2023-01-03T10:04:19.450Z">
 <meta property="article:author" content="无奈和杨（wnhyang）">
 <meta property="article:tag" content="数据结构&amp;算法">
 <meta name="twitter:card" content="summary">
@@ -158,7 +158,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#api"><span class="nav-number">1.</span> <span class="nav-text">API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E7%BA%A7%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.</span> <span class="nav-text">初级实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E5%AE%9E%E7%8E%B0%E6%97%A0%E5%BA%8F"><span class="nav-number">3.</span> <span class="nav-text">数组实现（无序）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E5%AE%9E%E7%8E%B0%E6%9C%89%E5%BA%8F"><span class="nav-number">4.</span> <span class="nav-text">数组实现（有序）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8%E8%A1%A8%E7%A4%BA%E6%B3%95"><span class="nav-number">5.</span> <span class="nav-text">链表表示法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A0%86%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">6.</span> <span class="nav-text">堆的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E5%A0%86%E8%A1%A8%E7%A4%BA%E6%B3%95"><span class="nav-number">7.</span> <span class="nav-text">二叉堆表示法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A0%86%E7%9A%84%E7%AE%97%E6%B3%95"><span class="nav-number">8.</span> <span class="nav-text">堆的算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%B1%E4%B8%8B%E8%87%B3%E4%B8%8A%E7%9A%84%E5%A0%86%E6%9C%89%E5%BA%8F%E5%8C%96%E4%B8%8A%E6%B5%AE"><span class="nav-number">9.</span> <span class="nav-text">由下至上的堆有序化（上浮）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%B1%E4%B8%8A%E8%87%B3%E4%B8%8B%E7%9A%84%E5%A0%86%E6%9C%89%E5%BA%8F%E5%8C%96%E4%B8%8B%E6%B2%89"><span class="nav-number">10.</span> <span class="nav-text">由上至下的堆有序化（下沉）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%A0%86%E7%9A%84%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97"><span class="nav-number">11.</span> <span class="nav-text">基于堆的优先队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E5%8F%89%E5%A0%86"><span class="nav-number">12.</span> <span class="nav-text">多叉堆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E5%A4%A7%E5%B0%8F"><span class="nav-number">13.</span> <span class="nav-text">调整数组大小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%83%E7%B4%A0%E7%9A%84%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%80%A7"><span class="nav-number">14.</span> <span class="nav-text">元素的不可变性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97"><span class="nav-number">15.</span> <span class="nav-text">索引优先队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97%E7%94%A8%E4%BE%8B"><span class="nav-number">16.</span> <span class="nav-text">索引优先队列用例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A0%86%E6%8E%92%E5%BA%8F"><span class="nav-number">17.</span> <span class="nav-text">堆排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">18.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#api"><span class="nav-number">1.</span> <span class="nav-text">API</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9D%E7%BA%A7%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.</span> <span class="nav-text">初级实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E5%AE%9E%E7%8E%B0%E6%97%A0%E5%BA%8F"><span class="nav-number">3.</span> <span class="nav-text">数组实现（无序）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E5%AE%9E%E7%8E%B0%E6%9C%89%E5%BA%8F"><span class="nav-number">4.</span> <span class="nav-text">数组实现（有序）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8%E8%A1%A8%E7%A4%BA%E6%B3%95"><span class="nav-number">5.</span> <span class="nav-text">链表表示法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A0%86%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">6.</span> <span class="nav-text">堆的定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E5%A0%86%E8%A1%A8%E7%A4%BA%E6%B3%95"><span class="nav-number">7.</span> <span class="nav-text">二叉堆表示法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A0%86%E7%9A%84%E7%AE%97%E6%B3%95"><span class="nav-number">8.</span> <span class="nav-text">堆的算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%B1%E4%B8%8B%E8%87%B3%E4%B8%8A%E7%9A%84%E5%A0%86%E6%9C%89%E5%BA%8F%E5%8C%96%E4%B8%8A%E6%B5%AE"><span class="nav-number">9.</span> <span class="nav-text">由下至上的堆有序化（上浮）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%B1%E4%B8%8A%E8%87%B3%E4%B8%8B%E7%9A%84%E5%A0%86%E6%9C%89%E5%BA%8F%E5%8C%96%E4%B8%8B%E6%B2%89"><span class="nav-number">10.</span> <span class="nav-text">由上至下的堆有序化（下沉）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%A0%86%E7%9A%84%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97"><span class="nav-number">11.</span> <span class="nav-text">基于堆的优先队列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%9A%E5%8F%89%E5%A0%86"><span class="nav-number">12.</span> <span class="nav-text">多叉堆</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E5%A4%A7%E5%B0%8F"><span class="nav-number">13.</span> <span class="nav-text">调整数组大小</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%83%E7%B4%A0%E7%9A%84%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%80%A7"><span class="nav-number">14.</span> <span class="nav-text">元素的不可变性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97"><span class="nav-number">15.</span> <span class="nav-text">索引优先队列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97%E7%94%A8%E4%BE%8B"><span class="nav-number">16.</span> <span class="nav-text">索引优先队列用例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A0%86%E6%8E%92%E5%BA%8F"><span class="nav-number">17.</span> <span class="nav-text">堆排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">18.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -265,7 +265,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-12-30 21:39:18" itemprop="dateModified" datetime="2022-12-30T21:39:18+08:00">2022-12-30</time>
+      <time title="修改时间：2023-01-03 18:04:19" itemprop="dateModified" datetime="2023-01-03T18:04:19+08:00">2023-01-03</time>
     </span>
 
   
@@ -306,28 +306,28 @@
 删除最大元素和插入元素。这种数据类型叫做优先队列。优先队列的使用和队列（删除最老的元素）以及栈（删除最新的元素）类似，但高效地实现它则更有挑战性。</p>
 <p><a
 href="https://wnhyang.github.io/article/a444b428.html">目录</a></p>
-<h2 id="api">API</h2>
+<h1 id="api">API</h1>
 <figure>
 <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/pq-api.png"
 alt="泛型优先队列的API" />
 <figcaption aria-hidden="true">泛型优先队列的API</figcaption>
 </figure>
-<h2 id="初级实现">初级实现</h2>
-<h2 id="数组实现无序">数组实现（无序）</h2>
-<h2 id="数组实现有序">数组实现（有序）</h2>
-<h2 id="链表表示法">链表表示法</h2>
+<h1 id="初级实现">初级实现</h1>
+<h1 id="数组实现无序">数组实现（无序）</h1>
+<h1 id="数组实现有序">数组实现（有序）</h1>
+<h1 id="链表表示法">链表表示法</h1>
 <figure>
 <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/pq-array.png"
 alt="在一个优先队列上执行的一系列操作" />
 <figcaption
 aria-hidden="true">在一个优先队列上执行的一系列操作</figcaption>
 </figure>
-<h2 id="堆的定义">堆的定义</h2>
+<h1 id="堆的定义">堆的定义</h1>
 <p>数据结构二叉堆能够很好地实现优先队列的基本操作。在二叉堆的数组中，每个元素都要保证大于等于另两个特定位置的元素。相应地，这些位置的元素又至少要大于等于数组中的另两个元素，以此类推。如果我们将所有元素画成一棵二叉树，将每个较大元素和两个较小的元素用边连接就可以很容易看出这种结构。</p>
 <p>定义。当一棵二又树的每个结点都大于等于它的两个子结点时，它被称为堆有序。</p>
 <p>相应地，在堆有序的二叉树中，每个结点都小于等于它的父结点(如果有的话)。从任意结点向上，我们都能得到一列非递减的元素;从任意结点向下，我们都能得到一列非递增的元素。
 特别地:根结点是堆有序的二叉树中的最大结点。</p>
-<h2 id="二叉堆表示法">二叉堆表示法</h2>
+<h1 id="二叉堆表示法">二叉堆表示法</h1>
 <p>如果我们用指针来表示堆有序的二叉树，那么每个元素都需要三个指针来找到它的上下结点（父结点和两个子结点各需要一个）。</p>
 <figure>
 <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/heap.png"
@@ -343,24 +343,24 @@ class="math inline">\([LgN]\)</span>。</p>
 alt="堆的表示" />
 <figcaption aria-hidden="true">堆的表示</figcaption>
 </figure>
-<h2 id="堆的算法">堆的算法</h2>
+<h1 id="堆的算法">堆的算法</h1>
 <p>堆实现的比较和交换方法</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="type">boolean</span> <span class="title function_">less</span><span class="params">(<span class="type">int</span> i, <span class="type">int</span> j)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> pq[i].compareTo(pq[j]) &lt; <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">exch</span><span class="params">(<span class="type">int</span> i, <span class="type">int</span> j)</span> &#123;</span><br><span class="line">    <span class="type">Key</span> <span class="variable">t</span> <span class="operator">=</span> pq[i];</span><br><span class="line">    pq[i] = pq[j];</span><br><span class="line">    pq[j] = t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="由下至上的堆有序化上浮">由下至上的堆有序化（上浮）</h2>
+<h1 id="由下至上的堆有序化上浮">由下至上的堆有序化（上浮）</h1>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">swin</span><span class="params">(<span class="type">int</span> k)</span> &#123;</span><br><span class="line">    <span class="keyword">while</span> (k &gt; <span class="number">1</span> &amp;&amp; less(k / <span class="number">2</span>, k)) &#123;</span><br><span class="line">        exch(k / <span class="number">2</span>, k);</span><br><span class="line">        k = k / <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure>
 <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/swim.png"
 alt="由下至上的堆有序化（上浮）" />
 <figcaption aria-hidden="true">由下至上的堆有序化（上浮）</figcaption>
 </figure>
-<h2 id="由上至下的堆有序化下沉">由上至下的堆有序化（下沉）</h2>
+<h1 id="由上至下的堆有序化下沉">由上至下的堆有序化（下沉）</h1>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">sink</span><span class="params">(<span class="type">int</span> k)</span> &#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">2</span> * k &lt;= n) &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">2</span> * k;</span><br><span class="line">        <span class="keyword">if</span> (j &lt; n &amp;&amp; less(j, j + <span class="number">1</span>)) j++;</span><br><span class="line">        <span class="keyword">if</span> (!less(k, j)) <span class="keyword">break</span>;</span><br><span class="line">        exch(k, j);</span><br><span class="line">        k = j;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure>
 <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/sink.png"
 alt="由上至下的堆有序化（下沉）" />
 <figcaption aria-hidden="true">由上至下的堆有序化（下沉）</figcaption>
 </figure>
-<h2 id="基于堆的优先队列">基于堆的优先队列</h2>
+<h1 id="基于堆的优先队列">基于堆的优先队列</h1>
 <figure>
 <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/heap-ops.png"
 alt="堆的操作" />
@@ -372,18 +372,18 @@ alt="堆的操作" />
 alt="由上至下的堆有序化（下沉）" />
 <figcaption aria-hidden="true">由上至下的堆有序化（下沉）</figcaption>
 </figure>
-<h2 id="多叉堆">多叉堆</h2>
-<h2 id="调整数组大小">调整数组大小</h2>
-<h2 id="元素的不可变性">元素的不可变性</h2>
-<h2 id="索引优先队列">索引优先队列</h2>
+<h1 id="多叉堆">多叉堆</h1>
+<h1 id="调整数组大小">调整数组大小</h1>
+<h1 id="元素的不可变性">元素的不可变性</h1>
+<h1 id="索引优先队列">索引优先队列</h1>
 <figure>
 <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/indexpq-api.png"
 alt="由上至下的堆有序化（下沉）" />
 <figcaption aria-hidden="true">由上至下的堆有序化（下沉）</figcaption>
 </figure>
-<h2 id="索引优先队列用例">索引优先队列用例</h2>
+<h1 id="索引优先队列用例">索引优先队列用例</h1>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Multiway</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">merge</span><span class="params">(In[] streams)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> streams.length;</span><br><span class="line">        IndexMinPQ&lt;String&gt; pq = <span class="keyword">new</span> <span class="title class_">IndexMinPQ</span>&lt;String&gt;(n);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">            <span class="keyword">if</span> (!streams[i].isEmpty())</span><br><span class="line">                pq.insert(i, streams[i].readString());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (!pq.isEmpty()) &#123;</span><br><span class="line">            StdOut.print(pq.minKey() + <span class="string">&quot; &quot;</span>);</span><br><span class="line">            <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> pq.delMin();</span><br><span class="line">            <span class="keyword">if</span> (!streams[i].isEmpty())</span><br><span class="line">                pq.insert(i, streams[i].readString());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> args.length;</span><br><span class="line">        In[] streams = <span class="keyword">new</span> <span class="title class_">In</span>[n];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">            streams[i] = <span class="keyword">new</span> <span class="title class_">In</span>(args[i]);</span><br><span class="line">        merge(streams);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="堆排序">堆排序</h2>
+<h1 id="堆排序">堆排序</h1>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">sort</span><span class="params">(Comparable[] a)</span>&#123;</span><br><span class="line">    <span class="type">int</span> n=a.length;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> k=n/<span class="number">2</span>;k&gt;=<span class="number">1</span>;k--)</span><br><span class="line">        sink(a,k,n);</span><br><span class="line">    <span class="keyword">while</span> (n&gt;<span class="number">1</span>)&#123;</span><br><span class="line">        exch(a,<span class="number">1</span>,n--);</span><br><span class="line">        sink(a,<span class="number">1</span>,n);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这段代码用sink()方法将a[1]到a[N]的元素排序(sink()被修改过，以a[]和N作为参数)。for循环构造了堆，然后while循环将最大的元素a[1]和a[N]交换并修复了堆，如此重复直到堆变空。将exch()和less()的实现中的索引减一即可得到和其他排序算法一致的实现(将a[0]至a[N-1]排序)。堆排序具体流程示意图显示在下图中。</p>
 <figure>
@@ -398,7 +398,7 @@ alt="堆排序：堆的构造（左）和下沉排序（右）" />
 <figcaption
 aria-hidden="true">堆排序：堆的构造（左）和下沉排序（右）</figcaption>
 </figure>
-<h2 id="参考资料">参考资料</h2>
+<h1 id="参考资料">参考资料</h1>
 <p>《算法（第4版）》第二章排序2.3快速排序</p>
 <p><a target="_blank" rel="noopener" href="https://algs4.cs.princeton.edu/">本书网站</a></p>
 
@@ -492,14 +492,14 @@ aria-hidden="true">堆排序：堆的构造（左）和下沉排序（右）</fi
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">169k</span>
+    <span title="站点总字数">170k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">10:16</span>
+    <span title="站点阅读时长">10:20</span>
   </span>
 </div>
 <div class="busuanzi-count">

@@ -30,7 +30,7 @@
 <meta property="og:description" content="参考  https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV19K4y1L7MT https:&#x2F;&#x2F;www.yuque.com&#x2F;atguigu&#x2F;springboot&#x2F;rmxq85 https:&#x2F;&#x2F;docs.spring.io&#x2F;spring-boot&#x2F;docs&#x2F;2.4.3&#x2F;reference&#x2F;html&#x2F;getting-started.html">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-05T13:59:29.000Z">
-<meta property="article:modified_time" content="2022-05-11T15:45:40.000Z">
+<meta property="article:modified_time" content="2023-01-03T09:57:01.001Z">
 <meta property="article:author" content="无奈和杨（wnhyang）">
 <meta property="article:tag" content="Spring Boot">
 <meta name="twitter:card" content="summary">
@@ -146,13 +146,13 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">1.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D%E5%8E%9F%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">自动装配原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A6%96%E5%85%88"><span class="nav-number">2.1.</span> <span class="nav-text">首先</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#configuration"><span class="nav-number">2.1.1.</span> <span class="nav-text">@Configuration</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#beancomponentcontrollerservicerepository"><span class="nav-number">2.1.2.</span> <span class="nav-text">@Bean、@Component、@Controller、@Service、@Repository</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#componentscanimport"><span class="nav-number">2.1.3.</span> <span class="nav-text">@ComponentScan、@Import</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#conditional"><span class="nav-number">2.1.4.</span> <span class="nav-text">@Conditional</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#importresource"><span class="nav-number">2.1.5.</span> <span class="nav-text">@ImportResource</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#configurationproperties"><span class="nav-number">2.1.6.</span> <span class="nav-text">@ConfigurationProperties</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#enableautoconfiguration"><span class="nav-number">2.1.7.</span> <span class="nav-text">@EnableAutoConfiguration</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%90%86%E5%88%9D%E8%A7%A3"><span class="nav-number">2.2.</span> <span class="nav-text">原理初解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#configurationproxybeanmethods-false"><span class="nav-number">2.2.1.</span> <span class="nav-text">@Configuration(proxyBeanMethods &#x3D;
-false)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#conditionalonwebapplicationtype-type.servlet"><span class="nav-number">2.2.2.</span> <span class="nav-text">@ConditionalOnWebApplication(type
-&#x3D; Type.SERVLET)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#conditionalonclass-servlet.class-dispatcherservlet.class-webmvcconfigurer.class"><span class="nav-number">2.2.3.</span> <span class="nav-text">@ConditionalOnClass({
-Servlet.class, DispatcherServlet.class, WebMvcConfigurer.class })</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#conditionalonmissingbeanwebmvcconfigurationsupport.class"><span class="nav-number">2.2.4.</span> <span class="nav-text">@ConditionalOnMissingBean(WebMvcConfigurationSupport.class)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#autoconfigureorderordered.highest_precedence-10"><span class="nav-number">2.2.5.</span> <span class="nav-text">@AutoConfigureOrder(Ordered.HIGHEST_PRECEDENCE
-+ 10)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#autoconfigureafter..."><span class="nav-number">2.2.6.</span> <span class="nav-text">@AutoConfigureAfter(...)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bean"><span class="nav-number">2.2.7.</span> <span class="nav-text">@Bean</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#conditionalonmissingbeanhiddenhttpmethodfilter.class"><span class="nav-number">2.2.8.</span> <span class="nav-text">@ConditionalOnMissingBean(HiddenHttpMethodFilter.class)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#conditionalonpropertyprefix-spring.mvc.hiddenmethod.filter-name-enabled-matchifmissing-false"><span class="nav-number">2.2.9.</span> <span class="nav-text">@ConditionalOnProperty(prefix
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">1.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D%E5%8E%9F%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">自动装配原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A6%96%E5%85%88"><span class="nav-number">2.1.</span> <span class="nav-text">首先</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#configuration"><span class="nav-number">2.1.1.</span> <span class="nav-text">@Configuration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#beancomponentcontrollerservicerepository"><span class="nav-number">2.1.2.</span> <span class="nav-text">@Bean、@Component、@Controller、@Service、@Repository</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#componentscanimport"><span class="nav-number">2.1.3.</span> <span class="nav-text">@ComponentScan、@Import</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#conditional"><span class="nav-number">2.1.4.</span> <span class="nav-text">@Conditional</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#importresource"><span class="nav-number">2.1.5.</span> <span class="nav-text">@ImportResource</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#configurationproperties"><span class="nav-number">2.1.6.</span> <span class="nav-text">@ConfigurationProperties</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#enableautoconfiguration"><span class="nav-number">2.1.7.</span> <span class="nav-text">@EnableAutoConfiguration</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E7%90%86%E5%88%9D%E8%A7%A3"><span class="nav-number">2.2.</span> <span class="nav-text">原理初解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#configurationproxybeanmethods-false"><span class="nav-number">2.2.1.</span> <span class="nav-text">@Configuration(proxyBeanMethods &#x3D;
+false)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#conditionalonwebapplicationtype-type.servlet"><span class="nav-number">2.2.2.</span> <span class="nav-text">@ConditionalOnWebApplication(type
+&#x3D; Type.SERVLET)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#conditionalonclass-servlet.class-dispatcherservlet.class-webmvcconfigurer.class"><span class="nav-number">2.2.3.</span> <span class="nav-text">@ConditionalOnClass({
+Servlet.class, DispatcherServlet.class, WebMvcConfigurer.class })</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#conditionalonmissingbeanwebmvcconfigurationsupport.class"><span class="nav-number">2.2.4.</span> <span class="nav-text">@ConditionalOnMissingBean(WebMvcConfigurationSupport.class)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#autoconfigureorderordered.highest_precedence-10"><span class="nav-number">2.2.5.</span> <span class="nav-text">@AutoConfigureOrder(Ordered.HIGHEST_PRECEDENCE
++ 10)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#autoconfigureafter..."><span class="nav-number">2.2.6.</span> <span class="nav-text">@AutoConfigureAfter(...)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bean"><span class="nav-number">2.2.7.</span> <span class="nav-text">@Bean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#conditionalonmissingbeanhiddenhttpmethodfilter.class"><span class="nav-number">2.2.8.</span> <span class="nav-text">@ConditionalOnMissingBean(HiddenHttpMethodFilter.class)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#conditionalonpropertyprefix-spring.mvc.hiddenmethod.filter-name-enabled-matchifmissing-false"><span class="nav-number">2.2.9.</span> <span class="nav-text">@ConditionalOnProperty(prefix
 &#x3D; &quot;spring.mvc.hiddenmethod.filter&quot;, name &#x3D; &quot;enabled&quot;, matchIfMissing &#x3D;
-false)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">2.3.</span> <span class="nav-text">小结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D"><span class="nav-number">2.3.1.</span> <span class="nav-text">自动装配</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#springboot%E4%BC%98%E7%82%B9"><span class="nav-number">2.4.</span> <span class="nav-text">SpringBoot优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#springboot%E7%BC%BA%E7%82%B9"><span class="nav-number">2.5.</span> <span class="nav-text">SpringBoot缺点</span></a></li></ol></li></ol></div>
+false)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">2.3.</span> <span class="nav-text">小结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D"><span class="nav-number">2.3.1.</span> <span class="nav-text">自动装配</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#springboot%E4%BC%98%E7%82%B9"><span class="nav-number">2.4.</span> <span class="nav-text">SpringBoot优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#springboot%E7%BC%BA%E7%82%B9"><span class="nav-number">2.5.</span> <span class="nav-text">SpringBoot缺点</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -259,7 +259,7 @@ false)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-l
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-05-11 23:45:40" itemprop="dateModified" datetime="2022-05-11T23:45:40+08:00">2022-05-11</time>
+      <time title="修改时间：2023-01-03 17:57:01" itemprop="dateModified" datetime="2023-01-03T17:57:01+08:00">2023-01-03</time>
     </span>
 
   
@@ -294,7 +294,7 @@ false)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-l
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="参考">参考</h2>
+        <h1 id="参考">参考</h1>
 <ul>
 <li><a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV19K4y1L7MT">https://www.bilibili.com/video/BV19K4y1L7MT</a></li>
@@ -310,118 +310,118 @@ SpringBoot的优点，这次总算是初识庐山真面目了。</p>
 <p>首先我要说<a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV19K4y1L7MT">雷丰阳2021版SpringBoot2零基础入门springboot全套完整版（spring
 boot2）</a>讲的真是太棒了，第一次接触真的能收获太多了，尤其感觉讲的非常有条理，循序渐进，先讲简单应用，再从源码分析原理。有一次看到一个章节直呼SpringBoot实在是太妙了，感叹了半天。</p>
-<h2 id="自动装配原理">自动装配原理</h2>
+<h1 id="自动装配原理">自动装配原理</h1>
 <p>我不奢求能把它说清楚，我只是想把我目前的理解说一说，有不对的还请见谅。</p>
-<h3 id="首先">首先</h3>
+<h2 id="首先">首先</h2>
 <p>要知道SpringBoot几个基本注解</p>
-<h4 id="configuration"><span class="citation"
-data-cites="Configuration">@Configuration</span></h4>
+<h3 id="configuration"><span class="citation"
+data-cites="Configuration">@Configuration</span></h3>
 <ul>
 <li>声明为配置类</li>
 <li>proxyBeanMethods 默认为true，表示组件是单实例的</li>
 </ul>
-<h4 id="beancomponentcontrollerservicerepository"><span class="citation"
+<h3 id="beancomponentcontrollerservicerepository"><span class="citation"
 data-cites="Bean">@Bean</span>、<span class="citation"
 data-cites="Component">@Component</span>、<span class="citation"
 data-cites="Controller">@Controller</span>、<span class="citation"
 data-cites="Service">@Service</span>、<span class="citation"
-data-cites="Repository">@Repository</span></h4>
+data-cites="Repository">@Repository</span></h3>
 <ul>
 <li>这些在Spring、SpringMVC都见识到了，都是用来配置组件的</li>
 </ul>
-<h4 id="componentscanimport"><span class="citation"
+<h3 id="componentscanimport"><span class="citation"
 data-cites="ComponentScan">@ComponentScan</span>、<span class="citation"
-data-cites="Import">@Import</span></h4>
+data-cites="Import">@Import</span></h3>
 <ul>
 <li>组件扫描和组件导入</li>
 </ul>
-<h4 id="conditional"><span class="citation"
-data-cites="Conditional">@Conditional</span></h4>
+<h3 id="conditional"><span class="citation"
+data-cites="Conditional">@Conditional</span></h3>
 <ul>
 <li>条件装配，非常重要，在我看来自动装配主要由它实现</li>
 </ul>
-<h4 id="importresource"><span class="citation"
-data-cites="ImportResource">@ImportResource</span></h4>
+<h3 id="importresource"><span class="citation"
+data-cites="ImportResource">@ImportResource</span></h3>
 <ul>
 <li>SpringBoot几乎不使用Spring传统的xml配置，如果还是想用则可以使用这个配置，声明xml的classpath即可</li>
 </ul>
-<h4 id="configurationproperties"><span class="citation"
-data-cites="ConfigurationProperties">@ConfigurationProperties</span></h4>
+<h3 id="configurationproperties"><span class="citation"
+data-cites="ConfigurationProperties">@ConfigurationProperties</span></h3>
 <ul>
 <li>属性绑定</li>
 <li>因为它可以在配置文件实现properties或是yaml配置</li>
 </ul>
-<h4 id="enableautoconfiguration"><span class="citation"
-data-cites="EnableAutoConfiguration">@EnableAutoConfiguration</span></h4>
+<h3 id="enableautoconfiguration"><span class="citation"
+data-cites="EnableAutoConfiguration">@EnableAutoConfiguration</span></h3>
 <ul>
 <li>依据配置自动导入相关配置，重要，理解自动装配，要研读源码中的xxxAutoConfiguration相关类</li>
 </ul>
-<h3 id="原理初解">原理初解</h3>
+<h2 id="原理初解">原理初解</h2>
 <p>自动装配就是利用上面的注解（当然还有许多其他的）实现的</p>
 <p>查看如下SpringBoot是如何实现web.servlet的自动装配的</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.springframework.boot.autoconfigure.web.servlet;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration(proxyBeanMethods = false)</span></span><br><span class="line"><span class="meta">@ConditionalOnWebApplication(type = Type.SERVLET)</span></span><br><span class="line"><span class="meta">@ConditionalOnClass(&#123; Servlet.class, DispatcherServlet.class, WebMvcConfigurer.class &#125;)</span></span><br><span class="line"><span class="meta">@ConditionalOnMissingBean(WebMvcConfigurationSupport.class)</span></span><br><span class="line"><span class="meta">@AutoConfigureOrder(Ordered.HIGHEST_PRECEDENCE + 10)</span></span><br><span class="line"><span class="meta">@AutoConfigureAfter(&#123; DispatcherServletAutoConfiguration.class, TaskExecutionAutoConfiguration.class,</span></span><br><span class="line"><span class="meta">		ValidationAutoConfiguration.class &#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WebMvcAutoConfiguration</span> &#123;</span><br><span class="line">       </span><br></pre></td></tr></table></figure>
-<h4 id="configurationproxybeanmethods-false"><span class="citation"
+<h3 id="configurationproxybeanmethods-false"><span class="citation"
 data-cites="Configuration">@Configuration</span>(proxyBeanMethods =
-false)</h4>
+false)</h3>
 <ul>
 <li>声明配置类，并不使用单例模式（实现单例模式相对于不实现更快一些，因为不用检查）</li>
 </ul>
-<h4 id="conditionalonwebapplicationtype-type.servlet"><span
+<h3 id="conditionalonwebapplicationtype-type.servlet"><span
 class="citation"
 data-cites="ConditionalOnWebApplication">@ConditionalOnWebApplication</span>(type
-= Type.SERVLET)</h4>
+= Type.SERVLET)</h3>
 <ul>
 <li>条件装配，这个表示是web项目时装配</li>
 </ul>
-<h4
+<h3
 id="conditionalonclass-servlet.class-dispatcherservlet.class-webmvcconfigurer.class"><span
 class="citation"
 data-cites="ConditionalOnClass">@ConditionalOnClass</span>({
-Servlet.class, DispatcherServlet.class, WebMvcConfigurer.class })</h4>
+Servlet.class, DispatcherServlet.class, WebMvcConfigurer.class })</h3>
 <ul>
 <li>条件装配，类路径下有指定的类时装配</li>
 </ul>
-<h4 id="conditionalonmissingbeanwebmvcconfigurationsupport.class"><span
+<h3 id="conditionalonmissingbeanwebmvcconfigurationsupport.class"><span
 class="citation"
-data-cites="ConditionalOnMissingBean">@ConditionalOnMissingBean</span>(WebMvcConfigurationSupport.class)</h4>
+data-cites="ConditionalOnMissingBean">@ConditionalOnMissingBean</span>(WebMvcConfigurationSupport.class)</h3>
 <ul>
 <li>条件装配，当容器中没有该组件时装配</li>
 </ul>
-<h4 id="autoconfigureorderordered.highest_precedence-10"><span
+<h3 id="autoconfigureorderordered.highest_precedence-10"><span
 class="citation"
 data-cites="AutoConfigureOrder">@AutoConfigureOrder</span>(Ordered.HIGHEST_PRECEDENCE
-+ 10)</h4>
++ 10)</h3>
 <ul>
 <li>声明类加载优先级</li>
 </ul>
-<h4 id="autoconfigureafter..."><span class="citation"
-data-cites="AutoConfigureAfter">@AutoConfigureAfter</span>(...)</h4>
+<h3 id="autoconfigureafter..."><span class="citation"
+data-cites="AutoConfigureAfter">@AutoConfigureAfter</span>(...)</h3>
 <ul>
 <li>声明类加载在...之后</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="meta">@ConditionalOnMissingBean(HiddenHttpMethodFilter.class)</span></span><br><span class="line"><span class="meta">@ConditionalOnProperty(prefix = &quot;spring.mvc.hiddenmethod.filter&quot;, name = &quot;enabled&quot;, matchIfMissing = false)</span></span><br><span class="line"><span class="keyword">public</span> OrderedHiddenHttpMethodFilter <span class="title function_">hiddenHttpMethodFilter</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">OrderedHiddenHttpMethodFilter</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h4 id="bean"><span class="citation" data-cites="Bean">@Bean</span></h4>
+<h3 id="bean"><span class="citation" data-cites="Bean">@Bean</span></h3>
 <ul>
 <li>组件声明</li>
 </ul>
-<h4 id="conditionalonmissingbeanhiddenhttpmethodfilter.class"><span
+<h3 id="conditionalonmissingbeanhiddenhttpmethodfilter.class"><span
 class="citation"
-data-cites="ConditionalOnMissingBean">@ConditionalOnMissingBean</span>(HiddenHttpMethodFilter.class)</h4>
+data-cites="ConditionalOnMissingBean">@ConditionalOnMissingBean</span>(HiddenHttpMethodFilter.class)</h3>
 <ul>
 <li>条件装配，当没有xxx组件时装配</li>
 </ul>
-<h4
+<h3
 id="conditionalonpropertyprefix-spring.mvc.hiddenmethod.filter-name-enabled-matchifmissing-false"><span
 class="citation"
 data-cites="ConditionalOnProperty">@ConditionalOnProperty</span>(prefix
 = "spring.mvc.hiddenmethod.filter", name = "enabled", matchIfMissing =
-false)</h4>
+false)</h3>
 <ul>
 <li>配置绑定，前缀时"spring.mvc.hiddenmethod.filter"，该配置为前缀下的”enabled“属性</li>
 <li>matchIfMissing若缺少配置这配置为false，相当于默认配置</li>
 </ul>
-<h3 id="小结">小结</h3>
-<h4 id="自动装配">自动装配</h4>
+<h2 id="小结">小结</h2>
+<h3 id="自动装配">自动装配</h3>
 <ul>
 <li>加载自动配置类</li>
 <li>条件装配</li>
@@ -429,7 +429,7 @@ false)</h4>
 </ul>
 <p>下面是<a
 target="_blank" rel="noopener" href="https://www.yuque.com/atguigu/springboot/na3pfd#jj7XF">复制</a>的一段</p>
-<h3 id="springboot优点">SpringBoot优点</h3>
+<h2 id="springboot优点">SpringBoot优点</h2>
 <ul>
 <li><p>Create stand-alone Spring applications</p></li>
 <li><ul>
@@ -465,7 +465,7 @@ configuration</p></li>
 <p>SpringBoot是整合Spring技术栈的一站式框架</p>
 <p>SpringBoot是简化Spring技术栈的快速开发脚手架</p>
 </blockquote>
-<h3 id="springboot缺点">SpringBoot缺点</h3>
+<h2 id="springboot缺点">SpringBoot缺点</h2>
 <ul>
 <li>人称版本帝，迭代快，需要时刻关注变化</li>
 <li>封装太深，内部原理复杂，不容易精通</li>
@@ -561,14 +561,14 @@ configuration</p></li>
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">169k</span>
+    <span title="站点总字数">170k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">10:16</span>
+    <span title="站点阅读时长">10:20</span>
   </span>
 </div>
 <div class="busuanzi-count">

@@ -34,7 +34,7 @@
 <meta property="og:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/141_2.png">
 <meta property="og:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/141_3.png">
 <meta property="article:published_time" content="2020-10-04T07:29:59.000Z">
-<meta property="article:modified_time" content="2022-12-30T13:39:18.000Z">
+<meta property="article:modified_time" content="2023-01-03T10:05:07.560Z">
 <meta property="article:author" content="无奈和杨（wnhyang）">
 <meta property="article:tag" content="数据结构&amp;算法">
 <meta property="article:tag" content="LeetCode">
@@ -152,7 +152,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8"><span class="nav-number">1.</span> <span class="nav-text">11.盛最多水的容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#begin"><span class="nav-number">2.</span> <span class="nav-text">begin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">35.搜索插入位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#begin-1"><span class="nav-number">4.</span> <span class="nav-text">begin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8"><span class="nav-number">5.</span> <span class="nav-text">141.环形链表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#begin-2"><span class="nav-number">6.</span> <span class="nav-text">begin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="nav-number">7.</span> <span class="nav-text">方法一：哈希表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-number">8.</span> <span class="nav-text">复杂度分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88"><span class="nav-number">9.</span> <span class="nav-text">方法二：快慢指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-1"><span class="nav-number">10.</span> <span class="nav-text">复杂度分析</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8"><span class="nav-number">1.</span> <span class="nav-text">11.盛最多水的容器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#begin"><span class="nav-number">2.</span> <span class="nav-text">begin</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">35.搜索插入位置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#begin-1"><span class="nav-number">4.</span> <span class="nav-text">begin</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8"><span class="nav-number">5.</span> <span class="nav-text">141.环形链表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#begin-2"><span class="nav-number">6.</span> <span class="nav-text">begin</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="nav-number">7.</span> <span class="nav-text">方法一：哈希表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-number">8.</span> <span class="nav-text">复杂度分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88"><span class="nav-number">9.</span> <span class="nav-text">方法二：快慢指针</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-1"><span class="nav-number">10.</span> <span class="nav-text">复杂度分析</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -259,7 +259,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-12-30 21:39:18" itemprop="dateModified" datetime="2022-12-30T21:39:18+08:00">2022-12-30</time>
+      <time title="修改时间：2023-01-03 18:05:07" itemprop="dateModified" datetime="2023-01-03T18:05:07+08:00">2023-01-03</time>
     </span>
 
   
@@ -298,7 +298,7 @@
 href="https://wnhyang.github.io/article/ec0c0ea5.html">LeetCode2</a></p>
 <p>有了前面的做题经验，会发现接下来做的题有许多都是一个样板的翻版，都很类似，只要掌握了一些方法还是容易应对的。我写的一般都是新的题。</p>
 <span id="more"></span>
-<h2 id="盛最多水的容器">11.盛最多水的容器</h2>
+<h1 id="盛最多水的容器">11.盛最多水的容器</h1>
 <p><a
 target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/container-with-most-water/">题目地址</a></p>
 <p>给你 n 个非负整数 a1，a2，...，an，每个数代表坐标中的一个点 (i, ai)
@@ -314,13 +314,13 @@ alt="图中垂直线代表输入数组 [1,8,6,2,5,4,8,3,7]。在此情况下，�
 </figure>
 <p>示例： &gt;输入：[1,8,6,2,5,4,8,3,7]<br />
 &gt;输出：49</p>
-<h2 id="begin">begin</h2>
+<h1 id="begin">begin</h1>
 <p>这个你会怎么去解呢？我的第一想法就是刚刚见识过的双指针，试试嘛。但是判断如何移动时慌了，不知道咋办了。之后看来题解恍然大悟，自己真傻，怎么移动？当时真是没脑筋，当然是低的向中间移动了，哎。</p>
 <p>一种java题解</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxArea</span><span class="params">(<span class="type">int</span>[] height)</span> &#123;</span><br><span class="line">        <span class="type">int</span> maxarea=<span class="number">0</span>,l=<span class="number">0</span>,h=height.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(l&lt;h)&#123;</span><br><span class="line">            maxarea=Math.max(maxarea,Math.min(height[l],height[h])*(h-l));</span><br><span class="line">            <span class="keyword">if</span>(height[l]&lt;=height[h])&#123;</span><br><span class="line">                l++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                h--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxarea;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><a
 target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/container-with-most-water/solution/">详细题解</a></p>
-<h2 id="搜索插入位置">35.搜索插入位置</h2>
+<h1 id="搜索插入位置">35.搜索插入位置</h1>
 <p><a
 target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/search-insert-position/">题目地址</a></p>
 <p>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。</p>
@@ -333,13 +333,13 @@ target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/search-ins
 &gt;输出: 4</p>
 <p>示例4： &gt;输入: [1,3,5,6], 0<br />
 &gt;输出: 0</p>
-<h2 id="begin-1">begin</h2>
+<h1 id="begin-1">begin</h1>
 <p>这是一个典型的二分法应用，迷惑的点在这个题叫“搜索插入位置”，关键是不存在时要找到插入为。想通这个就容易了，之后可以尝试这个<a
 target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/sqrtx/">69. x 的平方根</a>。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">searchInsert</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> target)</span> &#123;</span><br><span class="line">        <span class="type">int</span> l=<span class="number">0</span>,h=nums.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(l&lt;=h)&#123;</span><br><span class="line">            <span class="type">int</span> mid=l+(h-l)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(target==nums[mid])&#123;</span><br><span class="line">                <span class="keyword">return</span> mid;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(target&gt;nums[mid])&#123;</span><br><span class="line">                l=mid+<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                h=mid-<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> l;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><a
 target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/search-insert-position/solution/">详细题解</a></p>
-<h2 id="环形链表">141.环形链表</h2>
+<h1 id="环形链表">141.环形链表</h1>
 <p><a
 target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/linked-list-cycle/">题目地址</a></p>
 <p>给定一个链表，判断链表中是否有环。</p>
@@ -380,13 +380,13 @@ target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/linked-lis
 <li>pos 为 <span class="math inline">\(-1\)</span> 或者链表中的一个
 <strong>有效索引</strong> 。</li>
 </ul>
-<h2 id="begin-2">begin</h2>
+<h1 id="begin-2">begin</h1>
 <p>官方给了两种方法。这个题是一定要放在这的原因就是因为第二种解法，我只能说能产生这种想法和思维的简直了。</p>
-<h2 id="方法一哈希表">方法一：哈希表</h2>
+<h1 id="方法一哈希表">方法一：哈希表</h1>
 <p>利用哈希表判断是否有重复元素进而得出结果。</p>
 <p>官方方法一java</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">hasCycle</span><span class="params">(ListNode head)</span> &#123;</span><br><span class="line">    Set&lt;ListNode&gt; nodesSeen = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">while</span> (head != <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nodesSeen.contains(head)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            nodesSeen.add(head);</span><br><span class="line">        &#125;</span><br><span class="line">        head = head.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="复杂度分析">复杂度分析</h2>
+<h1 id="复杂度分析">复杂度分析</h1>
 <ul>
 <li>时间复杂度：O(<span class="math inline">\(n\)</span>)，对于含有 n
 个元素的链表，我们访问每个元素最多一次。添加一个结点到哈希表中只需要花费
@@ -395,11 +395,11 @@ O(<span class="math inline">\(1\)</span>)的时间。</li>
 class="math inline">\(n\)</span>)，空间取决于添加到哈希表中的元素数目，最多可以添加
 <span class="math inline">\(n\)</span> 个元素。</li>
 </ul>
-<h2 id="方法二快慢指针">方法二：快慢指针</h2>
+<h1 id="方法二快慢指针">方法二：快慢指针</h1>
 <p>想象跑步比赛，当无环时：快指针等于null，即到终点了，返回false。当有环时：快慢指针都会进入环赛道中，必定存在快指针超越慢指针，即的确有环，返回true。</p>
 <p>官方方法二java</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">hasCycle</span><span class="params">(ListNode head)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (head == <span class="literal">null</span> || head.next == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">ListNode</span> <span class="variable">slow</span> <span class="operator">=</span> head;</span><br><span class="line">    <span class="type">ListNode</span> <span class="variable">fast</span> <span class="operator">=</span> head.next;</span><br><span class="line">    <span class="keyword">while</span> (slow != fast) &#123;</span><br><span class="line">        <span class="keyword">if</span> (fast == <span class="literal">null</span> || fast.next == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        slow = slow.next;</span><br><span class="line">        fast = fast.next.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="复杂度分析-1">复杂度分析</h2>
+<h1 id="复杂度分析-1">复杂度分析</h1>
 <ul>
 <li><p>时间复杂度：O(<span class="math inline">\(n\)</span>)，让我们将
 <span class="math inline">\(n\)</span>
@@ -523,14 +523,14 @@ target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/linked-lis
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">169k</span>
+    <span title="站点总字数">170k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">10:16</span>
+    <span title="站点阅读时长">10:20</span>
   </span>
 </div>
 <div class="busuanzi-count">

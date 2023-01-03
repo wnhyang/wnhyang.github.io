@@ -31,7 +31,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/%E6%A0%91.png">
 <meta property="article:published_time" content="2020-07-21T06:07:42.000Z">
-<meta property="article:modified_time" content="2022-08-20T03:19:44.000Z">
+<meta property="article:modified_time" content="2023-01-03T10:03:56.020Z">
 <meta property="article:author" content="无奈和杨（wnhyang）">
 <meta property="article:tag" content="数据结构&amp;算法">
 <meta name="twitter:card" content="summary">
@@ -148,7 +148,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%9C%AF%E8%AF%AD"><span class="nav-number">2.</span> <span class="nav-text">基本术语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%91%E7%9A%84%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">树的抽象数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%91%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="nav-number">4.</span> <span class="nav-text">树的存储结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8C%E4%BA%B2%E8%A1%A8%E7%A4%BA%E6%B3%95"><span class="nav-number">5.</span> <span class="nav-text">双亲表示法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%A9%E5%AD%90%E8%A1%A8%E7%A4%BA%E6%B3%95"><span class="nav-number">6.</span> <span class="nav-text">孩子表示法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%A9%E5%AD%90%E5%85%84%E5%BC%9F%E8%A1%A8%E7%A4%BA%E6%B3%95"><span class="nav-number">7.</span> <span class="nav-text">孩子兄弟表示法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%91%E5%85%B3%E8%81%94%E4%BA%8C%E5%8F%89%E6%A0%91%E5%8F%8A%E5%85%B6%E4%BB%96%E5%86%85%E5%AE%B9%E5%BE%85%E5%88%B0%E4%BA%8C%E5%8F%89%E6%A0%91%E5%AE%8C%E6%88%90"><span class="nav-number">8.</span> <span class="nav-text">树关联二叉树及其他内容待到二叉树完成</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%9C%AF%E8%AF%AD"><span class="nav-number">2.</span> <span class="nav-text">基本术语</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%91%E7%9A%84%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">树的抽象数据类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%91%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="nav-number">4.</span> <span class="nav-text">树的存储结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%8C%E4%BA%B2%E8%A1%A8%E7%A4%BA%E6%B3%95"><span class="nav-number">5.</span> <span class="nav-text">双亲表示法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A9%E5%AD%90%E8%A1%A8%E7%A4%BA%E6%B3%95"><span class="nav-number">6.</span> <span class="nav-text">孩子表示法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A9%E5%AD%90%E5%85%84%E5%BC%9F%E8%A1%A8%E7%A4%BA%E6%B3%95"><span class="nav-number">7.</span> <span class="nav-text">孩子兄弟表示法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%91%E5%85%B3%E8%81%94%E4%BA%8C%E5%8F%89%E6%A0%91%E5%8F%8A%E5%85%B6%E4%BB%96%E5%86%85%E5%AE%B9%E5%BE%85%E5%88%B0%E4%BA%8C%E5%8F%89%E6%A0%91%E5%AE%8C%E6%88%90"><span class="nav-number">8.</span> <span class="nav-text">树关联二叉树及其他内容待到二叉树完成</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -255,7 +255,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-08-20 11:19:44" itemprop="dateModified" datetime="2022-08-20T11:19:44+08:00">2022-08-20</time>
+      <time title="修改时间：2023-01-03 18:03:56" itemprop="dateModified" datetime="2023-01-03T18:03:56+08:00">2023-01-03</time>
     </span>
 
   
@@ -290,14 +290,14 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="定义">定义</h2>
+        <h1 id="定义">定义</h1>
 <p>树是由n个结点组成的有限集。n=0时称为空树。且对于非空树：</p>
 <ul>
 <li><p>有且仅有一个特定的称为根的结点；</p></li>
 <li><p>当n&gt;1时，其余结点可分为m(m&gt;0)个互不相交的有限集T1,T2,…,Tm，其中每一个集合本身又是一棵树，称为根的子树(subtree)。</p></li>
 </ul>
 <span id="more"></span>
-<h2 id="基本术语">基本术语</h2>
+<h1 id="基本术语">基本术语</h1>
 <figure>
 <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/树.png"
 alt="树" />
@@ -384,18 +384,18 @@ alt="树" />
 <ul>
 <li>root 被称为根结点，F 被称为子树森林</li>
 </ul>
-<h2 id="树的抽象数据类型">树的抽象数据类型</h2>
+<h1 id="树的抽象数据类型">树的抽象数据类型</h1>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">ADT树(tree )</span><br><span class="line"></span><br><span class="line">Data</span><br><span class="line">    树是由一个根结点和若干棵子树构成。树中结点具有相同数据类型及层次关</span><br><span class="line"></span><br><span class="line"><span class="function">Operation</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">    <span class="title">InitTree</span> <span class="params">(&amp;T)</span> :构造空树T。</span></span><br><span class="line"><span class="function">    DestroyTree (&amp;T) :销毁树T。</span></span><br><span class="line"><span class="function">    CreateTree ( &amp;T, definition) :按definition中给出树的定义来构造树。ClearTree(&amp;T):若树T存在，则将树T清为空树。</span></span><br><span class="line"><span class="function">    TreeEmpty (T):若T为空树，返回true,否则返回false.</span></span><br><span class="line"><span class="function">    TreeDepth(T) :返回T的深度。</span></span><br><span class="line"><span class="function">    Root (T) :返回T的根结点。</span></span><br><span class="line"><span class="function">    Value (T,cur e): cur e是树T中一个结点，返回此结点的值。</span></span><br><span class="line"><span class="function">    Assign (T,cur _e,value) :给树T的结点cur_ e赋值为value。</span></span><br><span class="line"><span class="function">    Parent (T,cur e):若cur_ e是树T的非根结点，则返回它的双亲，否则返回空。LeftChild(T,cur e):若cur_ e是树T的非叶结点，则返回它的最左孩子，否则返空。</span></span><br><span class="line"><span class="function">    Rightsibling (T,cur e) :若cur_ e有右兄弟，则返回它的右兄弟，否则返回空。InsertChild(&amp;T,&amp;p,i,c):其中p指向树T的某个结点，i为所指结点P的度加上<span class="number">1</span>，非空树c与T不相交，操作结果为插入c为树T中p指结点的第i棵子树。</span></span><br><span class="line"><span class="function">    DeleteChild(&amp;T,&amp;p,i) :其中p指向树T的某个结点，i为所指结点p的度，操作结果为删除T中p所指结点的第i棵子树。</span></span><br><span class="line"><span class="function">endADT</span></span><br></pre></td></tr></table></figure>
-<h2 id="树的存储结构">树的存储结构</h2>
+<h1 id="树的存储结构">树的存储结构</h1>
 <p>说到存储结构，就会想到我们前面章节讲过的顺序存储和链式存储两种结构。</p>
 <p>先来看看顺序存储结构，用一段地址连续的存储单元依次存储线性表的数据元素。这对于线性表来说是很自然的，对于树这样多对的结构呢?</p>
 <p>树中某个结点的孩子可以有多个，这就意味着，无论按何种顺序将树中所有结点存储到数组中，结点的存储位置都无法直接反映逻辑关系，你想想看，数据元素挨个的存储，谁是谁的双亲，谁是谁的孩子呢?简单的顺序存储结构是不能满足树的实现要求的。</p>
 <p>不过充分利用顺序存储和链式存储结构的特点，完全可以实现对树的存储结构的表示。我们这里要介绍三种不同的表示法:双亲表示法、孩子表示法、孩子兄弟表示法。</p>
-<h2 id="双亲表示法">双亲表示法</h2>
+<h1 id="双亲表示法">双亲表示法</h1>
 <p>在每个结点中，附设一个指示器指示其双亲结点在数组中的位置。也就是说，每个结点除了知道自己是谁以外，还知道它的双亲在哪里。</p>
 <div class="line-block">data | parent |</div>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_TREE_SIZE 100</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> TElemType;      <span class="comment">/*树结点的数据类型，目前暂定为int*/</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">PTNode</span>&#123;      <span class="comment">/*结点结构*/</span></span><br><span class="line">     TElemType  data;       <span class="comment">/*结点数据*/</span></span><br><span class="line">      <span class="type">int</span>  parent;          <span class="comment">/*双亲位置*/</span></span><br><span class="line">&#125;PTNode;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span>&#123;             <span class="comment">/*树结构*/</span></span><br><span class="line">    PTNode nodes[MAX_TREE_SIZE];    <span class="comment">/*结点数组*/</span></span><br><span class="line">    <span class="type">int</span> r,n;                <span class="comment">/*根的位置和结点数*/</span></span><br><span class="line">&#125;PTree；</span><br></pre></td></tr></table></figure>
-<h2 id="孩子表示法">孩子表示法</h2>
+<h1 id="孩子表示法">孩子表示法</h1>
 <p>每个结点有多个指针域，其中每个指针指向一颗子树的根结点，我们把这种方法叫做多重链表表示法。</p>
 <blockquote>
 <p>结点同构</p>
@@ -415,12 +415,12 @@ alt="树" />
 <div class="line-block">data | degree | child1 | child2 | … |
 childd|</div>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_TREE_SIZE 100</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">CTNode</span> &#123;</span><br><span class="line">    <span class="type">int</span> child;              <span class="comment">/*孩子结点的序号*/</span></span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">CTNode</span> *next;    <span class="comment">/*孩子结点的指针域*/</span>　　</span><br><span class="line">&#125; *ChildPtr;                <span class="comment">/*孩子链表的结点*/</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> &#123;</span><br><span class="line">    ElemType data;          <span class="comment">/* 结点的数据元素*/</span></span><br><span class="line">    ChildPtr firstchild;    <span class="comment">/* 孩子链表头指针*/</span></span><br><span class="line">&#125; CTBox;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> &#123;</span><br><span class="line">    CTBox nodes[MAX_TREE_SIZE];</span><br><span class="line">    <span class="type">int</span> n, r; 　            <span class="comment">/* 结点数和根结点的位置*/</span>　　</span><br><span class="line">&#125; CTree;                    <span class="comment">/*树结构*/</span></span><br></pre></td></tr></table></figure>
-<h2 id="孩子兄弟表示法">孩子兄弟表示法</h2>
+<h1 id="孩子兄弟表示法">孩子兄弟表示法</h1>
 <p>任意一棵树，它的结点的第一个孩子如果存在就是唯一的，它的右兄弟如果存在也是唯一的。因此，我们设置两个指针，分别指向该结点的第一个孩子和此结点的右兄弟。</p>
 <div class="line-block">data | firstchild | rightsib |</div>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">CSNode</span>&#123;</span><br><span class="line">    ElemType data;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">CSNode</span> * firstson,* nextsibling;	</span><br><span class="line">&#125;CSNode,*CSTree;</span><br></pre></td></tr></table></figure>
-<h2
-id="树关联二叉树及其他内容待到二叉树完成">树关联二叉树及其他内容待到二叉树完成</h2>
+<h1
+id="树关联二叉树及其他内容待到二叉树完成">树关联二叉树及其他内容待到二叉树完成</h1>
 <p>欢迎批评指正！</p>
 
     </div>
@@ -513,14 +513,14 @@ id="树关联二叉树及其他内容待到二叉树完成">树关联二叉树�
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">169k</span>
+    <span title="站点总字数">170k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">10:16</span>
+    <span title="站点阅读时长">10:20</span>
   </span>
 </div>
 <div class="busuanzi-count">

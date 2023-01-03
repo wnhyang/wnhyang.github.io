@@ -30,7 +30,7 @@
 <meta property="og:description" content="续LeetCode1">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-10-01T08:58:32.000Z">
-<meta property="article:modified_time" content="2022-12-30T13:39:18.000Z">
+<meta property="article:modified_time" content="2023-01-03T10:05:06.375Z">
 <meta property="article:author" content="无奈和杨（wnhyang）">
 <meta property="article:tag" content="数据结构&amp;算法">
 <meta property="article:tag" content="LeetCode">
@@ -147,7 +147,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#powx-n"><span class="nav-number">1.</span> <span class="nav-text">50.Pow(x, n)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#begin"><span class="nav-number">2.</span> <span class="nav-text">begin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9"><span class="nav-number">3.</span> <span class="nav-text">26.删除排序数组中的重复项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#begin-1"><span class="nav-number">4.</span> <span class="nav-text">begin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84"><span class="nav-number">5.</span> <span class="nav-text">88.合并两个有序数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#begin-2"><span class="nav-number">6.</span> <span class="nav-text">begin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%E5%90%88%E5%B9%B6%E5%90%8E%E6%8E%92%E5%BA%8F"><span class="nav-number">7.</span> <span class="nav-text">方法一：合并后排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-number">8.</span> <span class="nav-text">复杂度分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C-%E5%8F%8C%E6%8C%87%E9%92%88-%E4%BB%8E%E5%89%8D%E5%BE%80%E5%90%8E"><span class="nav-number">9.</span> <span class="nav-text">方法二 : 双指针 &#x2F; 从前往后</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-1"><span class="nav-number">10.</span> <span class="nav-text">复杂度分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89-%E5%8F%8C%E6%8C%87%E9%92%88-%E4%BB%8E%E5%90%8E%E5%BE%80%E5%89%8D"><span class="nav-number">11.</span> <span class="nav-text">方法三 : 双指针 &#x2F; 从后往前</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-2"><span class="nav-number">12.</span> <span class="nav-text">复杂度分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">13.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#powx-n"><span class="nav-number">1.</span> <span class="nav-text">50.Pow(x, n)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#begin"><span class="nav-number">2.</span> <span class="nav-text">begin</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9"><span class="nav-number">3.</span> <span class="nav-text">26.删除排序数组中的重复项</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#begin-1"><span class="nav-number">4.</span> <span class="nav-text">begin</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84"><span class="nav-number">5.</span> <span class="nav-text">88.合并两个有序数组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#begin-2"><span class="nav-number">6.</span> <span class="nav-text">begin</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%E5%90%88%E5%B9%B6%E5%90%8E%E6%8E%92%E5%BA%8F"><span class="nav-number">7.</span> <span class="nav-text">方法一：合并后排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-number">8.</span> <span class="nav-text">复杂度分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C-%E5%8F%8C%E6%8C%87%E9%92%88-%E4%BB%8E%E5%89%8D%E5%BE%80%E5%90%8E"><span class="nav-number">9.</span> <span class="nav-text">方法二 : 双指针 &#x2F; 从前往后</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-1"><span class="nav-number">10.</span> <span class="nav-text">复杂度分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89-%E5%8F%8C%E6%8C%87%E9%92%88-%E4%BB%8E%E5%90%8E%E5%BE%80%E5%89%8D"><span class="nav-number">11.</span> <span class="nav-text">方法三 : 双指针 &#x2F; 从后往前</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-2"><span class="nav-number">12.</span> <span class="nav-text">复杂度分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">13.</span> <span class="nav-text">总结</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -254,7 +254,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-12-30 21:39:18" itemprop="dateModified" datetime="2022-12-30T21:39:18+08:00">2022-12-30</time>
+      <time title="修改时间：2023-01-03 18:05:06" itemprop="dateModified" datetime="2023-01-03T18:05:06+08:00">2023-01-03</time>
     </span>
 
   
@@ -292,7 +292,7 @@
         <p>续<a
 href="https://wnhyang.github.io/article/75055f1f.html">LeetCode1</a></p>
 <span id="more"></span>
-<h2 id="powx-n">50.Pow(x, n)</h2>
+<h1 id="powx-n">50.Pow(x, n)</h1>
 <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/powx-n/">题目地址</a></p>
 <p>实现 pow(x, n) ，即计算 x 的 n 次幂函数。</p>
 <p>示例1： &gt; 输入: 2.00000, 10<br />
@@ -312,14 +312,14 @@ class="math inline">\(0.25\)</span></p>
 class="math inline">\(−2^{31}\)</span>, <span
 class="math inline">\(2^{31} − 1\)</span>] 。</li>
 </ul>
-<h2 id="begin">begin</h2>
+<h1 id="begin">begin</h1>
 <p>是不是有人就疑惑了，明明有pow可以用，为啥还有这题呢？是啊,但这样就考验到你对基础的理解了。</p>
 <p>这里用到的是快速幂算法（使用了分治的思想），知道的都知道了，不知道的慢慢了解嘛。再加上负数的判断处理即可解。</p>
 <p>一种java题解</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">quickpow</span><span class="params">(<span class="type">double</span> x, <span class="type">long</span> n)</span>&#123;</span><br><span class="line">        <span class="type">double</span> res=<span class="number">1.0</span>;</span><br><span class="line">        <span class="keyword">while</span>(n&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(n%<span class="number">2</span>==<span class="number">1</span>) res*=x;</span><br><span class="line">            x*=x;</span><br><span class="line">            n/=<span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">myPow</span><span class="params">(<span class="type">double</span> x, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="type">long</span> N=n;</span><br><span class="line">        <span class="keyword">return</span> N&gt;=<span class="number">0</span>? quickpow(x,N) : <span class="number">1.0</span>/quickpow(x,-N);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><a
 target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/powx-n/solution/powx-n-by-leetcode-solution/">详细题解</a></p>
-<h2 id="删除排序数组中的重复项">26.删除排序数组中的重复项</h2>
+<h1 id="删除排序数组中的重复项">26.删除排序数组中的重复项</h1>
 <p><a
 target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/">题目地址</a></p>
 <p>给定一个排序数组，你需要在 原地
@@ -337,14 +337,14 @@ target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-dup
 <p>为什么返回数值是整数，但输出的答案是数组呢?</p>
 <p>请注意，输入数组是以「引用」方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
 <p>你可以想象内部操作如下: <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// nums 是以“引用”方式传递的。也就是说，不对实参做任何拷贝</span></span><br><span class="line"><span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> removeDuplicates(nums);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在函数里修改输入数组对于调用者是可见的。</span></span><br><span class="line"><span class="comment">// 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">    print(nums[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="begin-1">begin</h2>
+<h1 id="begin-1">begin</h1>
 <p>这道题应该是我目前解的最容易的了，原因就是上学期数据结构有个课后题和这个差不多。</p>
 <p>解法就是双指针，k指向当前位置，l指向预备移入k+1位置的位置，while循环条件为l到数组末尾，若nums[k]==nums[l],l++，l向后移动；若不等，说明还未出现这个数可以存入数组中，nums[++k]=nums[l]可解决问题，最后返回当前下标k+1即新数组长度。</p>
 <p>一种java题解</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">removeDuplicates</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> k=<span class="number">0</span>,l=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(l&lt;nums.length)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[k]==nums[l])</span><br><span class="line">                l++;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                nums[++k]=nums[l];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> k+<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><a
 target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/solution/">详细题解</a></p>
-<h2 id="合并两个有序数组">88.合并两个有序数组</h2>
+<h1 id="合并两个有序数组">88.合并两个有序数组</h1>
 <p><a
 target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/merge-sorted-array/">题目地址</a></p>
 <p>给你两个有序整数数组 nums1 和 nums2，请你将 nums2 合并到 nums1 中，使
@@ -359,41 +359,41 @@ nums2 中的元素。</li>
 &gt;nums1 = [1,2,3,0,0,0], m = 3<br />
 &gt;nums2 = [2,5,6], n = 3<br />
 &gt;输出: [1,2,2,3,5,6]</p>
-<h2 id="begin-2">begin</h2>
+<h1 id="begin-2">begin</h1>
 <p>其实这个题与上面那个题有点类似，可参考着去做，但一定要注意数组范围和是否所有数以加入新数组中了。</p>
 <p>官方题解给出了三种解法都用到了下面一个函数</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">System.arraycopy(dataType[] srcArray,<span class="type">int</span> srcIndex,<span class="type">int</span> destArray,<span class="type">int</span> destIndex,<span class="type">int</span> length)</span><br><span class="line"><span class="comment">//其中，srcArray 表示原数组；srcIndex 表示原数组中的起始索引；destArray 表示目标数组；destIndex 表示目标数组中的起始索引；length 表示要复制的数组长度。</span></span><br></pre></td></tr></table></figure>
-<h2 id="方法一合并后排序">方法一：合并后排序</h2>
+<h1 id="方法一合并后排序">方法一：合并后排序</h1>
 <p>简直了，官方这么玩，我直接懵逼。</p>
 <p>官方方法一java</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">merge</span><span class="params">(<span class="type">int</span>[] nums1, <span class="type">int</span> m, <span class="type">int</span>[] nums2, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">    System.arraycopy(nums2, <span class="number">0</span>, nums1, m, n);</span><br><span class="line">    Arrays.sort(nums1);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="复杂度分析">复杂度分析</h2>
+<h1 id="复杂度分析">复杂度分析</h1>
 <ul>
 <li>时间复杂度 : <span class="math inline">\(O((n + m)log(n +
 m))\)</span>。</li>
 <li>空间复杂度 : <span class="math inline">\(O(1)\)</span>。</li>
 </ul>
-<h2 id="方法二-双指针-从前往后">方法二 : 双指针 / 从前往后</h2>
+<h1 id="方法二-双指针-从前往后">方法二 : 双指针 / 从前往后</h1>
 <p>类似于前一个题，但要注意，前面说的是否所有数以加入新数组中了，还有这个方法需要内存存nums1的原数据。</p>
 <p>官方方法二java</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">merge</span><span class="params">(<span class="type">int</span>[] nums1, <span class="type">int</span> m, <span class="type">int</span>[] nums2, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">    <span class="comment">// Make a copy of nums1.</span></span><br><span class="line">    <span class="type">int</span> [] nums1_copy = <span class="keyword">new</span> <span class="title class_">int</span>[m];</span><br><span class="line">    System.arraycopy(nums1, <span class="number">0</span>, nums1_copy, <span class="number">0</span>, m);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Two get pointers for nums1_copy and nums2.</span></span><br><span class="line">    <span class="type">int</span> <span class="variable">p1</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> <span class="variable">p2</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Set pointer for nums1</span></span><br><span class="line">    <span class="type">int</span> <span class="variable">p</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Compare elements from nums1_copy and nums2</span></span><br><span class="line">    <span class="comment">// and add the smallest one into nums1.</span></span><br><span class="line">    <span class="keyword">while</span> ((p1 &lt; m) &amp;&amp; (p2 &lt; n))</span><br><span class="line">      nums1[p++] = (nums1_copy[p1] &lt; nums2[p2]) ? nums1_copy[p1++] : nums2[p2++];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// if there are still elements to add</span></span><br><span class="line">    <span class="keyword">if</span> (p1 &lt; m)</span><br><span class="line">      System.arraycopy(nums1_copy, p1, nums1, p1 + p2, m + n - p1 - p2);</span><br><span class="line">    <span class="keyword">if</span> (p2 &lt; n)</span><br><span class="line">      System.arraycopy(nums2, p2, nums1, p1 + p2, m + n - p1 - p2);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="复杂度分析-1">复杂度分析</h2>
+<h1 id="复杂度分析-1">复杂度分析</h1>
 <ul>
 <li>时间复杂度 : <span class="math inline">\(O(n + m)\)</span>。</li>
 <li>空间复杂度 : <span class="math inline">\(O(m)\)</span>。</li>
 </ul>
-<h2 id="方法三-双指针-从后往前">方法三 : 双指针 / 从后往前</h2>
+<h1 id="方法三-双指针-从后往前">方法三 : 双指针 / 从后往前</h1>
 <p>想到这个也是绝了，虽然与方法二相比只是从头到尾变为从尾到前，但空间省下来了。</p>
 <p>官方方法二java</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">merge</span><span class="params">(<span class="type">int</span>[] nums1, <span class="type">int</span> m, <span class="type">int</span>[] nums2, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">    <span class="comment">// two get pointers for nums1 and nums2</span></span><br><span class="line">    <span class="type">int</span> <span class="variable">p1</span> <span class="operator">=</span> m - <span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> <span class="variable">p2</span> <span class="operator">=</span> n - <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// set pointer for nums1</span></span><br><span class="line">    <span class="type">int</span> <span class="variable">p</span> <span class="operator">=</span> m + n - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// while there are still elements to compare</span></span><br><span class="line">    <span class="keyword">while</span> ((p1 &gt;= <span class="number">0</span>) &amp;&amp; (p2 &gt;= <span class="number">0</span>))</span><br><span class="line">      <span class="comment">// compare two elements from nums1 and nums2 </span></span><br><span class="line">      <span class="comment">// and add the largest one in nums1 </span></span><br><span class="line">      nums1[p--] = (nums1[p1] &lt; nums2[p2]) ? nums2[p2--] : nums1[p1--];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// add missing elements from nums2</span></span><br><span class="line">    System.arraycopy(nums2, <span class="number">0</span>, nums1, <span class="number">0</span>, p2 + <span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="复杂度分析-2">复杂度分析</h2>
+<h1 id="复杂度分析-2">复杂度分析</h1>
 <ul>
 <li>时间复杂度 : <span class="math inline">\(O(n + m)\)</span>。</li>
 <li>空间复杂度 : <span class="math inline">\(O(1)\)</span>。</li>
 </ul>
 <p><a
 target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/merge-sorted-array/solution/">详细题解</a></p>
-<h2 id="总结">总结</h2>
+<h1 id="总结">总结</h1>
 <p>继续，有待提高。</p>
 
     </div>
@@ -487,14 +487,14 @@ target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/merge-sort
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">169k</span>
+    <span title="站点总字数">170k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">10:16</span>
+    <span title="站点阅读时长">10:20</span>
   </span>
 </div>
 <div class="busuanzi-count">

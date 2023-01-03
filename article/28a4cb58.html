@@ -30,7 +30,7 @@
 <meta property="og:description" content="简介 最近在学习RocketMQ，但一直苦于没有合适的环境学习。我的电脑是Windows系统，虽然换上了专业版装上了Docker，而且也有虚拟机，平常也会通过这些环境学习，但是还是太不方便了，为了方便终于又用上了云服务器，这次是阿里的。 配置如下  CPU&amp;内存 1核(vCPU)2 GiB   操作系统 CentOS 7.8 64位   当前使用带宽 1Mbps  这次RocketMQ的配">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-11-27T07:51:33.000Z">
-<meta property="article:modified_time" content="2022-12-03T14:34:30.000Z">
+<meta property="article:modified_time" content="2023-01-03T10:06:14.841Z">
 <meta property="article:author" content="无奈和杨（wnhyang）">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="RocketMQ">
@@ -148,7 +148,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rocketmq"><span class="nav-number">2.</span> <span class="nav-text">RocketMQ</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%86%E5%A4%87rocketmq%E5%AE%89%E8%A3%85%E5%8C%85"><span class="nav-number">2.1.</span> <span class="nav-text">准备RocketMQ安装包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%9B%AE%E5%BD%95%E5%B9%B6%E8%A7%A3%E5%8E%8B"><span class="nav-number">2.2.</span> <span class="nav-text">创建目录并解压</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE"><span class="nav-number">2.3.</span> <span class="nav-text">修改配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8nameserver"><span class="nav-number">2.4.</span> <span class="nav-text">启动NameServer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8brokerproxy"><span class="nav-number">2.5.</span> <span class="nav-text">启动Broker+Proxy</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rocketmq-dashboard"><span class="nav-number">3.</span> <span class="nav-text">RocketMQ-Dashboard</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%89%E5%8F%96%E9%95%9C%E5%83%8F"><span class="nav-number">3.1.</span> <span class="nav-text">拉取镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8"><span class="nav-number">3.2.</span> <span class="nav-text">启动</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%B2%E7%81%AB%E5%A2%99%E4%B8%8E%E5%AE%89%E5%85%A8%E7%BB%84"><span class="nav-number">4.</span> <span class="nav-text">防火墙与安全组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%98%B2%E7%81%AB%E5%A2%99%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C"><span class="nav-number">4.1.</span> <span class="nav-text">防火墙常用操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%AB%AF%E5%8F%A3"><span class="nav-number">4.2.</span> <span class="nav-text">查看端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E5%85%A8%E7%BB%84"><span class="nav-number">4.3.</span> <span class="nav-text">安全组</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rocketmq"><span class="nav-number">2.</span> <span class="nav-text">RocketMQ</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87rocketmq%E5%AE%89%E8%A3%85%E5%8C%85"><span class="nav-number">2.1.</span> <span class="nav-text">准备RocketMQ安装包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%9B%AE%E5%BD%95%E5%B9%B6%E8%A7%A3%E5%8E%8B"><span class="nav-number">2.2.</span> <span class="nav-text">创建目录并解压</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE"><span class="nav-number">2.3.</span> <span class="nav-text">修改配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8nameserver"><span class="nav-number">2.4.</span> <span class="nav-text">启动NameServer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8brokerproxy"><span class="nav-number">2.5.</span> <span class="nav-text">启动Broker+Proxy</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rocketmq-dashboard"><span class="nav-number">3.</span> <span class="nav-text">RocketMQ-Dashboard</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%89%E5%8F%96%E9%95%9C%E5%83%8F"><span class="nav-number">3.1.</span> <span class="nav-text">拉取镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8"><span class="nav-number">3.2.</span> <span class="nav-text">启动</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%98%B2%E7%81%AB%E5%A2%99%E4%B8%8E%E5%AE%89%E5%85%A8%E7%BB%84"><span class="nav-number">4.</span> <span class="nav-text">防火墙与安全组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%B2%E7%81%AB%E5%A2%99%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C"><span class="nav-number">4.1.</span> <span class="nav-text">防火墙常用操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%AB%AF%E5%8F%A3"><span class="nav-number">4.2.</span> <span class="nav-text">查看端口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E5%85%A8%E7%BB%84"><span class="nav-number">4.3.</span> <span class="nav-text">安全组</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -255,7 +255,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-12-03 22:34:30" itemprop="dateModified" datetime="2022-12-03T22:34:30+08:00">2022-12-03</time>
+      <time title="修改时间：2023-01-03 18:06:14" itemprop="dateModified" datetime="2023-01-03T18:06:14+08:00">2023-01-03</time>
     </span>
 
   
@@ -290,7 +290,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="简介">简介</h2>
+        <h1 id="简介">简介</h1>
 <p>最近在学习<code>RocketMQ</code>，但一直苦于没有合适的环境学习。我的电脑是<code>Windows</code>系统，虽然换上了专业版装上了<code>Docker</code>，而且也有虚拟机，平常也会通过这些环境学习，但是还是太不方便了，为了方便终于又用上了云服务器，这次是阿里的。</p>
 <p>配置如下</p>
 <blockquote>
@@ -305,19 +305,19 @@
 <p>这次<code>RocketMQ</code>的配置包括，<code>RocketMQ（NameServer、Broker）</code>和控制台<code>RocketMQ-Dashboard</code></p>
 <p>提要：基础的<code>JDK</code>和<code>Maven</code>这里不多提了，都安装配置好了，另外后面的<code>RocketMQ-Dashboard</code>采用<code>Docker</code>部署方式，<code>Docker</code>安装查看官网装上就好。</p>
 <span id="more"></span>
-<h2 id="rocketmq">RocketMQ</h2>
+<h1 id="rocketmq">RocketMQ</h1>
 <p>https://rocketmq.apache.org/zh/docs/quickStart/02quickstart/</p>
-<h3 id="准备rocketmq安装包">准备RocketMQ安装包</h3>
+<h2 id="准备rocketmq安装包">准备RocketMQ安装包</h2>
 <p>官网提供有二进制包和源码包，区别是：源码包通过编译成为二进制包才可运行</p>
 <p>这里直接准备<code>rocketmq-all-5.0.0-bin-release.zip</code>二进制包</p>
-<h3 id="创建目录并解压">创建目录并解压</h3>
+<h2 id="创建目录并解压">创建目录并解压</h2>
 <p>选好目录解压</p>
 <p>如果缺少<code>zip</code>和<code>unzip</code>，直接用下面命令安装</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y unzip zip</span><br></pre></td></tr></table></figure>
 <p>然后解压即可</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unzip rocketmq-all-5.0.0-bin-release.zip</span><br></pre></td></tr></table></figure>
 <p>解压后就有<code>rocketmq-all-5.0.0-bin-release</code></p>
-<h3 id="修改配置">修改配置</h3>
+<h2 id="修改配置">修改配置</h2>
 <p>https://blog.csdn.net/qq359605040/article/details/124272238</p>
 <p>官网启动方法在下面，建议先修改启动配置，不然很可能启动失败</p>
 <p>先修改<code>nameserver</code>启动配置</p>
@@ -335,31 +335,31 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim conf/broker.conf</span><br></pre></td></tr></table></figure>
 <p>添加后面的两行配置，我这里用的是阿里云服务器<code>IP</code></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">brokerClusterName = DefaultCluster</span><br><span class="line">brokerName = broker-a</span><br><span class="line">brokerId = 0</span><br><span class="line">deleteWhen = 04</span><br><span class="line">fileReservedTime = 48</span><br><span class="line">brokerRole = ASYNC_MASTER</span><br><span class="line">flushDiskType = ASYNC_FLUSH</span><br><span class="line">namesrvAddr=IP:9876</span><br><span class="line">brokerIP1=IP</span><br></pre></td></tr></table></figure>
-<h3 id="启动nameserver">启动NameServer</h3>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">## 启动namesrv</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">nohup</span> sh bin/mqnamesrv &amp;</span></span><br><span class="line"><span class="meta prompt_"> </span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">## 验证namesrv是否启动成功</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">tail</span> -f ~/logs/rocketmqlogs/namesrv.log</span></span><br><span class="line">The Name Server boot success...</span><br></pre></td></tr></table></figure>
-<h3 id="启动brokerproxy">启动Broker+Proxy</h3>
+<h2 id="启动nameserver">启动NameServer</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 启动namesrv</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">nohup</span> sh bin/mqnamesrv &amp;</span></span><br><span class="line"><span class="meta prompt_"> </span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 验证namesrv是否启动成功</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">tail</span> -f ~/logs/rocketmqlogs/namesrv.log</span></span><br><span class="line">The Name Server boot success...</span><br></pre></td></tr></table></figure>
+<h2 id="启动brokerproxy">启动Broker+Proxy</h2>
 <p><code>NameServer</code>成功启动后，我们启动<code>Broke</code>r和<code>Proxy，5.x</code>
 版本下我们建议使用 <code>Local</code> 模式部署，即 <code>Broker</code>
 和 <code>Proxy</code> 同进程部署。<code>5.x</code> 版本也支持
 <code>Broker</code> 和 <code>Proxy</code>
 分离部署以实现更灵活的集群能力。详情参考<a
 target="_blank" rel="noopener" href="https://rocketmq.apache.org/zh/docs/deploymentOperations/15deploy">部署教程</a>。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">## 先启动broker</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">nohup</span> sh bin/mqbroker -n localhost:9876 --enable-proxy &amp;</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">## 验证broker是否启动成功, 比如, broker的ip是192.168.1.2 然后名字是broker-a</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">tail</span> -f ~/logs/rocketmqlogs/broker_default.log</span> </span><br><span class="line">The broker[broker-a,192.169.1.2:10911] boot success...</span><br></pre></td></tr></table></figure>
-<h2 id="rocketmq-dashboard">RocketMQ-Dashboard</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 先启动broker</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">nohup</span> sh bin/mqbroker -n localhost:9876 --enable-proxy &amp;</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 验证broker是否启动成功, 比如, broker的ip是192.168.1.2 然后名字是broker-a</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">tail</span> -f ~/logs/rocketmqlogs/broker_default.log</span> </span><br><span class="line">The broker[broker-a,192.169.1.2:10911] boot success...</span><br></pre></td></tr></table></figure>
+<h1 id="rocketmq-dashboard">RocketMQ-Dashboard</h1>
 <p>https://github.com/apache/rocketmq-dashboard</p>
 <p>官网有<code>docker</code>和源码两种部署方式，这里使用<code>docker</code>部署，而且我也非常推荐这种方式，方便简单</p>
-<h3 id="拉取镜像">拉取镜像</h3>
+<h2 id="拉取镜像">拉取镜像</h2>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull apacherocketmq/rocketmq-dashboard:latest</span><br></pre></td></tr></table></figure>
-<h3 id="启动">启动</h3>
+<h2 id="启动">启动</h2>
 <p>这里把<code>ip</code>修改为阿里云服务器的<code>ip</code>，因为我试了好多次总是存在<code>RemotingConnectException</code>异常，目前这样做是没问题的，而且要注意这里的<code>docker</code>内部端口不要改，因为这个镜像就是运行在<code>8080</code>端口的，外部无所谓</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name rocketmq-dashboard -e &quot;JAVA_OPTS=-Drocketmq.namesrv.addr=127.0.0.1:9876&quot; -p 8080:8080 -t apacherocketmq/rocketmq-dashboard:latest</span><br></pre></td></tr></table></figure>
-<h2 id="防火墙与安全组">防火墙与安全组</h2>
+<h1 id="防火墙与安全组">防火墙与安全组</h1>
 <p>对于我们本地搭建的服务进程，本地访问是都是无感的，但是一旦用到了云服务器或是其他虚拟机不同ip服务进程，就要注意防火墙和安全组了。</p>
-<h3 id="防火墙常用操作">防火墙常用操作</h3>
+<h2 id="防火墙常用操作">防火墙常用操作</h2>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=8080/tcp --permanent  （--permanent永久生效，没有此参数重启后失效）</span><br><span class="line"></span><br><span class="line">firewall-cmd --zone=public --list-ports  （查看所有开启的端口）</span><br><span class="line"> </span><br><span class="line">firewall-cmd --zone=public --remove-port=8080/tcp --permanent  （删除端口）</span><br><span class="line"></span><br><span class="line">firewall-cmd --reload （重启生效配置）</span><br></pre></td></tr></table></figure>
-<h3 id="查看端口">查看端口</h3>
+<h2 id="查看端口">查看端口</h2>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -ntulp |grep 80</span><br></pre></td></tr></table></figure>
-<h3 id="安全组">安全组</h3>
+<h2 id="安全组">安全组</h2>
 <p>安全组的话针对云服务器，我们开放了防火墙后还需要到对应的云服务管理台开放对应端口，我们才可以正常访问。</p>
 
     </div>
@@ -454,14 +454,14 @@ target="_blank" rel="noopener" href="https://rocketmq.apache.org/zh/docs/deploym
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">169k</span>
+    <span title="站点总字数">170k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">10:16</span>
+    <span title="站点阅读时长">10:20</span>
   </span>
 </div>
 <div class="busuanzi-count">

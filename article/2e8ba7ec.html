@@ -35,7 +35,7 @@
 <meta property="og:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/shell.png">
 <meta property="og:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/shell-bars.png">
 <meta property="article:published_time" content="2020-07-30T07:34:10.000Z">
-<meta property="article:modified_time" content="2022-12-30T13:39:18.000Z">
+<meta property="article:modified_time" content="2023-01-03T09:55:21.690Z">
 <meta property="article:author" content="无奈和杨（wnhyang）">
 <meta property="article:tag" content="数据结构&amp;算法">
 <meta name="twitter:card" content="summary">
@@ -152,7 +152,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E7%B1%BB%E7%9A%84%E6%A8%A1%E6%9D%BF"><span class="nav-number">1.</span> <span class="nav-text">排序算法类的模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F"><span class="nav-number">2.</span> <span class="nav-text">选择排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="nav-number">3.</span> <span class="nav-text">插入排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AF%94%E8%BE%83%E4%B8%A4%E7%A7%8D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">比较两种排序算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F"><span class="nav-number">5.</span> <span class="nav-text">希尔排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">7.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E7%B1%BB%E7%9A%84%E6%A8%A1%E6%9D%BF"><span class="nav-number">1.</span> <span class="nav-text">排序算法类的模板</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F"><span class="nav-number">2.</span> <span class="nav-text">选择排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="nav-number">3.</span> <span class="nav-text">插入排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AF%94%E8%BE%83%E4%B8%A4%E7%A7%8D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">比较两种排序算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F"><span class="nav-number">5.</span> <span class="nav-text">希尔排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">7.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -259,7 +259,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-12-30 21:39:18" itemprop="dateModified" datetime="2022-12-30T21:39:18+08:00">2022-12-30</time>
+      <time title="修改时间：2023-01-03 17:55:21" itemprop="dateModified" datetime="2023-01-03T17:55:21+08:00">2023-01-03</time>
     </span>
 
   
@@ -298,10 +298,10 @@
 <p><a
 href="https://wnhyang.github.io/article/a444b428.html">目录</a></p>
 <span id="more"></span>
-<h2 id="排序算法类的模板">排序算法类的模板</h2>
+<h1 id="排序算法类的模板">排序算法类的模板</h1>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Example</span> &#123;</span><br><span class="line">    <span class="comment">//将a[]按升序排列</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">sort</span><span class="params">(Comparable[] a)</span> &#123;</span><br><span class="line">        <span class="comment">/*请见本文算法2.1、算法2.2、算法2.3*/</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">less</span><span class="params">(Comparable v, Comparable w)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> v.compareTo(w) &lt; <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">exch</span><span class="params">(Comparable[] a, <span class="type">int</span> i, <span class="type">int</span> j)</span> &#123;</span><br><span class="line">        <span class="type">Comparable</span> <span class="variable">t</span> <span class="operator">=</span> a[i];</span><br><span class="line">        a[i] = a[j];</span><br><span class="line">        a[j] = t;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 在单行打印数组</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">show</span><span class="params">(Comparable[] a)</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; a.length; i++)</span><br><span class="line">            print(a[i] + <span class="string">&quot; &quot;</span>);</span><br><span class="line">        println();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//测试数组元素是否有序</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">isSort</span><span class="params">(Comparable[] a)</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; a.length; i++)</span><br><span class="line">            <span class="keyword">if</span> (less(a[i], a[i - <span class="number">1</span>]))</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>上面的print()、println()为自定义的静态方法，不再详细说明。</p>
-<h2 id="选择排序">选择排序</h2>
+<h1 id="选择排序">选择排序</h1>
 <p>一种最简单的排序算法是这样的:
 首先，找到数组中最小的那个元素，其次，将它和数组的第个元素交换位置
 (如果第一个元素就是最小元素那么它就和自己交换)。再次，在剩下的元素中找到最小的元素，将它与数组的第二个元素交换位置。如此往复，直到将整个数组排序。这种方法叫做选择排序，因为它在不断地选择剩余元素之中的最小者。</p>
@@ -312,7 +312,7 @@ alt="选择排序的轨迹（每次交换后的数组内容）" />
 <figcaption
 aria-hidden="true">选择排序的轨迹（每次交换后的数组内容）</figcaption>
 </figure>
-<h2 id="插入排序">插入排序</h2>
+<h1 id="插入排序">插入排序</h1>
 <p>与选择排序一样，当前索引左边的所有元素都是有序的，但它们的最终位置还不确定，为了给更小的元素腾出空间，它们可能会被移动。但是当索引到达数组的右端时，数组排序就完成了。和选择排序不同的是，插人排序所需的时间取决于输人中元素的初始顺序。例如，对一个很大且其中的元素已经有序(或接近有序)的数组进行排序将会比对随机顺序的数组或是逆序数组进行排序要快得多。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Insertion</span> &#123;</span><br><span class="line">    <span class="comment">//将a[]按升序排列</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">sort</span><span class="params">(Comparable[] a)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> a.length;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; n; i++) &#123;   <span class="comment">//将a[i]插入到a[i-1]、a[i-2]、a[i-3]...之中</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> i; j &gt; <span class="number">0</span> &amp;&amp; less(a[j], a[j - <span class="number">1</span>]); j--)</span><br><span class="line">                exch(a, j, j - <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// less()、exch()、isSorted()方法见“排序算法类的模板”</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure>
@@ -321,14 +321,14 @@ alt="插入排序的轨迹（每次插入后的数组内容）" />
 <figcaption
 aria-hidden="true">插入排序的轨迹（每次插入后的数组内容）</figcaption>
 </figure>
-<h2 id="比较两种排序算法">比较两种排序算法</h2>
+<h1 id="比较两种排序算法">比较两种排序算法</h1>
 <p>说实话这部分我还说不清楚，感兴趣的可以看原著。</p>
 <figure>
 <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/bars.png"
 alt="初级排序算法的可视轨迹图" />
 <figcaption aria-hidden="true">初级排序算法的可视轨迹图</figcaption>
 </figure>
-<h2 id="希尔排序">希尔排序</h2>
+<h1 id="希尔排序">希尔排序</h1>
 <p>为了展示初级排序算法性质的价值，接下来我们将学习一种基于插人排序的快速的排序算法。对于大规模乱序数组插人排序很慢，因为它只会交换相邻的元素，因此元素只能一点一点地从数组的一端移动到另-端。例如，如果主键最小的元素正好在数组的尽头，要将它挪到正确的位置就需要N-1次移动。希尔排序为了加快速度简单地改进了插人排序，交换不相邻的元素以对数组的局部进行排序，并最终用插入排序将局部有序的数组排序。</p>
 <p>希尔排序的思想是使数组中任意间隔为h的元素都是有序的。这样的数组被称为h有序数组。换句话说，一个h有序数组就是h个互相独立的有序数组编织在一起组成的一一个数组(见图2.1.2)。在进行排序时，如果h很大，我们就能将元素移动到很远的地方，为实现更小的h有序创造方便。用这种方式，对于任意以1结尾的h序列，我们都能够将数组排序。这就是希尔排序。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Shell</span> &#123;</span><br><span class="line">    <span class="comment">//将a[]按升序排列</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">sort</span><span class="params">(Comparable[] a)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> a.length;</span><br><span class="line">        <span class="type">int</span> <span class="variable">h</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (h &lt; n / <span class="number">3</span>) h = <span class="number">3</span> * h + <span class="number">1</span>;<span class="comment">//1,4,13,40,121,364,1093,...</span></span><br><span class="line">        <span class="keyword">while</span> (h &gt;= <span class="number">1</span>) &#123;    <span class="comment">//将数组变为h有序</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> h; i &lt; n; i++) &#123;   <span class="comment">//将a[i]插入到a[i-h]、a[i-2*h]、a[i-3*h]...之中</span></span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> i; j &gt;= h &amp;&amp; less(a[j], a[j - h]); j -= h)</span><br><span class="line">                    exch(a, j, j - h);</span><br><span class="line">            &#125;</span><br><span class="line">            h /=  <span class="number">3</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// less()、exch()、isSorted()方法见“排序算法类的模板”</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -343,9 +343,9 @@ aria-hidden="true">希尔排序的详细轨迹（各种插入）</figcaption>
 alt="希尔排序的可视轨迹）" />
 <figcaption aria-hidden="true">希尔排序的可视轨迹）</figcaption>
 </figure>
-<h2 id="总结">总结</h2>
+<h1 id="总结">总结</h1>
 <p>最开始看这本书有点费劲，看不下去，尤其是书中那些自定义的API不给详细代码，只给API的作用说明，想看代码只能上本书网站查看，当然这里有对java不熟悉的原因，后来觉得其实没影响的，那些都是一些简单的java系统类库的简单改写。现在越读越有意思，首先本书非常严谨，然后就是书中排版包括前后照应关系安排的太厉害了，最特殊的是本书的图文照应，几乎所有复杂难以理解的算法都有可视化图片，命题+论证+测试都是非常有意思的，就是需要一些数学知识。还有我也是初读这样的书，肯定有理解不到位的地方，谅解！</p>
-<h2 id="参考资料">参考资料</h2>
+<h1 id="参考资料">参考资料</h1>
 <p>《算法（第4版）》第二章排序2.1初级排序算法</p>
 <p><a target="_blank" rel="noopener" href="https://algs4.cs.princeton.edu/">本书网站</a></p>
 
@@ -439,14 +439,14 @@ alt="希尔排序的可视轨迹）" />
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">169k</span>
+    <span title="站点总字数">170k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">10:16</span>
+    <span title="站点阅读时长">10:20</span>
   </span>
 </div>
 <div class="busuanzi-count">

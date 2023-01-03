@@ -36,7 +36,7 @@
 <meta property="og:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/partitioning3.png">
 <meta property="og:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/quicksort3-bars.png">
 <meta property="article:published_time" content="2020-08-03T08:14:38.000Z">
-<meta property="article:modified_time" content="2022-12-30T13:39:18.000Z">
+<meta property="article:modified_time" content="2023-01-03T10:03:02.228Z">
 <meta property="article:author" content="无奈和杨（wnhyang）">
 <meta property="article:tag" content="数据结构&amp;算法">
 <meta name="twitter:card" content="summary">
@@ -153,7 +153,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">基本算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="nav-number">2.</span> <span class="nav-text">快速排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E7%9A%84%E5%88%87%E5%88%86"><span class="nav-number">3.</span> <span class="nav-text">快速排序的切分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E7%89%B9%E7%82%B9"><span class="nav-number">4.</span> <span class="nav-text">性能特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E6%94%B9%E8%BF%9B"><span class="nav-number">5.</span> <span class="nav-text">算法改进</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%87%E6%8D%A2%E5%88%B0%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="nav-number">6.</span> <span class="nav-text">切换到插入排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E5%8F%96%E6%A0%B7%E5%88%87%E5%88%86"><span class="nav-number">7.</span> <span class="nav-text">三取样切分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%86%B5%E6%9C%80%E4%BC%98%E7%9A%84%E6%8E%92%E5%BA%8F"><span class="nav-number">8.</span> <span class="nav-text">熵最优的排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E5%90%91%E5%88%87%E5%88%86%E7%9A%84%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="nav-number">9.</span> <span class="nav-text">三向切分的快速排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">10.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">基本算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="nav-number">2.</span> <span class="nav-text">快速排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E7%9A%84%E5%88%87%E5%88%86"><span class="nav-number">3.</span> <span class="nav-text">快速排序的切分</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E7%89%B9%E7%82%B9"><span class="nav-number">4.</span> <span class="nav-text">性能特点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E6%94%B9%E8%BF%9B"><span class="nav-number">5.</span> <span class="nav-text">算法改进</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%87%E6%8D%A2%E5%88%B0%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="nav-number">6.</span> <span class="nav-text">切换到插入排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E5%8F%96%E6%A0%B7%E5%88%87%E5%88%86"><span class="nav-number">7.</span> <span class="nav-text">三取样切分</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%86%B5%E6%9C%80%E4%BC%98%E7%9A%84%E6%8E%92%E5%BA%8F"><span class="nav-number">8.</span> <span class="nav-text">熵最优的排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E5%90%91%E5%88%87%E5%88%86%E7%9A%84%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="nav-number">9.</span> <span class="nav-text">三向切分的快速排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">10.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -260,7 +260,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-12-30 21:39:18" itemprop="dateModified" datetime="2022-12-30T21:39:18+08:00">2022-12-30</time>
+      <time title="修改时间：2023-01-03 18:03:02" itemprop="dateModified" datetime="2023-01-03T18:03:02+08:00">2023-01-03</time>
     </span>
 
   
@@ -301,11 +301,11 @@ class="math inline">\(MlgN\)</span>成正比。我们已经学习过的排序算
 <p><a
 href="https://wnhyang.github.io/article/a444b428.html">目录</a></p>
 <span id="more"></span>
-<h2 id="基本算法">基本算法</h2>
+<h1 id="基本算法">基本算法</h1>
 <p>快速排序是一种分治的排序算法。它将一个数组分成两个子数组，将两部分独立地排序。快速排序和归并排序是互补的:归并排序将数组分成两个子数组分别排序，并将有序的子数组归并以将整个数组排序;而快速排序将数组排序的方式则是当两个子数组都有序时整个数组也就自然有序了。在第一种情况中，递归调用发生在处理整个数组之前;在第二种情况中，递归调用发生在处理整个数组之后。在归并排序中，一个数组被等分为两半;在快速排序中，切分(
 partition )的位置取决于数组的内容。快速排序的大致过程如下图所示。</p>
 <p><img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/quicksort-overview.png" /></p>
-<h2 id="快速排序">快速排序</h2>
+<h1 id="快速排序">快速排序</h1>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Quick</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">sort</span><span class="params">(Comparable[] a)</span> &#123;</span><br><span class="line">        <span class="comment">//shuffle(a)消除对输入的依赖</span></span><br><span class="line">        sort(a,<span class="number">0</span>,a.length-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">sort</span><span class="params">(Comparable[] a, <span class="type">int</span> lo, <span class="type">int</span> hi)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (hi &lt;= lo) <span class="keyword">return</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> partition(a, lo, hi);   <span class="comment">//切分</span></span><br><span class="line">        sort(a, lo, j - <span class="number">1</span>);         <span class="comment">//将左半部分a[lo..j-1]排序</span></span><br><span class="line">        sort(a, j + <span class="number">1</span>, hi);         <span class="comment">//将右半部分a[j+1..hi]排序</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure>
 <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/quicksort.png"
@@ -318,7 +318,7 @@ alt="quicksort.png" />
 <p>a[lo]到a[j-1]中的所有元素都不大于a[j];</p>
 <p>a[j+1]到a[hi]中的所有元素都不小于a[j]。</p>
 <p>我们就是通过递归地调用切分来排序的。</p>
-<h2 id="快速排序的切分">快速排序的切分</h2>
+<h1 id="快速排序的切分">快速排序的切分</h1>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将数组切分为a[lo..j-1]，a[i]，a[j+1..hi]</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">partition</span><span class="params">(Comparable[] a, <span class="type">int</span> lo, <span class="type">int</span> hi)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> lo, j = hi + <span class="number">1</span>;      <span class="comment">//左右扫描指针</span></span><br><span class="line">    <span class="type">Comparable</span> <span class="variable">v</span> <span class="operator">=</span> a[lo];       <span class="comment">//切分元素</span></span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;      <span class="comment">// 扫描左右，检查扫描是否结束并交换元素</span></span><br><span class="line">        <span class="keyword">while</span> (less(a[++i], v)) <span class="keyword">if</span> (i == hi) <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">while</span> (less(v, a[--j])) <span class="keyword">if</span> (j == lo) <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">if</span> (i &gt;= j) <span class="keyword">break</span>;</span><br><span class="line">        exch(a, i, j);</span><br><span class="line">    &#125;</span><br><span class="line">    exch(a, lo, j);             <span class="comment">//将v=a[j]放入正确的位置</span></span><br><span class="line">    <span class="keyword">return</span> j;                   <span class="comment">//a[lo..j-1]&lt;=a[i]&lt;=a[j+1..hi] 达成</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure>
 <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/partitioning.png"
@@ -327,28 +327,28 @@ alt="切分轨迹（每次交换前后的数组内容）" />
 aria-hidden="true">切分轨迹（每次交换前后的数组内容）</figcaption>
 </figure>
 <p>之后还有些讨论的内容这里不再详写，请看原著！</p>
-<h2 id="性能特点">性能特点</h2>
+<h1 id="性能特点">性能特点</h1>
 <p>数学上已经对快速排序进行了详尽的分析，因此我们能够精确地说明它的性能。大量经验也证明了这些分析，它们是算法调优时的重要工具。</p>
 <p>快速排序切分方法的内循环会用一个递增的索引将数组元素和一个定值比较。这种简洁性也是快速排序的一个优点，很难想象排序算法中还能有比这更短小的内循环了。例如，归并排序和希尔排序一般都比快速排序慢，其原因就是它们还在内循环中移动数据。</p>
 <p>快速排序另一个速度优势在于它的比较次数很少。排序效率最终还是依赖切分数组的效果，而这依赖于切分元素的值。切分将一个较大的随机数组分成两个随机子数组，而实际上这种分割可能发生在数组的任意位置(对于元素不重复的数组而言)。</p>
 <p>下面我们来分析这个算法，看看这种方法和理想方法之间的差距。看原著！</p>
-<h2 id="算法改进">算法改进</h2>
+<h1 id="算法改进">算法改进</h1>
 <p>快速排序是由C.A.R
 Hoare在1960年发明的，从那时起就有很多人在研究并改进它。改进快速排序总是那么吸引人，发明更快的排序算法就好像是计算机科学界的“老鼠夹子”，而快速排序就是夹子里的那块奶酪。几乎从Hoare第-次发
 表这个算法开始，人们就不断地提出各种改进方法。并不是所有的想法都可行，因为快速排序的平衡性已经非常好，改进所带来的提高可能会被意外的副作用所抵消。但其中一些，也是我们现在要介绍的，非常有效。</p>
 <p>如果你的排序代码会被执行很多次或者会被用在大型数组上(特别是如果它会被发布成一个库函数，排序的对象数组的特性是未知的)，那么下面所讨论的这些改进意见值得你参考。需要注意的是，你需要通过实验来确定改进的效果并为实现选择最佳的参数。一般来说它们能将性能提升20%
 ~ 30%。</p>
 <p>以下三小结略</p>
-<h2 id="切换到插入排序">切换到插入排序</h2>
-<h2 id="三取样切分">三取样切分</h2>
-<h2 id="熵最优的排序">熵最优的排序</h2>
+<h1 id="切换到插入排序">切换到插入排序</h1>
+<h1 id="三取样切分">三取样切分</h1>
+<h1 id="熵最优的排序">熵最优的排序</h1>
 <figure>
 <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/quicksort-bars.png"
 alt="使用了三取样切分和插入排序转换的快速排序" />
 <figcaption
 aria-hidden="true">使用了三取样切分和插入排序转换的快速排序</figcaption>
 </figure>
-<h2 id="三向切分的快速排序">三向切分的快速排序</h2>
+<h1 id="三向切分的快速排序">三向切分的快速排序</h1>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Quick3way</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 调用此方法的公用方法sort()请见快速排序算法</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">sort</span><span class="params">(Comparable[] a, <span class="type">int</span> lo, <span class="type">int</span> hi)</span> &#123; </span><br><span class="line">        <span class="keyword">if</span> (hi &lt;= lo) <span class="keyword">return</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">lt</span> <span class="operator">=</span> lo, i=lo+<span class="number">1</span>, gt = hi;</span><br><span class="line">        <span class="type">Comparable</span> <span class="variable">v</span> <span class="operator">=</span> a[lo];</span><br><span class="line">        <span class="keyword">while</span> (i &lt;= gt) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">cmp</span> <span class="operator">=</span> a[i].compareTo(v);</span><br><span class="line">            <span class="keyword">if</span>      (cmp &lt; <span class="number">0</span>) exch(a, lt++, i++);</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (cmp &gt; <span class="number">0</span>) exch(a, i, gt--);</span><br><span class="line">            <span class="keyword">else</span>              i++;</span><br><span class="line">        &#125; <span class="comment">// 现在a[lo..lt-1] &lt; v = a[lt..gt] &lt; a[gt+1..hi]成立</span></span><br><span class="line">        sort(a, lo, lt-<span class="number">1</span>);</span><br><span class="line">        sort(a, gt+<span class="number">1</span>, hi);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure>
 <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/partitioning3.png"
@@ -361,7 +361,7 @@ aria-hidden="true">三分切分的轨迹（每次迭代循环之后的数组内�
 alt="三向切分的快速排序的可视轨迹" />
 <figcaption aria-hidden="true">三向切分的快速排序的可视轨迹</figcaption>
 </figure>
-<h2 id="参考资料">参考资料</h2>
+<h1 id="参考资料">参考资料</h1>
 <p>《算法（第4版）》第二章排序2.3快速排序</p>
 <p><a target="_blank" rel="noopener" href="https://algs4.cs.princeton.edu/">本书网站</a></p>
 
@@ -455,14 +455,14 @@ alt="三向切分的快速排序的可视轨迹" />
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">169k</span>
+    <span title="站点总字数">170k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">10:16</span>
+    <span title="站点阅读时长">10:20</span>
   </span>
 </div>
 <div class="busuanzi-count">

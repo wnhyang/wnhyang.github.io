@@ -241,9 +241,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2023-01-02 11:12:26 / 修改时间：21:57:32" itemprop="dateCreated datePublished" datetime="2023-01-02T11:12:26+08:00">2023-01-02</time>
+      <time title="创建时间：2023-01-02 11:12:26" itemprop="dateCreated datePublished" datetime="2023-01-02T11:12:26+08:00">2023-01-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-03 18:58:20" itemprop="dateModified" datetime="2023-01-03T18:58:20+08:00">2023-01-03</time>
     </span>
 
   
@@ -253,14 +259,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>37</span>
+      <span>1.1k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>4 分钟</span>
     </span>
 </div>
 
@@ -271,10 +277,101 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="配置">配置</h1>
-<h2 id="系统设置">系统设置</h2>
-<p>这个完全看个人习惯，不多提了
-关于使用技巧，这个用的越多越熟悉，慢慢来</p>
+          <h1 id="系统设置">系统设置</h1>
+<p>这个完全看个人习惯，不多提了<br />关于使用技巧，这个用的越多越熟悉，慢慢来</p>
+<table>
+<thead>
+<tr class="header">
+<th>快捷键</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>command</code>+<code>option</code>+<code>1</code></td>
+<td>图标自动排列</td>
+</tr>
+<tr class="even">
+<td><code>command</code>+<code>shift</code>+<code>.</code></td>
+<td>显示/不显示隐藏文件</td>
+</tr>
+<tr class="odd">
+<td><code>command</code>+<code>option</code>+<code>c</code></td>
+<td>复制文件路径</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="homebrewgit">homebrew&amp;git</h1>
+<p><a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/111014448">Homebrew国内如何自动安装（国内地址）（Mac
+&amp; Linux）</a></p>
+<p>这个不用多说，装就对了</p>
+<p>有了homebrew，在mac上安装软件就变的非常容易了，不仅是<code>wget</code>、<code>curl</code>、<code>telnet</code>这些，而且还包括百度网盘、迅雷这些，桌面程序也是可以的</p>
+<p>貌似按照上面的安装方式也会同时安装<code>git</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看git版本</span></span><br><span class="line">git -v</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看配置 </span></span><br><span class="line">git config -l</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看系统config</span></span><br><span class="line">git config --system --list　</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看当前用户（global）配置</span></span><br><span class="line">git config --global  --list</span><br><span class="line"></span><br><span class="line"><span class="comment">#配置用户名</span></span><br><span class="line">git config --global user.name <span class="string">&quot;username&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#配置邮箱</span></span><br><span class="line">git config --global user.email <span class="string">&quot;xxx@xxx.com&quot;</span></span><br></pre></td></tr></table></figure>
+<h1 id="jdk">JDK</h1>
+<p><code>Mac</code>安装<code>JDK</code>，直接按照傻瓜式安装即可，安装完毕会发现<code>java -version</code>，<code>java</code>，<code>javac</code>都在了</p>
+<h1 id="maven">Maven</h1>
+<p><code>Maven</code>下载<code>zip</code>或是<code>tar.gz</code>压缩包即可，下载后解压到一个目录，下面开始配置<code>Maven</code>环境变量<br /><code>vi ~/.bash_profile</code>加上</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export MAVEN_HOME=/xxx/apache-maven-3.6.3</span><br><span class="line">export PATH=$MAVEN_HOME/bin:$PATH</span><br></pre></td></tr></table></figure>
+<p><code>source ~/.bash_profile</code>生效</p>
+<p><code>mvn -v</code>检查</p>
+<p>顺带一提，配置文件根据自己情况配置即可，通常我习惯创建一个<code>repository</code>文件夹用于本地<code>maven</code>仓库</p>
+<h1 id="iterm2">iTerm2</h1>
+<p><a
+target="_blank" rel="noopener" href="https://www.jianshu.com/p/405956cdaca6">ITerm2配置-让你的mac命令行更加丰富高效</a></p>
+<p><a target="_blank" rel="noopener" href="https://iterm2.com/">iTerm2 - macOS Terminal
+Replacement</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/qwe641259875/article/details/107201760">oh-my-zsh
+国内安装及配置_菜饼同学的博客-CSDN博客_ohmyzsh</a></p>
+<h1 id="section">✈️</h1>
+<p><a
+target="_blank" rel="noopener" href="https://flysocks.tools/user">https://flysocks.tools/user</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://blog.xiquedao.top/">https://blog.xiquedao.top/</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://wmsxwd-1.men/#/dashboard">https://wmsxwd-1.men/#/dashboard</a></p>
+<p>这个不没怎么用过，这次免费试用了一下，因为毕竟是从<code>win</code>转过来的，对于<code>Google</code>、<code>Github</code>要求还是挺高的，毕竟要同步和下载东西，用一下很有必要</p>
+<h1 id="nvmnodenpm">nvm&amp;node&amp;npm</h1>
+<p><a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/114364577">Mac已到手？从零开始，八步打造一个高效舒适的开发环境</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1956818?from=article.detail.1913156">mac
+上使用brew安装 nvm - 腾讯云开发者社区-腾讯云</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">nvm list                 ##是查找本电脑上所有的node版本</span><br><span class="line">- nvm list     ##查看已经安装的版本</span><br><span class="line">- nvm list installed ##查看已经安装的版本</span><br><span class="line">- nvm list available ##查看网络可以安装的版本</span><br><span class="line"></span><br><span class="line">nvm install    ##安装指定版本node</span><br><span class="line">nvm uninstall  ##卸载制定的版本</span><br><span class="line">nvm install stable             ## 安装最新稳定版 node，当前是node v9.5.0 (npm v5.6.0)</span><br><span class="line">nvm install      ##安装指定版本，可模糊安装，如：安装v4.4.0，既可nvm install v4.4.0，又可nvm install 4.4</span><br><span class="line"></span><br><span class="line">nvm use              ##切换使用指定的版本node</span><br><span class="line">nvm -v                                     ##查看当前的版本</span><br><span class="line"></span><br><span class="line">nvm ls                                     ## 列出所有安装的版本</span><br><span class="line">nvm ls-remote                     ## 列出所有远程服务器的版本（官方node version list）</span><br><span class="line">nvm current                          ## 显示当前的版本</span><br><span class="line"></span><br><span class="line">nvm alias       ## 给不同的版本号添加别名</span><br><span class="line">nvm unalias                      ## 删除已定义的别名</span><br><span class="line"></span><br><span class="line">nvm reinstall-packages      ## 在当前版本 node 环境下，重新全局安装指定版本号的 npm 包</span><br><span class="line"></span><br><span class="line">nvm on                         ##打开nodejs控制</span><br><span class="line">nvm off                     ##关闭nodejs控制</span><br><span class="line">nvm proxy                 ##查看设置与代理</span><br><span class="line">nvm node_mirror [url] ##设置或者查看setting.txt中的node_mirror，如果不设置的默认是 https://nodejs.org/dist/</span><br><span class="line">nvm npm_mirror [url]  ##设置或者查看setting.txt中的npm_mirror,如果不设置的话默认的是： https://github.com/npm/npm/archive/.</span><br><span class="line"></span><br><span class="line">nvm use [version] [arch] ##切换制定的node版本和位数</span><br><span class="line">nvm root [path]          ##设置和查看root路径</span><br></pre></td></tr></table></figure>
+<h1 id="软件">软件</h1>
+<p>原本是有<a
+target="_blank" rel="noopener" href="http://macwk.com/">http://macwk.com/</a>的，但已经关站了，很遗憾，只能选择其他的软件网站了，对于需要破解的软件，我是建议可以在这里找的，还是那句话，如果有能力请支持正版</p>
+<p><a
+target="_blank" rel="noopener" href="https://www.hereitis.cn/">hereitis,在这里资源站,免费软件下载,PPT、图片素材下载,精品小工具小插件</a></p>
+<p><a target="_blank" rel="noopener" href="https://en.softonic.com/">App news and reviews, best
+software downloads and discovery - Softonic</a></p>
+<h2 id="idea">Idea</h2>
+<p>通过<a
+target="_blank" rel="noopener" href="https://www.jetbrains.com/zh-cn/idea/">官网</a>下载即可，想要最终版就自己想办法吧</p>
+<h2 id="vscode">VSCode</h2>
+<p><a
+target="_blank" rel="noopener" href="https://code.visualstudio.com/">官网</a>安装即可，可以登录微软账号同步设置和插件，非常方便</p>
+<h2 id="navicat-premium">Navicat Premium</h2>
+<p>一直使用的都是这个，好用且好用<br /><a
+target="_blank" rel="noopener" href="https://www.hereitis.cn/">https://www.hereitis.cn/</a><br />这个只能通过破解来安装使用，参考上面网站安装即可，期间遇到问题也有文档可解答</p>
+<h2 id="another-redis-desktop-manager">Another Redis Desktop
+Manager</h2>
+<p><a
+target="_blank" rel="noopener" href="https://www.hereitis.cn/">https://www.hereitis.cn/</a><br />同上，参考上面网站安装即可，期间遇到问题也有文档可解答</p>
+<h2 id="postman">Postman</h2>
+<p><a target="_blank" rel="noopener" href="https://www.postman.com/">官网</a>安装即可</p>
+<h2 id="docker">Docker</h2>
+<p><a target="_blank" rel="noopener" href="https://yeasy.gitbook.io/docker_practice/install/mac">macOS
+- Docker — 从入门到实践</a></p>
+<p>参考这里的安装和镜像配置即可</p>
+<h2 id="其他">其他</h2>
+<p>这个纯个人使用而定<br />微信，QQ（才发现没有Mac版Tim），钉钉，腾讯会议，阿里云盘，百度网盘、网易云音乐，语雀，Chrome、Edge、WPS，DNM，腾讯柠檬</p>
 
       
     </div>
@@ -429,7 +526,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-12-25 20:43:48" itemprop="dateModified" datetime="2022-12-25T20:43:48+08:00">2022-12-25</time>
+      <time title="修改时间：2023-01-03 18:05:09" itemprop="dateModified" datetime="2023-01-03T18:05:09+08:00">2023-01-03</time>
     </span>
 
   
@@ -457,7 +554,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="简介">简介</h2>
+          <h1 id="简介">简介</h1>
 <p>最近在折腾<code>Linux</code>，想做一点有趣的事情，首先想到就是通过定时任务，做一些通知，原来我就做过<code>Java</code>整合邮件，做一些邮件发送，直到最近我才知道，原来<code>Linux</code>本身就能发送邮件的。</p>
 <p>那更好了，直接开始。</p>
 <p>参考：</p>
@@ -632,7 +729,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-12-03 22:34:30" itemprop="dateModified" datetime="2022-12-03T22:34:30+08:00">2022-12-03</time>
+      <time title="修改时间：2023-01-03 18:06:14" itemprop="dateModified" datetime="2023-01-03T18:06:14+08:00">2023-01-03</time>
     </span>
 
   
@@ -660,7 +757,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="简介">简介</h2>
+          <h1 id="简介">简介</h1>
 <p>最近在学习<code>RocketMQ</code>，但一直苦于没有合适的环境学习。我的电脑是<code>Windows</code>系统，虽然换上了专业版装上了<code>Docker</code>，而且也有虚拟机，平常也会通过这些环境学习，但是还是太不方便了，为了方便终于又用上了云服务器，这次是阿里的。</p>
 <p>配置如下</p>
 <blockquote>
@@ -847,7 +944,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-11-16 17:10:50" itemprop="dateModified" datetime="2022-11-16T17:10:50+08:00">2022-11-16</time>
+      <time title="修改时间：2023-01-03 18:06:19" itemprop="dateModified" datetime="2023-01-03T18:06:19+08:00">2023-01-03</time>
     </span>
 
   
@@ -876,7 +973,7 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>这几天看了一些关于<code>MySQL</code>主从复制，读写分离的文章，对于数据库这方面的知识很有兴趣。主要还是之前真的没有做过，想学习一下。这下好了，<code>ruoyi</code>入手吧。</p>
-<h2 id="参考">参考</h2>
+<h1 id="参考">参考</h1>
 <ul>
 <li><p>https://zhuanlan.zhihu.com/p/199217698</p></li>
 <li><p>https://blog.csdn.net/qq_37502106/article/details/91044952</p></li>
@@ -1056,7 +1153,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-09-19 18:23:34" itemprop="dateModified" datetime="2022-09-19T18:23:34+08:00">2022-09-19</time>
+      <time title="修改时间：2023-01-03 18:06:22" itemprop="dateModified" datetime="2023-01-03T18:06:22+08:00">2023-01-03</time>
     </span>
 
   
@@ -1085,7 +1182,7 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>依旧是从<code>ruoyi</code>学习，这次是任务调度框架<code>Quartz</code></p>
-<h2 id="参考">参考</h2>
+<h1 id="参考">参考</h1>
 <p><a target="_blank" rel="noopener" href="https://www.w3cschool.cn/quartz_doc/">Quartz官方文档</a></p>
 <p><a
 target="_blank" rel="noopener" href="https://blog.csdn.net/lkl_csdn/article/details/73613033">quartz
@@ -1246,14 +1343,14 @@ target="_blank" rel="noopener" href="https://www.pdai.tech/md/java/thread/java-t
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">169k</span>
+    <span title="站点总字数">170k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">10:16</span>
+    <span title="站点阅读时长">10:20</span>
   </span>
 </div>
 <div class="busuanzi-count">
