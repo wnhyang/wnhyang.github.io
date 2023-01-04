@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2023-01-03T10:58:20.641Z</updated>
+  <updated>2023-01-04T06:11:53.018Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -21,20 +21,37 @@
     <link href="https://wnhyang.github.io/article/661307ba.html"/>
     <id>https://wnhyang.github.io/article/661307ba.html</id>
     <published>2023-01-02T03:12:26.000Z</published>
-    <updated>2023-01-03T10:58:20.641Z</updated>
+    <updated>2023-01-04T06:11:53.018Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;h1 id=&quot;系统设置&quot;&gt;系统设置&lt;/h1&gt;
 &lt;p&gt;这个完全看个人习惯，不多提了&lt;br /&gt;关于使用技巧，这个用的越多越熟悉，慢慢来&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
-&lt;tr</summary>
-        
-      
+&lt;tr class=&quot;header&quot;&gt;
+&lt;th&gt;快捷键&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&quot;odd&quot;&gt;
+&lt;td&gt;&lt;code&gt;command&lt;/code&gt;+&lt;code&gt;option&lt;/code&gt;+&lt;code&gt;1&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;图标自动排列&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;even&quot;&gt;
+&lt;td&gt;&lt;code&gt;command&lt;/code&gt;+&lt;code&gt;shift&lt;/code&gt;+&lt;code&gt;.&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;显示/不显示隐藏文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;odd&quot;&gt;
+&lt;td&gt;&lt;code&gt;command&lt;/code&gt;+&lt;code&gt;option&lt;/code&gt;+&lt;code&gt;c&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;复制文件路径&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&quot;even&quot;&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</summary>
     
     
     
@@ -46,18 +63,15 @@
     <link href="https://wnhyang.github.io/article/604142d6.html"/>
     <id>https://wnhyang.github.io/article/604142d6.html</id>
     <published>2022-12-27T01:37:29.000Z</published>
-    <updated>2022-12-28T13:49:10.000Z</updated>
+    <updated>2023-01-04T14:47:06.615Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;https://nacos.io/zh-cn/docs/v2/quickstart/quick-start-docker.html&lt;/p&gt;
-&lt;p&gt;更新ing&lt;/p&gt;
-</summary>
-        
-      
+    <summary type="html">&lt;h1 id=&quot;参考&quot;&gt;参考&lt;/h1&gt;
+&lt;p&gt;https://nacos.io/zh-cn/docs/v2/quickstart/quick-start-docker.html&lt;/p&gt;
+&lt;p&gt;https://nacos.io/zh-cn/docs/v2/guide/admin/monitor-guide.html&lt;/p&gt;
+&lt;h1 id=&quot;简介&quot;&gt;简介&lt;/h1&gt;
+&lt;p&gt;最近以优惠价购买了云服务器，想着不能浪费资源，打算做点东西，玩一玩。可还是高估了我的经济实力，&lt;code&gt;1C2G&lt;/code&gt;是真的不够用，我在这台机器上装了&lt;code&gt;JDK&lt;/code&gt;、&lt;code&gt;Maven&lt;/code&gt;、&lt;code&gt;RocketMQ、Docker&lt;/code&gt;、&lt;code&gt;Docker-compose&lt;/code&gt;，同时在&lt;code&gt;Docker&lt;/code&gt;下运行了&lt;code&gt;MySQL&lt;/code&gt;、&lt;code&gt;Redis&lt;/code&gt;、&lt;code&gt;Nginx&lt;/code&gt;、&lt;code&gt;RocketMQ-Dashboard&lt;/code&gt;，到这里其实都还好，在修改启动参数的情况下勉强够用。&lt;/p&gt;
+&lt;p&gt;但为了学习微服务，向&lt;code&gt;Spring Cloud Alibaba&lt;/code&gt;靠，准备搭建&lt;code&gt;Nacos&lt;/code&gt;作为注册中心和配置中心，这下问题来了，按照官网的部署方案，出了问题，在这里记录一下，为他人学习提供一下参考。&lt;/p&gt;</summary>
     
     
     
@@ -65,6 +79,10 @@
     <category term="Docker" scheme="https://wnhyang.github.io/tags/Docker/"/>
     
     <category term="Spring Cloud Alibaba" scheme="https://wnhyang.github.io/tags/Spring-Cloud-Alibaba/"/>
+    
+    <category term="Grafana" scheme="https://wnhyang.github.io/tags/Grafana/"/>
+    
+    <category term="Prometheus" scheme="https://wnhyang.github.io/tags/Prometheus/"/>
     
   </entry>
   
