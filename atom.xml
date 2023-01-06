@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2023-01-05T15:44:05.761Z</updated>
+  <updated>2023-01-06T02:32:03.706Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -21,20 +21,30 @@
     <link href="https://wnhyang.github.io/article/cf29ecfe.html"/>
     <id>https://wnhyang.github.io/article/cf29ecfe.html</id>
     <published>2023-01-05T15:44:05.000Z</published>
-    <updated>2023-01-05T15:44:05.761Z</updated>
+    <updated>2023-01-06T02:32:03.706Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">
-</summary>
-        
-      
+    <summary type="html">&lt;h1 id=&quot;简介&quot;&gt;简介&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;20&lt;/code&gt;年，在&lt;code&gt;7&lt;/code&gt;月通过&lt;code&gt;hexo&lt;/code&gt;搭建了属于自己的个人博客，如今过去已经&lt;code&gt;2&lt;/code&gt;年多了，期间也不断进行博客的小优化，包括但不限于：主题的个性化配置、字数统计、访问量统计、文章链接生成算法配置、百度网站采集等等。使用的一直是&lt;a
+href=&quot;https://github.com/litten/hexo-theme-yilia&quot;&gt;Yilia&lt;/a&gt;主题（已经很长时间不维护了），也是因此遇到了许许多多问题，趁着最近准备更换设备，准备把之前的博客换一个面貌，是的，我要放弃&lt;a
+href=&quot;https://github.com/litten/hexo-theme-yilia&quot;&gt;Yilia&lt;/a&gt;，选择&lt;a
+href=&quot;https://github.com/next-theme/hexo-theme-next&quot;&gt;NexT&lt;/a&gt;，我不是爱趋同，而是想稳定，不想浪费时间在维护和解决问题上，&lt;code&gt;NexT&lt;/code&gt;是应该是&lt;code&gt;hexo&lt;/code&gt;主题中体量最大，最为活跃的，&lt;code&gt;so&lt;/code&gt;，就是你了，顺便&lt;code&gt;npm&lt;/code&gt;、&lt;code&gt;node&lt;/code&gt;、&lt;code&gt;hexo&lt;/code&gt;都升级一下，为此在这里记录一下。&lt;/p&gt;
+&lt;p&gt;非常建议直接参考&lt;code&gt;hexo-next&lt;/code&gt;官网&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://hexo-next.readthedocs.io/zh_CN/latest/&quot;
+class=&quot;uri&quot;&gt;https://hexo-next.readthedocs.io/zh_CN/latest/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://hexo.io/zh-cn/docs/&quot;
+class=&quot;uri&quot;&gt;https://hexo.io/zh-cn/docs/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://theme-next.js.org/docs/getting-started/&quot;
+class=&quot;uri&quot;&gt;https://theme-next.js.org/docs/getting-started/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;没有哪里能比官网更有参考意义了！&lt;/p&gt;
+&lt;p&gt;说实话，看完官网，我真想把下面我的记录全部删掉，但最终还是保留了我的配置供大家参考吧&lt;/p&gt;</summary>
     
     
     
+    
+    <category term="博客" scheme="https://wnhyang.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+    <category term="NPM" scheme="https://wnhyang.github.io/tags/NPM/"/>
     
   </entry>
   
