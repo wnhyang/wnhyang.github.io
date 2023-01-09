@@ -1373,13 +1373,6 @@
   </url>
   
   <url>
-    <loc>https://wnhyang.github.io/tags/Dubbo/</loc>
-    <lastmod>2023-01-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://wnhyang.github.io/tags/Spring-Boot/</loc>
     <lastmod>2023-01-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -1388,6 +1381,41 @@
   
   <url>
     <loc>https://wnhyang.github.io/tags/ruoyi/</loc>
+    <lastmod>2023-01-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wnhyang.github.io/tags/%E8%AE%B0%E5%BD%95/</loc>
+    <lastmod>2023-01-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wnhyang.github.io/tags/Git-GitHub-Gitee/</loc>
+    <lastmod>2023-01-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wnhyang.github.io/tags/%E8%BD%AF%E4%BB%B6-%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2023-01-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wnhyang.github.io/tags/JavaSE/</loc>
+    <lastmod>2023-01-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wnhyang.github.io/tags/JavaWeb/</loc>
     <lastmod>2023-01-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1408,35 +1436,7 @@
   </url>
   
   <url>
-    <loc>https://wnhyang.github.io/tags/%E8%AE%B0%E5%BD%95/</loc>
-    <lastmod>2023-01-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://wnhyang.github.io/tags/%E8%BD%AF%E4%BB%B6-%E5%B7%A5%E5%85%B7/</loc>
-    <lastmod>2023-01-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://wnhyang.github.io/tags/Git-GitHub-Gitee/</loc>
-    <lastmod>2023-01-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://wnhyang.github.io/tags/JavaSE/</loc>
-    <lastmod>2023-01-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://wnhyang.github.io/tags/JavaWeb/</loc>
+    <loc>https://wnhyang.github.io/tags/Dubbo/</loc>
     <lastmod>2023-01-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1541,6 +1541,13 @@
   </url>
   
   <url>
+    <loc>https://wnhyang.github.io/tags/%E5%8D%9A%E5%AE%A2/</loc>
+    <lastmod>2023-01-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://wnhyang.github.io/tags/Maven/</loc>
     <lastmod>2023-01-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -1548,7 +1555,7 @@
   </url>
   
   <url>
-    <loc>https://wnhyang.github.io/tags/%E5%8D%9A%E5%AE%A2/</loc>
+    <loc>https://wnhyang.github.io/tags/NPM/</loc>
     <lastmod>2023-01-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1562,7 +1569,7 @@
   </url>
   
   <url>
-    <loc>https://wnhyang.github.io/tags/NPM/</loc>
+    <loc>https://wnhyang.github.io/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/</loc>
     <lastmod>2023-01-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1577,13 +1584,6 @@
   
   <url>
     <loc>https://wnhyang.github.io/tags/%E6%9D%82%E8%B0%88/</loc>
-    <lastmod>2023-01-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://wnhyang.github.io/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/</loc>
     <lastmod>2023-01-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
