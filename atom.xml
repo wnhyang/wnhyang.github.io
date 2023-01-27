@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2023-01-17T05:49:32.411Z</updated>
+  <updated>2023-01-27T13:47:04.457Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2022总结</title>
+    <link href="https://wnhyang.github.io/article/20bbe8e4.html"/>
+    <id>https://wnhyang.github.io/article/20bbe8e4.html</id>
+    <published>2023-01-27T12:53:40.000Z</published>
+    <updated>2023-01-27T13:47:04.457Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;2022总结来的有点晚，但也就在这个时候才能总结出点什么！&lt;/p&gt;
+</summary>
+        
+      
+    
+    
+    
+    
+    <category term="思考" scheme="https://wnhyang.github.io/tags/%E6%80%9D%E8%80%83/"/>
+    
+    <category term="自己" scheme="https://wnhyang.github.io/tags/%E8%87%AA%E5%B7%B1/"/>
+    
+  </entry>
   
   <entry>
     <title>博客升级Hexo+NexT</title>
@@ -42,9 +68,9 @@ class=&quot;uri&quot;&gt;https://theme-next.js.org/docs/getting-started/&lt;/a&g
     
     
     
-    <category term="博客" scheme="https://wnhyang.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
-    
     <category term="NPM" scheme="https://wnhyang.github.io/tags/NPM/"/>
+    
+    <category term="博客" scheme="https://wnhyang.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
     
   </entry>
   
@@ -147,7 +173,7 @@ class=&quot;uri&quot;&gt;https://theme-next.js.org/docs/getting-started/&lt;/a&g
     <link href="https://wnhyang.github.io/article/2feea1bf.html"/>
     <id>https://wnhyang.github.io/article/2feea1bf.html</id>
     <published>2022-12-04T12:26:11.000Z</published>
-    <updated>2023-01-16T14:41:04.698Z</updated>
+    <updated>2023-01-27T12:51:58.583Z</updated>
     
     
     <summary type="html">&lt;p&gt;对我来说还是很惊喜的，毕竟在我的印象，南方很少能见到雪，况且这么大的雪。&lt;/p&gt;</summary>
@@ -476,26 +502,6 @@ href=&quot;https://blog.csdn.net/thinkmo/article/details/26833565&quot;&gt;Murmu
     
     <summary type="html">&lt;h1 id=&quot;简介&quot;&gt;简介&lt;/h1&gt;
 &lt;p&gt;俗话说的好，没有规矩不成方圆。随着一个人的成长，就会发现，规矩的制约性越来越强大。现在我也是深有体会啊！&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="思考" scheme="https://wnhyang.github.io/tags/%E6%80%9D%E8%80%83/"/>
-    
-    <category term="杂谈" scheme="https://wnhyang.github.io/tags/%E6%9D%82%E8%B0%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>消失的农村学校</title>
-    <link href="https://wnhyang.github.io/article/cdf251be.html"/>
-    <id>https://wnhyang.github.io/article/cdf251be.html</id>
-    <published>2022-07-14T10:03:32.000Z</published>
-    <updated>2023-01-03T10:04:17.103Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;学校去哪了&quot;&gt;学校去哪了？&lt;/h1&gt;
-&lt;p&gt;如题，不知道你们有没有感受到农村学校越来越少了。从我的经历出发，在小学2年级大概，我们班突然来了将近十个新同学，他们都是从我们隔壁村过来的，听说好像是他们村的小学不办了，只能转到我们这里来上小学了。这是我第一次感受到身边的农村小学在减少。之后4、5年级的时候，又转来了一批新同学，他们则是来自更远的隔着几里地村子，原因也是一样。&lt;/p&gt;</summary>
     
     
     
