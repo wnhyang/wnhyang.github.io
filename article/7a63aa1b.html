@@ -23,28 +23,30 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="出处：《左传·僖公十年》:“不有废也，君何以兴？欲加之罪，其无辞乎？” 后人用&quot;欲加之罪，何患无辞&quot;谓欲加害于人，即使无过错，也可以罗织罪名作为理由。 当然，这篇文章不是讲古语出处和用法问题，而是借此来谈一谈，近两年美国对中国企业打压的事情。 因为我对这件事件并非实时密切关注，大多数情况的了解也只是看一些知名媒体的视频和文章，所以本篇文章仅代表个人看法，如有说法不当之处，还望见谅。">
+    <meta name="description" content="简介 最近在自己搭建的单机nacos使用中遇到的配置中心问题，这里做一个总结。 参考 https:&#x2F;&#x2F;developer.aliyun.com&#x2F;article&#x2F;897341 https:&#x2F;&#x2F;blog.csdn.net&#x2F;weixin_42033269&#x2F;article&#x2F;details&#x2F;124075391 https:&#x2F;&#x2F;cloud.tencent.com&#x2F;developer&#x2F;article&#x2F;19867">
 <meta property="og:type" content="article">
-<meta property="og:title" content="欲加之罪何患无辞">
-<meta property="og:url" content="https://wnhyang.github.io/article/e6a33677.html">
+<meta property="og:title" content="nacos配置中心遇到的问题">
+<meta property="og:url" content="https://wnhyang.github.io/article/7a63aa1b.html">
 <meta property="og:site_name" content="无奈何杨（wnhyang）">
-<meta property="og:description" content="出处：《左传·僖公十年》:“不有废也，君何以兴？欲加之罪，其无辞乎？” 后人用&quot;欲加之罪，何患无辞&quot;谓欲加害于人，即使无过错，也可以罗织罪名作为理由。 当然，这篇文章不是讲古语出处和用法问题，而是借此来谈一谈，近两年美国对中国企业打压的事情。 因为我对这件事件并非实时密切关注，大多数情况的了解也只是看一些知名媒体的视频和文章，所以本篇文章仅代表个人看法，如有说法不当之处，还望见谅。">
+<meta property="og:description" content="简介 最近在自己搭建的单机nacos使用中遇到的配置中心问题，这里做一个总结。 参考 https:&#x2F;&#x2F;developer.aliyun.com&#x2F;article&#x2F;897341 https:&#x2F;&#x2F;blog.csdn.net&#x2F;weixin_42033269&#x2F;article&#x2F;details&#x2F;124075391 https:&#x2F;&#x2F;cloud.tencent.com&#x2F;developer&#x2F;article&#x2F;19867">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-08-17T05:06:57.000Z">
-<meta property="article:modified_time" content="2023-01-03T10:04:20.635Z">
+<meta property="article:published_time" content="2023-01-31T10:37:42.000Z">
+<meta property="article:modified_time" content="2023-02-01T10:07:12.836Z">
 <meta property="article:author" content="无奈何杨（wnhyang）">
-<meta property="article:tag" content="杂谈">
+<meta property="article:tag" content="Spring Boot">
+<meta property="article:tag" content="Spring Cloud">
+<meta property="article:tag" content="Spring Cloud Alibaba">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://wnhyang.github.io/article/e6a33677.html">
+<link rel="canonical" href="https://wnhyang.github.io/article/7a63aa1b.html">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wnhyang.github.io/article/e6a33677.html","path":"article/e6a33677.html","title":"欲加之罪何患无辞"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wnhyang.github.io/article/7a63aa1b.html","path":"article/7a63aa1b.html","title":"nacos配置中心遇到的问题"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>欲加之罪何患无辞 | 无奈何杨（wnhyang）</title>
+<title>nacos配置中心遇到的问题 | 无奈何杨（wnhyang）</title>
   
 
 
@@ -147,7 +149,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%8F%E8%BF%87"><span class="nav-number">1.</span> <span class="nav-text">经过</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%84%E5%A2%83"><span class="nav-number">2.</span> <span class="nav-text">处境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8A%AF%E7%89%87%E9%97%AE%E9%A2%98"><span class="nav-number">3.</span> <span class="nav-text">芯片问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%BA%E8%B7%AF"><span class="nav-number">4.</span> <span class="nav-text">出路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E5%90%8E"><span class="nav-number">5.</span> <span class="nav-text">最后</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%94%BE%E5%9C%A8%E6%9C%80%E5%89%8D"><span class="nav-number">3.</span> <span class="nav-text">放在最前</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%A0%B9%E6%BA%90"><span class="nav-number">4.</span> <span class="nav-text">问题根源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">问题总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%88%E6%9C%AC%E7%BB%9F%E4%B8%80"><span class="nav-number">5.1.</span> <span class="nav-text">版本统一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%8E%E7%A1%AE%E7%89%88%E6%9C%AC"><span class="nav-number">5.2.</span> <span class="nav-text">明确版本</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -218,7 +220,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/e6a33677.html">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/7a63aa1b.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -231,12 +233,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="欲加之罪何患无辞 | 无奈何杨（wnhyang）">
+      <meta itemprop="name" content="nacos配置中心遇到的问题 | 无奈何杨（wnhyang）">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          欲加之罪何患无辞
+          nacos配置中心遇到的问题
         </h1>
 
         <div class="post-meta-container">
@@ -247,14 +249,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2020-08-17 13:06:57" itemprop="dateCreated datePublished" datetime="2020-08-17T13:06:57+08:00">2020-08-17</time>
+      <time title="创建时间：2023-01-31 18:37:42" itemprop="dateCreated datePublished" datetime="2023-01-31T18:37:42+08:00">2023-01-31</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-01-03 18:04:20" itemprop="dateModified" datetime="2023-01-03T18:04:20+08:00">2023-01-03</time>
+      <time title="修改时间：2023-02-01 18:07:12" itemprop="dateModified" datetime="2023-02-01T18:07:12+08:00">2023-02-01</time>
     </span>
 
   
@@ -271,14 +273,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>2.1k</span>
+      <span>465</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>8 分钟</span>
+      <span>2 分钟</span>
     </span>
 </div>
 
@@ -289,33 +291,33 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>出处：《左传·僖公十年》:“不有废也，君何以兴？欲加之罪，其无辞乎？”</p>
-<p>后人用"欲加之罪，何患无辞"谓欲加害于人，即使无过错，也可以罗织罪名作为理由。</p>
-<p>当然，这篇文章不是讲古语出处和用法问题，而是借此来谈一谈，近两年美国对中国企业打压的事情。</p>
-<p>因为我对这件事件并非实时密切关注，大多数情况的了解也只是看一些知名媒体的视频和文章，所以本篇文章仅代表个人看法，如有说法不当之处，还望见谅。</p>
+        <h1 id="简介">简介</h1>
+<p>最近在自己搭建的单机nacos使用中遇到的配置中心问题，这里做一个总结。</p>
+<h1 id="参考">参考</h1>
+<p>https://developer.aliyun.com/article/897341</p>
+<p>https://blog.csdn.net/weixin_42033269/article/details/124075391</p>
+<p>https://cloud.tencent.com/developer/article/1986714</p>
+<p>https://blog.csdn.net/qq_41376740/article/details/122792411?spm=1001.2014.3001.5501</p>
+<p>https://blog.csdn.net/john1337/article/details/120865113</p>
+<p>https://blog.csdn.net/weixin_44951259/article/details/127929284</p>
+<p>https://blog.csdn.net/li1325169021/article/details/121626299</p>
 <span id="more"></span>
-<h1 id="经过">经过</h1>
-<p>从前两年起美国先是对中国加收关税，然后是对中兴的制裁，再然后是对华为在全球范围内的打压，最近美国又对Tik
-Tok（抖音国际版），微信开始下动作。最近几年中国各方面发展势头是挺猛的，中国企业在海外开展业务也比较顺利，但是这就和美国的利益冲突了，美国要做世界的唯一霸主，他是不允许其他任何国家在某些核心领域赶超他的，所以美国就开始无赖行为，其实美国对于华为的制裁早已不是什么新鲜招数了，早在法国，日本等国家其实都有受到美国的“照顾”。至于原因嘛——<strong>欲加之罪何患无辞</strong>。</p>
-<h1 id="处境">处境</h1>
-<p><a
-target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Fi4y1g7tr">盘点美国制裁中国科技企业</a></p>
-<p>华为，即中华有为，大多数人知道的华为是个手机厂商，然而手机业务对于华为只是个副业，华为更准确的说信息通信公司。对于华为的创始人任正非，我是相当敬佩的，记得在学校上的《形势与政策》的课上，老师让我们看了当时华为受到制裁后，央视采访任正非的视频，面对美国强力的打压，任正非爷爷慈祥而坚定的一心在谈教育问题。真的当时的触动太大了，在华为如此紧迫的关头，任正非祥和冷静，仿佛已经有了很多对策一样，整个视频都是在谈教育问题，一心想着中国要培养出更多优秀的人才为祖国做贡献，太感动了。</p>
-<h1 id="芯片问题">芯片问题</h1>
-<p><a
-target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1v54y1e7Nu?t=908">美国打压下，华为还有哪些明显短板？</a></p>
-<p><a
-target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Av41167n1">华为等中国制造，美国如何靠软件，卡住脖子？</a></p>
-<p>华为在5G方面的确实全球领先的，这是华为付出应有的回报，华为目光真的有够长远，在美国要求华为手机不能使用Google的Android系统后，华为紧接着就发布了自家研制了数年的<strong>鸿蒙</strong>操作系统，包括自家海思芯片华为都是希望自己中国能不被外国“卡脖子”，如果有机会的话可以看一看华为的发布会，很精彩，还有余承东的一些关于华为的文章，讲述了过去华为对未来憧憬当然还有最坏打算。在我心中，华为是一家很伟大的公司，了解华为产品命名都应该知道很多名字都来自于记录了各种奇珍异兽的《山海经》，非常有趣，更具有了独一无二的中国色彩。</p>
-<p>然而，中国与美国还是有科技实力差距的，近几年中国在芯片进口花费的资金已经超过石油进口所用，可见在芯片领域中国与世界美国还是有不少的差距的。一方面是因为中国在这方面缺乏专业人才，另一方面是这个领域像是一个无底洞，你向它投出资金、人才和时间都不一定有收获，这也是很多中国企业望而却步的地方。他们都更愿意花费有限的资金购买完备的芯片，而非无限不缺的资金在研究上面。</p>
-<p>华为早早开始研发自己的芯片——海思麒麟，但也只是在美国技术软件加持下完成芯片的设计工作，在芯片领域，设计和制造是两个问题，今年在美国强力打压下，台积电宣布不再为华为制造芯片，也就是说华为海思芯片可能要绝迹了。这是一个非常愤慨却又非常无奈的消息，如果看过华为的鸿蒙操作系统发布会的人都应该知道，华为的目标是浩瀚星辰，鸿蒙OS是一款“面向未来”的操作系统，一款基于微内核的面向全场景的分布式操作系统，现已适配智慧屏，未来它将适配手机、平板、电脑、智能汽车、可穿戴设备等多终端设备。从此可以看出华为战略眼光是非常长远的，但目前却只能受限于美国的制裁。</p>
-<h1 id="出路">出路</h1>
-<p>从前两年美国制裁打压开始后，关于这方面文章视频实在太多了，我也看过一些，我接下来说的应该是结合我知道的和我想说的一些看法。</p>
-<p>的确，现在的境况是有些悲观的，但这一定是中国发展路上的必经之路，而恰巧就在这几年美国忍不住了。本人说话不是很有条理，尽量说的清楚明白。</p>
-<p><strong>基础学科薄弱而牵扯出的人才缺乏问题</strong>，就目前我了解的社会大环境，绝大多数人都缺少那份探索未知的精神，没那种对基础学科的热爱（有的也是非常少数），想当初我们儿时梦想都是科学家、数学家等各种家，然而当我们慢慢长大就再也不敢提儿时的梦想了，很多人变得有些麻木，不再具有年轻时的热情。而且现在社会评判成功的标准好像变成了是不是很有钱了，这就让人很烦恼，很多人为了活得光鲜亮丽，放弃原来追求的目标，转向挣钱多的行业，自己变得不再是为自己而活了，很可悲啊。就目前我在大学的体验来说，很多大学生是比较麻木的，为的好像只是那一纸文凭，行尸走肉般在大学混日子。所以说，在基础学科或是说对于科学的热爱的人越来越少了，而这将直接导致人才缺口，还是说芯片问题，芯片涉及多学科（包括物理学、化学、软件科研人员等等），这就是对中国高端人才考验，没有这方面的基础，哪来的<strong>国产芯片</strong>。还是很希望国家能培养出更多为国效力的人才吧。</p>
-<p><strong>缺乏应有激情</strong>，虽然现在不是乱世，中国社会环境非常稳定，但古语说得好——生于忧患死于安乐，而现在在我看来中国有点偏向泛娱乐化了。还是那句话“将军孤坟无人问，戏子家事天下”，多少曾经为祖国奉献的英雄人民被遗忘，而那些娱乐八卦整天铺天盖地袭来。当一个人去追求生活的必需品的时候，它往往是勤奋和勇敢的；当一个人去追求生活的消费品的时候，这个时候他往往变得懒惰和温和；当一个人去追求生活的奢侈品的时候，这个人就变得软弱了，一个人一个民族一个家庭一个单位一个国家奢侈品越多，就越愿意用剩余财富而不是以他自己的生命为代价去守卫其财富。尽管现在不是乱世，不是建国初期那样困难的时期，但我们也应都具有那样一份报国热情，那样的勇气与责任感。</p>
-<h1 id="最后">最后</h1>
-<p>愿中国青年都摆脱冷气，只是向上走，不必听自暴自弃者流的话，能做事的做事，能发声的发声，有一分热，发一分光，就令萤火一般，也可以在黑暗里发一点光，不必等候炬火，此后如竟没有炬火，我便是唯一的光。——鲁迅《热风，随感录四十一》</p>
+<h1 id="放在最前">放在最前</h1>
+<p>https://github.com/alibaba/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E</p>
+<p>在使用<code>spring-cloud-alibaba</code>之前一定要了解的版本说明，一定要使用官方推荐的版本对应关系，避免出现异常问题。</p>
+<h1 id="问题根源">问题根源</h1>
+<p>本质上一句话：版本兼容</p>
+<p>简单概括：<code>1.x</code>版本<code>nacos-client</code>能访问<code>2.x</code>版本<code>nacos-server</code>，但是<code>2.x</code>版本<code>nacos-client</code>不能访问<code>1.x nacos-server</code></p>
+<p><code>nacos2.x</code>与<code>1.x</code>的变化还是挺大的，尤其是我在使用配置中心功能时，折磨我两天，怎么也没找到问题解决方法。更我奇怪的是之前学习<code>nacos</code>时搭的一个项目能正常启动，注册并访问到配置文件，然而新搭建的项目就是各种问题，<code>Could not resolve placeholder</code>，<code>Connection refused: no further information: xxxxx:9848</code>等等报错，更关键的是我使用maven管理项目环境，通过@<span
+class="citation"
+data-cites="的方式配置的配置文件">@的方式配置的配置文件</span>，期间还一直怀疑是这个的原因。总之，查了许多博客，看了很多解决方案，也都尝试了，最终还是解决了。</p>
+<h1 id="问题总结">问题总结</h1>
+<p>声明：我没有细抠本质，或是说源码，只是说我遇到问题的解决，帮助其他人避免这些问题。</p>
+<h2 id="版本统一">版本统一</h2>
+<p>这个是必须的，一定要按照官方的版本对应关系引入，不然第一步就错了。</p>
+<h2 id="明确版本">明确版本</h2>
+<p>明确版本后就是用对应的使用方式，<code>nacos2.x</code>与<code>1.x</code></p>
+<p>9848端口</p>
 
     </div>
 
@@ -351,7 +353,7 @@ target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Av41167n1
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://wnhyang.github.io/article/e6a33677.html" title="欲加之罪何患无辞">https://wnhyang.github.io/article/e6a33677.html</a>
+      <a href="https://wnhyang.github.io/article/7a63aa1b.html" title="nacos配置中心遇到的问题">https://wnhyang.github.io/article/7a63aa1b.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -360,21 +362,20 @@ target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Av41167n1
 </div>
 
           <div class="post-tags">
-              <a href="/tags/%E6%9D%82%E8%B0%88/" rel="tag"># 杂谈</a>
+              <a href="/tags/Spring-Boot/" rel="tag"># Spring Boot</a>
+              <a href="/tags/Spring-Cloud/" rel="tag"># Spring Cloud</a>
+              <a href="/tags/Spring-Cloud-Alibaba/" rel="tag"># Spring Cloud Alibaba</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/article/6433d656.html" rel="prev" title="小米10周年">
-                  <i class="fa fa-chevron-left"></i> 小米10周年
+                <a href="/article/20bbe8e4.html" rel="prev" title="2022总结">
+                  <i class="fa fa-chevron-left"></i> 2022总结
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/article/2ed16840.html" rel="next" title="2020的思考">
-                  2020的思考 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>

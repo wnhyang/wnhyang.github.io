@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2023-01-27T13:47:04.457Z</updated>
+  <updated>2023-02-01T10:07:12.836Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,41 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>nacos配置中心遇到的问题</title>
+    <link href="https://wnhyang.github.io/article/7a63aa1b.html"/>
+    <id>https://wnhyang.github.io/article/7a63aa1b.html</id>
+    <published>2023-01-31T10:37:42.000Z</published>
+    <updated>2023-02-01T10:07:12.836Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;简介&quot;&gt;简介&lt;/h1&gt;
+&lt;p&gt;最近在自己搭建的单机nacos使用中遇到的配置中心问题，这里做一个总结。&lt;/p&gt;
+&lt;h1 id=&quot;参考&quot;&gt;参考&lt;/h1&gt;
+&lt;p&gt;https://developer.aliyun.com/article/897341&lt;/p&gt;
+&lt;p&gt;https://blog.csdn.net/weixin_42033269/article/details/124075391&lt;/p&gt;
+&lt;p&gt;https://cloud.tencent.com/developer/article/1986714&lt;/p&gt;
+&lt;p&gt;https://blog.csdn.net/qq_41376740/article/details/122792411?spm=1001.2014.3001.5501&lt;/p&gt;
+&lt;p&gt;https://blog.csdn.net/john1337/article/details/120865113&lt;/p&gt;
+&lt;p&gt;https://blog.csdn.net/weixin_44951259/article/details/127929284&lt;/p&gt;
+&lt;p&gt;https://blog.csdn.net/li1325169021/article/details/121626299&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
+    
+    <category term="Spring Cloud" scheme="https://wnhyang.github.io/tags/Spring-Cloud/"/>
+    
+    <category term="Spring Cloud Alibaba" scheme="https://wnhyang.github.io/tags/Spring-Cloud-Alibaba/"/>
+    
+  </entry>
+  
+  <entry>
     <title>2022总结</title>
     <link href="https://wnhyang.github.io/article/20bbe8e4.html"/>
     <id>https://wnhyang.github.io/article/20bbe8e4.html</id>
     <published>2023-01-27T12:53:40.000Z</published>
-    <updated>2023-01-27T13:47:04.457Z</updated>
+    <updated>2023-01-28T14:49:03.844Z</updated>
     
     
       
@@ -489,26 +519,6 @@ href=&quot;https://blog.csdn.net/thinkmo/article/details/26833565&quot;&gt;Murmu
     
     
     <category term="读书" scheme="https://wnhyang.github.io/tags/%E8%AF%BB%E4%B9%A6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>规矩</title>
-    <link href="https://wnhyang.github.io/article/1e97111a.html"/>
-    <id>https://wnhyang.github.io/article/1e97111a.html</id>
-    <published>2022-07-18T11:37:20.000Z</published>
-    <updated>2023-01-03T10:02:43.965Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;简介&quot;&gt;简介&lt;/h1&gt;
-&lt;p&gt;俗话说的好，没有规矩不成方圆。随着一个人的成长，就会发现，规矩的制约性越来越强大。现在我也是深有体会啊！&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="思考" scheme="https://wnhyang.github.io/tags/%E6%80%9D%E8%80%83/"/>
-    
-    <category term="杂谈" scheme="https://wnhyang.github.io/tags/%E6%9D%82%E8%B0%88/"/>
     
   </entry>
   
