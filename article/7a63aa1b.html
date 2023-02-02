@@ -23,19 +23,19 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="简介 最近在自己搭建的单机nacos使用中遇到的配置中心问题，这里做一个总结。 参考 https:&#x2F;&#x2F;developer.aliyun.com&#x2F;article&#x2F;897341 https:&#x2F;&#x2F;blog.csdn.net&#x2F;weixin_42033269&#x2F;article&#x2F;details&#x2F;124075391 https:&#x2F;&#x2F;cloud.tencent.com&#x2F;developer&#x2F;article&#x2F;19867">
+    <meta name="description" content="简介 最近在自己搭建的单机nacos使用中遇到的配置中心问题，这里做一个总结。 参考 SpringCloud Alibaba 2021版 nacos 配置中心教程 SpringBoot使用spring.config.import多种方式导入配置文件 解决 Spring Cloud 2021.0.5 版本，使用 nacos 做配置中心，报 No spring.config.import proper">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nacos配置中心遇到的问题">
 <meta property="og:url" content="https://wnhyang.github.io/article/7a63aa1b.html">
 <meta property="og:site_name" content="无奈何杨（wnhyang）">
-<meta property="og:description" content="简介 最近在自己搭建的单机nacos使用中遇到的配置中心问题，这里做一个总结。 参考 https:&#x2F;&#x2F;developer.aliyun.com&#x2F;article&#x2F;897341 https:&#x2F;&#x2F;blog.csdn.net&#x2F;weixin_42033269&#x2F;article&#x2F;details&#x2F;124075391 https:&#x2F;&#x2F;cloud.tencent.com&#x2F;developer&#x2F;article&#x2F;19867">
+<meta property="og:description" content="简介 最近在自己搭建的单机nacos使用中遇到的配置中心问题，这里做一个总结。 参考 SpringCloud Alibaba 2021版 nacos 配置中心教程 SpringBoot使用spring.config.import多种方式导入配置文件 解决 Spring Cloud 2021.0.5 版本，使用 nacos 做配置中心，报 No spring.config.import proper">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-01-31T10:37:42.000Z">
-<meta property="article:modified_time" content="2023-02-01T10:07:12.836Z">
+<meta property="article:modified_time" content="2023-02-02T02:45:01.421Z">
 <meta property="article:author" content="无奈何杨（wnhyang）">
 <meta property="article:tag" content="Spring Boot">
-<meta property="article:tag" content="Spring Cloud">
 <meta property="article:tag" content="Spring Cloud Alibaba">
+<meta property="article:tag" content="Spring Cloud">
 <meta name="twitter:card" content="summary">
 
 
@@ -149,7 +149,8 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%94%BE%E5%9C%A8%E6%9C%80%E5%89%8D"><span class="nav-number">3.</span> <span class="nav-text">放在最前</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%A0%B9%E6%BA%90"><span class="nav-number">4.</span> <span class="nav-text">问题根源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">问题总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%88%E6%9C%AC%E7%BB%9F%E4%B8%80"><span class="nav-number">5.1.</span> <span class="nav-text">版本统一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%8E%E7%A1%AE%E7%89%88%E6%9C%AC"><span class="nav-number">5.2.</span> <span class="nav-text">明确版本</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%94%BE%E5%9C%A8%E6%9C%80%E5%89%8D"><span class="nav-number">3.</span> <span class="nav-text">放在最前</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%A0%B9%E6%BA%90"><span class="nav-number">4.</span> <span class="nav-text">问题根源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">问题总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%88%E6%9C%AC%E7%BB%9F%E4%B8%80"><span class="nav-number">5.1.</span> <span class="nav-text">版本统一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%8E%E7%A1%AE%E7%89%88%E6%9C%AC"><span class="nav-number">5.2.</span> <span class="nav-text">明确版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E7%89%B9%E6%80%A7%E5%8F%8A%E5%85%B6%E4%BD%BF%E7%94%A8%E5%BC%95%E7%94%A8"><span class="nav-number">5.3.</span> <span class="nav-text">新特性及其使用（引用）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AB%AF%E5%8F%A3%E5%BC%80%E6%94%BE%E4%B8%8E%E9%85%8D%E7%BD%AE%E5%BB%BA%E8%AE%AE"><span class="nav-number">5.4.</span> <span class="nav-text">端口开放与配置建议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nacos-naming%E6%8E%A8%E9%80%81%E5%A4%B1%E8%B4%A5failedpush%E5%BC%82%E5%B8%B8%E6%8C%87%E6%A0%87%E6%BF%80%E5%A2%9E"><span class="nav-number">5.5.</span> <span class="nav-text">Nacos
+naming推送失败&#x2F;failedPush异常指标激增</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -256,7 +257,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-02-01 18:07:12" itemprop="dateModified" datetime="2023-02-01T18:07:12+08:00">2023-02-01</time>
+      <time title="修改时间：2023-02-02 10:45:01" itemprop="dateModified" datetime="2023-02-02T10:45:01+08:00">2023-02-02</time>
     </span>
 
   
@@ -273,14 +274,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>465</span>
+      <span>1.3k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
+      <span>5 分钟</span>
     </span>
 </div>
 
@@ -292,15 +293,24 @@
     
     <div class="post-body" itemprop="articleBody">
         <h1 id="简介">简介</h1>
-<p>最近在自己搭建的单机nacos使用中遇到的配置中心问题，这里做一个总结。</p>
+<p>最近在自己搭建的单机<code>nacos</code>使用中遇到的配置中心问题，这里做一个总结。</p>
 <h1 id="参考">参考</h1>
-<p>https://developer.aliyun.com/article/897341</p>
-<p>https://blog.csdn.net/weixin_42033269/article/details/124075391</p>
-<p>https://cloud.tencent.com/developer/article/1986714</p>
-<p>https://blog.csdn.net/qq_41376740/article/details/122792411?spm=1001.2014.3001.5501</p>
-<p>https://blog.csdn.net/john1337/article/details/120865113</p>
-<p>https://blog.csdn.net/weixin_44951259/article/details/127929284</p>
-<p>https://blog.csdn.net/li1325169021/article/details/121626299</p>
+<p><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/897341">SpringCloud
+Alibaba 2021版 nacos 配置中心教程</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1986714">SpringBoot使用spring.config.import多种方式导入配置文件</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44951259/article/details/127929284">解决
+Spring Cloud 2021.0.5 版本，使用 nacos 做配置中心，报 No
+spring.config.import property has been defined 的问题</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41376740/article/details/122792411?spm=1001.2014.3001.5501">SpringCloud
++ Nacos 配合maven，进行环境（配置文件）的切换，dev/ prod/ test
+三种环境</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/john1337/article/details/120865113">nacos从1.x升级到2.x需要注意的地方</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/li1325169021/article/details/121626299">Nacos使用2.0.1版本启动出现9848端口错误的解决方式(亲测有效)</a></p>
 <span id="more"></span>
 <h1 id="放在最前">放在最前</h1>
 <p>https://github.com/alibaba/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E</p>
@@ -308,16 +318,54 @@
 <h1 id="问题根源">问题根源</h1>
 <p>本质上一句话：版本兼容</p>
 <p>简单概括：<code>1.x</code>版本<code>nacos-client</code>能访问<code>2.x</code>版本<code>nacos-server</code>，但是<code>2.x</code>版本<code>nacos-client</code>不能访问<code>1.x nacos-server</code></p>
-<p><code>nacos2.x</code>与<code>1.x</code>的变化还是挺大的，尤其是我在使用配置中心功能时，折磨我两天，怎么也没找到问题解决方法。更我奇怪的是之前学习<code>nacos</code>时搭的一个项目能正常启动，注册并访问到配置文件，然而新搭建的项目就是各种问题，<code>Could not resolve placeholder</code>，<code>Connection refused: no further information: xxxxx:9848</code>等等报错，更关键的是我使用maven管理项目环境，通过@<span
-class="citation"
-data-cites="的方式配置的配置文件">@的方式配置的配置文件</span>，期间还一直怀疑是这个的原因。总之，查了许多博客，看了很多解决方案，也都尝试了，最终还是解决了。</p>
+<p><code>nacos2.x</code>与<code>1.x</code>的变化还是挺大的，尤其是我在使用配置中心功能时，折磨我两天，怎么也没找到问题解决方法。更我奇怪的是之前学习<code>nacos</code>时搭的一个项目能正常启动，注册并访问到配置文件，然而新搭建的项目就是各种问题，<code>Could not resolve placeholder</code>，<code>Connection refused: no further information: xxxxx:9848</code>等等报错，更关键的是我使用<code>maven</code>管理项目环境，通过<code>@@</code>的方式配置的配置文件，期间还一直怀疑是这个的原因。总之，查了许多博客，看了很多解决方案，也都尝试了，最终还是解决了。</p>
 <h1 id="问题总结">问题总结</h1>
 <p>声明：我没有细抠本质，或是说源码，只是说我遇到问题的解决，帮助其他人避免这些问题。</p>
 <h2 id="版本统一">版本统一</h2>
 <p>这个是必须的，一定要按照官方的版本对应关系引入，不然第一步就错了。</p>
 <h2 id="明确版本">明确版本</h2>
-<p>明确版本后就是用对应的使用方式，<code>nacos2.x</code>与<code>1.x</code></p>
-<p>9848端口</p>
+<p>明确版本后就是用对应的使用方式，<code>nacos2.x</code>与<code>1.x</code>，前面提到我怀疑过是因为<code>maven</code>对环境配置所以导致我使用<code>nacos</code>产生问题的，后来排查出不是它，也就不带<code>maven</code>讨论了，<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41376740/article/details/122792411?spm=1001.2014.3001.5501">SpringCloud
++ Nacos 配合maven，进行环境（配置文件）的切换，dev/ prod/ test
+三种环境</a>感兴趣的看这篇文章。</p>
+<h2 id="新特性及其使用引用">新特性及其使用（引用）</h2>
+<ul>
+<li>支持 <code>spring.config.import</code>
+这里假设有一个配置文件(<code>bootstrap.yml</code>)，升级到新版本应该怎么配置呢</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># bootstrap.yml</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">nacos:</span></span><br><span class="line">      <span class="attr">config:</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">test.yml</span></span><br><span class="line">        <span class="attr">group:</span> <span class="string">DEFAULT_GROUP</span></span><br><span class="line">        <span class="attr">server-addr:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">:8848</span></span><br><span class="line">        <span class="attr">extension-configs:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">dataId:</span> <span class="string">test01.yml</span></span><br><span class="line">            <span class="attr">group:</span> <span class="string">group_01</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">dataId:</span> <span class="string">test02.yml</span></span><br><span class="line">            <span class="attr">group:</span> <span class="string">group_02</span></span><br><span class="line">            <span class="attr">refresh:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p>这两个配置是等价的</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># application.yml</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">nacos:</span></span><br><span class="line">      <span class="attr">config:</span></span><br><span class="line">        <span class="attr">group:</span> <span class="string">DEFAULT_GROUP</span></span><br><span class="line">        <span class="attr">server-addr:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">:8848</span></span><br><span class="line">  <span class="attr">config:</span></span><br><span class="line">    <span class="attr">import:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">optional:nacos:test.yml</span>  <span class="comment"># 监听 DEFAULT_GROUP:test.yml</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">optional:nacos:test01.yml?group=group_01</span> <span class="comment"># 覆盖默认 group，监听 group_01:test01.yml</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">optional:nacos:test02.yml?group=group_02&amp;refreshEnabled=false</span> <span class="comment"># 不开启动态刷新</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">nacos:test03.yml</span> <span class="comment"># 在拉取nacos配置异常时会快速失败，会导致 spring 容器启动失败</span></span><br></pre></td></tr></table></figure>
+<p>注意事项:</p>
+<p>如果使用 <code>spring.config.import</code> 就不能使用
+<code>bootstrap.yml/properties</code> 引入配置的方式了 !!!</p>
+<p>如果引入了<code>spring-cloud-starter-alibaba-nacos-config</code>，并且使用
+<code>import</code> 方式导入配置,项目启动时会自动检测是否引入了
+<code>nacos:条目</code>，如果没有 <code>import nacos</code>
+条目，会出现如下错误：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">The spring.config.import property is missing a nacos: entry</span><br><span class="line">Action:</span><br><span class="line">Add a spring.config.import=nacos: property to your configuration.</span><br><span class="line">    If configuration is not required add spring.config.import=optional:nacos: instead.</span><br><span class="line">    To <span class="built_in">disable</span> this check, <span class="built_in">set</span> spring.cloud.nacos.config.import-check.enabled=<span class="literal">false</span>.</span><br></pre></td></tr></table></figure>
+<p>你可以手动通设置
+<code>spring.cloud.nacos.config.import-check.enabled=false</code>
+关闭它，但是不建议这么做，这个功能可以帮助你检查是否引入多余依赖</p>
+<p>假如想保留以前的使用方式
+(<code>bootstrap</code>引入配置)，你只需要添加依赖
+<code>pring-cloud-starter-bootstrap</code> 依赖，不需要修改一行代码</p>
+<p>新版的配置方式是有些不同的，我的建议还是使用新版就遵循新版。</p>
+<h2 id="端口开放与配置建议">端口开放与配置建议</h2>
+<p>新版<code>nacos</code>需要开放<code>9848</code>端口。</p>
+<p>生产建议的话，除了严格限制源<code>ip</code>注册访问到<code>nacos</code>外，建议有需要的加上权限访问配置，另外关于<code>namespace</code>、<code>group</code>、<code>dataid</code>，建议如下:</p>
+<p><code>namespace</code>:建议与<code>git</code>常驻分支一致，如<code>dev</code>、<code>test</code>、<code>pre</code>、<code>prod</code>，一个命名空间下有着一整套类同于生产的服务和配置。</p>
+<p><code>group</code>:建议与团队组织架构一致，如：技术研发部、中台研发部、后台研发部、客户端研发部、数据研发部等等，取其英文简称即可</p>
+<p><code>dataid</code>:建议与项目名称一致，一般格式是<code>xxx-xxx-xxx</code>，这个就自由一点了，约定一下就好，问题不大</p>
+<h2 id="nacos-naming推送失败failedpush异常指标激增">Nacos
+naming推送失败/failedPush异常指标激增</h2>
+<p><a target="_blank" rel="noopener" href="https://github.com/alibaba/nacos/issues/6841">Nacos
+naming推送失败数 · Issue #6841</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://github.com/alibaba/nacos/issues/8676">Nacos集群failedPush异常指标激增
+· Issue #8676</a></p>
+<p>因为我是使用官网<code>nacos</code>单节点<code>docker-compose</code>部署方式部署的，另外带了<code>prometheus</code>和<code>grafana</code>，而且配置了<code>nacos</code>监控和钉钉报警，所以也一直被这个问题困扰。</p>
+<p>如有类似疑问，先看上面<code>Issue</code>，其实上面的没有给我太多帮助，反而将nacos重启一下就没问题，我猜测很有可能是之前错误注册后读取配置失败次数太多有关，我暂时也不想深究了。</p>
 
     </div>
 
@@ -363,8 +411,8 @@ data-cites="的方式配置的配置文件">@的方式配置的配置文件</spa
 
           <div class="post-tags">
               <a href="/tags/Spring-Boot/" rel="tag"># Spring Boot</a>
-              <a href="/tags/Spring-Cloud/" rel="tag"># Spring Cloud</a>
               <a href="/tags/Spring-Cloud-Alibaba/" rel="tag"># Spring Cloud Alibaba</a>
+              <a href="/tags/Spring-Cloud/" rel="tag"># Spring Cloud</a>
           </div>
 
         
@@ -408,14 +456,14 @@ data-cites="的方式配置的配置文件">@的方式配置的配置文件</spa
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">172k</span>
+    <span title="站点总字数">173k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">10:27</span>
+    <span title="站点阅读时长">10:30</span>
   </span>
 </div>
 <div class="busuanzi-count">
