@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2023-02-02T05:33:29.445Z</updated>
+  <updated>2023-02-05T15:26:44.160Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>流浪地球2</title>
+    <link href="https://wnhyang.github.io/article/1d91adf8.html"/>
+    <id>https://wnhyang.github.io/article/1d91adf8.html</id>
+    <published>2023-02-05T15:23:34.000Z</published>
+    <updated>2023-02-05T15:26:44.160Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;其实我完全可以取个更有趣的标题，“没有人的文明毫无意义”，“你是唯一的变量”，“数字生命”等等之类，可以代表这部《流浪地球2》（下面我称《球2》）的。但是回头一想这么还是不太好，不能从整体上来讲《球2》，所以还是保留了“流浪地球2”的标题。&lt;/p&gt;
+</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>nacos配置中心遇到的问题</title>
@@ -511,24 +533,6 @@ href=&quot;https://blog.csdn.net/thinkmo/article/details/26833565&quot;&gt;Murmu
     
     
     <category term="软件/工具" scheme="https://wnhyang.github.io/tags/%E8%BD%AF%E4%BB%B6-%E5%B7%A5%E5%85%B7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>书单</title>
-    <link href="https://wnhyang.github.io/article/e8a1470d.html"/>
-    <id>https://wnhyang.github.io/article/e8a1470d.html</id>
-    <published>2022-08-09T13:51:11.000Z</published>
-    <updated>2023-01-03T10:03:48.041Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;推荐一些书籍吧&quot;&gt;推荐一些书籍吧&lt;/h1&gt;
-&lt;p&gt;目前分类：人文历史、小说、编程&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="读书" scheme="https://wnhyang.github.io/tags/%E8%AF%BB%E4%B9%A6/"/>
     
   </entry>
   
