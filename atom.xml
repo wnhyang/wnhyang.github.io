@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2023-02-05T15:26:44.160Z</updated>
+  <updated>2023-02-06T13:32:10.789Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://wnhyang.github.io/article/1d91adf8.html"/>
     <id>https://wnhyang.github.io/article/1d91adf8.html</id>
     <published>2023-02-05T15:23:34.000Z</published>
-    <updated>2023-02-05T15:26:44.160Z</updated>
+    <updated>2023-02-06T13:32:10.789Z</updated>
     
     
       
@@ -35,6 +35,8 @@
     
     
     
+    
+    <category term="思考" scheme="https://wnhyang.github.io/tags/%E6%80%9D%E8%80%83/"/>
     
   </entry>
   
@@ -82,7 +84,7 @@ href=&quot;https://blog.csdn.net/li1325169021/article/details/121626299&quot;&gt
     <link href="https://wnhyang.github.io/article/20bbe8e4.html"/>
     <id>https://wnhyang.github.io/article/20bbe8e4.html</id>
     <published>2023-01-27T12:53:40.000Z</published>
-    <updated>2023-02-03T14:29:54.899Z</updated>
+    <updated>2023-02-06T14:16:02.192Z</updated>
     
     
       
@@ -91,7 +93,9 @@ href=&quot;https://blog.csdn.net/li1325169021/article/details/121626299&quot;&gt
         
     <summary type="html">&lt;p&gt;2022总结来的有点晚，但也就在这个时候才能总结出点什么！&lt;/p&gt;
 &lt;p&gt;为什么这么说呢？&lt;/p&gt;
-</summary>
+&lt;p&gt;因为这一年我都在外，好久没有回过家了。&lt;/p&gt;
+&lt;p&gt;？？？什么话，难道只有回过家才能算是完整的一年吗？客观理性地来讲肯定不是的，但对于我——是的。&lt;/p&gt;
+&lt;!--</summary>
         
       
     
@@ -130,9 +134,9 @@ class=&quot;uri&quot;&gt;https://theme-next.js.org/docs/getting-started/&lt;/a&g
     
     
     
-    <category term="博客" scheme="https://wnhyang.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
-    
     <category term="NPM" scheme="https://wnhyang.github.io/tags/NPM/"/>
+    
+    <category term="博客" scheme="https://wnhyang.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
     
   </entry>
   
