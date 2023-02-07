@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2023-02-06T13:32:10.789Z</updated>
+  <updated>2023-02-07T05:29:06.807Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -21,17 +21,10 @@
     <link href="https://wnhyang.github.io/article/1d91adf8.html"/>
     <id>https://wnhyang.github.io/article/1d91adf8.html</id>
     <published>2023-02-05T15:23:34.000Z</published>
-    <updated>2023-02-06T13:32:10.789Z</updated>
+    <updated>2023-02-07T05:29:06.807Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;其实我完全可以取个更有趣的标题，“没有人的文明毫无意义”，“你是唯一的变量”，“数字生命”等等之类，可以代表这部《流浪地球2》（下面我称《球2》）的。但是回头一想这么还是不太好，不能从整体上来讲《球2》，所以还是保留了“流浪地球2”的标题。&lt;/p&gt;
-</summary>
-        
-      
+    <summary type="html">&lt;p&gt;其实我完全可以取个更有趣的标题，“没有人的文明毫无意义”，“你是唯一的变量”，“数字生命”等等之类，可以代表这部《流浪地球2》（下面我称《球2》）的。但是回头一想这么还是不太好，不能从整体上来讲《球2》，所以还是保留了“流浪地球2”的标题。&lt;/p&gt;</summary>
     
     
     
@@ -84,20 +77,13 @@ href=&quot;https://blog.csdn.net/li1325169021/article/details/121626299&quot;&gt
     <link href="https://wnhyang.github.io/article/20bbe8e4.html"/>
     <id>https://wnhyang.github.io/article/20bbe8e4.html</id>
     <published>2023-01-27T12:53:40.000Z</published>
-    <updated>2023-02-06T14:16:02.192Z</updated>
+    <updated>2023-02-07T12:02:59.668Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;p&gt;2022总结来的有点晚，但也就在这个时候才能总结出点什么！&lt;/p&gt;
 &lt;p&gt;为什么这么说呢？&lt;/p&gt;
 &lt;p&gt;因为这一年我都在外，好久没有回过家了。&lt;/p&gt;
-&lt;p&gt;？？？什么话，难道只有回过家才能算是完整的一年吗？客观理性地来讲肯定不是的，但对于我——是的。&lt;/p&gt;
-&lt;!--</summary>
-        
-      
+&lt;p&gt;？？？什么话，难道只有回过家才能算是完整的一年吗？客观理性地来讲肯定不是的，但对于我——是的。&lt;/p&gt;</summary>
     
     
     
@@ -134,9 +120,9 @@ class=&quot;uri&quot;&gt;https://theme-next.js.org/docs/getting-started/&lt;/a&g
     
     
     
-    <category term="NPM" scheme="https://wnhyang.github.io/tags/NPM/"/>
-    
     <category term="博客" scheme="https://wnhyang.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+    <category term="NPM" scheme="https://wnhyang.github.io/tags/NPM/"/>
     
   </entry>
   
