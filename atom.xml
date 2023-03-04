@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2023-02-07T05:29:06.807Z</updated>
+  <updated>2023-03-04T15:38:55.225Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -15,6 +15,50 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Docker部署SpringBoot项目</title>
+    <link href="https://wnhyang.github.io/article/972d4705.html"/>
+    <id>https://wnhyang.github.io/article/972d4705.html</id>
+    <published>2023-02-28T09:54:16.000Z</published>
+    <updated>2023-03-04T15:38:55.225Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">
+</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>白嫖敏捷开发体系</title>
+    <link href="https://wnhyang.github.io/article/a874eb2e.html"/>
+    <id>https://wnhyang.github.io/article/a874eb2e.html</id>
+    <published>2023-02-26T15:25:44.000Z</published>
+    <updated>2023-02-26T15:25:44.755Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">
+</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>流浪地球2</title>
@@ -120,9 +164,9 @@ class=&quot;uri&quot;&gt;https://theme-next.js.org/docs/getting-started/&lt;/a&g
     
     
     
-    <category term="NPM" scheme="https://wnhyang.github.io/tags/NPM/"/>
-    
     <category term="博客" scheme="https://wnhyang.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+    <category term="NPM" scheme="https://wnhyang.github.io/tags/NPM/"/>
     
   </entry>
   
@@ -297,7 +341,7 @@ class=&quot;uri&quot;&gt;https://theme-next.js.org/docs/getting-started/&lt;/a&g
     <link href="https://wnhyang.github.io/article/9a440dda.html"/>
     <id>https://wnhyang.github.io/article/9a440dda.html</id>
     <published>2022-10-12T07:15:50.000Z</published>
-    <updated>2023-01-03T10:06:19.663Z</updated>
+    <updated>2023-03-04T14:31:57.562Z</updated>
     
     
     <summary type="html">&lt;p&gt;这几天看了一些关于&lt;code&gt;MySQL&lt;/code&gt;主从复制，读写分离的文章，对于数据库这方面的知识很有兴趣。主要还是之前真的没有做过，想学习一下。这下好了，&lt;code&gt;ruoyi&lt;/code&gt;入手吧。&lt;/p&gt;
@@ -477,43 +521,6 @@ href=&quot;https://blog.csdn.net/thinkmo/article/details/26833565&quot;&gt;Murmu
     <category term="数据结构&amp;算法" scheme="https://wnhyang.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%AE%97%E6%B3%95/"/>
     
     <category term="JavaSE" scheme="https://wnhyang.github.io/tags/JavaSE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>软件推荐</title>
-    <link href="https://wnhyang.github.io/article/c92482f1.html"/>
-    <id>https://wnhyang.github.io/article/c92482f1.html</id>
-    <published>2022-08-09T13:51:28.000Z</published>
-    <updated>2023-01-03T10:03:16.812Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;推荐好用的软件&quot;&gt;推荐好用的软件&lt;/h1&gt;
-&lt;p&gt;因为平台不同我会标注&lt;code&gt;PC&lt;/code&gt;：&lt;code&gt;Win/Mac/Linux&lt;/code&gt;，移动：&lt;code&gt;Android/iOS&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;目前分类，基础软件、记录写作、学习提升、编程、浏览器插件、小程序。。。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="软件/工具" scheme="https://wnhyang.github.io/tags/%E8%BD%AF%E4%BB%B6-%E5%B7%A5%E5%85%B7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>书单</title>
-    <link href="https://wnhyang.github.io/article/e8a1470d.html"/>
-    <id>https://wnhyang.github.io/article/e8a1470d.html</id>
-    <published>2022-08-09T13:51:11.000Z</published>
-    <updated>2023-01-03T10:03:48.041Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;推荐一些书籍吧&quot;&gt;推荐一些书籍吧&lt;/h1&gt;
-&lt;p&gt;目前分类：人文历史、小说、编程&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="读书" scheme="https://wnhyang.github.io/tags/%E8%AF%BB%E4%B9%A6/"/>
     
   </entry>
   
