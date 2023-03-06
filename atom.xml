@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2023-03-05T15:25:18.626Z</updated>
+  <updated>2023-03-06T11:54:52.362Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://wnhyang.github.io/article/972d4705.html"/>
     <id>https://wnhyang.github.io/article/972d4705.html</id>
     <published>2023-02-28T09:54:16.000Z</published>
-    <updated>2023-03-05T15:25:18.626Z</updated>
+    <updated>2023-03-06T11:54:52.362Z</updated>
     
     
       
@@ -29,7 +29,7 @@
         
         
     <summary type="html">&lt;p&gt;更新中&lt;/p&gt;
-</summary>
+&lt;h2</summary>
         
       
     
@@ -51,17 +51,18 @@
     <link href="https://wnhyang.github.io/article/a874eb2e.html"/>
     <id>https://wnhyang.github.io/article/a874eb2e.html</id>
     <published>2023-02-26T15:25:44.000Z</published>
-    <updated>2023-03-05T15:08:42.834Z</updated>
+    <updated>2023-03-06T11:20:12.568Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;更新中&lt;/p&gt;
-</summary>
-        
-      
+    <summary type="html">&lt;figure&gt;
+&lt;img data-src=&quot;https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/云效持续交付.szjdarpjia8.webp&quot;
+alt=&quot;云效持续交付&quot; /&gt;
+&lt;figcaption aria-hidden=&quot;true&quot;&gt;云效持续交付&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;白嫖谁不爱啊，敏捷开发、&lt;code&gt;DevOps&lt;/code&gt;、云原生这些概念刚开始是完全不懂，只有我体验一下，才能讲出感受来，这不，终于有机会了。&lt;/p&gt;
+&lt;h2 id=&quot;参考&quot;&gt;参考&lt;/h2&gt;
+&lt;p&gt;https://www.aliyun.com/product/yunxiao&lt;/p&gt;
+&lt;p&gt;https://www.yuque.com/pig4cloud/pig/ls7u1d&lt;/p&gt;</summary>
     
     
     
