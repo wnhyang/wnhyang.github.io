@@ -39,7 +39,7 @@
 <meta property="og:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/image.2zitzg4v5ri0.png">
 <meta property="og:image" content="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/image.6qhcbkswl300.png">
 <meta property="article:published_time" content="2021-05-28T12:36:03.000Z">
-<meta property="article:modified_time" content="2023-01-03T10:03:04.811Z">
+<meta property="article:modified_time" content="2023-03-07T11:58:55.786Z">
 <meta property="article:author" content="无奈何杨（wnhyang）">
 <meta property="article:tag" content="Spring Boot">
 <meta property="article:tag" content="MySQL">
@@ -267,7 +267,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-01-03 18:03:04" itemprop="dateModified" datetime="2023-01-03T18:03:04+08:00">2023-01-03</time>
+      <time title="修改时间：2023-03-07 19:58:55" itemprop="dateModified" datetime="2023-03-07T19:58:55+08:00">2023-03-07</time>
     </span>
 
   
@@ -331,8 +331,8 @@ target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV13a4y1t7Wh
 <h1 id="项目框架">项目框架</h1>
 <figure>
 <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/image.3kqbmcc1raq0.png"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
+alt="项目结构" />
+<figcaption aria-hidden="true">项目结构</figcaption>
 </figure>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="comment">-- Table structure for stock</span></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> IF <span class="keyword">EXISTS</span> `stock`;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `stock`  (</span><br><span class="line">  `sid` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT COMMENT <span class="string">&#x27;商品id&#x27;</span>,</span><br><span class="line">  `name` <span class="type">varchar</span>(<span class="number">20</span>) <span class="type">CHARACTER</span> <span class="keyword">SET</span> utf8 <span class="keyword">COLLATE</span> utf8_general_ci <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;商品名称&#x27;</span>,</span><br><span class="line">  `total` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;库存&#x27;</span>,</span><br><span class="line">  `sale` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;已售&#x27;</span>,</span><br><span class="line">  `version` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;版本号&#x27;</span>,</span><br><span class="line">  <span class="keyword">PRIMARY</span> KEY (`sid`) <span class="keyword">USING</span> BTREE</span><br><span class="line">) ENGINE <span class="operator">=</span> InnoDB AUTO_INCREMENT <span class="operator">=</span> <span class="number">4</span> <span class="type">CHARACTER</span> <span class="keyword">SET</span> <span class="operator">=</span> utf8 <span class="keyword">COLLATE</span> <span class="operator">=</span> utf8_general_ci ROW_FORMAT <span class="operator">=</span> <span class="keyword">Dynamic</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="comment">-- Table structure for stock_order</span></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> IF <span class="keyword">EXISTS</span> `stock_order`;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `stock_order`  (</span><br><span class="line">  `oid` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  `sid` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  `create_time` <span class="type">timestamp</span>(<span class="number">0</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span>(<span class="number">0</span>) <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="built_in">CURRENT_TIMESTAMP</span>(<span class="number">0</span>),</span><br><span class="line">  <span class="keyword">PRIMARY</span> KEY (`oid`) <span class="keyword">USING</span> BTREE</span><br><span class="line">) ENGINE <span class="operator">=</span> InnoDB AUTO_INCREMENT <span class="operator">=</span> <span class="number">4749</span> <span class="type">CHARACTER</span> <span class="keyword">SET</span> <span class="operator">=</span> utf8 <span class="keyword">COLLATE</span> <span class="operator">=</span> utf8_general_ci ROW_FORMAT <span class="operator">=</span> <span class="keyword">Dynamic</span>;</span><br></pre></td></tr></table></figure>
 <p>注意这里订单不能命名为order，MySQL保留字错误</p>
@@ -395,16 +395,16 @@ alt="image" />
 <p>订单表为空</p>
 <figure>
 <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/image.w9zmmubhups.png"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
+alt="postman一次请求" />
+<figcaption aria-hidden="true">postman一次请求</figcaption>
 </figure>
 <p>一次请求后</p>
 <p>sale+1，变为1，增加了一条订单，其他没有变化</p>
 <p>JMeter测试</p>
 <figure>
 <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/image.88sba43umic.png"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
+alt="JMeter测试" />
+<figcaption aria-hidden="true">JMeter测试</figcaption>
 </figure>
 <p>sale变为100，订单总数100条，Throughput为100-200/sec</p>
 <p>总体没出现大问题，但是Throughput不尽人意</p>
@@ -476,20 +476,20 @@ alt="image" />
 <p>结果为：<code>获取的MD5为：6f2c1a31e4b297c4f85c166c09009ec6</code></p>
 <figure>
 <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/image.68ksory3x580.png"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
+alt="请求MD5串" />
+<figcaption aria-hidden="true">请求MD5串</figcaption>
 </figure>
 <p>控制台</p>
 <figure>
 <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/image-20210530152757952.1htot39bww3k.png"
-alt="image-20210530152757952" />
-<figcaption aria-hidden="true">image-20210530152757952</figcaption>
+alt="控制台日志" />
+<figcaption aria-hidden="true">控制台日志</figcaption>
 </figure>
 <p>查看Redis，没有问题</p>
 <figure>
 <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/image.2u8i2kq3s7s0.png"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
+alt="查看Redis" />
+<figcaption aria-hidden="true">查看Redis</figcaption>
 </figure>
 <p>看到设置了120秒的过期时间</p>
 <p>改造加入验证</p>
@@ -504,8 +504,8 @@ md5，在过期时间内请求新的秒杀接口，不同于前，需要加上�
 md5 同样 失败</p>
 <figure>
 <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/image.2zitzg4v5ri0.png"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
+alt="带MD5正确请求" />
+<figcaption aria-hidden="true">带MD5正确请求</figcaption>
 </figure>
 <h1 id="用户限制">用户限制</h1>
 <p>限制用户访问频率</p>
@@ -520,8 +520,8 @@ alt="image" />
 次结果如下，因为限制10次，所以10次后被限制，也就是限制为10/（h*u）单用户每小时限制访问10次</p>
 <figure>
 <img data-src="https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/image.6qhcbkswl300.png"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
+alt="控制台日志" />
+<figcaption aria-hidden="true">控制台日志</figcaption>
 </figure>
 <h1 id="总结">总结</h1>
 <p>这仅仅是一个小demo，还有好多要学习</p>
@@ -621,14 +621,14 @@ alt="image" />
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">175k</span>
+    <span title="站点总字数">176k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">10:37</span>
+    <span title="站点阅读时长">10:39</span>
   </span>
 </div>
 <div class="busuanzi-count">

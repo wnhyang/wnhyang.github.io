@@ -31,7 +31,7 @@
 <meta property="og:description" content="说不上技术分享，只能算是学习记录">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-01-22T06:43:01.000Z">
-<meta property="article:modified_time" content="2023-01-03T10:04:56.582Z">
+<meta property="article:modified_time" content="2023-03-07T08:31:32.206Z">
 <meta property="article:author" content="无奈何杨（wnhyang）">
 <meta property="article:tag" content="JavaSE">
 <meta name="twitter:card" content="summary">
@@ -147,9 +147,9 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%BA%BF%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">创建一个线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E5%AE%9E%E7%8E%B0-runnable-%E6%8E%A5%E5%8F%A3%E6%9D%A5%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">通过实现 Runnable
-接口来创建线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E7%BB%A7%E6%89%BFthread%E6%9D%A5%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">通过继承Thread来创建线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E8%BF%87-callable-%E5%92%8C-future-%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B"><span class="nav-number">4.</span> <span class="nav-text">通过 Callable 和 Future
-创建线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="nav-number">5.</span> <span class="nav-text">创建线程的三种方式的对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%87%A0%E4%B8%AA%E4%B8%BB%E8%A6%81%E6%A6%82%E5%BF%B5"><span class="nav-number">6.</span> <span class="nav-text">线程的几个主要概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sleep"><span class="nav-number">7.</span> <span class="nav-text">Sleep</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#yield"><span class="nav-number">8.</span> <span class="nav-text">Yield</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#join"><span class="nav-number">9.</span> <span class="nav-text">Join</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5"><span class="nav-number">10.</span> <span class="nav-text">同步</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#synchronized%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">10.1.</span> <span class="nav-text">synchronized关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lock"><span class="nav-number">10.2.</span> <span class="nav-text">Lock</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="nav-number">11.</span> <span class="nav-text">线程池</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">12.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%BA%BF%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">创建一个线程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E5%AE%9E%E7%8E%B0-runnable-%E6%8E%A5%E5%8F%A3%E6%9D%A5%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">通过实现 Runnable
+接口来创建线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E7%BB%A7%E6%89%BFthread%E6%9D%A5%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B"><span class="nav-number">1.2.</span> <span class="nav-text">通过继承Thread来创建线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E8%BF%87-callable-%E5%92%8C-future-%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B"><span class="nav-number">1.3.</span> <span class="nav-text">通过 Callable 和 Future
+创建线程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="nav-number">2.</span> <span class="nav-text">创建线程的三种方式的对比</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%87%A0%E4%B8%AA%E4%B8%BB%E8%A6%81%E6%A6%82%E5%BF%B5"><span class="nav-number">3.</span> <span class="nav-text">线程的几个主要概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sleep"><span class="nav-number">3.1.</span> <span class="nav-text">Sleep</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#yield"><span class="nav-number">3.2.</span> <span class="nav-text">Yield</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#join"><span class="nav-number">3.3.</span> <span class="nav-text">Join</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5"><span class="nav-number">3.4.</span> <span class="nav-text">同步</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#synchronized%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">3.4.1.</span> <span class="nav-text">synchronized关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lock"><span class="nav-number">3.4.2.</span> <span class="nav-text">Lock</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="nav-number">3.5.</span> <span class="nav-text">线程池</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -256,7 +256,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-01-03 18:04:56" itemprop="dateModified" datetime="2023-01-03T18:04:56+08:00">2023-01-03</time>
+      <time title="修改时间：2023-03-07 16:31:32" itemprop="dateModified" datetime="2023-03-07T16:31:32+08:00">2023-03-07</time>
     </span>
 
   
@@ -293,7 +293,7 @@
     <div class="post-body" itemprop="articleBody">
         <p>说不上技术分享，只能算是学习记录</p>
 <span id="more"></span>
-<h2 id="创建一个线程">创建一个线程</h2>
+<h1 id="创建一个线程">创建一个线程</h1>
 <p>Java 提供了三种创建线程的方法：</p>
 <ul>
 <li>通过实现 Runnable 接口；</li>
@@ -329,7 +329,7 @@
 方法来获得子线程执行结束后的返回值。</li>
 </ol></li>
 </ul>
-<h2 id="创建线程的三种方式的对比">创建线程的三种方式的对比</h2>
+<h1 id="创建线程的三种方式的对比">创建线程的三种方式的对比</h1>
 <ul>
 <li><ol type="1">
 <li>采用实现 Runnable、Callable 接口的方式创建多线程时，线程类只是实现了
@@ -341,7 +341,7 @@ Runnable 接口或 Callable 接口，还可以继承其他类。</li>
 Thread.currentThread() 方法，直接使用 this 即可获得当前线程。</li>
 </ol></li>
 </ul>
-<h2 id="线程的几个主要概念">线程的几个主要概念</h2>
+<h1 id="线程的几个主要概念">线程的几个主要概念</h1>
 <p>在多线程编程时，你需要了解以下几个概念：</p>
 <ul>
 <li>线程同步</li>
@@ -363,7 +363,7 @@ Thread.currentThread() 方法，直接使用 this 即可获得当前线程。</l
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.concurrent.locks.ReentrantLock;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestLock</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        TestLock2 testLock2=<span class="keyword">new</span> <span class="title class_">TestLock2</span>();</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Thread</span>(testLock2).start();</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Thread</span>(testLock2).start();</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Thread</span>(testLock2).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TestLock2</span> <span class="keyword">implements</span> <span class="title class_">Runnable</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">ticketNum</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//定义Lock锁</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">ReentrantLock</span> <span class="variable">lock</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ReentrantLock</span>();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                lock.lock();<span class="comment">//加锁</span></span><br><span class="line">                <span class="keyword">if</span> (ticketNum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        Thread.sleep(<span class="number">200</span>);</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                    System.out.println(ticketNum--);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                lock.unlock();<span class="comment">//解锁</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="线程池">线程池</h2>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestPool</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">//创建服务，创建线程池</span></span><br><span class="line">        <span class="comment">//newFixedThreadPool 参数：线程池大小</span></span><br><span class="line">        <span class="type">ExecutorService</span> <span class="variable">service</span> <span class="operator">=</span> Executors.newFixedThreadPool(<span class="number">10</span>);</span><br><span class="line">        service.execute(<span class="keyword">new</span> <span class="title class_">MyThread</span>());</span><br><span class="line">        service.execute(<span class="keyword">new</span> <span class="title class_">MyThread</span>());</span><br><span class="line">        service.execute(<span class="keyword">new</span> <span class="title class_">MyThread</span>());</span><br><span class="line">        service.execute(<span class="keyword">new</span> <span class="title class_">MyThread</span>());</span><br><span class="line">        <span class="comment">//关闭</span></span><br><span class="line">        service.shutdown();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyThread</span> <span class="keyword">implements</span> <span class="title class_">Runnable</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(Thread.currentThread().getName());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="参考">参考</h2>
+<h1 id="参考">参考</h1>
 <p><a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1V4411p7EF">https://www.bilibili.com/video/BV1V4411p7EF</a></p>
 
@@ -457,14 +457,14 @@ target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1V4411p7EF
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">175k</span>
+    <span title="站点总字数">176k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">10:37</span>
+    <span title="站点阅读时长">10:39</span>
   </span>
 </div>
 <div class="busuanzi-count">
