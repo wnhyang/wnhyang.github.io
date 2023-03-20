@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2023-03-13T03:09:00.052Z</updated>
+  <updated>2023-03-20T11:47:53.250Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,33 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>工具不会代替人，被代替的是不会使用工具的人</title>
+    <link href="https://wnhyang.github.io/article/142b0ddc.html"/>
+    <id>https://wnhyang.github.io/article/142b0ddc.html</id>
+    <published>2023-03-19T07:14:36.000Z</published>
+    <updated>2023-03-20T11:47:53.250Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;chatgtp&quot;&gt;ChatGTP&lt;/h1&gt;
+&lt;p&gt;最近几个月，关注科技区的相信都已经被&lt;code&gt;ChatGPT&lt;/code&gt;给刷屏了，下面我直接以提问&lt;code&gt;ChatGPT&lt;/code&gt;“写200字关于最近ChatGPT的文案”的回答开始吧。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ChatGPT&lt;/code&gt;是由&lt;code&gt;OpenAI&lt;/code&gt;团队开发的基于自然语言处理技术的聊天机器人。它采用了最新的生成式预训练技术&lt;code&gt;GPT（Generative Pre-trained Transformer）&lt;/code&gt;，并在此基础上进行了优化和改进，可以与用户进行智能、流畅、自然的交互。&lt;code&gt;ChatGPT&lt;/code&gt;不仅可以回答用户的问题，还可以提供有趣的谈话、娱乐、推荐等功能，用户可以通过文字或语音与它进行交互。&lt;/p&gt;
+&lt;p&gt;近期，&lt;code&gt;OpenAI&lt;/code&gt;团队公布了&lt;code&gt;ChatGPT-3.5&lt;/code&gt;版本，该版本的ChatGPT在语言表达能力上得到了极大的提升和改善。它具有更高的准确性和语言理解深度，不断学习和调整，可以根据用户的需求和背景自动调整语言风格和话题，提供更加人性化的服务。目前，&lt;code&gt;ChatGPT&lt;/code&gt;已经被广泛应用于在线客服、医疗问诊、教育辅导、智能客户端等领域，成为人工智能与自然语言处理领域的重要研究成果之一。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="思考" scheme="https://wnhyang.github.io/tags/%E6%80%9D%E8%80%83/"/>
+    
+    <category term="杂谈" scheme="https://wnhyang.github.io/tags/%E6%9D%82%E8%B0%88/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Docker部署Java镜像</title>
     <link href="https://wnhyang.github.io/article/972d4705.html"/>
     <id>https://wnhyang.github.io/article/972d4705.html</id>
     <published>2023-02-28T09:54:16.000Z</published>
-    <updated>2023-03-13T03:09:00.052Z</updated>
+    <updated>2023-03-20T11:48:18.283Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;参考&quot;&gt;参考&lt;/h1&gt;
@@ -127,9 +149,9 @@ href=&quot;https://blog.csdn.net/li1325169021/article/details/121626299&quot;&gt
     
     
     
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
     <category term="Spring Cloud Alibaba" scheme="https://wnhyang.github.io/tags/Spring-Cloud-Alibaba/"/>
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
     <category term="Spring Cloud" scheme="https://wnhyang.github.io/tags/Spring-Cloud/"/>
     
@@ -533,31 +555,6 @@ href=&quot;https://blog.csdn.net/tianyaleixiaowu/article/details/74739827&quot;&
     <category term="Mybatis/Mybatis-plus" scheme="https://wnhyang.github.io/tags/Mybatis-Mybatis-plus/"/>
     
     <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MurmurHash算法初探</title>
-    <link href="https://wnhyang.github.io/article/3df251b7.html"/>
-    <id>https://wnhyang.github.io/article/3df251b7.html</id>
-    <published>2022-08-17T12:43:00.000Z</published>
-    <updated>2023-01-03T10:05:15.167Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;简介&quot;&gt;简介&lt;/h1&gt;
-&lt;p&gt;简单讨论一下&lt;code&gt;MurmurHash&lt;/code&gt;算法，之后会依此做一个简易的短链接项目，尽量快些做出来，分享出来😁&lt;/p&gt;
-&lt;p&gt;既然是初探，我只会去说怎么使用，至于原理，就留到有机会（&lt;code&gt;doge&lt;/code&gt;）再来探究吧😂&lt;/p&gt;
-&lt;p&gt;在一周前我对这个算法也是闻所未闻，至到我看了这篇&lt;a
-href=&quot;https://mp.weixin.qq.com/s/YTrBaERcyjvw7A0Fg2Iegw&quot;&gt;高性能短链设计&lt;/a&gt;文章，才有所了解。&lt;/p&gt;
-&lt;p&gt;关于&lt;code&gt;MurmurHash&lt;/code&gt;算法，可参考&lt;a
-href=&quot;https://blog.csdn.net/thinkmo/article/details/26833565&quot;&gt;Murmurhash介绍与实现&lt;/a&gt;&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="数据结构&amp;算法" scheme="https://wnhyang.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%AE%97%E6%B3%95/"/>
-    
-    <category term="JavaSE" scheme="https://wnhyang.github.io/tags/JavaSE/"/>
     
   </entry>
   
