@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2023-03-20T11:47:53.250Z</updated>
+  <updated>2023-03-21T10:53:13.418Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,63 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Cursor简单使用</title>
+    <link href="https://wnhyang.github.io/article/f36ff59b.html"/>
+    <id>https://wnhyang.github.io/article/f36ff59b.html</id>
+    <published>2023-03-21T03:04:03.000Z</published>
+    <updated>2023-03-21T10:53:13.418Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">
+</summary>
+        
+      
+    
+    
+    
+    
+    <category term="软件/工具" scheme="https://wnhyang.github.io/tags/%E8%BD%AF%E4%BB%B6-%E5%B7%A5%E5%85%B7/"/>
+    
+    <category term="记录" scheme="https://wnhyang.github.io/tags/%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Apifox简单使用</title>
+    <link href="https://wnhyang.github.io/article/d54257c1.html"/>
+    <id>https://wnhyang.github.io/article/d54257c1.html</id>
+    <published>2023-03-21T03:02:38.000Z</published>
+    <updated>2023-03-21T10:52:49.836Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">
+</summary>
+        
+      
+    
+    
+    
+    
+    <category term="软件/工具" scheme="https://wnhyang.github.io/tags/%E8%BD%AF%E4%BB%B6-%E5%B7%A5%E5%85%B7/"/>
+    
+    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>工具不会代替人，被代替的是不会使用工具的人</title>
     <link href="https://wnhyang.github.io/article/142b0ddc.html"/>
     <id>https://wnhyang.github.io/article/142b0ddc.html</id>
     <published>2023-03-19T07:14:36.000Z</published>
-    <updated>2023-03-20T11:47:53.250Z</updated>
+    <updated>2023-03-21T10:38:51.825Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;chatgtp&quot;&gt;ChatGTP&lt;/h1&gt;
@@ -43,7 +95,7 @@
     <link href="https://wnhyang.github.io/article/972d4705.html"/>
     <id>https://wnhyang.github.io/article/972d4705.html</id>
     <published>2023-02-28T09:54:16.000Z</published>
-    <updated>2023-03-20T11:48:18.283Z</updated>
+    <updated>2023-03-21T10:31:03.445Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;参考&quot;&gt;参考&lt;/h1&gt;
@@ -502,59 +554,6 @@ href=&quot;https://blog.csdn.net/lkl_csdn/article/details/73613033&quot;&gt;quar
     <category term="思考" scheme="https://wnhyang.github.io/tags/%E6%80%9D%E8%80%83/"/>
     
     <category term="杂谈" scheme="https://wnhyang.github.io/tags/%E6%9D%82%E8%B0%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mybatis-Plus-Generator使用</title>
-    <link href="https://wnhyang.github.io/article/52ebbcb.html"/>
-    <id>https://wnhyang.github.io/article/52ebbcb.html</id>
-    <published>2022-08-24T03:19:24.000Z</published>
-    <updated>2023-01-14T13:21:54.780Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;简介&quot;&gt;简介&lt;/h1&gt;
-&lt;p&gt;之前有文章&lt;a
-href=&quot;https://wnhyang.github.io/article/524c985a.html&quot;&gt;Mybatis-Generator使用&lt;/a&gt;，现在体验了&lt;code&gt;Mybatis-Plus-Generator&lt;/code&gt;，真心觉得有了它开发效率提高太多了，用起来是真的爽，爽！&lt;/p&gt;
-&lt;p&gt;参考：&lt;/p&gt;
-&lt;p&gt;&lt;a
-href=&quot;https://baomidou.com/pages/779a6e/&quot;&gt;https://baomidou.com/pages/779a6e/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a
-href=&quot;https://blog.csdn.net/qq_20185737/article/details/121456598&quot;&gt;https://blog.csdn.net/qq_20185737/article/details/121456598&lt;/a&gt;&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="Mybatis/Mybatis-plus" scheme="https://wnhyang.github.io/tags/Mybatis-Mybatis-plus/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>简易短链接项目</title>
-    <link href="https://wnhyang.github.io/article/68b36ea9.html"/>
-    <id>https://wnhyang.github.io/article/68b36ea9.html</id>
-    <published>2022-08-21T13:15:41.000Z</published>
-    <updated>2023-03-07T11:07:31.571Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;简介&quot;&gt;简介&lt;/h1&gt;
-&lt;p&gt;前面已经预告（&lt;a
-href=&quot;https://wnhyang.github.io/article/3df251b7.html&quot;&gt;MurmurHash算法初探&lt;/a&gt;）过了，现在也是完成了，但是确实时没时间写，只能抽空“填坑”了🥱&lt;/p&gt;
-&lt;p&gt;关于这次从打算做到做完，应该是执行力最强的一次，仅仅不到一周时间就完成了，要是在过去，估计还要拖个几周甚至个把月。&lt;/p&gt;
-&lt;h2 id=&quot;参考&quot;&gt;参考：&lt;/h2&gt;
-&lt;p&gt;&lt;a
-href=&quot;https://mp.weixin.qq.com/s/YTrBaERcyjvw7A0Fg2Iegw&quot;&gt;高性能短链设计&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a
-href=&quot;https://blog.csdn.net/tianyaleixiaowu/article/details/74739827&quot;&gt;BloomFilter布隆过滤器使用&lt;/a&gt;&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="数据结构&amp;算法" scheme="https://wnhyang.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%AE%97%E6%B3%95/"/>
-    
-    <category term="Mybatis/Mybatis-plus" scheme="https://wnhyang.github.io/tags/Mybatis-Mybatis-plus/"/>
-    
-    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
     
   </entry>
   
