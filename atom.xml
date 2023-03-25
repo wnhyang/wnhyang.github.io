@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2023-03-21T10:53:13.418Z</updated>
+  <updated>2023-03-25T02:51:54.121Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>初次使用XXL-JOB</title>
+    <link href="https://wnhyang.github.io/article/abbb8dbb.html"/>
+    <id>https://wnhyang.github.io/article/abbb8dbb.html</id>
+    <published>2023-03-24T08:22:47.000Z</published>
+    <updated>2023-03-25T02:51:54.121Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;简介&quot;&gt;简介&lt;/h1&gt;
+&lt;p&gt;之前有&lt;a href=&quot;https://wnhyang.github.io/article/796c508a.html&quot;&gt;ruoyi
+学习 Quartz&lt;/a&gt;、&lt;a
+href=&quot;https://wnhyang.github.io/article/1e885c14.html&quot;&gt;定时任务&lt;/a&gt;、&lt;a
+href=&quot;https://wnhyang.github.io/article/8abc133f.html&quot;&gt;点赞功能的一种实现&lt;/a&gt;，三篇文章讨论有关定时任务的，这次终于是见识到了大名鼎鼎的&lt;code&gt;XXL-JOB&lt;/code&gt;了，下面就开始玩一下吧！&lt;/p&gt;
+&lt;h2 id=&quot;参考&quot;&gt;参考&lt;/h2&gt;
+&lt;p&gt;&lt;a
+href=&quot;https://www.xuxueli.com/xxl-job/&quot;&gt;https://www.xuxueli.com/xxl-job/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a
+href=&quot;https://github.com/xuxueli/xxl-job/issues/1121&quot;&gt;https://github.com/xuxueli/xxl-job/issues/1121&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a
+href=&quot;https://github.com/xuxueli/xxl-job/issues/191&quot;&gt;https://github.com/xuxueli/xxl-job/issues/191&lt;/a&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="定时任务" scheme="https://wnhyang.github.io/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>Cursor简单使用</title>
@@ -95,7 +123,7 @@
     <link href="https://wnhyang.github.io/article/972d4705.html"/>
     <id>https://wnhyang.github.io/article/972d4705.html</id>
     <published>2023-02-28T09:54:16.000Z</published>
-    <updated>2023-03-22T07:56:04.127Z</updated>
+    <updated>2023-03-22T08:08:43.744Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;参考&quot;&gt;参考&lt;/h1&gt;
@@ -455,9 +483,9 @@ class=&quot;uri&quot;&gt;https://theme-next.js.org/docs/getting-started/&lt;/a&g
     
     
     
-    <category term="ruoyi" scheme="https://wnhyang.github.io/tags/ruoyi/"/>
-    
     <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
+    
+    <category term="ruoyi" scheme="https://wnhyang.github.io/tags/ruoyi/"/>
     
   </entry>
   
@@ -482,9 +510,9 @@ href=&quot;https://blog.csdn.net/lkl_csdn/article/details/73613033&quot;&gt;quar
     
     
     
-    <category term="ruoyi" scheme="https://wnhyang.github.io/tags/ruoyi/"/>
-    
     <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
+    
+    <category term="ruoyi" scheme="https://wnhyang.github.io/tags/ruoyi/"/>
     
     <category term="定时任务" scheme="https://wnhyang.github.io/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/"/>
     
@@ -533,27 +561,6 @@ href=&quot;https://blog.csdn.net/lkl_csdn/article/details/73613033&quot;&gt;quar
     <category term="思考" scheme="https://wnhyang.github.io/tags/%E6%80%9D%E8%80%83/"/>
     
     <category term="自己" scheme="https://wnhyang.github.io/tags/%E8%87%AA%E5%B7%B1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>人类确实不如动物有血性</title>
-    <link href="https://wnhyang.github.io/article/7b6feb78.html"/>
-    <id>https://wnhyang.github.io/article/7b6feb78.html</id>
-    <published>2022-08-26T15:00:26.000Z</published>
-    <updated>2022-09-03T15:34:34.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;最近看到一则有关大象🐘因被迫工作怒将其主人杀死的新闻，想就此谈一谈。&lt;/p&gt;
-&lt;p&gt;点开新闻，原来是炎炎夏日下，主人强迫大象🐘在橡胶园内搬运木材导致大象不堪忍受，“发疯”，用象牙将其主人杀死。&lt;/p&gt;
-&lt;p&gt;当时感慨的一句，“人类确实不如动物有血性”。既是说动物比人类豁得出去，能在重压下直接进行反抗，不像人类，在生活的重压下，还要想一想家人朋友，或是其他的什么牵挂，是少一些血性；又是说人类和动物好像是换了身份，动物不再是我们印象中凶残冷血的动物，更像是我们自认为高贵的自己，他，被束缚，被要求为它们工作，同时我们人类也不是高贵的自己，更像是眼里瞧不起的低级生物，它，强迫他们工作，为了个人利益，这样一想，动物还是有温存的血性，忍受我们的压迫，而我们却没有该有的血性，只会为自己想。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="思考" scheme="https://wnhyang.github.io/tags/%E6%80%9D%E8%80%83/"/>
-    
-    <category term="杂谈" scheme="https://wnhyang.github.io/tags/%E6%9D%82%E8%B0%88/"/>
     
   </entry>
   
