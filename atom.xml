@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2023-03-25T02:51:54.121Z</updated>
+  <updated>2023-03-27T11:42:40.139Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,32 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>ChatGPT对话01</title>
+    <link href="https://wnhyang.github.io/article/1fc8f2ea.html"/>
+    <id>https://wnhyang.github.io/article/1fc8f2ea.html</id>
+    <published>2023-03-27T00:48:25.000Z</published>
+    <updated>2023-03-27T11:42:40.139Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;如题，记录一下我与ChatGPT的对话。&lt;/p&gt;
+&lt;h1 id=&quot;qa1&quot;&gt;Q&amp;amp;A1&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Q1:springboot 发送html邮件动态生成table&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    
+    <category term="记录" scheme="https://wnhyang.github.io/tags/%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
     <title>初次使用XXL-JOB</title>
     <link href="https://wnhyang.github.io/article/abbb8dbb.html"/>
     <id>https://wnhyang.github.io/article/abbb8dbb.html</id>
     <published>2023-03-24T08:22:47.000Z</published>
-    <updated>2023-03-25T02:51:54.121Z</updated>
+    <updated>2023-03-27T11:44:35.821Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;简介&quot;&gt;简介&lt;/h1&gt;
@@ -75,17 +96,23 @@ href=&quot;https://github.com/xuxueli/xxl-job/issues/191&quot;&gt;https://github
     <link href="https://wnhyang.github.io/article/d54257c1.html"/>
     <id>https://wnhyang.github.io/article/d54257c1.html</id>
     <published>2023-03-21T03:02:38.000Z</published>
-    <updated>2023-03-21T10:52:49.836Z</updated>
+    <updated>2023-03-27T11:46:48.077Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">
-</summary>
-        
-      
+    <summary type="html">&lt;h1 id=&quot;apifox&quot;&gt;Apifox&lt;/h1&gt;
+&lt;p&gt;最近一直在以&lt;a href=&quot;https://gitee.com/log4j/pig&quot;&gt;pig&lt;/a&gt;、&lt;a
+href=&quot;https://gitee.com/y_project/RuoYi-Cloud&quot;&gt;RuiYi-Cloud&lt;/a&gt;做一个自己的项目，非常需要一份接口文档工具，&lt;code&gt;Swagger&lt;/code&gt;这种侵入代码式的我不是很喜欢，之前也是有用过&lt;code&gt;YApi&lt;/code&gt;，不用改代码，利用与&lt;code&gt;IDEA&lt;/code&gt;的插件结合，很轻松就生成相关的接口文档，非常好用！&lt;/p&gt;
+&lt;p&gt;直到发现&lt;a
+href=&quot;https://www.apifox.com/&quot;&gt;apifox&lt;/a&gt;，发现这个全能选手，如官方所说：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;更先进的 API 设计/开发/测试工具&lt;/p&gt;
+&lt;p&gt;Apifox = Postman + Swagger + Mock + JMeter&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;如果能熟练使用它那生产力必然极大提升，想系统学习的看官方文档&lt;a
+href=&quot;https://www.apifox.com/help/&quot;&gt;https://www.apifox.com/help/&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;另外一提，我能发现它也是因为这篇文章：&lt;a
+href=&quot;https://mp.weixin.qq.com/s/fT84AkFPZSINL9VUvAmNJw&quot;&gt;https://mp.weixin.qq.com/s/fT84AkFPZSINL9VUvAmNJw&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;下面就开始我的使用吧！&lt;/p&gt;</summary>
     
     
     
@@ -101,7 +128,7 @@ href=&quot;https://github.com/xuxueli/xxl-job/issues/191&quot;&gt;https://github
     <link href="https://wnhyang.github.io/article/142b0ddc.html"/>
     <id>https://wnhyang.github.io/article/142b0ddc.html</id>
     <published>2023-03-19T07:14:36.000Z</published>
-    <updated>2023-03-21T10:38:51.825Z</updated>
+    <updated>2023-03-27T10:17:15.878Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;chatgtp&quot;&gt;ChatGTP&lt;/h1&gt;
@@ -123,14 +150,18 @@ href=&quot;https://github.com/xuxueli/xxl-job/issues/191&quot;&gt;https://github
     <link href="https://wnhyang.github.io/article/972d4705.html"/>
     <id>https://wnhyang.github.io/article/972d4705.html</id>
     <published>2023-02-28T09:54:16.000Z</published>
-    <updated>2023-03-22T08:08:43.744Z</updated>
+    <updated>2023-03-27T10:20:45.895Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;参考&quot;&gt;参考&lt;/h1&gt;
-&lt;p&gt;https://gitee.com/log4j/pig&lt;/p&gt;
-&lt;p&gt;https://gitee.com/y_project/RuoYi-Vue&lt;/p&gt;
-&lt;p&gt;https://segmentfault.com/a/1190000022530075&lt;/p&gt;
-&lt;p&gt;https://segmentfault.com/a/1190000022530083&lt;/p&gt;
+&lt;p&gt;&lt;a
+href=&quot;https://gitee.com/log4j/pig&quot;&gt;https://gitee.com/log4j/pig&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a
+href=&quot;https://gitee.com/y_project/RuoYi-Vue&quot;&gt;https://gitee.com/y_project/RuoYi-Vue&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a
+href=&quot;https://segmentfault.com/a/1190000022530075&quot;&gt;https://segmentfault.com/a/1190000022530075&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a
+href=&quot;https://segmentfault.com/a/1190000022530083&quot;&gt;https://segmentfault.com/a/1190000022530083&lt;/a&gt;&lt;/p&gt;
 &lt;figure&gt;
 &lt;img data-src=&quot;https://cdn.staticaly.com/gh/wnhyang/clouding@master/cloud-picture/image.1slfvf330g00.webp&quot;
 alt=&quot;docker部署流水线&quot; /&gt;
@@ -186,7 +217,7 @@ alt=&quot;云效持续交付&quot; /&gt;
     <link href="https://wnhyang.github.io/article/1d91adf8.html"/>
     <id>https://wnhyang.github.io/article/1d91adf8.html</id>
     <published>2023-02-05T15:23:34.000Z</published>
-    <updated>2023-02-07T05:29:06.807Z</updated>
+    <updated>2023-03-27T01:49:25.813Z</updated>
     
     
     <summary type="html">&lt;p&gt;其实我完全可以取个更有趣的标题，“没有人的文明毫无意义”，“你是唯一的变量”，“数字生命”等等之类，可以代表这部《流浪地球2》（下面我称《球2》）的。但是回头一想这么还是不太好，不能从整体上来讲《球2》，所以还是保留了“流浪地球2”的标题。&lt;/p&gt;</summary>
@@ -483,9 +514,9 @@ class=&quot;uri&quot;&gt;https://theme-next.js.org/docs/getting-started/&lt;/a&g
     
     
     
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
     <category term="ruoyi" scheme="https://wnhyang.github.io/tags/ruoyi/"/>
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
   </entry>
   
@@ -510,9 +541,9 @@ href=&quot;https://blog.csdn.net/lkl_csdn/article/details/73613033&quot;&gt;quar
     
     
     
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
     <category term="ruoyi" scheme="https://wnhyang.github.io/tags/ruoyi/"/>
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
     <category term="定时任务" scheme="https://wnhyang.github.io/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/"/>
     
@@ -540,27 +571,6 @@ href=&quot;https://blog.csdn.net/lkl_csdn/article/details/73613033&quot;&gt;quar
     
     
     <category term="JavaSE" scheme="https://wnhyang.github.io/tags/JavaSE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>健康生活</title>
-    <link href="https://wnhyang.github.io/article/3b29100a.html"/>
-    <id>https://wnhyang.github.io/article/3b29100a.html</id>
-    <published>2022-08-28T15:37:38.000Z</published>
-    <updated>2023-03-07T12:01:07.777Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;在未工作之前，总是对工作充满美好的畅想，想象那时我就可以完全独立，能很好地处理工作和生活。等到真的工作后就发现真的很难的啦🤧&lt;/p&gt;
-&lt;p&gt;work life balance 没那么容易的。&lt;/p&gt;
-&lt;p&gt;当代年轻人（这个定语可能不对），对于工作生活确实是：自己嗨、自己玩，再晚也不累，一旦工作上班就马上焉了。这没有夸大其谈，确实如此啊！只要到了工作场地，规定时间内，就算任务很轻松，还是会感到累🥱可一旦下班和朋友聚在一起，就很快乐，不知疲倦🥰&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="思考" scheme="https://wnhyang.github.io/tags/%E6%80%9D%E8%80%83/"/>
-    
-    <category term="自己" scheme="https://wnhyang.github.io/tags/%E8%87%AA%E5%B7%B1/"/>
     
   </entry>
   
