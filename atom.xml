@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2023-03-27T11:42:40.139Z</updated>
+  <updated>2023-04-01T14:33:52.437Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -15,6 +15,58 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>XXL-JOB发送过期邮件提醒</title>
+    <link href="https://wnhyang.github.io/article/ee1e3834.html"/>
+    <id>https://wnhyang.github.io/article/ee1e3834.html</id>
+    <published>2023-04-01T14:26:17.000Z</published>
+    <updated>2023-04-01T14:33:52.437Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;更新ing&lt;/p&gt;
+</summary>
+        
+      
+    
+    
+    
+    
+    <category term="JavaSE" scheme="https://wnhyang.github.io/tags/JavaSE/"/>
+    
+    <category term="定时任务" scheme="https://wnhyang.github.io/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AOP记录访问量</title>
+    <link href="https://wnhyang.github.io/article/5b66ad6f.html"/>
+    <id>https://wnhyang.github.io/article/5b66ad6f.html</id>
+    <published>2023-04-01T14:25:34.000Z</published>
+    <updated>2023-04-01T14:28:31.156Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;更新ing&lt;/p&gt;
+</summary>
+        
+      
+    
+    
+    
+    
+    <category term="AOP" scheme="https://wnhyang.github.io/tags/AOP/"/>
+    
+    <category term="Redis" scheme="https://wnhyang.github.io/tags/Redis/"/>
+    
+  </entry>
   
   <entry>
     <title>ChatGPT对话01</title>
@@ -260,9 +312,9 @@ href=&quot;https://blog.csdn.net/li1325169021/article/details/121626299&quot;&gt
     
     
     
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
     <category term="Spring Cloud Alibaba" scheme="https://wnhyang.github.io/tags/Spring-Cloud-Alibaba/"/>
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
     <category term="Spring Cloud" scheme="https://wnhyang.github.io/tags/Spring-Cloud/"/>
     
@@ -514,63 +566,9 @@ class=&quot;uri&quot;&gt;https://theme-next.js.org/docs/getting-started/&lt;/a&g
     
     
     
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
     <category term="ruoyi" scheme="https://wnhyang.github.io/tags/ruoyi/"/>
     
-  </entry>
-  
-  <entry>
-    <title>ruoyi学习Quartz</title>
-    <link href="https://wnhyang.github.io/article/796c508a.html"/>
-    <id>https://wnhyang.github.io/article/796c508a.html</id>
-    <published>2022-09-07T09:34:26.000Z</published>
-    <updated>2023-03-05T14:58:35.049Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;依旧是从&lt;code&gt;ruoyi&lt;/code&gt;学习，这次是任务调度框架&lt;code&gt;Quartz&lt;/code&gt;&lt;/p&gt;
-&lt;h1 id=&quot;参考&quot;&gt;参考&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.w3cschool.cn/quartz_doc/&quot;&gt;Quartz官方文档&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a
-href=&quot;https://blog.csdn.net/lkl_csdn/article/details/73613033&quot;&gt;quartz
-（从原理到应用）详解篇&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/306591082&quot;&gt;Quartz
-是什么？一文带你入坑 - 知乎&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;任务调度，也可说是定时任务，其实还是很常见的在我们的生活中，最常见的莫过于闹钟了，这就是一种定时任务，其他还有提醒事项，消息订阅等等&lt;/p&gt;</summary>
-    
-    
-    
-    
     <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
-    <category term="ruoyi" scheme="https://wnhyang.github.io/tags/ruoyi/"/>
-    
-    <category term="定时任务" scheme="https://wnhyang.github.io/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/"/>
-    
-    <category term="Quartz" scheme="https://wnhyang.github.io/tags/Quartz/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ThreadLocal理解</title>
-    <link href="https://wnhyang.github.io/article/362db54f.html"/>
-    <id>https://wnhyang.github.io/article/362db54f.html</id>
-    <published>2022-09-05T11:37:59.000Z</published>
-    <updated>2022-09-06T10:35:10.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;相信熟悉&lt;code&gt;JUC&lt;/code&gt;（&lt;code&gt;java.util.concurrent&lt;/code&gt;）的，都应该知道&lt;code&gt;ThreadLocal&lt;/code&gt;，尤其是在各种面试题库中经常遇到。谈起这个的主要原因还是在项目中遇到了“利用&lt;code&gt;ThreadL</summary>
-        
-      
-    
-    
-    
-    
-    <category term="JavaSE" scheme="https://wnhyang.github.io/tags/JavaSE/"/>
     
   </entry>
   
