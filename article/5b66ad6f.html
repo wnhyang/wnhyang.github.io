@@ -25,15 +25,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="更新ing">
+    <meta name="description" content="简介 最近在做一个短链接的项目，其实应该是算改造，将原来的功能完善一下，其中就包括一个记录访问量的需求，需求大概是这样的： 根据每个链接记录其一定时间内的访问量，这个访问量应该是随时间动态变化，即使我不做什么操作。 最容易就想到利用Redis的两种数据结构string和hash  string，link:visit:$id:$date  需要通过时间来设置和查询，可单独设置过期时间，删除不能直接通">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AOP记录访问量">
 <meta property="og:url" content="https://wnhyang.github.io/article/5b66ad6f.html">
 <meta property="og:site_name" content="无奈何杨（wnhyang）">
-<meta property="og:description" content="更新ing">
+<meta property="og:description" content="简介 最近在做一个短链接的项目，其实应该是算改造，将原来的功能完善一下，其中就包括一个记录访问量的需求，需求大概是这样的： 根据每个链接记录其一定时间内的访问量，这个访问量应该是随时间动态变化，即使我不做什么操作。 最容易就想到利用Redis的两种数据结构string和hash  string，link:visit:$id:$date  需要通过时间来设置和查询，可单独设置过期时间，删除不能直接通">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-04-01T14:25:34.000Z">
-<meta property="article:modified_time" content="2023-04-01T14:28:31.156Z">
+<meta property="article:modified_time" content="2023-04-03T08:18:01.889Z">
 <meta property="article:author" content="无奈何杨（wnhyang）">
 <meta property="article:tag" content="AOP">
 <meta property="article:tag" content="Redis">
@@ -137,7 +137,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -150,6 +150,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B%E5%90%A7"><span class="nav-number">2.</span> <span class="nav-text">开始吧</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E8%A7%A3%E7%B1%BB"><span class="nav-number">2.1.</span> <span class="nav-text">注解类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%87%E9%9D%A2"><span class="nav-number">2.2.</span> <span class="nav-text">切面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%BE%E5%BC%83"><span class="nav-number">2.3.</span> <span class="nav-text">放弃</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E8%AE%BF%E9%97%AE%E9%87%8F"><span class="nav-number">2.4.</span> <span class="nav-text">查询访问量</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -215,17 +216,38 @@
   </div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <a class="popular-posts-link" href="/article/d36a1c6.html" rel="bookmark">
-        <time class="popular-posts-time">2022-07-14</time>
+      <a class="popular-posts-link" href="/article/c9f6f059.html" rel="bookmark">
+        <time class="popular-posts-time">2021-04-15</time>
         <br>
-      好想为农村做点什么
+      Redis安装
       </a>
     </li>
     <li class="popular-posts-item">
-      <a class="popular-posts-link" href="/article/7b04ce94.html" rel="bookmark">
-        <time class="popular-posts-time">2022-10-24</time>
+      <a class="popular-posts-link" href="/article/8abc133f.html" rel="bookmark">
+        <time class="popular-posts-time">2022-01-07</time>
         <br>
-      习惯说明书
+      点赞功能的一种实现
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/1e9afcf1.html" rel="bookmark">
+        <time class="popular-posts-time">2022-01-15</time>
+        <br>
+      Redis大key问题与scan命令
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/f388e05f.html" rel="bookmark">
+        <time class="popular-posts-time">2021-11-23</time>
+        <br>
+      Redis做分布式锁的问题
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/5cbc0449.html" rel="bookmark">
+        <time class="popular-posts-time">2021-05-28</time>
+        <br>
+      秒杀demo
       </a>
     </li>
   </ul>
@@ -277,9 +299,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2023-04-01 22:25:34 / 修改时间：22:28:31" itemprop="dateCreated datePublished" datetime="2023-04-01T22:25:34+08:00">2023-04-01</time>
+      <time title="创建时间：2023-04-01 22:25:34" itemprop="dateCreated datePublished" datetime="2023-04-01T22:25:34+08:00">2023-04-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-04-03 16:18:01" itemprop="dateModified" datetime="2023-04-03T16:18:01+08:00">2023-04-03</time>
     </span>
 
   
@@ -296,14 +324,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>3</span>
+      <span>683</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>2 分钟</span>
     </span>
 </div>
 
@@ -314,7 +342,38 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>更新ing</p>
+        <h1 id="简介">简介</h1>
+<p>最近在做一个短链接的项目，其实应该是算改造，将原来的功能完善一下，其中就包括一个记录访问量的需求，需求大概是这样的：</p>
+<p>根据每个链接记录其一定时间内的访问量，这个访问量应该是随时间动态变化，即使我不做什么操作。</p>
+<p>最容易就想到利用<code>Redis</code>的两种数据结构<code>string</code>和<code>hash</code></p>
+<ul>
+<li>string，<code>link:visit:$id:$date</code></li>
+</ul>
+<p>需要通过时间来设置和查询，可单独设置过期时间，删除不能直接通过link来删除，只能自然过期？</p>
+<ul>
+<li>hash，<code>link:visit:$id</code></li>
+</ul>
+<p>设置和查询简单，不可单独设置过期时间，删除可一次性删除</p>
+<p>当然我还看到有利用<code>hyperloglog</code>记录访问集合的，这与我需求不符就不提了</p>
+<span id="more"></span>
+<h1 id="开始吧">开始吧</h1>
+<p>如标题所言，利用的就是AOP实现的</p>
+<h2 id="注解类">注解类</h2>
+<p>这种做法是有限制了，我也在下面写明了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 访问量记录，适合get接口，且只有一个参数</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> wnhyang</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2023/3/11</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="meta">@Target(ElementType.METHOD)</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Visit &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 描述</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> String</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    String <span class="title function_">value</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 缓存前缀</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> String</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    String <span class="title function_">prefix</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 缓存过期时间</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> long</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="type">long</span> <span class="title function_">timeout</span><span class="params">()</span> <span class="keyword">default</span> <span class="number">7L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 缓存过期时间单位</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> TimeUnit</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    TimeUnit <span class="title function_">unit</span><span class="params">()</span> <span class="keyword">default</span> TimeUnit.DAYS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="切面">切面</h2>
+<p>前面也提到了，这个只适用于第一个参数是需要记录访问量的唯一<code>id</code>，<code>Redis</code>操作也是相当简单，”前缀+<code>id</code>+时间“为<code>key</code>，<code>value</code>为数量就完事了</p>
+<p>还有一个很重要的，这里设置的过期时间一直要和之后需要查询时间对应，也就是说设置了7天，之后查的也只能是7天，不然就不对了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> wnhyang</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2023/3/11</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@RequiredArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">VisitAspect</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> ValueOperations&lt;String, String&gt; valueOperations;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@After(&quot;@annotation(visit)&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">after</span><span class="params">(JoinPoint point, Visit visit)</span> &#123;</span><br><span class="line">        log.info(<span class="string">&quot;value &#123;&#125;,prefix &#123;&#125;,timeout &#123;&#125;,unit &#123;&#125;&quot;</span>, visit.value(), visit.prefix(), visit.timeout(), visit.unit());</span><br><span class="line">        Object[] args = point.getArgs();</span><br><span class="line">        <span class="type">String</span> <span class="variable">now</span> <span class="operator">=</span> LocalDate.now().toString();</span><br><span class="line">        <span class="comment">// args这么放，那么就不具备普适性了</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">key</span> <span class="operator">=</span> RedisUtils.getKey(visit.prefix(), args[<span class="number">0</span>], now);</span><br><span class="line">        <span class="type">Object</span> <span class="variable">value</span> <span class="operator">=</span> valueOperations.get(key);</span><br><span class="line">        <span class="keyword">if</span> (<span class="literal">null</span> != value) &#123;</span><br><span class="line">            valueOperations.increment(key);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            valueOperations.set(key, <span class="string">&quot;1&quot;</span>, visit.timeout(), visit.unit());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="放弃">放弃</h2>
+<p>也是因为上面说的那些缺点，最终还是放弃了这个方法</p>
+<p>改回了每次访问主动地去操作<code>redis</code>了😂</p>
+<h2 id="查询访问量">查询访问量</h2>
+<p>没什么说的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> Visits <span class="title function_">getVisits</span><span class="params">(Long id)</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> getVisits(id, RedisUtils.TIME_OUT_30);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> Visits <span class="title function_">getVisits</span><span class="params">(Long id, <span class="type">long</span> days)</span> &#123;</span><br><span class="line">  <span class="type">LinkMap</span> <span class="variable">linkMap</span> <span class="operator">=</span> baseMapper.selectById(id);</span><br><span class="line">  <span class="keyword">if</span> (<span class="literal">null</span> == linkMap) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="type">LocalDate</span> <span class="variable">now</span> <span class="operator">=</span> LocalDate.now();</span><br><span class="line">  <span class="type">Visits</span> <span class="variable">visits</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Visits</span>();</span><br><span class="line">  <span class="type">int</span> <span class="variable">total</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">  List&lt;VisitsVO&gt; visitsVOList = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; days; i++) &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">date</span> <span class="operator">=</span> now.minusDays(i).toString();</span><br><span class="line">    <span class="type">String</span> <span class="variable">key</span> <span class="operator">=</span> RedisUtils.getKey(CacheConstants.LINK_VISITS, id, date);</span><br><span class="line">    <span class="type">String</span> <span class="variable">count</span> <span class="operator">=</span> valueOperations.get(key);</span><br><span class="line">    <span class="keyword">if</span> (<span class="literal">null</span> == count || <span class="string">&quot;0&quot;</span>.equals(count)) &#123;</span><br><span class="line">      <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    total += Integer.parseInt(count);</span><br><span class="line">    <span class="type">VisitsVO</span> <span class="variable">visitsVO</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">VisitsVO</span>();</span><br><span class="line">    visitsVO.setDate(date);</span><br><span class="line">    visitsVO.setCount(count);</span><br><span class="line">    visitsVOList.add(visitsVO);</span><br><span class="line">  &#125;</span><br><span class="line">  visits.setTotal(total);</span><br><span class="line">  visits.setVisitsVOList(visitsVOList);</span><br><span class="line">  <span class="keyword">return</span> visits;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="总结">总结</h1>
+<p>说到底，AOP实现的很不成熟，实战意义不大。</p>
+<p>哈哈哈哈哈。。。。。</p>
 
     </div>
 
@@ -446,14 +505,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">185k</span>
+    <span title="站点总字数">186k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">11:14</span>
+    <span title="站点阅读时长">11:16</span>
   </span>
 </div>
 <div class="busuanzi-count">

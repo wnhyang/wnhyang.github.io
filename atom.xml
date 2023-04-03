@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2023-04-01T14:33:52.437Z</updated>
+  <updated>2023-04-03T08:35:25.846Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -21,15 +21,14 @@
     <link href="https://wnhyang.github.io/article/ee1e3834.html"/>
     <id>https://wnhyang.github.io/article/ee1e3834.html</id>
     <published>2023-04-01T14:26:17.000Z</published>
-    <updated>2023-04-01T14:33:52.437Z</updated>
+    <updated>2023-04-03T08:35:25.846Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;更新ing&lt;/p&gt;
-</summary>
+    <summary type="html">&lt;h1</summary>
         
       
     
@@ -47,17 +46,22 @@
     <link href="https://wnhyang.github.io/article/5b66ad6f.html"/>
     <id>https://wnhyang.github.io/article/5b66ad6f.html</id>
     <published>2023-04-01T14:25:34.000Z</published>
-    <updated>2023-04-01T14:28:31.156Z</updated>
+    <updated>2023-04-03T08:18:01.889Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;更新ing&lt;/p&gt;
-</summary>
-        
-      
+    <summary type="html">&lt;h1 id=&quot;简介&quot;&gt;简介&lt;/h1&gt;
+&lt;p&gt;最近在做一个短链接的项目，其实应该是算改造，将原来的功能完善一下，其中就包括一个记录访问量的需求，需求大概是这样的：&lt;/p&gt;
+&lt;p&gt;根据每个链接记录其一定时间内的访问量，这个访问量应该是随时间动态变化，即使我不做什么操作。&lt;/p&gt;
+&lt;p&gt;最容易就想到利用&lt;code&gt;Redis&lt;/code&gt;的两种数据结构&lt;code&gt;string&lt;/code&gt;和&lt;code&gt;hash&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;string，&lt;code&gt;link:visit:$id:$date&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;需要通过时间来设置和查询，可单独设置过期时间，删除不能直接通过link来删除，只能自然过期？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;hash，&lt;code&gt;link:visit:$id&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;设置和查询简单，不可单独设置过期时间，删除可一次性删除&lt;/p&gt;
+&lt;p&gt;当然我还看到有利用&lt;code&gt;hyperloglog&lt;/code&gt;记录访问集合的，这与我需求不符就不提了&lt;/p&gt;</summary>
     
     
     
