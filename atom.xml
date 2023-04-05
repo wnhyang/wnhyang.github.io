@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2023-04-03T08:35:25.846Z</updated>
+  <updated>2023-04-05T06:01:59.572Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -21,16 +21,16 @@
     <link href="https://wnhyang.github.io/article/ee1e3834.html"/>
     <id>https://wnhyang.github.io/article/ee1e3834.html</id>
     <published>2023-04-01T14:26:17.000Z</published>
-    <updated>2023-04-03T08:35:25.846Z</updated>
+    <updated>2023-04-05T06:01:59.572Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h1</summary>
-        
-      
+    <summary type="html">&lt;h1 id=&quot;简介&quot;&gt;简介&lt;/h1&gt;
+&lt;p&gt;有了前面&lt;a
+href=&quot;https://wnhyang.github.io/article/abbb8dbb.html&quot;&gt;初次使用
+XXL-JOB&lt;/a&gt;这篇文章就可顺着往下讲了&lt;/p&gt;
+&lt;p&gt;我的需求也很简单，通过一种方式发送即将过期的提醒，当然免费方式中最好的就是邮件啦！&lt;/p&gt;
+&lt;p&gt;我这里选择的方式就是利用&lt;code&gt;XXL-JOB&lt;/code&gt;来查询然后分组发送，当然还有其他方式，我也非常乐意尝试考虑其他方法，合适的话。&lt;/p&gt;
+&lt;p&gt;留在最后讨论吧！&lt;/p&gt;</summary>
     
     
     
@@ -98,7 +98,7 @@
     <link href="https://wnhyang.github.io/article/abbb8dbb.html"/>
     <id>https://wnhyang.github.io/article/abbb8dbb.html</id>
     <published>2023-03-24T08:22:47.000Z</published>
-    <updated>2023-03-27T11:44:35.821Z</updated>
+    <updated>2023-04-05T04:47:56.156Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;简介&quot;&gt;简介&lt;/h1&gt;
@@ -316,11 +316,11 @@ href=&quot;https://blog.csdn.net/li1325169021/article/details/121626299&quot;&gt
     
     
     
-    <category term="Spring Cloud Alibaba" scheme="https://wnhyang.github.io/tags/Spring-Cloud-Alibaba/"/>
-    
     <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
     <category term="Spring Cloud" scheme="https://wnhyang.github.io/tags/Spring-Cloud/"/>
+    
+    <category term="Spring Cloud Alibaba" scheme="https://wnhyang.github.io/tags/Spring-Cloud-Alibaba/"/>
     
   </entry>
   
@@ -570,9 +570,9 @@ class=&quot;uri&quot;&gt;https://theme-next.js.org/docs/getting-started/&lt;/a&g
     
     
     
-    <category term="ruoyi" scheme="https://wnhyang.github.io/tags/ruoyi/"/>
-    
     <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
+    
+    <category term="ruoyi" scheme="https://wnhyang.github.io/tags/ruoyi/"/>
     
   </entry>
   
