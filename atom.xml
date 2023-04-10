@@ -273,7 +273,7 @@ alt=&quot;云效持续交付&quot; /&gt;
     <link href="https://wnhyang.github.io/article/1d91adf8.html"/>
     <id>https://wnhyang.github.io/article/1d91adf8.html</id>
     <published>2023-02-05T15:23:34.000Z</published>
-    <updated>2023-03-27T01:49:25.813Z</updated>
+    <updated>2023-04-10T11:58:25.085Z</updated>
     
     
     <summary type="html">&lt;p&gt;其实我完全可以取个更有趣的标题，“没有人的文明毫无意义”，“你是唯一的变量”，“数字生命”等等之类，可以代表这部《流浪地球2》（下面我称《球2》）的。但是回头一想这么还是不太好，不能从整体上来讲《球2》，所以还是保留了“流浪地球2”的标题。&lt;/p&gt;</summary>
@@ -318,9 +318,9 @@ href=&quot;https://blog.csdn.net/li1325169021/article/details/121626299&quot;&gt
     
     <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
-    <category term="Spring Cloud" scheme="https://wnhyang.github.io/tags/Spring-Cloud/"/>
-    
     <category term="Spring Cloud Alibaba" scheme="https://wnhyang.github.io/tags/Spring-Cloud-Alibaba/"/>
+    
+    <category term="Spring Cloud" scheme="https://wnhyang.github.io/tags/Spring-Cloud/"/>
     
   </entry>
   
@@ -570,9 +570,9 @@ class=&quot;uri&quot;&gt;https://theme-next.js.org/docs/getting-started/&lt;/a&g
     
     
     
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
     <category term="ruoyi" scheme="https://wnhyang.github.io/tags/ruoyi/"/>
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
   </entry>
   
