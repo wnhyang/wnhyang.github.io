@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2023-04-16T14:29:37.984Z</updated>
+  <updated>2023-04-19T11:19:17.386Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -21,20 +21,19 @@
     <link href="https://wnhyang.github.io/article/57d7718e.html"/>
     <id>https://wnhyang.github.io/article/57d7718e.html</id>
     <published>2023-04-16T14:29:37.000Z</published>
-    <updated>2023-04-16T14:29:37.984Z</updated>
+    <updated>2023-04-19T11:19:17.386Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">
-</summary>
-        
-      
+    <summary type="html">&lt;p&gt;真的没想到我的服务器真的能被攻击呀！&lt;/p&gt;
+&lt;p&gt;之前买了两台华为云服务器，配置不高，但够我用。&lt;/p&gt;
+&lt;p&gt;就在上周，首先华为云-云监控服务给我发了好几条关于我的服务器&lt;code&gt;CPU&lt;/code&gt;长时间使用率大于&lt;code&gt;90%&lt;/code&gt;的告警短信，接着还有我装有&lt;code&gt;naocs&lt;/code&gt;、&lt;code&gt;prometheus&lt;/code&gt;、&lt;code&gt;grafana&lt;/code&gt;，配置了钉钉机器人告警的服务器也开始不断在钉钉群里推送告警消息。我也是很奇怪？这两台服务器虽然配置不高，但我装的东西，跑的程序也不至于把&lt;code&gt;CPU&lt;/code&gt;跑满吧！&lt;/p&gt;
+&lt;p&gt;第一天晚上收到的消息，电脑也没在身边，就没当回事，因为我也确实有一周时间没有上服务器玩了，以为就是我的服务发疯呢。&lt;/p&gt;
+&lt;p&gt;直到第二天，问题还一直都在，我就不得不去看一下了。&lt;/p&gt;</summary>
     
     
     
+    
+    <category term="记录" scheme="https://wnhyang.github.io/tags/%E8%AE%B0%E5%BD%95/"/>
     
   </entry>
   
