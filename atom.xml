@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2023-04-19T11:19:17.386Z</updated>
+  <updated>2023-04-27T11:53:54.783Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>自己写spring-boot-starter-xxx</title>
+    <link href="https://wnhyang.github.io/article/96219520.html"/>
+    <id>https://wnhyang.github.io/article/96219520.html</id>
+    <published>2023-04-27T11:51:14.000Z</published>
+    <updated>2023-04-27T11:53:54.783Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;过去只是用人家的&lt;code&gt;spring-boot-starter&lt;/code&gt;，用着是挺爽的&lt;/p&gt;
+</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
+    
+  </entry>
   
   <entry>
     <title>我的服务器竟然被攻击了！</title>
@@ -87,9 +111,9 @@ XXL-JOB&lt;/a&gt;这篇文章就可顺着往下讲了&lt;/p&gt;
     
     
     
-    <category term="AOP" scheme="https://wnhyang.github.io/tags/AOP/"/>
-    
     <category term="Redis" scheme="https://wnhyang.github.io/tags/Redis/"/>
+    
+    <category term="AOP" scheme="https://wnhyang.github.io/tags/AOP/"/>
     
   </entry>
   
@@ -250,11 +274,11 @@ alt=&quot;docker部署流水线&quot; /&gt;
     
     <category term="Docker" scheme="https://wnhyang.github.io/tags/Docker/"/>
     
-    <category term="Git/GitHub" scheme="https://wnhyang.github.io/tags/Git-GitHub/"/>
-    
     <category term="Maven" scheme="https://wnhyang.github.io/tags/Maven/"/>
     
     <category term="DevOps" scheme="https://wnhyang.github.io/tags/DevOps/"/>
+    
+    <category term="Git/GitHub" scheme="https://wnhyang.github.io/tags/Git-GitHub/"/>
     
   </entry>
   
@@ -281,11 +305,11 @@ alt=&quot;云效持续交付&quot; /&gt;
     
     <category term="Docker" scheme="https://wnhyang.github.io/tags/Docker/"/>
     
-    <category term="Git/GitHub" scheme="https://wnhyang.github.io/tags/Git-GitHub/"/>
-    
     <category term="Maven" scheme="https://wnhyang.github.io/tags/Maven/"/>
     
     <category term="DevOps" scheme="https://wnhyang.github.io/tags/DevOps/"/>
+    
+    <category term="Git/GitHub" scheme="https://wnhyang.github.io/tags/Git-GitHub/"/>
     
   </entry>
   
@@ -547,29 +571,6 @@ class=&quot;uri&quot;&gt;https://theme-next.js.org/docs/getting-started/&lt;/a&g
     <category term="Linux" scheme="https://wnhyang.github.io/tags/Linux/"/>
     
     <category term="RocketMQ" scheme="https://wnhyang.github.io/tags/RocketMQ/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>习惯说明书</title>
-    <link href="https://wnhyang.github.io/article/7b04ce94.html"/>
-    <id>https://wnhyang.github.io/article/7b04ce94.html</id>
-    <published>2022-10-24T11:52:18.000Z</published>
-    <updated>2023-03-05T14:18:19.710Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;习惯说明书，听起来好像很奇怪，是习惯（的）说明书？还是习惯（用）说明书？&lt;/p&gt;
-&lt;p&gt;习惯的说明说，是个什么鬼？习惯还有说明说的？&lt;/p&gt;
-&lt;p&gt;尽量接受默认设置&lt;/p&gt;
-&lt;p&gt;学习编程以来，越来越习惯区从官网上找资料、查问题，这是个好习惯，可以肯定。这个习惯也渐渐带入到生活中了，尤其是更习惯看说明书，这&lt;/p&gt;
-&lt;p&gt;现在每当我买东西时，第一步就是去看商品说明，尽量把这个商品了解到一定程度，反复思考自己是不是需要才会去购买。
-还有就是下载app时，装上之后，第一步一定是打开设置，以尽量接受默认设置为目标，修改必要的设置，也许是我现在的精力不多了，不愿意去折腾这些玩意了，不再以“所有app得适应我的使用习惯”为目标，更多的是去接受它们想要给我看到的、听到的。&lt;/p&gt;
-&lt;p&gt;更新ing&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="思考" scheme="https://wnhyang.github.io/tags/%E6%80%9D%E8%80%83/"/>
     
   </entry>
   
