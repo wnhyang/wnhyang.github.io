@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2023-05-02T13:47:28.667Z</updated>
+  <updated>2023-05-04T10:27:22.707Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://wnhyang.github.io/article/86c1a350.html"/>
     <id>https://wnhyang.github.io/article/86c1a350.html</id>
     <published>2023-04-28T08:42:10.000Z</published>
-    <updated>2023-05-02T13:47:28.667Z</updated>
+    <updated>2023-05-04T10:27:22.707Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;qa1&quot;&gt;Q&amp;amp;A1&lt;/h1&gt;
@@ -183,32 +183,6 @@ href=&quot;https://github.com/xuxueli/xxl-job/issues/191&quot;&gt;https://github
     
     
     <category term="定时任务" scheme="https://wnhyang.github.io/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Cursor简单使用</title>
-    <link href="https://wnhyang.github.io/article/f36ff59b.html"/>
-    <id>https://wnhyang.github.io/article/f36ff59b.html</id>
-    <published>2023-03-21T03:04:03.000Z</published>
-    <updated>2023-04-23T11:22:23.674Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;本来想做个视频来完成本篇文章的，但是拖了太久了&lt;/p&gt;
-</summary>
-        
-      
-    
-    
-    
-    
-    <category term="记录" scheme="https://wnhyang.github.io/tags/%E8%AE%B0%E5%BD%95/"/>
-    
-    <category term="软件/工具" scheme="https://wnhyang.github.io/tags/%E8%BD%AF%E4%BB%B6-%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
@@ -557,6 +531,40 @@ class=&quot;uri&quot;&gt;https://theme-next.js.org/docs/getting-started/&lt;/a&g
     
     
     <category term="记录" scheme="https://wnhyang.github.io/tags/%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>RocketMQ部署</title>
+    <link href="https://wnhyang.github.io/article/28a4cb58.html"/>
+    <id>https://wnhyang.github.io/article/28a4cb58.html</id>
+    <published>2022-11-27T07:51:33.000Z</published>
+    <updated>2023-01-03T10:06:14.841Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;简介&quot;&gt;简介&lt;/h1&gt;
+&lt;p&gt;最近在学习&lt;code&gt;RocketMQ&lt;/code&gt;，但一直苦于没有合适的环境学习。我的电脑是&lt;code&gt;Windows&lt;/code&gt;系统，虽然换上了专业版装上了&lt;code&gt;Docker&lt;/code&gt;，而且也有虚拟机，平常也会通过这些环境学习，但是还是太不方便了，为了方便终于又用上了云服务器，这次是阿里的。&lt;/p&gt;
+&lt;p&gt;配置如下&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;CPU&amp;amp;内存 1核(vCPU)2 GiB&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;操作系统 CentOS 7.8 64位&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;当前使用带宽 1Mbps&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这次&lt;code&gt;RocketMQ&lt;/code&gt;的配置包括，&lt;code&gt;RocketMQ（NameServer、Broker）&lt;/code&gt;和控制台&lt;code&gt;RocketMQ-Dashboard&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;提要：基础的&lt;code&gt;JDK&lt;/code&gt;和&lt;code&gt;Maven&lt;/code&gt;这里不多提了，都安装配置好了，另外后面的&lt;code&gt;RocketMQ-Dashboard&lt;/code&gt;采用&lt;code&gt;Docker&lt;/code&gt;部署方式，&lt;code&gt;Docker&lt;/code&gt;安装查看官网装上就好。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="Docker" scheme="https://wnhyang.github.io/tags/Docker/"/>
+    
+    <category term="Linux" scheme="https://wnhyang.github.io/tags/Linux/"/>
+    
+    <category term="RocketMQ" scheme="https://wnhyang.github.io/tags/RocketMQ/"/>
     
   </entry>
   
