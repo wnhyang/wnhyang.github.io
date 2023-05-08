@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2023-05-04T10:27:22.707Z</updated>
+  <updated>2023-05-08T11:27:49.954Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>开放的服务一定要小心</title>
+    <link href="https://wnhyang.github.io/article/b58761d9.html"/>
+    <id>https://wnhyang.github.io/article/b58761d9.html</id>
+    <published>2023-05-08T07:54:29.000Z</published>
+    <updated>2023-05-08T11:27:49.954Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;又搞我&quot;&gt;又搞我？&lt;/h1&gt;
+&lt;p&gt;继&lt;a
+href=&quot;https://wnhyang.github.io/article/57d7718e.html&quot;&gt;我的服务器竟然被攻击了！&lt;/a&gt;之后，我的服务器又被攻击了，上次是解决了远程用户登录，定时执行恶意脚本的问题。&lt;/p&gt;
+&lt;p&gt;但这次又对我的&lt;code&gt;MySQL&lt;/code&gt;下手了，并且在每个库中留下了一张&lt;code&gt;README&lt;/code&gt;的表，表里只有一条数据，如下：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;您的数据库已删除。您必须支付 0.0125 比特币 (BTC)
+才能取回它们。我拥有的备份：okay, wnh, xxl_job。通过 chin71303@proton.me
+与我联系 只有与付款相关的邮件才会得到答复！&lt;/p&gt;
+&lt;p&gt;bc1q3l9q2n840y682vvy7xxs7cptnthag3z3xmfpgy&lt;/p&gt;
+&lt;p&gt;chin71303@proton.me&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;真是杀人且诛心啊！&lt;/p&gt;
+&lt;p&gt;跟上次一样，发生了这件事后我立刻马上就知道被攻击的原因了，还是我习惯了自己开发，随性的原因，平常我自己玩就不太注意开放出来的安全性，因为那时候仅仅是在自己的电脑上玩，不管是局域网还是防火墙都会有保障，而且一般不会全天24小时运行，但是到服务器上就不一样了，在安全规则上设置的比较随意，需要的端口都直接开放，中间件账号权限也是随意设置的，特别容易被以撞库等方式破解，这次事件也正是它带来的后果。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="记录" scheme="https://wnhyang.github.io/tags/%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
   
   <entry>
     <title>ChatGPT对话02</title>
@@ -531,40 +560,6 @@ class=&quot;uri&quot;&gt;https://theme-next.js.org/docs/getting-started/&lt;/a&g
     
     
     <category term="记录" scheme="https://wnhyang.github.io/tags/%E8%AE%B0%E5%BD%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>RocketMQ部署</title>
-    <link href="https://wnhyang.github.io/article/28a4cb58.html"/>
-    <id>https://wnhyang.github.io/article/28a4cb58.html</id>
-    <published>2022-11-27T07:51:33.000Z</published>
-    <updated>2023-01-03T10:06:14.841Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;简介&quot;&gt;简介&lt;/h1&gt;
-&lt;p&gt;最近在学习&lt;code&gt;RocketMQ&lt;/code&gt;，但一直苦于没有合适的环境学习。我的电脑是&lt;code&gt;Windows&lt;/code&gt;系统，虽然换上了专业版装上了&lt;code&gt;Docker&lt;/code&gt;，而且也有虚拟机，平常也会通过这些环境学习，但是还是太不方便了，为了方便终于又用上了云服务器，这次是阿里的。&lt;/p&gt;
-&lt;p&gt;配置如下&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;CPU&amp;amp;内存 1核(vCPU)2 GiB&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;操作系统 CentOS 7.8 64位&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;当前使用带宽 1Mbps&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;这次&lt;code&gt;RocketMQ&lt;/code&gt;的配置包括，&lt;code&gt;RocketMQ（NameServer、Broker）&lt;/code&gt;和控制台&lt;code&gt;RocketMQ-Dashboard&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;提要：基础的&lt;code&gt;JDK&lt;/code&gt;和&lt;code&gt;Maven&lt;/code&gt;这里不多提了，都安装配置好了，另外后面的&lt;code&gt;RocketMQ-Dashboard&lt;/code&gt;采用&lt;code&gt;Docker&lt;/code&gt;部署方式，&lt;code&gt;Docker&lt;/code&gt;安装查看官网装上就好。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="Docker" scheme="https://wnhyang.github.io/tags/Docker/"/>
-    
-    <category term="Linux" scheme="https://wnhyang.github.io/tags/Linux/"/>
-    
-    <category term="RocketMQ" scheme="https://wnhyang.github.io/tags/RocketMQ/"/>
     
   </entry>
   
