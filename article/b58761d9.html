@@ -33,7 +33,7 @@
 <meta property="og:description" content="又搞我？ 继我的服务器竟然被攻击了！之后，我的服务器又被攻击了，上次是解决了远程用户登录，定时执行恶意脚本的问题。 但这次又对我的MySQL下手了，并且在每个库中留下了一张README的表，表里只有一条数据，如下：  您的数据库已删除。您必须支付 0.0125 比特币 (BTC) 才能取回它们。我拥有的备份：okay, wnh, xxl_job。通过 chin71303@proton.me 与我联">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-05-08T07:54:29.000Z">
-<meta property="article:modified_time" content="2023-05-08T11:27:49.954Z">
+<meta property="article:modified_time" content="2023-05-09T00:41:24.619Z">
 <meta property="article:author" content="无奈何杨（wnhyang）">
 <meta property="article:tag" content="记录">
 <meta name="twitter:card" content="summary">
@@ -298,9 +298,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2023-05-08 15:54:29 / 修改时间：19:27:49" itemprop="dateCreated datePublished" datetime="2023-05-08T15:54:29+08:00">2023-05-08</time>
+      <time title="创建时间：2023-05-08 15:54:29" itemprop="dateCreated datePublished" datetime="2023-05-08T15:54:29+08:00">2023-05-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-05-09 08:41:24" itemprop="dateModified" datetime="2023-05-09T08:41:24+08:00">2023-05-09</time>
     </span>
 
   
@@ -317,7 +323,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>850</span>
+      <span>876</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -385,7 +391,14 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/u014780310/article/de
 <p>说了不是管关键数据了，所以恢复起来很简单，<code>xxl-job</code>直接执行官方<code>sql</code>脚本即可，另一个项目也有备份<code>sql</code>，数据都是通过<code>apifox</code>造的，问题也不大。</p>
 <p>比较伤心的是，我这段时间做的一个用户-角色-资源的表结构丢了，虽然重新做也不麻烦，但还是好烦。</p>
 <h2 id="修改配置重新部署">修改配置重新部署</h2>
-<p>为了防止再次放生同类事件，正确的做法应当是创建出一些低权限的用户只用来操作业务数据库，而不是都使用<code>root</code>用户，还有要定期修改用户密码。</p>
+<p>为了防止再次放生同类事件，正确的做法应当是创建出一些低权限的用户只用来操作业务数据库，而不是都使用<code>root</code>用户，还有要定期<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40757240/article/details/118068317">修改用户密码</a>、<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/huxinguang_ios/article/details/80887175">创建用户并授权</a>。</p>
+<blockquote>
+<p>mysql&gt; use mysql; mysql&gt; update user set
+password=password(‘123’) where user=‘root’ and host=‘localhost’;
+mysql&gt; flush privileges;</p>
+</blockquote>
 <p>另外,貌似<code>nacos</code>修改数据库配置是不能省去重启服务的步骤。</p>
 
     </div>
