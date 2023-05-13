@@ -70,15 +70,14 @@ href=&quot;https://wnhyang.github.io/article/57d7718e.html&quot;&gt;我的服务
     <link href="https://wnhyang.github.io/article/96219520.html"/>
     <id>https://wnhyang.github.io/article/96219520.html</id>
     <published>2023-04-27T11:51:14.000Z</published>
-    <updated>2023-05-07T14:53:41.642Z</updated>
+    <updated>2023-05-13T14:46:17.816Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;过去只是用人家的&lt;code&gt;xxx-spring-boot-starter&lt;/code&gt;，用着是挺爽的，但随着学习和工作，发现不管是流行的开源产品还是公司内部总会存在一些自己封装的&lt;code&gt;starter&lt;/code&gt;&lt;/p&gt;
-</summary>
+    <summary type="html">&lt;p&gt;过去只是用人家的&lt;code&gt;xxx-spring-boot-starter&lt;/code&gt;，用着是挺爽的，但随着学习和工作，发现不管是流行的开源产品还是公司内部总会存在一些自己封装的&lt;code&gt;starter&lt;/code&gt;，刚开始我也是很不解，一直觉得原本的就是最好的&lt;/p&gt;</summary>
         
       
     
@@ -160,9 +159,9 @@ XXL-JOB&lt;/a&gt;这篇文章就可顺着往下讲了&lt;/p&gt;
     
     
     
-    <category term="AOP" scheme="https://wnhyang.github.io/tags/AOP/"/>
-    
     <category term="Redis" scheme="https://wnhyang.github.io/tags/Redis/"/>
+    
+    <category term="AOP" scheme="https://wnhyang.github.io/tags/AOP/"/>
     
   </entry>
   
