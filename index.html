@@ -367,7 +367,7 @@ href="https://wnhyang.github.io/article/57d7718e.html">我的服务器竟然被�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-05-19 08:54:07" itemprop="dateModified" datetime="2023-05-19T08:54:07+08:00">2023-05-19</time>
+      <time title="修改时间：2023-05-23 18:43:07" itemprop="dateModified" datetime="2023-05-23T18:43:07+08:00">2023-05-23</time>
     </span>
 
   
@@ -377,14 +377,14 @@ href="https://wnhyang.github.io/article/57d7718e.html">我的服务器竟然被�
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>666</span>
+      <span>721</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
+      <span>3 分钟</span>
     </span>
 </div>
 
@@ -399,6 +399,12 @@ href="https://wnhyang.github.io/article/57d7718e.html">我的服务器竟然被�
 <blockquote>
 <p>Q1:清理2023年，除了20230109目录外，保留近一个月的目录shell脚本</p>
 </blockquote>
+<blockquote>
+<p>A1:以下是清理除20230109目录外，保留近一个月的目录的shell脚本：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">复制代码#!/bin/bash</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">删除早于30天的目录</span></span><br><span class="line">find /path/to/directory/* -type d ! -name &quot;20230109&quot; -ctime +30 -exec rm -rf &#123;&#125; \;</span><br></pre></td></tr></table></figure>
+<p>将<code>/path/to/directory/</code>替换为要清理的目录的路径。这个脚本使用<code>find</code>命令来查找除了名为<code>20230109</code>的目录以外的所有目录，并删除它们，同时保留近30天内被修改过的目录。</p>
+</blockquote>
+<p>学到了学到了，运维时就可以通过手动或定时任务清理一些不需要的文件了。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/article/86c1a350.html#more" rel="contents">

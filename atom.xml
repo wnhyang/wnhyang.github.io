@@ -50,13 +50,19 @@ href=&quot;https://wnhyang.github.io/article/57d7718e.html&quot;&gt;我的服务
     <link href="https://wnhyang.github.io/article/86c1a350.html"/>
     <id>https://wnhyang.github.io/article/86c1a350.html</id>
     <published>2023-04-28T08:42:10.000Z</published>
-    <updated>2023-05-19T00:54:07.343Z</updated>
+    <updated>2023-05-23T10:43:07.614Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;qa1&quot;&gt;Q&amp;amp;A1&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Q1:清理2023年，除了20230109目录外，保留近一个月的目录shell脚本&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A1:以下是清理除20230109目录外，保留近一个月的目录的shell脚本：&lt;/p&gt;
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;复制代码#!/bin/bash&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;# &lt;/span&gt;&lt;span class=&quot;language-bash&quot;&gt;删除早于30天的目录&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;find /path/to/directory/* -type d ! -name &amp;quot;20230109&amp;quot; -ctime +30 -exec rm -rf &amp;#123;&amp;#125; \;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;将&lt;code&gt;/path/to/directory/&lt;/code&gt;替换为要清理的目录的路径。这个脚本使用&lt;code&gt;find&lt;/code&gt;命令来查找除了名为&lt;code&gt;20230109&lt;/code&gt;的目录以外的所有目录，并删除它们，同时保留近30天内被修改过的目录。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;学到了学到了，运维时就可以通过手动或定时任务清理一些不需要的文件了。&lt;/p&gt;</summary>
     
     
     
@@ -383,9 +389,9 @@ href=&quot;https://blog.csdn.net/li1325169021/article/details/121626299&quot;&gt
     
     
     
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
     <category term="Spring Cloud Alibaba" scheme="https://wnhyang.github.io/tags/Spring-Cloud-Alibaba/"/>
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
     <category term="Spring Cloud" scheme="https://wnhyang.github.io/tags/Spring-Cloud/"/>
     

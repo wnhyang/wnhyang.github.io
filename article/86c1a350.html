@@ -25,15 +25,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="Q&amp;A1  Q1:清理2023年，除了20230109目录外，保留近一个月的目录shell脚本">
+    <meta name="description" content="Q&amp;A1  Q1:清理2023年，除了20230109目录外，保留近一个月的目录shell脚本   A1:以下是清理除20230109目录外，保留近一个月的目录的shell脚本： 1234复制代码#!&#x2F;bin&#x2F;bash# 删除早于30天的目录find &#x2F;path&#x2F;to&#x2F;directory&#x2F;* -type d ! -name &quot;20230109&quot; -ctime +30 -">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ChatGPT对话02">
 <meta property="og:url" content="https://wnhyang.github.io/article/86c1a350.html">
 <meta property="og:site_name" content="无奈何杨（wnhyang）">
-<meta property="og:description" content="Q&amp;A1  Q1:清理2023年，除了20230109目录外，保留近一个月的目录shell脚本">
+<meta property="og:description" content="Q&amp;A1  Q1:清理2023年，除了20230109目录外，保留近一个月的目录shell脚本   A1:以下是清理除20230109目录外，保留近一个月的目录的shell脚本： 1234复制代码#!&#x2F;bin&#x2F;bash# 删除早于30天的目录find &#x2F;path&#x2F;to&#x2F;directory&#x2F;* -type d ! -name &quot;20230109&quot; -ctime +30 -">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-04-28T08:42:10.000Z">
-<meta property="article:modified_time" content="2023-05-19T00:54:07.343Z">
+<meta property="article:modified_time" content="2023-05-23T10:43:07.614Z">
 <meta property="article:author" content="无奈何杨（wnhyang）">
 <meta property="article:tag" content="记录">
 <meta name="twitter:card" content="summary">
@@ -228,13 +228,6 @@
       SSM(新)
       </a>
     </li>
-    <li class="popular-posts-item">
-      <a class="popular-posts-link" href="/article/9a440dda.html" rel="bookmark">
-        <time class="popular-posts-time">2022-10-12</time>
-        <br>
-      ruoyi学习多数据源
-      </a>
-    </li>
   </ul>
 
           </div>
@@ -292,7 +285,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-05-19 08:54:07" itemprop="dateModified" datetime="2023-05-19T08:54:07+08:00">2023-05-19</time>
+      <time title="修改时间：2023-05-23 18:43:07" itemprop="dateModified" datetime="2023-05-23T18:43:07+08:00">2023-05-23</time>
     </span>
 
   
@@ -309,14 +302,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>666</span>
+      <span>721</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
+      <span>3 分钟</span>
     </span>
 </div>
 
@@ -331,13 +324,13 @@
 <blockquote>
 <p>Q1:清理2023年，除了20230109目录外，保留近一个月的目录shell脚本</p>
 </blockquote>
-<span id="more"></span>
 <blockquote>
-<p>以下是清理除20230109目录外，保留近一个月的目录的shell脚本：</p>
+<p>A1:以下是清理除20230109目录外，保留近一个月的目录的shell脚本：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">复制代码#!/bin/bash</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">删除早于30天的目录</span></span><br><span class="line">find /path/to/directory/* -type d ! -name &quot;20230109&quot; -ctime +30 -exec rm -rf &#123;&#125; \;</span><br></pre></td></tr></table></figure>
 <p>将<code>/path/to/directory/</code>替换为要清理的目录的路径。这个脚本使用<code>find</code>命令来查找除了名为<code>20230109</code>的目录以外的所有目录，并删除它们，同时保留近30天内被修改过的目录。</p>
 </blockquote>
 <p>学到了学到了，运维时就可以通过手动或定时任务清理一些不需要的文件了。</p>
+<span id="more"></span>
 <h1 id="qa2">Q&amp;A2</h1>
 <blockquote>
 <p>Q1:SpringBoot统一接口打印入参出参日志</p>
@@ -361,6 +354,7 @@
 <p>现在，只要是位于 com.example.controller 包内的公共方法都会被
 LogAspect 拦截，并在控制台输出请求参数和响应结果的日志信息。</p>
 </blockquote>
+<p>这个回答还是挺好的，<code>copy</code>下，修改就能用了，而且这个代码有意思的点是<code>Response.fail(ResponseCode.ERROR.getCode(), "系统繁忙，请稍候再试");</code>，这个还是统一响应结果，有趣的勒。</p>
 
     </div>
 
