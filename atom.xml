@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2023-05-09T00:41:24.619Z</updated>
+  <updated>2023-06-08T11:16:16.361Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>IDEA启动SpringBoot项目Process finished with exit code 1</title>
+    <link href="https://wnhyang.github.io/article/a541e7bd.html"/>
+    <id>https://wnhyang.github.io/article/a541e7bd.html</id>
+    <published>2023-06-08T00:33:09.000Z</published>
+    <updated>2023-06-08T11:16:16.361Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>开放的服务一定要小心</title>
@@ -543,23 +564,6 @@ class=&quot;uri&quot;&gt;https://theme-next.js.org/docs/getting-started/&lt;/a&g
     
     
     <category term="Linux" scheme="https://wnhyang.github.io/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>江南遇雪</title>
-    <link href="https://wnhyang.github.io/article/2feea1bf.html"/>
-    <id>https://wnhyang.github.io/article/2feea1bf.html</id>
-    <published>2022-12-04T12:26:11.000Z</published>
-    <updated>2023-02-15T14:28:45.822Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;对我来说还是很惊喜的，毕竟在我的印象里，南方很少能见到雪，况且这么大的雪。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="记录" scheme="https://wnhyang.github.io/tags/%E8%AE%B0%E5%BD%95/"/>
     
   </entry>
   
