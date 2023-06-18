@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2023-06-15T12:40:18.042Z</updated>
+  <updated>2023-06-18T13:35:38.025Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -21,10 +21,15 @@
     <link href="https://wnhyang.github.io/article/a541e7bd.html"/>
     <id>https://wnhyang.github.io/article/a541e7bd.html</id>
     <published>2023-06-08T00:33:09.000Z</published>
-    <updated>2023-06-15T12:40:18.042Z</updated>
+    <updated>2023-06-18T13:35:38.025Z</updated>
     
     
-    <summary type="html">&lt;p&gt;如题，这个问题其实很早之前就遇到过，是同样的报错，虽然可能具体的原因有些不同，但忘了记录，这次说什么也要记录下来长个记性。&lt;/p&gt;</summary>
+    <summary type="html">&lt;h1 id=&quot;启动错误日志呢&quot;&gt;启动错误日志呢&lt;/h1&gt;
+&lt;p&gt;如题，这个问题其实很早之前就遇到过，是同样的报错，虽然可能具体的原因有些不同，但忘了记录，这次说什么也要记录下来长个记性。&lt;/p&gt;
+&lt;p&gt;说来也离奇，通常在使用&lt;code&gt;IDEA&lt;/code&gt;启动调试&lt;code&gt;SpringBoot&lt;/code&gt;就算是启动不了，至少还有一些日志能够帮助我们排查出是什么问题，但这次遇到的只有下面这个，除此之外什么什么也没有了！&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Process finished with &lt;span class=&quot;built_in&quot;&gt;exit&lt;/span&gt; code 1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;这可着实无从下手，还有一种启动失败错误如下，也是非常常见的。&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Connected to the target VM, address: &lt;span class=&quot;string&quot;&gt;&amp;#x27;127.0.0.1:56302&amp;#x27;&lt;/span&gt;, transport: &lt;span class=&quot;string&quot;&gt;&amp;#x27;socket&amp;#x27;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Disconnected from the target VM, address: &lt;span class=&quot;string&quot;&gt;&amp;#x27;127.0.0.1:56302&amp;#x27;&lt;/span&gt;, transport: &lt;span class=&quot;string&quot;&gt;&amp;#x27;socket&amp;#x27;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Process finished with &lt;span class=&quot;built_in&quot;&gt;exit&lt;/span&gt; code 1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     
