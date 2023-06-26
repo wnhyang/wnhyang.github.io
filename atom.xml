@@ -96,12 +96,13 @@ href=&quot;https://wnhyang.github.io/article/57d7718e.html&quot;&gt;我的服务
     <link href="https://wnhyang.github.io/article/96219520.html"/>
     <id>https://wnhyang.github.io/article/96219520.html</id>
     <published>2023-04-27T11:51:14.000Z</published>
-    <updated>2023-06-22T14:16:10.416Z</updated>
+    <updated>2023-06-26T11:17:45.103Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;什么是boot&quot;&gt;什么是Boot&lt;/h1&gt;
 &lt;p&gt;过去只是用人家的&lt;code&gt;xxx-spring-boot-starter&lt;/code&gt;，用着是挺爽的，但随着学习和工作，发现不管是流行的开源产品还是公司内部总会存在一些自己封装的&lt;code&gt;starter&lt;/code&gt;，刚开始我也是很不解，一直觉得原本的就是最好的，根本不需要我们改什么，直到我学着去自己写&lt;code&gt;starter&lt;/code&gt;，才发觉脚手架的意义就在这啊，这就是&lt;code&gt;boot&lt;/code&gt;啊！&lt;/p&gt;
-&lt;p&gt;不多废话了，接下来从&lt;/p&gt;</summary>
+&lt;p&gt;不多废话了，接下来从开源项目&lt;a
+href=&quot;https://github.com/YunaiV/yudao-cloud&quot;&gt;yudao-cloud&lt;/a&gt;说起怎么在开源框架的基础上封装自己的&lt;code&gt;starter&lt;/code&gt;。&lt;/p&gt;</summary>
     
     
     
@@ -405,9 +406,9 @@ href=&quot;https://blog.csdn.net/li1325169021/article/details/121626299&quot;&gt
     
     
     
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
     <category term="Spring Cloud Alibaba" scheme="https://wnhyang.github.io/tags/Spring-Cloud-Alibaba/"/>
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
     <category term="Spring Cloud" scheme="https://wnhyang.github.io/tags/Spring-Cloud/"/>
     
