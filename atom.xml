@@ -96,13 +96,18 @@ href=&quot;https://wnhyang.github.io/article/57d7718e.html&quot;&gt;我的服务
     <link href="https://wnhyang.github.io/article/96219520.html"/>
     <id>https://wnhyang.github.io/article/96219520.html</id>
     <published>2023-04-27T11:51:14.000Z</published>
-    <updated>2023-06-26T11:17:45.103Z</updated>
+    <updated>2023-07-04T10:14:59.426Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;什么是boot&quot;&gt;什么是Boot&lt;/h1&gt;
 &lt;p&gt;过去只是用人家的&lt;code&gt;xxx-spring-boot-starter&lt;/code&gt;，用着是挺爽的，但随着学习和工作，发现不管是流行的开源产品还是公司内部总会存在一些自己封装的&lt;code&gt;starter&lt;/code&gt;，刚开始我也是很不解，一直觉得原本的就是最好的，根本不需要我们改什么，直到我学着去自己写&lt;code&gt;starter&lt;/code&gt;，才发觉脚手架的意义就在这啊，这就是&lt;code&gt;boot&lt;/code&gt;啊！&lt;/p&gt;
 &lt;p&gt;不多废话了，接下来从开源项目&lt;a
-href=&quot;https://github.com/YunaiV/yudao-cloud&quot;&gt;yudao-cloud&lt;/a&gt;说起怎么在开源框架的基础上封装自己的&lt;code&gt;starter&lt;/code&gt;。&lt;/p&gt;</summary>
+href=&quot;https://github.com/YunaiV/yudao-cloud&quot;&gt;yudao-cloud&lt;/a&gt;说起怎么在开源框架的基础上封装自己的&lt;code&gt;starter&lt;/code&gt;。&lt;/p&gt;
+&lt;h1 id=&quot;尝试自己写starter&quot;&gt;尝试自己写starter&lt;/h1&gt;
+&lt;p&gt;我们就从&lt;code&gt;yudao-spring-boot-starter-job&lt;/code&gt;开始做一个属于自己的starter吧！&lt;/p&gt;
+&lt;h2 id=&quot;前提说明&quot;&gt;前提说明&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;SpringBoot&lt;/code&gt;基础的就不用多提了，需要注意的是不同版本会有一些差异，&lt;a
+href=&quot;https://blog.csdn.net/Zhangsama1/article/details/129198456&quot;&gt;SpringBoot2.7之后自动配置类差异&lt;/a&gt;。&lt;/p&gt;</summary>
     
     
     
