@@ -25,29 +25,26 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="在使用Mybatis写sql语句时常会用到#{}和${}动态实现参数传递，这里就是来记录一下这两者的区别。 参考 MyBatis视频教程 [#{}与\({}的区别](https:&#x2F;&#x2F;blog.csdn.net&#x2F;qian_qian_123&#x2F;article&#x2F;details&#x2F;92844194?ops_request_misc&#x3D;%25257B%252522request%25255Fid%252522%2">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Mybatis中两种取值符号区别">
-<meta property="og:url" content="https://wnhyang.github.io/article/dc4db25f.html">
+    <meta name="description" content="学习记录所用">
+<meta property="og:type" content="website">
+<meta property="og:title" content="无奈何杨（wnhyang）">
+<meta property="og:url" content="https://wnhyang.github.io/archives/2023/07/index.html">
 <meta property="og:site_name" content="无奈何杨（wnhyang）">
-<meta property="og:description" content="在使用Mybatis写sql语句时常会用到#{}和${}动态实现参数传递，这里就是来记录一下这两者的区别。 参考 MyBatis视频教程 [#{}与\({}的区别](https:&#x2F;&#x2F;blog.csdn.net&#x2F;qian_qian_123&#x2F;article&#x2F;details&#x2F;92844194?ops_request_misc&#x3D;%25257B%252522request%25255Fid%252522%2">
+<meta property="og:description" content="学习记录所用">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-12-03T08:23:59.000Z">
-<meta property="article:modified_time" content="2023-01-03T10:05:50.268Z">
 <meta property="article:author" content="无奈何杨（wnhyang）">
-<meta property="article:tag" content="MySQL">
-<meta property="article:tag" content="Mybatis&#x2F;Mybatis-plus">
+<meta property="article:tag" content="blog">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://wnhyang.github.io/article/dc4db25f.html">
+<link rel="canonical" href="https://wnhyang.github.io/archives/2023/07/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wnhyang.github.io/article/dc4db25f.html","path":"article/dc4db25f.html","title":"Mybatis中两种取值符号区别"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"archives/2023/07/index.html","title":""}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Mybatis中两种取值符号区别 | 无奈何杨（wnhyang）</title>
+<title>归档 | 无奈何杨（wnhyang）</title>
   
 
 
@@ -83,7 +80,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <p class="site-title">无奈何杨（wnhyang）</p>
+      <h1 class="site-title">无奈何杨（wnhyang）</h1>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">I will keep to fight</p>
@@ -137,7 +134,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -150,7 +147,6 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">1.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8C%BA%E5%88%AB"><span class="nav-number">2.</span> <span class="nav-text">区别</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -209,281 +205,56 @@
       </div>
     </div>
         <div class="pjax">
-        <div class="sidebar-inner sidebar-post-related">
-          <div class="animated">
-              <div class="links-of-blogroll-title"><i class="fa fa-signs-post fa-fw"></i>
-    相关文章
-  </div>
-  <ul class="popular-posts">
-    <li class="popular-posts-item">
-      <a class="popular-posts-link" href="/article/52936e2c.html" rel="bookmark">
-        <time class="popular-posts-time">2021-02-22</time>
-        <br>
-      Windows更新Git（转载）
-      </a>
-    </li>
-    <li class="popular-posts-item">
-      <a class="popular-posts-link" href="/article/8366968a.html" rel="bookmark">
-        <time class="popular-posts-time">2022-05-11</time>
-        <br>
-      设计模式-行为模式-观察者模式
-      </a>
-    </li>
-    <li class="popular-posts-item">
-      <a class="popular-posts-link" href="/article/8100a57.html" rel="bookmark">
-        <time class="popular-posts-time">2021-02-09</time>
-        <br>
-      MyBatis（二）
-      </a>
-    </li>
-    <li class="popular-posts-item">
-      <a class="popular-posts-link" href="/article/755ff4c3.html" rel="bookmark">
-        <time class="popular-posts-time">2022-03-24</time>
-        <br>
-      EasyPoi导出复杂Excel
-      </a>
-    </li>
-    <li class="popular-posts-item">
-      <a class="popular-posts-link" href="/article/5b66ad6f.html" rel="bookmark">
-        <time class="popular-posts-time">2023-04-01</time>
-        <br>
-      AOP记录访问量
-      </a>
-    </li>
-  </ul>
-
-          </div>
-        </div>
         </div>
   </aside>
 
 
     </div>
 
-    <div class="main-inner post posts-expand">
+    <div class="main-inner archive posts-collapse">
 
 
   
-
-
-<div class="post-block">
   
   
+  <div class="post-block">
+    <div class="post-content">
+      <div class="collection-title">
+        
+        <span class="collection-header">非常好! 目前共计 160 篇日志。 继续努力。</span>
+      </div>
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/dc4db25f.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-      <meta itemprop="description" content="学习记录所用">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Mybatis中两种取值符号区别 | 无奈何杨（wnhyang）">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          Mybatis中两种取值符号区别
-        </h1>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-12-03 16:23:59" itemprop="dateCreated datePublished" datetime="2020-12-03T16:23:59+08:00">2020-12-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-01-03 18:05:50" itemprop="dateModified" datetime="2023-01-03T18:05:50+08:00">2023-01-03</time>
-    </span>
-
-  
-    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span id="busuanzi_value_page_pv"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>168</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-        <p>在使用Mybatis写sql语句时常会用到#{}和${}动态实现参数传递，这里就是来记录一下这两者的区别。</p>
-<h1 id="参考">参考</h1>
-<p><a
-target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1gs411j7kA">MyBatis视频教程</a></p>
-<p>[#{}与<span
-class="math inline">\({}的区别](https://blog.csdn.net/qian_qian_123/article/details/92844194?ops_request_misc=%25257B%252522request%25255Fid%252522%25253A%252522160759025519726885835134%252522%25252C%252522scm%252522%25253A%25252220140713.130102334..%252522%25257D&amp;request_id=160759025519726885835134&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~baidu_landing_v2~default-3-92844194.pc_search_result_no_baidu_js&amp;utm_term=#{}%E4%B8%8E\)</span>{}%E5%8C%BA%E5%88%AB)</p>
-<span id="more"></span>
-<h1 id="区别">区别</h1>
-<p>输入参数: parameterType</p>
-<p>类型为简单类型(8个基本类型+String)</p>
-<blockquote>
-<p>a</p>
-</blockquote>
-<p>#{任意值}</p>
-<p>${value}，其中的标识符只能是value</p>
-<blockquote>
-<p>b</p>
-</blockquote>
-<p>#{}自动给String类型加上' '(自动类型转换)</p>
-<p>${}原样输出，但是适合于动态排序(动态字段)</p>
-<p>例：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> sno,sname,sage <span class="keyword">from</span> student <span class="keyword">where</span> sname <span class="operator">=</span> #&#123;<span class="keyword">value</span>&#125;</span><br></pre></td></tr></table></figure>
-<p>等价</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> sno,sname,sage <span class="keyword">from</span> student <span class="keyword">where</span> sname <span class="operator">=</span><span class="string">&#x27;$&#123;value&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
-<p>动态排序</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> sno,sname,sage <span class="keyword">from</span> student <span class="keyword">order</span> <span class="keyword">by</span> $&#123;<span class="keyword">value</span>&#125; <span class="keyword">asc</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>c</p>
-</blockquote>
-<p>#{}可以防止SQL注入</p>
-<p>${}不防止</p>
-<p><a
-target="_blank" rel="noopener" href="https://blog.csdn.net/q_all_is_well/article/details/81559612">原因</a></p>
-
+      
+    <div class="collection-year">
+      <span class="collection-header">2023</span>
     </div>
 
-    
-    
-    
-
-    <footer class="post-footer">
-          <div class="reward-container">
-  <div>Buy me a coffee</div>
-  <button>
-    赞赏
-  </button>
-  <div class="post-reward">
-      <div>
-        <img src="/images/wechatpay.JPG" alt="无奈何杨（wnhyang） 微信">
-        <span>微信</span>
-      </div>
-      <div>
-        <img src="/images/alipay.png" alt="无奈何杨（wnhyang） 支付宝">
-        <span>支付宝</span>
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <div class="post-meta-container">
+        <time itemprop="dateCreated"
+              datetime="2023-07-29T17:31:57+08:00"
+              content="2023-07-29">
+          07-29
+        </time>
       </div>
 
-  </div>
-</div>
-
-          
-
-<div class="post-copyright">
-<ul>
-  <li class="post-copyright-author">
-      <strong>本文作者： </strong>无奈何杨（wnhyang）
-  </li>
-  <li class="post-copyright-link">
-      <strong>本文链接：</strong>
-      <a href="https://wnhyang.github.io/article/dc4db25f.html" title="Mybatis中两种取值符号区别">https://wnhyang.github.io/article/dc4db25f.html</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
-  </li>
-</ul>
-</div>
-
-          <div class="followme">
-  <span>欢迎关注我的其它发布渠道</span>
-
-  <div class="social-list">
-
-      <div class="social-item">
-          <span class="social-link">
-            <span class="icon">
-              <i class="fab fa-weixin"></i>
-            </span>
-
-            <span class="label">WeChat</span>
-          </span>
-
-          <img class="social-item-img" src="/images/wechat_channel.png">
-      </div>
-
-      <div class="social-item">
-          <a target="_blank" class="social-link" href="https://www.zhihu.com/people/wnhyang">
-            <span class="icon">
-              <i class="fab fa-zhihu"></i>
-            </span>
-
-            <span class="label">Zhihu</span>
+      <div class="post-title">
+          <a class="post-title-link" href="/article/2c5e096b.html" itemprop="url">
+            <span itemprop="name">微服务集成sa-token小记</span>
           </a>
       </div>
 
-      <div class="social-item">
-          <a target="_blank" class="social-link" href="/atom.xml">
-            <span class="icon">
-              <i class="fa fa-rss"></i>
-            </span>
-
-            <span class="label">RSS</span>
-          </a>
-      </div>
-  </div>
-</div>
-
-          <div class="post-tags">
-              <a href="/tags/MySQL/" rel="tag"># MySQL</a>
-              <a href="/tags/Mybatis-Mybatis-plus/" rel="tag"># Mybatis/Mybatis-plus</a>
-          </div>
-
-        
-
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/article/f5984dab.html" rel="prev" title="Maven与Npm使用镜像">
-                  <i class="fa fa-chevron-left"></i> Maven与Npm使用镜像
-                </a>
-            </div>
-            <div class="post-nav-item">
-                <a href="/article/6bd3a468.html" rel="next" title="0-1背包问题（转载）">
-                  0-1背包问题（转载） <i class="fa fa-chevron-right"></i>
-                </a>
-            </div>
-          </div>
-    </footer>
+      
+    </header>
   </article>
-</div>
 
 
-
-
-
+    </div>
+  </div>
+  
+  
+  
 
 </div>
   </main>
@@ -588,7 +359,7 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/q_all_is_well/article
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://wnhyang.github.io/article/dc4db25f.html"}</script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://wnhyang.github.io/archives/2023/07/"}</script>
   <script src="/js/third-party/quicklink.js"></script>
 
 </body>

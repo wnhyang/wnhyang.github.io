@@ -25,29 +25,32 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="在使用Mybatis写sql语句时常会用到#{}和${}动态实现参数传递，这里就是来记录一下这两者的区别。 参考 MyBatis视频教程 [#{}与\({}的区别](https:&#x2F;&#x2F;blog.csdn.net&#x2F;qian_qian_123&#x2F;article&#x2F;details&#x2F;92844194?ops_request_misc&#x3D;%25257B%252522request%25255Fid%252522%2">
+    <meta name="description" content="安全框架 想必一旦涉及到Spring安全框架，很容易就会想到SpringSecurity和Shiro，了解过的都知道，完美的集成一套安全框架是多么麻烦的事情，所以大家都有努力在简化安全框架的集成成本。 我也是在自己做项目中需要集成安全框架才有了这篇文章，上面的两位的集成难度对我这种小菜鸡还是太难了。所以果断寻求别的方案，这不，发现了这个Sa-Token。 Sa-Token 介绍 Sa-Token">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mybatis中两种取值符号区别">
-<meta property="og:url" content="https://wnhyang.github.io/article/dc4db25f.html">
+<meta property="og:title" content="微服务集成sa-token小记">
+<meta property="og:url" content="https://wnhyang.github.io/article/2c5e096b.html">
 <meta property="og:site_name" content="无奈何杨（wnhyang）">
-<meta property="og:description" content="在使用Mybatis写sql语句时常会用到#{}和${}动态实现参数传递，这里就是来记录一下这两者的区别。 参考 MyBatis视频教程 [#{}与\({}的区别](https:&#x2F;&#x2F;blog.csdn.net&#x2F;qian_qian_123&#x2F;article&#x2F;details&#x2F;92844194?ops_request_misc&#x3D;%25257B%252522request%25255Fid%252522%2">
+<meta property="og:description" content="安全框架 想必一旦涉及到Spring安全框架，很容易就会想到SpringSecurity和Shiro，了解过的都知道，完美的集成一套安全框架是多么麻烦的事情，所以大家都有努力在简化安全框架的集成成本。 我也是在自己做项目中需要集成安全框架才有了这篇文章，上面的两位的集成难度对我这种小菜鸡还是太难了。所以果断寻求别的方案，这不，发现了这个Sa-Token。 Sa-Token 介绍 Sa-Token">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-12-03T08:23:59.000Z">
-<meta property="article:modified_time" content="2023-01-03T10:05:50.268Z">
+<meta property="og:image" content="https://pic.imgdb.cn/item/64e30157661c6c8e543d064a.jpg">
+<meta property="article:published_time" content="2023-07-29T09:31:57.000Z">
+<meta property="article:modified_time" content="2023-08-21T07:48:15.590Z">
 <meta property="article:author" content="无奈何杨（wnhyang）">
-<meta property="article:tag" content="MySQL">
-<meta property="article:tag" content="Mybatis&#x2F;Mybatis-plus">
+<meta property="article:tag" content="Spring Cloud Alibaba">
+<meta property="article:tag" content="Spring Boot">
+<meta property="article:tag" content="Spring Cloud">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/64e30157661c6c8e543d064a.jpg">
 
 
-<link rel="canonical" href="https://wnhyang.github.io/article/dc4db25f.html">
+<link rel="canonical" href="https://wnhyang.github.io/article/2c5e096b.html">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wnhyang.github.io/article/dc4db25f.html","path":"article/dc4db25f.html","title":"Mybatis中两种取值符号区别"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wnhyang.github.io/article/2c5e096b.html","path":"article/2c5e096b.html","title":"微服务集成sa-token小记"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Mybatis中两种取值符号区别 | 无奈何杨（wnhyang）</title>
+<title>微服务集成sa-token小记 | 无奈何杨（wnhyang）</title>
   
 
 
@@ -150,7 +153,8 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">1.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8C%BA%E5%88%AB"><span class="nav-number">2.</span> <span class="nav-text">区别</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E5%85%A8%E6%A1%86%E6%9E%B6"><span class="nav-number">1.</span> <span class="nav-text">安全框架</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sa-token-%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.</span> <span class="nav-text">Sa-Token
+介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%9A%84%E9%80%89%E6%8B%A9"><span class="nav-number">3.</span> <span class="nav-text">微服务的选择</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#auth%E7%8B%AC%E7%AB%8B"><span class="nav-number">3.1.</span> <span class="nav-text">auth独立</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E7%8B%AC%E6%9F%A5%E5%BA%93"><span class="nav-number">3.1.1.</span> <span class="nav-text">单独查库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%80%9F%E5%8A%A9%E5%BE%AE%E6%9C%8D%E5%8A%A1"><span class="nav-number">3.1.2.</span> <span class="nav-text">借助微服务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#auth%E4%B8%8D%E7%8B%AC%E7%AB%8B"><span class="nav-number">3.2.</span> <span class="nav-text">auth不独立</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">4.</span> <span class="nav-text">我的使用</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -216,38 +220,17 @@
   </div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <a class="popular-posts-link" href="/article/52936e2c.html" rel="bookmark">
+      <a class="popular-posts-link" href="/article/ae0f95e0.html" rel="bookmark">
         <time class="popular-posts-time">2021-02-22</time>
         <br>
-      Windows更新Git（转载）
+      SpringMVC
       </a>
     </li>
     <li class="popular-posts-item">
-      <a class="popular-posts-link" href="/article/8366968a.html" rel="bookmark">
-        <time class="popular-posts-time">2022-05-11</time>
+      <a class="popular-posts-link" href="/article/c0a48af9.html" rel="bookmark">
+        <time class="popular-posts-time">2021-06-15</time>
         <br>
-      设计模式-行为模式-观察者模式
-      </a>
-    </li>
-    <li class="popular-posts-item">
-      <a class="popular-posts-link" href="/article/8100a57.html" rel="bookmark">
-        <time class="popular-posts-time">2021-02-09</time>
-        <br>
-      MyBatis（二）
-      </a>
-    </li>
-    <li class="popular-posts-item">
-      <a class="popular-posts-link" href="/article/755ff4c3.html" rel="bookmark">
-        <time class="popular-posts-time">2022-03-24</time>
-        <br>
-      EasyPoi导出复杂Excel
-      </a>
-    </li>
-    <li class="popular-posts-item">
-      <a class="popular-posts-link" href="/article/5b66ad6f.html" rel="bookmark">
-        <time class="popular-posts-time">2023-04-01</time>
-        <br>
-      AOP记录访问量
+      Shiro学习
       </a>
     </li>
   </ul>
@@ -271,7 +254,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/dc4db25f.html">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/2c5e096b.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -284,12 +267,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Mybatis中两种取值符号区别 | 无奈何杨（wnhyang）">
+      <meta itemprop="name" content="微服务集成sa-token小记 | 无奈何杨（wnhyang）">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Mybatis中两种取值符号区别
+          微服务集成sa-token小记
         </h1>
 
         <div class="post-meta-container">
@@ -300,14 +283,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2020-12-03 16:23:59" itemprop="dateCreated datePublished" datetime="2020-12-03T16:23:59+08:00">2020-12-03</time>
+      <time title="创建时间：2023-07-29 17:31:57" itemprop="dateCreated datePublished" datetime="2023-07-29T17:31:57+08:00">2023-07-29</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-01-03 18:05:50" itemprop="dateModified" datetime="2023-01-03T18:05:50+08:00">2023-01-03</time>
+      <time title="修改时间：2023-08-21 15:48:15" itemprop="dateModified" datetime="2023-08-21T15:48:15+08:00">2023-08-21</time>
     </span>
 
   
@@ -324,14 +307,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>168</span>
+      <span>1.1k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>4 分钟</span>
     </span>
 </div>
 
@@ -342,39 +325,50 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>在使用Mybatis写sql语句时常会用到#{}和${}动态实现参数传递，这里就是来记录一下这两者的区别。</p>
-<h1 id="参考">参考</h1>
-<p><a
-target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1gs411j7kA">MyBatis视频教程</a></p>
-<p>[#{}与<span
-class="math inline">\({}的区别](https://blog.csdn.net/qian_qian_123/article/details/92844194?ops_request_misc=%25257B%252522request%25255Fid%252522%25253A%252522160759025519726885835134%252522%25252C%252522scm%252522%25253A%25252220140713.130102334..%252522%25257D&amp;request_id=160759025519726885835134&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~baidu_landing_v2~default-3-92844194.pc_search_result_no_baidu_js&amp;utm_term=#{}%E4%B8%8E\)</span>{}%E5%8C%BA%E5%88%AB)</p>
+        <h1 id="安全框架">安全框架</h1>
+<p>想必一旦涉及到<code>Spring</code>安全框架，很容易就会想到<code>SpringSecurity</code>和<code>Shiro</code>，了解过的都知道，完美的集成一套安全框架是多么麻烦的事情，所以大家都有努力在简化安全框架的集成成本。</p>
+<p>我也是在自己做项目中需要集成安全框架才有了这篇文章，上面的两位的集成难度对我这种小菜鸡还是太难了。所以果断寻求别的方案，这不，发现了这个<a
+target="_blank" rel="noopener" href="https://sa-token.cc/index.html">Sa-Token</a>。</p>
+<h1 id="sa-token-介绍"><a
+target="_blank" rel="noopener" href="https://sa-token.cc/doc.html#/?id=sa-token-介绍">Sa-Token
+介绍</a></h1>
+<p><strong>Sa-Token</strong> 是一个轻量级 Java
+权限认证框架，主要解决：<strong>登录认证</strong>、<strong>权限认证</strong>、<strong>单点登录</strong>、<strong>OAuth2.0</strong>、<strong>分布式Session会话</strong>、<strong>微服务网关鉴权</strong>
+等一系列权限相关问题。</p>
+<p>以上介绍复制于官网，在自己体验和使用后，感受就是🥳</p>
+<p><code>Sa-token</code>使用起来真的非常简单方便，具体使用上，直接看官网就好，这里主要讨论一个问题：</p>
+<p>在微服务模式下，<code>auth</code>（认证中心）的拆解，是归于<code>system</code>（系统），还是独立的，如果是独立的。。。如果不是独立的。。。</p>
 <span id="more"></span>
-<h1 id="区别">区别</h1>
-<p>输入参数: parameterType</p>
-<p>类型为简单类型(8个基本类型+String)</p>
+<h1 id="微服务的选择">微服务的选择</h1>
+<p>前面提到了，<code>auth</code>（认证中心）的拆解，是归于<code>system</code>（系统），还是独立的。这个问题的产生还是因为微服务下的鉴权稍稍不太一样，一般的方案都是后端对外提供出网关，再由网关对外部请求进行鉴权，然后转发到对应的微服务，微服务之间有可能存在鉴权，也是需要注意的。</p>
+<p><img data-src="https://pic.imgdb.cn/item/64e30157661c6c8e543d064a.jpg" /></p>
+<h2 id="auth独立">auth独立</h2>
+<p><code>auth</code>独立开又可以分为：<code>auth</code>单独查库直接与<code>db</code>交互和借助其他微服务完成数据操作两种。</p>
+<h3 id="单独查库">单独查库</h3>
+<p>单独查库的好处就是不再限制于微服务之间的鉴权影响，可以自己随意调整<code>auth</code>策略，这也是相对合理些的方案。</p>
+<h3 id="借助微服务">借助微服务</h3>
+<p><code>auth</code>与<code>system</code>本身上就存在不可避免的联系，<code>auth</code>需要的数据操作存在复用情况，完全可以放在<code>system</code>中，这倒也挑不出毛病。需要注意的就是微服务之前调用的鉴权问题了。</p>
+<h2 id="auth不独立">auth不独立</h2>
+<p><code>auth</code>不独立的就等同于前面的单独查库的效果了，与<code>system</code>关系更加紧密了，这样来讲其实就只能说是<code>system</code>包含<code>auth</code>，有种名存实亡的感觉了。</p>
+<h1 id="我的使用">我的使用</h1>
+<p>此仅针对于我的使用理解，案例相对简单，仅供参考。</p>
+<p>我使用的是<code>auth</code>独立且借助<code>system</code>的模式，数据操作都放在了<code>system</code>中，<code>auth</code>仅保留一些登录相关的接口，业务逻辑自己实现，借助<code>system</code>微服务提供的数据能力。</p>
 <blockquote>
-<p>a</p>
+<p>网关统一鉴权</p>
 </blockquote>
-<p>#{任意值}</p>
-<p>${value}，其中的标识符只能是value</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AuthFilter</span> &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 注册 Sa-Token全局过滤器</span></span><br><span class="line"><span class="comment">     **/</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> SaReactorFilter <span class="title function_">getSaReactorFilter</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">SaReactorFilter</span>()</span><br><span class="line">                <span class="comment">// 拦截全部path</span></span><br><span class="line">                .addInclude(<span class="string">&quot;/**&quot;</span>)</span><br><span class="line">                <span class="comment">// 开放地址</span></span><br><span class="line">                .addExclude(<span class="string">&quot;/favicon.ico&quot;</span>)</span><br><span class="line">                <span class="comment">// 鉴权方法：每次访问进入</span></span><br><span class="line">                .setAuth(obj -&gt; &#123;</span><br><span class="line">                    <span class="comment">// 登录校验 -- 拦截所有路由，并排除/user/doLogin 用于开放登录</span></span><br><span class="line">                    SaRouter.match(<span class="string">&quot;/**&quot;</span>).notMatch(<span class="string">&quot;/auth/login&quot;</span>, <span class="string">&quot;/auth/register&quot;</span>).check(r -&gt; StpUtil.checkLogin());</span><br><span class="line"></span><br><span class="line">                    <span class="comment">// 更多匹配 ...  */</span></span><br><span class="line">                &#125;)</span><br><span class="line">                <span class="comment">// 异常处理方法：每次setAuth函数出现异常时进入</span></span><br><span class="line">                .setError(e -&gt; SaResult.error(<span class="string">&quot;认证失败，无法访问系统资源&quot;</span>).setCode(GlobalErrorCodeConstants.UNAUTHORIZED.getCode()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里开放了<code>/auth/login</code>和<code>/auth/register</code></p>
 <blockquote>
-<p>b</p>
+<p>网关转发鉴权</p>
 </blockquote>
-<p>#{}自动给String类型加上' '(自动类型转换)</p>
-<p>${}原样输出，但是适合于动态排序(动态字段)</p>
-<p>例：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> sno,sname,sage <span class="keyword">from</span> student <span class="keyword">where</span> sname <span class="operator">=</span> #&#123;<span class="keyword">value</span>&#125;</span><br></pre></td></tr></table></figure>
-<p>等价</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> sno,sname,sage <span class="keyword">from</span> student <span class="keyword">where</span> sname <span class="operator">=</span><span class="string">&#x27;$&#123;value&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
-<p>动态排序</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> sno,sname,sage <span class="keyword">from</span> student <span class="keyword">order</span> <span class="keyword">by</span> $&#123;<span class="keyword">value</span>&#125; <span class="keyword">asc</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ForwardAuthFilter</span> <span class="keyword">implements</span> <span class="title class_">GlobalFilter</span>, Ordered &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Mono&lt;Void&gt; <span class="title function_">filter</span><span class="params">(ServerWebExchange exchange, GatewayFilterChain chain)</span> &#123;</span><br><span class="line">        <span class="type">ServerHttpRequest</span> <span class="variable">newRequest</span> <span class="operator">=</span> exchange</span><br><span class="line">                .getRequest()</span><br><span class="line">                .mutate()</span><br><span class="line">                <span class="comment">// 为请求追加 Same-Token 参数</span></span><br><span class="line">                .header(SaSameUtil.SAME_TOKEN, SaSameUtil.getToken())</span><br><span class="line">                .build();</span><br><span class="line">        <span class="type">ServerWebExchange</span> <span class="variable">newExchange</span> <span class="operator">=</span> exchange.mutate().request(newRequest).build();</span><br><span class="line">        <span class="keyword">return</span> chain.filter(newExchange);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> -100</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getOrder</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">100</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>c</p>
+<p>子服务校验</p>
 </blockquote>
-<p>#{}可以防止SQL注入</p>
-<p>${}不防止</p>
-<p><a
-target="_blank" rel="noopener" href="https://blog.csdn.net/q_all_is_well/article/details/81559612">原因</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@AutoConfiguration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SecurityConfiguration</span> <span class="keyword">implements</span> <span class="title class_">WebMvcConfigurer</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 注册sa-token的拦截器</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addInterceptors</span><span class="params">(InterceptorRegistry registry)</span> &#123;</span><br><span class="line">        <span class="comment">// 注册路由拦截器，自定义验证规则</span></span><br><span class="line">        registry.addInterceptor(<span class="keyword">new</span> <span class="title class_">SaInterceptor</span>()).addPathPatterns(<span class="string">&quot;/**&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 注册 Sa-Token 全局过滤器</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> SaServletFilter <span class="title function_">getSaServletFilter</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">SaServletFilter</span>()</span><br><span class="line">                .addInclude(<span class="string">&quot;/**&quot;</span>)</span><br><span class="line">                .addExclude(<span class="string">&quot;/favicon.ico&quot;</span>, <span class="string">&quot;/rpc-api/**&quot;</span>)</span><br><span class="line">                .setAuth(obj -&gt; &#123;</span><br><span class="line">                    <span class="comment">// 校验 Same-Token 身份凭证     —— 以下两句代码可简化为：SaSameUtil.checkCurrentRequestToken();</span></span><br><span class="line">                    SaSameUtil.checkCurrentRequestToken();</span><br><span class="line">                &#125;)</span><br><span class="line">                .setError(e -&gt; SaResult.error(<span class="string">&quot;认证失败，无法访问系统资源&quot;</span>).setCode(GlobalErrorCodeConstants.UNAUTHORIZED.getCode()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>前面的是开启权限注解并拦截所有请求，因为对外的只有网关的请求，网关自会转发到对应的微服务。</p>
+<p>后面的是子服务校验规则，这里排除了<code>/rpc-api</code>的接口，也就是提供出来的微服务接口不受鉴权限制。</p>
+<p>当然这样使用可能存在缺陷，也是在摸索中嘛</p>
 
     </div>
 
@@ -410,7 +404,7 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/q_all_is_well/article
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://wnhyang.github.io/article/dc4db25f.html" title="Mybatis中两种取值符号区别">https://wnhyang.github.io/article/dc4db25f.html</a>
+      <a href="https://wnhyang.github.io/article/2c5e096b.html" title="微服务集成sa-token小记">https://wnhyang.github.io/article/2c5e096b.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -458,22 +452,20 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/q_all_is_well/article
 </div>
 
           <div class="post-tags">
-              <a href="/tags/MySQL/" rel="tag"># MySQL</a>
-              <a href="/tags/Mybatis-Mybatis-plus/" rel="tag"># Mybatis/Mybatis-plus</a>
+              <a href="/tags/Spring-Cloud-Alibaba/" rel="tag"># Spring Cloud Alibaba</a>
+              <a href="/tags/Spring-Boot/" rel="tag"># Spring Boot</a>
+              <a href="/tags/Spring-Cloud/" rel="tag"># Spring Cloud</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/article/f5984dab.html" rel="prev" title="Maven与Npm使用镜像">
-                  <i class="fa fa-chevron-left"></i> Maven与Npm使用镜像
+                <a href="/article/a541e7bd.html" rel="prev" title="IDEA启动SpringBoot项目Process finished with exit code 1">
+                  <i class="fa fa-chevron-left"></i> IDEA启动SpringBoot项目Process finished with exit code 1
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/article/6bd3a468.html" rel="next" title="0-1背包问题（转载）">
-                  0-1背包问题（转载） <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -588,7 +580,7 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/q_all_is_well/article
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://wnhyang.github.io/article/dc4db25f.html"}</script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://wnhyang.github.io/article/2c5e096b.html"}</script>
   <script src="/js/third-party/quicklink.js"></script>
 
 </body>

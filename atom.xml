@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2023-06-18T13:35:38.025Z</updated>
+  <updated>2023-08-21T07:48:15.590Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,44 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>微服务集成sa-token小记</title>
+    <link href="https://wnhyang.github.io/article/2c5e096b.html"/>
+    <id>https://wnhyang.github.io/article/2c5e096b.html</id>
+    <published>2023-07-29T09:31:57.000Z</published>
+    <updated>2023-08-21T07:48:15.590Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;安全框架&quot;&gt;安全框架&lt;/h1&gt;
+&lt;p&gt;想必一旦涉及到&lt;code&gt;Spring&lt;/code&gt;安全框架，很容易就会想到&lt;code&gt;SpringSecurity&lt;/code&gt;和&lt;code&gt;Shiro&lt;/code&gt;，了解过的都知道，完美的集成一套安全框架是多么麻烦的事情，所以大家都有努力在简化安全框架的集成成本。&lt;/p&gt;
+&lt;p&gt;我也是在自己做项目中需要集成安全框架才有了这篇文章，上面的两位的集成难度对我这种小菜鸡还是太难了。所以果断寻求别的方案，这不，发现了这个&lt;a
+href=&quot;https://sa-token.cc/index.html&quot;&gt;Sa-Token&lt;/a&gt;。&lt;/p&gt;
+&lt;h1 id=&quot;sa-token-介绍&quot;&gt;&lt;a
+href=&quot;https://sa-token.cc/doc.html#/?id=sa-token-介绍&quot;&gt;Sa-Token
+介绍&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Sa-Token&lt;/strong&gt; 是一个轻量级 Java
+权限认证框架，主要解决：&lt;strong&gt;登录认证&lt;/strong&gt;、&lt;strong&gt;权限认证&lt;/strong&gt;、&lt;strong&gt;单点登录&lt;/strong&gt;、&lt;strong&gt;OAuth2.0&lt;/strong&gt;、&lt;strong&gt;分布式Session会话&lt;/strong&gt;、&lt;strong&gt;微服务网关鉴权&lt;/strong&gt;
+等一系列权限相关问题。&lt;/p&gt;
+&lt;p&gt;以上介绍复制于官网，在自己体验和使用后，感受就是🥳&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Sa-token&lt;/code&gt;使用起来真的非常简单方便，具体使用上，直接看官网就好，这里主要讨论一个问题：&lt;/p&gt;
+&lt;p&gt;在微服务模式下，&lt;code&gt;auth&lt;/code&gt;（认证中心）的拆解，是归于&lt;code&gt;system&lt;/code&gt;（系统），还是独立的，如果是独立的。。。如果不是独立的。。。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="Spring Cloud Alibaba" scheme="https://wnhyang.github.io/tags/Spring-Cloud-Alibaba/"/>
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
+    
+    <category term="Spring Cloud" scheme="https://wnhyang.github.io/tags/Spring-Cloud/"/>
+    
+  </entry>
+  
+  <entry>
     <title>IDEA启动SpringBoot项目Process finished with exit code 1</title>
     <link href="https://wnhyang.github.io/article/a541e7bd.html"/>
     <id>https://wnhyang.github.io/article/a541e7bd.html</id>
     <published>2023-06-08T00:33:09.000Z</published>
-    <updated>2023-06-18T13:35:38.025Z</updated>
+    <updated>2023-08-18T08:00:59.131Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;启动错误日志呢&quot;&gt;启动错误日志呢&lt;/h1&gt;
@@ -33,6 +66,8 @@
     
     
     
+    
+    <category term="记录" scheme="https://wnhyang.github.io/tags/%E8%AE%B0%E5%BD%95/"/>
     
   </entry>
   
@@ -546,30 +581,6 @@ class=&quot;uri&quot;&gt;https://theme-next.js.org/docs/getting-started/&lt;/a&g
     <category term="Grafana" scheme="https://wnhyang.github.io/tags/Grafana/"/>
     
     <category term="Prometheus" scheme="https://wnhyang.github.io/tags/Prometheus/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux邮件发送</title>
-    <link href="https://wnhyang.github.io/article/51f254be.html"/>
-    <id>https://wnhyang.github.io/article/51f254be.html</id>
-    <published>2022-12-24T15:10:21.000Z</published>
-    <updated>2023-01-03T10:05:09.442Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;简介&quot;&gt;简介&lt;/h1&gt;
-&lt;p&gt;最近在折腾&lt;code&gt;Linux&lt;/code&gt;，想做一点有趣的事情，首先想到就是通过定时任务，做一些通知，原来我就做过&lt;code&gt;Java&lt;/code&gt;整合邮件，做一些邮件发送，直到最近我才知道，原来&lt;code&gt;Linux&lt;/code&gt;本身就能发送邮件的。&lt;/p&gt;
-&lt;p&gt;那更好了，直接开始。&lt;/p&gt;
-&lt;p&gt;参考：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;https://linux.cn/article-11663-1.html&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;https://www.jianshu.com/p/d1f757c89826&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;</summary>
-    
-    
-    
-    
-    <category term="Linux" scheme="https://wnhyang.github.io/tags/Linux/"/>
     
   </entry>
   
