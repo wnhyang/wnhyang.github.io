@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2023-08-21T07:48:15.590Z</updated>
+  <updated>2023-10-05T07:51:57.201Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>想多了全是问题，做多了全是答案</title>
+    <link href="https://wnhyang.github.io/article/61a1b694.html"/>
+    <id>https://wnhyang.github.io/article/61a1b694.html</id>
+    <published>2023-09-18T11:39:44.000Z</published>
+    <updated>2023-10-05T07:51:57.201Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1</summary>
+        
+      
+    
+    
+    
+    
+    <category term="杂谈" scheme="https://wnhyang.github.io/tags/%E6%9D%82%E8%B0%88/"/>
+    
+  </entry>
+  
+  <entry>
     <title>微服务集成sa-token小记</title>
     <link href="https://wnhyang.github.io/article/2c5e096b.html"/>
     <id>https://wnhyang.github.io/article/2c5e096b.html</id>
     <published>2023-07-29T09:31:57.000Z</published>
-    <updated>2023-08-21T07:48:15.590Z</updated>
+    <updated>2023-08-21T07:58:50.568Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;安全框架&quot;&gt;安全框架&lt;/h1&gt;
@@ -359,11 +382,11 @@ alt=&quot;docker部署流水线&quot; /&gt;
     
     <category term="Docker" scheme="https://wnhyang.github.io/tags/Docker/"/>
     
-    <category term="Git/GitHub" scheme="https://wnhyang.github.io/tags/Git-GitHub/"/>
-    
     <category term="Maven" scheme="https://wnhyang.github.io/tags/Maven/"/>
     
     <category term="DevOps" scheme="https://wnhyang.github.io/tags/DevOps/"/>
+    
+    <category term="Git/GitHub" scheme="https://wnhyang.github.io/tags/Git-GitHub/"/>
     
   </entry>
   
@@ -390,11 +413,11 @@ alt=&quot;云效持续交付&quot; /&gt;
     
     <category term="Docker" scheme="https://wnhyang.github.io/tags/Docker/"/>
     
-    <category term="Git/GitHub" scheme="https://wnhyang.github.io/tags/Git-GitHub/"/>
-    
     <category term="Maven" scheme="https://wnhyang.github.io/tags/Maven/"/>
     
     <category term="DevOps" scheme="https://wnhyang.github.io/tags/DevOps/"/>
+    
+    <category term="Git/GitHub" scheme="https://wnhyang.github.io/tags/Git-GitHub/"/>
     
   </entry>
   
@@ -553,34 +576,6 @@ class=&quot;uri&quot;&gt;https://theme-next.js.org/docs/getting-started/&lt;/a&g
     <category term="软件/工具" scheme="https://wnhyang.github.io/tags/%E8%BD%AF%E4%BB%B6-%E5%B7%A5%E5%85%B7/"/>
     
     <category term="Java" scheme="https://wnhyang.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Docker部署Nacos</title>
-    <link href="https://wnhyang.github.io/article/604142d6.html"/>
-    <id>https://wnhyang.github.io/article/604142d6.html</id>
-    <published>2022-12-27T01:37:29.000Z</published>
-    <updated>2023-03-05T13:36:32.099Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;参考&quot;&gt;参考&lt;/h1&gt;
-&lt;p&gt;https://nacos.io/zh-cn/docs/v2/quickstart/quick-start-docker.html&lt;/p&gt;
-&lt;p&gt;https://nacos.io/zh-cn/docs/v2/guide/admin/monitor-guide.html&lt;/p&gt;
-&lt;h1 id=&quot;简介&quot;&gt;简介&lt;/h1&gt;
-&lt;p&gt;最近以优惠价购买了云服务器，想着不能浪费资源，打算做点东西，玩一玩。可还是高估了我的经济实力，&lt;code&gt;1C2G&lt;/code&gt;是真的不够用，我在这台机器上装了&lt;code&gt;JDK&lt;/code&gt;、&lt;code&gt;Maven&lt;/code&gt;、&lt;code&gt;RocketMQ、Docker&lt;/code&gt;、&lt;code&gt;Docker-compose&lt;/code&gt;，同时在&lt;code&gt;Docker&lt;/code&gt;下运行了&lt;code&gt;MySQL&lt;/code&gt;、&lt;code&gt;Redis&lt;/code&gt;、&lt;code&gt;Nginx&lt;/code&gt;、&lt;code&gt;RocketMQ-Dashboard&lt;/code&gt;，到这里其实都还好，在修改启动参数的情况下勉强够用。&lt;/p&gt;
-&lt;p&gt;但为了学习微服务，向&lt;code&gt;Spring Cloud Alibaba&lt;/code&gt;靠，准备搭建&lt;code&gt;Nacos&lt;/code&gt;作为注册中心和配置中心，这下问题来了，按照官网的部署方案，出了问题，在这里记录一下，为他人学习提供一下参考。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="Docker" scheme="https://wnhyang.github.io/tags/Docker/"/>
-    
-    <category term="Spring Cloud Alibaba" scheme="https://wnhyang.github.io/tags/Spring-Cloud-Alibaba/"/>
-    
-    <category term="Grafana" scheme="https://wnhyang.github.io/tags/Grafana/"/>
-    
-    <category term="Prometheus" scheme="https://wnhyang.github.io/tags/Prometheus/"/>
     
   </entry>
   
