@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2023-10-05T07:51:57.201Z</updated>
+  <updated>2023-10-21T14:33:45.632Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>想多了全是问题，做多了全是答案</title>
-    <link href="https://wnhyang.github.io/article/61a1b694.html"/>
-    <id>https://wnhyang.github.io/article/61a1b694.html</id>
-    <published>2023-09-18T11:39:44.000Z</published>
-    <updated>2023-10-05T07:51:57.201Z</updated>
+    <title>讯飞大模型体验</title>
+    <link href="https://wnhyang.github.io/article/feab7b27.html"/>
+    <id>https://wnhyang.github.io/article/feab7b27.html</id>
+    <published>2023-10-19T02:19:34.000Z</published>
+    <updated>2023-10-21T14:33:45.632Z</updated>
     
     
       
@@ -29,6 +29,32 @@
         
         
     <summary type="html">&lt;h1</summary>
+        
+      
+    
+    
+    
+    
+    <category term="记录" scheme="https://wnhyang.github.io/tags/%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>想多了全是问题，做多了全是答案</title>
+    <link href="https://wnhyang.github.io/article/61a1b694.html"/>
+    <id>https://wnhyang.github.io/article/61a1b694.html</id>
+    <published>2023-09-18T11:39:44.000Z</published>
+    <updated>2023-10-07T00:33:29.300Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;许久没更新了&quot;&gt;许久没更新了&lt;/h1&gt;
+&lt;p&gt;每次好久不更新，再回头看的的时候就像看许久未打扫的屋子一样，杂乱而又陌生。哈哈哈哈&lt;/p&gt;
+&lt;p&gt;简单讲讲这段时间做的事情吧，一边是记录生活，一边是激励自己吧。&lt;/p&gt;
+&lt;h2</summary>
         
       
     
@@ -64,9 +90,9 @@ href=&quot;https://sa-token.cc/doc.html#/?id=sa-token-介绍&quot;&gt;Sa-Token
     
     
     
-    <category term="Spring Cloud Alibaba" scheme="https://wnhyang.github.io/tags/Spring-Cloud-Alibaba/"/>
-    
     <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
+    
+    <category term="Spring Cloud Alibaba" scheme="https://wnhyang.github.io/tags/Spring-Cloud-Alibaba/"/>
     
     <category term="Spring Cloud" scheme="https://wnhyang.github.io/tags/Spring-Cloud/"/>
     
@@ -469,9 +495,9 @@ href=&quot;https://blog.csdn.net/li1325169021/article/details/121626299&quot;&gt
     
     
     
-    <category term="Spring Cloud Alibaba" scheme="https://wnhyang.github.io/tags/Spring-Cloud-Alibaba/"/>
-    
     <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
+    
+    <category term="Spring Cloud Alibaba" scheme="https://wnhyang.github.io/tags/Spring-Cloud-Alibaba/"/>
     
     <category term="Spring Cloud" scheme="https://wnhyang.github.io/tags/Spring-Cloud/"/>
     
@@ -530,52 +556,6 @@ class=&quot;uri&quot;&gt;https://theme-next.js.org/docs/getting-started/&lt;/a&g
     <category term="博客" scheme="https://wnhyang.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
     
     <category term="Hexo" scheme="https://wnhyang.github.io/tags/Hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mac-Java开发环境</title>
-    <link href="https://wnhyang.github.io/article/661307ba.html"/>
-    <id>https://wnhyang.github.io/article/661307ba.html</id>
-    <published>2023-01-02T03:12:26.000Z</published>
-    <updated>2023-03-05T13:15:57.652Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;系统设置&quot;&gt;系统设置&lt;/h1&gt;
-&lt;p&gt;这个完全看个人习惯，不多提了&lt;br /&gt;关于使用技巧，这个用的越多越熟悉，慢慢来&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr class=&quot;header&quot;&gt;
-&lt;th&gt;快捷键&lt;/th&gt;
-&lt;th&gt;说明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr class=&quot;odd&quot;&gt;
-&lt;td&gt;&lt;code&gt;command&lt;/code&gt;+&lt;code&gt;option&lt;/code&gt;+&lt;code&gt;1&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;图标自动排列&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&quot;even&quot;&gt;
-&lt;td&gt;&lt;code&gt;command&lt;/code&gt;+&lt;code&gt;shift&lt;/code&gt;+&lt;code&gt;.&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;显示/不显示隐藏文件&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&quot;odd&quot;&gt;
-&lt;td&gt;&lt;code&gt;command&lt;/code&gt;+&lt;code&gt;option&lt;/code&gt;+&lt;code&gt;c&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;复制文件路径&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&quot;even&quot;&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;</summary>
-    
-    
-    
-    
-    <category term="软件/工具" scheme="https://wnhyang.github.io/tags/%E8%BD%AF%E4%BB%B6-%E5%B7%A5%E5%85%B7/"/>
-    
-    <category term="Java" scheme="https://wnhyang.github.io/tags/Java/"/>
     
   </entry>
   
