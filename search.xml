@@ -8134,18 +8134,10 @@ DDL</p>
 <h3 id="登录服务器">登录服务器</h3>
 <p>最后登录服务器看是否还有什么重要的文件有遗忘，很重要</p>
 <h2 id="二创建新的云服务器">二、创建新的云服务器</h2>
-<figure>
-<img data-src="https://mmbiz.qlogo.cn/sz_mmbiz_png/YCkp91onJ4Fk8OQcmPibQc6vdOBLn94SSG3Q9t46mCYKOGciaAfwQUm7eiaC6P364icC8ZEicIAXTib3PNlJCUI1ea5g/0?wx_fmt=png&amp;from=appmsg"
-alt="img" />
-<figcaption aria-hidden="true">img</figcaption>
-</figure>
+<p><img data-src="https://pic.imgdb.cn/item/65a2547d871b83018a294ab8.png" /></p>
 <p>在阿里云服务器中选择需要的产品，配置好需要的规格后就可以下单购买了。</p>
 <p>购买完成后可以查看订单确认是否有误，之后在控制台就可以看到已购买的资源了</p>
-<figure>
-<img data-src="https://mmbiz.qlogo.cn/sz_mmbiz_png/YCkp91onJ4Fk8OQcmPibQc6vdOBLn94SScawrnuC1zbTicY2zRpNBueXDlwjtuWD2icM7bpJbMcFJ5viaZKEq6M3DA/0?wx_fmt=png&amp;from=appmsg"
-alt="img" />
-<figcaption aria-hidden="true">img</figcaption>
-</figure>
+<p><img data-src="https://pic.imgdb.cn/item/65a2547e871b83018a294e44.png" /></p>
 <p>在ECS管理台可以管理ECS服务器的所有东西，初始化的ECS服务器是需要重置密码的，重要提醒！！！密码一定要复杂的，最好是包含大小写字母+数字+特殊字符的，一定要复杂，之后我会从我的血泪教训告诉你为什么。另外也可以设置通过密钥的方式连接，也是很不错的。云服务器-网络与安全-密钥对，创建密钥-关联资源-下载就好了，之后在SSH连接时使用就好。</p>
 <h2 id="三连接到云服务器-1">三、连接到云服务器</h2>
 <p>前面都做好后，我们就可以连接到云服务器了，当然阿里云本身也提供了web端连接方式，不过我是习惯了使用本地的SSH工具，工具上不必纠结，顺手习惯就行。</p>
