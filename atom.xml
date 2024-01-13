@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2023-10-21T14:33:45.632Z</updated>
+  <updated>2024-01-13T08:30:31.411Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,60 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>云服务器使用指南</title>
+    <link href="https://wnhyang.github.io/article/4e5a8380.html"/>
+    <id>https://wnhyang.github.io/article/4e5a8380.html</id>
+    <published>2024-01-11T07:19:58.000Z</published>
+    <updated>2024-01-13T08:30:31.411Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;随着云计算技术的不断发展，越来越多的企业和个人开始使用云服务器来托管网站、应用程序和其他在线服务。云服务器提供了一种灵活、可扩展且成本效益高的解决方案，使得用户可以轻松地部署和管理自己的在线业务。本文将为您提供一份详细的云服务器使用指南，帮助您更好地利用云服务器。&lt;/p&gt;
+&lt;h1 id=&quot;一选择合适的云服务器提供商&quot;&gt;一、选择合适的云服务器提供商&lt;/h1&gt;
+&lt;p&gt;市场上有许多云服务器提供商，如阿里云、腾讯云、亚马逊AWS等。在选择云服务器提供商时，您需要考虑以下几个因素：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;价格：比较不同提供商的价格，选择性价比最高的方案。&lt;/li&gt;
+&lt;li&gt;性能：根据您的需求选择合适的CPU、内存和存储配置。&lt;/li&gt;
+&lt;li&gt;可靠性：了解提供商的数据中心分布和网络连接质量，确保您的服务稳定可靠。&lt;/li&gt;
+&lt;li&gt;技术支持：选择提供良好技术支持的提供商，以便在遇到问题时能够得到及时的帮助。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这些云服务器提供商针对个人和企业用户有非常多的产品可供挑选，尤其是对于新用户、学生更是有很多优惠。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="记录" scheme="https://wnhyang.github.io/tags/%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SpringBoot整合Admin监控</title>
+    <link href="https://wnhyang.github.io/article/5959cb50.html"/>
+    <id>https://wnhyang.github.io/article/5959cb50.html</id>
+    <published>2023-10-24T00:45:58.000Z</published>
+    <updated>2023-10-31T06:46:51.779Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;#Spring Boot</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
+    
+  </entry>
+  
+  <entry>
     <title>讯飞大模型体验</title>
     <link href="https://wnhyang.github.io/article/feab7b27.html"/>
     <id>https://wnhyang.github.io/article/feab7b27.html</id>
     <published>2023-10-19T02:19:34.000Z</published>
-    <updated>2023-10-21T14:33:45.632Z</updated>
+    <updated>2023-10-24T10:23:23.017Z</updated>
     
     
       
@@ -90,9 +139,9 @@ href=&quot;https://sa-token.cc/doc.html#/?id=sa-token-介绍&quot;&gt;Sa-Token
     
     
     
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
     <category term="Spring Cloud Alibaba" scheme="https://wnhyang.github.io/tags/Spring-Cloud-Alibaba/"/>
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
     <category term="Spring Cloud" scheme="https://wnhyang.github.io/tags/Spring-Cloud/"/>
     
@@ -495,67 +544,11 @@ href=&quot;https://blog.csdn.net/li1325169021/article/details/121626299&quot;&gt
     
     
     
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
     <category term="Spring Cloud Alibaba" scheme="https://wnhyang.github.io/tags/Spring-Cloud-Alibaba/"/>
     
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
+    
     <category term="Spring Cloud" scheme="https://wnhyang.github.io/tags/Spring-Cloud/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2022总结</title>
-    <link href="https://wnhyang.github.io/article/20bbe8e4.html"/>
-    <id>https://wnhyang.github.io/article/20bbe8e4.html</id>
-    <published>2023-01-27T12:53:40.000Z</published>
-    <updated>2023-02-17T14:15:59.314Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;2022总结来的有点晚，但也就在这个时候才能总结出点什么！&lt;/p&gt;
-&lt;p&gt;为什么这么说呢？&lt;/p&gt;
-&lt;p&gt;因为这一年我都在外，好久没有回过家了。&lt;/p&gt;
-&lt;p&gt;？？？什么话，难道只有回过家才能算是完整的一年吗？客观理性地来讲肯定不是的，但对于我——是的。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="思考" scheme="https://wnhyang.github.io/tags/%E6%80%9D%E8%80%83/"/>
-    
-    <category term="自己" scheme="https://wnhyang.github.io/tags/%E8%87%AA%E5%B7%B1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>博客升级Hexo+NexT</title>
-    <link href="https://wnhyang.github.io/article/cf29ecfe.html"/>
-    <id>https://wnhyang.github.io/article/cf29ecfe.html</id>
-    <published>2023-01-05T15:44:05.000Z</published>
-    <updated>2023-03-05T14:44:12.866Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;简介&quot;&gt;简介&lt;/h1&gt;
-&lt;p&gt;&lt;code&gt;20&lt;/code&gt;年，在&lt;code&gt;7&lt;/code&gt;月通过&lt;code&gt;hexo&lt;/code&gt;搭建了属于自己的个人博客，如今过去已经&lt;code&gt;2&lt;/code&gt;年多了，期间也不断进行博客的小优化，包括但不限于：主题的个性化配置、字数统计、访问量统计、文章链接生成算法配置、百度网站采集等等。使用的一直是&lt;a
-href=&quot;https://github.com/litten/hexo-theme-yilia&quot;&gt;Yilia&lt;/a&gt;主题（已经很长时间不维护了），也是因此遇到了许许多多问题，趁着最近准备更换设备，准备把之前的博客换一个面貌，是的，我要放弃&lt;a
-href=&quot;https://github.com/litten/hexo-theme-yilia&quot;&gt;Yilia&lt;/a&gt;，选择&lt;a
-href=&quot;https://github.com/next-theme/hexo-theme-next&quot;&gt;NexT&lt;/a&gt;，我不是爱趋同，而是想稳定，不想浪费时间在维护和解决问题上，&lt;code&gt;NexT&lt;/code&gt;是应该是&lt;code&gt;hexo&lt;/code&gt;主题中体量最大，最为活跃的，&lt;code&gt;so&lt;/code&gt;，就是你了，顺便&lt;code&gt;npm&lt;/code&gt;、&lt;code&gt;node&lt;/code&gt;、&lt;code&gt;hexo&lt;/code&gt;都升级一下，为此在这里记录一下。&lt;/p&gt;
-&lt;p&gt;非常建议直接参考&lt;code&gt;hexo-next&lt;/code&gt;官网&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://hexo-next.readthedocs.io/zh_CN/latest/&quot;
-class=&quot;uri&quot;&gt;https://hexo-next.readthedocs.io/zh_CN/latest/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://hexo.io/zh-cn/docs/&quot;
-class=&quot;uri&quot;&gt;https://hexo.io/zh-cn/docs/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://theme-next.js.org/docs/getting-started/&quot;
-class=&quot;uri&quot;&gt;https://theme-next.js.org/docs/getting-started/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;没有哪里能比官网更有参考意义了！&lt;/p&gt;
-&lt;p&gt;说实话，看完官网，我真想把下面我的记录全部删掉，但最终还是保留了我的配置供大家参考吧&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="Node&amp;NPM" scheme="https://wnhyang.github.io/tags/Node-NPM/"/>
-    
-    <category term="博客" scheme="https://wnhyang.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
-    
-    <category term="Hexo" scheme="https://wnhyang.github.io/tags/Hexo/"/>
     
   </entry>
   

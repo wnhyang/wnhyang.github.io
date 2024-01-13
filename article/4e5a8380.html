@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="google-site-verification" content="4zmc5dCOR7a63YXOZx4mwqsC5dPpr0m2iWeI12w6wng">
+  <meta name="baidu-site-verification" content="fe6bba1d0d4e906fed87c9f7c2d1d09d">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="随着云计算技术的不断发展，越来越多的企业和个人开始使用云服务器来托管网站、应用程序和其他在线服务。云服务器提供了一种灵活、可扩展且成本效益高的解决方案，使得用户可以轻松地部署和管理自己的在线业务。本文将为您提供一份详细的云服务器使用指南，帮助您更好地利用云服务器。 一、选择合适的云服务器提供商 市场上有许多云服务器提供商，如阿里云、腾讯云、亚马逊AWS等。在选择云服务器提供商时，您需要考虑以下几个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="云服务器使用指南">
+<meta property="og:url" content="https://wnhyang.github.io/article/4e5a8380.html">
+<meta property="og:site_name" content="无奈何杨（wnhyang）">
+<meta property="og:description" content="随着云计算技术的不断发展，越来越多的企业和个人开始使用云服务器来托管网站、应用程序和其他在线服务。云服务器提供了一种灵活、可扩展且成本效益高的解决方案，使得用户可以轻松地部署和管理自己的在线业务。本文将为您提供一份详细的云服务器使用指南，帮助您更好地利用云服务器。 一、选择合适的云服务器提供商 市场上有许多云服务器提供商，如阿里云、腾讯云、亚马逊AWS等。在选择云服务器提供商时，您需要考虑以下几个">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://mmbiz.qlogo.cn/sz_mmbiz_png/YCkp91onJ4Fk8OQcmPibQc6vdOBLn94SSG3Q9t46mCYKOGciaAfwQUm7eiaC6P364icC8ZEicIAXTib3PNlJCUI1ea5g/0?wx_fmt=png&amp;from=appmsg">
+<meta property="og:image" content="https://mmbiz.qlogo.cn/sz_mmbiz_png/YCkp91onJ4Fk8OQcmPibQc6vdOBLn94SScawrnuC1zbTicY2zRpNBueXDlwjtuWD2icM7bpJbMcFJ5viaZKEq6M3DA/0?wx_fmt=png&amp;from=appmsg">
+<meta property="article:published_time" content="2024-01-11T07:19:58.000Z">
+<meta property="article:modified_time" content="2024-01-13T08:30:31.411Z">
+<meta property="article:author" content="无奈何杨（wnhyang）">
+<meta property="article:tag" content="记录">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mmbiz.qlogo.cn/sz_mmbiz_png/YCkp91onJ4Fk8OQcmPibQc6vdOBLn94SSG3Q9t46mCYKOGciaAfwQUm7eiaC6P364icC8ZEicIAXTib3PNlJCUI1ea5g/0?wx_fmt=png&amp;from=appmsg">
+
+
+<link rel="canonical" href="https://wnhyang.github.io/article/4e5a8380.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wnhyang.github.io/article/4e5a8380.html","path":"article/4e5a8380.html","title":"云服务器使用指南"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>云服务器使用指南 | 无奈何杨（wnhyang）</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="无奈何杨（wnhyang）" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">无奈何杨（wnhyang）</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">I will keep to fight</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">44</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">164</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E9%80%89%E6%8B%A9%E5%90%88%E9%80%82%E7%9A%84%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8F%90%E4%BE%9B%E5%95%86"><span class="nav-number">1.</span> <span class="nav-text">一、选择合适的云服务器提供商</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E6%B3%A8%E5%86%8C%E5%92%8C%E8%B4%AD%E4%B9%B0%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">2.</span> <span class="nav-text">二、注册和购买云服务器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E8%BF%9E%E6%8E%A5%E5%88%B0%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">三、连接到云服务器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%BD%AF%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">四、安装和配置软件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%94%E9%83%A8%E7%BD%B2%E5%92%8C%E7%AE%A1%E7%90%86%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F"><span class="nav-number">5.</span> <span class="nav-text">五、部署和管理应用程序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">6.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E5%A4%87%E4%BB%BD"><span class="nav-number">6.1.</span> <span class="nav-text">一、备份</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#nacos%E9%85%8D%E7%BD%AE"><span class="nav-number">6.1.1.</span> <span class="nav-text">Nacos配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8%E7%BB%93%E6%9E%84"><span class="nav-number">6.1.2.</span> <span class="nav-text">MySQL数据库&#x2F;表结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docker%E9%95%9C%E5%83%8F"><span class="nav-number">6.1.3.</span> <span class="nav-text">Docker镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%99%BB%E5%BD%95%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">6.1.4.</span> <span class="nav-text">登录服务器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%88%9B%E5%BB%BA%E6%96%B0%E7%9A%84%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">6.2.</span> <span class="nav-text">二、创建新的云服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E8%BF%9E%E6%8E%A5%E5%88%B0%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8-1"><span class="nav-number">6.3.</span> <span class="nav-text">三、连接到云服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%BD%AF%E4%BB%B6-1"><span class="nav-number">6.4.</span> <span class="nav-text">四、安装和配置软件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85jdk"><span class="nav-number">6.4.1.</span> <span class="nav-text">安装JDK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85docker"><span class="nav-number">6.4.2.</span> <span class="nav-text">安装Docker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85mysql"><span class="nav-number">6.4.3.</span> <span class="nav-text">安装MySQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85redis"><span class="nav-number">6.4.4.</span> <span class="nav-text">安装Redis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85nacos"><span class="nav-number">6.4.5.</span> <span class="nav-text">安装Nacos</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F"><span class="nav-number">6.5.</span> <span class="nav-text">五、应用程序</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="无奈何杨（wnhyang）"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">无奈何杨（wnhyang）</p>
+  <div class="site-description" itemprop="description">学习记录所用</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">164</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">44</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wnhyang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wnhyang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/wnhyang" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;wnhyang" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wnhyang@qq.com" title="E-Mail → mailto:wnhyang@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://www.yuque.com/wnh/share" title="https:&#x2F;&#x2F;www.yuque.com&#x2F;wnh&#x2F;share" rel="noopener" target="_blank">语雀分享</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/4e5a8380.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+      <meta itemprop="description" content="学习记录所用">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="云服务器使用指南 | 无奈何杨（wnhyang）">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          云服务器使用指南
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-01-11 15:19:58" itemprop="dateCreated datePublished" datetime="2024-01-11T15:19:58+08:00">2024-01-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-01-13 16:30:31" itemprop="dateModified" datetime="2024-01-13T16:30:31+08:00">2024-01-13</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>8 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>随着云计算技术的不断发展，越来越多的企业和个人开始使用云服务器来托管网站、应用程序和其他在线服务。云服务器提供了一种灵活、可扩展且成本效益高的解决方案，使得用户可以轻松地部署和管理自己的在线业务。本文将为您提供一份详细的云服务器使用指南，帮助您更好地利用云服务器。</p>
+<h1 id="一选择合适的云服务器提供商">一、选择合适的云服务器提供商</h1>
+<p>市场上有许多云服务器提供商，如阿里云、腾讯云、亚马逊AWS等。在选择云服务器提供商时，您需要考虑以下几个因素：</p>
+<ul>
+<li>价格：比较不同提供商的价格，选择性价比最高的方案。</li>
+<li>性能：根据您的需求选择合适的CPU、内存和存储配置。</li>
+<li>可靠性：了解提供商的数据中心分布和网络连接质量，确保您的服务稳定可靠。</li>
+<li>技术支持：选择提供良好技术支持的提供商，以便在遇到问题时能够得到及时的帮助。</li>
+</ul>
+<p>这些云服务器提供商针对个人和企业用户有非常多的产品可供挑选，尤其是对于新用户、学生更是有很多优惠。</p>
+<span id="more"></span>
+<h1 id="二注册和购买云服务器">二、注册和购买云服务器</h1>
+<p>在选择好云服务器提供商后，您需要在其官方网站上注册一个账户并购买相应的云服务器套餐。购买过程中，您需要选择合适的操作系统（如Windows
+Server或Linux发行版）和所需的硬件配置。此外，您还需要设置一个安全的登录凭据（如SSH密钥），以便日后远程登录和管理服务器。</p>
+<p>需要知道的是云服务提供商，主要目标群体还是企业用户，个人用户不怎么赚钱的。所以不管是阿里云、腾讯云等等，不仅产品种类丰富，而且管理起来相当复杂。尤其是目前常见的租户模式，针对企业和组织是非常有用的，但是对于个人来讲，确实没什么用，而且真的很难用。我的建议是只用主账号就行，一定要设置好账号的安全设置，绑定好手机、邮箱等重要信息。</p>
+<h1 id="三连接到云服务器">三、连接到云服务器</h1>
+<p>购买成功后，您可以通过云服务器提供商提供的管理控制台连接到您的云服务器。大多数提供商都提供了图形化管理界面，方便您轻松地管理和监控服务器状态。此外，您还可以使用SSH客户端（如PuTTY）通过命令行方式连接到服务器。</p>
+<h1 id="四安装和配置软件">四、安装和配置软件</h1>
+<p>在连接到云服务器后，您可以根据需要安装和配置各种软件。例如，如果您需要托管一个网站，您可以安装Web服务器（如Apache或Nginx）和数据库管理系统（如MySQL或PostgreSQL）。在安装软件时，请确保遵循最佳实践，以保障系统的安全性和稳定性。</p>
+<h1 id="五部署和管理应用程序">五、部署和管理应用程序</h1>
+<p>将您的应用程序部署到云服务器上后，您需要对其进行持续的管理和监控。这包括定期更新软件、监控系统资源使用情况、备份数据以及处理可能出现的问题。为了提高运维效率，您可以考虑使用自动化工具（如Ansible或Docker）来简化部署和管理过程。</p>
+<h1 id="示例">示例</h1>
+<p>下面就以我从华为云服务器HECS到期到新购阿里云服务器做了哪些事情为例吧。</p>
+<p>首先讲一下我使用的目的，作为个人开发者，基础的开发环境总不能是一直本地启动吧，如：MySQL、Redis、Nacos、RocketMQ，之后可能还需要Kafka、Es，要运行的后端服务也不能总是在本地吧，前端调试好，要对外需要服务器吧！总之云服务器还是很有必要的。</p>
+<h2 id="一备份">一、备份</h2>
+<p>重要的事情说三遍！！！</p>
+<p>记得备份！记得备份！记得备份！</p>
+<p>对于持久化保存的重要数据一定要记得备份，本人本身就有些强迫症，爱整理东西，杂乱的环境有点让人崩溃，我不是建议所有人都有强迫症，而是建议所有人都要学会总结经验教训。</p>
+<p>当我的华为云服务器到期的前一周还是一个月，华为就会通过短信和邮箱的方式发送到期提醒，记得去查看一下，看自己是否有续期的必要，然后就是整理一下要备份的东西。</p>
+<p>对于我就是一下内容了：</p>
+<h3 id="nacos配置">Nacos配置</h3>
+<p>登录nacos控制台，配置管理/配置列表/需要导出的命名空间，选中需要的配置，导出即可</p>
+<h3 id="mysql数据库表结构">MySQL数据库/表结构</h3>
+<p>这个根据你使用的MySQL可视化工具，或直接使用mysql
+dump都行，看自己更熟悉哪种方式吧，另外，推荐在自己做项目时，添加一个sql文件夹，用来放本项目需要的SQL
+DDL</p>
+<h3 id="docker镜像">Docker镜像</h3>
+<p>除了导出配置、结构、数据的方式外，如果正好你使用的是Docker镜像的方式，可以依此生成自己的Docker镜像这样Docker优势就体现出来了，没错，很棒</p>
+<h3 id="登录服务器">登录服务器</h3>
+<p>最后登录服务器看是否还有什么重要的文件有遗忘，很重要</p>
+<h2 id="二创建新的云服务器">二、创建新的云服务器</h2>
+<figure>
+<img data-src="https://mmbiz.qlogo.cn/sz_mmbiz_png/YCkp91onJ4Fk8OQcmPibQc6vdOBLn94SSG3Q9t46mCYKOGciaAfwQUm7eiaC6P364icC8ZEicIAXTib3PNlJCUI1ea5g/0?wx_fmt=png&amp;from=appmsg"
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<p>在阿里云服务器中选择需要的产品，配置好需要的规格后就可以下单购买了。</p>
+<p>购买完成后可以查看订单确认是否有误，之后在控制台就可以看到已购买的资源了</p>
+<figure>
+<img data-src="https://mmbiz.qlogo.cn/sz_mmbiz_png/YCkp91onJ4Fk8OQcmPibQc6vdOBLn94SScawrnuC1zbTicY2zRpNBueXDlwjtuWD2icM7bpJbMcFJ5viaZKEq6M3DA/0?wx_fmt=png&amp;from=appmsg"
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<p>在ECS管理台可以管理ECS服务器的所有东西，初始化的ECS服务器是需要重置密码的，重要提醒！！！密码一定要复杂的，最好是包含大小写字母+数字+特殊字符的，一定要复杂，之后我会从我的血泪教训告诉你为什么。另外也可以设置通过密钥的方式连接，也是很不错的。云服务器-网络与安全-密钥对，创建密钥-关联资源-下载就好了，之后在SSH连接时使用就好。</p>
+<h2 id="三连接到云服务器-1">三、连接到云服务器</h2>
+<p>前面都做好后，我们就可以连接到云服务器了，当然阿里云本身也提供了web端连接方式，不过我是习惯了使用本地的SSH工具，工具上不必纠结，顺手习惯就行。</p>
+<p>我Mac电脑使用的Tabby，连接上服务器查看基本信息就不多讲了，下面才是重点。</p>
+<h2 id="四安装和配置软件-1">四、安装和配置软件</h2>
+<p>简单的直接根据ECS提供的安装Docker的文档一步步操作就好了</p>
+<h3 id="安装jdk">安装JDK</h3>
+<p><a
+target="_blank" rel="noopener" href="https://help.aliyun.com/zh/ecs/use-cases/manually-deploy-a-java-web-environment-on-an-instance-that-runs-alibaba-cloud-linux?spm=a2c4g.11186623.0.i7">如何部署Java
+Web环境_云服务器 ECS(ECS)-阿里云帮助中心</a></p>
+<h3 id="安装docker">安装Docker</h3>
+<p><a
+target="_blank" rel="noopener" href="https://help.aliyun.com/zh/ecs/use-cases/deploy-and-use-docker-on-alibaba-cloud-linux-2-instances">安装Docker并使用_云服务器
+ECS(ECS)-阿里云帮助中心</a></p>
+<h3 id="安装mysql">安装MySQL</h3>
+<p>这里再次强调一下，一定要重视root用户，这是所有软件中最重要的用户，对于root用户不能有半点信息泄漏。非常建议创建专门的数据库用户，密码也是要精心设置的，只允许非root用户远程连接数据库，root用户只能在服务器上操作数据库，这很重要！！！</p>
+<p><a
+target="_blank" rel="noopener" href="https://help.aliyun.com/zh/ecs/use-cases/manually-deploy-mysql-on-an-ecs-instance-that-runs-centos">安装MySQL数据库_云服务器
+ECS(ECS)-阿里云帮助中心</a></p>
+<h3 id="安装redis">安装Redis</h3>
+<p><a
+target="_blank" rel="noopener" href="https://help.aliyun.com/zh/ecs/user-guide/deploy-redis-on-persistent-memory-optimized-instances">如何在配备持久内存的实例上部署Redis应用_云服务器
+ECS(ECS)-阿里云帮助中心</a></p>
+<p>这里我安装的时候好像是有点问题的，其他的安装方式我也会写博客补充的，敬请期待。</p>
+<h3 id="安装nacos">安装Nacos</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name nacos2.2 -e MODE=standalone -e JVM_XMS=128m -e JVM_XMX=128m  -p 8848:8848 -p 9848:9848 -d nacos/nacos-server:v2.2.0</span><br></pre></td></tr></table></figure>
+<p>因为我对Nacos的要求比较低，所以使用的是Docker方式单机部署而且设置的内存很小，大家根据自己的需要来。</p>
+<h2 id="五应用程序">五、应用程序</h2>
+<p>有了需要的软件环境，就可以愉快的玩耍了。</p>
+<p>有devops需要的可以看我的另一篇文章。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.JPG" alt="无奈何杨（wnhyang） 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="无奈何杨（wnhyang） 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>无奈何杨（wnhyang）
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://wnhyang.github.io/article/4e5a8380.html" title="云服务器使用指南">https://wnhyang.github.io/article/4e5a8380.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <span class="social-link">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </span>
+
+          <img class="social-item-img" src="/images/wechat_channel.png">
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://www.zhihu.com/people/wnhyang">
+            <span class="icon">
+              <i class="fab fa-zhihu"></i>
+            </span>
+
+            <span class="label">Zhihu</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%B0%E5%BD%95/" rel="tag"># 记录</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/article/5959cb50.html" rel="prev" title="SpringBoot整合Admin监控">
+                  <i class="fa fa-chevron-left"></i> SpringBoot整合Admin监控
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">无奈何杨（wnhyang）</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">198k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">12:01</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/wnhyang" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.2.2/mermaid.min.js","integrity":"sha256-o5AUfgOkNFWuInA78GVCoVdGoN9eTaB3Hxu+ep7TTrY="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://wnhyang.github.io/article/4e5a8380.html"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>
