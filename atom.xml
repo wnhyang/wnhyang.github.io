@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2024-01-13T09:15:17.853Z</updated>
+  <updated>2024-01-15T08:15:05.841Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>浏览器代理插件Proxy SwitchyOmega安装与使用</title>
+    <link href="https://wnhyang.github.io/article/e51e0935.html"/>
+    <id>https://wnhyang.github.io/article/e51e0935.html</id>
+    <published>2024-01-15T04:28:49.000Z</published>
+    <updated>2024-01-15T08:15:05.841Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;个人博客：&lt;a
+href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;个人语雀：&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="软件&amp;工具" scheme="https://wnhyang.github.io/tags/%E8%BD%AF%E4%BB%B6-%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
   
   <entry>
     <title>云服务器使用指南</title>
@@ -510,45 +535,6 @@ alt=&quot;云效持续交付&quot; /&gt;
     
     
     <category term="思考" scheme="https://wnhyang.github.io/tags/%E6%80%9D%E8%80%83/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Nacos配置中心遇到的问题</title>
-    <link href="https://wnhyang.github.io/article/7a63aa1b.html"/>
-    <id>https://wnhyang.github.io/article/7a63aa1b.html</id>
-    <published>2023-01-31T10:37:42.000Z</published>
-    <updated>2023-03-13T07:40:02.771Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;简介&quot;&gt;简介&lt;/h1&gt;
-&lt;p&gt;最近在自己搭建的单机&lt;code&gt;nacos&lt;/code&gt;使用中遇到的配置中心问题，这里做一个总结。&lt;/p&gt;
-&lt;h1 id=&quot;参考&quot;&gt;参考&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&quot;https://developer.aliyun.com/article/897341&quot;&gt;SpringCloud
-Alibaba 2021版 nacos 配置中心教程&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a
-href=&quot;https://cloud.tencent.com/developer/article/1986714&quot;&gt;SpringBoot使用spring.config.import多种方式导入配置文件&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a
-href=&quot;https://blog.csdn.net/weixin_44951259/article/details/127929284&quot;&gt;解决
-Spring Cloud 2021.0.5 版本，使用 nacos 做配置中心，报 No
-spring.config.import property has been defined 的问题&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a
-href=&quot;https://blog.csdn.net/qq_41376740/article/details/122792411?spm=1001.2014.3001.5501&quot;&gt;SpringCloud
-+ Nacos 配合maven，进行环境（配置文件）的切换，dev/ prod/ test
-三种环境&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a
-href=&quot;https://blog.csdn.net/john1337/article/details/120865113&quot;&gt;nacos从1.x升级到2.x需要注意的地方&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a
-href=&quot;https://blog.csdn.net/li1325169021/article/details/121626299&quot;&gt;Nacos使用2.0.1版本启动出现9848端口错误的解决方式(亲测有效)&lt;/a&gt;&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="Spring Cloud Alibaba" scheme="https://wnhyang.github.io/tags/Spring-Cloud-Alibaba/"/>
-    
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
-    <category term="Spring Cloud" scheme="https://wnhyang.github.io/tags/Spring-Cloud/"/>
     
   </entry>
   
