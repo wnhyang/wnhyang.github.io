@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2024-01-15T08:15:05.841Z</updated>
+  <updated>2024-01-18T13:55:14.207Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,22 +17,64 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Sa-Token介绍与SpringBoot环境下使用</title>
+    <link href="https://wnhyang.github.io/article/bf2c89b7.html"/>
+    <id>https://wnhyang.github.io/article/bf2c89b7.html</id>
+    <published>2024-01-17T14:26:48.000Z</published>
+    <updated>2024-01-18T13:55:14.207Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;个人博客：&lt;a
+href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
+title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
+title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
+Overview&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;官网：&lt;a href=&quot;https://sa-token.cc/doc.html#/&quot;&gt;Sa-Token&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;一个轻量级 Java 权限认证框架，让鉴权变得简单、优雅！&lt;/p&gt;
+&lt;h1 id=&quot;介绍&quot;&gt;介绍&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Sa-Token&lt;/strong&gt; 是一个轻量级 Java
+权限认证框架，主要解决：&lt;strong&gt;登录认证&lt;/strong&gt;、&lt;strong&gt;权限认证&lt;/strong&gt;、&lt;strong&gt;单点登录&lt;/strong&gt;、&lt;strong&gt;OAuth2.0&lt;/strong&gt;、&lt;strong&gt;分布式Session会话&lt;/strong&gt;、&lt;strong&gt;微服务网关鉴权&lt;/strong&gt;
+等一系列权限相关问题。&lt;/p&gt;
+&lt;p&gt;官方文档写的已经非常好了。引用官方文档开头的一段话：&lt;/p&gt;
+&lt;p&gt;本文档将会尽力讲解每个功能的设计原因、应用场景，用心阅读文档，你学习到的将不止是
+Sa-Token 框架本身，更是绝大多数场景下权限设计的最佳实践。&lt;/p&gt;
+&lt;p&gt;确实，通过阅读官方文档有学到很多东西，收获更大的是结合我的使用体验，下载并阅读源码后有学到了一些东西想和大家分享！这篇文章只是开头。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
+    
+  </entry>
+  
+  <entry>
     <title>浏览器代理插件Proxy SwitchyOmega安装与使用</title>
     <link href="https://wnhyang.github.io/article/e51e0935.html"/>
     <id>https://wnhyang.github.io/article/e51e0935.html</id>
     <published>2024-01-15T04:28:49.000Z</published>
-    <updated>2024-01-15T08:15:05.841Z</updated>
+    <updated>2024-01-18T13:48:15.126Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;p&gt;个人博客：&lt;a
 href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;个人语雀：&lt;a</summary>
-        
-      
+&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
+Overview&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h1 id=&quot;proxy-switchyomega&quot;&gt;Proxy SwitchyOmega&lt;/h1&gt;
+&lt;p&gt;轻松快捷地管理和切换多个代理设置。&lt;/p&gt;
+&lt;h1 id=&quot;安装&quot;&gt;安装&lt;/h1&gt;
+&lt;p&gt;SwitchyOmega谷歌商店：https://chromewebstore.google.com/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif&lt;/p&gt;
+&lt;p&gt;备用下载地址：https://github.com/FelisCatus/SwitchyOmega/releases&lt;/p&gt;
+&lt;p&gt;官网下载地址：https://switchyomega.org/switchyomega-download/&lt;/p&gt;
+&lt;p&gt;以上都不行的话，可以在Edge浏览器扩展找到它：https://microsoftedge.microsoft.com/addons/detail/proxy-switchyomega/fdbloeknjpnloaggplaobopplkdhnikc&lt;/p&gt;</summary>
     
     
     
@@ -518,23 +560,6 @@ alt=&quot;云效持续交付&quot; /&gt;
     <category term="DevOps" scheme="https://wnhyang.github.io/tags/DevOps/"/>
     
     <category term="Git/GitHub" scheme="https://wnhyang.github.io/tags/Git-GitHub/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>流浪地球2</title>
-    <link href="https://wnhyang.github.io/article/1d91adf8.html"/>
-    <id>https://wnhyang.github.io/article/1d91adf8.html</id>
-    <published>2023-02-05T15:23:34.000Z</published>
-    <updated>2023-04-10T11:58:25.085Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;其实我完全可以取个更有趣的标题，“没有人的文明毫无意义”，“你是唯一的变量”，“数字生命”等等之类，可以代表这部《流浪地球2》（下面我称《球2》）的。但是回头一想这么还是不太好，不能从整体上来讲《球2》，所以还是保留了“流浪地球2”的标题。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="思考" scheme="https://wnhyang.github.io/tags/%E6%80%9D%E8%80%83/"/>
     
   </entry>
   
