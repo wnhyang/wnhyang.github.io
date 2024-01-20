@@ -25,26 +25,46 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="热爱、分享、生活">
-<meta property="og:type" content="website">
-<meta property="og:title" content="无奈何杨（wnhyang）">
-<meta property="og:url" content="https://wnhyang.github.io/index.html">
+    <meta name="description" content="个人博客：无奈何杨（wnhyang） 个人语雀：wnhyang 共享语雀：在线知识共享 Github：wnhyang - Overview  前文讲了Sa-Token介绍与SpringBoot环境下使用，但是satoken最重要的登录鉴权直接略过了，那这篇文章就开讲，😂当然不是啦。看标题就知道这次要讲的是satoken组件，为什么这么安排呢，是因为我在细致了解satoken源码后，还是非常想把s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sa-Token组件介绍">
+<meta property="og:url" content="https://wnhyang.github.io/article/617190b0.html">
 <meta property="og:site_name" content="无奈何杨（wnhyang）">
-<meta property="og:description" content="热爱、分享、生活">
+<meta property="og:description" content="个人博客：无奈何杨（wnhyang） 个人语雀：wnhyang 共享语雀：在线知识共享 Github：wnhyang - Overview  前文讲了Sa-Token介绍与SpringBoot环境下使用，但是satoken最重要的登录鉴权直接略过了，那这篇文章就开讲，😂当然不是啦。看标题就知道这次要讲的是satoken组件，为什么这么安排呢，是因为我在细致了解satoken源码后，还是非常想把s">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240119/1705731688354.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240119/1705732202969.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240119/1705732665549.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240119/1705746281775.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240119/1705733902615.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240119/1705734145821.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240119/1705736482090.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240119/image.png">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240119/1705737345050.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240119/1705737357897.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240119/1705737871211.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240119/1705746565625.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240119/1705739632857.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240119/1705740261393.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240119/1705746281775.webp">
+<meta property="og:image" content="https://wnhyang.github.io/images/wechat_channel.webp">
+<meta property="article:published_time" content="2024-01-20T10:16:38.000Z">
+<meta property="article:modified_time" content="2024-01-20T10:30:59.645Z">
 <meta property="article:author" content="无奈何杨（wnhyang）">
-<meta property="article:tag" content="blog">
+<meta property="article:tag" content="项目">
+<meta property="article:tag" content="Spring Boot">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240119/1705731688354.webp">
 
 
-<link rel="canonical" href="https://wnhyang.github.io/">
+<link rel="canonical" href="https://wnhyang.github.io/article/617190b0.html">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wnhyang.github.io/article/617190b0.html","path":"article/617190b0.html","title":"Sa-Token组件介绍"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>无奈何杨（wnhyang）</title>
+<title>Sa-Token组件介绍 | 无奈何杨（wnhyang）</title>
   
 
 
@@ -80,7 +100,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">无奈何杨（wnhyang）</h1>
+      <p class="site-title">无奈何杨（wnhyang）</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">I will keep to fight</p>
@@ -134,7 +154,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -147,6 +167,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#satoken%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text">satoken项目结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E6%BA%90%E7%A0%81"><span class="nav-number">1.1.</span> <span class="nav-text">下载源码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.2.</span> <span class="nav-text">项目结构介绍</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#satoken%E6%A0%B8%E5%BF%83"><span class="nav-number">2.</span> <span class="nav-text">satoken核心</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#samanager"><span class="nav-number">2.1.</span> <span class="nav-text">SaManager</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#satokenconfig"><span class="nav-number">2.2.</span> <span class="nav-text">SaTokenConfig</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#satokendao"><span class="nav-number">2.3.</span> <span class="nav-text">SaTokenDao</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stpinterface"><span class="nav-number">2.4.</span> <span class="nav-text">StpInterface</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#satokencontext%E4%B8%8Esatokensecondcontext"><span class="nav-number">2.5.</span> <span class="nav-text">SaTokenContext与SaTokenSecondContext</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#salog"><span class="nav-number">2.6.</span> <span class="nav-text">SaLog</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">2.7.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#satoken%E7%BB%84%E4%BB%B6%E6%B3%A8%E5%86%8C"><span class="nav-number">3.</span> <span class="nav-text">satoken组件注册</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%A3%B0%E6%98%8E"><span class="nav-number">3.1.</span> <span class="nav-text">环境声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB"><span class="nav-number">3.2.</span> <span class="nav-text">依赖关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sa-token-servlet"><span class="nav-number">3.3.</span> <span class="nav-text">sa-token-servlet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sa-token-spring-boot-starter"><span class="nav-number">3.4.</span> <span class="nav-text">sa-token-spring-boot-starter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sa-token-redisson-jackson"><span class="nav-number">3.5.</span> <span class="nav-text">sa-token-redisson-jackson</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sa-token-spring-boot-autoconfig"><span class="nav-number">3.6.</span> <span class="nav-text">sa-token-spring-boot-autoconfig</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sabeanregister"><span class="nav-number">3.6.1.</span> <span class="nav-text">SaBeanRegister</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sabeaninject"><span class="nav-number">3.6.2.</span> <span class="nav-text">SaBeanInject</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="nav-number">4.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -211,22 +232,68 @@
       </div>
     </div>
         <div class="pjax">
+        <div class="sidebar-inner sidebar-post-related">
+          <div class="animated">
+              <div class="links-of-blogroll-title"><i class="fa fa-signs-post fa-fw"></i>
+    相关文章
+  </div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/bf2c89b7.html" rel="bookmark">
+        <time class="popular-posts-time">2024-01-17</time>
+        <br>
+      Sa-Token介绍与SpringBoot环境下使用
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/96219520.html" rel="bookmark">
+        <time class="popular-posts-time">2023-04-27</time>
+        <br>
+      自己写spring-boot-starter-xxx
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/2c5e096b.html" rel="bookmark">
+        <time class="popular-posts-time">2023-07-29</time>
+        <br>
+      微服务集成sa-token小记
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/4eb55b31.html" rel="bookmark">
+        <time class="popular-posts-time">2022-01-07</time>
+        <br>
+      设计模式-行为模式-策略模式
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/feab7b27.html" rel="bookmark">
+        <time class="popular-posts-time">2023-10-19</time>
+        <br>
+      讯飞大模型体验
+      </a>
+    </li>
+  </ul>
+
+          </div>
+        </div>
         </div>
   </aside>
 
 
     </div>
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/617190b0.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -240,13 +307,13 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
+      <meta itemprop="name" content="Sa-Token组件介绍 | 无奈何杨（wnhyang）">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/617190b0.html" class="post-title-link" itemprop="url">Sa-Token组件介绍</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          Sa-Token组件介绍
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -261,6 +328,13 @@
     </span>
 
   
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
     <span class="post-meta-break"></span>
     <span class="post-meta-item" title="本文字数">
       <span class="post-meta-item-icon">
@@ -285,7 +359,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>个人博客：<a
+        <p>个人博客：<a
 href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
 <p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
 title="wnhyang">wnhyang</a></p>
@@ -495,7 +569,6 @@ title="在线知识共享">在线知识共享</a></p>
 Overview</a></p>
 <p><img data-src="https://wnhyang.github.io/images/wechat_channel.webp" /></p>
 
-      
     </div>
 
     
@@ -503,892 +576,94 @@ Overview</a></p>
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.webp" alt="无奈何杨（wnhyang） 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.webp" alt="无奈何杨（wnhyang） 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
 </div>
 
+          
 
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/bf2c89b7.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-      <meta itemprop="description" content="热爱、分享、生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/bf2c89b7.html" class="post-title-link" itemprop="url">Sa-Token介绍与SpringBoot环境下使用</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-01-17 22:26:48" itemprop="dateCreated datePublished" datetime="2024-01-17T22:26:48+08:00">2024-01-17</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-01-20 18:30:50" itemprop="dateModified" datetime="2024-01-20T18:30:50+08:00">2024-01-20</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.8k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>7 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>个人博客：<a
-href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
-<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
-title="wnhyang">wnhyang</a></p>
-<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
-title="在线知识共享">在线知识共享</a></p>
-<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
-Overview</a></p>
-<hr />
-<p>官网：<a target="_blank" rel="noopener" href="https://sa-token.cc/doc.html#/">Sa-Token</a></p>
-<p>一个轻量级 Java 权限认证框架，让鉴权变得简单、优雅！</p>
-<h1 id="介绍">介绍</h1>
-<p><strong>Sa-Token</strong> 是一个轻量级 Java
-权限认证框架，主要解决：<strong>登录认证</strong>、<strong>权限认证</strong>、<strong>单点登录</strong>、<strong>OAuth2.0</strong>、<strong>分布式Session会话</strong>、<strong>微服务网关鉴权</strong>
-等一系列权限相关问题。</p>
-<p>官方文档写的已经非常好了。引用官方文档开头的一段话：</p>
-<p>本文档将会尽力讲解每个功能的设计原因、应用场景，用心阅读文档，你学习到的将不止是
-Sa-Token 框架本身，更是绝大多数场景下权限设计的最佳实践。</p>
-<p>确实，通过阅读官方文档有学到很多东西，收获更大的是结合我的使用体验，下载并阅读源码后有学到了一些东西想和大家分享！这篇文章只是开头。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/article/bf2c89b7.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/e51e0935.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-      <meta itemprop="description" content="热爱、分享、生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/e51e0935.html" class="post-title-link" itemprop="url">浏览器代理插件Proxy SwitchyOmega安装与使用</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-01-15 12:28:49" itemprop="dateCreated datePublished" datetime="2024-01-15T12:28:49+08:00">2024-01-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-01-18 22:54:58" itemprop="dateModified" datetime="2024-01-18T22:54:58+08:00">2024-01-18</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>682</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>个人博客：<a
-href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
-<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang">wnhyang</a></p>
-<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh">在线知识共享</a></p>
-<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
-Overview</a></p>
-<hr />
-<h1 id="proxy-switchyomega">Proxy SwitchyOmega</h1>
-<p>轻松快捷地管理和切换多个代理设置。</p>
-<h1 id="安装">安装</h1>
-<p>SwitchyOmega谷歌商店：https://chromewebstore.google.com/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif</p>
-<p>备用下载地址：https://github.com/FelisCatus/SwitchyOmega/releases</p>
-<p>官网下载地址：https://switchyomega.org/switchyomega-download/</p>
-<p>以上都不行的话，可以在Edge浏览器扩展找到它：https://microsoftedge.microsoft.com/addons/detail/proxy-switchyomega/fdbloeknjpnloaggplaobopplkdhnikc</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/article/e51e0935.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/4e5a8380.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-      <meta itemprop="description" content="热爱、分享、生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/4e5a8380.html" class="post-title-link" itemprop="url">云服务器使用指南</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-01-11 15:19:58" itemprop="dateCreated datePublished" datetime="2024-01-11T15:19:58+08:00">2024-01-11</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-01-18 22:54:58" itemprop="dateModified" datetime="2024-01-18T22:54:58+08:00">2024-01-18</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>2.1k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>8 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>随着云计算技术的不断发展，越来越多的企业和个人开始使用云服务器来托管网站、应用程序和其他在线服务。云服务器提供了一种灵活、可扩展且成本效益高的解决方案，使得用户可以轻松地部署和管理自己的在线业务。本文将为您提供一份详细的云服务器使用指南，帮助您更好地利用云服务器。</p>
-<h1 id="一选择合适的云服务器提供商">一、选择合适的云服务器提供商</h1>
-<p>市场上有许多云服务器提供商，如阿里云、腾讯云、亚马逊AWS等。在选择云服务器提供商时，您需要考虑以下几个因素：</p>
+<div class="post-copyright">
 <ul>
-<li>价格：比较不同提供商的价格，选择性价比最高的方案。</li>
-<li>性能：根据您的需求选择合适的CPU、内存和存储配置。</li>
-<li>可靠性：了解提供商的数据中心分布和网络连接质量，确保您的服务稳定可靠。</li>
-<li>技术支持：选择提供良好技术支持的提供商，以便在遇到问题时能够得到及时的帮助。</li>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>无奈何杨（wnhyang）
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://wnhyang.github.io/article/617190b0.html" title="Sa-Token组件介绍">https://wnhyang.github.io/article/617190b0.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
 </ul>
-<p>这些云服务器提供商针对个人和企业用户有非常多的产品可供挑选，尤其是对于新用户、学生更是有很多优惠。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/article/4e5a8380.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/images/wechat_channel.webp">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://www.zhihu.com/people/wnhyang">
+            <span class="icon">
+              <i class="fab fa-zhihu"></i>
+            </span>
+
+            <span class="label">Zhihu</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E9%A1%B9%E7%9B%AE/" rel="tag"># 项目</a>
+              <a href="/tags/Spring-Boot/" rel="tag"># Spring Boot</a>
+          </div>
+
         
-      
-    </div>
 
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/5959cb50.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-      <meta itemprop="description" content="热爱、分享、生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/5959cb50.html" class="post-title-link" itemprop="url">SpringBoot整合Admin监控</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-10-24 08:45:58" itemprop="dateCreated datePublished" datetime="2023-10-24T08:45:58+08:00">2023-10-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-01-18 22:54:58" itemprop="dateModified" datetime="2024-01-18T22:54:58+08:00">2024-01-18</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>292</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>#Spring Boot Admin</p>
-<p>也许你在学习<code>SpringBoot</code>的时候有接触<code>Admin</code>监控，但是因为是自学没有真正意义上跑的项目，只是每次启动后调试一下然后就关闭了，所以监控的意义其实不大。况且，我们基本上都是本地跑的项目，基本上不会有什么压力，也很少去分析接口耗时、Jvm堆栈、线程、CPU、内存等，也是因此我们一直都有忽略监控的重要性。其实也都可以理解，没有这样的需求怎么会去探索呢。就像现在工作了，自己也有买服务器跑项目，就会不自觉地去做这些事情，驱动力来源就是自己了，完全不用借助他力。很多事情也是一样，现在做那些没必要的事情我觉得很烦，没有意思，也用不到，但是一旦与我息息相关，牵扯到利益上，对不起，我绝不放弃。</p>
-<h1 id="监控系统介绍">监控系统介绍</h1>
-<p>于我而言，见过的监控系统也并不多，仅仅知道<code>Zabbix</code>和<code>Prometheus</code>+<code>Grafana</code>仅此而已，</p>
-<p>https://blog.csdn.net/liu320yj/article/details/123554297</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/feab7b27.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-      <meta itemprop="description" content="热爱、分享、生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/feab7b27.html" class="post-title-link" itemprop="url">讯飞大模型体验</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-10-19 10:19:34" itemprop="dateCreated datePublished" datetime="2023-10-19T10:19:34+08:00">2023-10-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-01-18 22:54:58" itemprop="dateModified" datetime="2024-01-18T22:54:58+08:00">2024-01-18</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>852</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="讯飞大模型">讯飞大模型</h1>
-<p>今年<code>AI</code>的风潮还没有停歇，就像是去年的俄乌战争一样，好像是只是出现在去年的年初，然后就消失了一样，其实一直战争都在持续，只是因为公众已经被其他的新闻所转移了视线，是的，人们只会对当下新鲜的事物所吸引，总是忘记一些很重要的事情。不只是<code>AI</code>，很多事情也是一样，当他出现在热搜时，我们去关注，去挖掘，去思考，等一下更具吸引力的热搜出现，之前的变得无人问津的时候，好像它就过去了一样，然而往往不是这样的。讲的有点偏了，扯回话题，国内<code>AI</code>，准确的说是今年大火的<code>AI</code>大模型很让国人失望，当然也包括我，具体的就不吐槽了，知道知道讯飞星火，体验了一下还非常不错，才有了一点改观，虽然与国外的大模型相比还有差距，但还是值得欣慰的。</p>
-<p>最近讯飞开发公众免费体验讯飞大模型api的机会，正好我也体验了一下，每人免费<code>20w``token</code>，还是可以玩一玩的，借此记录体验感受。</p>
-<h1 id="参考">参考</h1>
-<p><a
-target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/TkSsBsTRQVqWk8AvueLJ4A">讯飞大模型</a></p>
-<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7020964728386093093">一文吃透
-WebSocket 原理 刚面试完，趁热赶紧整理</a></p>
-<p><a
-target="_blank" rel="noopener" href="https://blog.csdn.net/KeepStruggling/article/details/105543449">Websocket技术的Java实现(上篇)</a></p>
-<p><a
-target="_blank" rel="noopener" href="https://blog.csdn.net/KeepStruggling/article/details/105923142">Websocket技术的Java实现(下篇)</a></p>
-<p><a
-target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/613527997">springboot整合webSocket（看完即入门）</a></p>
-<h1 id="websocket">WebSocket</h1>
-<p>提到<code>WebSocket</code>的原因是讯飞提供的<code>Java</code>示例使用就是<code>WebSocket</code>技术，这下不得不了解一下了。</p>
-<p><code>Socket</code>想必在学习计算机网络时都会有些了解，这个<code>WebSocket</code>虽然听过但完全没概念，所以上面贴上了一些<code>WebSocket</code>入门的一些博客，看了仿佛打开了新世界，到目前为止只会写<code>Controller</code>提供的<code>Http</code>接口，这个<code>WebSocket</code>还是很值得学一下的，相信能玩一些很有趣的事情。</p>
-<p>下面是直接下载讯飞官网<code>Java</code>示例运行后，对话中产生的，这一次对话使用大概500多<code>token</code>，免费体验的<code>token</code>这样看起来不算多了，但还是能尝试一下集成在微信公众号、群聊机器人、个人网站等等。</p>
-<blockquote>
-<p>我：java实现websocket的方法
-大模型：Java实现WebSocket的方法有很多，这里给出一个使用Java-WebSocket库的简单示例：</p>
-<ol type="1">
-<li>首先，需要在项目中添加Java-WebSocket依赖。如果你使用的是Maven项目，可以在pom.xml文件中添加以下依赖：</li>
-</ol>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.java-websocket<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>Java-WebSocket<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.5.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ol start="2" type="1">
-<li>创建一个WebSocket客户端类，继承<code>org.java_websocket.client.WebSocketClient</code>，并重写相关方法：</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="keyword">import</span> org.java_websocket.client.WebSocketClient;</span><br><span class="line">&gt;<span class="keyword">import</span> org.java_websocket.handshake.ServerHandshake;</span><br><span class="line"></span><br><span class="line">&gt;<span class="keyword">import</span> java.net.URI;</span><br><span class="line">&gt;<span class="keyword">import</span> java.net.URISyntaxException;</span><br><span class="line"></span><br><span class="line">&gt;<span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyWebSocketClient</span> <span class="keyword">extends</span> <span class="title class_">WebSocketClient</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">MyWebSocketClient</span><span class="params">(URI serverUri)</span> &#123;</span><br><span class="line">      <span class="built_in">super</span>(serverUri);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onOpen</span><span class="params">(ServerHandshake handshakedata)</span> &#123;</span><br><span class="line">       System.out.println(<span class="string">&quot;连接已打开&quot;</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onMessage</span><span class="params">(String message)</span> &#123;</span><br><span class="line">       System.out.println(<span class="string">&quot;收到消息： &quot;</span> + message);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClose</span><span class="params">(<span class="type">int</span> code, String reason, <span class="type">boolean</span> remote)</span> &#123;</span><br><span class="line">       System.out.println(<span class="string">&quot;连接已关闭&quot;</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onError</span><span class="params">(Exception ex)</span> &#123;</span><br><span class="line">       ex.printStackTrace();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">           <span class="type">MyWebSocketClient</span> <span class="variable">client</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyWebSocketClient</span>(<span class="keyword">new</span> <span class="title class_">URI</span>(<span class="string">&quot;ws://localhost:8080/websocket&quot;</span>));</span><br><span class="line">           client.connect();</span><br><span class="line">       &#125; <span class="keyword">catch</span> (URISyntaxException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在这个示例中，我们创建了一个名为<code>MyWebSocketClient</code>的类，继承了<code>WebSocketClient</code>，并重写了<code>onOpen</code>、<code>onMessage</code>、<code>onClose</code>和<code>onError</code>方法。然后在<code>main</code>方法中，我们实例化了这个类，并连接到了一个运行在本地的WebSocket服务器。
-*************************************************************************************
-我：</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/61a1b694.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-      <meta itemprop="description" content="热爱、分享、生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/61a1b694.html" class="post-title-link" itemprop="url">想多了全是问题，做多了全是答案</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-09-18 19:39:44" itemprop="dateCreated datePublished" datetime="2023-09-18T19:39:44+08:00">2023-09-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-01-18 22:54:58" itemprop="dateModified" datetime="2024-01-18T22:54:58+08:00">2024-01-18</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>894</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="许久没更新了">许久没更新了</h1>
-<p>每次好久不更新，再回头看的的时候就像看许久未打扫的屋子一样，杂乱而又陌生。哈哈哈哈</p>
-<p>简单讲讲这段时间做的事情吧，一边是记录生活，一边是激励自己吧。</p>
-<h2 id="永远不要放弃你所热爱的">永远不要放弃你所热爱的</h2>
-<p>工作没有不烦的，不多提了。</p>
-<p>学习呢，还是想自己做一套完整的系统，之前的<a
-href="https://wnhyang.github.io/article/a874eb2e.html">白嫖敏捷开发体系</a>、<a
-href="https://wnhyang.github.io/article/972d4705.html">Docker 部署 Java
-镜像</a>、<a
-href="https://wnhyang.github.io/article/d54257c1.html">Apifox
-简单使用</a>、<a
-href="https://wnhyang.github.io/article/abbb8dbb.html">初次使用
-XXL-JOB</a>、<a
-href="https://wnhyang.github.io/article/ee1e3834.html">XXL-JOB
-发送过期邮件提醒</a>、<a
-href="https://wnhyang.github.io/article/96219520.html">自己写
-spring-boot-starter-xxx</a>、<a
-href="https://wnhyang.github.io/article/2c5e096b.html">微服务集成
-sa-token
-小记</a>等一些文章已经说过了，目前进度大概是，后端接口部分大致完成，现在需要一个前端系统，而我的前端水平又不是太行，之前有过下载开源项目改改使用的经历，我想想参照着官网和成功的开源项目我也是可以的，所以最近一直在搞这个前端，遇到过不少问题，关键是这些问题我是比较难下手的，用的已有框架比较新，已有的使用经验也比较少，所以经常卡住，比较难搞哦。</p>
-<p>另外，每每到周末除了偶尔有约能出去玩外，一直闷在屋子里，也是这段时间追完了老《三国》电视剧，真的好看，太好看了。四大名著除了国人耳熟能详的西游，我最熟悉的其实是水浒，之前所有一百单八将绰号和姓名我全部能对上，随便问都能直接答出来，就这种程度。三国更多记忆还是小时候的动画片和干脆面集卡，大致的故事都知道，但是也只是大致，很多都没有很理解，直到我看完了这部无比优秀的《三国》，有很多感触。东汉末年的乱世，桃园三兄弟的情谊，大将军与十常侍，董卓的专横跋扈，当初意气风发三公四世的袁绍，趋炎附势武功盖世的吕奉先，曹老板的心狠手辣和雄心壮志，乱世佳人美貂蝉，不信鬼神的江东猛虎孙伯符，义薄云天的关二爷，勇猛无畏的三爷，未献一计的徐元直，千里走单骑的云妹，雄姿英发羽扇纶巾周郎，守口如瓶鲁子敬，合肥战神孙仲谋，鞠躬尽瘁死而后已诸葛丞相，继承诸葛丞相意志的姜伯约，演技超群司马仲达，钟会邓艾破蜀，等等，太过精彩</p>
-<p>除此之外要接触一下经典的电影，这个时代能花费一个多小时甚至是两个小时，安静的沉下心地去看完一整部电影的人恐怕不多了。经典就是经典，经久不衰，总能有些体会和收获。</p>
-<h2 id="健身会上瘾的哦">健身会上瘾的哦</h2>
-<p>健身会上瘾是真的，自从我开始力量训练就停不下来了，也不是盲目的追求大重量，就是每次脱下衣服照镜子，看到自己的进步就很开心！</p>
-<p>都说上班会制造各种疾病，我偏不，就是要跟他干，现在身体倍棒，就是偶尔太馋啦。</p>
-<h2 id="game">Game</h2>
-<p>因为我早已告别pc游戏，只剩下手游可以消遣，也只有联盟手游和金铲铲给我打发时光，嘿嘿</p>
-<h2 id="结">结</h2>
-<p>一句话，成为更好的自己！！！</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/2c5e096b.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-      <meta itemprop="description" content="热爱、分享、生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/2c5e096b.html" class="post-title-link" itemprop="url">微服务集成sa-token小记</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-07-29 17:31:57" itemprop="dateCreated datePublished" datetime="2023-07-29T17:31:57+08:00">2023-07-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-01-18 22:54:58" itemprop="dateModified" datetime="2024-01-18T22:54:58+08:00">2024-01-18</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.1k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>4 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="安全框架">安全框架</h1>
-<p>想必一旦涉及到<code>Spring</code>安全框架，很容易就会想到<code>SpringSecurity</code>和<code>Shiro</code>，了解过的都知道，完美的集成一套安全框架是多么麻烦的事情，所以大家都有努力在简化安全框架的集成成本。</p>
-<p>我也是在自己做项目中需要集成安全框架才有了这篇文章，上面的两位的集成难度对我这种小菜鸡还是太难了。所以果断寻求别的方案，这不，发现了这个<a
-target="_blank" rel="noopener" href="https://sa-token.cc/index.html">Sa-Token</a>。</p>
-<h1 id="sa-token-介绍"><a
-target="_blank" rel="noopener" href="https://sa-token.cc/doc.html#/?id=sa-token-介绍">Sa-Token
-介绍</a></h1>
-<p><strong>Sa-Token</strong> 是一个轻量级 Java
-权限认证框架，主要解决：<strong>登录认证</strong>、<strong>权限认证</strong>、<strong>单点登录</strong>、<strong>OAuth2.0</strong>、<strong>分布式Session会话</strong>、<strong>微服务网关鉴权</strong>
-等一系列权限相关问题。</p>
-<p>以上介绍复制于官网，在自己体验和使用后，感受就是🥳</p>
-<p><code>Sa-token</code>使用起来真的非常简单方便，具体使用上，直接看官网就好，这里主要讨论一个问题：</p>
-<p>在微服务模式下，<code>auth</code>（认证中心）的拆解，是归于<code>system</code>（系统），还是独立的，如果是独立的。。。如果不是独立的。。。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/article/2c5e096b.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/article/bf2c89b7.html" rel="prev" title="Sa-Token介绍与SpringBoot环境下使用">
+                  <i class="fa fa-chevron-left"></i> Sa-Token介绍与SpringBoot环境下使用
+                </a>
             </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/a541e7bd.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-      <meta itemprop="description" content="热爱、分享、生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/a541e7bd.html" class="post-title-link" itemprop="url">IDEA启动SpringBoot项目Process finished with exit code 1</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-06-08 08:33:09" itemprop="dateCreated datePublished" datetime="2023-06-08T08:33:09+08:00">2023-06-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-01-18 22:54:58" itemprop="dateModified" datetime="2024-01-18T22:54:58+08:00">2024-01-18</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>646</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="启动错误日志呢">启动错误日志呢</h1>
-<p>如题，这个问题其实很早之前就遇到过，是同样的报错，虽然可能具体的原因有些不同，但忘了记录，这次说什么也要记录下来长个记性。</p>
-<p>说来也离奇，通常在使用<code>IDEA</code>启动调试<code>SpringBoot</code>就算是启动不了，至少还有一些日志能够帮助我们排查出是什么问题，但这次遇到的只有下面这个，除此之外什么什么也没有了！</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Process finished with <span class="built_in">exit</span> code 1</span><br></pre></td></tr></table></figure>
-<p>这可着实无从下手，还有一种启动失败错误如下，也是非常常见的。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Connected to the target VM, address: <span class="string">&#x27;127.0.0.1:56302&#x27;</span>, transport: <span class="string">&#x27;socket&#x27;</span></span><br><span class="line">Disconnected from the target VM, address: <span class="string">&#x27;127.0.0.1:56302&#x27;</span>, transport: <span class="string">&#x27;socket&#x27;</span></span><br><span class="line"></span><br><span class="line">Process finished with <span class="built_in">exit</span> code 1</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/article/a541e7bd.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
+            <div class="post-nav-item">
             </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+          </div>
     </footer>
   </article>
 </div>
@@ -1396,119 +671,7 @@ target="_blank" rel="noopener" href="https://sa-token.cc/doc.html#/?id=sa-token-
 
 
 
-    
 
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/b58761d9.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-      <meta itemprop="description" content="热爱、分享、生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/b58761d9.html" class="post-title-link" itemprop="url">开放的服务一定要小心</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-05-08 15:54:29" itemprop="dateCreated datePublished" datetime="2023-05-08T15:54:29+08:00">2023-05-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-01-18 22:54:58" itemprop="dateModified" datetime="2024-01-18T22:54:58+08:00">2024-01-18</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>876</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="又搞我">又搞我？</h1>
-<p>继<a
-href="https://wnhyang.github.io/article/57d7718e.html">我的服务器竟然被攻击了！</a>之后，我的服务器又被攻击了，上次是解决了远程用户登录，定时执行恶意脚本的问题。</p>
-<p>但这次又对我的<code>MySQL</code>下手了，并且在每个库中留下了一张<code>README</code>的表，表里只有一条数据，如下：</p>
-<blockquote>
-<p>您的数据库已删除。您必须支付 0.0125 比特币 (BTC)
-才能取回它们。我拥有的备份：okay, wnh, xxl_job。通过 chin71303@proton.me
-与我联系 只有与付款相关的邮件才会得到答复！</p>
-<p>bc1q3l9q2n840y682vvy7xxs7cptnthag3z3xmfpgy</p>
-<p>chin71303@proton.me</p>
-</blockquote>
-<p>真是杀人且诛心啊！</p>
-<p>跟上次一样，发生了这件事后我立刻马上就知道被攻击的原因了，还是我习惯了自己开发，随性的原因，平常我自己玩就不太注意开放出来的安全性，因为那时候仅仅是在自己的电脑上玩，不管是局域网还是防火墙都会有保障，而且一般不会全天24小时运行，但是到服务器上就不一样了，在安全规则上设置的比较随意，需要的端口都直接开放，中间件账号权限也是随意设置的，特别容易被以撞库等方式破解，这次事件也正是它带来的后果。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/article/b58761d9.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
 
 </div>
   </main>
@@ -1613,7 +776,7 @@ href="https://wnhyang.github.io/article/57d7718e.html">我的服务器竟然被�
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://wnhyang.github.io/"}</script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://wnhyang.github.io/article/617190b0.html"}</script>
   <script src="/js/third-party/quicklink.js"></script>
 
 </body>

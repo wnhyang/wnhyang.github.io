@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2024-01-18T14:54:58.866Z</updated>
+  <updated>2024-01-20T10:30:59.645Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Sa-Token组件介绍</title>
+    <link href="https://wnhyang.github.io/article/617190b0.html"/>
+    <id>https://wnhyang.github.io/article/617190b0.html</id>
+    <published>2024-01-20T10:16:38.000Z</published>
+    <updated>2024-01-20T10:30:59.645Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;个人博客：&lt;a
+href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;个人语雀：&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Sa-Token介绍与SpringBoot环境下使用</title>
     <link href="https://wnhyang.github.io/article/bf2c89b7.html"/>
     <id>https://wnhyang.github.io/article/bf2c89b7.html</id>
     <published>2024-01-17T14:26:48.000Z</published>
-    <updated>2024-01-18T14:54:58.866Z</updated>
+    <updated>2024-01-20T10:30:50.765Z</updated>
     
     
     <summary type="html">&lt;p&gt;个人博客：&lt;a
@@ -206,9 +233,9 @@ href=&quot;https://sa-token.cc/doc.html#/?id=sa-token-介绍&quot;&gt;Sa-Token
     
     
     
-    <category term="Spring Cloud Alibaba" scheme="https://wnhyang.github.io/tags/Spring-Cloud-Alibaba/"/>
-    
     <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
+    
+    <category term="Spring Cloud Alibaba" scheme="https://wnhyang.github.io/tags/Spring-Cloud-Alibaba/"/>
     
     <category term="Spring Cloud" scheme="https://wnhyang.github.io/tags/Spring-Cloud/"/>
     
@@ -522,44 +549,13 @@ alt=&quot;docker部署流水线&quot; /&gt;
     
     
     
-    <category term="Docker" scheme="https://wnhyang.github.io/tags/Docker/"/>
-    
-    <category term="Maven" scheme="https://wnhyang.github.io/tags/Maven/"/>
-    
-    <category term="DevOps" scheme="https://wnhyang.github.io/tags/DevOps/"/>
-    
     <category term="Git/GitHub" scheme="https://wnhyang.github.io/tags/Git-GitHub/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>白嫖敏捷开发体系</title>
-    <link href="https://wnhyang.github.io/article/a874eb2e.html"/>
-    <id>https://wnhyang.github.io/article/a874eb2e.html</id>
-    <published>2023-02-26T15:25:44.000Z</published>
-    <updated>2024-01-19T08:20:24.955Z</updated>
-    
-    
-    <summary type="html">&lt;figure&gt;
-&lt;img data-src=&quot;https://jsd.cdn.zzko.cn/wnhyang/clouding@master/cloud-picture/云效持续交付.szjdarpjia8.webp&quot;
-alt=&quot;云效持续交付&quot; /&gt;
-&lt;figcaption aria-hidden=&quot;true&quot;&gt;云效持续交付&lt;/figcaption&gt;
-&lt;/figure&gt;
-&lt;p&gt;白嫖谁不爱啊，敏捷开发、&lt;code&gt;DevOps&lt;/code&gt;、云原生这些概念刚开始是完全不懂，只有我体验一下，才能讲出感受来，这不，终于有机会了。&lt;/p&gt;
-&lt;h1 id=&quot;参考&quot;&gt;参考&lt;/h1&gt;
-&lt;p&gt;https://www.aliyun.com/product/yunxiao&lt;/p&gt;
-&lt;p&gt;https://www.yuque.com/pig4cloud/pig/ls7u1d&lt;/p&gt;</summary>
-    
-    
-    
     
     <category term="Docker" scheme="https://wnhyang.github.io/tags/Docker/"/>
     
     <category term="Maven" scheme="https://wnhyang.github.io/tags/Maven/"/>
     
     <category term="DevOps" scheme="https://wnhyang.github.io/tags/DevOps/"/>
-    
-    <category term="Git/GitHub" scheme="https://wnhyang.github.io/tags/Git-GitHub/"/>
     
   </entry>
   
