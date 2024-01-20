@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2024-01-20T10:30:59.645Z</updated>
+  <updated>2024-01-20T10:32:20.606Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -21,18 +21,27 @@
     <link href="https://wnhyang.github.io/article/617190b0.html"/>
     <id>https://wnhyang.github.io/article/617190b0.html</id>
     <published>2024-01-20T10:16:38.000Z</published>
-    <updated>2024-01-20T10:30:59.645Z</updated>
+    <updated>2024-01-20T10:32:20.606Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;p&gt;个人博客：&lt;a
 href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;个人语雀：&lt;a</summary>
-        
-      
+&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
+title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
+title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
+Overview&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;前文讲了&lt;a href=&quot;https://www.yuque.com/wnh/share/swon1eb8t5v1bny1&quot;
+title=&quot;Sa-Token介绍与SpringBoot环境下使用&quot;&gt;Sa-Token介绍与SpringBoot环境下使用&lt;/a&gt;，但是&lt;code&gt;satoken&lt;/code&gt;最重要的登录鉴权直接略过了，那这篇文章就开讲，😂当然不是啦。看标题就知道这次要讲的是&lt;code&gt;satoken&lt;/code&gt;组件，为什么这么安排呢，是因为我在细致了解&lt;code&gt;satoken&lt;/code&gt;源码后，还是非常想把&lt;code&gt;satoken&lt;/code&gt;讲的比较清楚细致的，包含其中一些设计模式的使用、函数式接口的应用、组件注册的方法等，而要讲好这些，&lt;code&gt;satoken&lt;/code&gt;的组件一定要讲一下吧，废话不多说了，下面开始。&lt;/p&gt;
+&lt;p&gt;必要声明：文章基于&lt;a
+href=&quot;https://sa-token.cc/&quot;&gt;Sa-Token&lt;/a&gt;，版本1.37.0&lt;/p&gt;
+&lt;h1 id=&quot;satoken项目结构&quot;&gt;satoken项目结构&lt;/h1&gt;
+&lt;h2 id=&quot;下载源码&quot;&gt;下载源码&lt;/h2&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git clone https://github.com/dromara/Sa-Token.git&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;项目结构介绍&quot;&gt;项目结构介绍&lt;/h2&gt;
+&lt;p&gt;项目结构组织如下，结构还是相当清晰明了的。我也不可能把所有工程代码详细都讲一下，只能根据&lt;code&gt;satoken&lt;/code&gt;最重要的模块挑一部分细致讲一下。&lt;/p&gt;</summary>
     
     
     
@@ -233,9 +242,9 @@ href=&quot;https://sa-token.cc/doc.html#/?id=sa-token-介绍&quot;&gt;Sa-Token
     
     
     
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
     <category term="Spring Cloud Alibaba" scheme="https://wnhyang.github.io/tags/Spring-Cloud-Alibaba/"/>
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
     <category term="Spring Cloud" scheme="https://wnhyang.github.io/tags/Spring-Cloud/"/>
     
@@ -549,13 +558,13 @@ alt=&quot;docker部署流水线&quot; /&gt;
     
     
     
-    <category term="Git/GitHub" scheme="https://wnhyang.github.io/tags/Git-GitHub/"/>
-    
     <category term="Docker" scheme="https://wnhyang.github.io/tags/Docker/"/>
     
     <category term="Maven" scheme="https://wnhyang.github.io/tags/Maven/"/>
     
     <category term="DevOps" scheme="https://wnhyang.github.io/tags/DevOps/"/>
+    
+    <category term="Git/GitHub" scheme="https://wnhyang.github.io/tags/Git-GitHub/"/>
     
   </entry>
   

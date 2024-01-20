@@ -257,7 +257,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2024-01-20 18:16:38 / 修改时间：18:30:59" itemprop="dateCreated datePublished" datetime="2024-01-20T18:16:38+08:00">2024-01-20</time>
+      <time title="创建时间：2024-01-20 18:16:38 / 修改时间：18:32:20" itemprop="dateCreated datePublished" datetime="2024-01-20T18:16:38+08:00">2024-01-20</time>
     </span>
 
   
@@ -303,198 +303,14 @@ target="_blank" rel="noopener" href="https://sa-token.cc/">Sa-Token</a>，版本
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/dromara/Sa-Token.git</span><br></pre></td></tr></table></figure>
 <h2 id="项目结构介绍">项目结构介绍</h2>
 <p>项目结构组织如下，结构还是相当清晰明了的。我也不可能把所有工程代码详细都讲一下，只能根据<code>satoken</code>最重要的模块挑一部分细致讲一下。</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240119/1705731688354.webp"
-alt="1705731688354" />
-<figcaption aria-hidden="true">1705731688354</figcaption>
-</figure>
-<h1 id="satoken核心">satoken核心</h1>
-<p>简单介绍一下<code>satoken</code>的项目结构，就可以步入本篇文章的正题了——<code>satoken</code>组件。</p>
-<p><code>sa-token-core</code>的组织结构如下，包的命名已经能说明一些什么了，接下来到了哪块就细致来说哪块。</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240119/1705732202969.webp"
-alt="1705732202969" />
-<figcaption aria-hidden="true">1705732202969</figcaption>
-</figure>
-<h2 id="samanager">SaManager</h2>
-<p>全类名路径：<code>cn.dev33.satoken.SaManager</code></p>
-<p>以上结构中最突出的就是<code>SaManager</code>了，官方给他的定义如下，可见其重要性。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 管理 Sa-Token 所有全局组件，可通过此类快速获取、写入各种全局组件对象</span><br><span class="line"> *</span><br><span class="line"> * @author click33</span><br><span class="line"> * @since 1.18.0</span><br><span class="line"> */</span><br><span class="line">public class SaManager &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>SaManager</code>的结构如下，其中这些属性就是<code>satoken</code>最重要的组件了，下面挑出几个细讲一下。</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240119/1705732665549.webp"
-alt="1705732665549" />
-<figcaption aria-hidden="true">1705732665549</figcaption>
-</figure>
-<h2 id="satokenconfig">SaTokenConfig</h2>
-<p>全类名路径：<code>cn.dev33.satoken.config.SaTokenConfig</code></p>
-<p><code>config</code>包下除了<code>SaTokenConfig</code>还有<code>SaSignConfig</code>、<code>SaCookieConfig</code>、<code>SaTokenConfigFactory</code>。前三个属于配置类，最后一个<code>Factory</code>是用于非<code>IOC</code>环境下使用的类。</p>
-<p><code>satoken</code>的配置参考这一节就好<a
-target="_blank" rel="noopener" href="https://sa-token.cc/doc.html#/use/config">Sa-Token</a>，当然这里完全和源码相对应的。</p>
-<p>如前文所配置的，都对应着类属性。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">############## Sa-Token 配置 (文档: https://sa-token.cc) ##############</span><br><span class="line">sa-token:</span><br><span class="line">  # token 名称（同时也是 cookie 名称）</span><br><span class="line">  token-name: Authorization</span><br><span class="line">  # token 有效期（单位：秒） 默认30天，-1 代表永久有效</span><br><span class="line">  timeout: 3600</span><br><span class="line">  # token 最低活跃频率（单位：秒），如果 token 超过此时间没有访问系统就会被冻结，默认-1 代表不限制，永不冻结</span><br><span class="line">  active-timeout: 1800</span><br><span class="line">  # 是否允许同一账号多地同时登录 （为 true 时允许一起登录, 为 false 时新登录挤掉旧登录）</span><br><span class="line">  is-concurrent: false</span><br><span class="line">  # 在多人登录同一账号时，是否共用一个 token （为 true 时所有登录共用一个 token, 为 false 时每次登录新建一个 token）</span><br><span class="line">  is-share: true</span><br><span class="line">  # 是否尝试从header里读取token</span><br><span class="line">  is-read-header: true</span><br><span class="line">  # 是否尝试从cookie里读取token</span><br><span class="line">  is-read-cookie: false</span><br><span class="line">  # token前缀</span><br><span class="line">  token-prefix: &quot;Bearer&quot;</span><br><span class="line">  # token 风格（默认可取值：uuid、simple-uuid、random-32、random-64、random-128、tik）</span><br><span class="line">  token-style: tik</span><br><span class="line">  # 是否输出操作日志</span><br><span class="line">  is-log: true</span><br></pre></td></tr></table></figure>
-<p><code>SaTokenConfig</code>部分截图如下。</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240119/1705746281775.webp"
-alt="1705746281775" />
-<figcaption aria-hidden="true">1705746281775</figcaption>
-</figure>
-<h2 id="satokendao">SaTokenDao</h2>
-<p>全类名路径：<code>cn.dev33.satoken.dao.SaTokenDao</code></p>
-<p><a
-target="_blank" rel="noopener" href="https://sa-token.cc/doc.html#/api/sa-token-dao">Sa-Token</a>，官方给他的描述是：<code>SaTokenDao</code>
-是数据持久层接口，负责所有会话数据的底层写入和读取。</p>
-<p>正如次，此接口设计了如下一些操作数据读取与写入的方法，注意其中包含抽象方法、默认实现方法和默认空实现方法。</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240119/1705733902615.webp"
-alt="1705733902615" />
-<figcaption aria-hidden="true">1705733902615</figcaption>
-</figure>
-<p>与<code>SaTokenDao</code>同<code>dao</code>包下还有一个默认实现类<code>SaTokenDaoDefaultImpl</code>，当然除此之外还有很多其他实现在插件工程里。</p>
-<p>默认实现<code>SaTokenDaoDefaultImpl</code>：Sa-Token
-持久层接口，默认实现类（基于内存
-Map，系统重启后数据丢失）。所以在不引入其他如<code>Redis</code>需要注意重启丢失的问题。</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240119/1705734145821.webp"
-alt="1705734145821" />
-<figcaption aria-hidden="true">1705734145821</figcaption>
-</figure>
-<h2 id="stpinterface">StpInterface</h2>
-<p>全类名路径：<code>cn.dev33.satoken.stp.StpInterface</code></p>
-<p>前文讲到自定义权限认证时有讲到，这个接口需要我们自己实现来满足业务要求。</p>
-<p>默认实现类<code>StpInterfaceDefaultImpl</code>也有说明。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 对 &#123;@link StpInterface&#125; 接口默认的实现类</span><br><span class="line"> * &lt;p&gt;</span><br><span class="line"> * 如果开发者没有实现 StpInterface 接口，则框架会使用此默认实现类，所有方法都返回空集合，即：用户不具有任何权限和角色。</span><br><span class="line"> * </span><br><span class="line"> * @author click33</span><br><span class="line"> * @since 1.10.0</span><br><span class="line"> */</span><br><span class="line">public class StpInterfaceDefaultImpl implements StpInterface &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public List&lt;String&gt; getPermissionList(Object loginId, String loginType) &#123;</span><br><span class="line">        return new ArrayList&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public List&lt;String&gt; getRoleList(Object loginId, String loginType) &#123;</span><br><span class="line">        return new ArrayList&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>同<code>stp</code>包下还有很重要的<code>StpUtil</code>、<code>StpLogic</code>、<code>SaTokenInfo</code>这次就先不讲了。</p>
-<h2
-id="satokencontext与satokensecondcontext">SaTokenContext与SaTokenSecondContext</h2>
-<p>全类名路径：<code>cn.dev33.satoken.context.SaTokenContext/SaTokenSecondContext</code></p>
-<p><a
-target="_blank" rel="noopener" href="https://sa-token.cc/doc.html#/fun/sa-token-context">Sa-Token</a>，官方描述：上下文处理器封装了当前应用环境的底层操作，是
-Sa-Token 对接不同 web 框架的关键。目前 Sa-Token 仅对
-SpringBoot、SpringMVC、WebFlux、Solon 等部分 Web 框架制作了 Starter
-集成包， 如果我们使用的 Web 框架不在上述列表之中，则需要自定义
-SaTokenContext 接口的实现完成整合工作。</p>
-<p><code>core</code>工程<code>context</code>包下的结构是这样的，其中<code>SaHolder</code>是Sa-Token
-上下文持有类，你可以通过此类快速获取当前环境下的
-SaRequest、SaResponse、SaStorage、SaApplication
-对象。关于satoken的三大作用域参考官网这篇文章<a
-target="_blank" rel="noopener" href="https://sa-token.cc/doc.html#/fun/three-scope">Sa-Token</a>。</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240119/1705736482090.webp"
-alt="1705736482090" />
-<figcaption aria-hidden="true">1705736482090</figcaption>
-</figure>
-<p>对应上官方所说对接不同<code>web</code>框架，<code>SaTokenContext</code>的实现有下，当然对于我们使用最多的可能就是<code>SaTokenContextForString</code>了。</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240119/image.png"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
-</figure>
-<h2 id="salog">SaLog</h2>
-<p>全类名路径：<code>cn.dev33.satoken.log.SaLog</code></p>
-<p>Sa-Token
-日志输出接口，只有一个实现类就在同<code>log</code>包下<code>SaLogForConsole</code>。在看实现类的源码时看到这个倒是涨一点知识😂。挺有意思的。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">    // 三种写法速度对比</span><br><span class="line">    // if( config.getIsColorLog() != null &amp;&amp; config.getIsColorLog() )  10亿次，2058ms</span><br><span class="line">    // if( config.getIsColorLog() == Boolean.TRUE ) 	10亿次，1050ms   最快</span><br><span class="line">    // if( Objects.equals(config.getIsColorLog(), Boolean.TRUE) )  	10亿次，1543ms</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
-<h2 id="小结">小结</h2>
-<p>关于<code>SaManager</code>的组件就挑上面几个介绍了一下。</p>
-<p>剩下的<code>SaTempInterface</code>（临时 <code>token</code>
-认证模块）、<code>SaJsonTemplate</code>（<code>JSON</code>
-转换器）、<code>SaSignTemplate</code>（<code>API</code>
-参数签名）、<code>SaSameTemplate</code>（<code>Same-Token</code>
-同源系统认证模块）就自己学习吧。</p>
-<h1 id="satoken组件注册">satoken组件注册</h1>
-<p>简单介绍了<code>satoken</code>的组件，就要思考这些组件在项目中是如何使用的？如何管理的？</p>
-<h2 id="环境声明">环境声明</h2>
-<p>这里针对如下环境来讲一下。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- Sa-Token 权限认证, 在线文档：http://sa-token.dev33.cn/ --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">  &lt;groupId&gt;cn.dev33&lt;/groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;sa-token-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">  &lt;groupId&gt;cn.dev33&lt;/groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;sa-token-redisson-jackson&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="依赖关系">依赖关系</h2>
-<p>他们分别对应有如下依赖。</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240119/1705737345050.webp"
-alt="1705737345050" />
-<figcaption aria-hidden="true">1705737345050</figcaption>
-</figure>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240119/1705737357897.webp"
-alt="1705737357897" />
-<figcaption aria-hidden="true">1705737357897</figcaption>
-</figure>
-<h2 id="sa-token-servlet">sa-token-servlet</h2>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240119/1705737871211.webp"
-alt="1705737871211" />
-<figcaption aria-hidden="true">1705737871211</figcaption>
-</figure>
-<p><code>sa-token-servlet</code>仅仅是实现了前面<code>context</code>章节的<code>SaStorage</code>、<code>SaRequest</code>、<code>SaResponse</code>接口，并定义了一些错误码。</p>
-<h2 id="sa-token-spring-boot-starter">sa-token-spring-boot-starter</h2>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240119/1705746565625.webp"
-alt="1705746565625" />
-<figcaption aria-hidden="true">1705746565625</figcaption>
-</figure>
-<p><code>sa-token-spring-boot-starter</code>也很简单，关于<code>SpringBoot</code>的自动装配原理就不多讲了，这里看<code>resource/META-INF/spring.factories</code>文件，其实<code>SpringBoot2.7</code>之后就换了，下面会提到。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">org.springframework.boot.autoconfigure.EnableAutoConfiguration=\</span><br><span class="line">cn.dev33.satoken.spring.SaTokenContextRegister</span><br></pre></td></tr></table></figure>
-<p>这里表示自动注入的是<code>SaTokenContextRegister</code>。</p>
-<p>1、注入了<code>SaTokenContextForSpring</code>前面也有提到，其就是在SpringMVC环境下的上下文处理器，针对处理<code>sa-token-servlet</code>实现的<code>context</code>；</p>
-<p>2、注入了<code>SaPathCheckFilterForServlet</code>路径检查过滤器，自己可查看其代码，这里略过。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 注册 Sa-Token 框架所需要的 Bean</span><br><span class="line"> *</span><br><span class="line"> * @author click33</span><br><span class="line"> * @since 1.34.0</span><br><span class="line"> */</span><br><span class="line">public class SaTokenContextRegister &#123;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">	 * 获取上下文处理器组件 (Spring版)</span><br><span class="line">	 * </span><br><span class="line">	 * @return /</span><br><span class="line">	 */</span><br><span class="line">    @Bean</span><br><span class="line">    public SaTokenContext getSaTokenContextForSpring() &#123;</span><br><span class="line">        return new SaTokenContextForSpring();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">	 * 请求 path 校验过滤器</span><br><span class="line">	 *</span><br><span class="line">	 * @return /</span><br><span class="line">	 */</span><br><span class="line">    @Bean</span><br><span class="line">    public SaPathCheckFilterForServlet saPathCheckFilterForServlet() &#123;</span><br><span class="line">        return new SaPathCheckFilterForServlet();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="sa-token-redisson-jackson">sa-token-redisson-jackson</h2>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240119/1705739632857.webp"
-alt="1705739632857" />
-<figcaption aria-hidden="true">1705739632857</figcaption>
-</figure>
-<p>好了，<code>sa-token-spring-boot-starter</code>解决了确定<code>context</code>的问题。</p>
-<p><code>sa-token-redisson-jackson</code>要解决<code>SaTokenDao</code>持久层实现的问题。前面提到<code>SaTokenDao</code>有很多实现，默认实现在内存中存储数据，这里使用了<code>redisson</code>。</p>
-<p>可以看到<code>resource/META-INF/</code>不仅有<code>spring.factories</code>还有<code>spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports</code>，这就是<code>SpringBoot2.7</code>前后自动装配的差别，有机会可以再探讨一下。</p>
-<p><code>resource/META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports</code>内容如下</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cn.dev33.satoken.dao.SaTokenDaoRedissonJackson</span><br></pre></td></tr></table></figure>
-<p>这里注入的是<code>SaTokenDaoRedissonJackson</code>，是<code>SaTokenDao</code>的一个实现类，具体方法实现自己学习吧😂。其中<code>SaSessionForJacksonCustomized</code>是<code>SaSession</code>的<code>Jackson</code>序列化实现类。</p>
-<h2
-id="sa-token-spring-boot-autoconfig">sa-token-spring-boot-autoconfig</h2>
-<p>重头戏来了！！！</p>
-<p>前面那么多东西都要在这里串起来了。</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240119/1705740261393.webp"
-alt="1705740261393" />
-<figcaption aria-hidden="true">1705740261393</figcaption>
-</figure>
-<p>直接开始！</p>
-<p><code>resource/META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports</code>内容如下</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cn.dev33.satoken.spring.SaBeanRegister</span><br><span class="line">cn.dev33.satoken.spring.SaBeanInject</span><br><span class="line">cn.dev33.satoken.spring.sso.SaSsoBeanRegister</span><br><span class="line">cn.dev33.satoken.spring.sso.SaSsoBeanInject</span><br><span class="line">cn.dev33.satoken.spring.oauth2.SaOAuth2BeanRegister</span><br><span class="line">cn.dev33.satoken.spring.oauth2.SaOAuth2BeanInject</span><br></pre></td></tr></table></figure>
-<p>这次先不看<code>SSO</code>和<code>OAuth2</code>的组件。只看<code>SaBeanRegister</code>和<code>SaBeanInject</code>最基础的部分。</p>
-<h3 id="sabeanregister">SaBeanRegister</h3>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 注册Sa-Token所需要的Bean </span><br><span class="line"> * &lt;p&gt; Bean 的注册与注入应该分开在两个文件中，否则在某些场景下会造成循环依赖 </span><br><span class="line"> * @author click33</span><br><span class="line"> *</span><br><span class="line"> */</span><br><span class="line">public class SaBeanRegister &#123;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">	 * 获取配置Bean</span><br><span class="line">	 * </span><br><span class="line">	 * @return 配置对象</span><br><span class="line">	 */</span><br><span class="line">    @Bean</span><br><span class="line">    @ConfigurationProperties(prefix = &quot;sa-token&quot;)</span><br><span class="line">    public SaTokenConfig getSaTokenConfig() &#123;</span><br><span class="line">        return new SaTokenConfig();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">	 * 获取 json 转换器 Bean (Jackson版)</span><br><span class="line">	 * </span><br><span class="line">	 * @return json 转换器 Bean (Jackson版)</span><br><span class="line">	 */</span><br><span class="line">    @Bean</span><br><span class="line">    public SaJsonTemplate getSaJsonTemplateForJackson() &#123;</span><br><span class="line">        return new SaJsonTemplateForJackson();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">	 * 应用上下文路径加载器</span><br><span class="line">	 * @return /</span><br><span class="line">	 */</span><br><span class="line">    @Bean</span><br><span class="line">    public ApplicationContextPathLoading getApplicationContextPathLoading() &#123;</span><br><span class="line">        return new ApplicationContextPathLoading();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>1、通过<code>spring</code>配置文件前缀为<code>sa-token</code>读取<code>SaTokenConfig</code>属性注入</p>
-<p>2和3略过。哈哈哈哈哈</p>
-<h3 id="sabeaninject">SaBeanInject</h3>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240119/1705746281775.webp"
-alt="1705746281775" />
-<figcaption aria-hidden="true">1705746281775</figcaption>
-</figure>
-<p>观察<code>SaBeanInject</code>的结构，注意到其只有一个构造器，剩下的都是空返回的<code>set</code>方法而这些方法入参都与前面的<code>SaManager</code>里的组件几乎完全对应。</p>
-<p>首先看这个构造器，通过调用<code>SaManager</code>的静态方法来设置的。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 组件注入 </span><br><span class="line"> * &lt;p&gt; 为确保 Log 组件正常打印，必须将 SaLog 和 SaTokenConfig 率先初始化 &lt;/p&gt; </span><br><span class="line"> * </span><br><span class="line"> * @param log log 对象</span><br><span class="line"> * @param saTokenConfig 配置对象</span><br><span class="line"> */</span><br><span class="line">public SaBeanInject(</span><br><span class="line">        @Autowired(required = false) SaLog log, </span><br><span class="line">        @Autowired(required = false) SaTokenConfig saTokenConfig</span><br><span class="line">        )&#123;</span><br><span class="line">    if(log != null) &#123;</span><br><span class="line">        SaManager.setLog(log);</span><br><span class="line">    &#125;</span><br><span class="line">    if(saTokenConfig != null) &#123;</span><br><span class="line">        SaManager.setConfig(saTokenConfig);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>不知道你还记得前面有贴官方给<code>SaManager</code>的定义：管理
-Sa-Token 所有全局组件，可通过此类快速获取、写入各种全局组件对象。</p>
-<p>回过头来看<code>SaManager</code>的属性是怎么定义的，<code>public volatile static SaTokenConfig config;</code>保证了多线程环境下的可见性和有序性。也就是<code>SaTokenConfig</code>被更新后，其他线程能立刻看到变量更新。另外在<code>getConfig</code>方法也使用了同步块确保线程安全地获取<code>config</code>对象。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 全局配置对象</span><br><span class="line"> */</span><br><span class="line">public volatile static SaTokenConfig config;	</span><br><span class="line">public static void setConfig(SaTokenConfig config) &#123;</span><br><span class="line">    setConfigMethod(config);</span><br><span class="line">    </span><br><span class="line">    // 打印 banner </span><br><span class="line">    if(config !=null &amp;&amp; config.getIsPrint()) &#123;</span><br><span class="line">        SaFoxUtil.printSaToken();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 如果此 config 对象没有配置 isColorLog 的值，则框架为它自动判断一下</span><br><span class="line">    if(config != null &amp;&amp; config.getIsLog() != null &amp;&amp; config.getIsLog() &amp;&amp; config.getIsColorLog() == null) &#123;</span><br><span class="line">        config.setIsColorLog(SaFoxUtil.isCanColorLog());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // $$ 全局事件 </span><br><span class="line">    SaTokenEventCenter.doSetConfig(config);</span><br><span class="line">    </span><br><span class="line">    // 调用一次 StpUtil 中的方法，保证其可以尽早的初始化 StpLogic</span><br><span class="line">    StpUtil.getLoginType();</span><br><span class="line">&#125;</span><br><span class="line">private static void setConfigMethod(SaTokenConfig config) &#123;</span><br><span class="line">    SaManager.config = config;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 获取 Sa-Token 的全局配置信息</span><br><span class="line"> * @return 全局配置信息</span><br><span class="line"> */</span><br><span class="line">public static SaTokenConfig getConfig() &#123;</span><br><span class="line">    if (config == null) &#123;</span><br><span class="line">        synchronized (SaManager.class) &#123;</span><br><span class="line">            if (config == null) &#123;</span><br><span class="line">                setConfigMethod(SaTokenConfigFactory.createConfig());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return config;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>SaBeanInject</code>的其他方法也没有什么特别的，自己看就行了。</p>
-<p>可以说<code>SaBeanInject</code>是帮助<code>SaManager</code>设置属性的重要类，是之后直接使用<code>StpUtil</code>、<code>StpLogic</code>等静态类的静态方法的基础。</p>
-<h1 id="写在最后">写在最后</h1>
-<p>拙作艰辛，字句心血，望诸君垂青，多予支持，不胜感激。</p>
-<hr />
-<p>个人博客：<a
-href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
-<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
-title="wnhyang">wnhyang</a></p>
-<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
-title="在线知识共享">在线知识共享</a></p>
-<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
-Overview</a></p>
-<p><img data-src="https://wnhyang.github.io/images/wechat_channel.webp" /></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/article/617190b0.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
