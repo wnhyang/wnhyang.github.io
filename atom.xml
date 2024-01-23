@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2024-01-20T10:32:20.606Z</updated>
+  <updated>2024-01-23T11:47:15.138Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>个人免费Github图床PicX介绍与使用</title>
+    <link href="https://wnhyang.github.io/article/f74e4826.html"/>
+    <id>https://wnhyang.github.io/article/f74e4826.html</id>
+    <published>2024-01-23T10:10:13.000Z</published>
+    <updated>2024-01-23T11:47:15.138Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;个人博客：&lt;a
+href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;个人语雀：&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="软件&amp;工具" scheme="https://wnhyang.github.io/tags/%E8%BD%AF%E4%BB%B6-%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
   
   <entry>
     <title>Sa-Token组件介绍</title>
@@ -483,7 +508,7 @@ href=&quot;https://github.com/xuxueli/xxl-job/issues/191&quot;&gt;https://github
     <link href="https://wnhyang.github.io/article/d54257c1.html"/>
     <id>https://wnhyang.github.io/article/d54257c1.html</id>
     <published>2023-03-21T03:02:38.000Z</published>
-    <updated>2024-01-19T08:20:24.995Z</updated>
+    <updated>2024-01-23T11:45:13.865Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;apifox&quot;&gt;Apifox&lt;/h1&gt;
@@ -504,7 +529,7 @@ href=&quot;https://mp.weixin.qq.com/s/fT84AkFPZSINL9VUvAmNJw&quot;&gt;https://mp
     
     
     
-    <category term="软件/工具" scheme="https://wnhyang.github.io/tags/%E8%BD%AF%E4%BB%B6-%E5%B7%A5%E5%85%B7/"/>
+    <category term="软件&amp;工具" scheme="https://wnhyang.github.io/tags/%E8%BD%AF%E4%BB%B6-%E5%B7%A5%E5%85%B7/"/>
     
     <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
     
@@ -529,42 +554,6 @@ href=&quot;https://mp.weixin.qq.com/s/fT84AkFPZSINL9VUvAmNJw&quot;&gt;https://mp
     <category term="思考" scheme="https://wnhyang.github.io/tags/%E6%80%9D%E8%80%83/"/>
     
     <category term="杂谈" scheme="https://wnhyang.github.io/tags/%E6%9D%82%E8%B0%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Docker部署Java镜像</title>
-    <link href="https://wnhyang.github.io/article/972d4705.html"/>
-    <id>https://wnhyang.github.io/article/972d4705.html</id>
-    <published>2023-02-28T09:54:16.000Z</published>
-    <updated>2024-01-19T08:20:24.990Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;参考&quot;&gt;参考&lt;/h1&gt;
-&lt;p&gt;&lt;a
-href=&quot;https://gitee.com/log4j/pig&quot;&gt;https://gitee.com/log4j/pig&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a
-href=&quot;https://gitee.com/y_project/RuoYi-Vue&quot;&gt;https://gitee.com/y_project/RuoYi-Vue&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a
-href=&quot;https://segmentfault.com/a/1190000022530075&quot;&gt;https://segmentfault.com/a/1190000022530075&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a
-href=&quot;https://segmentfault.com/a/1190000022530083&quot;&gt;https://segmentfault.com/a/1190000022530083&lt;/a&gt;&lt;/p&gt;
-&lt;figure&gt;
-&lt;img data-src=&quot;https://jsd.cdn.zzko.cn/wnhyang/clouding@master/cloud-picture/image.1slfvf330g00.webp&quot;
-alt=&quot;docker部署流水线&quot; /&gt;
-&lt;figcaption aria-hidden=&quot;true&quot;&gt;docker部署流水线&lt;/figcaption&gt;
-&lt;/figure&gt;</summary>
-    
-    
-    
-    
-    <category term="Docker" scheme="https://wnhyang.github.io/tags/Docker/"/>
-    
-    <category term="Maven" scheme="https://wnhyang.github.io/tags/Maven/"/>
-    
-    <category term="DevOps" scheme="https://wnhyang.github.io/tags/DevOps/"/>
-    
-    <category term="Git/GitHub" scheme="https://wnhyang.github.io/tags/Git-GitHub/"/>
     
   </entry>
   

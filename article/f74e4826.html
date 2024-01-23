@@ -25,29 +25,34 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="提要 开始实习了，公司配的电脑是Mac，对于Mac我只有在上学期选的一个“ios记事本”的创新实践课程中体会过，但学校那个电脑实在是不太行，整体体验也很差。尽管如此，我还是很期待使用Mac做开发的，毕竟关于Mac的生产能力还是不容置疑的。甚至想着拥有一台属于自己的Mac电脑。">
+    <meta name="description" content="个人博客：无奈何杨（wnhyang） 个人语雀：wnhyang 共享语雀：在线知识共享 Github：wnhyang - Overview  前言 借用AI回答“图床是什么？” 图床是一种网络服务，它提供在线存储图片的空间，用户可以将自己的图片上传到图床服务器上，并获取该图片的网络链接（URL）。这个链接可以直接在网页、论坛、博客、社交媒体等地方使用，当访问者打开含有该链接的页面时，浏览器会从图床">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mac做开发">
-<meta property="og:url" content="https://wnhyang.github.io/article/30c6026a.html">
+<meta property="og:title" content="个人免费Github图床PicX介绍与使用">
+<meta property="og:url" content="https://wnhyang.github.io/article/f74e4826.html">
 <meta property="og:site_name" content="无奈何杨（wnhyang）">
-<meta property="og:description" content="提要 开始实习了，公司配的电脑是Mac，对于Mac我只有在上学期选的一个“ios记事本”的创新实践课程中体会过，但学校那个电脑实在是不太行，整体体验也很差。尽管如此，我还是很期待使用Mac做开发的，毕竟关于Mac的生产能力还是不容置疑的。甚至想着拥有一台属于自己的Mac电脑。">
+<meta property="og:description" content="个人博客：无奈何杨（wnhyang） 个人语雀：wnhyang 共享语雀：在线知识共享 Github：wnhyang - Overview  前言 借用AI回答“图床是什么？” 图床是一种网络服务，它提供在线存储图片的空间，用户可以将自己的图片上传到图床服务器上，并获取该图片的网络链接（URL）。这个链接可以直接在网页、论坛、博客、社交媒体等地方使用，当访问者打开含有该链接的页面时，浏览器会从图床">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-12-18T13:33:28.000Z">
-<meta property="article:modified_time" content="2024-01-23T11:45:01.939Z">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240120/1706004568980.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240123/1706006468690.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240123/1706006659794.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240123/1706007069227.webp">
+<meta property="og:image" content="https://wnhyang.github.io/images/wechat_channel.webp">
+<meta property="article:published_time" content="2024-01-23T10:10:13.000Z">
+<meta property="article:modified_time" content="2024-01-23T11:47:15.138Z">
 <meta property="article:author" content="无奈何杨（wnhyang）">
 <meta property="article:tag" content="软件&amp;工具">
-<meta property="article:tag" content="记录">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240120/1706004568980.webp">
 
 
-<link rel="canonical" href="https://wnhyang.github.io/article/30c6026a.html">
+<link rel="canonical" href="https://wnhyang.github.io/article/f74e4826.html">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wnhyang.github.io/article/30c6026a.html","path":"article/30c6026a.html","title":"Mac做开发"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wnhyang.github.io/article/f74e4826.html","path":"article/f74e4826.html","title":"个人免费Github图床PicX介绍与使用"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Mac做开发 | 无奈何杨（wnhyang）</title>
+<title>个人免费Github图床PicX介绍与使用 | 无奈何杨（wnhyang）</title>
   
 
 
@@ -150,7 +155,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8F%90%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">提要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">2.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E5%90%8E"><span class="nav-number">3.</span> <span class="nav-text">最后</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">2.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%9B%BE%E5%BA%8A"><span class="nav-number">3.</span> <span class="nav-text">其他图床</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%81%9A%E5%90%88%E5%9B%BE%E5%BA%8A"><span class="nav-number">3.1.</span> <span class="nav-text">聚合图床</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#picgo"><span class="nav-number">3.2.</span> <span class="nav-text">PicGo</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8"><span class="nav-number">4.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#github%E8%B4%A6%E5%8F%B7"><span class="nav-number">4.1.</span> <span class="nav-text">Github账号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%99%BB%E5%BD%95picx"><span class="nav-number">4.2.</span> <span class="nav-text">登录PicX</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%9B%BE%E5%BA%8A"><span class="nav-number">4.3.</span> <span class="nav-text">配置图床</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE%E5%BA%8A%E9%85%8D%E7%BD%AE"><span class="nav-number">4.4.</span> <span class="nav-text">图床配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87%E5%92%8C%E5%9B%BE%E5%BA%8A%E7%AE%A1%E7%90%86"><span class="nav-number">4.5.</span> <span class="nav-text">上传图片和图床管理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">5.</span> <span class="nav-text">结语</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="nav-number">6.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -222,10 +227,38 @@
   </div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <a class="popular-posts-link" href="/article/661307ba.html" rel="bookmark">
-        <time class="popular-posts-time">2023-01-02</time>
+      <a class="popular-posts-link" href="/article/70023c40.html" rel="bookmark">
+        <time class="popular-posts-time">2021-03-04</time>
         <br>
-      Mac-Java开发环境
+      博客从Github迁移至Gitee
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/bf2c89b7.html" rel="bookmark">
+        <time class="popular-posts-time">2024-01-17</time>
+        <br>
+      Sa-Token介绍与SpringBoot环境下使用
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/9df2c6e.html" rel="bookmark">
+        <time class="popular-posts-time">2021-03-05</time>
+        <br>
+      Github开源项目下载加速
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/e51e0935.html" rel="bookmark">
+        <time class="popular-posts-time">2024-01-15</time>
+        <br>
+      浏览器代理插件Proxy SwitchyOmega安装与使用
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/617190b0.html" rel="bookmark">
+        <time class="popular-posts-time">2024-01-20</time>
+        <br>
+      Sa-Token组件介绍
       </a>
     </li>
   </ul>
@@ -249,7 +282,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/30c6026a.html">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/f74e4826.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -262,12 +295,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Mac做开发 | 无奈何杨（wnhyang）">
+      <meta itemprop="name" content="个人免费Github图床PicX介绍与使用 | 无奈何杨（wnhyang）">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Mac做开发
+          个人免费Github图床PicX介绍与使用
         </h1>
 
         <div class="post-meta-container">
@@ -277,15 +310,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
+      
 
-      <time title="创建时间：2021-12-18 21:33:28" itemprop="dateCreated datePublished" datetime="2021-12-18T21:33:28+08:00">2021-12-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-01-23 19:45:01" itemprop="dateModified" datetime="2024-01-23T19:45:01+08:00">2024-01-23</time>
+      <time title="创建时间：2024-01-23 18:10:13 / 修改时间：19:47:15" itemprop="dateCreated datePublished" datetime="2024-01-23T18:10:13+08:00">2024-01-23</time>
     </span>
 
   
@@ -302,14 +329,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>709</span>
+      <span>1.5k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
+      <span>5 分钟</span>
     </span>
 </div>
 
@@ -320,35 +347,107 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="提要">提要</h1>
-<p>开始实习了，公司配的电脑是Mac，对于Mac我只有在上学期选的一个“ios记事本”的创新实践课程中体会过，但学校那个电脑实在是不太行，整体体验也很差。尽管如此，我还是很期待使用Mac做开发的，毕竟关于Mac的生产能力还是不容置疑的。甚至想着拥有一台属于自己的Mac电脑。</p>
-<span id="more"></span>
-<h1 id="简介">简介</h1>
-<p>Mac做开发有什么不同呢？</p>
-<p>首先对于用惯了Windows的用户，还是需要一些适应时间的，毕竟是两个系统，差别还是很大的。</p>
-<p>先讲一讲我的体会吧，Mac的触控板真是好用，太舒服了，虽然看过好多吹Mac触控板的，但毕竟也没有真实体会嘛。这下真的是服了，果然好用，第一感觉玩电脑失去鼠标，体验依旧很棒。接下来说一下Mac的做工吧，很精致，屏幕素质很好，很小只有13寸但是很精悍，加上M1芯片的支持，速度没的说。在装卸软件方面，与Windows差别更大了，在Mac上装软件没有那么多复杂的选项，很简洁轻松，不用与软件商斗智斗勇了。</p>
-<p>下面说一下我现在在用的软件吧。</p>
+        <p>个人博客：<a
+href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
+<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
+title="wnhyang">wnhyang</a></p>
+<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
+title="在线知识共享">在线知识共享</a></p>
+<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
+Overview</a></p>
+<hr />
+<h1 id="前言">前言</h1>
+<p>借用<code>AI</code>回答“图床是什么？”</p>
+<p>图床是一种网络服务，它提供在线存储图片的空间，用户可以将自己的图片上传到图床服务器上，并获取该图片的网络链接（URL）。这个链接可以直接在网页、论坛、博客、社交媒体等地方使用，当访问者打开含有该链接的页面时，浏览器会从图床服务器加载图片并显示在对应位置。通过使用图床，用户可以减轻自己网站服务器的存储和带宽压力，同时提高内容加载速度，尤其是对于那些希望快速展示大量图片但自身服务器资源有限的情况。</p>
+<p>图床通常具有以下特点：</p>
 <ul>
-<li>Chrome</li>
-<li>HomeBrew，mac专属装软件环境工具</li>
-<li>JDK，不用多说</li>
-<li>Git，协作开发</li>
-<li>Maven，构建Java项目</li>
-<li>IDEA，JavaIDE</li>
-<li>Navicat Premium，数据库可视化工具</li>
-<li>Postman，API调试、Http请求的工具</li>
-<li>JMeter，压测工具</li>
-<li>RDM，Redis可视化工具</li>
-<li>VSCode，强大编辑器</li>
-<li>NDM，下载器配合Chrome插件使用</li>
-<li>Docker，虚拟容器</li>
-<li>Dash，查文档助手</li>
-<li>iTerm，很好用的终端</li>
+<li>提供上传接口：可以通过网页端、客户端工具或API进行图片上传。</li>
+<li>链接生成与管理：上传成功后自动生成可公开访问的链接，有的还支持防盗链、链接有效期等功能。</li>
+<li>存储空间大小限制：免费图床可能有存储空间或流量的限制，付费图床则通常提供更多存储和更快的访问速度。</li>
+<li>可能提供的额外服务：如缩略图生成、图片处理（裁剪、压缩等）、CDN加速以优化全球访问速度等。</li>
 </ul>
-<h1 id="最后">最后</h1>
-<p>Mac使用下来还是很棒的，尤其是能感受到M1芯片的强大，这里要注意了，下载软件时要区分是否适配M1芯片，也就是是否支持arm架构，不然很可能出问题，或是无法发挥M1的优势。</p>
-<p>M1已经发布一年多了，今年新的M1Pro、M1Max都在M1的基础上，变得更强大了，被用在了新一代的Mac机器上了，所用过的人都体会到了M1系列芯片是有多么强大了。从苹果开始向iPad推广M1芯片，可以看出苹果真的想要将自己的芯片做的更长远的想法，不禁感叹：苹果真的是软硬件都非常强大的公司。跑远了，我想说其实是，在M1芯片推出后，几乎所有厂商都在为适配基于arm架构的M1努力，可见苹果的号召力和影响力啊！不过现在还是有一些欠缺的软件待完善。</p>
-<p>最后一句话：Mac强大生产力工具！！！</p>
+<p>常见的图床服务商包括但不限于新浪图床、SM.MS、Imgur、七牛云、腾讯云COS、阿里云OSS、又拍云等。</p>
+<p>对于我而言，使用图床的最大目的就是应用于<a
+href="https://wnhyang.github.io/">个人博客</a>。对于个人需求不大的，且几乎无商业性质的，诉求还是希望是免费、简单、稳定的。下面就此要求介绍和使用<a
+target="_blank" rel="noopener" href="https://github.com/XPoet/picx">PicX</a>图床。</p>
+<h1 id="简介">简介</h1>
+<p>PicX Github：<a target="_blank" rel="noopener" href="https://github.com/XPoet/picx"
+class="uri">https://github.com/XPoet/picx</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://picx-docs.xpoet.cn/docs/usage-guide/get-start.html">快速开始
+| PicX 图床使用指南</a></p>
+<p><a target="_blank" rel="noopener" href="https://picx.xpoet.cn/#/upload">PicX 图床神器</a></p>
+<p><code>PicX</code>的<code>Github</code>、使用说明、官网如上，我简单总结一下。</p>
+<p><code>PicX</code>是基于<code>Github</code>仓库和<code>cdn</code>加速的免费图床工具。通过<code>Github</code>授权<code>PicX</code>仓库管理权限（包含<code>GitHub OAuth</code>
+授权登录 和 填写 <code>GitHub Token</code> 登录
+这两种方式），<code>PicX</code>通过<code>Github Api</code>管理<code>Github</code>仓库（也就是我们的图库），提供了图片压缩、自定义命名、自定义水印等功能，简单且免费。</p>
+<h1 id="其他图床">其他图床</h1>
+<h2 id="聚合图床">聚合图床</h2>
+<p><a target="_blank" rel="noopener" href="https://www.superbed.cn/">聚合图床 -
+免费无限图片上传</a>了，相比于<code>PicX</code>更为简单，只需要登录社交账号就好，其收费标准如下，对于跟人用户也是完全够用的。</p>
+<p>但是聚合图床与<code>PicX</code>有着明显的区别，<code>PicX</code>基于<code>Github</code>，完全开源免费，说白了只是一个图床管理工具。而聚合图床是整套服务，与<code>PicX</code>这种<code>cdn</code>加速有明显区别的，至于选择吗？说实话，偏见地讲程序员必然偏向<code>PicX</code>。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240120/1706004568980.webp"
+alt="聚合图床" />
+<figcaption aria-hidden="true">聚合图床</figcaption>
+</figure>
+<h2 id="picgo">PicGo</h2>
+<p>相比于<code>PicX</code>更加出名，网上教程说明更多，功能更丰富，支持的存储源相当丰富，不仅是<code>Github</code>、<code>Gitee</code>，阿里云、腾讯云、七牛云等OSS也是支持的。</p>
+<p>感兴趣的同学可以自己探索一下。</p>
+<p>我舍弃<code>PicGo</code>可能也和他众所周知的优点有关吧，我还是喜欢简单免费，自主可控的，我觉得<code>PicX</code>就是这样的，就这么简单。</p>
+<h1 id="使用">使用</h1>
+<p><a
+target="_blank" rel="noopener" href="https://picx-docs.xpoet.cn/docs/usage-guide/get-start.html">快速开始
+| PicX 图床使用指南</a></p>
+<p>建议直接看官网，我梳理一下必要的配置如下。</p>
+<h2 id="github账号">Github账号</h2>
+<p><code>Github</code>账号，这是必要的，可能有同学想用<code>Gitee</code>，先抛开其支持不支持的，就说<code>Gitee</code>虽然速度是快，但往往也有一些限制。就拿我的个人博客从<code>Github</code>到<code>Gitee</code>，最后再到<code>Github</code>来讲。先前也是看中了<code>Gitee</code>的国内高速，但后来<code>Gitee</code>出现莫名其妙的敏感词限制，导致个人博客不可更新，所以之后就放弃了，转Github了。</p>
+<h2 id="登录picx">登录PicX</h2>
+<p><code>PicX</code>支持 <code>GitHub OAuth</code> 授权登录 和 填写
+<code>GitHub Token</code> 登录
+这两种方式。我个人比较建议<code>Token</code>的方式，创建<code>Token</code>遵循最小权限原则，只分配<code>repo</code>（仓库）就够了。注意！！！新生成的<code>Token</code>只会显示一次，所以一定要保存好。</p>
+<h2 id="配置图床">配置图床</h2>
+<p>这一步就是利用上一步授予<code>PicX</code>的仓库管理权限，创建图床存储仓库。</p>
+<p>建议一键自动配置，配置效果如下图。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240123/1706006468690.webp"
+alt="picx图床配置" />
+<figcaption aria-hidden="true">picx图床配置</figcaption>
+</figure>
+<h2 id="图床配置">图床配置</h2>
+<p>图片名称、水印配置如下，按需自定义即可。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240123/1706006659794.webp"
+alt="picx我的设置" />
+<figcaption aria-hidden="true">picx我的设置</figcaption>
+</figure>
+<p>其他还有图片压缩算法配置，图片链接格式配置（图片链接和Markdown图片链接），<code>Github Pages</code>部署配置，主题配置，这些自己看就行了。</p>
+<p>图片链接规则可以提一嘴，<code>PicX</code>提供了如下多个图片链接规则，我以前以为这个单选题，后来才发现只是选择首选啊。我了解到的<code>cdn</code>是<strong>更智能的镜像+缓存+流量导流，</strong>
+就这个思路来讲，使用不同的<code>cdn</code>服务，区别就在服务提供者的<strong>镜像+缓存+流量导流。</strong>
+在我使用的体验中，<code>ChinaJsDelivr</code>还是很不错的，比较推荐。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240123/1706007069227.webp"
+alt="picx图片链接规则" />
+<figcaption aria-hidden="true">picx图片链接规则</figcaption>
+</figure>
+<h2 id="上传图片和图床管理">上传图片和图床管理</h2>
+<p>直接看<a
+target="_blank" rel="noopener" href="https://picx-docs.xpoet.cn/docs/usage-guide/upload.html">官网</a>就够了。</p>
+<p>其他的好像也没有什么好讲的，就是这么简单。</p>
+<h1 id="结语">结语</h1>
+<p>还是常说的，开源自费为大家服务的项目都不容易，有能力的去支持一下吧😂</p>
+<h1 id="写在最后">写在最后</h1>
+<p>拙作艰辛，字句心血，望诸君垂青，多予支持，不胜感激。</p>
+<hr />
+<p>个人博客：<a
+href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
+<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
+title="wnhyang">wnhyang</a></p>
+<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
+title="在线知识共享">在线知识共享</a></p>
+<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
+Overview</a></p>
+<p><img data-src="https://wnhyang.github.io/images/wechat_channel.webp" /></p>
 
     </div>
 
@@ -384,7 +483,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://wnhyang.github.io/article/30c6026a.html" title="Mac做开发">https://wnhyang.github.io/article/30c6026a.html</a>
+      <a href="https://wnhyang.github.io/article/f74e4826.html" title="个人免费Github图床PicX介绍与使用">https://wnhyang.github.io/article/f74e4826.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -431,21 +530,17 @@
 
           <div class="post-tags">
               <a href="/tags/%E8%BD%AF%E4%BB%B6-%E5%B7%A5%E5%85%B7/" rel="tag"># 软件&工具</a>
-              <a href="/tags/%E8%AE%B0%E5%BD%95/" rel="tag"># 记录</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/article/14f1450b.html" rel="prev" title="内卷时代">
-                  <i class="fa fa-chevron-left"></i> 内卷时代
+                <a href="/article/617190b0.html" rel="prev" title="Sa-Token组件介绍">
+                  <i class="fa fa-chevron-left"></i> Sa-Token组件介绍
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/article/524c985a.html" rel="next" title="Mybatis-Generator使用">
-                  Mybatis-Generator使用 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -560,7 +655,7 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://wnhyang.github.io/article/30c6026a.html"}</script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://wnhyang.github.io/article/f74e4826.html"}</script>
   <script src="/js/third-party/quicklink.js"></script>
 
 </body>
