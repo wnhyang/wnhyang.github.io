@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2024-01-27T04:20:13.671Z</updated>
+  <updated>2024-02-01T03:09:12.452Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,84 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>免费申请JetBrains全家桶License，5种方式</title>
+    <link href="https://wnhyang.github.io/article/c43aa7dd.html"/>
+    <id>https://wnhyang.github.io/article/c43aa7dd.html</id>
+    <published>2024-01-31T12:58:13.000Z</published>
+    <updated>2024-02-01T03:09:12.452Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;个人博客：&lt;a
+href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
+title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
+title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
+Overview&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;工欲善其事，必先利其器。关于开发者&lt;code&gt;IDE&lt;/code&gt;（&lt;code&gt;Integrated Development Environment&lt;/code&gt;），我们熟知&lt;code&gt;IDEA&lt;/code&gt;、&lt;code&gt;PyCharm&lt;/code&gt;、&lt;code&gt;GoLand&lt;/code&gt;、&lt;code&gt;WebStorm&lt;/code&gt;这些&lt;code&gt;IDE&lt;/code&gt;都属于同一家公司的产品，那就是&lt;code&gt;JetBrains&lt;/code&gt;。这些&lt;code&gt;IDE&lt;/code&gt;有多好用就不用我再吹了。&lt;/p&gt;
+&lt;p&gt;废话不多讲，直接来说如何申请&lt;code&gt;JetBrains&lt;/code&gt;全家桶&lt;code&gt;License&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;官网：&lt;a
+href=&quot;https://www.jetbrains.com.cn/community/user-groups/&quot;&gt;https://www.jetbrains.com.cn&lt;/a&gt;&lt;/p&gt;
+&lt;figure&gt;
+&lt;img data-src=&quot;https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240131/1706705875038.webp&quot;
+alt=&quot;1706705875038&quot; /&gt;
+&lt;figcaption aria-hidden=&quot;true&quot;&gt;1706705875038&lt;/figcaption&gt;
+&lt;/figure&gt;</summary>
+    
+    
+    
+    
+    <category term="软件&amp;工具" scheme="https://wnhyang.github.io/tags/%E8%BD%AF%E4%BB%B6-%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Sa-Token登录详解</title>
+    <link href="https://wnhyang.github.io/article/883fd0a4.html"/>
+    <id>https://wnhyang.github.io/article/883fd0a4.html</id>
+    <published>2024-01-27T14:25:17.000Z</published>
+    <updated>2024-02-01T03:20:39.997Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;个人博客：&lt;a
+href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
+title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
+title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
+Overview&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;继续上文&lt;a
+href=&quot;https://www.yuque.com/wnh/share/tcn3k9nizk9u7855&quot;&gt;Sa-Token登录pre&lt;/a&gt;，有了前面的基础，就可以完整的了解&lt;code&gt;satoken&lt;/code&gt;的登录流程了。&lt;/p&gt;
+&lt;h1 id=&quot;项目启动&quot;&gt;项目启动&lt;/h1&gt;
+&lt;figure&gt;
+&lt;img data-src=&quot;https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240124/1706270541534.webp&quot;
+alt=&quot;1706270541534&quot; /&gt;
+&lt;figcaption aria-hidden=&quot;true&quot;&gt;1706270541534&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;可以看到&lt;code&gt;satoken&lt;/code&gt;的一些配置和组件都已经注入，这个日志是怎么做的？下次可以讲一下，使用的是观察者模式。&lt;/p&gt;
+&lt;h1 id=&quot;login&quot;&gt;login&lt;/h1&gt;
+&lt;p&gt;一开始我还想直接从源码角度来的，发现不太合适，还是结合项目&lt;code&gt;debug&lt;/code&gt;吧！&lt;/p&gt;
+&lt;p&gt;前面业务登录直接过，到&lt;code&gt;satoken&lt;/code&gt;登录。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Sa-Token登录pre</title>
     <link href="https://wnhyang.github.io/article/883fd0a3.html"/>
     <id>https://wnhyang.github.io/article/883fd0a3.html</id>
     <published>2024-01-24T08:10:58.000Z</published>
-    <updated>2024-01-27T04:20:13.671Z</updated>
+    <updated>2024-02-01T03:23:33.114Z</updated>
     
     
     <summary type="html">&lt;p&gt;个人博客：&lt;a
@@ -55,6 +128,8 @@ alt=&quot;登录成功后redis的数据&quot; /&gt;
     
     
     <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
   </entry>
   
@@ -528,66 +603,6 @@ XXL-JOB&lt;/a&gt;这篇文章就可顺着往下讲了&lt;/p&gt;
     
     
     <category term="记录" scheme="https://wnhyang.github.io/tags/%E8%AE%B0%E5%BD%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>初次使用XXL-JOB</title>
-    <link href="https://wnhyang.github.io/article/abbb8dbb.html"/>
-    <id>https://wnhyang.github.io/article/abbb8dbb.html</id>
-    <published>2023-03-24T08:22:47.000Z</published>
-    <updated>2024-01-19T08:20:24.951Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;简介&quot;&gt;简介&lt;/h1&gt;
-&lt;p&gt;之前有&lt;a href=&quot;https://wnhyang.github.io/article/796c508a.html&quot;&gt;ruoyi
-学习 Quartz&lt;/a&gt;、&lt;a
-href=&quot;https://wnhyang.github.io/article/1e885c14.html&quot;&gt;定时任务&lt;/a&gt;、&lt;a
-href=&quot;https://wnhyang.github.io/article/8abc133f.html&quot;&gt;点赞功能的一种实现&lt;/a&gt;，三篇文章讨论有关定时任务的，这次终于是见识到了大名鼎鼎的&lt;code&gt;XXL-JOB&lt;/code&gt;了，下面就开始玩一下吧！&lt;/p&gt;
-&lt;h2 id=&quot;参考&quot;&gt;参考&lt;/h2&gt;
-&lt;p&gt;&lt;a
-href=&quot;https://www.xuxueli.com/xxl-job/&quot;&gt;https://www.xuxueli.com/xxl-job/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a
-href=&quot;https://github.com/xuxueli/xxl-job/issues/1121&quot;&gt;https://github.com/xuxueli/xxl-job/issues/1121&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a
-href=&quot;https://github.com/xuxueli/xxl-job/issues/191&quot;&gt;https://github.com/xuxueli/xxl-job/issues/191&lt;/a&gt;&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="定时任务" scheme="https://wnhyang.github.io/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Apifox简单使用</title>
-    <link href="https://wnhyang.github.io/article/d54257c1.html"/>
-    <id>https://wnhyang.github.io/article/d54257c1.html</id>
-    <published>2023-03-21T03:02:38.000Z</published>
-    <updated>2024-01-23T11:45:13.865Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;apifox&quot;&gt;Apifox&lt;/h1&gt;
-&lt;p&gt;最近一直在以&lt;a href=&quot;https://gitee.com/log4j/pig&quot;&gt;pig&lt;/a&gt;、&lt;a
-href=&quot;https://gitee.com/y_project/RuoYi-Cloud&quot;&gt;RuiYi-Cloud&lt;/a&gt;做一个自己的项目，非常需要一份接口文档工具，&lt;code&gt;Swagger&lt;/code&gt;这种侵入代码式的我不是很喜欢，之前也是有用过&lt;code&gt;YApi&lt;/code&gt;，不用改代码，利用与&lt;code&gt;IDEA&lt;/code&gt;的插件结合，很轻松就生成相关的接口文档，非常好用！&lt;/p&gt;
-&lt;p&gt;直到发现&lt;a
-href=&quot;https://www.apifox.com/&quot;&gt;apifox&lt;/a&gt;，发现这个全能选手，如官方所说：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;更先进的 API 设计/开发/测试工具&lt;/p&gt;
-&lt;p&gt;Apifox = Postman + Swagger + Mock + JMeter&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;如果能熟练使用它那生产力必然极大提升，想系统学习的看官方文档&lt;a
-href=&quot;https://www.apifox.com/help/&quot;&gt;https://www.apifox.com/help/&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;另外一提，我能发现它也是因为这篇文章：&lt;a
-href=&quot;https://mp.weixin.qq.com/s/fT84AkFPZSINL9VUvAmNJw&quot;&gt;https://mp.weixin.qq.com/s/fT84AkFPZSINL9VUvAmNJw&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;下面就开始我的使用吧！&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="软件&amp;工具" scheme="https://wnhyang.github.io/tags/%E8%BD%AF%E4%BB%B6-%E5%B7%A5%E5%85%B7/"/>
-    
-    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
     
   </entry>
   
