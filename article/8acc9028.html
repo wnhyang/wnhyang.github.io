@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="google-site-verification" content="4zmc5dCOR7a63YXOZx4mwqsC5dPpr0m2iWeI12w6wng">
+  <meta name="baidu-site-verification" content="fe6bba1d0d4e906fed87c9f7c2d1d09d">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="个人博客：无奈何杨（wnhyang） 个人语雀：wnhyang 共享语雀：在线知识共享 Github：wnhyang - Overview  声明 本篇文章纯粹抛砖引玉！ 需求说明 开门见山，业务背景直接跳过。 类比支付宝会员积分，支付宝APP-我的-支付宝会员。 支付宝会员-XXX积分-积分规则，可以看到具体的积分规则，本篇文章类比于此积分业务场景，做简单的设计。 积分说明 积分不具有货币或现金">
+<meta property="og:type" content="article">
+<meta property="og:title" content="类支付宝积分系统设计方案（过期、兑奖）">
+<meta property="og:url" content="https://wnhyang.github.io/article/8acc9028.html">
+<meta property="og:site_name" content="无奈何杨（wnhyang）">
+<meta property="og:description" content="个人博客：无奈何杨（wnhyang） 个人语雀：wnhyang 共享语雀：在线知识共享 Github：wnhyang - Overview  声明 本篇文章纯粹抛砖引玉！ 需求说明 开门见山，业务背景直接跳过。 类比支付宝会员积分，支付宝APP-我的-支付宝会员。 支付宝会员-XXX积分-积分规则，可以看到具体的积分规则，本篇文章类比于此积分业务场景，做简单的设计。 积分说明 积分不具有货币或现金">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240218/1708264217470.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240218/1708264217472.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240218/1708264217473.webp">
+<meta property="og:image" content="https://wnhyang.github.io/images/wechat_channel.webp">
+<meta property="article:published_time" content="2024-02-18T13:48:21.000Z">
+<meta property="article:modified_time" content="2024-02-18T13:55:14.700Z">
+<meta property="article:author" content="无奈何杨（wnhyang）">
+<meta property="article:tag" content="项目">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240218/1708264217470.webp">
+
+
+<link rel="canonical" href="https://wnhyang.github.io/article/8acc9028.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wnhyang.github.io/article/8acc9028.html","path":"article/8acc9028.html","title":"类支付宝积分系统设计方案（过期、兑奖）"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>类支付宝积分系统设计方案（过期、兑奖） | 无奈何杨（wnhyang）</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="无奈何杨（wnhyang）" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">无奈何杨（wnhyang）</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">I will keep to fight</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">44</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">172</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E"><span class="nav-number">1.</span> <span class="nav-text">声明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9C%80%E6%B1%82%E8%AF%B4%E6%98%8E"><span class="nav-number">2.</span> <span class="nav-text">需求说明</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%AF%E5%88%86%E8%AF%B4%E6%98%8E"><span class="nav-number">2.1.</span> <span class="nav-text">积分说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%AF%E5%88%86%E9%A2%86%E5%8F%96%E8%A7%84%E5%88%99"><span class="nav-number">2.2.</span> <span class="nav-text">积分领取规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%AF%E5%88%86%E8%8E%B7%E5%8F%96%E6%96%B9%E5%BC%8F"><span class="nav-number">2.3.</span> <span class="nav-text">积分获取方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%AF%E5%88%86%E6%9C%89%E6%95%88%E6%9C%9F"><span class="nav-number">2.4.</span> <span class="nav-text">积分有效期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%AF%E5%88%86%E6%9D%83%E7%9B%8A%E5%85%91%E6%8D%A2"><span class="nav-number">2.5.</span> <span class="nav-text">积分权益兑换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%AF%E5%88%86%E4%B8%8E%E6%88%90%E9%95%BF%E4%BD%93%E7%B3%BB"><span class="nav-number">2.6.</span> <span class="nav-text">积分与成长体系</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="nav-number">3.</span> <span class="nav-text">需求分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%AF%E5%88%86%E8%8E%B7%E5%8F%96%E6%96%B9%E5%BC%8F-1"><span class="nav-number">3.1.</span> <span class="nav-text">积分获取方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%AF%E5%88%86%E9%A2%86%E5%8F%96%E8%A7%84%E5%88%99-1"><span class="nav-number">3.2.</span> <span class="nav-text">积分领取规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%AF%E5%88%86%E6%9C%89%E6%95%88%E6%9C%9F-1"><span class="nav-number">3.3.</span> <span class="nav-text">积分有效期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%AF%E5%88%86%E6%9D%83%E7%9B%8A%E5%85%91%E6%8D%A2-1"><span class="nav-number">3.4.</span> <span class="nav-text">积分权益兑换</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%A1%88"><span class="nav-number">4.</span> <span class="nav-text">设计方案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%A1%A8"><span class="nav-number">4.1.</span> <span class="nav-text">数据表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%88%E5%BA%A6%E7%A7%AF%E5%88%86"><span class="nav-number">4.1.1.</span> <span class="nav-text">月度积分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A7%AF%E5%88%86%E6%98%8E%E7%BB%86"><span class="nav-number">4.1.2.</span> <span class="nav-text">积分明细</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%91%E5%A5%96%E6%98%8E%E7%BB%86"><span class="nav-number">4.1.3.</span> <span class="nav-text">兑奖明细</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B"><span class="nav-number">4.2.</span> <span class="nav-text">流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A7%AF%E5%88%86%E8%8E%B7%E5%8F%96"><span class="nav-number">4.2.1.</span> <span class="nav-text">积分获取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A7%AF%E5%88%86%E5%85%91%E5%A5%96"><span class="nav-number">4.2.2.</span> <span class="nav-text">积分兑奖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">4.2.3.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E4%BB%A3%E7%A0%81"><span class="nav-number">4.3.</span> <span class="nav-text">参考代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="nav-number">6.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="无奈何杨（wnhyang）"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">无奈何杨（wnhyang）</p>
+  <div class="site-description" itemprop="description">热爱、分享、生活</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">172</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">44</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wnhyang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wnhyang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/wnhyang" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;wnhyang" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wnhyang@qq.com" title="E-Mail → mailto:wnhyang@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://www.yuque.com/wnh/share" title="https:&#x2F;&#x2F;www.yuque.com&#x2F;wnh&#x2F;share" rel="noopener" target="_blank">语雀分享</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://github.com/wnhyang" title="https:&#x2F;&#x2F;github.com&#x2F;wnhyang" rel="noopener" target="_blank">GitHub</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.zhihu.com/people/wnhyang" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;wnhyang" rel="noopener" target="_blank">知乎</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        <div class="sidebar-inner sidebar-post-related">
+          <div class="animated">
+              <div class="links-of-blogroll-title"><i class="fa fa-signs-post fa-fw"></i>
+    相关文章
+  </div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/bf2c89b7.html" rel="bookmark">
+        <time class="popular-posts-time">2024-01-17</time>
+        <br>
+      Sa-Token介绍与SpringBoot环境下使用
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/c43aa7dd.html" rel="bookmark">
+        <time class="popular-posts-time">2024-01-31</time>
+        <br>
+      免费申请JetBrains全家桶License，5种方式
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/f74e4826.html" rel="bookmark">
+        <time class="popular-posts-time">2024-01-23</time>
+        <br>
+      个人免费Github图床PicX介绍与使用
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/e51e0935.html" rel="bookmark">
+        <time class="popular-posts-time">2024-01-15</time>
+        <br>
+      浏览器代理插件Proxy SwitchyOmega安装与使用
+      </a>
+    </li>
+  </ul>
+
+          </div>
+        </div>
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/8acc9028.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+      <meta itemprop="description" content="热爱、分享、生活">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="类支付宝积分系统设计方案（过期、兑奖） | 无奈何杨（wnhyang）">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          类支付宝积分系统设计方案（过期、兑奖）
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-02-18 21:48:21 / 修改时间：21:55:14" itemprop="dateCreated datePublished" datetime="2024-02-18T21:48:21+08:00">2024-02-18</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>8 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>个人博客：<a
+href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
+<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
+title="wnhyang">wnhyang</a></p>
+<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
+title="在线知识共享">在线知识共享</a></p>
+<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
+Overview</a></p>
+<hr />
+<h1 id="声明">声明</h1>
+<p>本篇文章纯粹抛砖引玉！</p>
+<h1 id="需求说明">需求说明</h1>
+<p>开门见山，业务背景直接跳过。</p>
+<p>类比支付宝会员积分，支付宝APP-我的-支付宝会员。</p>
+<p>支付宝会员-XXX积分-积分规则，可以看到具体的积分规则，本篇文章类比于此积分业务场景，做简单的设计。</p>
+<h2 id="积分说明">积分说明</h2>
+<p>积分不具有货币或现金价值，不可兑现，不可转让。用户可以通过支付、账户服务、金融理财和积分奖励活动等方式来获取积分。</p>
+<p>积分可以兑换各类权益、参与各种积分活动等，具体以权益兑换及活动页面展示为准。</p>
+<h2 id="积分领取规则">积分领取规则</h2>
+<p>积分发放后，用户可前往“我的”-“支付宝会员”，点击领取积分球，或者在支付成功页面、服务消息提醒、账单点击领取，积分方可到账。积分自产生之时起，领取有效期7天（168小时），逾期不领则作废，不予补发。</p>
+<span id="more"></span>
+<h2 id="积分获取方式">积分获取方式</h2>
+<p>1、支付</p>
+<p>2、账户服务</p>
+<p>3、金融理财</p>
+<p>4、扫一扫</p>
+<p>5、等</p>
+<h2 id="积分有效期">积分有效期</h2>
+<p>用户获得的积分有效期为自获得当月起的12个自然月，有效期内未使用的积分到期将自动清零，不予补发。</p>
+<p>温馨提示：</p>
+<p>1、用户日常使用的积分，将优先使用即将过期的积分。</p>
+<p>2、每月，用户可在“我的”-“支付宝会员”-“收支/订单/规则”页查看当月月底即将过期的积分。</p>
+<p>3、已使用的积分若发生退还，积分有效期不变，仍以该笔积分原获取时间计算有效期。</p>
+<h2 id="积分权益兑换">积分权益兑换</h2>
+<p>积分可以兑换各类权益、参与各种积分活动等，具体以权益兑换及活动页面展示为准。</p>
+<h2 id="积分与成长体系">积分与成长体系</h2>
+<p>略</p>
+<h1 id="需求分析">需求分析</h1>
+<p>因为上面几乎都是粘贴于支付宝对外展示的积分规则，而这篇文章涉及范围并没有那么广，所以这里要声明一下需求范围。</p>
+<h2 id="积分获取方式-1">积分获取方式</h2>
+<p>支付、账户服务、金融理财、扫一扫等。</p>
+<p>同步方案：这个就涉及到<code>AOP</code>的思想，换言之“广义<code>AOP</code>”。这个不是单个系统能实现的，需要多方系统共同确认，而本系统需要提供可靠的积分累计接口。如：用户支付完成后应该累计积分的，通过什么方式与积分系统交互增加积分呢？这样的接口如何设计呢？除了用户唯一标识、积分值、交易时间、交易类型还有什么必要字段呢？需不需要重试？如何做幂等？分布式事务如何考虑？等等，还有很多要素要考虑。</p>
+<p>异步方案：有时我们对于积分累积的时效性并不高，就可以考虑异步方案。异步无非就是消息队列类的异步任务，或是有数据团队来做数据的分析处理。异步任务方式不管是消息队列或是事件驱动都大概可行，当然这中间也有很多地方要注意。数据分析处理有点像是定时任务，描述可能不太准确，就是通过分析用户实际数据来具体分析处理，如：每天2点，数据团队有多个数据模型针对不同的数据表（账户存款、理财等等）对用户前一天所有交易进行分析，计算积分然后累计前一天产生的积分。</p>
+<p>关于积分获取方式，本次就讨论到这了。其实上面简单分析已经包含了很多系统设计的必要考虑条件了，而且很多都可以类比的，比如积分累计不就是类似购物产生订单，或是记录操作日志吗。有很多相似之处的，可以类比思考一下。</p>
+<h2 id="积分领取规则-1">积分领取规则</h2>
+<p>从前面积分领取规则可以确定，积分领取涉及消息通知和过期。</p>
+<p>消息通知肯定是成体系的，可参考其他消息类系统设计。过期可以参考下面的积分过期。</p>
+<h2 id="积分有效期-1">积分有效期</h2>
+<p>这个是本篇文章中我想要突出的重点。积分产生、积分兑换、积分过期还是需要好好思考一下的，如若不然，甚至不单单是产生系统bug，甚至会有业务bug，这是难以接受的。</p>
+<p>既然上面需求说明了积分有效期是12个自然月，那么就可以考虑设计一张按月存储的表来存储积分。</p>
+<p>如5.1-5.31的产生的积分存储为一条可用积分记录，过期时间为5.31
+23:59:59，总积分值为最近12个月积分之和。</p>
+<table>
+<thead>
+<tr class="header">
+<th>用户ID</th>
+<th>累计积分</th>
+<th>可用积分值</th>
+<th>过期时间</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>300</td>
+<td>300</td>
+<td>5.31 23:59:59</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>500</td>
+<td>500</td>
+<td>6.30 23:59:59</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>800</td>
+<td>700</td>
+<td>7.31 23:59:59</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>500</td>
+<td>400</td>
+<td>8.31 23:59:59</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>300</td>
+<td>200</td>
+<td>9.30 23:59:59</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>300</td>
+<td>100</td>
+<td>10.31 23:59:59</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>500</td>
+<td>500</td>
+<td>11.30 23:59:59</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>600</td>
+<td>600</td>
+<td>12.31 23:59:59</td>
+</tr>
+</tbody>
+</table>
+<p>可能有人在接到积分过期需求时就考虑到定时任务扫表的方式，虽然可能也是没问题的，但细节其实挺多的，这里就不做过多讨论了。</p>
+<h2 id="积分权益兑换-1">积分权益兑换</h2>
+<p>用户日常使用的积分，将优先使用即将过期的积分。针对于上面的月度积分表，在积分兑奖时从最早的未过期的月开始计算扣减积分。</p>
+<h1 id="设计方案">设计方案</h1>
+<h2 id="数据表">数据表</h2>
+<p>简单设计如下，月度积分关联多条积分明细记录，这样可以方便查询月度积分获取和消耗明细。</p>
+<h3 id="月度积分">月度积分</h3>
+<ul>
+<li>月度积分id</li>
+<li>用户id</li>
+<li>年月（参考2024-01之类的）</li>
+<li>累计积分</li>
+<li>可用积分</li>
+<li>过期时间</li>
+</ul>
+<h3 id="积分明细">积分明细</h3>
+<ul>
+<li>月度积分id</li>
+<li>明细id</li>
+<li>用户id</li>
+<li>积分值</li>
+<li>类型（如：消耗，获取等）</li>
+<li>操作</li>
+<li>时间</li>
+</ul>
+<h3 id="兑奖明细">兑奖明细</h3>
+<ul>
+<li>兑奖明细id</li>
+<li>用户id</li>
+<li>奖品消耗积分</li>
+<li>奖品名称</li>
+<li>时间</li>
+</ul>
+<h2 id="流程">流程</h2>
+<h3 id="积分获取">积分获取</h3>
+<p>积分由用户操作生成，同时存储于月度积分表和积分明细表。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240218/1708264217470.webp"
+alt="1708264217470" />
+<figcaption aria-hidden="true">1708264217470</figcaption>
+</figure>
+<h3 id="积分兑奖">积分兑奖</h3>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240218/1708264217472.webp"
+alt="1708264217472" />
+<figcaption aria-hidden="true">1708264217472</figcaption>
+</figure>
+<h3 id="其他">其他</h3>
+<p>除了上面这些，还有</p>
+<ul>
+<li>总积分查询，最近12个月的月度积分-可用积分之和</li>
+<li>积分明细查询，倒序查询月度积分和月度积分明细</li>
+<li>积分兑奖明细，等，简单的就不多提了</li>
+</ul>
+<h2 id="参考代码">参考代码</h2>
+<p>积分兑奖</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.time.LocalDate;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PointRecord</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> points;</span><br><span class="line">    <span class="keyword">private</span> LocalDate expirationDate;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 构造方法、getters和setters省略</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">canConsume</span><span class="params">(<span class="type">int</span> requiredPoints)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.points &gt;= requiredPoints;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">consume</span><span class="params">(<span class="type">int</span> requiredPoints)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (canConsume(requiredPoints)) &#123;</span><br><span class="line">            <span class="built_in">this</span>.points -= requiredPoints;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalArgumentException</span>(<span class="string">&quot;Insufficient points to consume.&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PointService</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">redeemReward</span><span class="params">(User user, <span class="type">int</span> rewardPointCost)</span> &#123;</span><br><span class="line">        List&lt;PointRecord&gt; sortedRecords = getSortedUnexpiredPointRecords(user);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (PointRecord record : sortedRecords) &#123;</span><br><span class="line">            <span class="keyword">if</span> (record.canConsume(rewardPointCost)) &#123;</span><br><span class="line">                record.consume(rewardPointCost);</span><br><span class="line">                rewardPointCost = <span class="number">0</span>; <span class="comment">// 已经满足消耗条件，跳出循环</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                rewardPointCost -= record.getPoints();</span><br><span class="line">                record.setPoints(<span class="number">0</span>); <span class="comment">// 消耗完该记录所有积分</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 更新数据库中的积分明细表</span></span><br><span class="line">        updateDatabase(sortedRecords);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 如果rewardPointCost仍然大于0，说明积分不足，需要在此处处理异常情况</span></span><br><span class="line">        <span class="keyword">if</span> (rewardPointCost &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">InsufficientPointsException</span>(<span class="string">&quot;Not enough valid points to redeem the reward.&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 省略了获取用户未过期且已排序的积分记录列表的方法（getSortedUnexpiredPointRecords）以及更新数据库的方法（updateDatabase）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在这个示例中，<code>PointRecord</code>类代表单个积分记录，包含积分值和过期日期。<code>PointService</code>中的<code>redeemReward</code>方法首先获取用户的所有未过期且按过期时间排序的积分记录，然后遍历这些记录，优先扣除最早到期的积分。当所需兑换积分数量减为0时停止扣除。如果最后仍有剩余的兑换积分需求，则抛出积分不足的异常。</p>
+<p>实际应用中，你需要根据数据库查询结果填充<code>sortedRecords</code>列表，并在扣除积分后更新数据库以反映新的积分状态。</p>
+<h1 id="小结">小结</h1>
+<p>其实还有很多内容没有细究，这部分就留给认真看的你们了。哈哈哈😂</p>
+<p>积分补偿、退货等场景，分布式事务如何考虑，留给你们了。</p>
+<p>最后的最后，其实在系统设计之前，需求分析是重中之重，一定要讲需求看透，尤其是多考虑一些场景。</p>
+<p>下面有一张关于积分过期和兑奖的场景草图，是我在思考时画的，不想多解释了，自己看吧😁</p>
+<p>最后四个字：跳出时间。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240218/1708264217473.webp"
+alt="1708264217473" />
+<figcaption aria-hidden="true">1708264217473</figcaption>
+</figure>
+<h1 id="写在最后">写在最后</h1>
+<p>拙作艰辛，字句心血，望诸君垂青，多予支持，不胜感激。</p>
+<hr />
+<p>个人博客：<a
+href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
+<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
+title="wnhyang">wnhyang</a></p>
+<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
+title="在线知识共享">在线知识共享</a></p>
+<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
+Overview</a></p>
+<p><img data-src="https://wnhyang.github.io/images/wechat_channel.webp" /></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.webp" alt="无奈何杨（wnhyang） 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.webp" alt="无奈何杨（wnhyang） 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>无奈何杨（wnhyang）
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://wnhyang.github.io/article/8acc9028.html" title="类支付宝积分系统设计方案（过期、兑奖）">https://wnhyang.github.io/article/8acc9028.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/images/wechat_channel.webp">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://www.zhihu.com/people/wnhyang">
+            <span class="icon">
+              <i class="fab fa-zhihu"></i>
+            </span>
+
+            <span class="label">Zhihu</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E9%A1%B9%E7%9B%AE/" rel="tag"># 项目</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/article/c43aa7dd.html" rel="prev" title="免费申请JetBrains全家桶License，5种方式">
+                  <i class="fa fa-chevron-left"></i> 免费申请JetBrains全家桶License，5种方式
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">无奈何杨（wnhyang）</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">213k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">12:55</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/wnhyang" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.2.2/mermaid.min.js","integrity":"sha256-o5AUfgOkNFWuInA78GVCoVdGoN9eTaB3Hxu+ep7TTrY="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://wnhyang.github.io/article/8acc9028.html"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>

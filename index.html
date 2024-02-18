@@ -96,7 +96,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">44</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">171</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">44</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">172</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -161,7 +161,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">171</span>
+          <span class="site-state-item-count">172</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -227,6 +227,117 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/8acc9028.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+      <meta itemprop="description" content="热爱、分享、生活">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/article/8acc9028.html" class="post-title-link" itemprop="url">类支付宝积分系统设计方案（过期、兑奖）</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-02-18 21:48:21 / 修改时间：21:55:14" itemprop="dateCreated datePublished" datetime="2024-02-18T21:48:21+08:00">2024-02-18</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>8 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>个人博客：<a
+href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
+<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
+title="wnhyang">wnhyang</a></p>
+<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
+title="在线知识共享">在线知识共享</a></p>
+<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
+Overview</a></p>
+<hr />
+<h1 id="声明">声明</h1>
+<p>本篇文章纯粹抛砖引玉！</p>
+<h1 id="需求说明">需求说明</h1>
+<p>开门见山，业务背景直接跳过。</p>
+<p>类比支付宝会员积分，支付宝APP-我的-支付宝会员。</p>
+<p>支付宝会员-XXX积分-积分规则，可以看到具体的积分规则，本篇文章类比于此积分业务场景，做简单的设计。</p>
+<h2 id="积分说明">积分说明</h2>
+<p>积分不具有货币或现金价值，不可兑现，不可转让。用户可以通过支付、账户服务、金融理财和积分奖励活动等方式来获取积分。</p>
+<p>积分可以兑换各类权益、参与各种积分活动等，具体以权益兑换及活动页面展示为准。</p>
+<h2 id="积分领取规则">积分领取规则</h2>
+<p>积分发放后，用户可前往“我的”-“支付宝会员”，点击领取积分球，或者在支付成功页面、服务消息提醒、账单点击领取，积分方可到账。积分自产生之时起，领取有效期7天（168小时），逾期不领则作废，不予补发。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/article/8acc9028.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/c43aa7dd.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -263,7 +374,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-02-01 11:09:12" itemprop="dateModified" datetime="2024-02-01T11:09:12+08:00">2024-02-01</time>
+      <time title="修改时间：2024-02-18 21:55:51" itemprop="dateModified" datetime="2024-02-18T21:55:51+08:00">2024-02-18</time>
     </span>
 
   
@@ -1227,129 +1338,6 @@ Overview</a></p>
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/feab7b27.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-      <meta itemprop="description" content="热爱、分享、生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/feab7b27.html" class="post-title-link" itemprop="url">讯飞大模型体验</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-10-19 10:19:34" itemprop="dateCreated datePublished" datetime="2023-10-19T10:19:34+08:00">2023-10-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-01-18 22:54:58" itemprop="dateModified" datetime="2024-01-18T22:54:58+08:00">2024-01-18</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>852</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="讯飞大模型">讯飞大模型</h1>
-<p>今年<code>AI</code>的风潮还没有停歇，就像是去年的俄乌战争一样，好像是只是出现在去年的年初，然后就消失了一样，其实一直战争都在持续，只是因为公众已经被其他的新闻所转移了视线，是的，人们只会对当下新鲜的事物所吸引，总是忘记一些很重要的事情。不只是<code>AI</code>，很多事情也是一样，当他出现在热搜时，我们去关注，去挖掘，去思考，等一下更具吸引力的热搜出现，之前的变得无人问津的时候，好像它就过去了一样，然而往往不是这样的。讲的有点偏了，扯回话题，国内<code>AI</code>，准确的说是今年大火的<code>AI</code>大模型很让国人失望，当然也包括我，具体的就不吐槽了，知道知道讯飞星火，体验了一下还非常不错，才有了一点改观，虽然与国外的大模型相比还有差距，但还是值得欣慰的。</p>
-<p>最近讯飞开发公众免费体验讯飞大模型api的机会，正好我也体验了一下，每人免费<code>20w``token</code>，还是可以玩一玩的，借此记录体验感受。</p>
-<h1 id="参考">参考</h1>
-<p><a
-target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/TkSsBsTRQVqWk8AvueLJ4A">讯飞大模型</a></p>
-<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7020964728386093093">一文吃透
-WebSocket 原理 刚面试完，趁热赶紧整理</a></p>
-<p><a
-target="_blank" rel="noopener" href="https://blog.csdn.net/KeepStruggling/article/details/105543449">Websocket技术的Java实现(上篇)</a></p>
-<p><a
-target="_blank" rel="noopener" href="https://blog.csdn.net/KeepStruggling/article/details/105923142">Websocket技术的Java实现(下篇)</a></p>
-<p><a
-target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/613527997">springboot整合webSocket（看完即入门）</a></p>
-<h1 id="websocket">WebSocket</h1>
-<p>提到<code>WebSocket</code>的原因是讯飞提供的<code>Java</code>示例使用就是<code>WebSocket</code>技术，这下不得不了解一下了。</p>
-<p><code>Socket</code>想必在学习计算机网络时都会有些了解，这个<code>WebSocket</code>虽然听过但完全没概念，所以上面贴上了一些<code>WebSocket</code>入门的一些博客，看了仿佛打开了新世界，到目前为止只会写<code>Controller</code>提供的<code>Http</code>接口，这个<code>WebSocket</code>还是很值得学一下的，相信能玩一些很有趣的事情。</p>
-<p>下面是直接下载讯飞官网<code>Java</code>示例运行后，对话中产生的，这一次对话使用大概500多<code>token</code>，免费体验的<code>token</code>这样看起来不算多了，但还是能尝试一下集成在微信公众号、群聊机器人、个人网站等等。</p>
-<blockquote>
-<p>我：java实现websocket的方法
-大模型：Java实现WebSocket的方法有很多，这里给出一个使用Java-WebSocket库的简单示例：</p>
-<ol type="1">
-<li>首先，需要在项目中添加Java-WebSocket依赖。如果你使用的是Maven项目，可以在pom.xml文件中添加以下依赖：</li>
-</ol>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.java-websocket<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>Java-WebSocket<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.5.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ol start="2" type="1">
-<li>创建一个WebSocket客户端类，继承<code>org.java_websocket.client.WebSocketClient</code>，并重写相关方法：</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="keyword">import</span> org.java_websocket.client.WebSocketClient;</span><br><span class="line">&gt;<span class="keyword">import</span> org.java_websocket.handshake.ServerHandshake;</span><br><span class="line"></span><br><span class="line">&gt;<span class="keyword">import</span> java.net.URI;</span><br><span class="line">&gt;<span class="keyword">import</span> java.net.URISyntaxException;</span><br><span class="line"></span><br><span class="line">&gt;<span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyWebSocketClient</span> <span class="keyword">extends</span> <span class="title class_">WebSocketClient</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">MyWebSocketClient</span><span class="params">(URI serverUri)</span> &#123;</span><br><span class="line">      <span class="built_in">super</span>(serverUri);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onOpen</span><span class="params">(ServerHandshake handshakedata)</span> &#123;</span><br><span class="line">       System.out.println(<span class="string">&quot;连接已打开&quot;</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onMessage</span><span class="params">(String message)</span> &#123;</span><br><span class="line">       System.out.println(<span class="string">&quot;收到消息： &quot;</span> + message);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClose</span><span class="params">(<span class="type">int</span> code, String reason, <span class="type">boolean</span> remote)</span> &#123;</span><br><span class="line">       System.out.println(<span class="string">&quot;连接已关闭&quot;</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onError</span><span class="params">(Exception ex)</span> &#123;</span><br><span class="line">       ex.printStackTrace();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">           <span class="type">MyWebSocketClient</span> <span class="variable">client</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyWebSocketClient</span>(<span class="keyword">new</span> <span class="title class_">URI</span>(<span class="string">&quot;ws://localhost:8080/websocket&quot;</span>));</span><br><span class="line">           client.connect();</span><br><span class="line">       &#125; <span class="keyword">catch</span> (URISyntaxException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在这个示例中，我们创建了一个名为<code>MyWebSocketClient</code>的类，继承了<code>WebSocketClient</code>，并重写了<code>onOpen</code>、<code>onMessage</code>、<code>onClose</code>和<code>onError</code>方法。然后在<code>main</code>方法中，我们实例化了这个类，并连接到了一个运行在本地的WebSocket服务器。
-*************************************************************************************
-我：</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1375,14 +1363,14 @@ target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/613527997">spr
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">211k</span>
+    <span title="站点总字数">213k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">12:47</span>
+    <span title="站点阅读时长">12:55</span>
   </span>
 </div>
 <div class="busuanzi-count">

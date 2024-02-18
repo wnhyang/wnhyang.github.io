@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2024-02-01T03:09:12.452Z</updated>
+  <updated>2024-02-18T13:55:14.700Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,47 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>类支付宝积分系统设计方案（过期、兑奖）</title>
+    <link href="https://wnhyang.github.io/article/8acc9028.html"/>
+    <id>https://wnhyang.github.io/article/8acc9028.html</id>
+    <published>2024-02-18T13:48:21.000Z</published>
+    <updated>2024-02-18T13:55:14.700Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;个人博客：&lt;a
+href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
+title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
+title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
+Overview&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h1 id=&quot;声明&quot;&gt;声明&lt;/h1&gt;
+&lt;p&gt;本篇文章纯粹抛砖引玉！&lt;/p&gt;
+&lt;h1 id=&quot;需求说明&quot;&gt;需求说明&lt;/h1&gt;
+&lt;p&gt;开门见山，业务背景直接跳过。&lt;/p&gt;
+&lt;p&gt;类比支付宝会员积分，支付宝APP-我的-支付宝会员。&lt;/p&gt;
+&lt;p&gt;支付宝会员-XXX积分-积分规则，可以看到具体的积分规则，本篇文章类比于此积分业务场景，做简单的设计。&lt;/p&gt;
+&lt;h2 id=&quot;积分说明&quot;&gt;积分说明&lt;/h2&gt;
+&lt;p&gt;积分不具有货币或现金价值，不可兑现，不可转让。用户可以通过支付、账户服务、金融理财和积分奖励活动等方式来获取积分。&lt;/p&gt;
+&lt;p&gt;积分可以兑换各类权益、参与各种积分活动等，具体以权益兑换及活动页面展示为准。&lt;/p&gt;
+&lt;h2 id=&quot;积分领取规则&quot;&gt;积分领取规则&lt;/h2&gt;
+&lt;p&gt;积分发放后，用户可前往“我的”-“支付宝会员”，点击领取积分球，或者在支付成功页面、服务消息提醒、账单点击领取，积分方可到账。积分自产生之时起，领取有效期7天（168小时），逾期不领则作废，不予补发。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>免费申请JetBrains全家桶License，5种方式</title>
     <link href="https://wnhyang.github.io/article/c43aa7dd.html"/>
     <id>https://wnhyang.github.io/article/c43aa7dd.html</id>
     <published>2024-01-31T12:58:13.000Z</published>
-    <updated>2024-02-01T03:09:12.452Z</updated>
+    <updated>2024-02-18T13:55:51.930Z</updated>
     
     
     <summary type="html">&lt;p&gt;个人博客：&lt;a
@@ -582,27 +618,6 @@ XXL-JOB&lt;/a&gt;这篇文章就可顺着往下讲了&lt;/p&gt;
     <category term="AOP" scheme="https://wnhyang.github.io/tags/AOP/"/>
     
     <category term="Redis" scheme="https://wnhyang.github.io/tags/Redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ChatGPT对话01</title>
-    <link href="https://wnhyang.github.io/article/1fc8f2ea.html"/>
-    <id>https://wnhyang.github.io/article/1fc8f2ea.html</id>
-    <published>2023-03-27T00:48:25.000Z</published>
-    <updated>2024-01-18T14:54:58.749Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;如题，记录一下我与ChatGPT的对话。&lt;/p&gt;
-&lt;h1 id=&quot;qa1&quot;&gt;Q&amp;amp;A1&lt;/h1&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Q1:springboot 发送html邮件动态生成table&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    
-    <category term="记录" scheme="https://wnhyang.github.io/tags/%E8%AE%B0%E5%BD%95/"/>
     
   </entry>
   
