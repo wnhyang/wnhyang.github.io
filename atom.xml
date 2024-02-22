@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2024-02-18T13:55:14.700Z</updated>
+  <updated>2024-02-22T11:03:30.228Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -15,6 +15,79 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Sa-Token事件发布，观察者模式</title>
+    <link href="https://wnhyang.github.io/article/cf08a8bf.html"/>
+    <id>https://wnhyang.github.io/article/cf08a8bf.html</id>
+    <published>2024-02-22T10:03:53.000Z</published>
+    <updated>2024-02-22T11:03:30.228Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;个人博客：&lt;a
+href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
+title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
+title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
+Overview&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;前文提到很多次&lt;code&gt;satoken&lt;/code&gt;的事件发布，使用的是观察者模式，这次就来探究一下，很简单的。&lt;/p&gt;
+&lt;p&gt;参考官网：&lt;a
+href=&quot;https://sa-token.cc/doc.html#/up/global-listener?id=%e5%85%a8%e5%b1%80%e4%be%a6%e5%90%ac%e5%99%a8&quot;&gt;全局侦听器&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;观察者模式&quot;&gt;观察者模式&lt;/h1&gt;
+&lt;p&gt;简介：观察者模式是一种行为型设计模式，它定义了一种一对多的依赖关系，当一个对象的状态发生改变时，其所有依赖者都会收到通知并自动更新。&lt;/p&gt;
+&lt;p&gt;在&lt;code&gt;sa-token-core&lt;/code&gt;的&lt;code&gt;cn.dev33.satoken.listener&lt;/code&gt;包下有&lt;/p&gt;
+&lt;figure&gt;
+&lt;img data-src=&quot;https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240222/image.54xhmc4ak1.webp&quot;
+alt=&quot;image&quot; /&gt;
+&lt;figcaption aria-hidden=&quot;true&quot;&gt;image&lt;/figcaption&gt;
+&lt;/figure&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>傅园慧包车被勒索2小时问题解决｜流浪地球中为什么要关闭互联网？</title>
+    <link href="https://wnhyang.github.io/article/d5e01b07.html"/>
+    <id>https://wnhyang.github.io/article/d5e01b07.html</id>
+    <published>2024-02-21T02:28:43.000Z</published>
+    <updated>2024-02-22T11:02:37.418Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;事件回顾&quot;&gt;事件回顾&lt;/h1&gt;
+&lt;p&gt;2月18日，节后第一天，我正在“努力工作”，转眼看到公众号推送的消息&lt;a
+href=&quot;https://mp.weixin.qq.com/s/H_yw4C1Ie3WzTmMv8ksLyQ&quot;&gt;傅园慧包车被勒索！官方通报…&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;事情很简单，游泳运动员傅园慧在长白山包车被勒索加钱在微博求助。&lt;/p&gt;
+&lt;figure&gt;
+&lt;img data-src=&quot;https://cdn.jsdelivr.net/gh/wnhyang/picx-images-hosting@master/20240219/1708482603293.webp&quot;
+alt=&quot;1708482603293&quot; /&gt;
+&lt;figcaption aria-hidden=&quot;true&quot;&gt;1708482603293&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;微博发布不久马上引起网友的关注，果然大家节后都在认真上班的。&lt;/p&gt;
+&lt;p&gt;不只是网友，相关部门响应的也很及时，吉林文旅马上就介入，不出2个小时问题就已经解决。看看这效率！！！&lt;a
+href=&quot;https://mp.weixin.qq.com/s/eoCvnNCrUWv8ag1-2loOEw&quot;&gt;司机被罚3万元！官方通报“傅园慧包车被勒索”处罚结果&lt;/a&gt;&lt;/p&gt;
+&lt;figure&gt;
+&lt;img data-src=&quot;https://cdn.jsdelivr.net/gh/wnhyang/picx-images-hosting@master/20240219/1708482603223.webp&quot;
+alt=&quot;1708482603223&quot; /&gt;
+&lt;figcaption aria-hidden=&quot;true&quot;&gt;1708482603223&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;紧接着“长白山发布”官微发布《长白山严厉打击非法营运等行为坚决维护每一名游客的合法权益》。&lt;/p&gt;
+&lt;figure&gt;
+&lt;img data-src=&quot;https://cdn.jsdelivr.net/gh/wnhyang/picx-images-hosting@master/20240219/1708346918648.webp&quot;
+alt=&quot;1708346918648&quot; /&gt;
+&lt;figcaption aria-hidden=&quot;true&quot;&gt;1708346918648&lt;/figcaption&gt;
+&lt;/figure&gt;</summary>
+    
+    
+    
+    
+    <category term="杂谈" scheme="https://wnhyang.github.io/tags/%E6%9D%82%E8%B0%88/"/>
+    
+  </entry>
   
   <entry>
     <title>类支付宝积分系统设计方案（过期、兑奖）</title>
@@ -562,62 +635,6 @@ href=&quot;https://blog.csdn.net/Zhangsama1/article/details/129198456&quot;&gt;S
     
     
     <category term="记录" scheme="https://wnhyang.github.io/tags/%E8%AE%B0%E5%BD%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>XXL-JOB发送过期邮件提醒</title>
-    <link href="https://wnhyang.github.io/article/ee1e3834.html"/>
-    <id>https://wnhyang.github.io/article/ee1e3834.html</id>
-    <published>2023-04-01T14:26:17.000Z</published>
-    <updated>2024-01-18T14:54:58.824Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;简介&quot;&gt;简介&lt;/h1&gt;
-&lt;p&gt;有了前面&lt;a
-href=&quot;https://wnhyang.github.io/article/abbb8dbb.html&quot;&gt;初次使用
-XXL-JOB&lt;/a&gt;这篇文章就可顺着往下讲了&lt;/p&gt;
-&lt;p&gt;我的需求也很简单，通过一种方式发送即将过期的提醒，当然免费方式中最好的就是邮件啦！&lt;/p&gt;
-&lt;p&gt;我这里选择的方式就是利用&lt;code&gt;XXL-JOB&lt;/code&gt;来查询然后分组发送，当然还有其他方式，我也非常乐意尝试考虑其他方法，合适的话。&lt;/p&gt;
-&lt;p&gt;留在最后讨论吧！&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="JavaSE" scheme="https://wnhyang.github.io/tags/JavaSE/"/>
-    
-    <category term="定时任务" scheme="https://wnhyang.github.io/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>AOP记录访问量</title>
-    <link href="https://wnhyang.github.io/article/5b66ad6f.html"/>
-    <id>https://wnhyang.github.io/article/5b66ad6f.html</id>
-    <published>2023-04-01T14:25:34.000Z</published>
-    <updated>2024-01-18T14:54:58.655Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;简介&quot;&gt;简介&lt;/h1&gt;
-&lt;p&gt;最近在做一个短链接的项目，其实应该是算改造，将原来的功能完善一下，其中就包括一个记录访问量的需求，需求大概是这样的：&lt;/p&gt;
-&lt;p&gt;根据每个链接记录其一定时间内的访问量，这个访问量应该是随时间动态变化，即使我不做什么操作。&lt;/p&gt;
-&lt;p&gt;最容易就想到利用&lt;code&gt;Redis&lt;/code&gt;的两种数据结构&lt;code&gt;string&lt;/code&gt;和&lt;code&gt;hash&lt;/code&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;string，&lt;code&gt;link:visit:$id:$date&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;需要通过时间来设置和查询，可单独设置过期时间，删除不能直接通过link来删除，只能自然过期？&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;hash，&lt;code&gt;link:visit:$id&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;设置和查询简单，不可单独设置过期时间，删除可一次性删除&lt;/p&gt;
-&lt;p&gt;当然我还看到有利用&lt;code&gt;hyperloglog&lt;/code&gt;记录访问集合的，这与我需求不符就不提了&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="AOP" scheme="https://wnhyang.github.io/tags/AOP/"/>
-    
-    <category term="Redis" scheme="https://wnhyang.github.io/tags/Redis/"/>
     
   </entry>
   
