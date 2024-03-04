@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2024-02-22T11:03:30.228Z</updated>
+  <updated>2024-03-04T08:15:26.025Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,46 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>使用了智能表格后，不禁感叹现在的生产力工具真牛！</title>
+    <link href="https://wnhyang.github.io/article/a2229281.html"/>
+    <id>https://wnhyang.github.io/article/a2229281.html</id>
+    <published>2024-03-03T12:34:46.000Z</published>
+    <updated>2024-03-04T08:15:26.025Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;个人博客：&lt;a
+href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
+title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
+title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
+Overview&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;办公三件套，我想不会有人没用过吧，如果你还停留在简单编辑、套模版的的办公三件套时代，那只能说你真的out了！&lt;/p&gt;
+&lt;p&gt;这周因为一些工作上的需要，打开WPS创建并使用了一下智能表格，不用不知道，使用后属实是把我惊到了。&lt;/p&gt;
+&lt;h1 id=&quot;智能表格&quot;&gt;智能表格&lt;/h1&gt;
+&lt;p&gt;特性：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;多人协作，这个功能其实不算是特性的，因为绝大多数表格都可以做到&lt;/li&gt;
+&lt;li&gt;简单的在线数据库，高效的管理数据&lt;/li&gt;
+&lt;li&gt;搭积木一样建应用，每个人都会用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;接下来我会从模版和自己的实践上重点介绍后两点！&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="软件&amp;工具" scheme="https://wnhyang.github.io/tags/%E8%BD%AF%E4%BB%B6-%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Sa-Token事件发布，观察者模式</title>
     <link href="https://wnhyang.github.io/article/cf08a8bf.html"/>
     <id>https://wnhyang.github.io/article/cf08a8bf.html</id>
     <published>2024-02-22T10:03:53.000Z</published>
-    <updated>2024-02-22T11:03:30.228Z</updated>
+    <updated>2024-03-04T08:15:19.558Z</updated>
     
     
     <summary type="html">&lt;p&gt;个人博客：&lt;a
@@ -55,7 +90,7 @@ alt=&quot;image&quot; /&gt;
     <link href="https://wnhyang.github.io/article/d5e01b07.html"/>
     <id>https://wnhyang.github.io/article/d5e01b07.html</id>
     <published>2024-02-21T02:28:43.000Z</published>
-    <updated>2024-02-22T11:02:37.418Z</updated>
+    <updated>2024-02-22T11:03:47.700Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;事件回顾&quot;&gt;事件回顾&lt;/h1&gt;
@@ -614,27 +649,6 @@ href=&quot;https://blog.csdn.net/Zhangsama1/article/details/129198456&quot;&gt;S
     
     
     <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>我的服务器竟然被攻击了！</title>
-    <link href="https://wnhyang.github.io/article/57d7718e.html"/>
-    <id>https://wnhyang.github.io/article/57d7718e.html</id>
-    <published>2023-04-16T14:29:37.000Z</published>
-    <updated>2024-01-18T14:54:58.775Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;真的没想到我的服务器真的能被攻击呀！&lt;/p&gt;
-&lt;p&gt;之前买了两台华为云服务器，配置不高，但够我用。&lt;/p&gt;
-&lt;p&gt;就在上周，首先华为云-云监控服务给我发了好几条关于我的服务器&lt;code&gt;CPU&lt;/code&gt;长时间使用率大于&lt;code&gt;90%&lt;/code&gt;的告警短信，接着还有我装有&lt;code&gt;naocs&lt;/code&gt;、&lt;code&gt;prometheus&lt;/code&gt;、&lt;code&gt;grafana&lt;/code&gt;，配置了钉钉机器人告警的服务器也开始不断在钉钉群里推送告警消息。我也是很奇怪？这两台服务器虽然配置不高，但我装的东西，跑的程序也不至于把&lt;code&gt;CPU&lt;/code&gt;跑满吧！&lt;/p&gt;
-&lt;p&gt;第一天晚上收到的消息，电脑也没在身边，就没当回事，因为我也确实有一周时间没有上服务器玩了，以为就是我的服务发疯呢。&lt;/p&gt;
-&lt;p&gt;直到第二天，问题还一直都在，我就不得不去看一下了。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="记录" scheme="https://wnhyang.github.io/tags/%E8%AE%B0%E5%BD%95/"/>
     
   </entry>
   
