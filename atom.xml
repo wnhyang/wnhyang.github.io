@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2024-03-04T08:15:26.025Z</updated>
+  <updated>2024-03-06T13:53:30.363Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,45 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>可配置输入参数的接口如何设计</title>
+    <link href="https://wnhyang.github.io/article/61a8fda5.html"/>
+    <id>https://wnhyang.github.io/article/61a8fda5.html</id>
+    <published>2024-03-06T13:06:44.000Z</published>
+    <updated>2024-03-06T13:53:30.363Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;个人博客：&lt;a
+href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
+title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
+title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
+Overview&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;作为程序员，我们绝大多数场景需要根据业务需求来设计系统，开发后端接口，这些接口通常都是在设计阶段就确定了，但是还有一些场景需要实现支持的配置的接口，包含以下功能&lt;/p&gt;
+&lt;p&gt;1、可以配置接口&lt;code&gt;url&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;这个通常在一些论坛博客类系统中比较常见，用于设置个人主页，但其实这个又是不同概念，个人主页通常是&lt;code&gt;get&lt;/code&gt;请求，然后通过&lt;code&gt;path&lt;/code&gt;索引用户主页。&lt;/p&gt;
+&lt;p&gt;2、可选择接口具体实现&lt;/p&gt;
+&lt;p&gt;流程引擎、规则引擎通常就可以实现&lt;/p&gt;
+&lt;p&gt;3、输入参数和输出参数可配置&lt;/p&gt;
+&lt;p&gt;应用场景包括数据收集等&lt;/p&gt;
+&lt;p&gt;前面乱讲一通，最终回归本题——可配置输入参数的接口如何设计？&lt;/p&gt;
+&lt;h1 id=&quot;ai的回答&quot;&gt;AI的回答&lt;/h1&gt;
+&lt;p&gt;以下是&lt;code&gt;AI&lt;/code&gt;的回答——可配置输入参数的接口如何设计？&lt;/p&gt;
+&lt;p&gt;设计支持可配置输入参数的接口时，主要目标是保证接口的灵活性和易用性，同时兼顾健壮性和可维护性。以下是一个通用的设计策略：&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>使用了智能表格后，不禁感叹现在的生产力工具真牛！</title>
     <link href="https://wnhyang.github.io/article/a2229281.html"/>
     <id>https://wnhyang.github.io/article/a2229281.html</id>
     <published>2024-03-03T12:34:46.000Z</published>
-    <updated>2024-03-04T08:15:26.025Z</updated>
+    <updated>2024-03-04T09:29:59.743Z</updated>
     
     
     <summary type="html">&lt;p&gt;个人博客：&lt;a
@@ -624,31 +658,6 @@ href=&quot;https://wnhyang.github.io/article/57d7718e.html&quot;&gt;我的服务
     
     
     <category term="记录" scheme="https://wnhyang.github.io/tags/%E8%AE%B0%E5%BD%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>自己写spring-boot-starter-xxx</title>
-    <link href="https://wnhyang.github.io/article/96219520.html"/>
-    <id>https://wnhyang.github.io/article/96219520.html</id>
-    <published>2023-04-27T11:51:14.000Z</published>
-    <updated>2024-01-18T14:54:58.869Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;什么是boot&quot;&gt;什么是Boot&lt;/h1&gt;
-&lt;p&gt;过去只是用人家的&lt;code&gt;xxx-spring-boot-starter&lt;/code&gt;，用着是挺爽的，但随着学习和工作，发现不管是流行的开源产品还是公司内部总会存在一些自己封装的&lt;code&gt;starter&lt;/code&gt;，刚开始我也是很不解，一直觉得原本的就是最好的，根本不需要我们改什么，直到我学着去自己写&lt;code&gt;starter&lt;/code&gt;，才发觉脚手架的意义就在这啊，这就是&lt;code&gt;boot&lt;/code&gt;啊！&lt;/p&gt;
-&lt;p&gt;不多废话了，接下来从开源项目&lt;a
-href=&quot;https://github.com/YunaiV/yudao-cloud&quot;&gt;yudao-cloud&lt;/a&gt;说起怎么在开源框架的基础上封装自己的&lt;code&gt;starter&lt;/code&gt;。&lt;/p&gt;
-&lt;h1 id=&quot;尝试自己写starter&quot;&gt;尝试自己写starter&lt;/h1&gt;
-&lt;p&gt;我们就从&lt;code&gt;yudao-spring-boot-starter-job&lt;/code&gt;开始做一个属于自己的starter吧！&lt;/p&gt;
-&lt;h2 id=&quot;前提说明&quot;&gt;前提说明&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;SpringBoot&lt;/code&gt;基础的就不用多提了，需要注意的是不同版本会有一些差异，&lt;a
-href=&quot;https://blog.csdn.net/Zhangsama1/article/details/129198456&quot;&gt;SpringBoot2.7之后自动配置类差异&lt;/a&gt;。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
   </entry>
   
