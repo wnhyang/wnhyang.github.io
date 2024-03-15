@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2024-03-06T13:53:30.363Z</updated>
+  <updated>2024-03-15T14:21:16.351Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,65 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>风控系统指标计算/特征提取分析与实现01，Redis、Zset、模版方法</title>
+    <link href="https://wnhyang.github.io/article/103ba1ec.html"/>
+    <id>https://wnhyang.github.io/article/103ba1ec.html</id>
+    <published>2024-03-15T12:04:47.000Z</published>
+    <updated>2024-03-15T14:21:16.351Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;个人博客：&lt;a
+href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
+title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
+title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
+Overview&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;引用&lt;code&gt;AI&lt;/code&gt;对于风控系统的介绍&lt;/p&gt;
+&lt;p&gt;风控系统是一种用于在线业务的安全管理系统，它帮助企业和平台防范潜在的欺诈、信用风险以及不合规行为。简单来说，它的核心作用就是“保安全、防欺诈、控风险”。&lt;/p&gt;
+&lt;p&gt;最近也一直在研究风控系统体系、功能等，看了一些有关的文章，并且也在实践尝试中。&lt;/p&gt;
+&lt;p&gt;其实前一篇可配置“输入参数的接口如何设计”就是实践尝试的一部分，未来还会有更多的。&lt;/p&gt;
+&lt;p&gt;而本篇文章就风控系统的指标计算，或者说是特征提取做一些探讨，以下统一称呼为“指标”。&lt;/p&gt;
+&lt;p&gt;指标不仅可以作为风控系统的一部分配合风控规则或是模型/机器学习使用，而且可以用于离线分析、事后追查、用户画像标签等方面。&lt;/p&gt;
+&lt;h1 id=&quot;参考文章&quot;&gt;参考文章&lt;/h1&gt;
+&lt;p&gt;&lt;a
+href=&quot;https://zhuanlan.zhihu.com/p/626565122&quot;&gt;风控笔记06：一个完整的风控引擎，需要有哪些功能？&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a
+href=&quot;https://zhuanlan.zhihu.com/p/627593352&quot;&gt;风控笔记07：最常用的风控工具-特征库&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;指标分类&quot;&gt;指标分类&lt;/h1&gt;
+&lt;p&gt;指标是由数据流支撑的，指标是时间纬度的数据提取计算。&lt;/p&gt;
+&lt;p&gt;根据指标分类举几个例子：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;次数统计：最近24小时&lt;span
+class=&quot;math inline&quot;&gt;\({客户号}向\)&lt;/span&gt;{银行卡卡号}转账笔数&lt;/li&gt;
+&lt;li&gt;求和：最近2天&lt;span
+class=&quot;math inline&quot;&gt;\({客户号}向\)&lt;/span&gt;{银行卡卡号}转账金额之和&lt;/li&gt;
+&lt;li&gt;平均：最近1个月&lt;span
+class=&quot;math inline&quot;&gt;\({客户号}向\)&lt;/span&gt;{银行卡卡号}转账金额的平均数&lt;/li&gt;
+&lt;li&gt;关联次数：最近72小时&lt;span
+class=&quot;math inline&quot;&gt;\({客户号}关联\)&lt;/span&gt;{设备mac地址}的次数&lt;/li&gt;
+&lt;li&gt;等等&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    
+    <category term="Redis" scheme="https://wnhyang.github.io/tags/Redis/"/>
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
+    
+    <category term="设计模式" scheme="https://wnhyang.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>可配置输入参数的接口如何设计</title>
     <link href="https://wnhyang.github.io/article/61a8fda5.html"/>
     <id>https://wnhyang.github.io/article/61a8fda5.html</id>
     <published>2024-03-06T13:06:44.000Z</published>
-    <updated>2024-03-06T13:53:30.363Z</updated>
+    <updated>2024-03-07T02:04:32.000Z</updated>
     
     
     <summary type="html">&lt;p&gt;个人博客：&lt;a
@@ -47,6 +101,10 @@ Overview&lt;/a&gt;&lt;/p&gt;
     
     
     
+    
+    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
   </entry>
   
@@ -627,32 +685,6 @@ href=&quot;https://wnhyang.github.io/article/57d7718e.html&quot;&gt;我的服务
 &lt;/blockquote&gt;
 &lt;p&gt;真是杀人且诛心啊！&lt;/p&gt;
 &lt;p&gt;跟上次一样，发生了这件事后我立刻马上就知道被攻击的原因了，还是我习惯了自己开发，随性的原因，平常我自己玩就不太注意开放出来的安全性，因为那时候仅仅是在自己的电脑上玩，不管是局域网还是防火墙都会有保障，而且一般不会全天24小时运行，但是到服务器上就不一样了，在安全规则上设置的比较随意，需要的端口都直接开放，中间件账号权限也是随意设置的，特别容易被以撞库等方式破解，这次事件也正是它带来的后果。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="记录" scheme="https://wnhyang.github.io/tags/%E8%AE%B0%E5%BD%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ChatGPT对话02</title>
-    <link href="https://wnhyang.github.io/article/86c1a350.html"/>
-    <id>https://wnhyang.github.io/article/86c1a350.html</id>
-    <published>2023-04-28T08:42:10.000Z</published>
-    <updated>2024-01-18T14:54:58.752Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;qa1&quot;&gt;Q&amp;amp;A1&lt;/h1&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Q1:清理2023年，除了20230109目录外，保留近一个月的目录shell脚本&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;A1:以下是清理除20230109目录外，保留近一个月的目录的shell脚本：&lt;/p&gt;
-&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;复制代码#!/bin/bash&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;# &lt;/span&gt;&lt;span class=&quot;language-bash&quot;&gt;删除早于30天的目录&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;find /path/to/directory/* -type d ! -name &amp;quot;20230109&amp;quot; -ctime +30 -exec rm -rf &amp;#123;&amp;#125; \;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;将&lt;code&gt;/path/to/directory/&lt;/code&gt;替换为要清理的目录的路径。这个脚本使用&lt;code&gt;find&lt;/code&gt;命令来查找除了名为&lt;code&gt;20230109&lt;/code&gt;的目录以外的所有目录，并删除它们，同时保留近30天内被修改过的目录。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;学到了学到了，运维时就可以通过手动或定时任务清理一些不需要的文件了。&lt;/p&gt;</summary>
     
     
     
