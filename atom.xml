@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2024-03-15T14:21:16.351Z</updated>
+  <updated>2024-03-16T03:28:16.915Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,40 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>MybatisPlus-Generator自定义模版生成CRUD、DTO、VO、Convert等</title>
+    <link href="https://wnhyang.github.io/article/bf7337ce.html"/>
+    <id>https://wnhyang.github.io/article/bf7337ce.html</id>
+    <published>2024-03-16T01:48:24.000Z</published>
+    <updated>2024-03-16T03:28:16.915Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;个人博客：&lt;a
+href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;个人语雀：&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="软件&amp;工具" scheme="https://wnhyang.github.io/tags/%E8%BD%AF%E4%BB%B6-%E5%B7%A5%E5%85%B7/"/>
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
+    
+    <category term="Mybatis/Mybatis-plus" scheme="https://wnhyang.github.io/tags/Mybatis-Mybatis-plus/"/>
+    
+  </entry>
+  
+  <entry>
     <title>风控系统指标计算/特征提取分析与实现01，Redis、Zset、模版方法</title>
     <link href="https://wnhyang.github.io/article/103ba1ec.html"/>
     <id>https://wnhyang.github.io/article/103ba1ec.html</id>
     <published>2024-03-15T12:04:47.000Z</published>
-    <updated>2024-03-15T14:21:16.351Z</updated>
+    <updated>2024-03-15T14:21:38.277Z</updated>
     
     
     <summary type="html">&lt;p&gt;个人博客：&lt;a
@@ -634,9 +663,9 @@ href=&quot;https://sa-token.cc/doc.html#/?id=sa-token-介绍&quot;&gt;Sa-Token
     
     
     
-    <category term="Spring Cloud Alibaba" scheme="https://wnhyang.github.io/tags/Spring-Cloud-Alibaba/"/>
-    
     <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
+    
+    <category term="Spring Cloud Alibaba" scheme="https://wnhyang.github.io/tags/Spring-Cloud-Alibaba/"/>
     
     <category term="Spring Cloud" scheme="https://wnhyang.github.io/tags/Spring-Cloud/"/>
     
@@ -656,35 +685,6 @@ href=&quot;https://sa-token.cc/doc.html#/?id=sa-token-介绍&quot;&gt;Sa-Token
 &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Process finished with &lt;span class=&quot;built_in&quot;&gt;exit&lt;/span&gt; code 1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;这可着实无从下手，还有一种启动失败错误如下，也是非常常见的。&lt;/p&gt;
 &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Connected to the target VM, address: &lt;span class=&quot;string&quot;&gt;&amp;#x27;127.0.0.1:56302&amp;#x27;&lt;/span&gt;, transport: &lt;span class=&quot;string&quot;&gt;&amp;#x27;socket&amp;#x27;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Disconnected from the target VM, address: &lt;span class=&quot;string&quot;&gt;&amp;#x27;127.0.0.1:56302&amp;#x27;&lt;/span&gt;, transport: &lt;span class=&quot;string&quot;&gt;&amp;#x27;socket&amp;#x27;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Process finished with &lt;span class=&quot;built_in&quot;&gt;exit&lt;/span&gt; code 1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
-    
-    
-    
-    
-    <category term="记录" scheme="https://wnhyang.github.io/tags/%E8%AE%B0%E5%BD%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>开放的服务一定要小心</title>
-    <link href="https://wnhyang.github.io/article/b58761d9.html"/>
-    <id>https://wnhyang.github.io/article/b58761d9.html</id>
-    <published>2023-05-08T07:54:29.000Z</published>
-    <updated>2024-01-18T14:54:58.744Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;又搞我&quot;&gt;又搞我？&lt;/h1&gt;
-&lt;p&gt;继&lt;a
-href=&quot;https://wnhyang.github.io/article/57d7718e.html&quot;&gt;我的服务器竟然被攻击了！&lt;/a&gt;之后，我的服务器又被攻击了，上次是解决了远程用户登录，定时执行恶意脚本的问题。&lt;/p&gt;
-&lt;p&gt;但这次又对我的&lt;code&gt;MySQL&lt;/code&gt;下手了，并且在每个库中留下了一张&lt;code&gt;README&lt;/code&gt;的表，表里只有一条数据，如下：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;您的数据库已删除。您必须支付 0.0125 比特币 (BTC)
-才能取回它们。我拥有的备份：okay, wnh, xxl_job。通过 chin71303@proton.me
-与我联系 只有与付款相关的邮件才会得到答复！&lt;/p&gt;
-&lt;p&gt;bc1q3l9q2n840y682vvy7xxs7cptnthag3z3xmfpgy&lt;/p&gt;
-&lt;p&gt;chin71303@proton.me&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;真是杀人且诛心啊！&lt;/p&gt;
-&lt;p&gt;跟上次一样，发生了这件事后我立刻马上就知道被攻击的原因了，还是我习惯了自己开发，随性的原因，平常我自己玩就不太注意开放出来的安全性，因为那时候仅仅是在自己的电脑上玩，不管是局域网还是防火墙都会有保障，而且一般不会全天24小时运行，但是到服务器上就不一样了，在安全规则上设置的比较随意，需要的端口都直接开放，中间件账号权限也是随意设置的，特别容易被以撞库等方式破解，这次事件也正是它带来的后果。&lt;/p&gt;</summary>
     
     
     
