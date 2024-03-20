@@ -96,7 +96,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">44</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">178</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">44</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">179</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -161,7 +161,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">178</span>
+          <span class="site-state-item-count">179</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -227,6 +227,176 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/d9f6ee5e.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+      <meta itemprop="description" content="热爱、分享、生活">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/article/d9f6ee5e.html" class="post-title-link" itemprop="url">Spring6.1新特性，四种方式调用REST接口（RestClient、WebClient、RestTemplate、HTTP Interface）</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-03-19 19:27:37" itemprop="dateCreated datePublished" datetime="2024-03-19T19:27:37+08:00">2024-03-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-03-20 10:34:51" itemprop="dateModified" datetime="2024-03-20T10:34:51+08:00">2024-03-20</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>748</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>个人博客：<a
+href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
+<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
+title="wnhyang">wnhyang</a></p>
+<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
+title="在线知识共享">在线知识共享</a></p>
+<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
+Overview</a></p>
+<hr />
+<h1 id="官网">官网</h1>
+<p><a
+target="_blank" rel="noopener" href="https://docs.spring.io/spring-framework/reference/integration/rest-clients.html">REST
+Clients :: Spring Framework</a></p>
+<p>The Spring Framework provides the following choices for making calls
+to REST endpoints:</p>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://docs.spring.io/spring-framework/reference/integration/rest-clients.html#rest-restclient">RestClient</a>
+- synchronous client with a fluent API.</li>
+<li><a
+target="_blank" rel="noopener" href="https://docs.spring.io/spring-framework/reference/integration/rest-clients.html#rest-webclient">WebClient</a>
+- non-blocking, reactive client with fluent API.</li>
+<li><a
+target="_blank" rel="noopener" href="https://docs.spring.io/spring-framework/reference/integration/rest-clients.html#rest-resttemplate">RestTemplate</a>
+- synchronous client with template method API.</li>
+<li><a
+target="_blank" rel="noopener" href="https://docs.spring.io/spring-framework/reference/integration/rest-clients.html#rest-http-interface">HTTP
+Interface</a> - annotated interface with generated, dynamic proxy
+implementation.</li>
+</ul>
+<h1 id="restclient">RestClient</h1>
+<p>官方描述：<code>RestClient</code>是一个同步<code>HTTP</code>客户端，它提供了一个现代、流畅的<code>API</code>。它提供了对<code>HTTP</code>库的抽象，允许从<code>Java</code>对象到<code>HTTP</code>请求的方便转换，以及从<code>HTTP</code>响应创建对象。</p>
+<p><code>Spring6.1</code>版本新特性。</p>
+<h2 id="创建">创建</h2>
+<p>创建<code>RestClient</code>非常简单，可以使用静态<code>create</code>方法，也可以使用<code>builder</code>创建，其提供了非常丰富的定制化选项，请求工厂、消息转换器、拦截器、默认头、请求初始化器等等，简单易懂。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">RestClient</span> <span class="variable">defaultClient</span> <span class="operator">=</span> RestClient.create();</span><br><span class="line"><span class="type">RestClient</span> <span class="variable">customClient</span> <span class="operator">=</span> RestClient.builder()</span><br><span class="line">  .requestFactory(<span class="keyword">new</span> <span class="title class_">HttpComponentsClientHttpRequestFactory</span>())</span><br><span class="line">  .messageConverters(converters -&gt; converters.add(<span class="keyword">new</span> <span class="title class_">MyCustomMessageConverter</span>()))</span><br><span class="line">  .baseUrl(<span class="string">&quot;https://example.com&quot;</span>)</span><br><span class="line">  .defaultUriVariables(Map.of(<span class="string">&quot;variable&quot;</span>, <span class="string">&quot;foo&quot;</span>))</span><br><span class="line">  .defaultHeader(<span class="string">&quot;My-Header&quot;</span>, <span class="string">&quot;Foo&quot;</span>)</span><br><span class="line">  .requestInterceptor(myCustomInterceptor)</span><br><span class="line">  .requestInitializer(myCustomInitializer)</span><br><span class="line">  .build();</span><br></pre></td></tr></table></figure>
+<h2 id="使用">使用</h2>
+<p>使用<code>RestClient</code>更为简单，请求<code>URL</code>、<code>Header</code>、<code>Body</code>、相应<code>Response</code>接受、异常处理等等相当丰富简单。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">result</span> <span class="operator">=</span> customClient.get()</span><br><span class="line">        .uri(<span class="string">&quot;https://example.com/this-url-does-not-exist&quot;</span>)</span><br><span class="line">        .retrieve()</span><br><span class="line">        .onStatus((code) -&gt; code.value() / <span class="number">100</span> == <span class="number">4</span>, (request, response) -&gt; &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(response.getStatusCode() + <span class="string">&quot; &quot;</span> + response.getHeaders());</span><br><span class="line">        &#125;)</span><br><span class="line">        .body(String.class);</span><br></pre></td></tr></table></figure>
+<h1 id="webclient">WebClient</h1>
+<p><code>WebClient</code>是一个无阻塞、响应式的客户端，用于执行<code>HTTP</code>请求。它在<code>5.0</code>中引入，提供了<code>RestTemplate</code>的替代方案，支持同步、异步和流式传输场景。</p>
+<p>早在<code>Spring5</code>版本中就已经出现，创建方法和<code>RestClient</code>差不多，简单示例如下，其他详细内容可参考官网可<code>Java Doc</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">WebClient</span> <span class="variable">webClient</span> <span class="operator">=</span> WebClient.builder().baseUrl(<span class="string">&quot;http://localhost:8081&quot;</span>).build();</span><br></pre></td></tr></table></figure>
+<h1 id="resttemplate">RestTemplate</h1>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240316/image.8hg8hxyscl.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>相比于上面两位这个更是古老，也正因此更为常见，使用的更多。但是官网明确表示，推荐使用<code>RestClient</code>替换<code>RestTemplate</code>，甚至还细心的整理了替换方案，可知官方可能计划着在未来彻底废弃<code>RestTemplate</code>，也许哦。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240316/image.2vei431ffj.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<h1 id="http-interface">HTTP Interface</h1>
+<p>官方描述：<code>Spring Framework</code>允许您使用<code>@HttpExchange</code>方法将<code>HTTP</code>服务定义为<code>Java</code>接口。您可以将这样的接口传递给<code>HttpServiceProxyFactory</code>，以创建一个代理，该代理通过HTTP客户端（如<code>RestClient</code>或<code>WebClient</code>）执行请求。您还可以从<code>@Controller</code>实现用于服务器请求处理的接口。</p>
+<p>简单的来讲，可以类比为<code>OpenFeign</code>，使用方法是几乎一样的。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240316/image.3razjjhvlr.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>这个也是<code>Spring6</code>的特性，最开始官方支持了<code>WebFlux</code>的实现，后来才加入的<code>RestClient</code>和<code>RestTemplate</code>，使用方式如上图。</p>
+<p>方法级别的注解有下，是不是和使用<code>OpenFeign</code>时几乎一样了，其实不然，<code>@RequestHeader</code>、<code>@RequestBody</code>、<code>@PathVariable</code>、<code>@RequestParam</code>、<code>@CookieValue</code>等等也是支持的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetExchange</span></span><br><span class="line"><span class="meta">@PostExchange</span></span><br><span class="line"><span class="meta">@PutExchange</span></span><br><span class="line"><span class="meta">@DeleteExchange</span></span><br><span class="line"><span class="meta">@PatchExchange</span></span><br></pre></td></tr></table></figure>
+<h1 id="小结">小结</h1>
+<p>可以说在<code>Spring6.1</code>之后再进行<code>REST</code>调用就有更加丰富的选择了，而且更加简单方便。</p>
+<h1 id="写在最后">写在最后</h1>
+<p>拙作艰辛，字句心血，望诸君垂青，多予支持，不胜感激。</p>
+<hr />
+<p>个人博客：<a
+href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
+<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
+title="wnhyang">wnhyang</a></p>
+<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
+title="在线知识共享">在线知识共享</a></p>
+<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
+Overview</a></p>
+<p><img data-src="https://wnhyang.github.io/images/wechat_channel.webp" /></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/bf7337ce.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -255,9 +425,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2024-03-16 09:48:24 / 修改时间：11:28:16" itemprop="dateCreated datePublished" datetime="2024-03-16T09:48:24+08:00">2024-03-16</time>
+      <time title="创建时间：2024-03-16 09:48:24" itemprop="dateCreated datePublished" datetime="2024-03-16T09:48:24+08:00">2024-03-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-03-18 11:28:19" itemprop="dateModified" datetime="2024-03-18T11:28:19+08:00">2024-03-18</time>
     </span>
 
   
@@ -305,119 +481,14 @@ wnhyang/crud-quickstart</a></p>
 target="_blank" rel="noopener" href="https://baomidou.com/pages/981406/">代码生成器配置新 |
 MyBatis-Plus</a></p>
 <p><img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240316/.7ljqxmoerv.webp" /></p>
-<h1 id="项目说明">项目说明</h1>
-<p>看图就行了</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240316/image.86tejyp5qr.webp"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
-</figure>
-<p>从下面截图和这里的生成器可以看到除了<code>MybatisPlus</code>自带的<code>entity.java</code>、<code>mapper.java</code>、<code>mapper.xml</code>、<code>service.java</code>、<code>serviceImpl.java</code>、<code>controller.java</code>外，自定了<code>CreateVO.java</code>、<code>UpdateVO.java</code>、<code>VO.java</code>、<code>Page.java</code>、<code>DTO.java</code>、<code>Convert.java</code>模版。</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240316/image.231mhi1f0a.webp"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
-</figure>
-<h1 id="使用范围">使用范围</h1>
-<p>数据源：<code>MySQL</code>，因为我主要使用的是<code>MySQL</code>，其他数据源没测试过，不敢保证。</p>
-<p>工具：<code>lombok</code>、<code>mapstruct</code>，因为项目使用<code>mapstruct</code>做<code>DTO</code>、<code>VO</code>的转换工具，所以这些是必要的。</p>
-<p>基础但非必要：<code>JDK17</code> + <code>Spring Boot3</code> +
-<code>MybatisPlus</code>最新版，非必要指的是版本。</p>
-<h1 id="使用方法">使用方法</h1>
-<p>如上截图，因为是我日常使用，添加了一些我需要的依赖、配置和自定义类。<code>pom</code>依赖就多了些，你可以根据自需要取舍。这里就不贴了，有点多。</p>
-<h2 id="必要依赖">必要依赖</h2>
-<p>因为自定义的不止这些，所以单单使用这些是不够的。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.baomidou<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-plus-generator<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.velocity<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>velocity-engine-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="示例sql">示例sql</h2>
-<p>项目中自带有示例<code>sql</code>，如下，有两张表，他们通用的特点是共有5个字段（<code>creator</code>、<code>create_time</code>、<code>updater</code>、<code>update_time</code>、<code>deleted</code>），<code>deleted</code>是逻辑删除字段。</p>
-<p>也是因此，生成的<code>entity</code>共同继承了一个基础类<code>BasePO.java</code>。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- auto-generated definition</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> sys_dict_data</span><br><span class="line">(</span><br><span class="line">  id          <span class="type">bigint</span> auto_increment comment <span class="string">&#x27;字典数据主键&#x27;</span> <span class="keyword">primary</span> key,</span><br><span class="line">  sort        <span class="type">int</span>          <span class="keyword">default</span> <span class="number">0</span>                 <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;字典排序&#x27;</span>,</span><br><span class="line">  label       <span class="type">varchar</span>(<span class="number">100</span>) <span class="keyword">default</span> <span class="string">&#x27;&#x27;</span>                <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;字典标签&#x27;</span>,</span><br><span class="line">  <span class="keyword">value</span>       <span class="type">varchar</span>(<span class="number">100</span>) <span class="keyword">default</span> <span class="string">&#x27;&#x27;</span>                <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;字典键值&#x27;</span>,</span><br><span class="line">  dict_type   <span class="type">varchar</span>(<span class="number">100</span>) <span class="keyword">default</span> <span class="string">&#x27;&#x27;</span>                <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;字典类型&#x27;</span>,</span><br><span class="line">  status      tinyint      <span class="keyword">default</span> <span class="number">0</span>                 <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;状态（0正常 1停用）&#x27;</span>,</span><br><span class="line">  remark      <span class="type">varchar</span>(<span class="number">500</span>) <span class="keyword">null</span> comment <span class="string">&#x27;备注&#x27;</span>,</span><br><span class="line">  creator     <span class="type">varchar</span>(<span class="number">64</span>)  <span class="keyword">default</span> <span class="string">&#x27;&#x27;</span> <span class="keyword">null</span> comment <span class="string">&#x27;创建者&#x27;</span>,</span><br><span class="line">  create_time datetime     <span class="keyword">default</span> <span class="built_in">CURRENT_TIMESTAMP</span> <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;创建时间&#x27;</span>,</span><br><span class="line">  updater     <span class="type">varchar</span>(<span class="number">64</span>)  <span class="keyword">default</span> <span class="string">&#x27;&#x27;</span> <span class="keyword">null</span> comment <span class="string">&#x27;更新者&#x27;</span>,</span><br><span class="line">  update_time datetime     <span class="keyword">default</span> <span class="built_in">CURRENT_TIMESTAMP</span> <span class="keyword">not</span> <span class="keyword">null</span> <span class="keyword">on</span> <span class="keyword">update</span> <span class="built_in">CURRENT_TIMESTAMP</span> comment <span class="string">&#x27;更新时间&#x27;</span>,</span><br><span class="line">  deleted     bit          <span class="keyword">default</span> b<span class="string">&#x27;0&#x27;</span>              <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;是否删除&#x27;</span></span><br><span class="line">) comment <span class="string">&#x27;字典数据表&#x27;</span> charset <span class="operator">=</span> utf8mb4;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- auto-generated definition</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> sys_operate_log</span><br><span class="line">(</span><br><span class="line">  id               <span class="type">bigint</span> auto_increment comment <span class="string">&#x27;日志主键&#x27;</span> <span class="keyword">primary</span> key,</span><br><span class="line">  user_id          <span class="type">bigint</span>                                  <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;用户编号&#x27;</span>,</span><br><span class="line">  <span class="keyword">module</span>           <span class="type">varchar</span>(<span class="number">50</span>)                             <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;模块标题&#x27;</span>,</span><br><span class="line">  name             <span class="type">varchar</span>(<span class="number">50</span>)                             <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;操作名&#x27;</span>,</span><br><span class="line">  type             <span class="type">int</span>           <span class="keyword">default</span> <span class="number">0</span>                 <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;操作分类&#x27;</span>,</span><br><span class="line">  content          <span class="type">varchar</span>(<span class="number">2000</span>) <span class="keyword">default</span> <span class="string">&#x27;&#x27;</span>                <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;操作内容&#x27;</span>,</span><br><span class="line">  exts             <span class="type">varchar</span>(<span class="number">512</span>)  <span class="keyword">default</span> <span class="string">&#x27;&#x27;</span>                <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;拓展字段&#x27;</span>,</span><br><span class="line">  request_method   <span class="type">varchar</span>(<span class="number">16</span>)   <span class="keyword">default</span> <span class="string">&#x27;&#x27;</span> <span class="keyword">null</span> comment <span class="string">&#x27;请求方法名&#x27;</span>,</span><br><span class="line">  request_url      <span class="type">varchar</span>(<span class="number">255</span>)  <span class="keyword">default</span> <span class="string">&#x27;&#x27;</span> <span class="keyword">null</span> comment <span class="string">&#x27;请求地址&#x27;</span>,</span><br><span class="line">  user_ip          <span class="type">varchar</span>(<span class="number">50</span>) <span class="keyword">null</span> comment <span class="string">&#x27;用户 IP&#x27;</span>,</span><br><span class="line">  user_agent       <span class="type">varchar</span>(<span class="number">200</span>) <span class="keyword">null</span> comment <span class="string">&#x27;浏览器 UA&#x27;</span>,</span><br><span class="line">  java_method      <span class="type">varchar</span>(<span class="number">512</span>)  <span class="keyword">default</span> <span class="string">&#x27;&#x27;</span>                <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;Java 方法名&#x27;</span>,</span><br><span class="line">  java_method_args <span class="type">varchar</span>(<span class="number">8000</span>) <span class="keyword">default</span> <span class="string">&#x27;&#x27;</span> <span class="keyword">null</span> comment <span class="string">&#x27;Java 方法的参数&#x27;</span>,</span><br><span class="line">  start_time       datetime                                <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;操作时间&#x27;</span>,</span><br><span class="line">  duration         <span class="type">int</span>                                     <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;执行时长&#x27;</span>,</span><br><span class="line">  result_code      <span class="type">int</span>           <span class="keyword">default</span> <span class="number">0</span>                 <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;结果码&#x27;</span>,</span><br><span class="line">  result_msg       <span class="type">varchar</span>(<span class="number">512</span>)  <span class="keyword">default</span> <span class="string">&#x27;&#x27;</span> <span class="keyword">null</span> comment <span class="string">&#x27;结果提示&#x27;</span>,</span><br><span class="line">  result_data      <span class="type">varchar</span>(<span class="number">4000</span>) <span class="keyword">default</span> <span class="string">&#x27;&#x27;</span> <span class="keyword">null</span> comment <span class="string">&#x27;结果数据&#x27;</span>,</span><br><span class="line">  creator          <span class="type">varchar</span>(<span class="number">64</span>)   <span class="keyword">default</span> <span class="string">&#x27;&#x27;</span> <span class="keyword">null</span> comment <span class="string">&#x27;创建者&#x27;</span>,</span><br><span class="line">  create_time      datetime      <span class="keyword">default</span> <span class="built_in">CURRENT_TIMESTAMP</span> <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;创建时间&#x27;</span>,</span><br><span class="line">  updater          <span class="type">varchar</span>(<span class="number">64</span>)   <span class="keyword">default</span> <span class="string">&#x27;&#x27;</span> <span class="keyword">null</span> comment <span class="string">&#x27;更新者&#x27;</span>,</span><br><span class="line">  update_time      datetime      <span class="keyword">default</span> <span class="built_in">CURRENT_TIMESTAMP</span> <span class="keyword">not</span> <span class="keyword">null</span> <span class="keyword">on</span> <span class="keyword">update</span> <span class="built_in">CURRENT_TIMESTAMP</span> comment <span class="string">&#x27;更新时间&#x27;</span>,</span><br><span class="line">  deleted          bit           <span class="keyword">default</span> b<span class="string">&#x27;0&#x27;</span>              <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;是否删除&#x27;</span></span><br><span class="line">) comment <span class="string">&#x27;操作日志记录&#x27;</span> charset <span class="operator">=</span> utf8mb4;</span><br></pre></td></tr></table></figure>
-<h2 id="生成器">生成器</h2>
-<p>使用时修改静态常量就可以，如：数据源、用户名密码、模块名、包名、作者、表名等。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> wnhyang</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/3/15</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Generator</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 数据源</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">DATASOURCE_URL</span> <span class="operator">=</span> <span class="string">&quot;jdbc:mysql://mysql:3306/dbName?allowPublicKeyRetrieval=true&amp;serverTimezone=Asia/Shanghai&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;zeroDateTimeBehavior=convertToNull&amp;useSSL=false&amp;allowPublicKeyRetrieval=true&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 用户名</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">USERNAME</span> <span class="operator">=</span> <span class="string">&quot;wnhyang&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 密码</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">PASSWORD</span> <span class="operator">=</span> <span class="string">&quot;wnhyang&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">MODULE_NAME</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">OUTPUT_PATH</span> <span class="operator">=</span> System.getProperty(<span class="string">&quot;user.dir&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 父包名</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">PARENT_PATH</span> <span class="operator">=</span> <span class="string">&quot;cn.wnhyang.generator&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 作者</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">AUTHOR</span> <span class="operator">=</span> <span class="string">&quot;wnhyang&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 表名</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> List&lt;String&gt; TABLES = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(</span><br><span class="line">        Arrays.asList(<span class="string">&quot;sys_dict_data&quot;</span>, <span class="string">&quot;sys_operate_log&quot;</span>));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">//1、配置数据源</span></span><br><span class="line">        FastAutoGenerator.create(DATASOURCE_URL, USERNAME, PASSWORD)</span><br><span class="line">        <span class="comment">//2、全局配置</span></span><br><span class="line">        .globalConfig(builder -&gt; &#123;</span><br><span class="line">            builder.disableOpenDir() <span class="comment">// 禁止打开输出目录 默认 true</span></span><br><span class="line">            .outputDir(OUTPUT_PATH + <span class="string">&quot;/src/main/java&quot;</span>)   <span class="comment">// 设置输出路径：项目的 java 目录下</span></span><br><span class="line">            .author(AUTHOR) <span class="comment">// 设置作者名p</span></span><br><span class="line">            <span class="comment">// .enableKotlin() //开启 kotlin 模式 默认false</span></span><br><span class="line">            <span class="comment">// .enableSwagger()   // 开启 swagger 模式 默认false</span></span><br><span class="line">            .dateType(DateType.TIME_PACK)   <span class="comment">// 定义生成的实体类中日期的类型 TIME_PACK=LocalDateTime;ONLY_DATE=Date;</span></span><br><span class="line">            .commentDate(<span class="string">&quot;yyyy/MM/dd&quot;</span>); <span class="comment">// 注释日期 默认值 yyyy-MM-dd</span></span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="comment">//3、包配置</span></span><br><span class="line">        .packageConfig(builder -&gt; &#123;</span><br><span class="line">            builder.parent(PARENT_PATH) <span class="comment">// 父包名 默认值 com.baomidou</span></span><br><span class="line">            .moduleName(MODULE_NAME)   <span class="comment">// 父包模块名 默认值 无</span></span><br><span class="line">            .entity(<span class="string">&quot;entity&quot;</span>)   <span class="comment">// Entity 包名 默认值 entity</span></span><br><span class="line">            .service(<span class="string">&quot;service&quot;</span>) <span class="comment">//Service 包名 默认值 service</span></span><br><span class="line">            .serviceImpl(<span class="string">&quot;service.impl&quot;</span>) <span class="comment">// Service Impl 包名 默认值:service.impl</span></span><br><span class="line">            .mapper(<span class="string">&quot;mapper&quot;</span>)   <span class="comment">// Mapper 包名 默认值 mapper</span></span><br><span class="line">            .xml(<span class="string">&quot;mapper&quot;</span>)  <span class="comment">// Mapper XML 包名 默认值 mapper.xml</span></span><br><span class="line">            .controller(<span class="string">&quot;controller&quot;</span>) <span class="comment">// Controller 包名 默认值 controller</span></span><br><span class="line">            .pathInfo(Collections.singletonMap(OutputFile.xml, OUTPUT_PATH + <span class="string">&quot;/src/main/resources/mapper&quot;</span>));    <span class="comment">//配置 mapper.xml 路径信息：项目的 resources 目录下</span></span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="comment">//4、模版配置</span></span><br><span class="line">        .templateConfig(builder -&gt; &#123;</span><br><span class="line">            builder.entity(<span class="string">&quot;/templates/entity.java&quot;</span>)</span><br><span class="line">            .service(<span class="string">&quot;/templates/service.java&quot;</span>)</span><br><span class="line">            .serviceImpl(<span class="string">&quot;/templates/serviceImpl.java&quot;</span>)</span><br><span class="line">            .mapper(<span class="string">&quot;/templates/mapper.java&quot;</span>)</span><br><span class="line">            .xml(<span class="string">&quot;/templates/mapper.xml&quot;</span>)</span><br><span class="line">                            .controller(<span class="string">&quot;/templates/controller.java&quot;</span>);</span><br><span class="line"></span><br><span class="line">                &#125;)</span><br><span class="line">                <span class="comment">//5、策略配置</span></span><br><span class="line">                .strategyConfig(builder -&gt; &#123;</span><br><span class="line">                    builder.addInclude(TABLES) <span class="comment">// 设置需要生成的数据表名</span></span><br><span class="line">                            .addTablePrefix(<span class="string">&quot;t_&quot;</span>, <span class="string">&quot;c_&quot;</span>, <span class="string">&quot;sys_&quot;</span>, <span class="string">&quot;de_&quot;</span>) <span class="comment">// 设置过滤表前缀</span></span><br><span class="line"></span><br><span class="line">                            <span class="comment">//5.1、实体类策略配置</span></span><br><span class="line">                            .entityBuilder()</span><br><span class="line">                            .enableFileOverride() <span class="comment">// 覆盖entity</span></span><br><span class="line">                            .superClass(BasePO.class)</span><br><span class="line">                            <span class="comment">//.disableSerialVersionUID()  // 禁用生成 serialVersionUID 默认值 true</span></span><br><span class="line">                            .enableLombok() <span class="comment">// 开启 Lombok 默认值:false</span></span><br><span class="line">                            .enableTableFieldAnnotation()       <span class="comment">// 开启生成实体时生成字段注解 默认值 false</span></span><br><span class="line">                            .logicDeleteColumnName(<span class="string">&quot;deleted&quot;</span>)   <span class="comment">// 逻辑删除字段名</span></span><br><span class="line">                            .naming(NamingStrategy.underline_to_camel)  <span class="comment">//数据库表映射到实体的命名策略：下划线转驼峰命</span></span><br><span class="line">                            .columnNaming(NamingStrategy.underline_to_camel)    <span class="comment">// 数据库表字段映射到实体的命名策略：下划线转驼峰命</span></span><br><span class="line">                            <span class="comment">// .addSuperEntityColumns(&quot;creator&quot;, &quot;create_time&quot;, &quot;updater&quot;, &quot;update_time&quot;)</span></span><br><span class="line">                            <span class="comment">// .addTableFills(</span></span><br><span class="line">                            <span class="comment">//  new Column(&quot;creator&quot;, FieldFill.INSERT),</span></span><br><span class="line">                            <span class="comment">//  new Column(&quot;updater&quot;, FieldFill.INSERT_UPDATE)</span></span><br><span class="line">                            <span class="comment">// )   // 添加表字段填充，&quot;create_time&quot;字段自动填充为插入时间，&quot;modify_time&quot;字段自动填充为插入修改时间</span></span><br><span class="line">                            .formatFileName(<span class="string">&quot;%s&quot;</span>)</span><br><span class="line"></span><br><span class="line">                            <span class="comment">//5.2、Mapper策略配置</span></span><br><span class="line">                            .mapperBuilder()</span><br><span class="line">                            .enableFileOverride() <span class="comment">// 覆盖mapper</span></span><br><span class="line">                            .superClass(BaseMapperX.class)   <span class="comment">// 设置父类</span></span><br><span class="line">                            .mapperAnnotation(org.apache.ibatis.annotations.Mapper.class)      <span class="comment">// 开启 @Mapper 注解</span></span><br><span class="line">                            <span class="comment">// .enableBaseResultMap() //启用 BaseResultMap 生成</span></span><br><span class="line">                            .formatMapperFileName(<span class="string">&quot;%sMapper&quot;</span>)   <span class="comment">// 格式化 mapper 文件名称</span></span><br><span class="line">                            .formatXmlFileName(<span class="string">&quot;%sMapper&quot;</span>) <span class="comment">// 格式化 Xml 文件名称</span></span><br><span class="line"></span><br><span class="line">                            <span class="comment">//5.3、service 策略配置</span></span><br><span class="line">                            .serviceBuilder()</span><br><span class="line">                            .enableFileOverride() <span class="comment">// 覆盖service</span></span><br><span class="line">                            .formatServiceFileName(<span class="string">&quot;%sService&quot;</span>) <span class="comment">// 格式化 service 接口文件名称，%s进行匹配表名，如 UserService</span></span><br><span class="line">                            .formatServiceImplFileName(<span class="string">&quot;%sServiceImpl&quot;</span>) <span class="comment">// 格式化 service 实现类文件名称，%s进行匹配表名，如 UserServiceImpl</span></span><br><span class="line"></span><br><span class="line">                            <span class="comment">//5.4、Controller策略配置</span></span><br><span class="line">                            .controllerBuilder()</span><br><span class="line">                            .enableFileOverride() <span class="comment">// 覆盖controller</span></span><br><span class="line">                            .enableRestStyle()  <span class="comment">// 开启生成 @RestController 控制器</span></span><br><span class="line">                            <span class="comment">//.enableHyphenStyle() //开启驼峰转连字符 默认false</span></span><br><span class="line">                            .formatFileName(<span class="string">&quot;%sController&quot;</span>); <span class="comment">// 格式化 Controller 类文件名称，%s进行匹配表名，如 UserController</span></span><br><span class="line"></span><br><span class="line">                &#125;)</span><br><span class="line">                <span class="comment">//6、自定义配置</span></span><br><span class="line">                .injectionConfig(consumer -&gt; &#123;</span><br><span class="line">                    Map&lt;String, Object&gt; customMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">                    customMap.put(<span class="string">&quot;dto&quot;</span>, PARENT_PATH + <span class="string">&quot;.dto&quot;</span>);</span><br><span class="line">                    customMap.put(<span class="string">&quot;create&quot;</span>, PARENT_PATH + <span class="string">&quot;.vo.create&quot;</span>);</span><br><span class="line">                    customMap.put(<span class="string">&quot;update&quot;</span>, PARENT_PATH + <span class="string">&quot;.vo.update&quot;</span>);</span><br><span class="line">                    customMap.put(<span class="string">&quot;vo&quot;</span>, PARENT_PATH + <span class="string">&quot;.vo&quot;</span>);</span><br><span class="line">                    customMap.put(<span class="string">&quot;page&quot;</span>, PARENT_PATH + <span class="string">&quot;.vo.page&quot;</span>);</span><br><span class="line">                    customMap.put(<span class="string">&quot;convert&quot;</span>, PARENT_PATH + <span class="string">&quot;.convert&quot;</span>);</span><br><span class="line"></span><br><span class="line">                    consumer.customMap(customMap);</span><br><span class="line">                    <span class="comment">// DTO</span></span><br><span class="line">                    List&lt;CustomFile&gt; customFiles = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">                    customFiles.add(<span class="keyword">new</span> <span class="title class_">CustomFile</span>.Builder().packageName(<span class="string">&quot;dto&quot;</span>).fileName(<span class="string">&quot;DTO.java&quot;</span>)</span><br><span class="line">                            .templatePath(<span class="string">&quot;/templates/dto/DTO.java.vm&quot;</span>).enableFileOverride().build());</span><br><span class="line">                    customFiles.add(<span class="keyword">new</span> <span class="title class_">CustomFile</span>.Builder().packageName(<span class="string">&quot;vo/create&quot;</span>).fileName(<span class="string">&quot;CreateVO.java&quot;</span>)</span><br><span class="line">                            .templatePath(<span class="string">&quot;/templates/vo/CreateVO.java.vm&quot;</span>).enableFileOverride().build());</span><br><span class="line">                    customFiles.add(<span class="keyword">new</span> <span class="title class_">CustomFile</span>.Builder().packageName(<span class="string">&quot;vo/update&quot;</span>).fileName(<span class="string">&quot;UpdateVO.java&quot;</span>)</span><br><span class="line">                            .templatePath(<span class="string">&quot;/templates/vo/UpdateVO.java.vm&quot;</span>).enableFileOverride().build());</span><br><span class="line">                    customFiles.add(<span class="keyword">new</span> <span class="title class_">CustomFile</span>.Builder().packageName(<span class="string">&quot;vo&quot;</span>).fileName(<span class="string">&quot;VO.java&quot;</span>)</span><br><span class="line">                            .templatePath(<span class="string">&quot;/templates/vo/VO.java.vm&quot;</span>).enableFileOverride().build());</span><br><span class="line">                    customFiles.add(<span class="keyword">new</span> <span class="title class_">CustomFile</span>.Builder().packageName(<span class="string">&quot;vo/page&quot;</span>).fileName(<span class="string">&quot;PageVO.java&quot;</span>)</span><br><span class="line">                            .templatePath(<span class="string">&quot;/templates/vo/PageVO.java.vm&quot;</span>).enableFileOverride().build());</span><br><span class="line">                    customFiles.add(<span class="keyword">new</span> <span class="title class_">CustomFile</span>.Builder().packageName(<span class="string">&quot;convert&quot;</span>).fileName(<span class="string">&quot;Convert.java&quot;</span>)</span><br><span class="line">                            .templatePath(<span class="string">&quot;/templates/convert/Convert.java.vm&quot;</span>).enableFileOverride().build());</span><br><span class="line">                    consumer.customFile(customFiles);</span><br><span class="line">                &#125;)</span><br><span class="line">                <span class="comment">//7、模板</span></span><br><span class="line">                .templateEngine(<span class="keyword">new</span> <span class="title class_">VelocityTemplateEngine</span>())</span><br><span class="line"></span><br><span class="line">                <span class="comment">/*</span></span><br><span class="line"><span class="comment">                    .templateEngine(new VelocityTemplateEngine())</span></span><br><span class="line"><span class="comment">                    .templateEngine(new FreemarkerTemplateEngine())</span></span><br><span class="line"><span class="comment">                    .templateEngine(new BeetlTemplateEngine())</span></span><br><span class="line"><span class="comment">                */</span></span><br><span class="line"></span><br><span class="line">                <span class="comment">//8、执行</span></span><br><span class="line">                .execute();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="运行生成器">运行生成器</h2>
-<p>在运行成功后，生成如下类</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240316/image.64dlvxtdbu.webp"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
-</figure>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240316/image.sypb87xi1.webp"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
-</figure>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240316/image.39kxq5fma9.webp"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
-</figure>
-<h2 id="运行web项目">运行web项目</h2>
-<p>1、在<code>IDEA</code>中右键项目，选择<code>Reformat Code</code></p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240316/image.3uulcgctxu.webp"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
-</figure>
-<p>2、然后优化导包</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240316/image.45hf5lsuqw.webp"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
-</figure>
-<p>3、修改<code>application.yml</code></p>
-<p><code>dbname</code>、<code>dbname</code>、<code>dbpassword</code>、<code>redispassword</code>等</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">dynamic:</span></span><br><span class="line">      <span class="attr">primary:</span> <span class="string">master</span> <span class="comment">#设置默认的数据源或者数据源组,默认值即为master</span></span><br><span class="line">      <span class="attr">strict:</span> <span class="literal">false</span> <span class="comment">#严格匹配数据源,默认false. true未匹配到指定数据源时抛异常,false使用默认数据源</span></span><br><span class="line">      <span class="attr">datasource:</span></span><br><span class="line">        <span class="attr">master:</span></span><br><span class="line">          <span class="attr">url:</span> <span class="string">jdbc:mysql://mysql:3306/dbName?allowPublicKeyRetrieval=true&amp;serverTimezone=Asia/Shanghai&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;zeroDateTimeBehavior=convertToNull&amp;useSSL=false&amp;allowPublicKeyRetrieval=true</span></span><br><span class="line">          <span class="attr">username:</span> <span class="string">dbname</span></span><br><span class="line">          <span class="attr">password:</span> <span class="string">dbpassword</span></span><br><span class="line">          <span class="attr">driver-class-name:</span> <span class="string">com.mysql.cj.jdbc.Driver</span> <span class="comment"># 3.2.0开始支持SPI可省略此配置</span></span><br><span class="line">        <span class="attr">slave:</span></span><br><span class="line">          <span class="attr">url:</span> <span class="string">jdbc:mysql://mysql:3306/dbName?allowPublicKeyRetrieval=true&amp;serverTimezone=Asia/Shanghai&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;zeroDateTimeBehavior=convertToNull&amp;useSSL=false&amp;allowPublicKeyRetrieval=true</span></span><br><span class="line">          <span class="attr">username:</span> <span class="string">dbname</span></span><br><span class="line">          <span class="attr">password:</span> <span class="string">dbpassword</span></span><br><span class="line">          <span class="attr">driver-class-name:</span> <span class="string">com.mysql.cj.jdbc.Driver</span> <span class="comment"># 3.2.0开始支持SPI可省略此配置</span></span><br><span class="line">  <span class="attr">data:</span></span><br><span class="line">    <span class="attr">redis:</span></span><br><span class="line">      <span class="attr">host:</span> <span class="string">redis</span></span><br><span class="line">      <span class="attr">port:</span> <span class="number">6379</span></span><br><span class="line">      <span class="comment"># cluster:</span></span><br><span class="line">      <span class="comment">#   nodes: 127.0.0.1:6379</span></span><br><span class="line">      <span class="attr">database:</span> <span class="number">0</span></span><br><span class="line">      <span class="attr">password:</span> <span class="string">redispassword</span></span><br><span class="line">      <span class="attr">lettuce:</span></span><br><span class="line">        <span class="attr">pool:</span></span><br><span class="line">          <span class="attr">max-active:</span> <span class="number">64</span> <span class="comment">#最大连接数，0表示无限制</span></span><br><span class="line">          <span class="attr">max-idle:</span> <span class="number">32</span> <span class="comment">#最大等待连接数，0表示无限制</span></span><br><span class="line">          <span class="attr">min-idle:</span> <span class="number">0</span> <span class="comment">#最小等待连接数，0表示无限制</span></span><br><span class="line">          <span class="attr">max-wait:</span> <span class="string">20ms</span> <span class="comment">#最大建立连接等待时间，-1表示无限制</span></span><br><span class="line">        <span class="attr">shutdown-timeout:</span> <span class="string">100ms</span></span><br></pre></td></tr></table></figure>
-<p>4、运行<code>GeneratorApplication</code></p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240316/image.67x7tnw2wi.webp"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
-</figure>
-<h2 id="测试">测试</h2>
-<p>使用<code>Postman</code>之类的工具，或者使用<code>IDEA</code>的<code>RestfulTool</code>插件测试</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240316/image.60tzy8d9et.webp"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
-</figure>
-<p>我使用的是<code>Apifox</code>插件配合客户端，所以在配置了<code>Apifox</code>插件项目之后，右键项目的<code>controller</code>，选择<code>Upload to Apifox</code>同步接口。</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240316/image.60tzy8fwvj.webp"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
-</figure>
-<p>然后在<code>Apifox</code>客户端就可以看到所有接口了。</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240316/image.6bgtrdzm4t.webp"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
-</figure>
-<p>1、设置环境；2、选择接口；3、自动生成；4、发送</p>
-<p>完美！！！</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240316/image.1755244cfn.webp"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
-</figure>
-<h1 id="欢迎使用">欢迎使用</h1>
-<p><a target="_blank" rel="noopener" href="https://github.com/wnhyang/crud-quickstart">GitHub -
-wnhyang/crud-quickstart</a></p>
-<p><a target="_blank" rel="noopener" href="https://gitee.com/wnhyang/crud-quickstart">Gitee -
-wnhyang/crud-quickstart</a></p>
-<h1 id="写在最后">写在最后</h1>
-<p>拙作艰辛，字句心血，望诸君垂青，多予支持，不胜感激。</p>
-<hr />
-<p>个人博客：<a
-href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
-<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
-title="wnhyang">wnhyang</a></p>
-<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
-title="在线知识共享">在线知识共享</a></p>
-<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
-Overview</a></p>
-<p><img data-src="https://wnhyang.github.io/images/wechat_channel.webp" /></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/article/bf7337ce.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1374,129 +1445,6 @@ alt="1706270541534" />
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/883fd0a3.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-      <meta itemprop="description" content="热爱、分享、生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/883fd0a3.html" class="post-title-link" itemprop="url">Sa-Token登录pre</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-01-24 16:10:58" itemprop="dateCreated datePublished" datetime="2024-01-24T16:10:58+08:00">2024-01-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-02-01 11:23:33" itemprop="dateModified" datetime="2024-02-01T11:23:33+08:00">2024-02-01</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>2.2k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>8 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>个人博客：<a
-href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
-<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
-title="wnhyang">wnhyang</a></p>
-<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
-title="在线知识共享">在线知识共享</a></p>
-<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
-Overview</a></p>
-<hr />
-<p>原本标题是：“Sa-Token登录详解”，写着写着，发现字数兜不住了，无奈还是拆开吧😂</p>
-<p>前文讲了<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh/share/otvz3nr27xua7s2q"
-title="Sa-Token组件介绍">Sa-Token组件介绍</a>，基本上重要的<code>satoken</code>组件都过了一遍，最后也简单说明了一下组件注册管理机制。本文就<code>satoken</code>登录前必须了解的进行说明。</p>
-<p>环境声明：</p>
-<p><a target="_blank" rel="noopener" href="https://sa-token.cc/">Sa-Token官网</a>，版本1.37.0</p>
-<p>依赖：</p>
-<p><code>sa-token-spring-boot-starter</code></p>
-<p><code>sa-token-redisson-jackson</code></p>
-<p>以上环境表示本次登录详解针对的是普通登录（非<code>SSO</code>、<code>OAuth</code>场景），集成<code>redisson</code>存储<code>satoken</code>数据。</p>
-<h1 id="登录应该如何设计">登录应该如何设计</h1>
-<p>如果让我们来设计权限认证框架，或是说，让我们对使用过的权限认证框架进行抽象，使之能面对多种不同的登录鉴权场景，我们应该如何设计？</p>
-<p>已知我登录送的用户id是<code>1</code>，下面这张图展示的是<code>satoken</code>在一次登录成功后在<code>redis</code>中产生的<code>k-v</code>数据。</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240118/1705580359372.webp"
-alt="登录成功后redis的数据" />
-<figcaption aria-hidden="true">登录成功后redis的数据</figcaption>
-</figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/article/883fd0a3.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1522,14 +1470,14 @@ alt="登录成功后redis的数据" />
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">222k</span>
+    <span title="站点总字数">223k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">13:28</span>
+    <span title="站点阅读时长">13:30</span>
   </span>
 </div>
 <div class="busuanzi-count">
