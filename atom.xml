@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2024-03-24T03:20:41.504Z</updated>
+  <updated>2024-03-24T03:23:46.864Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://wnhyang.github.io/article/fbbfb352.html"/>
     <id>https://wnhyang.github.io/article/fbbfb352.html</id>
     <published>2024-03-24T02:36:06.000Z</published>
-    <updated>2024-03-24T03:20:41.504Z</updated>
+    <updated>2024-03-24T03:23:46.864Z</updated>
     
     
     <summary type="html">&lt;p&gt;个人博客：&lt;a
@@ -53,7 +53,7 @@ Access-Control-Allow-Origin、Access-Control-Allow-Methods、Access-Control-Allo
 CORS 规则，若符合则允许数据交互。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;2、JSONP（JSON with Padding）&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;JSONP
-是一种非正式传输协议，它利用&lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt;标签不受同源策略限制的特点，通过回调函数的形式来加载跨域数据。JSONP
+是一种非正式传输协议，它利用&lt;code&gt;script&lt;/code&gt;标签不受同源策略限制的特点，通过回调函数的形式来加载跨域数据。JSONP
 只支持 GET 请求，并且要求服务器端配合提供 JSONP 形式的响应。&lt;/p&gt;</summary>
     
     
