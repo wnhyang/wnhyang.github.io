@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2024-03-20T02:34:51.123Z</updated>
+  <updated>2024-03-24T02:57:33.615Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,22 +17,94 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>微服务跨域问题｜The &#39;Access-Control-Allow-Origin&#39; header contains multiple values</title>
+    <link href="https://wnhyang.github.io/article/fbbfb352.html"/>
+    <id>https://wnhyang.github.io/article/fbbfb352.html</id>
+    <published>2024-03-24T02:36:06.000Z</published>
+    <updated>2024-03-24T02:57:33.615Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;个人博客：&lt;a
+href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
+title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
+title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
+Overview&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h1 id=&quot;参考&quot;&gt;参考&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://cloud.tencent.com/developer/article/1973643&quot;&gt;Spring
+Cloud Gateway CORS 方案看这篇就够了-腾讯云开发者社区-腾讯云&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a
+href=&quot;https://juejin.cn/post/6844903767226351623?searchId=20240324101708D896D067A5F39DFB21EB&quot;&gt;九种跨域方式实现原理（完整版）
+- 掘金&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;什么是跨域有哪些解决方法&quot;&gt;什么是跨域，有哪些解决方法&lt;/h1&gt;
+&lt;p&gt;以下为AI回答&lt;/p&gt;
+&lt;p&gt;跨域是指由于浏览器的安全机制，当一个页面尝试通过 XMLHttpRequest 或
+Fetch API 等方式向不同于当前页面源（协议、域名、端口三者之一不同的
+URL）发起请求时，会被浏览器阻止，这称为“同源策略”限制。这是为了防止恶意网站通过脚本对其他网站的数据进行非法访问。&lt;/p&gt;
+&lt;p&gt;解决跨域问题的方法有很多种，以下是常见的几种：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1、CORS（Cross-Origin Resource Sharing）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;CORS 是一种 W3C
+标准，允许服务器表明哪些其他源可以请求资源。服务器通过设置响应头（如
+Access-Control-Allow-Origin、Access-Control-Allow-Methods、Access-Control-Allow-Headers
+等）来允许特定源或者所有源进行跨域请求。客户端（浏览器）在接收到响应后判断是否符合
+CORS 规则，若符合则允许数据交互。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2、JSONP（JSON with Padding）&lt;/strong&gt;&lt;/p&gt;
+JSONP 是一种非正式传输协议，它利用
+&lt;script&gt;
+&lt;p&gt;标签不受同源策略限制的特点，通过回调函数的形式来加载跨域数据。JSONP
+只支持 GET 请求，并且要求服务器端配合提供 JSONP 形式的响应。&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>Spring6.1新特性，四种方式调用REST接口（RestClient、WebClient、RestTemplate、HTTP Interface）</title>
     <link href="https://wnhyang.github.io/article/d9f6ee5e.html"/>
     <id>https://wnhyang.github.io/article/d9f6ee5e.html</id>
     <published>2024-03-19T11:27:37.000Z</published>
-    <updated>2024-03-20T02:34:51.123Z</updated>
+    <updated>2024-03-20T05:34:10.609Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;p&gt;个人博客：&lt;a
 href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;个人语雀：&lt;a</summary>
-        
-      
+&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
+title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
+title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
+Overview&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h1 id=&quot;官网&quot;&gt;官网&lt;/h1&gt;
+&lt;p&gt;&lt;a
+href=&quot;https://docs.spring.io/spring-framework/reference/integration/rest-clients.html&quot;&gt;REST
+Clients :: Spring Framework&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The Spring Framework provides the following choices for making calls
+to REST endpoints:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a
+href=&quot;https://docs.spring.io/spring-framework/reference/integration/rest-clients.html#rest-restclient&quot;&gt;RestClient&lt;/a&gt;
+- synchronous client with a fluent API.&lt;/li&gt;
+&lt;li&gt;&lt;a
+href=&quot;https://docs.spring.io/spring-framework/reference/integration/rest-clients.html#rest-webclient&quot;&gt;WebClient&lt;/a&gt;
+- non-blocking, reactive client with fluent API.&lt;/li&gt;
+&lt;li&gt;&lt;a
+href=&quot;https://docs.spring.io/spring-framework/reference/integration/rest-clients.html#rest-resttemplate&quot;&gt;RestTemplate&lt;/a&gt;
+- synchronous client with template method API.&lt;/li&gt;
+&lt;li&gt;&lt;a
+href=&quot;https://docs.spring.io/spring-framework/reference/integration/rest-clients.html#rest-http-interface&quot;&gt;HTTP
+Interface&lt;/a&gt; - annotated interface with generated, dynamic proxy
+implementation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;restclient&quot;&gt;RestClient&lt;/h1&gt;
+&lt;p&gt;官方描述：&lt;code&gt;RestClient&lt;/code&gt;是一个同步&lt;code&gt;HTTP&lt;/code&gt;客户端，它提供了一个现代、流畅的&lt;code&gt;API&lt;/code&gt;。它提供了对&lt;code&gt;HTTP&lt;/code&gt;库的抽象，允许从&lt;code&gt;Java&lt;/code&gt;对象到&lt;code&gt;HTTP&lt;/code&gt;请求的方便转换，以及从&lt;code&gt;HTTP&lt;/code&gt;响应创建对象。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Spring6.1&lt;/code&gt;版本新特性。&lt;/p&gt;
+&lt;h2 id=&quot;创建&quot;&gt;创建&lt;/h2&gt;
+&lt;p&gt;创建&lt;code&gt;RestClient&lt;/code&gt;非常简单，可以使用静态&lt;code&gt;create&lt;/code&gt;方法，也可以使用&lt;code&gt;builder&lt;/code&gt;创建，其提供了非常丰富的定制化选项，请求工厂、消息转换器、拦截器、默认头、请求初始化器等等，简单易懂。&lt;/p&gt;</summary>
     
     
     
@@ -75,9 +147,9 @@ MyBatis-Plus&lt;/a&gt;&lt;/p&gt;
     
     
     
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
     <category term="软件&amp;工具" scheme="https://wnhyang.github.io/tags/%E8%BD%AF%E4%BB%B6-%E5%B7%A5%E5%85%B7/"/>
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
     <category term="Mybatis/Mybatis-plus" scheme="https://wnhyang.github.io/tags/Mybatis-Mybatis-plus/"/>
     
@@ -169,9 +241,9 @@ Overview&lt;/a&gt;&lt;/p&gt;
     
     
     
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
     <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
   </entry>
   
@@ -386,9 +458,9 @@ alt=&quot;1706270541534&quot; /&gt;
     
     
     
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
     <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
   </entry>
   
@@ -430,9 +502,9 @@ alt=&quot;登录成功后redis的数据&quot; /&gt;
     
     
     
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
     <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
   </entry>
   
@@ -505,9 +577,9 @@ href=&quot;https://sa-token.cc/&quot;&gt;Sa-Token&lt;/a&gt;，版本1.37.0&lt;/p
     
     
     
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
     <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
   </entry>
   
@@ -542,9 +614,9 @@ Sa-Token 框架本身，更是绝大多数场景下权限设计的最佳实践�
     
     
     
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
     <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
   </entry>
   
@@ -673,39 +745,6 @@ Overview&lt;/a&gt;&lt;/p&gt;
     
     
     <category term="杂谈" scheme="https://wnhyang.github.io/tags/%E6%9D%82%E8%B0%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>微服务集成sa-token小记</title>
-    <link href="https://wnhyang.github.io/article/2c5e096b.html"/>
-    <id>https://wnhyang.github.io/article/2c5e096b.html</id>
-    <published>2023-07-29T09:31:57.000Z</published>
-    <updated>2024-01-18T14:54:58.826Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;安全框架&quot;&gt;安全框架&lt;/h1&gt;
-&lt;p&gt;想必一旦涉及到&lt;code&gt;Spring&lt;/code&gt;安全框架，很容易就会想到&lt;code&gt;SpringSecurity&lt;/code&gt;和&lt;code&gt;Shiro&lt;/code&gt;，了解过的都知道，完美的集成一套安全框架是多么麻烦的事情，所以大家都有努力在简化安全框架的集成成本。&lt;/p&gt;
-&lt;p&gt;我也是在自己做项目中需要集成安全框架才有了这篇文章，上面的两位的集成难度对我这种小菜鸡还是太难了。所以果断寻求别的方案，这不，发现了这个&lt;a
-href=&quot;https://sa-token.cc/index.html&quot;&gt;Sa-Token&lt;/a&gt;。&lt;/p&gt;
-&lt;h1 id=&quot;sa-token-介绍&quot;&gt;&lt;a
-href=&quot;https://sa-token.cc/doc.html#/?id=sa-token-介绍&quot;&gt;Sa-Token
-介绍&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;&lt;strong&gt;Sa-Token&lt;/strong&gt; 是一个轻量级 Java
-权限认证框架，主要解决：&lt;strong&gt;登录认证&lt;/strong&gt;、&lt;strong&gt;权限认证&lt;/strong&gt;、&lt;strong&gt;单点登录&lt;/strong&gt;、&lt;strong&gt;OAuth2.0&lt;/strong&gt;、&lt;strong&gt;分布式Session会话&lt;/strong&gt;、&lt;strong&gt;微服务网关鉴权&lt;/strong&gt;
-等一系列权限相关问题。&lt;/p&gt;
-&lt;p&gt;以上介绍复制于官网，在自己体验和使用后，感受就是🥳&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Sa-token&lt;/code&gt;使用起来真的非常简单方便，具体使用上，直接看官网就好，这里主要讨论一个问题：&lt;/p&gt;
-&lt;p&gt;在微服务模式下，&lt;code&gt;auth&lt;/code&gt;（认证中心）的拆解，是归于&lt;code&gt;system&lt;/code&gt;（系统），还是独立的，如果是独立的。。。如果不是独立的。。。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
-    <category term="Spring Cloud Alibaba" scheme="https://wnhyang.github.io/tags/Spring-Cloud-Alibaba/"/>
-    
-    <category term="Spring Cloud" scheme="https://wnhyang.github.io/tags/Spring-Cloud/"/>
     
   </entry>
   
