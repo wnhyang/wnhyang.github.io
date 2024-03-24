@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2024-03-24T03:23:46.864Z</updated>
+  <updated>2024-03-24T05:04:05.788Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Spring6｜Spring Boot3有哪些HTTP客户端可以选择</title>
+    <link href="https://wnhyang.github.io/article/70e0da6.html"/>
+    <id>https://wnhyang.github.io/article/70e0da6.html</id>
+    <published>2024-03-24T04:20:52.000Z</published>
+    <updated>2024-03-24T05:04:05.788Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;个人博客：&lt;a
+href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;个人语雀：&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
+    
+    <category term="Spring Framework" scheme="https://wnhyang.github.io/tags/Spring-Framework/"/>
+    
+  </entry>
+  
+  <entry>
     <title>微服务跨域问题｜The &#39;Access-Control-Allow-Origin&#39; header contains multiple values</title>
     <link href="https://wnhyang.github.io/article/fbbfb352.html"/>
     <id>https://wnhyang.github.io/article/fbbfb352.html</id>
     <published>2024-03-24T02:36:06.000Z</published>
-    <updated>2024-03-24T03:23:46.864Z</updated>
+    <updated>2024-03-24T04:21:49.884Z</updated>
     
     
     <summary type="html">&lt;p&gt;个人博客：&lt;a
@@ -58,6 +85,10 @@ CORS 规则，若符合则允许数据交互。&lt;/p&gt;
     
     
     
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
+    
+    <category term="Spring Cloud" scheme="https://wnhyang.github.io/tags/Spring-Cloud/"/>
     
   </entry>
   
@@ -718,32 +749,6 @@ Overview&lt;/a&gt;&lt;/p&gt;
     
     
     <category term="记录" scheme="https://wnhyang.github.io/tags/%E8%AE%B0%E5%BD%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>想多了全是问题，做多了全是答案</title>
-    <link href="https://wnhyang.github.io/article/61a1b694.html"/>
-    <id>https://wnhyang.github.io/article/61a1b694.html</id>
-    <published>2023-09-18T11:39:44.000Z</published>
-    <updated>2024-01-18T14:54:58.830Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;许久没更新了&quot;&gt;许久没更新了&lt;/h1&gt;
-&lt;p&gt;每次好久不更新，再回头看的的时候就像看许久未打扫的屋子一样，杂乱而又陌生。哈哈哈哈&lt;/p&gt;
-&lt;p&gt;简单讲讲这段时间做的事情吧，一边是记录生活，一边是激励自己吧。&lt;/p&gt;
-&lt;h2</summary>
-        
-      
-    
-    
-    
-    
-    <category term="杂谈" scheme="https://wnhyang.github.io/tags/%E6%9D%82%E8%B0%88/"/>
     
   </entry>
   

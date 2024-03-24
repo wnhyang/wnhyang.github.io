@@ -96,7 +96,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">44</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">180</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">44</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">181</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -161,7 +161,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">180</span>
+          <span class="site-state-item-count">181</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -227,6 +227,161 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/70e0da6.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+      <meta itemprop="description" content="热爱、分享、生活">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/article/70e0da6.html" class="post-title-link" itemprop="url">Spring6｜Spring Boot3有哪些HTTP客户端可以选择</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-03-24 12:20:52 / 修改时间：13:04:05" itemprop="dateCreated datePublished" datetime="2024-03-24T12:20:52+08:00">2024-03-24</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>个人博客：<a
+href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
+<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
+title="wnhyang">wnhyang</a></p>
+<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
+title="在线知识共享">在线知识共享</a></p>
+<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
+Overview</a></p>
+<hr />
+<h1 id="参考">参考</h1>
+<p><a
+target="_blank" rel="noopener" href="https://docs.spring.io/spring-framework/reference/integration/rest-clients.html#rest-http-interface">REST
+Clients :: Spring Framework</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/m0_63947499/article/details/131812612">【微服务|SpringBoot
+3.0】 新特性——内置声明式HTTP客户端_springboot3.0
+内置http服务-CSDN博客</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/269208311">七大主流的HttpClient程序比较</a></p>
+<h1 id="java-httpurlconnection">1、Java HttpURLConnection</h1>
+<p><code>JDK</code>自带的标准<code>HTTP</code>客户端<code>API</code>，尽管功能相对基础，但因为内置于<code>JDK</code>中，无需额外依赖，所以在许多简单场景下仍然被广泛使用。</p>
+<h1 id="java11-httpclient">2、Java11 HttpClient</h1>
+<p>自<code>Java 11</code>起，<code>JDK</code>新增了一个更现代化且功能更完善的<code>HTTP</code>客户端<code>API</code>，旨在替代原有的<code>HttpURLConnection</code>，支持<code>HTTP/2</code>和异步操作。</p>
+<h1 id="apache-httpclient">3、Apache HttpClient</h1>
+<p>由<code>Apache</code>软件基金会提供的成熟的<code>HTTP</code>客户端库，支持同步和异步操作，具备高度可配置性，提供了强大的连接管理和认证支持。</p>
+<p><code>SpringBoot</code>下配合<code>RestTemplate</code>组件使用示例如下。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HttpClientConfig</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> HttpClient <span class="title function_">httpClient</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">PoolingHttpClientConnectionManager</span> <span class="variable">connectionManager</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PoolingHttpClientConnectionManager</span>();</span><br><span class="line">        <span class="comment">// 设置最大连接数</span></span><br><span class="line">        connectionManager.setMaxTotal(<span class="number">200</span>);</span><br><span class="line">        <span class="comment">// 每个路由的基础连接数</span></span><br><span class="line">        connectionManager.setDefaultMaxPerRoute(<span class="number">20</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 其他可能的配置选项...</span></span><br><span class="line">        </span><br><span class="line">        <span class="type">CloseableHttpClient</span> <span class="variable">httpClient</span> <span class="operator">=</span> HttpClients.custom()</span><br><span class="line">                .setConnectionManager(connectionManager)</span><br><span class="line">                <span class="comment">// 可以设置重试策略、超时等其他参数</span></span><br><span class="line">                .build();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> httpClient;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> HttpComponentsClientHttpRequestFactory <span class="title function_">clientHttpRequestFactory</span><span class="params">(HttpClient httpClient)</span> &#123;</span><br><span class="line">        <span class="type">HttpComponentsClientHttpRequestFactory</span> <span class="variable">factory</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HttpComponentsClientHttpRequestFactory</span>();</span><br><span class="line">        factory.setHttpClient(httpClient);</span><br><span class="line">        <span class="keyword">return</span> factory;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> RestTemplate <span class="title function_">restTemplate</span><span class="params">(HttpComponentsClientHttpRequestFactory factory)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">RestTemplate</span>(factory);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="okhttp">4、OkHttp</h1>
+<p>由<code>Square</code>公司开发的高性能<code>HTTP</code>客户端库，尤其适合移动和服务器端环境，内置连接池和失败重试机制，支持<code>HTTP/2和SPDY</code>协议，同时也支持同步和异步<code>API</code>。</p>
+<p>简单示例如。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">OkHttpConfig</span> &#123;</span><br><span class="line">   <span class="meta">@Bean</span></span><br><span class="line">   <span class="keyword">public</span> OkHttpClient <span class="title function_">okHttpClient</span><span class="params">()</span> &#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">OkHttpClient</span>.Builder()</span><br><span class="line">               .connectTimeout(<span class="number">10</span>, TimeUnit.SECONDS)</span><br><span class="line">               .readTimeout(<span class="number">10</span>, TimeUnit.SECONDS)</span><br><span class="line">               .build();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="分界">分界</h1>
+<p>上面的都属于底层<code>Http</code>类库，基于以上还有很多组件可以使用。既然是组件，就是为了简化调用的，所以使用起来参看<code>Java Doc</code>就可以了</p>
+<h1 id="retrofit">5、Retrofit</h1>
+<p>虽然<code>Retrofit</code>最初是为<code>Android</code>设计，但同样可以在<code>Spring Boot</code>环境中使用。<code>Retrofit</code>基于<code>OkHttp</code>之上提供了更为简洁优雅的<code>API</code>设计，通过注解的方式将接口与<code>HTTP</code>请求映射，大大简化了<code>RESTful API</code>的调用过程。结合<code>Gson</code>或其他<code>JSON</code>转换器，它可以轻松地处理<code>JSON</code>格式的数据交换。在<code>Spring Boot</code>项目中，尽管<code>Retrofit</code>主要面向<code>REST</code>服务消费，但它也可以与<code>Spring</code>框架紧密结合，通过自定义适配器来更好地融入<code>Spring</code>生态环境。</p>
+<h1 id="springboot-resttemplate">6、SpringBoot RestTemplate</h1>
+<p><code>Spring Boot</code>自带的 <code>RestTemplate</code>
+是一个轻量级且全面的<code>HTTP</code>客户端，内置在<code>Spring</code>框架中。它简化了与<code>RESTful</code>服务之间的交互，提供了丰富的模板方法来执行<code>GET</code>、<code>POST</code>等各种<code>HTTP</code>操作，并能够自动转换<code>HTTP</code>响应为<code>Java</code>对象。然而，<code>RestTemplate</code>
+在并发场景下性能并不突出，且不具备连接池和流式<code>API</code>支持，对于复杂的<code>HTTP</code>调用可能需要更多手动配置。</p>
+<h1 id="spring5-webclient">7、Spring5 WebClient</h1>
+<p>自<code>Spring 5</code>引入<code>WebFlux</code>之后，<code>WebClient</code>
+成为了非阻塞式的<code>HTTP</code>客户端首选。其基于<code>Reactor</code>项目，完全支持异步和响应式编程模型，允许构建高效、可扩展的服务。<code>WebClient</code>
+提供了强大的<code>API</code>来处理各种<code>HTTP</code>请求和响应，包括流式处理、多路复用以及灵活的背压控制，尤其适合高并发和低延迟的应用场景。</p>
+<h1 id="spring-cloud-feign">8、Spring Cloud Feign</h1>
+<p><code>Spring Cloud Netflix Feign</code>是一个声明式的伪客户端，它使编写<code>Web</code>服务客户端变得更简单。</p>
+<p>它允许你定义一个接口并使用注解来指定<code>HTTP</code>方法、<code>URL</code>模板以及参数绑定，然后通过动态代理生成实现类来进行远程调用。</p>
+<p>适合微服务架构下服务间通信，具有良好的可读性和一致性。</p>
+<h1 id="spring6.1-restclient">9、Spring6.1 RestClient</h1>
+<p>官方描述：<code>RestClient</code>是一个同步<code>HTTP</code>客户端，它提供了一个现代、流畅的<code>API</code>。它提供了对<code>HTTP</code>库的抽象，允许从<code>Java</code>对象到<code>HTTP</code>请求的方便转换，以及从<code>HTTP</code>响应创建对象。</p>
+<h1 id="spring6-http-interface">10、Spring6 HTTP interface</h1>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240316/image.1aorbdfmnx.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>官方描述：<code>Spring Framework</code>允许您使用<code>@HttpExchange</code>方法将<code>HTTP</code>服务定义为<code>Java</code>接口。您可以将这样的接口传递给<code>HttpServiceProxyFactory</code>，以创建一个代理，该代理通过HTTP客户端（如<code>RestClient</code>或<code>WebClient</code>）执行请求。您还可以从<code>@Controller</code>实现用于服务器请求处理的接口。</p>
+<p>简单的来讲，可以类比为<code>OpenFeign</code>，使用方法是几乎一样的。</p>
+<h1 id="小结">小结</h1>
+<p>综上，关于底层的<code>Http</code>类库，比较推荐<code>Apache HttpClient</code>和<code>OkHttp</code>。关于上层组件，如果追求现代非阻塞<code>IO</code>及响应式编程，<code>WebClient</code>是首选；如果偏好简单的同步操作和<code>Spring</code>框架的无缝集成，<code>RestTemplate</code>是基础选项，<code>Spring6</code>可以使用<code>RestClient</code>；而对于更高级别的<code>API</code>调用抽象和微服务架构，<code>Feign</code>或<code>Retrofit</code>则是值得考虑的候选者，当然未来<code>HTTP interface</code>有可能更加通用。</p>
+<h1 id="写在最后">写在最后</h1>
+<p>拙作艰辛，字句心血，望诸君垂青，多予支持，不胜感激。</p>
+<hr />
+<p>个人博客：<a
+href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
+<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
+title="wnhyang">wnhyang</a></p>
+<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
+title="在线知识共享">在线知识共享</a></p>
+<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
+Overview</a></p>
+<p><img data-src="https://wnhyang.github.io/images/wechat_channel.webp" /></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/fbbfb352.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -257,7 +412,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2024-03-24 10:36:06 / 修改时间：11:23:46" itemprop="dateCreated datePublished" datetime="2024-03-24T10:36:06+08:00">2024-03-24</time>
+      <time title="创建时间：2024-03-24 10:36:06 / 修改时间：12:21:49" itemprop="dateCreated datePublished" datetime="2024-03-24T10:36:06+08:00">2024-03-24</time>
     </span>
 
   
@@ -1296,123 +1451,8 @@ Overview</a></p>
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/c43aa7dd.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-      <meta itemprop="description" content="热爱、分享、生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/c43aa7dd.html" class="post-title-link" itemprop="url">免费申请JetBrains全家桶License，5种方式</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-01-31 20:58:13" itemprop="dateCreated datePublished" datetime="2024-01-31T20:58:13+08:00">2024-01-31</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-02-18 21:55:51" itemprop="dateModified" datetime="2024-02-18T21:55:51+08:00">2024-02-18</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>685</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>个人博客：<a
-href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
-<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
-title="wnhyang">wnhyang</a></p>
-<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
-title="在线知识共享">在线知识共享</a></p>
-<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
-Overview</a></p>
-<hr />
-<p>工欲善其事，必先利其器。关于开发者<code>IDE</code>（<code>Integrated Development Environment</code>），我们熟知<code>IDEA</code>、<code>PyCharm</code>、<code>GoLand</code>、<code>WebStorm</code>这些<code>IDE</code>都属于同一家公司的产品，那就是<code>JetBrains</code>。这些<code>IDE</code>有多好用就不用我再吹了。</p>
-<p>废话不多讲，直接来说如何申请<code>JetBrains</code>全家桶<code>License</code>。</p>
-<p>官网：<a
-target="_blank" rel="noopener" href="https://www.jetbrains.com.cn/community/user-groups/">https://www.jetbrains.com.cn</a></p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240131/1706705875038.webp"
-alt="1706705875038" />
-<figcaption aria-hidden="true">1706705875038</figcaption>
-</figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/article/c43aa7dd.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
@@ -1436,14 +1476,14 @@ alt="1706705875038" />
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">224k</span>
+    <span title="站点总字数">225k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">13:35</span>
+    <span title="站点阅读时长">13:40</span>
   </span>
 </div>
 <div class="busuanzi-count">
