@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2024-03-24T05:04:05.788Z</updated>
+  <updated>2024-04-01T11:34:16.547Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Spring6｜Spring Boot3有哪些HTTP客户端可以选择</title>
-    <link href="https://wnhyang.github.io/article/70e0da6.html"/>
-    <id>https://wnhyang.github.io/article/70e0da6.html</id>
-    <published>2024-03-24T04:20:52.000Z</published>
-    <updated>2024-03-24T05:04:05.788Z</updated>
+    <title>根据用户角色权限，渲染菜单的一个问题记录</title>
+    <link href="https://wnhyang.github.io/article/c3f9479b.html"/>
+    <id>https://wnhyang.github.io/article/c3f9479b.html</id>
+    <published>2024-04-02T10:18:35.000Z</published>
+    <updated>2024-04-01T11:34:16.547Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;figure&gt;
+&lt;img data-src=&quot;https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240401/image.3d4kb6b684.webp&quot;
+alt=&quot;image&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
+    
+    <category term="Vue" scheme="https://wnhyang.github.io/tags/Vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>筛选树形菜单时关联其父节点和子节点</title>
+    <link href="https://wnhyang.github.io/article/830d76f.html"/>
+    <id>https://wnhyang.github.io/article/830d76f.html</id>
+    <published>2024-04-01T10:22:11.000Z</published>
+    <updated>2024-04-01T11:35:38.883Z</updated>
     
     
       
@@ -33,6 +60,50 @@ href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&g
 &lt;p&gt;个人语雀：&lt;a</summary>
         
       
+    
+    
+    
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
+    
+    <category term="Vue" scheme="https://wnhyang.github.io/tags/Vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring6｜Spring Boot3有哪些HTTP客户端可以选择</title>
+    <link href="https://wnhyang.github.io/article/70e0da6.html"/>
+    <id>https://wnhyang.github.io/article/70e0da6.html</id>
+    <published>2024-03-24T04:20:52.000Z</published>
+    <updated>2024-03-24T05:19:55.391Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;个人博客：&lt;a
+href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
+title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
+title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
+Overview&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h1 id=&quot;参考&quot;&gt;参考&lt;/h1&gt;
+&lt;p&gt;&lt;a
+href=&quot;https://docs.spring.io/spring-framework/reference/integration/rest-clients.html#rest-http-interface&quot;&gt;REST
+Clients :: Spring Framework&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a
+href=&quot;https://blog.csdn.net/m0_63947499/article/details/131812612&quot;&gt;【微服务|SpringBoot
+3.0】 新特性——内置声明式HTTP客户端_springboot3.0
+内置http服务-CSDN博客&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a
+href=&quot;https://zhuanlan.zhihu.com/p/269208311&quot;&gt;七大主流的HttpClient程序比较&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;java-httpurlconnection&quot;&gt;1、Java HttpURLConnection&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;JDK&lt;/code&gt;自带的标准&lt;code&gt;HTTP&lt;/code&gt;客户端&lt;code&gt;API&lt;/code&gt;，尽管功能相对基础，但因为内置于&lt;code&gt;JDK&lt;/code&gt;中，无需额外依赖，所以在许多简单场景下仍然被广泛使用。&lt;/p&gt;
+&lt;h1 id=&quot;java11-httpclient&quot;&gt;2、Java11 HttpClient&lt;/h1&gt;
+&lt;p&gt;自&lt;code&gt;Java 11&lt;/code&gt;起，&lt;code&gt;JDK&lt;/code&gt;新增了一个更现代化且功能更完善的&lt;code&gt;HTTP&lt;/code&gt;客户端&lt;code&gt;API&lt;/code&gt;，旨在替代原有的&lt;code&gt;HttpURLConnection&lt;/code&gt;，支持&lt;code&gt;HTTP/2&lt;/code&gt;和异步操作。&lt;/p&gt;
+&lt;h1 id=&quot;apache-httpclient&quot;&gt;3、Apache HttpClient&lt;/h1&gt;
+&lt;p&gt;由&lt;code&gt;Apache&lt;/code&gt;软件基金会提供的成熟的&lt;code&gt;HTTP&lt;/code&gt;客户端库，支持同步和异步操作，具备高度可配置性，提供了强大的连接管理和认证支持。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;SpringBoot&lt;/code&gt;下配合&lt;code&gt;RestTemplate&lt;/code&gt;组件使用示例如下。&lt;/p&gt;</summary>
     
     
     
@@ -698,52 +769,6 @@ Overview&lt;/a&gt;&lt;/p&gt;
 &lt;li&gt;技术支持：选择提供良好技术支持的提供商，以便在遇到问题时能够得到及时的帮助。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;这些云服务器提供商针对个人和企业用户有非常多的产品可供挑选，尤其是对于新用户、学生更是有很多优惠。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="记录" scheme="https://wnhyang.github.io/tags/%E8%AE%B0%E5%BD%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SpringBoot整合Admin监控</title>
-    <link href="https://wnhyang.github.io/article/5959cb50.html"/>
-    <id>https://wnhyang.github.io/article/5959cb50.html</id>
-    <published>2023-10-24T00:45:58.000Z</published>
-    <updated>2024-01-18T14:54:58.851Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;#Spring Boot</summary>
-        
-      
-    
-    
-    
-    
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>讯飞大模型体验</title>
-    <link href="https://wnhyang.github.io/article/feab7b27.html"/>
-    <id>https://wnhyang.github.io/article/feab7b27.html</id>
-    <published>2023-10-19T02:19:34.000Z</published>
-    <updated>2024-01-18T14:54:58.652Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1</summary>
-        
-      
     
     
     
