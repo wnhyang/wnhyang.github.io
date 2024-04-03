@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2024-04-01T11:34:16.547Z</updated>
+  <updated>2024-04-03T13:02:56.897Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -21,25 +21,41 @@
     <link href="https://wnhyang.github.io/article/c3f9479b.html"/>
     <id>https://wnhyang.github.io/article/c3f9479b.html</id>
     <published>2024-04-02T10:18:35.000Z</published>
-    <updated>2024-04-01T11:34:16.547Z</updated>
+    <updated>2024-04-03T13:02:56.897Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;figure&gt;
+    <summary type="html">&lt;p&gt;个人博客：&lt;a
+href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
+title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
+title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
+Overview&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h1 id=&quot;背景&quot;&gt;背景&lt;/h1&gt;
+&lt;p&gt;之前一直讲过自己独立在做一个中后台管理系统，当然这个只是开始，未来会基于此开发其他项目，因为时间的原因，这项目算是搁置了一段时间，最近又重新拾取来完善。&lt;/p&gt;
+&lt;p&gt;项目链接如下&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/wnhyang/okay-boot&quot;&gt;GitHub -
+wnhyang/okay-boot&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/wnhyang/okay-vben-admin&quot;&gt;GitHub -
+wnhyang/okay-vben-admin&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;其前端采用&lt;code&gt;vben&lt;/code&gt;中后台开发框架，后端就是常用的&lt;code&gt;Spirng Boot&lt;/code&gt;那一套，用户角色菜单设计也是最常用&lt;code&gt;RABC&lt;/code&gt;的方案。&lt;/p&gt;
+&lt;h1 id=&quot;问题&quot;&gt;问题&lt;/h1&gt;
+&lt;p&gt;如下是菜单管理查询到的菜单列表，展示为树形结构。&lt;/p&gt;
+&lt;figure&gt;
 &lt;img data-src=&quot;https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240401/image.3d4kb6b684.webp&quot;
-alt=&quot;image&quot;</summary>
-        
-      
+alt=&quot;image&quot; /&gt;
+&lt;figcaption aria-hidden=&quot;true&quot;&gt;image&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;在给角色分配菜单权限时，使用的是一个&lt;code&gt;TreeSelect&lt;/code&gt;的组件，该组件提供了可多选的树形结构菜单，当然这个组件本身就有很多配置项，可以自定义很多内容。&lt;/p&gt;</summary>
     
     
     
-    
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
     <category term="Vue" scheme="https://wnhyang.github.io/tags/Vue/"/>
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
   </entry>
   
@@ -48,7 +64,7 @@ alt=&quot;image&quot;</summary>
     <link href="https://wnhyang.github.io/article/830d76f.html"/>
     <id>https://wnhyang.github.io/article/830d76f.html</id>
     <published>2024-04-01T10:22:11.000Z</published>
-    <updated>2024-04-01T11:35:38.883Z</updated>
+    <updated>2024-04-01T11:37:23.996Z</updated>
     
     
       
@@ -64,9 +80,9 @@ href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&g
     
     
     
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
     <category term="Vue" scheme="https://wnhyang.github.io/tags/Vue/"/>
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
   </entry>
   
@@ -108,9 +124,9 @@ href=&quot;https://zhuanlan.zhihu.com/p/269208311&quot;&gt;七大主流的HttpCl
     
     
     
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
     <category term="Spring Framework" scheme="https://wnhyang.github.io/tags/Spring-Framework/"/>
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
   </entry>
   
@@ -210,9 +226,9 @@ implementation.&lt;/li&gt;
     
     
     
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
     <category term="Spring Framework" scheme="https://wnhyang.github.io/tags/Spring-Framework/"/>
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
   </entry>
   
@@ -250,9 +266,9 @@ MyBatis-Plus&lt;/a&gt;&lt;/p&gt;
     
     <category term="软件&amp;工具" scheme="https://wnhyang.github.io/tags/%E8%BD%AF%E4%BB%B6-%E5%B7%A5%E5%85%B7/"/>
     
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
     <category term="Mybatis/Mybatis-plus" scheme="https://wnhyang.github.io/tags/Mybatis-Mybatis-plus/"/>
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
   </entry>
   
