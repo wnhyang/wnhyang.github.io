@@ -96,7 +96,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">44</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">184</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">45</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">185</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -161,13 +161,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">184</span>
+          <span class="site-state-item-count">185</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">44</span>
+        <span class="site-state-item-count">45</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -227,6 +227,125 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/d9d9e82e.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+      <meta itemprop="description" content="热爱、分享、生活">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/article/d9d9e82e.html" class="post-title-link" itemprop="url">风控系统/规则引擎，策略集/策略/规则组/规则是什么？都有哪些功能？</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-04-10 21:06:57" itemprop="dateCreated datePublished" datetime="2024-04-10T21:06:57+08:00">2024-04-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-04-11 08:42:53" itemprop="dateModified" datetime="2024-04-11T08:42:53+08:00">2024-04-11</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>个人博客：<a
+href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
+<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
+title="wnhyang">wnhyang</a></p>
+<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
+title="在线知识共享">在线知识共享</a></p>
+<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
+Overview</a></p>
+<hr />
+<h1 id="提要">提要</h1>
+<p>前面已经有了几篇文章了，关于风控系统的一些设计和实现。</p>
+<p>还是那句话完整的风控系统功能还是很复杂的，欠考虑的地方还望指正。</p>
+<p>参考：</p>
+<p><a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/683900578">风控中常说的决策引擎，到底是什么？</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/626565122">风控笔记06：一个完整的风控引擎，需要有哪些功能？</a></p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240411/yuque_diagram.8kzvbvt77y.webp"
+alt="yuque_diagram" />
+<figcaption aria-hidden="true">yuque_diagram</figcaption>
+</figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/article/d9d9e82e.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/16f5a6c3.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -257,7 +376,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2024-04-05 14:08:40 / 修改时间：14:53:21" itemprop="dateCreated datePublished" datetime="2024-04-05T14:08:40+08:00">2024-04-05</time>
+      <time title="创建时间：2024-04-05 14:08:40 / 修改时间：14:58:51" itemprop="dateCreated datePublished" datetime="2024-04-05T14:08:40+08:00">2024-04-05</time>
     </span>
 
   
@@ -312,273 +431,14 @@ alt="yuque_diagram" />
 target="_blank" rel="noopener" href="https://www.yuque.com/wnh/share/oocg5a9umyk8oq9a">可配置输入参数的接口如何设计</a>是这篇文章讨论的内容，<a
 target="_blank" rel="noopener" href="https://www.yuque.com/wnh/share/yqmgyyqs2e9ur1kg">风控系统指标计算/特征提取分析与实现01，Redis、Zset、模版方法</a>讨论的是规则集内普通指标计算。</p>
 <p>本篇文章讨论通过<code>LiteFlow</code>这款规则引擎框架实现风控系统的普通规则条件。</p>
-<h1 id="规则条件">规则条件</h1>
-<p>规则条件是什么？</p>
-<p>我将规则划分如下（未来会逐渐完善），规则条件是规则的一部分。</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240405/yuque_diagram-(1).39kyiymzi9.webp"
-alt="yuque_diagram-(1)" />
-<figcaption aria-hidden="true">yuque_diagram-(1)</figcaption>
-</figure>
-<p>需要注意的是规则条件应该都是灵活可配置，并不是上面这样并列，可以任意复杂的组合。</p>
-<p>为什么只是规则条件灵活可配置呢？操作难道不是吗？</p>
-<p>可以，但没必要。</p>
-<p>如下，是规则（最近24小时转账次数&gt;=10次）示例。</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240405/yuque_diagram-(2).39kyiymzia.webp"
-alt="yuque_diagram-(2)" />
-<figcaption aria-hidden="true">yuque_diagram-(2)</figcaption>
-</figure>
-<p>观察可知，其实右半边可以作为一个新的规则独立出去的，所以说，规则操没必要和规则条件混在一起。</p>
-<p><img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240405/yuque_diagram-(3).7i05ssd8ar.webp"
-alt="yuque_diagram-(3)" /> # 规则引擎LiteFlow</p>
-<p>规则引擎是为了解耦，编排而生。</p>
-<p><code>LiteFlow</code>官网：<a
-target="_blank" rel="noopener" href="https://liteflow.cc/pages/5816c5/#%E5%89%8D%E8%A8%80">🍤LiteFlow简介
-| LiteFlow</a></p>
-<p><code>LiteFlow</code>官方文档写的已经非常清晰，花费不到一上午的时间就可以了完全了解了，所以我也不多说些什么了。</p>
-<h2 id="为什么需要规则引擎">为什么需要规则引擎</h2>
-<p>因为独立组件+灵活编排的需求和规则引擎不谋而合。</p>
-<h1 id="设计与实现">设计与实现</h1>
-<h2 id="组件">组件</h2>
-<p>组件是规则引擎中最重要的一部分，他是所有规则表达式最终业务的实现。</p>
-<p><strong>不使用规则引擎时</strong></p>
-<p>在不使用规则引擎时，针对前面普通规则条件，可以设计如下的结构。</p>
-<p>一条规则关联一组规则条件，规则条件又最多分为两级，一级指明了二级规则条件“与或非”关系，二级是具体的规则条件。具体的规则条件关键字段是：系统字段（property）、字段类型（property_data_type）、操作（operator）、希望的值（value）。</p>
-<p>有了如下的结构该怎么使用也很清晰了</p>
-<p>1、查规则</p>
-<p>2、查规则条件组</p>
-<p>3、根据父条件，确定子条件关系</p>
-<p>4、代码解析操作类型，返回条件结果</p>
-<table>
-<colgroup>
-<col style="width: 2%" />
-<col style="width: 19%" />
-<col style="width: 19%" />
-<col style="width: 19%" />
-<col style="width: 8%" />
-<col style="width: 12%" />
-<col style="width: 10%" />
-<col style="width: 4%" />
-<col style="width: 3%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>id</th>
-<th>uuid</th>
-<th>rule_uuid</th>
-<th>parent_uuid</th>
-<th>logic_operator</th>
-<th>property</th>
-<th>property_data_type</th>
-<th>operator</th>
-<th>value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>270a8dc859a940008539f270ae596ad6</td>
-<td>86cbd8adff914f67b576f0046b5b337d</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>bfbe53d6b5ae4895aef1c4c453e3e16e</td>
-<td>86cbd8adff914f67b576f0046b5b337d</td>
-<td>270a8dc859a940008539f270ae596ad6</td>
-<td>&amp;&amp;</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td>cf46348d533a48db8f027e4db4f6bb7a</td>
-<td>86cbd8adff914f67b576f0046b5b337d</td>
-<td>bfbe53d6b5ae4895aef1c4c453e3e16e</td>
-<td></td>
-<td>S_N_EVENTHOUR</td>
-<td>INT</td>
-<td>&gt;=</td>
-<td>22</td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td>f759541121664847bbc7d944ad1a553f</td>
-<td>86cbd8adff914f67b576f0046b5b337d</td>
-<td>bfbe53d6b5ae4895aef1c4c453e3e16e</td>
-<td></td>
-<td>S_N_EVENTHOUR</td>
-<td>INT</td>
-<td>&lt;=</td>
-<td>24</td>
-</tr>
-<tr class="odd">
-<td>5</td>
-<td>ec1e79cc18734fa4ab3daa51fe8597c8</td>
-<td>86cbd8adff914f67b576f0046b5b337d</td>
-<td>bfbe53d6b5ae4895aef1c4c453e3e16e</td>
-<td></td>
-<td>C_S_FINANCIALCLIENTS</td>
-<td>STRING</td>
-<td>==</td>
-<td>是</td>
-</tr>
-<tr class="even">
-<td>6</td>
-<td>5a3b35c7d1d04466b16ae2da64383e21</td>
-<td>86cbd8adff914f67b576f0046b5b337d</td>
-<td>270a8dc859a940008539f270ae596ad6</td>
-<td>&amp;&amp;</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>7</td>
-<td>1bed61e83d7e4ad0a813f2fa3bd7b8a9</td>
-<td>86cbd8adff914f67b576f0046b5b337d</td>
-<td>5a3b35c7d1d04466b16ae2da64383e21</td>
-<td></td>
-<td>S_N_EVENTHOUR</td>
-<td>INT</td>
-<td>&gt;=</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td>8</td>
-<td>9446d7a9ec284c1ab52c600ac1cfad26</td>
-<td>86cbd8adff914f67b576f0046b5b337d</td>
-<td>5a3b35c7d1d04466b16ae2da64383e21</td>
-<td></td>
-<td>S_N_EVENTHOUR</td>
-<td>INT</td>
-<td>&lt;</td>
-<td>6</td>
-</tr>
-<tr class="odd">
-<td>9</td>
-<td>690e668a2e7c445c80b04ef5e30d3fa4</td>
-<td>86cbd8adff914f67b576f0046b5b337d</td>
-<td>5a3b35c7d1d04466b16ae2da64383e21</td>
-<td></td>
-<td>C_S_FINANCIALCLIENTS</td>
-<td>STRING</td>
-<td>==</td>
-<td>是</td>
-</tr>
-</tbody>
-</table>
-<p><strong>使用规则引擎后</strong></p>
-<p>首先我们定义组件可以完成字段的比较并返回<code>true</code>/<code>false</code>。</p>
-<p>那么上面作为组件的只有<code>id</code>为3、4、5、7、8、9，然后将这些编排成如下表达式即可。</p>
-<p>这里简单介绍一些<code>IF</code>表达式，一共三个参数，第一个为条件，后面两个为<code>true</code>执行，<code>false</code>执行，跟三元表达式一样。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IF(OR(AND(3,4,5),AND(7,8,9)),x,y)</span><br></pre></td></tr></table></figure>
-<p>是不是很简单，看着确实，但有一个设计必须要搞通，也就是下面我要说的数据上下文。</p>
-<h2 id="数据上下文">数据上下文</h2>
-<p><a target="_blank" rel="noopener" href="https://liteflow.cc/pages/74b4bf/">🍄说明 | LiteFlow</a></p>
-<p>数据上下文这个概念在LiteFlow框架中非常重要，你所有的业务数据都是放在数据上下文中。</p>
-<p>要做到可编排，一定是消除每个组件差异性的。如果每个组件出参入参都不一致，那就没法编排了。</p>
-<p>LiteFlow对此有独特的设计理念，平时我们写瀑布流的程序时，A调用B，那A一定要把B所需要的参数传递给B，而在LiteFlow框架体系中，每个组件的定义中是不需要接受参数的，也无任何返回的。</p>
-<p>每个组件只需要从数据上下文中获取自己关心的数据即可，而不用关心此数据是由谁提供的，同样的，每个组件也只要把自己执行所产生的结果数据放到数据上下文中即可，也不用关心此数据到底是提供给谁用的。这样一来，就从数据层面一定程度的解耦了。从而达到可编排的目的。关于这个理念，也在<a
-target="_blank" rel="noopener" href="https://liteflow.cc/pages/5816c5/">LiteFlow简介</a>中的设计原则有提到过，给了一个形象的例子，大家可以再去看看。</p>
-<p>一旦在数据上下文中放入数据，整个链路中的任一节点都是可以取到的。</p>
-<p>我简单说明一下。</p>
-<p>如下，表示瀑布流程，从开始到结束，每步调用都需要将数据传递给下一步调用者，完成整个流程。</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240405/yuque_diagram-(4).5mnl060sp0.webp"
-alt="yuque_diagram-(4)" />
-<figcaption aria-hidden="true">yuque_diagram-(4)</figcaption>
-</figure>
-<p>而对于<code>LiteFlow</code>，更像是下面这样，整个流程存在这样的数据上下文，每个组件只需要去数据上下文中取自己关心的数据，结果也是一样，放进数据上下文即可。</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240405/yuque_diagram-(5).ibwaw0vgk.webp"
-alt="yuque_diagram-(5)" />
-<figcaption aria-hidden="true">yuque_diagram-(5)</figcaption>
-</figure>
-<p>此模式下，要非常注重数据上下文的管理，数据隔离和共享要非常注意。</p>
-<h2 id="相同组件数据问题">相同组件数据问题</h2>
-<p>对于规则条件组件的问题在于：每个规则里的条件非常多，组件该怎么获取当前组件参数（如：<code>appName==Phone</code>）。如<code>IF(OR(AND(3,4,5),AND(7,8,9)),x,y)</code>此表达式转换为我们使用的规则表达式应该是这样的<code>IF(OR(AND(ruleConditionIF,ruleConditionIF,ruleConditionIF),AND(ruleConditionIF,ruleConditionIF,ruleConditionIF)),x,y)</code>，<code>ruleConditionIF</code>为规则条件组件。一个表达式中有多个相同的组件意味着他们需要不同的处理，那么数据怎么获取？</p>
-<p><code>LiteFlow</code>提供了三种不同方式：</p>
-<p>1、<a target="_blank" rel="noopener" href="https://liteflow.cc/pages/6e4d15/">🍉组件参数 |
-LiteFlow</a>，定义<code>EL</code>表达式时声明数据并传入组件</p>
-<p>2、<a target="_blank" rel="noopener" href="https://liteflow.cc/pages/0f788f/">🍍组件标签 |
-LiteFlow</a>，定义组件<code>tag</code>区别组件</p>
-<p>3、<a target="_blank" rel="noopener" href="https://liteflow.cc/pages/fbb938/">🍕私有投递 |
-LiteFlow</a>，用于私有独有数据传递</p>
-<p>下面使用方式二（组件标签）来实现普通条件组件。</p>
-<h2 id="表结构与数据">表结构与数据</h2>
-<p><code>chain</code>表</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> de_chain</span><br><span class="line">(</span><br><span class="line">  id               <span class="type">bigint</span> auto_increment comment <span class="string">&#x27;主键&#x27;</span></span><br><span class="line">  <span class="keyword">primary</span> key,</span><br><span class="line">  application_name <span class="type">varchar</span>(<span class="number">32</span>)                 <span class="keyword">default</span> <span class="string">&#x27;&#x27;</span>                <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;应用名&#x27;</span>,</span><br><span class="line">  chain_name       <span class="type">varchar</span>(<span class="number">64</span>)                 <span class="keyword">default</span> <span class="string">&#x27;&#x27;</span>                <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;chain名&#x27;</span>,</span><br><span class="line">  el_data          text                                                  <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;el数据&#x27;</span>,</span><br><span class="line">  enable           bit                         <span class="keyword">default</span> b<span class="string">&#x27;0&#x27;</span>              <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;chain状态&#x27;</span>,</span><br><span class="line">  description      <span class="type">varchar</span>(<span class="number">64</span>) charset utf8mb4 <span class="keyword">default</span> <span class="string">&#x27;&#x27;</span>                <span class="keyword">null</span> comment <span class="string">&#x27;描述&#x27;</span>,</span><br><span class="line">  creator          <span class="type">varchar</span>(<span class="number">64</span>) charset utf8mb4 <span class="keyword">default</span> <span class="string">&#x27;&#x27;</span>                <span class="keyword">null</span> comment <span class="string">&#x27;创建者&#x27;</span>,</span><br><span class="line">  create_time      datetime                    <span class="keyword">default</span> <span class="built_in">CURRENT_TIMESTAMP</span> <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;创建时间&#x27;</span>,</span><br><span class="line">  updater          <span class="type">varchar</span>(<span class="number">64</span>) charset utf8mb4 <span class="keyword">default</span> <span class="string">&#x27;&#x27;</span>                <span class="keyword">null</span> comment <span class="string">&#x27;更新者&#x27;</span>,</span><br><span class="line">  update_time      datetime                    <span class="keyword">default</span> <span class="built_in">CURRENT_TIMESTAMP</span> <span class="keyword">not</span> <span class="keyword">null</span> <span class="keyword">on</span> <span class="keyword">update</span> <span class="built_in">CURRENT_TIMESTAMP</span> comment <span class="string">&#x27;更新时间&#x27;</span>,</span><br><span class="line">  deleted          bit                         <span class="keyword">default</span> b<span class="string">&#x27;0&#x27;</span>              <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;是否删除&#x27;</span>,</span><br><span class="line">  <span class="keyword">constraint</span> uk_code</span><br><span class="line">  <span class="keyword">unique</span> (chain_name)</span><br><span class="line">)comment <span class="string">&#x27;chain表&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> coolGuard.de_chain (id, application_name, chain_name, el_data, enable, description, creator, create_time, updater, update_time, deleted) <span class="keyword">VALUES</span> (<span class="number">1</span>, <span class="string">&#x27;coolGuard&#x27;</span>, <span class="string">&#x27;mainChain&#x27;</span>, <span class="string">&#x27;THEN(chain1);&#x27;</span>, <span class="literal">true</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;2024-04-04 22:35:36&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;2024-04-04 22:40:30&#x27;</span>, <span class="literal">false</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> coolGuard.de_chain (id, application_name, chain_name, el_data, enable, description, creator, create_time, updater, update_time, deleted) <span class="keyword">VALUES</span> (<span class="number">2</span>, <span class="string">&#x27;coolGuard&#x27;</span>, <span class="string">&#x27;chain1&#x27;</span>, <span class="string">&#x27;IF(OR(AND(ruleConditionIf.tag(&quot;1&quot;),ruleConditionIf.tag(&quot;2&quot;)),ruleConditionIf.tag(&quot;3&quot;)),orderMode,worstMode);&#x27;</span>, <span class="literal">true</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;2024-04-04 22:31:16&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;2024-04-05 13:25:49&#x27;</span>, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
-<p>规则条件表</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> de_rule_condition</span><br><span class="line">(</span><br><span class="line">  id           <span class="type">bigint</span> auto_increment comment <span class="string">&#x27;主键&#x27;</span></span><br><span class="line">  <span class="keyword">primary</span> key,</span><br><span class="line">  chain_name   <span class="type">varchar</span>(<span class="number">64</span>)                 <span class="keyword">default</span> <span class="string">&#x27;&#x27;</span>                <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;chain名&#x27;</span>,</span><br><span class="line">  field_name   <span class="type">varchar</span>(<span class="number">32</span>)                 <span class="keyword">default</span> <span class="string">&#x27;&#x27;</span>                <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;字段名&#x27;</span>,</span><br><span class="line">  operate_type <span class="type">int</span>                         <span class="keyword">default</span> <span class="number">0</span>                 <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;操作类型&#x27;</span>,</span><br><span class="line">  expect_value <span class="type">varchar</span>(<span class="number">32</span>)                 <span class="keyword">default</span> <span class="string">&#x27;&#x27;</span>                <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;期望值&#x27;</span>,</span><br><span class="line">  description  <span class="type">varchar</span>(<span class="number">64</span>) charset utf8mb4 <span class="keyword">default</span> <span class="string">&#x27;&#x27;</span>                <span class="keyword">null</span> comment <span class="string">&#x27;描述&#x27;</span>,</span><br><span class="line">  creator      <span class="type">varchar</span>(<span class="number">64</span>) charset utf8mb4 <span class="keyword">default</span> <span class="string">&#x27;&#x27;</span>                <span class="keyword">null</span> comment <span class="string">&#x27;创建者&#x27;</span>,</span><br><span class="line">  create_time  datetime                    <span class="keyword">default</span> <span class="built_in">CURRENT_TIMESTAMP</span> <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;创建时间&#x27;</span>,</span><br><span class="line">  updater      <span class="type">varchar</span>(<span class="number">64</span>) charset utf8mb4 <span class="keyword">default</span> <span class="string">&#x27;&#x27;</span>                <span class="keyword">null</span> comment <span class="string">&#x27;更新者&#x27;</span>,</span><br><span class="line">  update_time  datetime                    <span class="keyword">default</span> <span class="built_in">CURRENT_TIMESTAMP</span> <span class="keyword">not</span> <span class="keyword">null</span> <span class="keyword">on</span> <span class="keyword">update</span> <span class="built_in">CURRENT_TIMESTAMP</span> comment <span class="string">&#x27;更新时间&#x27;</span>,</span><br><span class="line">  deleted      bit                         <span class="keyword">default</span> b<span class="string">&#x27;0&#x27;</span>              <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;是否删除&#x27;</span></span><br><span class="line">)comment <span class="string">&#x27;规则条件表&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> coolGuard.de_rule_condition (id, chain_name, field_name, operate_type, expect_value, description, creator, create_time, updater, update_time, deleted) <span class="keyword">VALUES</span> (<span class="number">1</span>, <span class="string">&#x27;chain3&#x27;</span>, <span class="string">&#x27;appName&#x27;</span>, <span class="number">2</span>, <span class="string">&#x27;Phone&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;2024-04-04 22:32:25&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;2024-04-05 12:24:03&#x27;</span>, <span class="literal">false</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> coolGuard.de_rule_condition (id, chain_name, field_name, operate_type, expect_value, description, creator, create_time, updater, update_time, deleted) <span class="keyword">VALUES</span> (<span class="number">2</span>, <span class="string">&#x27;chain4&#x27;</span>, <span class="string">&#x27;customerId&#x27;</span>, <span class="number">2</span>, <span class="string">&#x27;123456&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;2024-04-05 12:24:03&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;2024-04-05 12:24:03&#x27;</span>, <span class="literal">false</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> coolGuard.de_rule_condition (id, chain_name, field_name, operate_type, expect_value, description, creator, create_time, updater, update_time, deleted) <span class="keyword">VALUES</span> (<span class="number">3</span>, <span class="string">&#x27;chain5&#x27;</span>, <span class="string">&#x27;money&#x27;</span>, <span class="number">5</span>, <span class="string">&#x27;15&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;2024-04-05 12:24:03&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;2024-04-05 12:24:03&#x27;</span>, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="依赖">依赖</h2>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.yomahub<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>liteflow-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;liteflow.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.yomahub<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>liteflow-rule-sql<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;liteflow.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.yomahub<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>liteflow-script-groovy<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;liteflow.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="配置">配置</h2>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">liteflow:</span></span><br><span class="line">  <span class="attr">rule-source-ext-data-map:</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://localhost:3306/coolGuard?allowPublicKeyRetrieval=true&amp;serverTimezone=Asia/Shanghai&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;zeroDateTimeBehavior=convertToNull&amp;useSSL=false&amp;allowPublicKeyRetrieval=true</span></span><br><span class="line">    <span class="attr">driverClassName:</span> <span class="string">com.mysql.cj.jdbc.Driver</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">wnhyang</span></span><br><span class="line">    <span class="attr">password:</span> <span class="number">123456</span></span><br><span class="line">    <span class="attr">applicationName:</span> <span class="string">$&#123;spring.application.name&#125;</span></span><br><span class="line">    <span class="comment">#是否开启SQL日志</span></span><br><span class="line">    <span class="attr">sqlLogEnabled:</span> <span class="literal">true</span></span><br><span class="line">    <span class="comment">#是否开启SQL数据轮询自动刷新机制 默认不开启</span></span><br><span class="line">    <span class="attr">pollingEnabled:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">pollingIntervalSeconds:</span> <span class="number">60</span></span><br><span class="line">    <span class="attr">pollingStartSeconds:</span> <span class="number">60</span></span><br><span class="line">    <span class="comment">#以下是chain表的配置，这个一定得有</span></span><br><span class="line">    <span class="attr">chainTableName:</span> <span class="string">de_chain</span></span><br><span class="line">    <span class="attr">chainApplicationNameField:</span> <span class="string">application_name</span></span><br><span class="line">    <span class="attr">chainNameField:</span> <span class="string">chain_name</span></span><br><span class="line">    <span class="attr">elDataField:</span> <span class="string">el_data</span></span><br><span class="line">    <span class="attr">chainEnableField:</span> <span class="string">enable</span></span><br><span class="line">    <span class="comment">#以下是script表的配置，如果你没使用到脚本，下面可以不配置</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#    scriptTableName: script</span></span><br><span class="line"><span class="comment">#    scriptApplicationNameField: application_name</span></span><br><span class="line"><span class="comment">#    scriptIdField: script_id</span></span><br><span class="line"><span class="comment">#    scriptNameField: script_name</span></span><br><span class="line"><span class="comment">#    scriptDataField: script_data</span></span><br><span class="line"><span class="comment">#    scriptTypeField: script_type</span></span><br><span class="line"><span class="comment">#    scriptLanguageField: script_language</span></span><br><span class="line"><span class="comment">#    scriptEnableField: enable</span></span><br></pre></td></tr></table></figure>
-<h2 id="自定义数据上下文">自定义数据上下文</h2>
-<p>可以改善，先这样贴出来。</p>
-<p><code>FieldContext</code>表示经过入参处理后的所有字段集合，后面的规则/指标都会用到的。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> wnhyang</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/4/3</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FieldContext</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Map&lt;String, String&gt; stringFields = <span class="keyword">new</span> <span class="title class_">ConcurrentHashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Map&lt;String, Integer&gt; numberFields = <span class="keyword">new</span> <span class="title class_">ConcurrentHashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Map&lt;String, Boolean&gt; booleanFields = <span class="keyword">new</span> <span class="title class_">ConcurrentHashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Map&lt;String, String&gt; enumFields = <span class="keyword">new</span> <span class="title class_">ConcurrentHashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Map&lt;String, LocalDateTime&gt; dateFields = <span class="keyword">new</span> <span class="title class_">ConcurrentHashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Map&lt;String, BigDecimal&gt; floatFields = <span class="keyword">new</span> <span class="title class_">ConcurrentHashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setStringData</span><span class="params">(String key, String value)</span> &#123;</span><br><span class="line">        stringFields.put(key, value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getStringData</span><span class="params">(String key)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> stringFields.get(key);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">hasStringData</span><span class="params">(String key)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> stringFields.containsKey(key);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="普通规则条件组件">普通规则条件组件</h2>
-<p>当前还不是很完善，<code>TODO</code>已有说明。</p>
-<p>对了，我使用的<code>jdk17</code>，所有<code>switch</code>表达式是下面这样，与<code>jdk8</code>有点区别。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> wnhyang</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/4/4</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@LiteflowComponent</span></span><br><span class="line"><span class="meta">@RequiredArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RuleConditionIf</span> <span class="keyword">extends</span> <span class="title class_">NodeIfComponent</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> RuleConditionMapper ruleConditionMapper;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">processIf</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取当前chainName</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">tag</span> <span class="operator">=</span> <span class="built_in">this</span>.getTag();</span><br><span class="line">        log.info(<span class="string">&quot;当前tag:&#123;&#125;&quot;</span>, tag);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取当前chainName对应的条件</span></span><br><span class="line">        <span class="type">RuleCondition</span> <span class="variable">ruleCondition</span> <span class="operator">=</span> ruleConditionMapper.selectById(tag);</span><br><span class="line">        log.info(<span class="string">&quot;当前chainName对应的条件:&#123;&#125;&quot;</span>, ruleCondition);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取上下文</span></span><br><span class="line">        <span class="type">FieldContext</span> <span class="variable">fieldContext</span> <span class="operator">=</span> <span class="built_in">this</span>.getContextBean(FieldContext.class);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取条件字段</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">fieldName</span> <span class="operator">=</span> ruleCondition.getFieldName();</span><br><span class="line">        log.info(<span class="string">&quot;条件字段:&#123;&#125;&quot;</span>, fieldName);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取字段值</span></span><br><span class="line">        <span class="comment">// TODO 支持String、Integer、BigDecimal、Boolean等</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">stringData</span> <span class="operator">=</span> fieldContext.getStringData(fieldName);</span><br><span class="line">        log.info(<span class="string">&quot;字段值:&#123;&#125;&quot;</span>, stringData);</span><br><span class="line"></span><br><span class="line">        <span class="type">OperateType</span> <span class="variable">byType</span> <span class="operator">=</span> OperateType.getByType(ruleCondition.getOperateType());</span><br><span class="line">        log.info(<span class="string">&quot;操作类型:&#123;&#125;&quot;</span>, byType);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// TODO 当前是常量，之后要考虑变量</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">expectValue</span> <span class="operator">=</span> ruleCondition.getExpectValue();</span><br><span class="line">        log.info(<span class="string">&quot;期望值值:&#123;&#125;&quot;</span>, expectValue);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">switch</span> (Objects.requireNonNull(byType)) &#123;</span><br><span class="line">            <span class="keyword">case</span> NULL:</span><br><span class="line">                <span class="keyword">yield</span> StrUtil.isBlank(stringData);</span><br><span class="line">            <span class="keyword">case</span> NOT_NULL:</span><br><span class="line">                <span class="keyword">yield</span> !StrUtil.isBlank(stringData);</span><br><span class="line">            <span class="keyword">case</span> EQ:</span><br><span class="line">                <span class="keyword">yield</span> stringData.equals(expectValue);</span><br><span class="line">            <span class="keyword">case</span> NOT_EQ:</span><br><span class="line">                <span class="keyword">yield</span> !stringData.equals(expectValue);</span><br><span class="line">            <span class="keyword">case</span> CONTAINS:</span><br><span class="line">                <span class="keyword">yield</span> stringData.contains(expectValue);</span><br><span class="line">            <span class="keyword">case</span> NOT_CONTAINS:</span><br><span class="line">                <span class="keyword">yield</span> !stringData.contains(expectValue);</span><br><span class="line">            <span class="keyword">case</span> GT:</span><br><span class="line">                <span class="keyword">yield</span> Integer.parseInt(stringData) &gt; Integer.parseInt(expectValue);</span><br><span class="line">            <span class="keyword">case</span> GTE:</span><br><span class="line">                <span class="keyword">yield</span> Integer.parseInt(stringData) &gt;= Integer.parseInt(expectValue);</span><br><span class="line">            <span class="keyword">case</span> LT, LTE:</span><br><span class="line">                <span class="keyword">yield</span> <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">case</span> IN:</span><br><span class="line">                String[] split1 = expectValue.split(<span class="string">&quot;,&quot;</span>);</span><br><span class="line">                <span class="keyword">for</span> (String s : split1) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (stringData.equals(s)) &#123;</span><br><span class="line">                        <span class="keyword">yield</span> <span class="literal">true</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            <span class="keyword">case</span> NOT_IN:</span><br><span class="line">                String[] split2 = expectValue.split(<span class="string">&quot;,&quot;</span>);</span><br><span class="line">                <span class="keyword">for</span> (String s : split2) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (stringData.equals(s)) &#123;</span><br><span class="line">                        <span class="keyword">yield</span> <span class="literal">false</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            <span class="keyword">case</span> PREFIX:</span><br><span class="line">                <span class="keyword">yield</span> stringData.startsWith(expectValue);</span><br><span class="line">            <span class="keyword">case</span> NOT_PREFIX:</span><br><span class="line">                <span class="keyword">yield</span> !stringData.startsWith(expectValue);</span><br><span class="line">            <span class="keyword">case</span> SUFFIX:</span><br><span class="line">                <span class="keyword">yield</span> stringData.endsWith(expectValue);</span><br><span class="line">            <span class="keyword">case</span> NOT_SUFFIX:</span><br><span class="line">                <span class="keyword">yield</span> !stringData.endsWith(expectValue);</span><br><span class="line"></span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="操作类型枚举">操作类型枚举</h2>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> wnhyang</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/4/3</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="meta">@Getter</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">OperateType</span> &#123;</span><br><span class="line"></span><br><span class="line">    NULL(<span class="number">0</span>),</span><br><span class="line">    NOT_NULL(<span class="number">1</span>),</span><br><span class="line">    EQ(<span class="number">2</span>),</span><br><span class="line">    NOT_EQ(<span class="number">3</span>),</span><br><span class="line">    GT(<span class="number">4</span>),</span><br><span class="line">    GTE(<span class="number">5</span>),</span><br><span class="line">    LT(<span class="number">6</span>),</span><br><span class="line">    LTE(<span class="number">7</span>),</span><br><span class="line">    IN(<span class="number">8</span>),</span><br><span class="line">    NOT_IN(<span class="number">9</span>),</span><br><span class="line">    CONTAINS(<span class="number">10</span>),</span><br><span class="line">    NOT_CONTAINS(<span class="number">11</span>),</span><br><span class="line">    PREFIX(<span class="number">12</span>),</span><br><span class="line">    NOT_PREFIX(<span class="number">13</span>),</span><br><span class="line">    SUFFIX(<span class="number">14</span>),</span><br><span class="line">    NOT_SUFFIX(<span class="number">15</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Integer type;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> OperateType <span class="title function_">getByType</span><span class="params">(Integer type)</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (OperateType operateType : OperateType.values()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (operateType.getType().equals(type)) &#123;</span><br><span class="line">                <span class="keyword">return</span> operateType;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="测试">测试</h2>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/field&quot;)</span></span><br><span class="line"><span class="meta">@RequiredArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FieldController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> FieldService fieldService;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> FlowExecutor flowExecutor;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/test&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> CommonResult&lt;String&gt; <span class="title function_">test</span><span class="params">(<span class="meta">@RequestParam(&quot;appName&quot;)</span> String appName, <span class="meta">@RequestParam(&quot;customerId&quot;)</span> String customerId, <span class="meta">@RequestParam(&quot;money&quot;)</span> String money)</span> &#123;</span><br><span class="line">        <span class="type">FieldContext</span> <span class="variable">fieldContext</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FieldContext</span>();</span><br><span class="line">        fieldContext.setStringData(<span class="string">&quot;appName&quot;</span>, appName);</span><br><span class="line">        fieldContext.setStringData(<span class="string">&quot;customerId&quot;</span>, customerId);</span><br><span class="line">        fieldContext.setStringData(<span class="string">&quot;money&quot;</span>, money);</span><br><span class="line">        <span class="type">LiteflowResponse</span> <span class="variable">main1</span> <span class="operator">=</span> flowExecutor.execute2Resp(<span class="string">&quot;mainChain&quot;</span>, <span class="literal">null</span>, fieldContext);</span><br><span class="line">        log.info(String.valueOf(main1));</span><br><span class="line">        <span class="keyword">return</span> success(<span class="string">&quot;test&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240405/image.73tq1vr1lc.webp"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
-</figure>
-<h2 id="结果">结果</h2>
-<p><code>mainChain</code>的<code>EL</code>表达式为<code>THEN(chain1);</code>，<code>chain1</code>为子流程</p>
-<p><code>IF(OR(AND(ruleConditionIf.tag("1"),ruleConditionIf.tag("2")),ruleConditionIf.tag("3")),orderMode,worstMode);</code>，<code>ruleConditionIf</code>为上面的规则条件组件。</p>
-<p>最终应该是这样的：<code>THEN(IF(OR(AND(ruleConditionIf.tag("1"),ruleConditionIf.tag("2")),ruleConditionIf.tag("3")),orderMode,worstMode));</code></p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240405/yuque_diagram-(6).361cl917gs.webp"
-alt="yuque_diagram-(6)" />
-<figcaption aria-hidden="true">yuque_diagram-(6)</figcaption>
-</figure>
-<p>参数为：<code>appName:Phone,customerId:235246,money:35</code>时</p>
-<p>此时执行流程为：<code>ruleConditionIf&lt;17&gt;==&gt;ruleConditionIf&lt;2&gt;==&gt;ruleConditionIf&lt;2&gt;==&gt;orderMode&lt;0&gt;</code></p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240405/image.5xaeta4lfi.webp"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
-</figure>
-<p>参数为：<code>appName:Phone,customerId:235246,money:3</code>时</p>
-<p>此时执行流程为：<code>ruleConditionIf&lt;42&gt;==&gt;ruleConditionIf&lt;2&gt;==&gt;ruleConditionIf&lt;1&gt;==&gt;worstMode&lt;0&gt;</code></p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240405/image.4uapieg8ak.webp"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
-</figure>
-<h1 id="总结">总结</h1>
-<p><code>LiteFlow</code>可玩性还是很强的，未来我还会继续完善打造自己设计并实现的风控系统。冲冲冲！！！</p>
-<h1 id="写在最后">写在最后</h1>
-<p>拙作艰辛，字句心血，望诸君垂青，多予支持，不胜感激。</p>
-<hr />
-<p>个人博客：<a
-href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
-<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
-title="wnhyang">wnhyang</a></p>
-<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
-title="在线知识共享">在线知识共享</a></p>
-<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
-Overview</a></p>
-<p><img data-src="https://wnhyang.github.io/images/wechat_channel.webp" /></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/article/16f5a6c3.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1616,122 +1476,6 @@ Overview</a></p>
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/a2229281.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-      <meta itemprop="description" content="热爱、分享、生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/a2229281.html" class="post-title-link" itemprop="url">使用了智能表格后，不禁感叹现在的生产力工具真牛！</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-03-03 20:34:46" itemprop="dateCreated datePublished" datetime="2024-03-03T20:34:46+08:00">2024-03-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-03-04 17:29:59" itemprop="dateModified" datetime="2024-03-04T17:29:59+08:00">2024-03-04</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.3k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>5 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>个人博客：<a
-href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
-<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
-title="wnhyang">wnhyang</a></p>
-<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
-title="在线知识共享">在线知识共享</a></p>
-<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
-Overview</a></p>
-<hr />
-<p>办公三件套，我想不会有人没用过吧，如果你还停留在简单编辑、套模版的的办公三件套时代，那只能说你真的out了！</p>
-<p>这周因为一些工作上的需要，打开WPS创建并使用了一下智能表格，不用不知道，使用后属实是把我惊到了。</p>
-<h1 id="智能表格">智能表格</h1>
-<p>特性：</p>
-<ul>
-<li>多人协作，这个功能其实不算是特性的，因为绝大多数表格都可以做到</li>
-<li>简单的在线数据库，高效的管理数据</li>
-<li>搭积木一样建应用，每个人都会用</li>
-</ul>
-<p>接下来我会从模版和自己的实践上重点介绍后两点！</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/article/a2229281.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1757,14 +1501,14 @@ Overview</a></p>
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:05</span>
   </span>
 </div>
 <div class="busuanzi-count">
