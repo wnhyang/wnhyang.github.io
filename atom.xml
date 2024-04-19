@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2024-04-11T00:42:53.514Z</updated>
+  <updated>2024-04-19T00:46:31.683Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,54 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>从LiteFlow来看Java SPI，与Spring框架有哪些相同的思想</title>
+    <link href="https://wnhyang.github.io/article/294c2ce1.html"/>
+    <id>https://wnhyang.github.io/article/294c2ce1.html</id>
+    <published>2024-04-18T10:59:36.000Z</published>
+    <updated>2024-04-19T00:46:31.683Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;个人博客：&lt;a
+href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
+title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
+title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
+Overview&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h1 id=&quot;java-spi简介&quot;&gt;&lt;code&gt;Java SPI&lt;/code&gt;简介&lt;/h1&gt;
+&lt;p&gt;以下引用&lt;code&gt;AI&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Java SPI&lt;/code&gt;（&lt;code&gt;Service Provider Interface&lt;/code&gt;）是一种用于实现组件化的机制，它允许软件组件以插件的形式被发现和加载。在
+&lt;code&gt;Java&lt;/code&gt; 中，&lt;code&gt;SPI&lt;/code&gt;
+是通过在&lt;code&gt;META-INF/services&lt;/code&gt;目录下的特定文件中声明服务提供者来实现的。&lt;/p&gt;
+&lt;p&gt;下面是 &lt;code&gt;Java SPI&lt;/code&gt; 的基本工作原理：&lt;/p&gt;
+&lt;ol type=&quot;1&quot;&gt;
+&lt;li&gt;定义服务接口：首先，定义一个服务接口，该接口规定了一组方法或功能。&lt;/li&gt;
+&lt;li&gt;实现服务提供者：然后，编写一个或多个实现了服务接口的具体类，这些类被称为服务提供者。&lt;/li&gt;
+&lt;li&gt;创建服务配置文件：在 &lt;code&gt;META-INF/services&lt;/code&gt;
+目录下创建一个以服务接口全限定名命名的文件，其中包含了实现了服务接口的具体类的全限定名。&lt;/li&gt;
+&lt;li&gt;加载服务提供者：通过 &lt;code&gt;Java SPI&lt;/code&gt; 机制，&lt;code&gt;Java&lt;/code&gt;
+运行时会自动加载并实例化服务提供者，并将其注入到应用程序中，使得我们可以在运行时动态地发现和使用这些服务。&lt;/li&gt;
+&lt;/ol&gt;</summary>
+    
+    
+    
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
+    
+    <category term="Spring Framework" scheme="https://wnhyang.github.io/tags/Spring-Framework/"/>
+    
+    <category term="Java" scheme="https://wnhyang.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
     <title>风控系统/规则引擎，策略集/策略/规则组/规则是什么？都有哪些功能？</title>
     <link href="https://wnhyang.github.io/article/d9d9e82e.html"/>
     <id>https://wnhyang.github.io/article/d9d9e82e.html</id>
     <published>2024-04-10T13:06:57.000Z</published>
-    <updated>2024-04-11T00:42:53.514Z</updated>
+    <updated>2024-04-11T00:44:44.378Z</updated>
     
     
     <summary type="html">&lt;p&gt;个人博客：&lt;a
@@ -134,9 +177,9 @@ alt=&quot;image&quot; /&gt;
     
     
     
-    <category term="Vue" scheme="https://wnhyang.github.io/tags/Vue/"/>
-    
     <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
+    
+    <category term="Vue" scheme="https://wnhyang.github.io/tags/Vue/"/>
     
   </entry>
   
@@ -145,25 +188,32 @@ alt=&quot;image&quot; /&gt;
     <link href="https://wnhyang.github.io/article/830d76f.html"/>
     <id>https://wnhyang.github.io/article/830d76f.html</id>
     <published>2024-04-01T10:22:11.000Z</published>
-    <updated>2024-04-05T06:53:18.998Z</updated>
+    <updated>2024-04-18T02:51:58.001Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;p&gt;个人博客：&lt;a
 href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;个人语雀：&lt;a</summary>
-        
-      
+&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
+title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
+title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
+Overview&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h1 id=&quot;树形菜单&quot;&gt;树形菜单&lt;/h1&gt;
+&lt;p&gt;在很多系统管理/菜单管理中经常会出现下面这样的树形菜单，它是通过前端的&lt;code&gt;Tree&lt;/code&gt;组件来渲染的。&lt;/p&gt;
+&lt;figure&gt;
+&lt;img data-src=&quot;https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240401/image.60u0lj8oly.webp&quot;
+alt=&quot;image&quot; /&gt;
+&lt;figcaption aria-hidden=&quot;true&quot;&gt;image&lt;/figcaption&gt;
+&lt;/figure&gt;</summary>
     
     
     
-    
-    <category term="Vue" scheme="https://wnhyang.github.io/tags/Vue/"/>
     
     <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
+    
+    <category term="Vue" scheme="https://wnhyang.github.io/tags/Vue/"/>
     
   </entry>
   
@@ -205,9 +255,9 @@ href=&quot;https://zhuanlan.zhihu.com/p/269208311&quot;&gt;七大主流的HttpCl
     
     
     
-    <category term="Spring Framework" scheme="https://wnhyang.github.io/tags/Spring-Framework/"/>
-    
     <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
+    
+    <category term="Spring Framework" scheme="https://wnhyang.github.io/tags/Spring-Framework/"/>
     
   </entry>
   
@@ -307,9 +357,9 @@ implementation.&lt;/li&gt;
     
     
     
-    <category term="Spring Framework" scheme="https://wnhyang.github.io/tags/Spring-Framework/"/>
-    
     <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
+    
+    <category term="Spring Framework" scheme="https://wnhyang.github.io/tags/Spring-Framework/"/>
     
   </entry>
   
@@ -347,9 +397,9 @@ MyBatis-Plus&lt;/a&gt;&lt;/p&gt;
     
     <category term="软件&amp;工具" scheme="https://wnhyang.github.io/tags/%E8%BD%AF%E4%BB%B6-%E5%B7%A5%E5%85%B7/"/>
     
-    <category term="Mybatis/Mybatis-plus" scheme="https://wnhyang.github.io/tags/Mybatis-Mybatis-plus/"/>
-    
     <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
+    
+    <category term="Mybatis/Mybatis-plus" scheme="https://wnhyang.github.io/tags/Mybatis-Mybatis-plus/"/>
     
   </entry>
   
@@ -771,43 +821,6 @@ href=&quot;https://sa-token.cc/&quot;&gt;Sa-Token&lt;/a&gt;，版本1.37.0&lt;/p
 &lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git clone https://github.com/dromara/Sa-Token.git&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h2 id=&quot;项目结构介绍&quot;&gt;项目结构介绍&lt;/h2&gt;
 &lt;p&gt;项目结构组织如下，结构还是相当清晰明了的。我也不可能把所有工程代码详细都讲一下，只能根据&lt;code&gt;satoken&lt;/code&gt;最重要的模块挑一部分细致讲一下。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
-    
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Sa-Token介绍与SpringBoot环境下使用</title>
-    <link href="https://wnhyang.github.io/article/bf2c89b7.html"/>
-    <id>https://wnhyang.github.io/article/bf2c89b7.html</id>
-    <published>2024-01-17T14:26:48.000Z</published>
-    <updated>2024-01-20T10:30:50.765Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;个人博客：&lt;a
-href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
-title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
-title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
-Overview&lt;/a&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;官网：&lt;a href=&quot;https://sa-token.cc/doc.html#/&quot;&gt;Sa-Token&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;一个轻量级 Java 权限认证框架，让鉴权变得简单、优雅！&lt;/p&gt;
-&lt;h1 id=&quot;介绍&quot;&gt;介绍&lt;/h1&gt;
-&lt;p&gt;&lt;strong&gt;Sa-Token&lt;/strong&gt; 是一个轻量级 Java
-权限认证框架，主要解决：&lt;strong&gt;登录认证&lt;/strong&gt;、&lt;strong&gt;权限认证&lt;/strong&gt;、&lt;strong&gt;单点登录&lt;/strong&gt;、&lt;strong&gt;OAuth2.0&lt;/strong&gt;、&lt;strong&gt;分布式Session会话&lt;/strong&gt;、&lt;strong&gt;微服务网关鉴权&lt;/strong&gt;
-等一系列权限相关问题。&lt;/p&gt;
-&lt;p&gt;官方文档写的已经非常好了。引用官方文档开头的一段话：&lt;/p&gt;
-&lt;p&gt;本文档将会尽力讲解每个功能的设计原因、应用场景，用心阅读文档，你学习到的将不止是
-Sa-Token 框架本身，更是绝大多数场景下权限设计的最佳实践。&lt;/p&gt;
-&lt;p&gt;确实，通过阅读官方文档有学到很多东西，收获更大的是结合我的使用体验，下载并阅读源码后有学到了一些东西想和大家分享！这篇文章只是开头。&lt;/p&gt;</summary>
     
     
     

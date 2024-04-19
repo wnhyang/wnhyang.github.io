@@ -25,34 +25,38 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="个人博客：无奈何杨（wnhyang） 个人语雀：wnhyang 共享语雀：在线知识共享 Github：wnhyang - Overview  官网 REST Clients :: Spring Framework The Spring Framework provides the following choices for making calls to REST endpoints:  Rest">
+    <meta name="description" content="个人博客：无奈何杨（wnhyang） 个人语雀：wnhyang 共享语雀：在线知识共享 Github：wnhyang - Overview  Java SPI简介 以下引用AI。 Java SPI（Service Provider Interface）是一种用于实现组件化的机制，它允许软件组件以插件的形式被发现和加载。在 Java 中，SPI 是通过在META-INF&#x2F;services目录下的特定">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring6.1新特性，四种方式调用REST接口（RestClient、WebClient、RestTemplate、HTTP Interface）">
-<meta property="og:url" content="https://wnhyang.github.io/article/d9f6ee5e.html">
+<meta property="og:title" content="从LiteFlow来看Java SPI，与Spring框架有哪些相同的思想">
+<meta property="og:url" content="https://wnhyang.github.io/article/294c2ce1.html">
 <meta property="og:site_name" content="无奈何杨（wnhyang）">
-<meta property="og:description" content="个人博客：无奈何杨（wnhyang） 个人语雀：wnhyang 共享语雀：在线知识共享 Github：wnhyang - Overview  官网 REST Clients :: Spring Framework The Spring Framework provides the following choices for making calls to REST endpoints:  Rest">
+<meta property="og:description" content="个人博客：无奈何杨（wnhyang） 个人语雀：wnhyang 共享语雀：在线知识共享 Github：wnhyang - Overview  Java SPI简介 以下引用AI。 Java SPI（Service Provider Interface）是一种用于实现组件化的机制，它允许软件组件以插件的形式被发现和加载。在 Java 中，SPI 是通过在META-INF&#x2F;services目录下的特定">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240316/image.8hg8hxyscl.webp">
-<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240316/image.2vei431ffj.webp">
-<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240316/image.3razjjhvlr.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240418/image.2a4vomkplp.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240418/image.6wqipc2pv6.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240418/image.1vyfxrz3me.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240418/image.2h83k2v07j.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240418/image.99t56jw248.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240418/image.4ckocpt7sl.webp">
 <meta property="og:image" content="https://wnhyang.github.io/images/wechat_channel.webp">
-<meta property="article:published_time" content="2024-03-19T11:27:37.000Z">
-<meta property="article:modified_time" content="2024-03-20T05:34:10.609Z">
+<meta property="article:published_time" content="2024-04-18T10:59:36.000Z">
+<meta property="article:modified_time" content="2024-04-19T00:46:31.683Z">
 <meta property="article:author" content="无奈何杨（wnhyang）">
 <meta property="article:tag" content="Spring Boot">
 <meta property="article:tag" content="Spring Framework">
+<meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240316/image.8hg8hxyscl.webp">
+<meta name="twitter:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240418/image.2a4vomkplp.webp">
 
 
-<link rel="canonical" href="https://wnhyang.github.io/article/d9f6ee5e.html">
+<link rel="canonical" href="https://wnhyang.github.io/article/294c2ce1.html">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wnhyang.github.io/article/d9f6ee5e.html","path":"article/d9f6ee5e.html","title":"Spring6.1新特性，四种方式调用REST接口（RestClient、WebClient、RestTemplate、HTTP Interface）"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wnhyang.github.io/article/294c2ce1.html","path":"article/294c2ce1.html","title":"从LiteFlow来看Java SPI，与Spring框架有哪些相同的思想"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Spring6.1新特性，四种方式调用REST接口（RestClient、WebClient、RestTemplate、HTTP Interface） | 无奈何杨（wnhyang）</title>
+<title>从LiteFlow来看Java SPI，与Spring框架有哪些相同的思想 | 无奈何杨（wnhyang）</title>
   
 
 
@@ -155,7 +159,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%98%E7%BD%91"><span class="nav-number">1.</span> <span class="nav-text">官网</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#restclient"><span class="nav-number">2.</span> <span class="nav-text">RestClient</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA"><span class="nav-number">2.1.</span> <span class="nav-text">创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8"><span class="nav-number">2.2.</span> <span class="nav-text">使用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#webclient"><span class="nav-number">3.</span> <span class="nav-text">WebClient</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#resttemplate"><span class="nav-number">4.</span> <span class="nav-text">RestTemplate</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#http-interface"><span class="nav-number">5.</span> <span class="nav-text">HTTP Interface</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="nav-number">7.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#java-spi%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">Java SPI简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#liteflow%E7%9A%84spi%E5%AE%9E%E8%B7%B5"><span class="nav-number">2.</span> <span class="nav-text">LiteFlow的SPI实践</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#spipriority%E6%8E%A5%E5%8F%A3"><span class="nav-number">2.1.</span> <span class="nav-text">SpiPriority接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#springcmparoundaspect"><span class="nav-number">2.2.</span> <span class="nav-text">SpringCmpAroundAspect</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cmparoundaspectholder"><span class="nav-number">2.3.</span> <span class="nav-text">CmpAroundAspectHolder</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#spi%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="nav-number">3.</span> <span class="nav-text">SPI的优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E7%82%B9"><span class="nav-number">3.1.</span> <span class="nav-text">优点：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%BA%E7%82%B9"><span class="nav-number">3.2.</span> <span class="nav-text">缺点：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#spi%E4%B8%8Espring%E5%AF%B9%E6%AF%94"><span class="nav-number">4.</span> <span class="nav-text">SPI与Spring对比</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="nav-number">5.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -227,13 +231,6 @@
   </div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <a class="popular-posts-link" href="/article/70e0da6.html" rel="bookmark">
-        <time class="popular-posts-time">2024-03-24</time>
-        <br>
-      Spring6｜Spring Boot3有哪些HTTP客户端可以选择
-      </a>
-    </li>
-    <li class="popular-posts-item">
       <a class="popular-posts-link" href="/article/830d76f.html" rel="bookmark">
         <time class="popular-posts-time">2024-04-01</time>
         <br>
@@ -255,10 +252,17 @@
       </a>
     </li>
     <li class="popular-posts-item">
-      <a class="popular-posts-link" href="/article/c3f9479b.html" rel="bookmark">
-        <time class="popular-posts-time">2024-04-02</time>
+      <a class="popular-posts-link" href="/article/16f5a6c3.html" rel="bookmark">
+        <time class="popular-posts-time">2024-04-05</time>
         <br>
-      根据用户角色权限，渲染菜单的一个问题记录
+      风控系统之普通规则条件，使用LiteFlow实现
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/96219520.html" rel="bookmark">
+        <time class="popular-posts-time">2023-04-27</time>
+        <br>
+      自己写spring-boot-starter-xxx
       </a>
     </li>
   </ul>
@@ -282,7 +286,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/d9f6ee5e.html">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/294c2ce1.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -295,12 +299,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Spring6.1新特性，四种方式调用REST接口（RestClient、WebClient、RestTemplate、HTTP Interface） | 无奈何杨（wnhyang）">
+      <meta itemprop="name" content="从LiteFlow来看Java SPI，与Spring框架有哪些相同的思想 | 无奈何杨（wnhyang）">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Spring6.1新特性，四种方式调用REST接口（RestClient、WebClient、RestTemplate、HTTP Interface）
+          从LiteFlow来看Java SPI，与Spring框架有哪些相同的思想
         </h1>
 
         <div class="post-meta-container">
@@ -311,14 +315,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-03-19 19:27:37" itemprop="dateCreated datePublished" datetime="2024-03-19T19:27:37+08:00">2024-03-19</time>
+      <time title="创建时间：2024-04-18 18:59:36" itemprop="dateCreated datePublished" datetime="2024-04-18T18:59:36+08:00">2024-04-18</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-03-20 13:34:10" itemprop="dateModified" datetime="2024-03-20T13:34:10+08:00">2024-03-20</time>
+      <time title="修改时间：2024-04-19 08:46:31" itemprop="dateModified" datetime="2024-04-19T08:46:31+08:00">2024-04-19</time>
     </span>
 
   
@@ -335,14 +339,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>749</span>
+      <span>1.8k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
+      <span>7 分钟</span>
     </span>
 </div>
 
@@ -362,66 +366,98 @@ title="在线知识共享">在线知识共享</a></p>
 <p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
 Overview</a></p>
 <hr />
-<h1 id="官网">官网</h1>
-<p><a
-target="_blank" rel="noopener" href="https://docs.spring.io/spring-framework/reference/integration/rest-clients.html">REST
-Clients :: Spring Framework</a></p>
-<p>The Spring Framework provides the following choices for making calls
-to REST endpoints:</p>
-<ul>
-<li><a
-target="_blank" rel="noopener" href="https://docs.spring.io/spring-framework/reference/integration/rest-clients.html#rest-restclient">RestClient</a>
-- synchronous client with a fluent API.</li>
-<li><a
-target="_blank" rel="noopener" href="https://docs.spring.io/spring-framework/reference/integration/rest-clients.html#rest-webclient">WebClient</a>
-- non-blocking, reactive client with fluent API.</li>
-<li><a
-target="_blank" rel="noopener" href="https://docs.spring.io/spring-framework/reference/integration/rest-clients.html#rest-resttemplate">RestTemplate</a>
-- synchronous client with template method API.</li>
-<li><a
-target="_blank" rel="noopener" href="https://docs.spring.io/spring-framework/reference/integration/rest-clients.html#rest-http-interface">HTTP
-Interface</a> - annotated interface with generated, dynamic proxy
-implementation.</li>
-</ul>
-<h1 id="restclient">RestClient</h1>
-<p>官方描述：<code>RestClient</code>是一个同步<code>HTTP</code>客户端，它提供了一个现代、流畅的<code>API</code>。它提供了对<code>HTTP</code>库的抽象，允许从<code>Java</code>对象到<code>HTTP</code>请求的方便转换，以及从<code>HTTP</code>响应创建对象。</p>
-<p><code>Spring6.1</code>版本新特性。</p>
-<h2 id="创建">创建</h2>
-<p>创建<code>RestClient</code>非常简单，可以使用静态<code>create</code>方法，也可以使用<code>builder</code>创建，其提供了非常丰富的定制化选项，请求工厂、消息转换器、拦截器、默认头、请求初始化器等等，简单易懂。</p>
+<h1 id="java-spi简介"><code>Java SPI</code>简介</h1>
+<p>以下引用<code>AI</code>。</p>
+<p><code>Java SPI</code>（<code>Service Provider Interface</code>）是一种用于实现组件化的机制，它允许软件组件以插件的形式被发现和加载。在
+<code>Java</code> 中，<code>SPI</code>
+是通过在<code>META-INF/services</code>目录下的特定文件中声明服务提供者来实现的。</p>
+<p>下面是 <code>Java SPI</code> 的基本工作原理：</p>
+<ol type="1">
+<li>定义服务接口：首先，定义一个服务接口，该接口规定了一组方法或功能。</li>
+<li>实现服务提供者：然后，编写一个或多个实现了服务接口的具体类，这些类被称为服务提供者。</li>
+<li>创建服务配置文件：在 <code>META-INF/services</code>
+目录下创建一个以服务接口全限定名命名的文件，其中包含了实现了服务接口的具体类的全限定名。</li>
+<li>加载服务提供者：通过 <code>Java SPI</code> 机制，<code>Java</code>
+运行时会自动加载并实例化服务提供者，并将其注入到应用程序中，使得我们可以在运行时动态地发现和使用这些服务。</li>
+</ol>
 <span id="more"></span>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">RestClient</span> <span class="variable">defaultClient</span> <span class="operator">=</span> RestClient.create();</span><br><span class="line"><span class="type">RestClient</span> <span class="variable">customClient</span> <span class="operator">=</span> RestClient.builder()</span><br><span class="line">  .requestFactory(<span class="keyword">new</span> <span class="title class_">HttpComponentsClientHttpRequestFactory</span>())</span><br><span class="line">  .messageConverters(converters -&gt; converters.add(<span class="keyword">new</span> <span class="title class_">MyCustomMessageConverter</span>()))</span><br><span class="line">  .baseUrl(<span class="string">&quot;https://example.com&quot;</span>)</span><br><span class="line">  .defaultUriVariables(Map.of(<span class="string">&quot;variable&quot;</span>, <span class="string">&quot;foo&quot;</span>))</span><br><span class="line">  .defaultHeader(<span class="string">&quot;My-Header&quot;</span>, <span class="string">&quot;Foo&quot;</span>)</span><br><span class="line">  .requestInterceptor(myCustomInterceptor)</span><br><span class="line">  .requestInitializer(myCustomInitializer)</span><br><span class="line">  .build();</span><br></pre></td></tr></table></figure>
-<h2 id="使用">使用</h2>
-<p>使用<code>RestClient</code>更为简单，请求<code>URL</code>、<code>Header</code>、<code>Body</code>、相应<code>Response</code>接受、异常处理等等相当丰富简单。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">result</span> <span class="operator">=</span> customClient.get()</span><br><span class="line">        .uri(<span class="string">&quot;https://example.com/this-url-does-not-exist&quot;</span>)</span><br><span class="line">        .retrieve()</span><br><span class="line">        .onStatus((code) -&gt; code.value() / <span class="number">100</span> == <span class="number">4</span>, (request, response) -&gt; &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(response.getStatusCode() + <span class="string">&quot; &quot;</span> + response.getHeaders());</span><br><span class="line">        &#125;)</span><br><span class="line">        .body(String.class);</span><br></pre></td></tr></table></figure>
-<h1 id="webclient">WebClient</h1>
-<p><code>WebClient</code>是一个无阻塞、响应式的客户端，用于执行<code>HTTP</code>请求。它在<code>5.0</code>中引入，提供了<code>RestTemplate</code>的替代方案，支持同步、异步和流式传输场景。</p>
-<p>早在<code>Spring5</code>版本中就已经出现，创建方法和<code>RestClient</code>差不多，简单示例如下，其他详细内容可参考官网可<code>Java Doc</code>。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">WebClient</span> <span class="variable">webClient</span> <span class="operator">=</span> WebClient.builder().baseUrl(<span class="string">&quot;http://localhost:8081&quot;</span>).build();</span><br></pre></td></tr></table></figure>
-<h1 id="resttemplate">RestTemplate</h1>
+<h1
+id="liteflow的spi实践"><code>LiteFlow</code>的<code>SPI</code>实践</h1>
+<p>对于现在常见的各种<code>spring-boot-starter</code>通常都会有以下结构，<code>xxx-core</code>、<code>xxx-autoconfigure</code>、<code>spring-boot-autoconfiguare</code>等等。</p>
 <figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240316/image.8hg8hxyscl.webp"
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240418/image.2a4vomkplp.webp"
 alt="image" />
 <figcaption aria-hidden="true">image</figcaption>
 </figure>
-<p>相比于上面两位这个更是古老，也正因此更为常见，使用的更多。但是官网明确表示，推荐使用<code>RestClient</code>替换<code>RestTemplate</code>，甚至还细心的整理了替换方案，可知官方可能计划着在未来彻底废弃<code>RestTemplate</code>，也许哦。</p>
+<p>没错！就是自动装配，这也是我们使用<code>Spring Boot</code>最重要的原因之一。自动装配极大的简化了我们开发中的配置，从学习<code>Spring</code>到现在的<code>Spring Boot</code>我还是不敢讲我对此思想有怎样深刻的认识，包括现在，但我好像又确定有了一些理解，有点体会到这些思想的奥妙，就像当时大学时看着高数老师一点点推算微积分公式一样，有些着迷。</p>
+<p>回归正题。自动装配的原理可以自己去学习。</p>
+<p>各种框架为了占领市场，会推出各种框架的适配版本或是插件，都是为了加大影响力，为了证明自己的框架确实牛，什么环境都可以使用。</p>
+<p>所以从他们的源码项目中，都会有各种插件包，如<code>xxx-servlet</code>、<code>xxx-spring</code>、<code>xxx-solon</code>、<code>xxx-dubbo</code>等等。</p>
 <figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240316/image.2vei431ffj.webp"
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240418/image.6wqipc2pv6.webp"
 alt="image" />
 <figcaption aria-hidden="true">image</figcaption>
 </figure>
-<h1 id="http-interface">HTTP Interface</h1>
-<p>官方描述：<code>Spring Framework</code>允许您使用<code>@HttpExchange</code>方法将<code>HTTP</code>服务定义为<code>Java</code>接口。您可以将这样的接口传递给<code>HttpServiceProxyFactory</code>，以创建一个代理，该代理通过HTTP客户端（如<code>RestClient</code>或<code>WebClient</code>）执行请求。您还可以从<code>@Controller</code>实现用于服务器请求处理的接口。</p>
-<p>简单的来讲，可以类比为<code>OpenFeign</code>，使用方法是几乎一样的。</p>
+<p>如上是<code>LiteFlow</code>的源码项目，直接看<code>liteflow-core</code>下的<code>spi</code>包。</p>
 <figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240316/image.3razjjhvlr.webp"
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240418/image.1vyfxrz3me.webp"
 alt="image" />
 <figcaption aria-hidden="true">image</figcaption>
 </figure>
-<p>这个也是<code>Spring6</code>的特性，最开始官方支持了<code>WebFlux</code>的实现，后来才加入的<code>RestClient</code>和<code>RestTemplate</code>，使用方式如上图。</p>
-<p>方法级别的注解有下，是不是和使用<code>OpenFeign</code>时几乎一样了，其实不然，<code>@RequestHeader</code>、<code>@RequestBody</code>、<code>@PathVariable</code>、<code>@RequestParam</code>、<code>@CookieValue</code>等等也是支持的。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetExchange</span></span><br><span class="line"><span class="meta">@PostExchange</span></span><br><span class="line"><span class="meta">@PutExchange</span></span><br><span class="line"><span class="meta">@DeleteExchange</span></span><br><span class="line"><span class="meta">@PatchExchange</span></span><br></pre></td></tr></table></figure>
-<h1 id="小结">小结</h1>
-<p>可以说在<code>Spring6.1</code>之后再进行<code>REST</code>调用就有更加丰富的选择了，而且更加简单方便。</p>
+<p>其中<code>SpiPriority</code>为基础接口，通过<code>mac</code>快捷键<code>control + H</code>（<code>windows</code>为<code>ctrl + H</code>）查看其继承树，发现最终归结于三个类，<code>LocalXXX</code>、<code>SpringXXX</code>、<code>SolonXXX</code>，他们就是<code>LiteFlow</code>针对不同环境的<code>SPI</code>实现类。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240418/image.2h83k2v07j.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<h2 id="spipriority接口">SpiPriority接口</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Spi实现的优先级接口 数字越小优先级越高</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Bryan.Zhang</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> 2.6.11</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">SpiPriority</span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="type">int</span> <span class="title function_">priority</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>priority</code>接口在后面<code>Holder</code>中有用。</p>
+<p>所有实现方法都一样，所以举一个例子就够了。如下，是组件全局切面<code>spi</code>接口，他有三个实现，分别对应三个不同环境。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240418/image.99t56jw248.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<h2 id="springcmparoundaspect">SpringCmpAroundAspect</h2>
+<p><code>Spring</code>环境的实现类，我贴在这了，其他可以自行查看源码。</p>
+<p>三个不同的实现类，都重写了<code>priority</code>方法，分别对应返回2（<code>local</code>）、1（<code>spring</code>）、1（<code>solon</code>）。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Spring环境全局组件切面实现</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Bryan.Zhang</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> 2.6.11</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SpringCmpAroundAspect</span> <span class="keyword">implements</span> <span class="title class_">CmpAroundAspect</span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">beforeProcess</span><span class="params">(NodeComponent cmp)</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (ObjectUtil.isNotNull(ComponentScanner.cmpAroundAspect)) &#123;</span><br><span class="line">			ComponentScanner.cmpAroundAspect.beforeProcess(cmp);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">afterProcess</span><span class="params">(NodeComponent cmp)</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (ObjectUtil.isNotNull(ComponentScanner.cmpAroundAspect)) &#123;</span><br><span class="line">			ComponentScanner.cmpAroundAspect.afterProcess(cmp);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onSuccess</span><span class="params">(NodeComponent cmp)</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (ObjectUtil.isNotNull(ComponentScanner.cmpAroundAspect)) &#123;</span><br><span class="line">			ComponentScanner.cmpAroundAspect.onSuccess(cmp);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onError</span><span class="params">(NodeComponent cmp, Exception e)</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (ObjectUtil.isNotNull(ComponentScanner.cmpAroundAspect)) &#123;</span><br><span class="line">			ComponentScanner.cmpAroundAspect.onError(cmp, e);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> <span class="type">int</span> <span class="title function_">priority</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>实现SPI接口后需要在<code>META-INF/services</code>下声明。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240418/image.4ckocpt7sl.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<h2 id="cmparoundaspectholder">CmpAroundAspectHolder</h2>
+<p>如何获取对应环境下的全局拦截器呢？</p>
+<p>靠的就是<code>CmpAroundAspectHolder</code>，如下。</p>
+<p><code>ServiceLoader.load</code>用于加载<code>SPI</code>实现类，然后排序，获取首个作为当前环境的实例。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 组件全局拦截器SPI工厂类</span><br><span class="line"> *</span><br><span class="line"> * @author Bryan.Zhang</span><br><span class="line"> * @since 2.6.11</span><br><span class="line"> */</span><br><span class="line">public class CmpAroundAspectHolder &#123;</span><br><span class="line"></span><br><span class="line">	private static CmpAroundAspect cmpAroundAspect;</span><br><span class="line"></span><br><span class="line">	public static CmpAroundAspect loadCmpAroundAspect() &#123;</span><br><span class="line">		if (ObjectUtil.isNull(cmpAroundAspect)) &#123;</span><br><span class="line">			List&lt;CmpAroundAspect&gt; list = new ArrayList&lt;&gt;();</span><br><span class="line">			ServiceLoader.load(CmpAroundAspect.class).forEach(list::add);</span><br><span class="line">			list.sort(Comparator.comparingInt(CmpAroundAspect::priority));</span><br><span class="line">			cmpAroundAspect = list.get(0);</span><br><span class="line">		&#125;</span><br><span class="line">		return cmpAroundAspect;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static void clean() &#123;</span><br><span class="line">		cmpAroundAspect = null;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>啊？这样的吗？</p>
+<p>以下两个标题内容引用<code>AI</code>。</p>
+<h1 id="spi的优缺点">SPI的优缺点</h1>
+<p>上从上面看<code>spring</code>和<code>solon</code>的优先级都为1，本身这就是不同的环境，应当不存在同时依赖的情况的！？</p>
+<p>应该吧！</p>
+<h2 id="优点">优点：</h2>
+<ol type="1">
+<li>松耦合：SPI将服务接口和具体实现解耦，使得应用程序不需要硬编码特定的实现类，从而提高了代码的灵活性和可维护性。</li>
+<li>模块化：通过SPI，应用程序可以轻松地添加、删除或替换服务的实现，而无需修改现有的代码，从而实现了模块化和可插拔的设计。</li>
+<li>可扩展性：SPI允许在运行时动态地发现和加载服务的实现，使得应用程序可以在不重新编译或重新部署的情况下扩展功能。</li>
+<li>标准化：SPI是Java标准库中的一部分，因此遵循了一定的标准和约定，使得开发者可以按照统一的方式实现和使用服务提供者。</li>
+</ol>
+<h2 id="缺点">缺点：</h2>
+<ol type="1">
+<li>发现机制的限制：SPI的发现机制是基于Java的类加载机制的，它要求服务提供者的实现类必须被放置在特定的位置，并且需要符合一定的命名约定，这限制了一些灵活性和自由度。</li>
+<li>单一实现：SPI的标准机制只能支持单一的实现，如果一个服务接口有多个实现类，就需要额外的手段来处理，比如自定义解析配置文件等。</li>
+<li>可见性和权限：在某些情况下，由于类加载器的限制，SPI可能无法访问到某些服务提供者的实现类，导致无法正确加载服务。</li>
+<li>运行时性能开销：SPI的动态发现和加载机制可能会引入一定的运行时性能开销，尤其是在服务提供者数量较多的情况下。</li>
+</ol>
+<h1 id="spi与spring对比"><code>SPI</code>与<code>Spring</code>对比</h1>
+<p><code>SPI</code>（<code>Service Provider Interface</code>）是<code>Java</code>中的一种设计模式，用于实现模块化的可扩展性。它允许定义服务接口，而不关心具体的实现，然后通过在运行时发现和加载服务的实现来扩展应用程序的功能。<code>SPI</code>
+的核心思想是将服务的定义和实现解耦，使得应用程序可以在不修改代码的情况下轻松地添加新的服务实现。</p>
+<p><code>Spring</code>框架中的思想与<code>SPI</code>有一些相似之处，尤其是在扩展和定制方面。<code>Spring</code>提供了许多扩展点和插件机制，允许开发人员通过实现特定的接口或继承特定的类来定制和扩展框架的功能。</p>
+<p>总的来说，<code>SPI</code>和<code>Spring</code>框架都倡导松耦合、模块化和可扩展性，通过定义接口和提供扩展点来实现这些目标。因此，可以说它们在思想上是相近的。</p>
 <h1 id="写在最后">写在最后</h1>
 <p>拙作艰辛，字句心血，望诸君垂青，多予支持，不胜感激。</p>
 <hr />
@@ -469,7 +505,7 @@ Overview</a></p>
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://wnhyang.github.io/article/d9f6ee5e.html" title="Spring6.1新特性，四种方式调用REST接口（RestClient、WebClient、RestTemplate、HTTP Interface）">https://wnhyang.github.io/article/d9f6ee5e.html</a>
+      <a href="https://wnhyang.github.io/article/294c2ce1.html" title="从LiteFlow来看Java SPI，与Spring框架有哪些相同的思想">https://wnhyang.github.io/article/294c2ce1.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -517,20 +553,18 @@ Overview</a></p>
           <div class="post-tags">
               <a href="/tags/Spring-Boot/" rel="tag"># Spring Boot</a>
               <a href="/tags/Spring-Framework/" rel="tag"># Spring Framework</a>
+              <a href="/tags/Java/" rel="tag"># Java</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/article/bf7337ce.html" rel="prev" title="MybatisPlus-Generator自定义模版生成CRUD、DTO、VO、Convert等">
-                  <i class="fa fa-chevron-left"></i> MybatisPlus-Generator自定义模版生成CRUD、DTO、VO、Convert等
+                <a href="/article/d9d9e82e.html" rel="prev" title="风控系统/规则引擎，策略集/策略/规则组/规则是什么？都有哪些功能？">
+                  <i class="fa fa-chevron-left"></i> 风控系统/规则引擎，策略集/策略/规则组/规则是什么？都有哪些功能？
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/article/fbbfb352.html" rel="next" title="微服务跨域问题｜The 'Access-Control-Allow-Origin' header contains multiple values">
-                  微服务跨域问题｜The 'Access-Control-Allow-Origin' header contains multiple values <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -645,7 +679,7 @@ Overview</a></p>
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://wnhyang.github.io/article/d9f6ee5e.html"}</script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://wnhyang.github.io/article/294c2ce1.html"}</script>
   <script src="/js/third-party/quicklink.js"></script>
 
 </body>

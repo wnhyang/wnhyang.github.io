@@ -96,7 +96,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">45</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">185</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">45</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">186</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -161,7 +161,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">185</span>
+          <span class="site-state-item-count">186</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -227,6 +227,126 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/294c2ce1.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+      <meta itemprop="description" content="热爱、分享、生活">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/article/294c2ce1.html" class="post-title-link" itemprop="url">从LiteFlow来看Java SPI，与Spring框架有哪些相同的思想</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-04-18 18:59:36" itemprop="dateCreated datePublished" datetime="2024-04-18T18:59:36+08:00">2024-04-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-04-19 08:46:31" itemprop="dateModified" datetime="2024-04-19T08:46:31+08:00">2024-04-19</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>7 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>个人博客：<a
+href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
+<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
+title="wnhyang">wnhyang</a></p>
+<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
+title="在线知识共享">在线知识共享</a></p>
+<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
+Overview</a></p>
+<hr />
+<h1 id="java-spi简介"><code>Java SPI</code>简介</h1>
+<p>以下引用<code>AI</code>。</p>
+<p><code>Java SPI</code>（<code>Service Provider Interface</code>）是一种用于实现组件化的机制，它允许软件组件以插件的形式被发现和加载。在
+<code>Java</code> 中，<code>SPI</code>
+是通过在<code>META-INF/services</code>目录下的特定文件中声明服务提供者来实现的。</p>
+<p>下面是 <code>Java SPI</code> 的基本工作原理：</p>
+<ol type="1">
+<li>定义服务接口：首先，定义一个服务接口，该接口规定了一组方法或功能。</li>
+<li>实现服务提供者：然后，编写一个或多个实现了服务接口的具体类，这些类被称为服务提供者。</li>
+<li>创建服务配置文件：在 <code>META-INF/services</code>
+目录下创建一个以服务接口全限定名命名的文件，其中包含了实现了服务接口的具体类的全限定名。</li>
+<li>加载服务提供者：通过 <code>Java SPI</code> 机制，<code>Java</code>
+运行时会自动加载并实例化服务提供者，并将其注入到应用程序中，使得我们可以在运行时动态地发现和使用这些服务。</li>
+</ol>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/article/294c2ce1.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/d9d9e82e.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -263,7 +383,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-04-11 08:42:53" itemprop="dateModified" datetime="2024-04-11T08:42:53+08:00">2024-04-11</time>
+      <time title="修改时间：2024-04-11 08:44:44" itemprop="dateModified" datetime="2024-04-11T08:44:44+08:00">2024-04-11</time>
     </span>
 
   
@@ -622,7 +742,7 @@ alt="image" />
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-04-05 14:53:18" itemprop="dateModified" datetime="2024-04-05T14:53:18+08:00">2024-04-05</time>
+      <time title="修改时间：2024-04-18 10:51:58" itemprop="dateModified" datetime="2024-04-18T10:51:58+08:00">2024-04-18</time>
     </span>
 
   
@@ -666,69 +786,14 @@ Overview</a></p>
 alt="image" />
 <figcaption aria-hidden="true">image</figcaption>
 </figure>
-<!--- more -->
-<p>后端返回的树形结构数据如下图所示。</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240401/image.9gwcdml52w.webp"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
-</figure>
-<p>在已有的<code>Element</code>、<code>ant-vue</code>等前端框架中这种组件都是有的，用起来也是非常简单。</p>
-<p><a
-target="_blank" rel="noopener" href="https://2x.antdv.com/components/tree-cn#components-tree-demo-search">Ant
-Design Vue</a></p>
-<h1 id="问题">问题</h1>
-<p>现在需求是这样的，如上图菜单搜索有两个条件，状态和菜单名称，在查询菜单时需要通过模糊匹配菜单名称和精确匹配菜单状态来查询。这个本身很简单，问题是在树形菜单搜索时需要带上父菜单和子菜单，而不是只展示匹配到的菜单。</p>
-<p>如：搜索“用户”时应该有下面的结果，在查询到相关节点后同时带上父节点和子节点返回。</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240401/image.6f0gceut7f.webp"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
-</figure>
-<p><a
-target="_blank" rel="noopener" href="https://2x.antdv.com/components/tree-cn#components-tree-demo-search">Ant
-Design Vue</a>在这里前端组件是有这样的实现的，如下。</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240401/image.8s32tmanw7.webp"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
-</figure>
-<p>前端是有这样的实现，而且很简单，那么有没有后端的实现方案呢？</p>
-<h1 id="如何实现">如何实现</h1>
-<p>最直接的思路就是查询满足条件的菜单，然后去查这些菜单的父菜单和子菜单，讲起来很容易，但是这里要很注意重复节点和死循环。</p>
-<p>重复节点问题：同级菜单具有相同的父节点，在查完第一个子节点的父节点，将父节点收集后，查第二就没有必要的，可以省去。</p>
-<p>死循环：查子节点时不要再去查其父节点的子节点和父节点，有可能会死循环。</p>
-<p>下面贴上了所有代码仅供参考。</p>
-<h2 id="查询菜单列表">查询菜单列表</h2>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> List&lt;MenuTreeRespVO&gt; <span class="title function_">getMenuTreeList</span><span class="params">(MenuListVO reqVO)</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 1、查询所有菜单</span></span><br><span class="line">    List&lt;MenuPO&gt; all = menuMapper.selectList();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2、查询满足条件的菜单</span></span><br><span class="line">    List&lt;MenuPO&gt; menus = menuMapper.selectList(reqVO);</span><br><span class="line">    Set&lt;Long&gt; menuIds = menus.stream().map(MenuPO::getId).collect(Collectors.toSet());</span><br><span class="line"></span><br><span class="line">    Set&lt;MenuPO&gt; menuSet = findMenusWithParentsOrChildrenByIds(all, menuIds, <span class="literal">true</span>, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3、形成树形结合</span></span><br><span class="line">    <span class="keyword">return</span> buildMenuTree(<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(menuSet), <span class="literal">false</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="查询菜单的父子菜单">查询菜单的父/子菜单</h2>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 查找菜单的父/子菜单集合</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> all          所有菜单</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> menuIds      需要的菜单集合</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> withParent   是否包含父菜单</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> withChildren 是否包含子菜单</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> 结果</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> Set&lt;MenuPO&gt; <span class="title function_">findMenusWithParentsOrChildrenByIds</span><span class="params">(List&lt;MenuPO&gt; all, Set&lt;Long&gt; menuIds, <span class="type">boolean</span> withParent, <span class="type">boolean</span> withChildren)</span> &#123;</span><br><span class="line">    Map&lt;Long, MenuPO&gt; menuMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (MenuPO menu : all) &#123;</span><br><span class="line">        menuMap.put(menu.getId(), menu);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用LinkedHashSet保持插入顺序</span></span><br><span class="line">    Set&lt;MenuPO&gt; result = <span class="keyword">new</span> <span class="title class_">LinkedHashSet</span>&lt;&gt;();</span><br><span class="line">    <span class="comment">// 存储已处理过的菜单ID</span></span><br><span class="line">    Set&lt;Long&gt; processedIds = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (Long menuId : menuIds) &#123;</span><br><span class="line">        <span class="keyword">if</span> (withParent) &#123;</span><br><span class="line">            collectMenuParents(result, menuMap, menuId, processedIds);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (withChildren) &#123;</span><br><span class="line">            collectMenuChildren(result, menuMap, menuId);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="递归查找当前菜单的所有父菜单">递归查找当前菜单的所有父菜单</h2>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 递归查找当前菜单的所有父菜单</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> resultSet    结果</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> menuMap      menuMap</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> menuId       需要的菜单id</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> processedIds 存储已处理过的菜单id</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">collectMenuParents</span><span class="params">(Set&lt;MenuPO&gt; resultSet, Map&lt;Long, MenuPO&gt; menuMap, Long menuId, Set&lt;Long&gt; processedIds)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (processedIds.contains(menuId)) &#123;</span><br><span class="line">        <span class="keyword">return</span>; <span class="comment">// 如果已经处理过此菜单，则不再处理</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    processedIds.add(menuId);</span><br><span class="line">    <span class="type">MenuPO</span> <span class="variable">menu</span> <span class="operator">=</span> menuMap.get(menuId);</span><br><span class="line">    <span class="keyword">if</span> (menu != <span class="literal">null</span>) &#123;</span><br><span class="line">        resultSet.add(menu);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 如果当前菜单不是根节点（即parentId不为0），继续查找其父菜单</span></span><br><span class="line">        <span class="keyword">if</span> (!Objects.equals(menu.getParentId(), ID_ROOT) &amp;&amp; !processedIds.contains(menu.getParentId())) &#123;</span><br><span class="line">            collectMenuParents(resultSet, menuMap, menu.getParentId(), processedIds);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="递归查找当前菜单的所有子菜单">递归查找当前菜单的所有子菜单</h2>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 递归查找当前菜单的所有子菜单</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> resultSet 结果</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> menuMap   menuMap</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> menuId    需要的菜单id</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">collectMenuChildren</span><span class="params">(Set&lt;MenuPO&gt; resultSet, Map&lt;Long, MenuPO&gt; menuMap, Long menuId)</span> &#123;</span><br><span class="line">    <span class="type">MenuPO</span> <span class="variable">menu</span> <span class="operator">=</span> menuMap.get(menuId);</span><br><span class="line">    <span class="keyword">if</span> (menu != <span class="literal">null</span>) &#123;</span><br><span class="line">        resultSet.add(menu);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 添加当前菜单的所有子菜单</span></span><br><span class="line">        <span class="keyword">for</span> (MenuPO child : menuMap.values()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (child.getParentId().equals(menu.getId())) &#123;</span><br><span class="line">                collectMenuChildren(resultSet, menuMap, child.getId());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="构建菜单树">构建菜单树</h2>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> List&lt;MenuTreeRespVO&gt; <span class="title function_">buildMenuTree</span><span class="params">(List&lt;MenuPO&gt; menuList, <span class="type">boolean</span> removeButton)</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (removeButton) &#123;</span><br><span class="line">        <span class="comment">// 移除按钮</span></span><br><span class="line">        menuList.removeIf(menu -&gt; menu.getType().equals(MenuType.BUTTON.getType()));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    List&lt;MenuTreeRespVO&gt; convert = MenuConvert.INSTANCE.convert2TreeRespList(menuList);</span><br><span class="line"></span><br><span class="line">    Map&lt;Long, MenuTreeRespVO&gt; menuTreeMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (MenuTreeRespVO menu : convert) &#123;</span><br><span class="line">        menuTreeMap.put(menu.getId(), menu);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    menuTreeMap.values().stream().filter(menu -&gt; !ID_ROOT.equals(menu.getParentId())).forEach(childMenu -&gt; &#123;</span><br><span class="line">                <span class="type">MenuTreeRespVO</span> <span class="variable">parentMenu</span> <span class="operator">=</span> menuTreeMap.get(childMenu.getParentId());</span><br><span class="line">                <span class="keyword">if</span> (parentMenu == <span class="literal">null</span>) &#123;</span><br><span class="line">                    log.info(<span class="string">&quot;id:&#123;&#125; 找不到父菜单 parentId:&#123;&#125;&quot;</span>, childMenu.getId(), childMenu.getParentId());</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 将自己添加到父节点中</span></span><br><span class="line">                <span class="keyword">if</span> (parentMenu.getChildren() == <span class="literal">null</span>) &#123;</span><br><span class="line">                    parentMenu.setChildren(<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;());</span><br><span class="line">                &#125;</span><br><span class="line">                parentMenu.getChildren().add(childMenu);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> menuTreeMap.values().stream().filter(menu -&gt; ID_ROOT.equals(menu.getParentId())).collect(Collectors.toList());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="总结">总结</h1>
-<p>基于以上后端查询树形菜单的代码就可以实现“筛选树形菜单时关联其父节点和子节点”了，效果还是可以的。</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240401/image.39kydhmwdr.webp"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
-</figure>
-<h1 id="写在最后">写在最后</h1>
-<p>拙作艰辛，字句心血，望诸君垂青，多予支持，不胜感激。</p>
-<hr />
-<p>个人博客：<a
-href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
-<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
-title="wnhyang">wnhyang</a></p>
-<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
-title="在线知识共享">在线知识共享</a></p>
-<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
-Overview</a></p>
-<p><img data-src="https://wnhyang.github.io/images/wechat_channel.webp" /></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/article/830d76f.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1359,123 +1424,6 @@ class="math inline">\({客户号}关联\)</span>{设备mac地址}的次数</li>
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/61a8fda5.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-      <meta itemprop="description" content="热爱、分享、生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/61a8fda5.html" class="post-title-link" itemprop="url">可配置输入参数的接口如何设计</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-03-06 21:06:44" itemprop="dateCreated datePublished" datetime="2024-03-06T21:06:44+08:00">2024-03-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-03-07 10:04:32" itemprop="dateModified" datetime="2024-03-07T10:04:32+08:00">2024-03-07</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.7k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>6 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>个人博客：<a
-href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
-<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
-title="wnhyang">wnhyang</a></p>
-<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
-title="在线知识共享">在线知识共享</a></p>
-<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
-Overview</a></p>
-<hr />
-<p>作为程序员，我们绝大多数场景需要根据业务需求来设计系统，开发后端接口，这些接口通常都是在设计阶段就确定了，但是还有一些场景需要实现支持的配置的接口，包含以下功能</p>
-<p>1、可以配置接口<code>url</code></p>
-<p>这个通常在一些论坛博客类系统中比较常见，用于设置个人主页，但其实这个又是不同概念，个人主页通常是<code>get</code>请求，然后通过<code>path</code>索引用户主页。</p>
-<p>2、可选择接口具体实现</p>
-<p>流程引擎、规则引擎通常就可以实现</p>
-<p>3、输入参数和输出参数可配置</p>
-<p>应用场景包括数据收集等</p>
-<p>前面乱讲一通，最终回归本题——可配置输入参数的接口如何设计？</p>
-<h1 id="ai的回答">AI的回答</h1>
-<p>以下是<code>AI</code>的回答——可配置输入参数的接口如何设计？</p>
-<p>设计支持可配置输入参数的接口时，主要目标是保证接口的灵活性和易用性，同时兼顾健壮性和可维护性。以下是一个通用的设计策略：</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/article/61a8fda5.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1501,14 +1449,14 @@ Overview</a></p>
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">232k</span>
+    <span title="站点总字数">234k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">14:05</span>
+    <span title="站点阅读时长">14:11</span>
   </span>
 </div>
 <div class="busuanzi-count">
