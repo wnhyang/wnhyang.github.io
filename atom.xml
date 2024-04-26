@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2024-04-19T00:46:31.683Z</updated>
+  <updated>2024-04-26T06:54:01.138Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,79 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>身份证/手机号解析服务</title>
+    <link href="https://wnhyang.github.io/article/fd200765.html"/>
+    <id>https://wnhyang.github.io/article/fd200765.html</id>
+    <published>2024-04-26T06:34:21.000Z</published>
+    <updated>2024-04-26T06:54:01.138Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;个人博客：&lt;a
+href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
+title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
+title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
+Overview&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;figure&gt;
+&lt;img data-src=&quot;https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240426/image.7sn0fxkiyg.webp&quot;
+alt=&quot;image&quot; /&gt;
+&lt;figcaption aria-hidden=&quot;true&quot;&gt;image&lt;/figcaption&gt;
+&lt;/figure&gt;</summary>
+    
+    
+    
+    
+    <category term="项目实战" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>风控系统之数据服务，名单、标签、IP、设备、地理信息、征信等</title>
+    <link href="https://wnhyang.github.io/article/837eb52d.html"/>
+    <id>https://wnhyang.github.io/article/837eb52d.html</id>
+    <published>2024-04-26T06:28:41.000Z</published>
+    <updated>2024-04-26T06:32:14.601Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;个人博客：&lt;a
+href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
+title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
+title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
+Overview&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h1 id=&quot;提要&quot;&gt;提要&lt;/h1&gt;
+&lt;p&gt;早些年，“马云提出，人类已经从&lt;code&gt;IT&lt;/code&gt;时代走向&lt;code&gt;DT&lt;/code&gt;时代，&lt;code&gt;IT&lt;/code&gt;时代是以自我控制、自我管理为主，而&lt;code&gt;DT&lt;/code&gt;(&lt;code&gt;Data technology&lt;/code&gt;)时代，它是以服务大众、激发生产力为主的技术。这两者之间看起来似乎是一种技术的差异，但实际上是思想观念层面的差异。”&lt;/p&gt;
+&lt;p&gt;在这样一个我们自己都不如大数据了解自己的时代，应该都深有体会吧。&lt;/p&gt;
+&lt;p&gt;那么，在风控系统中数据有哪些，他们在风控系统中如何应用？&lt;/p&gt;
+&lt;p&gt;参考：&lt;/p&gt;
+&lt;p&gt;&lt;a
+href=&quot;https://zhuanlan.zhihu.com/p/122996523&quot;&gt;智能风控筑基手册：全面了解风控决策引擎&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;以下两图都来源于此&lt;/p&gt;
+&lt;figure&gt;
+&lt;img data-src=&quot;https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240426/image.32hrhiowx2.webp&quot;
+alt=&quot;image&quot; /&gt;
+&lt;figcaption aria-hidden=&quot;true&quot;&gt;image&lt;/figcaption&gt;
+&lt;/figure&gt;</summary>
+    
+    
+    
+    
+    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>从LiteFlow来看Java SPI，与Spring框架有哪些相同的思想</title>
     <link href="https://wnhyang.github.io/article/294c2ce1.html"/>
     <id>https://wnhyang.github.io/article/294c2ce1.html</id>
     <published>2024-04-18T10:59:36.000Z</published>
-    <updated>2024-04-19T00:46:31.683Z</updated>
+    <updated>2024-04-19T00:46:50.310Z</updated>
     
     
     <summary type="html">&lt;p&gt;个人博客：&lt;a
@@ -746,81 +814,6 @@ title=&quot;Sa-Token组件介绍&quot;&gt;Sa-Token组件介绍&lt;/a&gt;，基�
 alt=&quot;登录成功后redis的数据&quot; /&gt;
 &lt;figcaption aria-hidden=&quot;true&quot;&gt;登录成功后redis的数据&lt;/figcaption&gt;
 &lt;/figure&gt;</summary>
-    
-    
-    
-    
-    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
-    
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>个人免费Github图床PicX介绍与使用</title>
-    <link href="https://wnhyang.github.io/article/f74e4826.html"/>
-    <id>https://wnhyang.github.io/article/f74e4826.html</id>
-    <published>2024-01-23T10:10:13.000Z</published>
-    <updated>2024-01-23T11:49:49.988Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;个人博客：&lt;a
-href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
-title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
-title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
-Overview&lt;/a&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h1 id=&quot;前言&quot;&gt;前言&lt;/h1&gt;
-&lt;p&gt;借用&lt;code&gt;AI&lt;/code&gt;回答“图床是什么？”&lt;/p&gt;
-&lt;p&gt;图床是一种网络服务，它提供在线存储图片的空间，用户可以将自己的图片上传到图床服务器上，并获取该图片的网络链接（URL）。这个链接可以直接在网页、论坛、博客、社交媒体等地方使用，当访问者打开含有该链接的页面时，浏览器会从图床服务器加载图片并显示在对应位置。通过使用图床，用户可以减轻自己网站服务器的存储和带宽压力，同时提高内容加载速度，尤其是对于那些希望快速展示大量图片但自身服务器资源有限的情况。&lt;/p&gt;
-&lt;p&gt;图床通常具有以下特点：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;提供上传接口：可以通过网页端、客户端工具或API进行图片上传。&lt;/li&gt;
-&lt;li&gt;链接生成与管理：上传成功后自动生成可公开访问的链接，有的还支持防盗链、链接有效期等功能。&lt;/li&gt;
-&lt;li&gt;存储空间大小限制：免费图床可能有存储空间或流量的限制，付费图床则通常提供更多存储和更快的访问速度。&lt;/li&gt;
-&lt;li&gt;可能提供的额外服务：如缩略图生成、图片处理（裁剪、压缩等）、CDN加速以优化全球访问速度等。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;常见的图床服务商包括但不限于新浪图床、SM.MS、Imgur、七牛云、腾讯云COS、阿里云OSS、又拍云等。&lt;/p&gt;
-&lt;p&gt;对于我而言，使用图床的最大目的就是应用于&lt;a
-href=&quot;https://wnhyang.github.io/&quot;&gt;个人博客&lt;/a&gt;。对于个人需求不大的，且几乎无商业性质的，诉求还是希望是免费、简单、稳定的。下面就此要求介绍和使用&lt;a
-href=&quot;https://github.com/XPoet/picx&quot;&gt;PicX&lt;/a&gt;图床。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="软件&amp;工具" scheme="https://wnhyang.github.io/tags/%E8%BD%AF%E4%BB%B6-%E5%B7%A5%E5%85%B7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Sa-Token组件介绍</title>
-    <link href="https://wnhyang.github.io/article/617190b0.html"/>
-    <id>https://wnhyang.github.io/article/617190b0.html</id>
-    <published>2024-01-20T10:16:38.000Z</published>
-    <updated>2024-01-20T10:32:20.606Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;个人博客：&lt;a
-href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
-title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
-title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
-Overview&lt;/a&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;前文讲了&lt;a href=&quot;https://www.yuque.com/wnh/share/swon1eb8t5v1bny1&quot;
-title=&quot;Sa-Token介绍与SpringBoot环境下使用&quot;&gt;Sa-Token介绍与SpringBoot环境下使用&lt;/a&gt;，但是&lt;code&gt;satoken&lt;/code&gt;最重要的登录鉴权直接略过了，那这篇文章就开讲，😂当然不是啦。看标题就知道这次要讲的是&lt;code&gt;satoken&lt;/code&gt;组件，为什么这么安排呢，是因为我在细致了解&lt;code&gt;satoken&lt;/code&gt;源码后，还是非常想把&lt;code&gt;satoken&lt;/code&gt;讲的比较清楚细致的，包含其中一些设计模式的使用、函数式接口的应用、组件注册的方法等，而要讲好这些，&lt;code&gt;satoken&lt;/code&gt;的组件一定要讲一下吧，废话不多说了，下面开始。&lt;/p&gt;
-&lt;p&gt;必要声明：文章基于&lt;a
-href=&quot;https://sa-token.cc/&quot;&gt;Sa-Token&lt;/a&gt;，版本1.37.0&lt;/p&gt;
-&lt;h1 id=&quot;satoken项目结构&quot;&gt;satoken项目结构&lt;/h1&gt;
-&lt;h2 id=&quot;下载源码&quot;&gt;下载源码&lt;/h2&gt;
-&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git clone https://github.com/dromara/Sa-Token.git&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;项目结构介绍&quot;&gt;项目结构介绍&lt;/h2&gt;
-&lt;p&gt;项目结构组织如下，结构还是相当清晰明了的。我也不可能把所有工程代码详细都讲一下，只能根据&lt;code&gt;satoken&lt;/code&gt;最重要的模块挑一部分细致讲一下。&lt;/p&gt;</summary>
     
     
     
