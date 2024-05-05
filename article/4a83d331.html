@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="google-site-verification" content="4zmc5dCOR7a63YXOZx4mwqsC5dPpr0m2iWeI12w6wng">
+  <meta name="baidu-site-verification" content="fe6bba1d0d4e906fed87c9f7c2d1d09d">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="个人博客：无奈何杨（wnhyang） 个人语雀：wnhyang 共享语雀：在线知识共享 Github：wnhyang - Overview  简介 放在前面，怕有些人看不下去错过，整合了身份证&#x2F;手机号&#x2F;IP&#x2F;GPS解析的工具将在下一篇文章推出，并将全部数据和代码放在Github和Gitee上。 接着前一篇的的身份证&#x2F;手机号解析服务，其四者难度对比是这样的，身份证 &lt; 手机号 &lt; IP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IP&#x2F;GPS解析服务，ip2region，逆地理编码">
+<meta property="og:url" content="https://wnhyang.github.io/article/4a83d331.html">
+<meta property="og:site_name" content="无奈何杨（wnhyang）">
+<meta property="og:description" content="个人博客：无奈何杨（wnhyang） 个人语雀：wnhyang 共享语雀：在线知识共享 Github：wnhyang - Overview  简介 放在前面，怕有些人看不下去错过，整合了身份证&#x2F;手机号&#x2F;IP&#x2F;GPS解析的工具将在下一篇文章推出，并将全部数据和代码放在Github和Gitee上。 接着前一篇的的身份证&#x2F;手机号解析服务，其四者难度对比是这样的，身份证 &lt; 手机号 &lt; IP">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240429/image.4912ueojby.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240429/image.3uun3lm6w3.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240429/image.77dcxzs8n1.webp">
+<meta property="og:image" content="https://wnhyang.github.io/images/wechat_channel.webp">
+<meta property="article:published_time" content="2024-04-29T06:29:15.000Z">
+<meta property="article:modified_time" content="2024-04-30T07:27:31.677Z">
+<meta property="article:author" content="无奈何杨（wnhyang）">
+<meta property="article:tag" content="项目实战">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240429/image.4912ueojby.webp">
+
+
+<link rel="canonical" href="https://wnhyang.github.io/article/4a83d331.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wnhyang.github.io/article/4a83d331.html","path":"article/4a83d331.html","title":"IP/GPS解析服务，ip2region，逆地理编码"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>IP/GPS解析服务，ip2region，逆地理编码 | 无奈何杨（wnhyang）</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="无奈何杨（wnhyang）" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">无奈何杨（wnhyang）</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">I will keep to fight</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">45</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">190</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ip%E8%A7%A3%E6%9E%90"><span class="nav-number">2.</span> <span class="nav-text">IP解析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#gps%E8%A7%A3%E6%9E%90"><span class="nav-number">3.</span> <span class="nav-text">GPS解析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%86%E5%9C%B0%E7%90%86%E7%BC%96%E7%A0%81%E5%9C%A8%E7%BA%BFapi%E7%B2%BE%E5%BA%A6%E9%AB%98%E4%B8%B0%E5%AF%8C%E6%95%B0%E6%8D%AE%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E9%99%90%E5%88%B6%E4%BB%98%E8%B4%B9"><span class="nav-number">3.1.</span> <span class="nav-text">逆地理编码在线API（精度高、丰富数据、普通用户限制、付费）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E7%A6%BB%E7%BA%BF%E6%96%B9%E6%A1%88"><span class="nav-number">3.2.</span> <span class="nav-text">一些离线方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B7%9D%E7%A6%BB%E8%AE%A1%E7%AE%97%E6%AF%94%E8%BE%83%E6%8B%A9%E4%BC%98%E8%84%B1%E7%A6%BB%E5%8C%BA%E5%88%92%E6%95%B0%E6%8D%AE%E7%81%B5%E6%B4%BB%E7%A6%BB%E7%BA%BF"><span class="nav-number">3.3.</span> <span class="nav-text">距离计算，比较择优（脱离区划、数据灵活、离线）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E5%90%8E%E9%A2%84%E5%91%8A%E4%B8%80%E4%B8%8B"><span class="nav-number">4.</span> <span class="nav-text">最后预告一下</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="nav-number">5.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="无奈何杨（wnhyang）"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">无奈何杨（wnhyang）</p>
+  <div class="site-description" itemprop="description">热爱、分享、生活</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">190</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wnhyang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wnhyang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/wnhyang" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;wnhyang" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wnhyang@qq.com" title="E-Mail → mailto:wnhyang@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://www.yuque.com/wnh/share" title="https:&#x2F;&#x2F;www.yuque.com&#x2F;wnh&#x2F;share" rel="noopener" target="_blank">语雀分享</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://github.com/wnhyang" title="https:&#x2F;&#x2F;github.com&#x2F;wnhyang" rel="noopener" target="_blank">GitHub</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.zhihu.com/people/wnhyang" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;wnhyang" rel="noopener" target="_blank">知乎</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        <div class="sidebar-inner sidebar-post-related">
+          <div class="animated">
+              <div class="links-of-blogroll-title"><i class="fa fa-signs-post fa-fw"></i>
+    相关文章
+  </div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/fd200765.html" rel="bookmark">
+        <time class="popular-posts-time">2024-04-26</time>
+        <br>
+      身份证/手机号解析服务
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/830d76f.html" rel="bookmark">
+        <time class="popular-posts-time">2024-04-01</time>
+        <br>
+      筛选树形菜单时关联其父节点和子节点
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/bf7337ce.html" rel="bookmark">
+        <time class="popular-posts-time">2024-03-16</time>
+        <br>
+      MybatisPlus-Generator自定义模版生成CRUD、DTO、VO、Convert等
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/a2229281.html" rel="bookmark">
+        <time class="popular-posts-time">2024-03-03</time>
+        <br>
+      使用了智能表格后，不禁感叹现在的生产力工具真牛！
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/cf08a8bf.html" rel="bookmark">
+        <time class="popular-posts-time">2024-02-22</time>
+        <br>
+      Sa-Token事件发布，观察者模式
+      </a>
+    </li>
+  </ul>
+
+          </div>
+        </div>
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/4a83d331.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+      <meta itemprop="description" content="热爱、分享、生活">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="IP/GPS解析服务，ip2region，逆地理编码 | 无奈何杨（wnhyang）">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          IP/GPS解析服务，ip2region，逆地理编码
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-04-29 14:29:15" itemprop="dateCreated datePublished" datetime="2024-04-29T14:29:15+08:00">2024-04-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-04-30 15:27:31" itemprop="dateModified" datetime="2024-04-30T15:27:31+08:00">2024-04-30</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>10 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>个人博客：<a
+href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
+<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
+title="wnhyang">wnhyang</a></p>
+<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
+title="在线知识共享">在线知识共享</a></p>
+<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
+Overview</a></p>
+<hr />
+<h1 id="简介">简介</h1>
+<p>放在前面，怕有些人看不下去错过，整合了身份证/手机号/<code>IP</code>/<code>GPS</code>解析的工具将在下一篇文章推出，并将全部数据和代码放在<code>Github</code>和<code>Gitee</code>上。</p>
+<p>接着前一篇的的<a
+target="_blank" rel="noopener" href="https://www.yuque.com/wnh/share/vw03pm5x88atva56">身份证/手机号解析服务</a>，其四者难度对比是这样的，身份证
+&lt; 手机号 &lt; <code>IP</code> &lt;
+<code>GPS</code>。也比较好理解，毕竟是从点到线再到面，难度可想而知。<code>GPS</code>用词可能不当，我还是解释一下，这里的意思是指通过经纬度解析到行政区划/地理信息，也可以讲是逆地理编码。</p>
+<p>身份证和手机号都相对简单，数据本身不大，而且规则也比较清晰，所以比较容易。相比之下<code>IP</code>和<code>GPS</code>的难度就大了太多了，<code>IP</code>从<code>v4</code>到<code>v6</code>已经是数据量的极大扩展，而且这些数据很难获取，对于<code>ISP</code>拥有的<code>IP</code>范围匹配又是很大的难题，是需要算法设计的。好像我一直都是这样，简单的事做着没意思，困难的事情又不知道怎么做，还没开始就准备放弃了。就跟打游戏一样，碾压式的赢没有快感，被碾压的输又没有乐趣，只有均式相持拼尽全力的赢才是畅快。回到正题，身份证和手机都是有规律的，不管是数据的管理和搜素算法都可以自己做。而对于<code>IP</code>，首先数据量就比较大，数据存储、读取、检索都是考虑的点。这还只是谈到了<code>IP</code>解析，<code>GPS</code>的解析就更复杂了。把<code>IP</code>数据比做标尺上的刻度的话，<code>GPS</code>数据就是组成标尺分子原子，只是个小小比喻不用在意😂毕竟数据量从有限的线升级为无限的面，而且经纬度是针对的是地球这个不规则的球体，人类又将不规则的大陆海洋划分为更多密密麻麻的不规则多边形，所有的不规则多边形又是由众多经纬度的点连线划分出来的，想想就知道有多复杂了。</p>
+<h1 id="ip解析">IP解析</h1>
+<p>首先就要谈谈这个IP解析，真的搞的我头都要炸了。</p>
+<p>历程，1、为了简单方便，直接寻找性能和准确性都不错的<code>api</code>调用；2、发现这些<code>api</code>要么有限制，要么要认证，数据还不是很满意，而且性能不能达到我的要求（<code>30ms</code>以内）；3、发现一些免费有趣的<code>api</code>，开始跑偏，玩了起来；4、发现<a
+target="_blank" rel="noopener" href="https://gitee.com/lionsoul/ip2region">狮子的魂/ip2region</a>这个项目，其提供了<code>IP</code>数据存储和检索的离线解析方案，由此想尝试自己的离线<code>IP</code>解析；5、数据从哪里搞呢，本身<a
+target="_blank" rel="noopener" href="https://gitee.com/lionsoul/ip2region">狮子的魂/ip2region</a>项目中已经提供了一份数据，但数据比较简单，不大够用，其实项目已经提供了数据修改更新的方法，但认为手动补充有比较麻烦，所以又琢磨起数据源。</p>
+<span id="more"></span>
+<p>总是一直在折腾，最终定一下一个方案，基于<a
+target="_blank" rel="noopener" href="https://gitee.com/lionsoul/ip2region">狮子的魂/ip2region</a>项目，在原有项目数据基础上补充<a
+target="_blank" rel="noopener" href="https://update.cz88.net/help?id=free">纯真网络，中国历史最悠久的IP地理位置库</a>的数据，来做离线<code>IP</code>解析。</p>
+<p>补充：下面是整个历程中探索链接，我真的有一个个<code>IP</code>解析<code>API</code>接口测试，只不过效果不满意罢了。</p>
+<p>而且过程中一些<code>API</code>接口网站真不错，挺有意思的。<a
+target="_blank" rel="noopener" href="https://ipinfo.io/">ipinfo.io</a>这个国外的IP网站提供有<code>IP</code>段的数据，免费可下载。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240429/image.4912ueojby.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p><a
+target="_blank" rel="noopener" href="https://blog.apispace.com/%e5%90%84%e7%a7%8d%e5%a5%bd%e7%94%a8%e5%85%8d%e8%b4%b9ip%e7%b1%bbapi-%e6%8e%a5%e5%8f%a3%e5%a4%a7%e5%85%a8%e5%88%86%e4%ba%ab/">各种好用免费IP类API
+接口大全分享 - APISpace</a></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://ip-api.com/">IP-API</a>：提供 IP 地址相关信息查询的
+API，包括国家、城市、经纬度、时区等。</li>
+<li><a target="_blank" rel="noopener" href="https://ipstack.com/">ipstack</a>：提供全球 IP
+地址位置信息的 API，包括国家、城市、地区、邮政编码等。</li>
+<li><a target="_blank" rel="noopener" href="https://ipinfo.io/">ipinfo.io</a>：提供全球 IP
+地址相关信息的 API，包括国家、城市、运营商等。</li>
+<li><a target="_blank" rel="noopener" href="https://freegeoip.app/">freegeoip.app</a>：提供免费的 IP
+地理位置查询 API，返回国家、城市、经纬度等信息。</li>
+<li><a target="_blank" rel="noopener" href="https://www.ipify.org/">IPify</a>：提供简单易用的 IP
+地址查询 API，返回 IP 地址、地理位置和 ASN 等信息。</li>
+<li><a target="_blank" rel="noopener" href="https://ipdata.co/">ipdata</a>：提供全球 IP 地址相关信息的
+API，包括国家、城市、邮编、经纬度等。</li>
+</ul>
+<p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43762932/article/details/129408876">获取IP地址信息的API合集_ip地址查询api-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://api.vvhan.com/">韩小韩Web API接口站 - 免费Web
+API数据接口调用服务平台</a></p>
+<p><a target="_blank" rel="noopener" href="https://ip.useragentinfo.com/api">IP地址API接口 - useragent
+info</a></p>
+<p><a target="_blank" rel="noopener" href="https://api.oioweb.cn/">教书先生API -
+提供免费接口调用平台</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://www.free-api.com/?type=apitype&amp;val=21">接口大全-免费API,收集所有免费的API</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://javaforall.cn/142556.html">超百个免费api接口，分享给你「建议收藏」
+- 全栈程序员必看</a></p>
+<p><a target="_blank" rel="noopener" href="https://ip.plus/docs">文档 | 用户指南 | IPPlus</a></p>
+<p><a target="_blank" rel="noopener" href="https://iplark.com/search">Just a moment...</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://update.cz88.net/help?id=free">纯真网络，中国历史最悠久的IP地理位置库</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://gitee.com/lionsoul/ip2region">狮子的魂/ip2region</a></p>
+<h1 id="gps解析">GPS解析</h1>
+<p>简介已经说明了<code>GPS</code>解析到地区是一件很难的事情，需要图算法的应用。而且还需要一些地理知识，我也是了解一块才知道，各种地球坐标系、球面距离算法之类的等等。</p>
+<h2
+id="逆地理编码在线api精度高丰富数据普通用户限制付费">逆地理编码在线API（精度高、丰富数据、普通用户限制、付费）</h2>
+<p><a
+target="_blank" rel="noopener" href="https://lbs.amap.com/api/webservice/guide/api/georegeo">地理/逆地理编码-基础
+API 文档-开发指南-Web服务 API | 高德地图API</a></p>
+<p><a target="_blank" rel="noopener" href="https://map.tianditu.gov.cn/">天地图·在线地图</a></p>
+<p>如果不是<a target="_blank" rel="noopener" href="https://map.tianditu.gov.cn/"
+class="uri">https://map.tianditu.gov.cn/</a>此域名后缀是<code>gov</code>，我真没想到这是政府网站，既然这样，果断抛弃商业的百度地图、高德地图、腾讯地图。</p>
+<p>使用在线<code>API</code>的好处就是简单，数据非常丰富，但缺点就是普通服务有限制，升级为专业付费用户要钱呐💰</p>
+<p>另外使用别人的服务总是不可控的，毕竟有时候连自己都管不住，怎么还能奢求管得了别人，所以能自主还是尽量自主。</p>
+<h2 id="一些离线方案">一些离线方案</h2>
+<p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/deng0515001/article/details/99606156">判断经纬度在省市区县乡镇内(复杂多边形内)
+-- 基于空间查询算法_给定经纬度查询地名的算法实现-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/hsp8712/addrparser">GitHub -
+hsp8712/addrparser: Tool for parsing longitude/latitude to region info
+in china 根据经纬度解析省市区信息工具包</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/u014080107/article/details/120006332">基于阿里地图围栏数据，Java离线经纬度逆地址解析省份城市_java
+离线经纬度翻译区划-CSDN博客</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/Chuyans/article/details/117830354">基于高德离线地图数据实现GPS经纬度逆解析城市信息_地址描述转经纬度
+离线-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/deng0515001/lnglat2Geo">GitHub -
+deng0515001/lnglat2Geo:
+经纬度转省市区县乡镇离线包，采用空间查询算法，速度快(单线程5w次/s)，省市区县100%准确率。</a></p>
+<p>以上文章我也都没看全，实在是无能为力，但我试了<code>lnglat2Geo</code>这个项目，好像效果也不是很好，内存消耗极大，速度也不行。最终也是放弃了这里的方案。</p>
+<h2
+id="距离计算比较择优脱离区划数据灵活离线">距离计算，比较择优（脱离区划、数据灵活、离线）</h2>
+<p>复杂的不规则多边形区域搜索算法我是很难搞明白了，但我有简单的笨招啊！</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240429/image.3uun3lm6w3.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>上图展示了区域划分和一些城市的位置，如果有了这些城市的经纬度信息，那么就存在通过这些数据中搜索经纬度到城市的方法，最终不可能完全匹配，但是可以通过计算距离，得到最近的城市，最后以最近的城市返回数据。</p>
+<p>此方法往大了讲是将二维图算法转为了有限的线形搜索算法。从方法介绍上可以了解，此方法以直线距离为准，已经脱离区域划分。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240429/image.77dcxzs8n1.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>此方法实际上是将地图划分为非常多的点，这些点就是主要的城市、区县的中心经纬度，由这些点向外画圈，计算的就是需要解析的经纬度到这些点的距离，然后以最近的点返回。当然不能是将所有的点依次计算比较，所以首先要做的是将这些点分组，最简单的分组当然是将经纬度四舍五入拼接作为<code>key</code>，这些点集合作为<code>value</code>，然后再与这些点集合依次计算比较得到结果。当然还可以优化。</p>
+<p>这种方式看似很笨，但数据是可自由更改添加的，那么密集的点将覆盖整个平面，虽然数据量有所增加，但准确性会更有保障。</p>
+<p>以下是实现此方法的要素：</p>
+<p>数据来源，可以是这里的<a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/henuyuxiang/p/12981201.html">中国城市坐标（最全最完整）
+- 岁月淡忘了谁 -
+博客园</a>，当然还可以是开放的地图平台，手动一个个搜集汇聚起来。</p>
+<p>依赖的球面距离计算公式，参考<a
+target="_blank" rel="noopener" href="https://www.geodatasource.com/developers/java">Calculate Distance
+by Latitude and Longitude using
+Java</a>，方法中单位可选英里（M）、千米（K）、海里（N）。当然还可以使用<code>com.geodesy</code>的<code>geodesy</code>的方法计算，此包提供了更多坐标系的选择，更加灵活丰富。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * &lt;a href=&quot;https://www.geodatasource.com/developers/java&quot;&gt;...&lt;/a&gt;</span></span><br><span class="line"><span class="comment"> * 经纬度距离计算</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> wnhyang</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/4/28</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DistanceCalculator</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> java.lang.Exception &#123;</span><br><span class="line">        System.out.println(distance(-<span class="number">96.80322</span>, <span class="number">32.9697</span>, -<span class="number">98.53506</span>, <span class="number">29.46786</span>, <span class="string">&quot;M&quot;</span>) + <span class="string">&quot; Miles\n&quot;</span>);</span><br><span class="line">        System.out.println(distance(-<span class="number">96.80322</span>, <span class="number">32.9697</span>, -<span class="number">98.53506</span>, <span class="number">29.46786</span>, <span class="string">&quot;K&quot;</span>) + <span class="string">&quot; Kilometers\n&quot;</span>);</span><br><span class="line">        System.out.println(distance(-<span class="number">96.80322</span>, <span class="number">32.9697</span>, -<span class="number">98.53506</span>, <span class="number">29.46786</span>, <span class="string">&quot;N&quot;</span>) + <span class="string">&quot; Nautical Miles\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 计算两点之间的距离</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> lon1 经度1</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> lat1 纬度1</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> lon2 经度2</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> lat2 纬度2</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 距离 单位英里</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">double</span> <span class="title function_">distance</span><span class="params">(<span class="type">double</span> lon1, <span class="type">double</span> lat1, <span class="type">double</span> lon2, <span class="type">double</span> lat2)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> distance(lon1, lat1, lon2, lat2, <span class="string">&quot;M&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 计算两点之间的距离</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> lon1 经度1</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> lat1 纬度1</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> lon2 经度2</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> lat2 纬度2</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> unit 单位</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 距离</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">double</span> <span class="title function_">distance</span><span class="params">(<span class="type">double</span> lon1, <span class="type">double</span> lat1, <span class="type">double</span> lon2, <span class="type">double</span> lat2, String unit)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> ((lat1 == lat2) &amp;&amp; (lon1 == lon2)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="type">double</span> <span class="variable">theta</span> <span class="operator">=</span> lon1 - lon2;</span><br><span class="line">            <span class="type">double</span> <span class="variable">dist</span> <span class="operator">=</span> Math.sin(Math.toRadians(lat1)) * Math.sin(Math.toRadians(lat2)) + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) * Math.cos(Math.toRadians(theta));</span><br><span class="line">            dist = Math.acos(dist);</span><br><span class="line">            dist = Math.toDegrees(dist);</span><br><span class="line">            dist = dist * <span class="number">60</span> * <span class="number">1.1515</span>;</span><br><span class="line">            <span class="keyword">if</span> (<span class="string">&quot;K&quot;</span>.equals(unit)) &#123;</span><br><span class="line">                dist = dist * <span class="number">1.609344</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">&quot;N&quot;</span>.equals(unit)) &#123;</span><br><span class="line">                dist = dist * <span class="number">0.8684</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> (dist);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="最后预告一下">最后预告一下</h1>
+<p>整合了身份证/手机号/<code>IP</code>/<code>GPS</code>解析的工具将在下一篇文章推出，并将全部数据和代码放在<code>Github</code>和<code>Gitee</code>上。</p>
+<p>虽然有的就只是用人家的工具，我还是腆着脸把它放出来了😂</p>
+<p>简单的事情最容易掉以轻心，要认真做，困难的事情最容易放弃，要竭尽全力去做。</p>
+<h1 id="写在最后">写在最后</h1>
+<p>拙作艰辛，字句心血，望诸君垂青，多予支持，不胜感激。</p>
+<hr />
+<p>个人博客：<a
+href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
+<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
+title="wnhyang">wnhyang</a></p>
+<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
+title="在线知识共享">在线知识共享</a></p>
+<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
+Overview</a></p>
+<p><img data-src="https://wnhyang.github.io/images/wechat_channel.webp" /></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.webp" alt="无奈何杨（wnhyang） 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.webp" alt="无奈何杨（wnhyang） 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>无奈何杨（wnhyang）
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://wnhyang.github.io/article/4a83d331.html" title="IP&#x2F;GPS解析服务，ip2region，逆地理编码">https://wnhyang.github.io/article/4a83d331.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/images/wechat_channel.webp">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://www.zhihu.com/people/wnhyang">
+            <span class="icon">
+              <i class="fab fa-zhihu"></i>
+            </span>
+
+            <span class="label">Zhihu</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/" rel="tag"># 项目实战</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/article/fd200765.html" rel="prev" title="身份证/手机号解析服务">
+                  <i class="fa fa-chevron-left"></i> 身份证/手机号解析服务
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/article/aa7b535.html" rel="next" title="geoHelper">
+                  geoHelper <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">无奈何杨（wnhyang）</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">240k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">14:33</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/wnhyang" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.2.2/mermaid.min.js","integrity":"sha256-o5AUfgOkNFWuInA78GVCoVdGoN9eTaB3Hxu+ep7TTrY="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://wnhyang.github.io/article/4a83d331.html"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>

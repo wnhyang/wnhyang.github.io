@@ -96,7 +96,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">45</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">188</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">45</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">190</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -161,7 +161,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">188</span>
+          <span class="site-state-item-count">190</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -218,6 +218,219 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/2c5e096b.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+      <meta itemprop="description" content="热爱、分享、生活">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/article/2c5e096b.html" class="post-title-link" itemprop="url">微服务集成sa-token小记</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-07-29 17:31:57" itemprop="dateCreated datePublished" datetime="2023-07-29T17:31:57+08:00">2023-07-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-01-18 22:54:58" itemprop="dateModified" datetime="2024-01-18T22:54:58+08:00">2024-01-18</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="安全框架">安全框架</h1>
+<p>想必一旦涉及到<code>Spring</code>安全框架，很容易就会想到<code>SpringSecurity</code>和<code>Shiro</code>，了解过的都知道，完美的集成一套安全框架是多么麻烦的事情，所以大家都有努力在简化安全框架的集成成本。</p>
+<p>我也是在自己做项目中需要集成安全框架才有了这篇文章，上面的两位的集成难度对我这种小菜鸡还是太难了。所以果断寻求别的方案，这不，发现了这个<a
+target="_blank" rel="noopener" href="https://sa-token.cc/index.html">Sa-Token</a>。</p>
+<h1 id="sa-token-介绍"><a
+target="_blank" rel="noopener" href="https://sa-token.cc/doc.html#/?id=sa-token-介绍">Sa-Token
+介绍</a></h1>
+<p><strong>Sa-Token</strong> 是一个轻量级 Java
+权限认证框架，主要解决：<strong>登录认证</strong>、<strong>权限认证</strong>、<strong>单点登录</strong>、<strong>OAuth2.0</strong>、<strong>分布式Session会话</strong>、<strong>微服务网关鉴权</strong>
+等一系列权限相关问题。</p>
+<p>以上介绍复制于官网，在自己体验和使用后，感受就是🥳</p>
+<p><code>Sa-token</code>使用起来真的非常简单方便，具体使用上，直接看官网就好，这里主要讨论一个问题：</p>
+<p>在微服务模式下，<code>auth</code>（认证中心）的拆解，是归于<code>system</code>（系统），还是独立的，如果是独立的。。。如果不是独立的。。。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/article/2c5e096b.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/a541e7bd.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+      <meta itemprop="description" content="热爱、分享、生活">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/article/a541e7bd.html" class="post-title-link" itemprop="url">IDEA启动SpringBoot项目Process finished with exit code 1</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-06-08 08:33:09" itemprop="dateCreated datePublished" datetime="2023-06-08T08:33:09+08:00">2023-06-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-01-18 22:54:58" itemprop="dateModified" datetime="2024-01-18T22:54:58+08:00">2024-01-18</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>646</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="启动错误日志呢">启动错误日志呢</h1>
+<p>如题，这个问题其实很早之前就遇到过，是同样的报错，虽然可能具体的原因有些不同，但忘了记录，这次说什么也要记录下来长个记性。</p>
+<p>说来也离奇，通常在使用<code>IDEA</code>启动调试<code>SpringBoot</code>就算是启动不了，至少还有一些日志能够帮助我们排查出是什么问题，但这次遇到的只有下面这个，除此之外什么什么也没有了！</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Process finished with <span class="built_in">exit</span> code 1</span><br></pre></td></tr></table></figure>
+<p>这可着实无从下手，还有一种启动失败错误如下，也是非常常见的。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Connected to the target VM, address: <span class="string">&#x27;127.0.0.1:56302&#x27;</span>, transport: <span class="string">&#x27;socket&#x27;</span></span><br><span class="line">Disconnected from the target VM, address: <span class="string">&#x27;127.0.0.1:56302&#x27;</span>, transport: <span class="string">&#x27;socket&#x27;</span></span><br><span class="line"></span><br><span class="line">Process finished with <span class="built_in">exit</span> code 1</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/article/a541e7bd.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1069,218 +1282,6 @@ target="_blank" rel="noopener" href="https://github.com/xuxueli/xxl-job/issues/1
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/d54257c1.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-      <meta itemprop="description" content="热爱、分享、生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/d54257c1.html" class="post-title-link" itemprop="url">Apifox简单使用</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-03-21 11:02:38" itemprop="dateCreated datePublished" datetime="2023-03-21T11:02:38+08:00">2023-03-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-01-23 19:45:13" itemprop="dateModified" datetime="2024-01-23T19:45:13+08:00">2024-01-23</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.1k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>4 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="apifox">Apifox</h1>
-<p>最近一直在以<a target="_blank" rel="noopener" href="https://gitee.com/log4j/pig">pig</a>、<a
-target="_blank" rel="noopener" href="https://gitee.com/y_project/RuoYi-Cloud">RuiYi-Cloud</a>做一个自己的项目，非常需要一份接口文档工具，<code>Swagger</code>这种侵入代码式的我不是很喜欢，之前也是有用过<code>YApi</code>，不用改代码，利用与<code>IDEA</code>的插件结合，很轻松就生成相关的接口文档，非常好用！</p>
-<p>直到发现<a
-target="_blank" rel="noopener" href="https://www.apifox.com/">apifox</a>，发现这个全能选手，如官方所说：</p>
-<blockquote>
-<p>更先进的 API 设计/开发/测试工具</p>
-<p>Apifox = Postman + Swagger + Mock + JMeter</p>
-</blockquote>
-<p>如果能熟练使用它那生产力必然极大提升，想系统学习的看官方文档<a
-target="_blank" rel="noopener" href="https://www.apifox.com/help/">https://www.apifox.com/help/</a>。</p>
-<p>另外一提，我能发现它也是因为这篇文章：<a
-target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/fT84AkFPZSINL9VUvAmNJw">https://mp.weixin.qq.com/s/fT84AkFPZSINL9VUvAmNJw</a></p>
-<p>下面就开始我的使用吧！</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/article/d54257c1.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/142b0ddc.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-      <meta itemprop="description" content="热爱、分享、生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/142b0ddc.html" class="post-title-link" itemprop="url">工具不会代替人，被代替的是不会使用工具的人</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-03-19 15:14:36" itemprop="dateCreated datePublished" datetime="2023-03-19T15:14:36+08:00">2023-03-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-02-22 19:03:19" itemprop="dateModified" datetime="2024-02-22T19:03:19+08:00">2024-02-22</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.1k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>4 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="chatgtp">ChatGTP</h1>
-<p>最近几个月，关注科技区的相信都已经被<code>ChatGPT</code>给刷屏了，下面我直接以提问<code>ChatGPT</code>“写200字关于最近ChatGPT的文案”的回答开始吧。</p>
-<p><code>ChatGPT</code>是由<code>OpenAI</code>团队开发的基于自然语言处理技术的聊天机器人。它采用了最新的生成式预训练技术<code>GPT（Generative Pre-trained Transformer）</code>，并在此基础上进行了优化和改进，可以与用户进行智能、流畅、自然的交互。<code>ChatGPT</code>不仅可以回答用户的问题，还可以提供有趣的谈话、娱乐、推荐等功能，用户可以通过文字或语音与它进行交互。</p>
-<p>近期，<code>OpenAI</code>团队公布了<code>ChatGPT-3.5</code>版本，该版本的ChatGPT在语言表达能力上得到了极大的提升和改善。它具有更高的准确性和语言理解深度，不断学习和调整，可以根据用户的需求和背景自动调整语言风格和话题，提供更加人性化的服务。目前，<code>ChatGPT</code>已经被广泛应用于在线客服、医疗问诊、教育辅导、智能客户端等领域，成为人工智能与自然语言处理领域的重要研究成果之一。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/article/142b0ddc.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1306,14 +1307,14 @@ target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/fT84AkFPZSINL9VU
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">236k</span>
+    <span title="站点总字数">240k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">14:18</span>
+    <span title="站点阅读时长">14:33</span>
   </span>
 </div>
 <div class="busuanzi-count">
