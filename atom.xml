@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2024-04-30T07:27:51.409Z</updated>
+  <updated>2024-05-24T01:51:45.356Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>数据源管理｜JDBC｜JdbcTemplate｜MybatisPlusGenerator</title>
+    <link href="https://wnhyang.github.io/article/40cfdfc4.html"/>
+    <id>https://wnhyang.github.io/article/40cfdfc4.html</id>
+    <published>2024-05-24T01:43:58.000Z</published>
+    <updated>2024-05-24T01:51:45.356Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;个人博客：&lt;a
+href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;个人语雀：&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Mybatis/Mybatis-plus" scheme="https://wnhyang.github.io/tags/Mybatis-Mybatis-plus/"/>
+    
+    <category term="数据库" scheme="https://wnhyang.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
     <title>geoHelper</title>
     <link href="https://wnhyang.github.io/article/aa7b535.html"/>
     <id>https://wnhyang.github.io/article/aa7b535.html</id>
     <published>2024-04-30T07:11:46.000Z</published>
-    <updated>2024-04-30T07:27:51.409Z</updated>
+    <updated>2024-05-06T02:39:13.083Z</updated>
     
     
     <summary type="html">&lt;p&gt;个人博客：&lt;a
@@ -34,6 +61,10 @@ title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
 Overview&lt;/a&gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h1 id=&quot;简介&quot;&gt;简介&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/wnhyang/geoHelper&quot;&gt;GitHub -
+wnhyang/geoHelper&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a
+href=&quot;https://gitee.com/wnhyang/geoHelper&quot;&gt;无奈何杨/geoHelper&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;geoHelper&lt;/code&gt;整合了身份证、手机号、&lt;code&gt;IP&lt;/code&gt;、&lt;code&gt;GPS&lt;/code&gt;解析方法，基于内存提供离线高性能解析服务。&lt;/p&gt;
 &lt;p&gt;&lt;a
 href=&quot;https://www.yuque.com/wnh/share/vw03pm5x88atva56&quot;&gt;身份证/手机号解析服务&lt;/a&gt;&lt;/p&gt;
@@ -105,7 +136,7 @@ modood/Administrative-divisions-of-China&lt;/a&gt;可以扩展到乡级（乡镇
     <link href="https://wnhyang.github.io/article/4a83d331.html"/>
     <id>https://wnhyang.github.io/article/4a83d331.html</id>
     <published>2024-04-29T06:29:15.000Z</published>
-    <updated>2024-04-30T07:27:31.677Z</updated>
+    <updated>2024-05-05T04:54:40.497Z</updated>
     
     
     <summary type="html">&lt;p&gt;个人博客：&lt;a
@@ -825,40 +856,6 @@ Overview&lt;/a&gt;&lt;/p&gt;
     
     
     <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>免费申请JetBrains全家桶License，5种方式</title>
-    <link href="https://wnhyang.github.io/article/c43aa7dd.html"/>
-    <id>https://wnhyang.github.io/article/c43aa7dd.html</id>
-    <published>2024-01-31T12:58:13.000Z</published>
-    <updated>2024-02-18T13:55:51.930Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;个人博客：&lt;a
-href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
-title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
-title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
-Overview&lt;/a&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;工欲善其事，必先利其器。关于开发者&lt;code&gt;IDE&lt;/code&gt;（&lt;code&gt;Integrated Development Environment&lt;/code&gt;），我们熟知&lt;code&gt;IDEA&lt;/code&gt;、&lt;code&gt;PyCharm&lt;/code&gt;、&lt;code&gt;GoLand&lt;/code&gt;、&lt;code&gt;WebStorm&lt;/code&gt;这些&lt;code&gt;IDE&lt;/code&gt;都属于同一家公司的产品，那就是&lt;code&gt;JetBrains&lt;/code&gt;。这些&lt;code&gt;IDE&lt;/code&gt;有多好用就不用我再吹了。&lt;/p&gt;
-&lt;p&gt;废话不多讲，直接来说如何申请&lt;code&gt;JetBrains&lt;/code&gt;全家桶&lt;code&gt;License&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;官网：&lt;a
-href=&quot;https://www.jetbrains.com.cn/community/user-groups/&quot;&gt;https://www.jetbrains.com.cn&lt;/a&gt;&lt;/p&gt;
-&lt;figure&gt;
-&lt;img data-src=&quot;https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240131/1706705875038.webp&quot;
-alt=&quot;1706705875038&quot; /&gt;
-&lt;figcaption aria-hidden=&quot;true&quot;&gt;1706705875038&lt;/figcaption&gt;
-&lt;/figure&gt;</summary>
-    
-    
-    
-    
-    <category term="软件&amp;工具" scheme="https://wnhyang.github.io/tags/%E8%BD%AF%E4%BB%B6-%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
