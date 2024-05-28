@@ -96,7 +96,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">46</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">191</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">46</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">192</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -161,7 +161,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">191</span>
+          <span class="site-state-item-count">192</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -227,6 +227,132 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/d8ad0228.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+      <meta itemprop="description" content="热爱、分享、生活">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/article/d8ad0228.html" class="post-title-link" itemprop="url">MybatisPlusGenerator交互式Web生成增删改查、导出导入代码</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-05-24 16:59:21" itemprop="dateCreated datePublished" datetime="2024-05-24T16:59:21+08:00">2024-05-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-05-27 10:32:57" itemprop="dateModified" datetime="2024-05-27T10:32:57+08:00">2024-05-27</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>500</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>个人博客：<a
+href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
+<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
+title="wnhyang">wnhyang</a></p>
+<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
+title="在线知识共享">在线知识共享</a></p>
+<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
+Overview</a></p>
+<hr />
+<h1 id="简介">简介</h1>
+<p>前有文章<a
+target="_blank" rel="noopener" href="https://www.yuque.com/wnh/share/vi7ayw11xu0907iz">MybatisPlus-Generator自定义模版生成CRUD、DTO、VO、Convert等</a>介绍如何使用<code>MybatisPlus-Generator</code>自定义模版生成<code>CRUD</code>、<code>DTO</code>、<code>VO</code>、<code>Convert</code>等代码。这次加入了导入导出<code>Excel</code>的接口，并提供最为简单的交互式<code>Web</code>用于生成代码。当然之前的生成方式同样可用，本篇文章就介绍一下如何使用。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/wnhyang/crud-quickstart">GitHub -
+wnhyang/crud-quickstart</a></p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/wnhyang/crud-quickstart">Gitee -
+wnhyang/crud-quickstart</a></p>
+<h1 id="配置与启动">配置与启动</h1>
+<p>项目启动其实是用不到数据源配置的，但并没有删除，这样方便直接填入基础的信息。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://localhost:3306/xxx</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">wnhyang</span></span><br><span class="line">    <span class="attr">password:</span> <span class="number">123456</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">com.mysql.cj.jdbc.Driver</span></span><br></pre></td></tr></table></figure>
+<p>启动即可</p>
+<h1 id="填写生成配置">填写生成配置</h1>
+<h2 id="填写数据库信息">1、填写数据库信息</h2>
+<p>默认读取的是项目启动配置，可直接修改其他数据源，MySQL支持最好。</p>
+<p>这里注意下<code>jdbcUrl</code>，填写到端口就可以，比如<code>jdbc:mysql://localhost:3306</code>。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240524/image.5q78w144q8.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/article/d8ad0228.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/40cfdfc4.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -257,7 +383,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2024-05-24 09:43:58 / 修改时间：09:51:45" itemprop="dateCreated datePublished" datetime="2024-05-24T09:43:58+08:00">2024-05-24</time>
+      <time title="创建时间：2024-05-24 09:43:58 / 修改时间：11:30:19" itemprop="dateCreated datePublished" datetime="2024-05-24T09:43:58+08:00">2024-05-24</time>
     </span>
 
   
@@ -302,97 +428,14 @@ Overview</a></p>
 <p>4、等</p>
 <h1 id="数据库信息">数据库信息</h1>
 <p>因为<code>JDBC</code>，数据源的配置包含<code>jdbcUrl</code>、<code>username</code>、<code>password</code>、<code>driverClassName</code>就可以建立数据库的连接了。</p>
-<h2 id="数据库类型">数据库类型</h2>
-<p>数据库类型从<code>jdbcUrl</code>就能确认，可以参考<code>mybatis-plus-generator</code>的<code>com.baomidou.mybatisplus.generator.config;</code>中的<code>DataSourceConfig#getDbType</code>方法。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> DbType <span class="title function_">getDbType</span><span class="params">(<span class="meta">@NotNull</span> String str)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (str.contains(<span class="string">&quot;:mysql:&quot;</span>) || str.contains(<span class="string">&quot;:cobar:&quot;</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> DbType.MYSQL;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (str.contains(<span class="string">&quot;:oracle:&quot;</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> DbType.ORACLE;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (str.contains(<span class="string">&quot;:postgresql:&quot;</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> DbType.POSTGRE_SQL;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (str.contains(<span class="string">&quot;:sqlserver:&quot;</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> DbType.SQL_SERVER;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (str.contains(<span class="string">&quot;:db2:&quot;</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> DbType.DB2;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (str.contains(<span class="string">&quot;:mariadb:&quot;</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> DbType.MARIADB;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (str.contains(<span class="string">&quot;:sqlite:&quot;</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> DbType.SQLITE;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (str.contains(<span class="string">&quot;:h2:&quot;</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> DbType.H2;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (str.contains(<span class="string">&quot;:kingbase:&quot;</span>) || str.contains(<span class="string">&quot;:kingbase8:&quot;</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> DbType.KINGBASE_ES;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (str.contains(<span class="string">&quot;:dm:&quot;</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> DbType.DM;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (str.contains(<span class="string">&quot;:zenith:&quot;</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> DbType.GAUSS;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (str.contains(<span class="string">&quot;:oscar:&quot;</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> DbType.OSCAR;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (str.contains(<span class="string">&quot;:firebird:&quot;</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> DbType.FIREBIRD;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (str.contains(<span class="string">&quot;:xugu:&quot;</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> DbType.XU_GU;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (str.contains(<span class="string">&quot;:clickhouse:&quot;</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> DbType.CLICK_HOUSE;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (str.contains(<span class="string">&quot;:sybase:&quot;</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> DbType.SYBASE;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> DbType.OTHER;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="数据库默认库">数据库默认库</h2>
-<p>数据库本身自带有默认的数据库，常用的<code>MySQL</code>有<code>mysql</code>、<code>information_schema</code>等基础库。数据库的默认库也可以参考<code>DataSourceConfig#getDefaultSchema</code>方法。</p>
-<h2 id="数据库s">数据库s</h2>
-<p>因为数据库<code>SQL</code>语句有差异，所以并非所有<code>SQL</code>都是<code>MySQL</code>的<code>SHOW DATABASES;</code>。</p>
-<p>以下是针对一些常见数据库系统的 SQL 查询所有数据库的示例：</p>
-<ol type="1">
-<li><strong>MySQL</strong>:</li>
-</ol>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> DATABASES;</span><br></pre></td></tr></table></figure>
-<ol start="2" type="1">
-<li><strong>PostgreSQL</strong>:</li>
-</ol>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> datname <span class="keyword">FROM</span> pg_database <span class="keyword">WHERE</span> datistemplate <span class="operator">=</span> <span class="literal">false</span>;</span><br></pre></td></tr></table></figure>
-<ol start="3" type="1">
-<li><strong>SQL Server</strong>:</li>
-</ol>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name <span class="keyword">FROM</span> sys.databases;</span><br></pre></td></tr></table></figure>
-<ol start="4" type="1">
-<li><strong>Oracle</strong>:</li>
-</ol>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> username <span class="keyword">FROM</span> all_users;</span><br></pre></td></tr></table></figure>
-<ol start="5" type="1">
-<li><strong>SQLite</strong>:</li>
-</ol>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.databases</span><br></pre></td></tr></table></figure>
-<ol start="6" type="1">
-<li><strong>DB2</strong>:</li>
-</ol>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> dbname <span class="keyword">FROM</span> sysibm.sysdummy1;</span><br></pre></td></tr></table></figure>
-<p>这些 SQL
-查询语句可以在相应的数据库管理系统中执行，以获取所有数据库的列表或名称。需要注意的是，每个数据库系统的系统表或系统视图可能不同，因此查询方式会有所不同。</p>
-<p>更多可以<code>chatGPT</code>一下，重写一下不同实现在使用时会更方便。</p>
-<h1 id="表信息">表信息</h1>
-<p>在已有数据源配置和数据库信息后，表信息当然也是很轻易就能获取。</p>
-<h2 id="表s">表s</h2>
-<p><code>mybatis-plus-generator</code>的<code>com.baomidou.mybatisplus.generator.config;</code>中的<code>IDbQuery#tablesSql</code>接口针对不同库有不同实现，可以使用。如下代码就可以查询出所有数据源中一个库的所有表信息。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">HikariDataSource</span> <span class="variable">ds</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HikariDataSource</span>();</span><br><span class="line">ds.setJdbcUrl(dbConfig.getFullJdbcUrl());</span><br><span class="line">ds.setUsername(dbConfig.getUsername());</span><br><span class="line">ds.setPassword(dbConfig.getPassword());</span><br><span class="line">ds.setDriverClassName(dbConfig.getDriverClassName());</span><br><span class="line"><span class="type">JdbcTemplate</span> <span class="variable">jdbcTemplate</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">JdbcTemplate</span>(ds);</span><br><span class="line"></span><br><span class="line"><span class="type">DataSourceConfig</span> <span class="variable">dataSourceConfig</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">DataSourceConfig</span>.Builder(dbConfig.getJdbcUrl(), dbConfig.getUsername(), dbConfig.getPassword()).build();</span><br><span class="line"><span class="type">IDbQuery</span> <span class="variable">dbQuery</span> <span class="operator">=</span> dataSourceConfig.getDbQuery();</span><br><span class="line">List&lt;Map&lt;String, Object&gt;&gt; results = jdbcTemplate.queryForList(dbQuery.tablesSql());</span><br><span class="line">List&lt;TableInfo&gt; tableInfos = Lists.newArrayList();</span><br><span class="line"><span class="keyword">for</span> (Map&lt;String, Object&gt; table : results) &#123;</span><br><span class="line">    <span class="type">TableInfo</span> <span class="variable">tableInfo</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TableInfo</span>();</span><br><span class="line">    tableInfo.setName((String) table.get(dbQuery.tableName()));</span><br><span class="line">    tableInfo.setComment((String) table.get(dbQuery.tableComment()));</span><br><span class="line">    tableInfos.add(tableInfo);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="表结构信息">表结构信息</h2>
-<h3 id="方法1">方法1</h3>
-<p>在 <code>JDBC</code>
-中，<code>DatabaseMetaData.getColumns()</code>方法返回的
-<code>ResultSet</code> 包含了表的列信息，其中列名可以作为参数传递给
-<code>ResultSet.getString()</code> 方法。除了 <code>COLUMN_NAME</code>
-字符串外，还有一些其他的字符串可以用来获取不同的列信息。以下是一些常用的列信息对应的字符串：</p>
-<ol type="1">
-<li><code>COLUMN_NAME</code>：列名</li>
-<li><code>TYPE_NAME</code>：列的数据类型名称</li>
-<li><code>COLUMN_SIZE</code>：列的大小（长度）</li>
-<li><code>NULLABLE</code>：列是否允许为空，返回值为
-<code>ResultSetMetaData.columnNoNulls</code>、<code>ResultSetMetaData.columnNullable</code>、<code>ResultSetMetaData.columnNullableUnknown</code>之一</li>
-<li><code>REMARKS</code>：列的注释（备注）</li>
-<li><code>IS_AUTOINCREMENT</code>：列是否是自动增长的，返回值为
-"<code>YES</code>" 或 "<code>NO</code>"</li>
-<li><code>IS_GENERATEDCOLUMN</code>：列是否是生成的列（自动生成的），返回值为
-"<code>YES</code>" 或 "<code>NO</code>"</li>
-<li><code>COLUMN_DEF</code>：列的默认值</li>
-</ol>
-<p>这些字符串可以作为 <code>ResultSet</code> 的 <code>getXXX()</code>
-方法的参数，用于获取相应的列信息。例如，<code>ResultSet.getString("COLUMN_NAME")</code>
-获取列名，<code>ResultSet.getString("TYPE_NAME")</code>获取列的数据类型名称，以此类推。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">ResultSet</span> <span class="variable">columnsResultSet</span> <span class="operator">=</span> metaData.getColumns(<span class="literal">null</span>, <span class="literal">null</span>, tableName, <span class="literal">null</span>);</span><br><span class="line"><span class="keyword">while</span> (columnsResultSet.next()) &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">columnName</span> <span class="operator">=</span> columnsResultSet.getString(<span class="string">&quot;COLUMN_NAME&quot;</span>);</span><br><span class="line">    <span class="type">String</span> <span class="variable">columnType</span> <span class="operator">=</span> columnsResultSet.getString(<span class="string">&quot;TYPE_NAME&quot;</span>);</span><br><span class="line">    <span class="type">String</span> <span class="variable">columnComment</span> <span class="operator">=</span> columnsResultSet.getString(<span class="string">&quot;REMARKS&quot;</span>);</span><br><span class="line"></span><br><span class="line">    System.out.println(<span class="string">&quot;Column Name: &quot;</span> + columnName);</span><br><span class="line">    System.out.println(<span class="string">&quot;Column Type: &quot;</span> + columnType);</span><br><span class="line">    System.out.println(<span class="string">&quot;Column Comment: &quot;</span> + columnComment);</span><br><span class="line">    System.out.println();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="方法2">方法2</h3>
-<p>好吧，又是它<code>mybatis-plus-generator</code>的<code>com.baomidou.mybatisplus.generator.config;</code>中的<code>IDbQuery#tableFieldsSql</code>可以确认数据库表结构，而且有不同实现，用起来更方便。</p>
-<h2 id="不确定表结构情况下查询数据">不确定表结构情况下查询数据</h2>
-<p>以下仅作参考</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> DataSource dataSource;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> ThreadLocal&lt;Connection&gt; threadLocal = <span class="keyword">new</span> <span class="title class_">ThreadLocal</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">SQL_QUERY</span> <span class="operator">=</span> <span class="string">&quot;SELECT * FROM &#123;&#125;&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">HikariConfig</span> <span class="variable">hikariConfig</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HikariConfig</span>();</span><br><span class="line">            hikariConfig.setJdbcUrl(<span class="string">&quot;jdbc:mysql://158.1.18.149:3306/carbon&quot;</span>);</span><br><span class="line">            hikariConfig.setUsername(<span class="string">&quot;root&quot;</span>);</span><br><span class="line">            hikariConfig.setPassword(<span class="string">&quot;hzbank&quot;</span>);</span><br><span class="line">            hikariConfig.setDriverClassName(<span class="string">&quot;com.mysql.cj.jdbc.Driver&quot;</span>);</span><br><span class="line">            dataSource = <span class="keyword">new</span> <span class="title class_">HikariDataSource</span>(hikariConfig);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title function_">getConnection</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">Connection</span> <span class="variable">connection</span> <span class="operator">=</span> threadLocal.get();</span><br><span class="line">            <span class="keyword">if</span> (connection == <span class="literal">null</span>) &#123;</span><br><span class="line">                connection = dataSource.getConnection();</span><br><span class="line">                threadLocal.set(connection);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> connection;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">close</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">Connection</span> <span class="variable">connection</span> <span class="operator">=</span> threadLocal.get();</span><br><span class="line">            <span class="keyword">if</span> (connection != <span class="literal">null</span>) &#123;</span><br><span class="line">                threadLocal.remove();</span><br><span class="line">                connection.setAutoCommit(<span class="literal">true</span>);</span><br><span class="line">                connection.close();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> SQLException &#123;</span><br><span class="line">        <span class="type">Connection</span> <span class="variable">connection</span> <span class="operator">=</span> getConnection();</span><br><span class="line"></span><br><span class="line">        <span class="type">String</span> <span class="variable">totalCreditsQuery</span> <span class="operator">=</span> StrUtil.format(SQL_QUERY, <span class="string">&quot;total_credits&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="type">PreparedStatement</span> <span class="variable">preparedStatement</span> <span class="operator">=</span> connection.prepareStatement(totalCreditsQuery);</span><br><span class="line">        <span class="type">ResultSet</span> <span class="variable">resultSet</span> <span class="operator">=</span> preparedStatement.executeQuery();</span><br><span class="line"></span><br><span class="line">        <span class="type">ResultSetMetaData</span> <span class="variable">metaData</span> <span class="operator">=</span> resultSet.getMetaData();</span><br><span class="line">        <span class="type">int</span> <span class="variable">columnCount</span> <span class="operator">=</span> metaData.getColumnCount();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= columnCount; i++) &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">columnName</span> <span class="operator">=</span> metaData.getColumnName(i);</span><br><span class="line">            System.out.print(columnName + <span class="string">&quot;\t&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (resultSet.next()) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= columnCount; i++) &#123;</span><br><span class="line">                System.out.print(resultSet.getString(i) + <span class="string">&quot;\t&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="表数据索引容量">表数据/索引容量</h2>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	table_schema <span class="keyword">AS</span> <span class="string">&#x27;数据库&#x27;</span>,</span><br><span class="line">	table_name <span class="keyword">AS</span> <span class="string">&#x27;表名&#x27;</span>,</span><br><span class="line">	table_rows <span class="keyword">AS</span> <span class="string">&#x27;记录数&#x27;</span>,</span><br><span class="line">	<span class="keyword">TRUNCATE</span> ( data_length <span class="operator">/</span> <span class="number">1024</span> <span class="operator">/</span> <span class="number">1024</span>, <span class="number">2</span> ) <span class="keyword">AS</span> <span class="string">&#x27;数据容量(MB)&#x27;</span>,</span><br><span class="line">	<span class="keyword">TRUNCATE</span> ( index_length <span class="operator">/</span> <span class="number">1024</span> <span class="operator">/</span> <span class="number">1024</span>, <span class="number">2</span> ) <span class="keyword">AS</span> <span class="string">&#x27;索引容量(MB)&#x27;</span> </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	information_schema.TABLES </span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">	data_length <span class="keyword">DESC</span>,</span><br><span class="line">	index_length <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
-<p>直到我看到这条<code>sql</code>，并去看<code>information_schema.TABLES</code>
-，才知道数据库自带的库是有多么重要！</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240524/image.45hhw4xdbp.webp"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
-</figure>
-<h1 id="写在最后">写在最后</h1>
-<p>拙作艰辛，字句心血，望诸君垂青，多予支持，不胜感激。</p>
-<hr />
-<p>个人博客：<a
-href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
-<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
-title="wnhyang">wnhyang</a></p>
-<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
-title="在线知识共享">在线知识共享</a></p>
-<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
-Overview</a></p>
-<p><img data-src="https://wnhyang.github.io/images/wechat_channel.webp" /></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/article/40cfdfc4.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1394,119 +1437,6 @@ alt="image" />
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/830d76f.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-      <meta itemprop="description" content="热爱、分享、生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/830d76f.html" class="post-title-link" itemprop="url">筛选树形菜单时关联其父节点和子节点</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-04-01 18:22:11" itemprop="dateCreated datePublished" datetime="2024-04-01T18:22:11+08:00">2024-04-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-04-18 10:51:58" itemprop="dateModified" datetime="2024-04-18T10:51:58+08:00">2024-04-18</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.1k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>4 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>个人博客：<a
-href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
-<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
-title="wnhyang">wnhyang</a></p>
-<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
-title="在线知识共享">在线知识共享</a></p>
-<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
-Overview</a></p>
-<hr />
-<h1 id="树形菜单">树形菜单</h1>
-<p>在很多系统管理/菜单管理中经常会出现下面这样的树形菜单，它是通过前端的<code>Tree</code>组件来渲染的。</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240401/image.60u0lj8oly.webp"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
-</figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/article/830d76f.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1539,7 +1469,7 @@ alt="image" />
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">14:38</span>
+    <span title="站点阅读时长">14:40</span>
   </span>
 </div>
 <div class="busuanzi-count">

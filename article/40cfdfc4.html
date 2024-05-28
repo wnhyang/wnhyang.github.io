@@ -35,7 +35,7 @@
 <meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240524/image.45hhw4xdbp.webp">
 <meta property="og:image" content="https://wnhyang.github.io/images/wechat_channel.webp">
 <meta property="article:published_time" content="2024-05-24T01:43:58.000Z">
-<meta property="article:modified_time" content="2024-05-24T01:51:45.356Z">
+<meta property="article:modified_time" content="2024-05-24T03:30:19.532Z">
 <meta property="article:author" content="无奈何杨（wnhyang）">
 <meta property="article:tag" content="Mybatis&#x2F;Mybatis-plus">
 <meta property="article:tag" content="数据库">
@@ -102,7 +102,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">46</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">191</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">46</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">192</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -168,7 +168,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">191</span>
+          <span class="site-state-item-count">192</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -232,6 +232,11 @@
       </a>
     </li>
     <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/" rel="bookmark">
+      
+      </a>
+    </li>
+    <li class="popular-posts-item">
       <a class="popular-posts-link" href="/article/524c985a.html" rel="bookmark">
         <time class="popular-posts-time">2021-12-18</time>
         <br>
@@ -250,13 +255,6 @@
         <time class="popular-posts-time">2022-01-29</time>
         <br>
       MySQL-explain应用
-      </a>
-    </li>
-    <li class="popular-posts-item">
-      <a class="popular-posts-link" href="/article/bf7337ce.html" rel="bookmark">
-        <time class="popular-posts-time">2024-03-16</time>
-        <br>
-      MybatisPlus-Generator自定义模版生成CRUD、DTO、VO、Convert等
       </a>
     </li>
   </ul>
@@ -310,7 +308,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2024-05-24 09:43:58 / 修改时间：09:51:45" itemprop="dateCreated datePublished" datetime="2024-05-24T09:43:58+08:00">2024-05-24</time>
+      <time title="创建时间：2024-05-24 09:43:58 / 修改时间：11:30:19" itemprop="dateCreated datePublished" datetime="2024-05-24T09:43:58+08:00">2024-05-24</time>
     </span>
 
   
@@ -362,6 +360,7 @@ Overview</a></p>
 <p>4、等</p>
 <h1 id="数据库信息">数据库信息</h1>
 <p>因为<code>JDBC</code>，数据源的配置包含<code>jdbcUrl</code>、<code>username</code>、<code>password</code>、<code>driverClassName</code>就可以建立数据库的连接了。</p>
+<span id="more"></span>
 <h2 id="数据库类型">数据库类型</h2>
 <p>数据库类型从<code>jdbcUrl</code>就能确认，可以参考<code>mybatis-plus-generator</code>的<code>com.baomidou.mybatisplus.generator.config;</code>中的<code>DataSourceConfig#getDbType</code>方法。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> DbType <span class="title function_">getDbType</span><span class="params">(<span class="meta">@NotNull</span> String str)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (str.contains(<span class="string">&quot;:mysql:&quot;</span>) || str.contains(<span class="string">&quot;:cobar:&quot;</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> DbType.MYSQL;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (str.contains(<span class="string">&quot;:oracle:&quot;</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> DbType.ORACLE;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (str.contains(<span class="string">&quot;:postgresql:&quot;</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> DbType.POSTGRE_SQL;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (str.contains(<span class="string">&quot;:sqlserver:&quot;</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> DbType.SQL_SERVER;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (str.contains(<span class="string">&quot;:db2:&quot;</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> DbType.DB2;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (str.contains(<span class="string">&quot;:mariadb:&quot;</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> DbType.MARIADB;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (str.contains(<span class="string">&quot;:sqlite:&quot;</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> DbType.SQLITE;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (str.contains(<span class="string">&quot;:h2:&quot;</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> DbType.H2;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (str.contains(<span class="string">&quot;:kingbase:&quot;</span>) || str.contains(<span class="string">&quot;:kingbase8:&quot;</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> DbType.KINGBASE_ES;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (str.contains(<span class="string">&quot;:dm:&quot;</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> DbType.DM;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (str.contains(<span class="string">&quot;:zenith:&quot;</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> DbType.GAUSS;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (str.contains(<span class="string">&quot;:oscar:&quot;</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> DbType.OSCAR;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (str.contains(<span class="string">&quot;:firebird:&quot;</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> DbType.FIREBIRD;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (str.contains(<span class="string">&quot;:xugu:&quot;</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> DbType.XU_GU;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (str.contains(<span class="string">&quot;:clickhouse:&quot;</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> DbType.CLICK_HOUSE;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (str.contains(<span class="string">&quot;:sybase:&quot;</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> DbType.SYBASE;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> DbType.OTHER;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -546,6 +545,9 @@ Overview</a></p>
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/article/d8ad0228.html" rel="next" title="MybatisPlusGenerator交互式Web生成增删改查、导出导入代码">
+                  MybatisPlusGenerator交互式Web生成增删改查、导出导入代码 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
@@ -585,7 +587,7 @@ Overview</a></p>
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">14:38</span>
+    <span title="站点阅读时长">14:40</span>
   </span>
 </div>
 <div class="busuanzi-count">

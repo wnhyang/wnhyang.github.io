@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2024-05-24T01:51:45.356Z</updated>
+  <updated>2024-05-27T02:32:57.257Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,22 +17,79 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>MybatisPlusGenerator交互式Web生成增删改查、导出导入代码</title>
+    <link href="https://wnhyang.github.io/article/d8ad0228.html"/>
+    <id>https://wnhyang.github.io/article/d8ad0228.html</id>
+    <published>2024-05-24T08:59:21.000Z</published>
+    <updated>2024-05-27T02:32:57.257Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;个人博客：&lt;a
+href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
+title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
+title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
+Overview&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h1 id=&quot;简介&quot;&gt;简介&lt;/h1&gt;
+&lt;p&gt;前有文章&lt;a
+href=&quot;https://www.yuque.com/wnh/share/vi7ayw11xu0907iz&quot;&gt;MybatisPlus-Generator自定义模版生成CRUD、DTO、VO、Convert等&lt;/a&gt;介绍如何使用&lt;code&gt;MybatisPlus-Generator&lt;/code&gt;自定义模版生成&lt;code&gt;CRUD&lt;/code&gt;、&lt;code&gt;DTO&lt;/code&gt;、&lt;code&gt;VO&lt;/code&gt;、&lt;code&gt;Convert&lt;/code&gt;等代码。这次加入了导入导出&lt;code&gt;Excel&lt;/code&gt;的接口，并提供最为简单的交互式&lt;code&gt;Web&lt;/code&gt;用于生成代码。当然之前的生成方式同样可用，本篇文章就介绍一下如何使用。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/wnhyang/crud-quickstart&quot;&gt;GitHub -
+wnhyang/crud-quickstart&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://gitee.com/wnhyang/crud-quickstart&quot;&gt;Gitee -
+wnhyang/crud-quickstart&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;配置与启动&quot;&gt;配置与启动&lt;/h1&gt;
+&lt;p&gt;项目启动其实是用不到数据源配置的，但并没有删除，这样方便直接填入基础的信息。&lt;/p&gt;
+&lt;figure class=&quot;highlight yaml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;spring:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attr&quot;&gt;datasource:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;url:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;jdbc:mysql://localhost:3306/xxx&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;username:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;wnhyang&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;password:&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;123456&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;driver-class-name:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;com.mysql.cj.jdbc.Driver&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;启动即可&lt;/p&gt;
+&lt;h1 id=&quot;填写生成配置&quot;&gt;填写生成配置&lt;/h1&gt;
+&lt;h2 id=&quot;填写数据库信息&quot;&gt;1、填写数据库信息&lt;/h2&gt;
+&lt;p&gt;默认读取的是项目启动配置，可直接修改其他数据源，MySQL支持最好。&lt;/p&gt;
+&lt;p&gt;这里注意下&lt;code&gt;jdbcUrl&lt;/code&gt;，填写到端口就可以，比如&lt;code&gt;jdbc:mysql://localhost:3306&lt;/code&gt;。&lt;/p&gt;
+&lt;figure&gt;
+&lt;img data-src=&quot;https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240524/image.5q78w144q8.webp&quot;
+alt=&quot;image&quot; /&gt;
+&lt;figcaption aria-hidden=&quot;true&quot;&gt;image&lt;/figcaption&gt;
+&lt;/figure&gt;</summary>
+    
+    
+    
+    
+    <category term="Mybatis/Mybatis-plus" scheme="https://wnhyang.github.io/tags/Mybatis-Mybatis-plus/"/>
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
+    
+    <category term="数据库" scheme="https://wnhyang.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
     <title>数据源管理｜JDBC｜JdbcTemplate｜MybatisPlusGenerator</title>
     <link href="https://wnhyang.github.io/article/40cfdfc4.html"/>
     <id>https://wnhyang.github.io/article/40cfdfc4.html</id>
     <published>2024-05-24T01:43:58.000Z</published>
-    <updated>2024-05-24T01:51:45.356Z</updated>
+    <updated>2024-05-24T03:30:19.532Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;p&gt;个人博客：&lt;a
 href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;个人语雀：&lt;a</summary>
-        
-      
+&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
+title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
+title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
+Overview&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;复杂的项目常常会涉及到多数据源的配置，解决方案也是有很多。但这篇文章不是讲这个的，而是纯粹的数据源管理，通过数据源配置，获取数据库信息、表信息、数据等等，更像是超级简单的数据库管理工具（&lt;code&gt;Dbeaver&lt;/code&gt;、&lt;code&gt;Navicat&lt;/code&gt;等）。&lt;/p&gt;
+&lt;p&gt;这个有什么应用呢？&lt;/p&gt;
+&lt;p&gt;1、一些后台类系统常需要查数功能，这个就可以用到。有人问了我们有&lt;code&gt;Dbeaver&lt;/code&gt;、&lt;code&gt;Navicat&lt;/code&gt;还需要这个？确实，有专业的数据库管理工具，这个就显得非常鸡肋了。但是数据库通常是由专业的&lt;code&gt;DBA&lt;/code&gt;管理的，账号和权限都是受管控的，而且数据库账号通常无法和后台类系统用户权限关联，所以这个就显得有点用处了。&lt;/p&gt;
+&lt;p&gt;2、作为外部数据源，有时候系统本身的数据不够用，或者说是有局限性，希望能够接上外部更加丰富数据，这时也是可以应用的。&lt;/p&gt;
+&lt;p&gt;3、代码生成器&lt;/p&gt;
+&lt;p&gt;4、等&lt;/p&gt;
+&lt;h1 id=&quot;数据库信息&quot;&gt;数据库信息&lt;/h1&gt;
+&lt;p&gt;因为&lt;code&gt;JDBC&lt;/code&gt;，数据源的配置包含&lt;code&gt;jdbcUrl&lt;/code&gt;、&lt;code&gt;username&lt;/code&gt;、&lt;code&gt;password&lt;/code&gt;、&lt;code&gt;driverClassName&lt;/code&gt;就可以建立数据库的连接了。&lt;/p&gt;</summary>
     
     
     
@@ -271,9 +328,9 @@ Overview&lt;/a&gt;&lt;/p&gt;
     
     
     
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
     <category term="Spring Framework" scheme="https://wnhyang.github.io/tags/Spring-Framework/"/>
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
     <category term="Java" scheme="https://wnhyang.github.io/tags/Java/"/>
     
@@ -475,9 +532,9 @@ href=&quot;https://zhuanlan.zhihu.com/p/269208311&quot;&gt;七大主流的HttpCl
     
     
     
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
     <category term="Spring Framework" scheme="https://wnhyang.github.io/tags/Spring-Framework/"/>
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
   </entry>
   
@@ -577,9 +634,9 @@ implementation.&lt;/li&gt;
     
     
     
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
     <category term="Spring Framework" scheme="https://wnhyang.github.io/tags/Spring-Framework/"/>
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
   </entry>
   
@@ -617,9 +674,9 @@ MyBatis-Plus&lt;/a&gt;&lt;/p&gt;
     
     <category term="软件&amp;工具" scheme="https://wnhyang.github.io/tags/%E8%BD%AF%E4%BB%B6-%E5%B7%A5%E5%85%B7/"/>
     
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
     <category term="Mybatis/Mybatis-plus" scheme="https://wnhyang.github.io/tags/Mybatis-Mybatis-plus/"/>
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
   </entry>
   
@@ -820,42 +877,6 @@ alt=&quot;1708346918648&quot; /&gt;
     
     
     <category term="杂谈" scheme="https://wnhyang.github.io/tags/%E6%9D%82%E8%B0%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>类支付宝积分系统设计方案（过期、兑奖）</title>
-    <link href="https://wnhyang.github.io/article/8acc9028.html"/>
-    <id>https://wnhyang.github.io/article/8acc9028.html</id>
-    <published>2024-02-18T13:48:21.000Z</published>
-    <updated>2024-02-18T13:55:14.700Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;个人博客：&lt;a
-href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
-title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
-title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
-Overview&lt;/a&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h1 id=&quot;声明&quot;&gt;声明&lt;/h1&gt;
-&lt;p&gt;本篇文章纯粹抛砖引玉！&lt;/p&gt;
-&lt;h1 id=&quot;需求说明&quot;&gt;需求说明&lt;/h1&gt;
-&lt;p&gt;开门见山，业务背景直接跳过。&lt;/p&gt;
-&lt;p&gt;类比支付宝会员积分，支付宝APP-我的-支付宝会员。&lt;/p&gt;
-&lt;p&gt;支付宝会员-XXX积分-积分规则，可以看到具体的积分规则，本篇文章类比于此积分业务场景，做简单的设计。&lt;/p&gt;
-&lt;h2 id=&quot;积分说明&quot;&gt;积分说明&lt;/h2&gt;
-&lt;p&gt;积分不具有货币或现金价值，不可兑现，不可转让。用户可以通过支付、账户服务、金融理财和积分奖励活动等方式来获取积分。&lt;/p&gt;
-&lt;p&gt;积分可以兑换各类权益、参与各种积分活动等，具体以权益兑换及活动页面展示为准。&lt;/p&gt;
-&lt;h2 id=&quot;积分领取规则&quot;&gt;积分领取规则&lt;/h2&gt;
-&lt;p&gt;积分发放后，用户可前往“我的”-“支付宝会员”，点击领取积分球，或者在支付成功页面、服务消息提醒、账单点击领取，积分方可到账。积分自产生之时起，领取有效期7天（168小时），逾期不领则作废，不予补发。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
     
   </entry>
   
