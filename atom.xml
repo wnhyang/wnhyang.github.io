@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2024-06-06T11:58:50.524Z</updated>
+  <updated>2024-06-13T13:07:09.942Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,67 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Elasticsearch集群运维，重平衡、分片、宕节点、扩容</title>
+    <link href="https://wnhyang.github.io/article/8c2fabda.html"/>
+    <id>https://wnhyang.github.io/article/8c2fabda.html</id>
+    <published>2024-06-13T12:15:01.000Z</published>
+    <updated>2024-06-13T13:07:09.942Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;个人博客：&lt;a
+href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
+title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
+title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
+Overview&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h1 id=&quot;参考&quot;&gt;参考&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://docs.kilvn.com/elasticsearch/docs/3.html&quot;&gt;探索集群 ·
+Elasticsearch 中文文档&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a
+href=&quot;https://www.elastic.co/guide/en/elasticsearch/reference/8.14/fix-common-cluster-issues.html&quot;
+class=&quot;uri&quot;&gt;https://www.elastic.co/guide/en/elasticsearch/reference/8.14/fix-common-cluster-issues.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a
+href=&quot;https://cloud.tencent.com/developer/article/1836799&quot;&gt;Elasticsearch运维指南-腾讯云开发者社区-腾讯云&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a
+href=&quot;http://t.csdnimg.cn/xECsH&quot;&gt;elasticsearch重启后，unassigned索引重新分片失败YELLO、RED恢复处理_es报错分片失败-CSDN博客&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a
+href=&quot;https://anonymity94.github.io/articles/elasticsearch-error-cluster-block-exception-forbidden-12-index-read-only-all/#%E5%8F%91%E7%8E%B0%E9%97%AE%E9%A2%98&quot;&gt;磁盘空间不足导致
+Elasticsearch 锁定索引无法写入数据 | Anonymity94&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a
+href=&quot;https://www.cnblogs.com/kevingrace/category/1099403.html&quot;&gt;Elasticsearch
+- 随笔分类 - 散尽浮华 - 博客园&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;尤其是最后这个链接非常建议看一下，太棒了！&lt;/p&gt;
+&lt;h1 id=&quot;命令&quot;&gt;命令&lt;/h1&gt;
+&lt;h2 id=&quot;小提示&quot;&gt;小提示&lt;/h2&gt;
+&lt;p&gt;在请求后加上&lt;code&gt;?v&lt;/code&gt;触发详细响应信息，拼上&lt;code&gt;?pretty&lt;/code&gt;后&lt;code&gt;json&lt;/code&gt;美化。&lt;/p&gt;
+&lt;p&gt;如：&lt;code&gt;curl -X GET localhost:9200/_cat/nodes?pretty&lt;/code&gt;响应为&lt;/p&gt;
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;192.168.168.100 66 99 4 0.45 0.22 0.22 mdi - node-2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;192.168.168.101 57 99 4 0.35 0.21 0.21 mdi * node-1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;192.168.168.102 52 99 4 0.20 0.15 0.18 mdi - node-3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;改命令为：&lt;code&gt;curl -X GET localhost:9200/_cat/nodes?v&amp;amp;pretty&lt;/code&gt;后响应为&lt;/p&gt;
+&lt;p&gt;可以看到已经有头信息了。&lt;/p&gt;
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ip         				heap.percent ram.percent cpu load_1m load_5m load_15m node.role master name&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;192.168.168.100   60          	99   				4    0.36    0.21     0.22 	mdi       -      node-2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;192.168.168.101   56          	99   				4    0.36    0.23     0.22 	mdi       *      node-1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;192.168.168.102   52          	99   				4    0.13    0.13     0.18 	mdi       -      node-3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;常用&quot;&gt;常用&lt;/h2&gt;
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;# &lt;/span&gt;&lt;span class=&quot;language-bash&quot;&gt;集群健康检查&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;curl -X GET localhost:9200/_cluster/health&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;# &lt;/span&gt;&lt;span class=&quot;language-bash&quot;&gt;集群设置&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;curl -X GET localhost:9200/_cluster/settings&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;# &lt;/span&gt;&lt;span class=&quot;language-bash&quot;&gt;节点查看&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;curl -X GET localhost:9200/_cat/nodes&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;# &lt;/span&gt;&lt;span class=&quot;language-bash&quot;&gt;所有索引查询&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;curl -X GET localhost:9200/_cat/indices&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;# &lt;/span&gt;&lt;span class=&quot;language-bash&quot;&gt;指定索引设置查询&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;curl -X GET lcoalhost:9200/$&amp;#123;my_index&amp;#125;/_settings&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;# &lt;/span&gt;&lt;span class=&quot;language-bash&quot;&gt;所有分片查询&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;curl -X GET localhost:9200/_cat/shards&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;# &lt;/span&gt;&lt;span class=&quot;language-bash&quot;&gt;指定索引分片查询&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;curl -X GET localhost:9200/_cat/shards/$&amp;#123;my_index&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;# &lt;/span&gt;&lt;span class=&quot;language-bash&quot;&gt;所有别名查询&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;curl -X GET localhost:9200/_cat/aliases&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;# &lt;/span&gt;&lt;span class=&quot;language-bash&quot;&gt;指定别名查询&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;curl -X GET localhost:9200/_cat/aliases/$&amp;#123;my_aliases&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;# &lt;/span&gt;&lt;span class=&quot;language-bash&quot;&gt;磁盘使用情况&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;curl -X GET localhost:9200/_cat/allocation&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;# &lt;/span&gt;&lt;span class=&quot;language-bash&quot;&gt;筛选未分配的分片&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;curl -X GET localhost:9200/_cat/shards?v | grep UNASSIGNED&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta prompt_&quot;&gt;# &lt;/span&gt;&lt;span class=&quot;language-bash&quot;&gt;查看allocation失败原因&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;curl -X GET localhost:9200/_cluster/allocation/explain?pretty&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h1 id=&quot;检查集群状态&quot;&gt;检查集群状态&lt;/h1&gt;
+&lt;p&gt;通常使用&lt;code&gt;curl -X GET localhost:9200/_cluster/health?pretty&lt;/code&gt;检查&lt;code&gt;es&lt;/code&gt;集群状态，如下面的响应数据。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+    <category term="Elasticsearch" scheme="https://wnhyang.github.io/tags/Elasticsearch/"/>
+    
+  </entry>
+  
+  <entry>
     <title>规则引擎LiteFlow发布v2.12.1版本，决策路由特性</title>
     <link href="https://wnhyang.github.io/article/a949e07.html"/>
     <id>https://wnhyang.github.io/article/a949e07.html</id>
     <published>2024-06-06T01:51:18.000Z</published>
-    <updated>2024-06-06T11:58:50.524Z</updated>
+    <updated>2024-06-06T14:11:18.622Z</updated>
     
     
     <summary type="html">&lt;p&gt;个人博客：&lt;a
@@ -137,9 +193,9 @@ alt=&quot;image&quot; /&gt;
     
     
     
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
     <category term="Mybatis/Mybatis-plus" scheme="https://wnhyang.github.io/tags/Mybatis-Mybatis-plus/"/>
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
     <category term="数据库" scheme="https://wnhyang.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
@@ -408,9 +464,9 @@ Overview&lt;/a&gt;&lt;/p&gt;
     
     
     
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
     <category term="Spring Framework" scheme="https://wnhyang.github.io/tags/Spring-Framework/"/>
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
     <category term="Java" scheme="https://wnhyang.github.io/tags/Java/"/>
     
@@ -612,9 +668,9 @@ href=&quot;https://zhuanlan.zhihu.com/p/269208311&quot;&gt;七大主流的HttpCl
     
     
     
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
     <category term="Spring Framework" scheme="https://wnhyang.github.io/tags/Spring-Framework/"/>
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
   </entry>
   
@@ -714,9 +770,9 @@ implementation.&lt;/li&gt;
     
     
     
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
     <category term="Spring Framework" scheme="https://wnhyang.github.io/tags/Spring-Framework/"/>
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
   </entry>
   
@@ -754,9 +810,9 @@ MyBatis-Plus&lt;/a&gt;&lt;/p&gt;
     
     <category term="软件&amp;工具" scheme="https://wnhyang.github.io/tags/%E8%BD%AF%E4%BB%B6-%E5%B7%A5%E5%85%B7/"/>
     
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
     <category term="Mybatis/Mybatis-plus" scheme="https://wnhyang.github.io/tags/Mybatis-Mybatis-plus/"/>
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
   </entry>
   
@@ -849,41 +905,6 @@ Overview&lt;/a&gt;&lt;/p&gt;
     <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
     
     <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用了智能表格后，不禁感叹现在的生产力工具真牛！</title>
-    <link href="https://wnhyang.github.io/article/a2229281.html"/>
-    <id>https://wnhyang.github.io/article/a2229281.html</id>
-    <published>2024-03-03T12:34:46.000Z</published>
-    <updated>2024-03-04T09:29:59.743Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;个人博客：&lt;a
-href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
-title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
-title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
-Overview&lt;/a&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;办公三件套，我想不会有人没用过吧，如果你还停留在简单编辑、套模版的的办公三件套时代，那只能说你真的out了！&lt;/p&gt;
-&lt;p&gt;这周因为一些工作上的需要，打开WPS创建并使用了一下智能表格，不用不知道，使用后属实是把我惊到了。&lt;/p&gt;
-&lt;h1 id=&quot;智能表格&quot;&gt;智能表格&lt;/h1&gt;
-&lt;p&gt;特性：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;多人协作，这个功能其实不算是特性的，因为绝大多数表格都可以做到&lt;/li&gt;
-&lt;li&gt;简单的在线数据库，高效的管理数据&lt;/li&gt;
-&lt;li&gt;搭积木一样建应用，每个人都会用&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;接下来我会从模版和自己的实践上重点介绍后两点！&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="软件&amp;工具" scheme="https://wnhyang.github.io/tags/%E8%BD%AF%E4%BB%B6-%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   

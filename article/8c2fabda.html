@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="google-site-verification" content="4zmc5dCOR7a63YXOZx4mwqsC5dPpr0m2iWeI12w6wng">
+  <meta name="baidu-site-verification" content="fe6bba1d0d4e906fed87c9f7c2d1d09d">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="个人博客：无奈何杨（wnhyang） 个人语雀：wnhyang 共享语雀：在线知识共享 Github：wnhyang - Overview  参考 探索集群 · Elasticsearch 中文文档 https:&#x2F;&#x2F;www.elastic.co&#x2F;guide&#x2F;en&#x2F;elasticsearch&#x2F;reference&#x2F;8.14&#x2F;fix-common-cluster-issues.html Elastics">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Elasticsearch集群运维，重平衡、分片、宕节点、扩容">
+<meta property="og:url" content="https://wnhyang.github.io/article/8c2fabda.html">
+<meta property="og:site_name" content="无奈何杨（wnhyang）">
+<meta property="og:description" content="个人博客：无奈何杨（wnhyang） 个人语雀：wnhyang 共享语雀：在线知识共享 Github：wnhyang - Overview  参考 探索集群 · Elasticsearch 中文文档 https:&#x2F;&#x2F;www.elastic.co&#x2F;guide&#x2F;en&#x2F;elasticsearch&#x2F;reference&#x2F;8.14&#x2F;fix-common-cluster-issues.html Elastics">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240613/image.1758lubssa.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240613/image.2yy7gqwaal.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240613/image.5mnnr40ght.webp">
+<meta property="og:image" content="https://wnhyang.github.io/images/wechat_channel.webp">
+<meta property="article:published_time" content="2024-06-13T12:15:01.000Z">
+<meta property="article:modified_time" content="2024-06-13T13:07:09.942Z">
+<meta property="article:author" content="无奈何杨（wnhyang）">
+<meta property="article:tag" content="项目">
+<meta property="article:tag" content="Elasticsearch">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240613/image.1758lubssa.webp">
+
+
+<link rel="canonical" href="https://wnhyang.github.io/article/8c2fabda.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wnhyang.github.io/article/8c2fabda.html","path":"article/8c2fabda.html","title":"Elasticsearch集群运维，重平衡、分片、宕节点、扩容"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Elasticsearch集群运维，重平衡、分片、宕节点、扩容 | 无奈何杨（wnhyang）</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="无奈何杨（wnhyang）" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">无奈何杨（wnhyang）</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">I will keep to fight</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">47</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">195</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">1.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E6%8F%90%E7%A4%BA"><span class="nav-number">2.1.</span> <span class="nav-text">小提示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8"><span class="nav-number">2.2.</span> <span class="nav-text">常用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A3%80%E6%9F%A5%E9%9B%86%E7%BE%A4%E7%8A%B6%E6%80%81"><span class="nav-number">3.</span> <span class="nav-text">检查集群状态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9B%86%E7%BE%A4%E4%B8%AD%E5%AE%95%E6%8E%89%E4%B8%80%E4%B8%AA%E8%8A%82%E7%82%B9%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88"><span class="nav-number">4.</span> <span class="nav-text">集群中宕掉一个节点会发生什么</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%81%87%E6%AD%BB%E4%B8%8E%E8%8A%82%E7%82%B9%E4%B8%8B%E7%BA%BF%E6%A3%80%E6%B5%8B"><span class="nav-number">4.1.</span> <span class="nav-text">1、假死与节点下线检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E6%96%B0%E5%88%86%E9%85%8D%E5%88%86%E7%89%87"><span class="nav-number">4.2.</span> <span class="nav-text">2、重新分配分片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E5%88%86%E7%89%87%E7%9A%84%E9%87%8D%E6%96%B0%E9%80%89%E4%B8%BE"><span class="nav-number">4.3.</span> <span class="nav-text">3、主分片的重新选举</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E9%9B%86%E7%BE%A4%E7%8A%B6%E6%80%81"><span class="nav-number">4.4.</span> <span class="nav-text">4、更新集群状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%AF%E6%9C%AC%E5%88%86%E7%89%87%E5%A4%8D%E5%88%B6"><span class="nav-number">4.5.</span> <span class="nav-text">5、副本分片复制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%A1%E7%90%86%E7%BB%B4%E6%8A%A4"><span class="nav-number">4.6.</span> <span class="nav-text">6、管理维护</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9B%86%E7%BE%A4%E4%B8%AD%E6%96%B0%E5%8A%A0%E5%85%A5%E4%B8%80%E4%B8%AA%E8%8A%82%E7%82%B9%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88"><span class="nav-number">5.</span> <span class="nav-text">集群中新加入一个节点会发生什么</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8A%82%E7%82%B9%E5%8F%91%E7%8E%B0%E5%92%8C%E5%8A%A0%E5%85%A5"><span class="nav-number">5.1.</span> <span class="nav-text">1、节点发现和加入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8A%82%E7%82%B9%E5%90%AF%E5%8A%A8%E5%92%8C%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">5.2.</span> <span class="nav-text">2、节点启动和初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%92%E8%89%B2%E5%88%86%E9%85%8D"><span class="nav-number">5.3.</span> <span class="nav-text">3、角色分配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E7%89%87%E9%87%8D%E6%96%B0%E5%B9%B3%E8%A1%A1"><span class="nav-number">5.4.</span> <span class="nav-text">4、分片重新平衡</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E5%88%86%E7%89%87%E5%88%86%E9%85%8D%E6%96%B9%E6%A1%88"><span class="nav-number">5.4.1.</span> <span class="nav-text">计算分片分配方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A7%BB%E5%8A%A8%E5%88%86%E7%89%87"><span class="nav-number">5.4.2.</span> <span class="nav-text">移动分片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E5%85%83%E6%95%B0%E6%8D%AE"><span class="nav-number">5.4.3.</span> <span class="nav-text">更新元数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A6%E5%8F%91%E5%A4%8D%E5%88%B6%E5%92%8C%E5%90%8C%E6%AD%A5"><span class="nav-number">5.4.4.</span> <span class="nav-text">触发复制和同步</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%A1%E7%90%86%E8%BF%90%E7%BB%B4"><span class="nav-number">5.5.</span> <span class="nav-text">5、管理运维</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%94%81%E6%96%87%E4%BB%B6node.lock"><span class="nav-number">6.</span> <span class="nav-text">锁文件node.lock</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="nav-number">7.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="无奈何杨（wnhyang）"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">无奈何杨（wnhyang）</p>
+  <div class="site-description" itemprop="description">热爱、分享、生活</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">195</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">47</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wnhyang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wnhyang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/wnhyang" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;wnhyang" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wnhyang@qq.com" title="E-Mail → mailto:wnhyang@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://www.yuque.com/wnh/share" title="https:&#x2F;&#x2F;www.yuque.com&#x2F;wnh&#x2F;share" rel="noopener" target="_blank">语雀分享</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://github.com/wnhyang" title="https:&#x2F;&#x2F;github.com&#x2F;wnhyang" rel="noopener" target="_blank">GitHub</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.zhihu.com/people/wnhyang" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;wnhyang" rel="noopener" target="_blank">知乎</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/8c2fabda.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+      <meta itemprop="description" content="热爱、分享、生活">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Elasticsearch集群运维，重平衡、分片、宕节点、扩容 | 无奈何杨（wnhyang）">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Elasticsearch集群运维，重平衡、分片、宕节点、扩容
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-06-13 20:15:01 / 修改时间：21:07:09" itemprop="dateCreated datePublished" datetime="2024-06-13T20:15:01+08:00">2024-06-13</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>12 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>个人博客：<a
+href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
+<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
+title="wnhyang">wnhyang</a></p>
+<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
+title="在线知识共享">在线知识共享</a></p>
+<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
+Overview</a></p>
+<hr />
+<h1 id="参考">参考</h1>
+<p><a target="_blank" rel="noopener" href="https://docs.kilvn.com/elasticsearch/docs/3.html">探索集群 ·
+Elasticsearch 中文文档</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/8.14/fix-common-cluster-issues.html"
+class="uri">https://www.elastic.co/guide/en/elasticsearch/reference/8.14/fix-common-cluster-issues.html</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1836799">Elasticsearch运维指南-腾讯云开发者社区-腾讯云</a></p>
+<p><a
+target="_blank" rel="noopener" href="http://t.csdnimg.cn/xECsH">elasticsearch重启后，unassigned索引重新分片失败YELLO、RED恢复处理_es报错分片失败-CSDN博客</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://anonymity94.github.io/articles/elasticsearch-error-cluster-block-exception-forbidden-12-index-read-only-all/#%E5%8F%91%E7%8E%B0%E9%97%AE%E9%A2%98">磁盘空间不足导致
+Elasticsearch 锁定索引无法写入数据 | Anonymity94</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/kevingrace/category/1099403.html">Elasticsearch
+- 随笔分类 - 散尽浮华 - 博客园</a></p>
+<p>尤其是最后这个链接非常建议看一下，太棒了！</p>
+<h1 id="命令">命令</h1>
+<h2 id="小提示">小提示</h2>
+<p>在请求后加上<code>?v</code>触发详细响应信息，拼上<code>?pretty</code>后<code>json</code>美化。</p>
+<p>如：<code>curl -X GET localhost:9200/_cat/nodes?pretty</code>响应为</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">192.168.168.100 66 99 4 0.45 0.22 0.22 mdi - node-2</span><br><span class="line">192.168.168.101 57 99 4 0.35 0.21 0.21 mdi * node-1</span><br><span class="line">192.168.168.102 52 99 4 0.20 0.15 0.18 mdi - node-3</span><br></pre></td></tr></table></figure>
+<p>改命令为：<code>curl -X GET localhost:9200/_cat/nodes?v&amp;pretty</code>后响应为</p>
+<p>可以看到已经有头信息了。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ip         				heap.percent ram.percent cpu load_1m load_5m load_15m node.role master name</span><br><span class="line">192.168.168.100   60          	99   				4    0.36    0.21     0.22 	mdi       -      node-2</span><br><span class="line">192.168.168.101   56          	99   				4    0.36    0.23     0.22 	mdi       *      node-1</span><br><span class="line">192.168.168.102   52          	99   				4    0.13    0.13     0.18 	mdi       -      node-3</span><br></pre></td></tr></table></figure>
+<h2 id="常用">常用</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">集群健康检查</span></span><br><span class="line">curl -X GET localhost:9200/_cluster/health</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">集群设置</span></span><br><span class="line">curl -X GET localhost:9200/_cluster/settings</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">节点查看</span></span><br><span class="line">curl -X GET localhost:9200/_cat/nodes</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">所有索引查询</span></span><br><span class="line">curl -X GET localhost:9200/_cat/indices</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">指定索引设置查询</span></span><br><span class="line">curl -X GET lcoalhost:9200/$&#123;my_index&#125;/_settings</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">所有分片查询</span></span><br><span class="line">curl -X GET localhost:9200/_cat/shards</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">指定索引分片查询</span></span><br><span class="line">curl -X GET localhost:9200/_cat/shards/$&#123;my_index&#125;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">所有别名查询</span></span><br><span class="line">curl -X GET localhost:9200/_cat/aliases</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">指定别名查询</span></span><br><span class="line">curl -X GET localhost:9200/_cat/aliases/$&#123;my_aliases&#125;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">磁盘使用情况</span></span><br><span class="line">curl -X GET localhost:9200/_cat/allocation</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">筛选未分配的分片</span></span><br><span class="line">curl -X GET localhost:9200/_cat/shards?v | grep UNASSIGNED</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看allocation失败原因</span></span><br><span class="line">curl -X GET localhost:9200/_cluster/allocation/explain?pretty</span><br></pre></td></tr></table></figure>
+<h1 id="检查集群状态">检查集群状态</h1>
+<p>通常使用<code>curl -X GET localhost:9200/_cluster/health?pretty</code>检查<code>es</code>集群状态，如下面的响应数据。</p>
+<span id="more"></span>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;cluster_name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xxxCluster&quot;</span><span class="punctuation">,</span> </span><br><span class="line">  <span class="attr">&quot;status&quot;</span><span class="punctuation">:</span> <span class="string">&quot;green&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;timed_out&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;number_of_nodes&quot;</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;number_of_data_nodes&quot;</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;active_primary_shards&quot;</span><span class="punctuation">:</span> <span class="number">1370</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;active_shards&quot;</span><span class="punctuation">:</span> <span class="number">2724</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;relocating_shards&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;initializing_shards&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;unassigned_shards&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;delayed_unassigned_shards&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;number_of_pending_tasks&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;number_of_in_flight_fetch&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;task_max_waiting_in_queue_millis&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;active_shards_percent_as_number&quot;</span><span class="punctuation">:</span> <span class="number">100</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>每个字段说明如下：</p>
+<ul>
+<li><strong>cluster_name</strong>：集群的名称。</li>
+<li><strong>status</strong>：集群的整体状态，可能的值有：</li>
+</ul>
+<!---->
+<ul>
+<li><ul>
+<li><strong>green</strong>：所有主分片和副本分片都处于活动状态。</li>
+<li><strong>yellow</strong>：所有主分片都处于活动状态，但不是所有副本分片都处于活动状态。</li>
+<li><strong>red</strong>：至少有一个主分片不处于活动状态。</li>
+</ul></li>
+</ul>
+<!---->
+<ul>
+<li><strong>timed_out</strong>：布尔值，指示请求是否超时。</li>
+<li><strong>number_of_nodes</strong>：集群中节点的总数。</li>
+<li><strong>number_of_data_nodes</strong>：集群中数据节点的总数。</li>
+<li><strong>active_primary_shards</strong>：当前活动的主分片数量。</li>
+<li><strong>active_shards</strong>：当前活动的分片总数（包括主分片和副本分片）。</li>
+<li><strong>relocating_shards</strong>：正在迁移的分片数量。</li>
+<li><strong>initializing_shards</strong>：正在初始化的分片数量。</li>
+<li><strong>unassigned_shards</strong>：未分配的分片数量。</li>
+<li><strong>delayed_unassigned_shards</strong>：延迟分配的未分配分片数量。</li>
+<li><strong>number_of_pending_tasks</strong>：等待执行的任务数量。</li>
+<li><strong>number_of_in_flight_fetch</strong>：正在执行的远程获取请求数量。</li>
+<li><strong>task_max_waiting_in_queue_millis</strong>：任务队列中的最长等待时间（以毫秒为单位）。</li>
+<li><strong>active_shards_percent_as_number</strong>：活动分片的百分比。</li>
+</ul>
+<h1 id="集群中宕掉一个节点会发生什么">集群中宕掉一个节点会发生什么</h1>
+<p>假如有5个节点组成es集群，5个节点分别是<code>node1</code>、<code>node2</code>、<code>node3</code>、<code>node4</code>、<code>node5</code>，宕掉了<code>node1</code>。</p>
+<h2 id="假死与节点下线检测">1、假死与节点下线检测</h2>
+<p>其他节点会尝试与失联节点建立通信。如果节点在一段时间内没有响应，其他节点会将其标记为失联。心跳检测<code>ping</code>超时时间、重试次数等配置查看<code>discovery.zen</code>开头的配置项。</p>
+<h2 id="重新分配分片">2、重新分配分片</h2>
+<p>当一个节点失联时，它上面的分片将被重新分配到其他可用节点上，以保持数据的可用性和可靠性。</p>
+<p>以其中一个索引来分析，此索引主分片设置5，副本设置2。</p>
+<p>查看此索引设置<code>curl -X GET lcoalhost:9200/$&#123;my_index&#125;/_settings</code></p>
+<p>查看此索引分片<code>curl -X GET localhost:9200/_cat/shards/$&#123;my_index&#125;</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">index        shard prirep state   docs store  ip  node</span><br><span class="line">xxx-20240530 2     p      STARTED 5043 15.2mb es3 node3</span><br><span class="line">xxx-20240530 2     r      STARTED 5043 15.6mb es5 node5</span><br><span class="line">xxx-20240530 2     r      STARTED 5043 15.6mb es1 node1</span><br><span class="line">xxx-20240530 1     r      STARTED 5164 15.5mb es1 node1</span><br><span class="line">xxx-20240530 1     r      STARTED 5164 15.5mb es3 node3</span><br><span class="line">xxx-20240530 1     p      STARTED 5164 15.5mb es2 node2</span><br><span class="line">xxx-20240530 0     r      STARTED 5042 15.6mb es2 node2</span><br><span class="line">xxx-20240530 0     r      STARTED 5042 15.6mb es4 node4</span><br><span class="line">xxx-20240530 0     p      STARTED 5042 15.6mb es3 node3</span><br><span class="line">xxx-20240530 3     r      STARTED 5164 15.5mb es5 node5</span><br><span class="line">xxx-20240530 3     r      STARTED 5164 15.5mb es2 node2</span><br><span class="line">xxx-20240530 3     p      STARTED 5164 15.5mb es4 node4</span><br><span class="line">xxx-20240530 4     r      STARTED 5042 15.6mb es1 node1</span><br><span class="line">xxx-20240530 4     r      STARTED 5042 15.6mb es4 node4</span><br><span class="line">xxx-20240530 4     p      STARTED 5042 15.6mb es5 node5</span><br></pre></td></tr></table></figure>
+<p>索引分片分布如下图，<code>P</code>表示主分片，<code>R</code>表示副本分片，<code>a</code>、<code>b</code>只是为了区分副本分片。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240613/image.1758lubssa.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>当<code>node1</code>下线后，其上的分片都变为不可用状态。仅从此索引来看的话就是主分片<code>P2</code>、副本<code>R1.a</code>、<code>R4.b</code>不可用，重新分配分片要做的就是重新建立或移动这些分片。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240613/image.2yy7gqwaal.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<h2 id="主分片的重新选举">3、主分片的重新选举</h2>
+<p>如果失联节点上有主分片，其他副本分片会参与选举新的主分片。这确保了即使失联节点上的主分片不可用，集群仍能继续工作。</p>
+<p>因为<code>node1</code>下线，此索引主分片<code>P2</code>不在了，所以要从已有<code>R1.a</code>和<code>R1.b</code>两个副本分片中选取一个作为主分片。</p>
+<h2 id="更新集群状态">4、更新集群状态</h2>
+<p>集群状态会根据重新分配的分片数量和状态更新。如果主分片无法分配，集群状态可能会变为<code>yellow</code>或<code>red</code>。</p>
+<p>在集群状态变为<code>yellow</code>或<code>red</code>的同时，通常伴随着其他指标（<code>relocating_shards</code>
+<strong>、</strong> <code>initializing_shards</code> <strong>、</strong>
+<code>unassigned_shards</code><strong>等</strong>）的异常。</p>
+<p>集群状态不仅是<code>/_cluster/health</code>看到的集群状态，还包括，索引、分片的状态。</p>
+<h2 id="副本分片复制">5、副本分片复制</h2>
+<p>如果失联节点上有副本分片，这些副本分片会被用于重新分配到其他节点上。这保证了数据的冗余性和可靠性。</p>
+<p>在上面例子中，<code>node1</code>下线后，索引分片2的主分片<code>P2</code>丢失，在已有<code>R1.a</code>和<code>R1.b</code>两个副本分片中选取一个作为主分片后，假如<code>node5</code>上的<code>R1.a</code>晋升为主分片，主分片是有了，但是副本数不够，需要在除<code>node5</code>、<code>node3</code>上创建副本分片。除了丢失了主分片的分片需要创建副本，原本因为节点下线而缺少副本分片的也要创建新的副本，例子中分片1、4都需要再新建一个副本。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240613/image.5mnnr40ght.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>此时通过<code>/_cluster/health</code>检查集群，因为并没有冗余或是需要平衡的分片，<code>relocating_shards</code>（重定位/转移分片）为0；根据机器性能和es配置情况<code>initializing_shards</code>
+<strong>、</strong> <code>unassigned_shards</code>和任务数会有差别。</p>
+<p>同时<code>/_cat/indices</code>中会存在<code>red</code>或<code>yellow</code>索引，<code>/_cat/shards</code>存在<code>UNASSIGNED</code>分片。</p>
+<p>关于<code>UNASSIGNED</code>分片，原因有下。</p>
+<p><code>curl XGET 'http://ip:9200/_cat/shards?h=index,shard,prirep,state,unassigned.reason' | grep UNASSIGNED</code></p>
+<ul>
+<li><strong>INDEX_CREATED</strong>：索引刚刚创建，分片尚未分配。</li>
+<li><strong>NODE_LEFT</strong>：一个或多个节点离开了集群，导致分片无法分配。</li>
+<li><strong>REROUTE_CANCELLED</strong>：重新路由过程被取消。</li>
+<li><strong>REPLICA_ADDED</strong>：副本分片添加到节点上，但尚未被分配。</li>
+<li><strong>ALLOCATION_FAILED</strong>：分配分片到节点上失败。</li>
+<li><strong>CLUSTER_RECOVERED</strong>：集群正在恢复。</li>
+<li><strong>EXCEPTION</strong>：发生了异常情况，导致分片无法分配。</li>
+<li><strong>IN_SYNC</strong>：副本分片已经处于与主分片同步的状态，但尚未被分配。</li>
+<li><strong>INITIALIZING</strong>：正在初始化分片。</li>
+<li><strong>PRIMARY_MISSING</strong>：主分片丢失，无法找到主分片。</li>
+<li><strong>REBALANCE_CLUSTER_SETTING</strong>：由于重新平衡集群设置而导致的未分配。</li>
+<li><strong>RECOVERY_FAILED</strong>：分片恢复失败。</li>
+<li><strong>UNKNOWN</strong>：未知的未分配原因。</li>
+</ul>
+<p>如果在<code>es</code>集群中，<code>UNASSIGNED</code>分片一直存在，长时间没有变化，可以从以上原因方向去分析。</p>
+<p>顺带一讲如果你看了一些博客将通过<code>/_cluster/settings</code>看到结果为</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;persistent&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;transient&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>博客讲的是自动分配功能未开启，但是其实并不是这样的，<code>es</code>具有许多默认设置，如果没有对集群进行显式的自定义配置，那么集群设置中可能会显示为空。自动分配就是默认开启的。</p>
+<h2 id="管理维护">6、管理维护</h2>
+<p>这就不属于<code>es</code>集群自治的范围了，需要人工介入。如果节点持续失联，管理员可能会手动将其从集群中移除。这样可以确保集群不会因为失联节点而进一步受到影响。集群的监控系统可能会生成警报，通知运维人员和开发人员来处理问题。</p>
+<h1
+id="集群中新加入一个节点会发生什么">集群中新加入一个节点会发生什么</h1>
+<h2 id="节点发现和加入">1、节点发现和加入</h2>
+<p>新节点会通过集群的发现机制发现已知节点，并向它们发送加入请求。这些请求包含了新节点的基本信息和能力，例如它的IP地址、角色（数据节点、主节点等）、硬件配置等。</p>
+<h2 id="节点启动和初始化">2、节点启动和初始化</h2>
+<p>新节点收到加入请求后，会启动并初始化自身。这包括加载配置、启动Elasticsearch服务、加入集群、并与集群中的其他节点建立通信。</p>
+<h2 id="角色分配">3、角色分配</h2>
+<p>根据集群的配置和节点的能力，新节点会被分配适当的角色。例如，如果集群需要更多的数据节点来存储数据，新节点可能会被分配为数据节点；如果集群需要更多的主节点来处理集群级别的操作，新节点可能会被分配为主节点。</p>
+<h2 id="分片重新平衡">4、分片重新平衡</h2>
+<p>一旦新节点加入集群并分配了角色，集群可能会启动分片的重新平衡过程。这意味着一些分片可能会从现有节点重新分配到新节点上，以实现数据的均衡分布和提高集群的整体性能。</p>
+<h3 id="计算分片分配方案">计算分片分配方案</h3>
+<p>集群中的协调节点（coordinating
+node）负责计算分片的分配方案。它会根据集群的配置、节点的状态和负载情况等因素，确定哪些分片需要移动，以及移动到哪些节点上。</p>
+<h3 id="移动分片">移动分片</h3>
+<p>根据计算的分配方案，Elasticsearch会将需要重新分配的分片从源节点移动到目标节点上。这个过程涉及分片的复制、同步和迁移，确保数据的一致性和可用性。</p>
+<h3 id="更新元数据">更新元数据</h3>
+<p>在分片移动完成后，Elasticsearch会更新集群的元数据，包括分片的位置、状态和分配情况等信息。这样，集群就能够知道每个分片的当前位置和状态。</p>
+<h3 id="触发复制和同步">触发复制和同步</h3>
+<p>如果移动的是副本分片，Elasticsearch会触发副本分片的复制和同步过程。这确保了数据的冗余性和高可用性，即使在节点故障时也能保持数据的完整性。</p>
+<p>分片的平衡被多方面影响，你可能听过“理论存在，实践开始”这句话。在负载中有轮询、<code>hash</code>、权重，用于平衡服务差异，目标是做到所有服务的请求稳定。在数据分布上，我们也期待着平衡，也有磁盘占用率、<code>CPU</code>处理效率、<code>IO</code>读写效率差异而带来的不同平衡机制。虽然这些平衡机制存在，但是在无论是在服务多活还是中间件集群中尽量都要使用相同配置的机器，这样就能减少因为硬件差异带来的软件性能的差异。</p>
+<h2 id="管理运维">5、管理运维</h2>
+<p>属于人工范畴，集群状态更新时应该被监控系统监听到并通知相应的运维人员和开发负责人，根据具体情况处理。</p>
+<h1 id="锁文件node.lock">锁文件node.lock</h1>
+<p><code>Elasticsearch</code>中的<code>node.lock</code>文件是用于跟踪节点是否已经启动的标记文件。当一个<code>Elasticsearch</code>节点启动时，它会尝试在数据目录下创建一个名为<code>node.lock</code>的文件。这个文件的存在表示节点已经在该数据目录下启动了，而且已经拥有了这个数据目录的控制权。</p>
+<p>这个<code>node.lock</code>文件的存在确保了在同一个数据目录下只能运行一个<code>Elasticsearch</code>节点。这是因为如果尝试在一个数据目录下启动第二个节点，第二个节点会检测到已经存在一个<code>node.lock</code>文件，从而拒绝启动。这有助于防止数据目录被多个节点同时使用，从而导致数据的损坏或不一致。</p>
+<p>通常情况下，<code>node.lock</code>文件的存在是<code>Elasticsearch</code>节点正常运行的标志。如果你看到这个文件存在，说明节点已经在该数据目录下启动了。如果你想要启动另一个节点，你需要选择一个不同的数据目录，或者删除现有的<code>node.lock</code>文件。</p>
+<h1 id="写在最后">写在最后</h1>
+<p>拙作艰辛，字句心血，望诸君垂青，多予支持，不胜感激。</p>
+<hr />
+<p>个人博客：<a
+href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
+<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
+title="wnhyang">wnhyang</a></p>
+<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
+title="在线知识共享">在线知识共享</a></p>
+<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
+Overview</a></p>
+<p><img data-src="https://wnhyang.github.io/images/wechat_channel.webp" /></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.webp" alt="无奈何杨（wnhyang） 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.webp" alt="无奈何杨（wnhyang） 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>无奈何杨（wnhyang）
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://wnhyang.github.io/article/8c2fabda.html" title="Elasticsearch集群运维，重平衡、分片、宕节点、扩容">https://wnhyang.github.io/article/8c2fabda.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/images/wechat_channel.webp">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://www.zhihu.com/people/wnhyang">
+            <span class="icon">
+              <i class="fab fa-zhihu"></i>
+            </span>
+
+            <span class="label">Zhihu</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E9%A1%B9%E7%9B%AE/" rel="tag"># 项目</a>
+              <a href="/tags/Elasticsearch/" rel="tag"># Elasticsearch</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/article/a949e07.html" rel="prev" title="规则引擎LiteFlow发布v2.12.1版本，决策路由特性">
+                  <i class="fa fa-chevron-left"></i> 规则引擎LiteFlow发布v2.12.1版本，决策路由特性
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">无奈何杨（wnhyang）</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">249k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">15:05</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/wnhyang" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.2.2/mermaid.min.js","integrity":"sha256-o5AUfgOkNFWuInA78GVCoVdGoN9eTaB3Hxu+ep7TTrY="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://wnhyang.github.io/article/8c2fabda.html"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>
