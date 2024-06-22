@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2024-06-13T13:07:09.942Z</updated>
+  <updated>2024-06-22T08:16:26.488Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,64 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>SpringBoot之Jackson，自动化配置，Java 8 date/time type java.time.LocalTime not supported</title>
+    <link href="https://wnhyang.github.io/article/a9589eb9.html"/>
+    <id>https://wnhyang.github.io/article/a9589eb9.html</id>
+    <published>2024-06-20T11:17:20.000Z</published>
+    <updated>2024-06-22T08:16:26.488Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;个人博客：&lt;a
+href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
+title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
+title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
+Overview&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h1 id=&quot;参考&quot;&gt;参考&lt;/h1&gt;
+&lt;p&gt;&lt;a
+href=&quot;https://www.iocoder.cn/Spring-MVC/lichhao/HttpMessageConverter/&quot;&gt;【相见欢】Spring
+MVC 源码剖析（五） —— 消息转换器 HttpMessageConverter | 芋道源码 ——
+纯源码解析博客&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://juejin.cn/post/7195078889767436346&quot;&gt;Spring boot
+中时间类型的序列化与反序列化 - 掘金&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://juejin.cn/post/7195117148140732453&quot;&gt;Spring boot 中
+Jackson 的常用配置&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;failed-to-deserialize-java.time.localdatetime&quot;&gt;Failed to
+deserialize java.time.LocalDateTime&lt;/h1&gt;
+&lt;p&gt;这是&lt;code&gt;web&lt;/code&gt;开发中常见的一个错误，无法完成&lt;code&gt;LocalDataTime&lt;/code&gt;的反序列化。&lt;/p&gt;
+&lt;p&gt;这是怎么回事？&lt;/p&gt;
+&lt;p&gt;其实这个问题在于&lt;code&gt;LocalTime&lt;/code&gt;、&lt;code&gt;LocalDate&lt;/code&gt;、&lt;code&gt;LocalDateTime&lt;/code&gt;的序列化上。&lt;/p&gt;
+&lt;p&gt;这就要从&lt;code&gt;SpringMVC&lt;/code&gt;说起了！&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Spring MVC&lt;/code&gt; 是 &lt;code&gt;Spring Framework&lt;/code&gt;
+的核心组件之一，与其他模块（如
+&lt;code&gt;Spring Boot&lt;/code&gt;、&lt;code&gt;Spring Data&lt;/code&gt;、&lt;code&gt;Spring Security&lt;/code&gt;
+等）一起构成了完整的 &lt;code&gt;Spring&lt;/code&gt; 生态系统。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Spring MVC&lt;/code&gt;是&lt;code&gt;Web&lt;/code&gt;开发中极其重要，其设计思想是非常值得学习的。&lt;/p&gt;
+&lt;p&gt;关于&lt;code&gt;SpringMVC&lt;/code&gt;的学习可以参考以下文章&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.iocoder.cn/categories/Spring-MVC/&quot;&gt;Category:
+Spring-MVC | 芋道源码 —— 纯源码解析博客&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;请求报文在传输中是要进行序列化和反序列化的，有大致经历了如下流程。&lt;/p&gt;
+&lt;figure&gt;
+&lt;img data-src=&quot;https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240622/image.3go9hx1v4k.webp&quot;
+alt=&quot;image&quot; /&gt;
+&lt;figcaption aria-hidden=&quot;true&quot;&gt;image&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;其中这个&lt;code&gt;HttpMessageConver&lt;/code&gt;是这个过程中的关键，这个接口继承树如下图。&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>Elasticsearch集群运维，重平衡、分片、宕节点、扩容</title>
     <link href="https://wnhyang.github.io/article/8c2fabda.html"/>
     <id>https://wnhyang.github.io/article/8c2fabda.html</id>
     <published>2024-06-13T12:15:01.000Z</published>
-    <updated>2024-06-13T13:07:09.942Z</updated>
+    <updated>2024-06-13T13:07:37.628Z</updated>
     
     
     <summary type="html">&lt;p&gt;个人博客：&lt;a
@@ -193,9 +246,9 @@ alt=&quot;image&quot; /&gt;
     
     
     
-    <category term="Mybatis/Mybatis-plus" scheme="https://wnhyang.github.io/tags/Mybatis-Mybatis-plus/"/>
-    
     <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
+    
+    <category term="Mybatis/Mybatis-plus" scheme="https://wnhyang.github.io/tags/Mybatis-Mybatis-plus/"/>
     
     <category term="数据库" scheme="https://wnhyang.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
@@ -464,9 +517,9 @@ Overview&lt;/a&gt;&lt;/p&gt;
     
     
     
-    <category term="Spring Framework" scheme="https://wnhyang.github.io/tags/Spring-Framework/"/>
-    
     <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
+    
+    <category term="Spring Framework" scheme="https://wnhyang.github.io/tags/Spring-Framework/"/>
     
     <category term="Java" scheme="https://wnhyang.github.io/tags/Java/"/>
     
@@ -668,9 +721,9 @@ href=&quot;https://zhuanlan.zhihu.com/p/269208311&quot;&gt;七大主流的HttpCl
     
     
     
-    <category term="Spring Framework" scheme="https://wnhyang.github.io/tags/Spring-Framework/"/>
-    
     <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
+    
+    <category term="Spring Framework" scheme="https://wnhyang.github.io/tags/Spring-Framework/"/>
     
   </entry>
   
@@ -770,9 +823,9 @@ implementation.&lt;/li&gt;
     
     
     
-    <category term="Spring Framework" scheme="https://wnhyang.github.io/tags/Spring-Framework/"/>
-    
     <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
+    
+    <category term="Spring Framework" scheme="https://wnhyang.github.io/tags/Spring-Framework/"/>
     
   </entry>
   
@@ -810,9 +863,9 @@ MyBatis-Plus&lt;/a&gt;&lt;/p&gt;
     
     <category term="软件&amp;工具" scheme="https://wnhyang.github.io/tags/%E8%BD%AF%E4%BB%B6-%E5%B7%A5%E5%85%B7/"/>
     
-    <category term="Mybatis/Mybatis-plus" scheme="https://wnhyang.github.io/tags/Mybatis-Mybatis-plus/"/>
-    
     <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
+    
+    <category term="Mybatis/Mybatis-plus" scheme="https://wnhyang.github.io/tags/Mybatis-Mybatis-plus/"/>
     
   </entry>
   
@@ -867,44 +920,6 @@ class=&quot;math inline&quot;&gt;\({客户号}关联\)&lt;/span&gt;{设备mac地
     <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
     <category term="设计模式" scheme="https://wnhyang.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>可配置输入参数的接口如何设计</title>
-    <link href="https://wnhyang.github.io/article/61a8fda5.html"/>
-    <id>https://wnhyang.github.io/article/61a8fda5.html</id>
-    <published>2024-03-06T13:06:44.000Z</published>
-    <updated>2024-03-07T02:04:32.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;个人博客：&lt;a
-href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
-title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
-title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
-Overview&lt;/a&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;作为程序员，我们绝大多数场景需要根据业务需求来设计系统，开发后端接口，这些接口通常都是在设计阶段就确定了，但是还有一些场景需要实现支持的配置的接口，包含以下功能&lt;/p&gt;
-&lt;p&gt;1、可以配置接口&lt;code&gt;url&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;这个通常在一些论坛博客类系统中比较常见，用于设置个人主页，但其实这个又是不同概念，个人主页通常是&lt;code&gt;get&lt;/code&gt;请求，然后通过&lt;code&gt;path&lt;/code&gt;索引用户主页。&lt;/p&gt;
-&lt;p&gt;2、可选择接口具体实现&lt;/p&gt;
-&lt;p&gt;流程引擎、规则引擎通常就可以实现&lt;/p&gt;
-&lt;p&gt;3、输入参数和输出参数可配置&lt;/p&gt;
-&lt;p&gt;应用场景包括数据收集等&lt;/p&gt;
-&lt;p&gt;前面乱讲一通，最终回归本题——可配置输入参数的接口如何设计？&lt;/p&gt;
-&lt;h1 id=&quot;ai的回答&quot;&gt;AI的回答&lt;/h1&gt;
-&lt;p&gt;以下是&lt;code&gt;AI&lt;/code&gt;的回答——可配置输入参数的接口如何设计？&lt;/p&gt;
-&lt;p&gt;设计支持可配置输入参数的接口时，主要目标是保证接口的灵活性和易用性，同时兼顾健壮性和可维护性。以下是一个通用的设计策略：&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
-    
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
   </entry>
   

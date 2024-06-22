@@ -96,7 +96,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">47</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">195</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">47</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">196</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -161,7 +161,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">195</span>
+          <span class="site-state-item-count">196</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -218,6 +218,123 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/61a8fda5.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+      <meta itemprop="description" content="热爱、分享、生活">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/article/61a8fda5.html" class="post-title-link" itemprop="url">可配置输入参数的接口如何设计</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-03-06 21:06:44" itemprop="dateCreated datePublished" datetime="2024-03-06T21:06:44+08:00">2024-03-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-03-07 10:04:32" itemprop="dateModified" datetime="2024-03-07T10:04:32+08:00">2024-03-07</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>6 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>个人博客：<a
+href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
+<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
+title="wnhyang">wnhyang</a></p>
+<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
+title="在线知识共享">在线知识共享</a></p>
+<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
+Overview</a></p>
+<hr />
+<p>作为程序员，我们绝大多数场景需要根据业务需求来设计系统，开发后端接口，这些接口通常都是在设计阶段就确定了，但是还有一些场景需要实现支持的配置的接口，包含以下功能</p>
+<p>1、可以配置接口<code>url</code></p>
+<p>这个通常在一些论坛博客类系统中比较常见，用于设置个人主页，但其实这个又是不同概念，个人主页通常是<code>get</code>请求，然后通过<code>path</code>索引用户主页。</p>
+<p>2、可选择接口具体实现</p>
+<p>流程引擎、规则引擎通常就可以实现</p>
+<p>3、输入参数和输出参数可配置</p>
+<p>应用场景包括数据收集等</p>
+<p>前面乱讲一通，最终回归本题——可配置输入参数的接口如何设计？</p>
+<h1 id="ai的回答">AI的回答</h1>
+<p>以下是<code>AI</code>的回答——可配置输入参数的接口如何设计？</p>
+<p>设计支持可配置输入参数的接口时，主要目标是保证接口的灵活性和易用性，同时兼顾健壮性和可维护性。以下是一个通用的设计策略：</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/article/61a8fda5.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1262,122 +1379,6 @@ target="_blank" rel="noopener" href="https://sa-token.cc/">Sa-Token</a>，版本
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/bf2c89b7.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-      <meta itemprop="description" content="热爱、分享、生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/bf2c89b7.html" class="post-title-link" itemprop="url">Sa-Token介绍与SpringBoot环境下使用</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-01-17 22:26:48" itemprop="dateCreated datePublished" datetime="2024-01-17T22:26:48+08:00">2024-01-17</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-01-20 18:30:50" itemprop="dateModified" datetime="2024-01-20T18:30:50+08:00">2024-01-20</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.8k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>7 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>个人博客：<a
-href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
-<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
-title="wnhyang">wnhyang</a></p>
-<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
-title="在线知识共享">在线知识共享</a></p>
-<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
-Overview</a></p>
-<hr />
-<p>官网：<a target="_blank" rel="noopener" href="https://sa-token.cc/doc.html#/">Sa-Token</a></p>
-<p>一个轻量级 Java 权限认证框架，让鉴权变得简单、优雅！</p>
-<h1 id="介绍">介绍</h1>
-<p><strong>Sa-Token</strong> 是一个轻量级 Java
-权限认证框架，主要解决：<strong>登录认证</strong>、<strong>权限认证</strong>、<strong>单点登录</strong>、<strong>OAuth2.0</strong>、<strong>分布式Session会话</strong>、<strong>微服务网关鉴权</strong>
-等一系列权限相关问题。</p>
-<p>官方文档写的已经非常好了。引用官方文档开头的一段话：</p>
-<p>本文档将会尽力讲解每个功能的设计原因、应用场景，用心阅读文档，你学习到的将不止是
-Sa-Token 框架本身，更是绝大多数场景下权限设计的最佳实践。</p>
-<p>确实，通过阅读官方文档有学到很多东西，收获更大的是结合我的使用体验，下载并阅读源码后有学到了一些东西想和大家分享！这篇文章只是开头。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/article/bf2c89b7.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1403,14 +1404,14 @@ Sa-Token 框架本身，更是绝大多数场景下权限设计的最佳实践�
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">249k</span>
+    <span title="站点总字数">251k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">15:05</span>
+    <span title="站点阅读时长">15:12</span>
   </span>
 </div>
 <div class="busuanzi-count">

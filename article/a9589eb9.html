@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="google-site-verification" content="4zmc5dCOR7a63YXOZx4mwqsC5dPpr0m2iWeI12w6wng">
+  <meta name="baidu-site-verification" content="fe6bba1d0d4e906fed87c9f7c2d1d09d">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="个人博客：无奈何杨（wnhyang） 个人语雀：wnhyang 共享语雀：在线知识共享 Github：wnhyang - Overview  参考 【相见欢】Spring MVC 源码剖析（五） —— 消息转换器 HttpMessageConverter | 芋道源码 —— 纯源码解析博客 Spring boot 中时间类型的序列化与反序列化 - 掘金 Spring boot 中 Jackson">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot之Jackson，自动化配置，Java 8 date&#x2F;time type java.time.LocalTime not supported">
+<meta property="og:url" content="https://wnhyang.github.io/article/a9589eb9.html">
+<meta property="og:site_name" content="无奈何杨（wnhyang）">
+<meta property="og:description" content="个人博客：无奈何杨（wnhyang） 个人语雀：wnhyang 共享语雀：在线知识共享 Github：wnhyang - Overview  参考 【相见欢】Spring MVC 源码剖析（五） —— 消息转换器 HttpMessageConverter | 芋道源码 —— 纯源码解析博客 Spring boot 中时间类型的序列化与反序列化 - 掘金 Spring boot 中 Jackson">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240622/image.3go9hx1v4k.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240620/image.1lbomn1pna.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240622/image.7p3grczumi.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240622/image.73tt542l25.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240622/image.4xuejcd5u1.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240622/image.4914zc4wwd.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240622/image.8ad4dqamsd.webp">
+<meta property="og:image" content="https://wnhyang.github.io/images/wechat_channel.webp">
+<meta property="article:published_time" content="2024-06-20T11:17:20.000Z">
+<meta property="article:modified_time" content="2024-06-22T08:16:26.488Z">
+<meta property="article:author" content="无奈何杨（wnhyang）">
+<meta property="article:tag" content="blog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240622/image.3go9hx1v4k.webp">
+
+
+<link rel="canonical" href="https://wnhyang.github.io/article/a9589eb9.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wnhyang.github.io/article/a9589eb9.html","path":"article/a9589eb9.html","title":"SpringBoot之Jackson，自动化配置，Java 8 date/time type java.time.LocalTime not supported"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>SpringBoot之Jackson，自动化配置，Java 8 date/time type java.time.LocalTime not supported | 无奈何杨（wnhyang）</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="无奈何杨（wnhyang）" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">无奈何杨（wnhyang）</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">I will keep to fight</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">47</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">196</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">1.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#failed-to-deserialize-java.time.localdatetime"><span class="nav-number">2.</span> <span class="nav-text">Failed to
+deserialize java.time.LocalDateTime</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A2%9E%E5%8A%A0%E9%9C%80%E8%A6%81%E7%9A%84%E4%BE%9D%E8%B5%96"><span class="nav-number">3.</span> <span class="nav-text">增加需要的依赖</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%A8%E8%8D%90%E9%85%8D%E7%BD%AE"><span class="nav-number">4.</span> <span class="nav-text">推荐配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E8%AF%B4%E6%98%8E%E8%A1%A5%E5%85%85"><span class="nav-number">5.</span> <span class="nav-text">配置说明补充</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BC%98%E5%85%88%E7%BA%A7"><span class="nav-number">6.</span> <span class="nav-text">优先级</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="nav-number">7.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="无奈何杨（wnhyang）"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">无奈何杨（wnhyang）</p>
+  <div class="site-description" itemprop="description">热爱、分享、生活</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">196</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">47</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wnhyang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wnhyang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/wnhyang" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;wnhyang" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wnhyang@qq.com" title="E-Mail → mailto:wnhyang@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://www.yuque.com/wnh/share" title="https:&#x2F;&#x2F;www.yuque.com&#x2F;wnh&#x2F;share" rel="noopener" target="_blank">语雀分享</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://github.com/wnhyang" title="https:&#x2F;&#x2F;github.com&#x2F;wnhyang" rel="noopener" target="_blank">GitHub</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.zhihu.com/people/wnhyang" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;wnhyang" rel="noopener" target="_blank">知乎</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        <div class="sidebar-inner sidebar-post-related">
+          <div class="animated">
+              <div class="links-of-blogroll-title"><i class="fa fa-signs-post fa-fw"></i>
+    相关文章
+  </div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/d8ad0228.html" rel="bookmark">
+        <time class="popular-posts-time">2024-05-24</time>
+        <br>
+      MybatisPlusGenerator交互式Web生成增删改查、导出导入代码
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/830d76f.html" rel="bookmark">
+        <time class="popular-posts-time">2024-04-01</time>
+        <br>
+      筛选树形菜单时关联其父节点和子节点
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/cf08a8bf.html" rel="bookmark">
+        <time class="popular-posts-time">2024-02-22</time>
+        <br>
+      Sa-Token事件发布，观察者模式
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/bf7337ce.html" rel="bookmark">
+        <time class="popular-posts-time">2024-03-16</time>
+        <br>
+      MybatisPlus-Generator自定义模版生成CRUD、DTO、VO、Convert等
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/294c2ce1.html" rel="bookmark">
+        <time class="popular-posts-time">2024-04-18</time>
+        <br>
+      从LiteFlow来看Java SPI，与Spring框架有哪些相同的思想
+      </a>
+    </li>
+  </ul>
+
+          </div>
+        </div>
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/a9589eb9.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+      <meta itemprop="description" content="热爱、分享、生活">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="SpringBoot之Jackson，自动化配置，Java 8 date/time type java.time.LocalTime not supported | 无奈何杨（wnhyang）">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          SpringBoot之Jackson，自动化配置，Java 8 date/time type java.time.LocalTime not supported
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-20 19:17:20" itemprop="dateCreated datePublished" datetime="2024-06-20T19:17:20+08:00">2024-06-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-22 16:16:26" itemprop="dateModified" datetime="2024-06-22T16:16:26+08:00">2024-06-22</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.9k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>7 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>个人博客：<a
+href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
+<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
+title="wnhyang">wnhyang</a></p>
+<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
+title="在线知识共享">在线知识共享</a></p>
+<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
+Overview</a></p>
+<hr />
+<h1 id="参考">参考</h1>
+<p><a
+target="_blank" rel="noopener" href="https://www.iocoder.cn/Spring-MVC/lichhao/HttpMessageConverter/">【相见欢】Spring
+MVC 源码剖析（五） —— 消息转换器 HttpMessageConverter | 芋道源码 ——
+纯源码解析博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7195078889767436346">Spring boot
+中时间类型的序列化与反序列化 - 掘金</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7195117148140732453">Spring boot 中
+Jackson 的常用配置</a></p>
+<h1 id="failed-to-deserialize-java.time.localdatetime">Failed to
+deserialize java.time.LocalDateTime</h1>
+<p>这是<code>web</code>开发中常见的一个错误，无法完成<code>LocalDataTime</code>的反序列化。</p>
+<p>这是怎么回事？</p>
+<p>其实这个问题在于<code>LocalTime</code>、<code>LocalDate</code>、<code>LocalDateTime</code>的序列化上。</p>
+<p>这就要从<code>SpringMVC</code>说起了！</p>
+<p><code>Spring MVC</code> 是 <code>Spring Framework</code>
+的核心组件之一，与其他模块（如
+<code>Spring Boot</code>、<code>Spring Data</code>、<code>Spring Security</code>
+等）一起构成了完整的 <code>Spring</code> 生态系统。</p>
+<p><code>Spring MVC</code>是<code>Web</code>开发中极其重要，其设计思想是非常值得学习的。</p>
+<p>关于<code>SpringMVC</code>的学习可以参考以下文章</p>
+<p><a target="_blank" rel="noopener" href="https://www.iocoder.cn/categories/Spring-MVC/">Category:
+Spring-MVC | 芋道源码 —— 纯源码解析博客</a></p>
+<p>请求报文在传输中是要进行序列化和反序列化的，有大致经历了如下流程。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240622/image.3go9hx1v4k.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>其中这个<code>HttpMessageConver</code>是这个过程中的关键，这个接口继承树如下图。</p>
+<span id="more"></span>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240620/image.1lbomn1pna.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>默认配置下<code>Spring MVC</code>使用<code>Jackson</code>库进行<code>json</code>处理，使用<code>MappingJackson2HttpMessageConverter</code>，在其中有一个非常重要的类<code>ObjectMapper</code>。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240622/image.7p3grczumi.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>从自动化配置<code>JacksonHttpMessageConvertersConfiguration</code>来看，<code>MappingJackson2HttpMessageConverter</code>的创建使用<code>new MappingJackson2HttpMessageConverter(objectMapper)</code>方法，使用了<code>objectMapper</code>的<code>bean</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration(proxyBeanMethods = false)</span></span><br><span class="line"><span class="meta">@ConditionalOnClass(ObjectMapper.class)</span></span><br><span class="line"><span class="meta">@ConditionalOnBean(ObjectMapper.class)</span></span><br><span class="line"><span class="meta">@ConditionalOnProperty(name = HttpMessageConvertersAutoConfiguration.PREFERRED_MAPPER_PROPERTY,</span></span><br><span class="line"><span class="meta">        havingValue = &quot;jackson&quot;, matchIfMissing = true)</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">MappingJackson2HttpMessageConverterConfiguration</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="meta">@ConditionalOnMissingBean(value = MappingJackson2HttpMessageConverter.class,</span></span><br><span class="line"><span class="meta">            ignoredType = &#123;</span></span><br><span class="line"><span class="meta">                    &quot;org.springframework.hateoas.server.mvc.TypeConstrainedMappingJackson2HttpMessageConverter&quot;,</span></span><br><span class="line"><span class="meta">                    &quot;org.springframework.data.rest.webmvc.alps.AlpsJsonHttpMessageConverter&quot; &#125;)</span></span><br><span class="line">    MappingJackson2HttpMessageConverter <span class="title function_">mappingJackson2HttpMessageConverter</span><span class="params">(ObjectMapper objectMapper)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">MappingJackson2HttpMessageConverter</span>(objectMapper);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>关于<code>ObjectMapper</code>的<code>bean</code>要从<code>JacksonAutoConfiguration</code>自动化配置来看，如下。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration(proxyBeanMethods = false)</span></span><br><span class="line"><span class="meta">@ConditionalOnClass(Jackson2ObjectMapperBuilder.class)</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">JacksonObjectMapperConfiguration</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="meta">@Primary</span></span><br><span class="line">    <span class="meta">@ConditionalOnMissingBean</span></span><br><span class="line">    ObjectMapper <span class="title function_">jacksonObjectMapper</span><span class="params">(Jackson2ObjectMapperBuilder builder)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> builder.createXmlMapper(<span class="literal">false</span>).build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>ObjectMapper</code>的创建由<code>Jackson2ObjectMapperBuilder</code>构建而来，可以在同一个类中看到。</p>
+<p>从以下方法可以看到，<code>customize(builder, customizers);</code>此方法很关键，其使用到了<code>Jackson2ObjectMapperBuilderCustomizer</code>，这个也是官方提供的，用于进一步自定义<code>ObjectMapper</code>的接口。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration(proxyBeanMethods = false)</span></span><br><span class="line"><span class="meta">@ConditionalOnClass(Jackson2ObjectMapperBuilder.class)</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">JacksonObjectMapperBuilderConfiguration</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="meta">@Scope(&quot;prototype&quot;)</span></span><br><span class="line">    <span class="meta">@ConditionalOnMissingBean</span></span><br><span class="line">    Jackson2ObjectMapperBuilder <span class="title function_">jacksonObjectMapperBuilder</span><span class="params">(ApplicationContext applicationContext,</span></span><br><span class="line"><span class="params">            List&lt;Jackson2ObjectMapperBuilderCustomizer&gt; customizers)</span> &#123;</span><br><span class="line">        <span class="type">Jackson2ObjectMapperBuilder</span> <span class="variable">builder</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Jackson2ObjectMapperBuilder</span>();</span><br><span class="line">        builder.applicationContext(applicationContext);</span><br><span class="line">        customize(builder, customizers);</span><br><span class="line">        <span class="keyword">return</span> builder;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">customize</span><span class="params">(Jackson2ObjectMapperBuilder builder,</span></span><br><span class="line"><span class="params">            List&lt;Jackson2ObjectMapperBuilderCustomizer&gt; customizers)</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (Jackson2ObjectMapperBuilderCustomizer customizer : customizers) &#123;</span><br><span class="line">            customizer.customize(builder);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>Jackson2ObjectMapperBuilderCustomizer</code>如下。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Callback interface that can be implemented by beans wishing to further customize the</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@link</span> ObjectMapper&#125; through &#123;<span class="doctag">@link</span> Jackson2ObjectMapperBuilder&#125; retaining its default</span></span><br><span class="line"><span class="comment"> * auto-configuration.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Grzegorz Poznachowski</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> 1.4.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Jackson2ObjectMapperBuilderCustomizer</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * Customize the JacksonObjectMapperBuilder.</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> jacksonObjectMapperBuilder the JacksonObjectMapperBuilder to customize</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">customize</span><span class="params">(Jackson2ObjectMapperBuilder jacksonObjectMapperBuilder)</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>默认<code>SpringBoot</code>存在此接口的一个实现<code>StandardJackson2ObjectMapperBuilderCustomizer</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line">StandardJackson2ObjectMapperBuilderCustomizer <span class="title function_">standardJacksonObjectMapperBuilderCustomizer</span><span class="params">(</span></span><br><span class="line"><span class="params">        ApplicationContext applicationContext, JacksonProperties jacksonProperties)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">StandardJackson2ObjectMapperBuilderCustomizer</span>(applicationContext, jacksonProperties);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其实现此接口，方法如下，这些方法很关键，可以查看源码探究一下。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">customize</span><span class="params">(Jackson2ObjectMapperBuilder builder)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">this</span>.jacksonProperties.getDefaultPropertyInclusion() != <span class="literal">null</span>) &#123;</span><br><span class="line">        builder.serializationInclusion(<span class="built_in">this</span>.jacksonProperties.getDefaultPropertyInclusion());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">this</span>.jacksonProperties.getTimeZone() != <span class="literal">null</span>) &#123;</span><br><span class="line">        builder.timeZone(<span class="built_in">this</span>.jacksonProperties.getTimeZone());</span><br><span class="line">    &#125;</span><br><span class="line">    configureFeatures(builder, FEATURE_DEFAULTS);</span><br><span class="line">    configureVisibility(builder, <span class="built_in">this</span>.jacksonProperties.getVisibility());</span><br><span class="line">    configureFeatures(builder, <span class="built_in">this</span>.jacksonProperties.getDeserialization());</span><br><span class="line">    configureFeatures(builder, <span class="built_in">this</span>.jacksonProperties.getSerialization());</span><br><span class="line">    configureFeatures(builder, <span class="built_in">this</span>.jacksonProperties.getMapper());</span><br><span class="line">    configureFeatures(builder, <span class="built_in">this</span>.jacksonProperties.getParser());</span><br><span class="line">    configureFeatures(builder, <span class="built_in">this</span>.jacksonProperties.getGenerator());</span><br><span class="line">    configureDateFormat(builder);</span><br><span class="line">    configurePropertyNamingStrategy(builder);</span><br><span class="line">    configureModules(builder);</span><br><span class="line">    configureLocale(builder);</span><br><span class="line">    configureDefaultLeniency(builder);</span><br><span class="line">    configureConstructorDetector(builder);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中<code>configureModules</code>方法<code>Module</code>类型的<code>bean</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">configureModules</span><span class="params">(Jackson2ObjectMapperBuilder builder)</span> &#123;</span><br><span class="line">    Collection&lt;Module&gt; moduleBeans = getBeans(<span class="built_in">this</span>.applicationContext, Module.class);</span><br><span class="line">    builder.modulesToInstall(moduleBeans.toArray(<span class="keyword">new</span> <span class="title class_">Module</span>[<span class="number">0</span>]));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此抽象类用于<code>ObjectMapper</code>支持新的数据类型。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Simple interface for extensions that can be registered with &#123;<span class="doctag">@link</span> ObjectMapper&#125;</span></span><br><span class="line"><span class="comment"> * to provide a well-defined set of extensions to default functionality; such as</span></span><br><span class="line"><span class="comment"> * support for new data types.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Module</span> <span class="keyword">implements</span> <span class="title class_">Versioned</span></span><br></pre></td></tr></table></figure>
+<p>正好在<code>Jackson2ObjectMapperBuilder</code>类中注释有下面红框里这样的，只要引用这些类就可以支持其类型。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240622/image.73tt542l25.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>因为这些包实现一些接口，增加了新的序列化和反序列化类。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240622/image.4xuejcd5u1.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>到这里几乎就能清楚了一些关于<code>SpringMVC</code>出现的json序列化和反序列化的问题了。</p>
+<h1 id="增加需要的依赖">增加需要的依赖</h1>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Java 8 date/time type java.time.LocalTime not supported by default: add Module &quot;com.fasterxml.jackson.datatype:jackson-datatype-jsr310&quot; to enable handling</span><br></pre></td></tr></table></figure>
+<p>这个错误是由于Java
+8中的LocalTime类型不被默认支持导致的。要解决这个错误，需要添加JDK
+8的日期/时间API依赖项到您的项目中。</p>
+<p>在您的pom.xml文件中添加以下依赖项：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.fasterxml.jackson.datatype<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-datatype-jsr310<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;jackson-version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这里要注意，所有序列化是有默认的序列化方法的，如下。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240622/image.4914zc4wwd.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>可以看到其使用的ISO的序列化方式，简单地讲就是会有<code>yyyy-MM-dd'T'HH:mm:ss</code>、<code>yyyy-MM-dd HH:mm:ss,SSS</code>的差别，使用时要注意些。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240622/image.8ad4dqamsd.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>虽然有<code>@JsonFormat</code>这样的注解也可以完成序列化配置，但更推荐有特殊要求时使用，项目中还是统一配置一下吧。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@JsonFormat(pattern = &quot;yyyy-MM-dd HH:mm:ss&quot;)</span></span><br><span class="line"><span class="keyword">private</span> LocalDateTime dateTime;	</span><br></pre></td></tr></table></figure>
+<h1 id="推荐配置">推荐配置</h1>
+<p>仅供参考，此时使用了<code>Hutool</code>的<code>DatePattern</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> wnhyang</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/6/20</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JacksonConfig</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> JavaTimeModule <span class="title function_">buildJavaTimeModule</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">JavaTimeModule</span> <span class="variable">javaTimeModule</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">JavaTimeModule</span>();</span><br><span class="line">        javaTimeModule.addSerializer(LocalTime.class, <span class="keyword">new</span> <span class="title class_">LocalTimeSerializer</span>(DatePattern.NORM_TIME_FORMATTER));</span><br><span class="line">        javaTimeModule.addSerializer(LocalDate.class, <span class="keyword">new</span> <span class="title class_">LocalDateSerializer</span>(DatePattern.NORM_DATE_FORMATTER));</span><br><span class="line">        javaTimeModule.addSerializer(LocalDateTime.class, <span class="keyword">new</span> <span class="title class_">LocalDateTimeSerializer</span>(DatePattern.NORM_DATETIME_FORMATTER));</span><br><span class="line"></span><br><span class="line">        javaTimeModule.addDeserializer(LocalTime.class, <span class="keyword">new</span> <span class="title class_">LocalTimeDeserializer</span>(DatePattern.NORM_TIME_FORMATTER));</span><br><span class="line">        javaTimeModule.addDeserializer(LocalDate.class, <span class="keyword">new</span> <span class="title class_">LocalDateDeserializer</span>(DatePattern.NORM_DATE_FORMATTER));</span><br><span class="line">        javaTimeModule.addDeserializer(LocalDateTime.class, <span class="keyword">new</span> <span class="title class_">LocalDateTimeDeserializer</span>(DatePattern.NORM_DATETIME_FORMATTER));</span><br><span class="line">        <span class="keyword">return</span> javaTimeModule;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="meta">@ConditionalOnMissingBean</span></span><br><span class="line">    <span class="keyword">public</span> Jackson2ObjectMapperBuilderCustomizer <span class="title function_">customizer</span><span class="params">()</span> &#123;</span><br><span class="line">        log.info(<span class="string">&quot;[Jackson2ObjectMapperBuilderCustomizer][初始化customizer配置]&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> builder -&gt; &#123;</span><br><span class="line">            builder.locale(Locale.CHINA);</span><br><span class="line">            builder.timeZone(TimeZone.getTimeZone(ZoneId.systemDefault()));</span><br><span class="line">            builder.simpleDateFormat(DatePattern.NORM_DATETIME_PATTERN);</span><br><span class="line">            builder.serializerByType(Long.class, ToStringSerializer.instance);</span><br><span class="line">            builder.modules(buildJavaTimeModule());</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="配置说明补充">配置说明补充</h1>
+<p><code>Jackson2ObjectMapperBuilderCustomizer</code>接口允许开发者自定义<code>ObjectMapper</code>的行为，而<code>ObjectMapper</code>是<code>Jackson</code>库中用于<code>JSON</code>序列化和反序列化的核心组件。下面分别说明在该接口实现中使用<code>modules</code>方法和<code>serializerByType</code>方法对<code>ObjectMapper</code>配置的影响：</p>
+<p>1、<code>modules</code>方法：</p>
+<ul>
+<li>功能：添加模块（<code>Module</code>）到<code>ObjectMapper</code>中。</li>
+<li>影响：通过模块可以扩展<code>Jackson</code>的功能，例如添加新的序列化器、反序列化器、类型信息处理器等。这些模块可能包含一组针对特定类型的序列化和反序列化规则，或者提供一些全局的配置选项。例如，<code>Java 8</code>日期时间<code>API</code>（<code>JSR-310</code>）的支持就是通过<code>JavaTimeModule</code>模块来实现的</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">builder.modules(<span class="keyword">new</span> <span class="title class_">JavaTimeModule</span>());</span><br></pre></td></tr></table></figure>
+<p>2、 <code>serializerByType</code>方法：</p>
+<ul>
+<li>功能：为特定类型注册一个自定义的序列化器。</li>
+<li>影响：当遇到指定类型的对象需要进行<code>JSON</code>序列化时，会使用设置好的自定义序列化器进行处理，而不是默认的序列化方式。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">builder.serializerByType(Long.class, ToStringSerializer.instance);</span><br></pre></td></tr></table></figure>
+<p>上述代码片段的作用是将所有<code>Long</code>类型的值在序列化时转换为其字符串表示形式，而非默认的数字形式。</p>
+<p>总结来说，<code>modules</code>方法主要用于引入整个功能模块或大规模的配置更改，而<code>serializerByType</code>方法则用于精确控制单个类型如何被序列化到<code>JSON</code>。两者共同作用于<code>ObjectMapper</code>上，以满足应用程序对于JSON数据转换的各种定制需求。</p>
+<h1 id="优先级">优先级</h1>
+<p>在<code>Jackson2ObjectMapperBuilder</code>中，通过<code>modules</code>方法添加的模块和通过<code>serializerByType</code>设置的特定类型序列化器，在处理对象序列化时的优先级关系是：</p>
+<ul>
+<li>当<code>ObjectMapper</code>遇到一个需要序列化的对象时，会首先查找是否有为该具体类型注册的自定义序列化器（如通过<code>serializerByType</code>设置）。</li>
+<li>若没有找到针对该类型的自定义序列化器，它会继续查找已添加的所有模块（如通过<code>modules</code>方法添加），看这些模块中是否存在对该类型的序列化规则。</li>
+</ul>
+<p>因此，对于特定类型而言，如果同时通过<code>serializerByType</code>设置了自定义序列化器并且在模块中有相应的序列化规则，那么<code>serializerByType</code>设置的序列化器将具有更高的优先级。不过通常情况下，开发者应当避免这样的冲突设计，确保配置的清晰和一致性。</p>
+<h1 id="写在最后">写在最后</h1>
+<p>拙作艰辛，字句心血，望诸君垂青，多予支持，不胜感激。</p>
+<hr />
+<p>个人博客：<a
+href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
+<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
+title="wnhyang">wnhyang</a></p>
+<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
+title="在线知识共享">在线知识共享</a></p>
+<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
+Overview</a></p>
+<p><img data-src="https://wnhyang.github.io/images/wechat_channel.webp" /></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.webp" alt="无奈何杨（wnhyang） 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.webp" alt="无奈何杨（wnhyang） 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>无奈何杨（wnhyang）
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://wnhyang.github.io/article/a9589eb9.html" title="SpringBoot之Jackson，自动化配置，Java 8 date&#x2F;time type java.time.LocalTime not supported">https://wnhyang.github.io/article/a9589eb9.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/images/wechat_channel.webp">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://www.zhihu.com/people/wnhyang">
+            <span class="icon">
+              <i class="fab fa-zhihu"></i>
+            </span>
+
+            <span class="label">Zhihu</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/article/8c2fabda.html" rel="prev" title="Elasticsearch集群运维，重平衡、分片、宕节点、扩容">
+                  <i class="fa fa-chevron-left"></i> Elasticsearch集群运维，重平衡、分片、宕节点、扩容
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">无奈何杨（wnhyang）</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">251k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">15:12</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/wnhyang" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.2.2/mermaid.min.js","integrity":"sha256-o5AUfgOkNFWuInA78GVCoVdGoN9eTaB3Hxu+ep7TTrY="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://wnhyang.github.io/article/a9589eb9.html"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>
