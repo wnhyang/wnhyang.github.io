@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2024-06-22T08:16:26.488Z</updated>
+  <updated>2024-07-07T10:22:51.429Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,53 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>交易事件的生命周期，事前事中事后风控，结果通知/回调</title>
+    <link href="https://wnhyang.github.io/article/a2731f17.html"/>
+    <id>https://wnhyang.github.io/article/a2731f17.html</id>
+    <published>2024-07-07T10:03:31.000Z</published>
+    <updated>2024-07-07T10:22:51.429Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;个人博客：&lt;a
+href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
+title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
+title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
+Overview&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h1 id=&quot;参考&quot;&gt;参考&lt;/h1&gt;
+&lt;p&gt;&lt;a
+href=&quot;https://baijiahao.baidu.com/s?id=1792849006369591131&quot;&gt;什么是支付风控？包含哪些环节？&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a
+href=&quot;https://cn.unionpay.com/upowhtml/cn/templates/material/a5817a4b821640e5a850c5b9da5687c7/1608729295304.pdf&quot;&gt;支付风险智能风控应用与评估指引&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;交易事件及其生命周期&quot;&gt;交易事件及其生命周期&lt;/h1&gt;
+&lt;p&gt;交易事件就是交易，如：登录、注册、转账等，而且这些还只是大类，通常转账有手机号转账、银行卡号转账等，币种又有人民币、外币、数字人民币等，这只是从方式、币种区分，其实还有很多，而且流程是相对复杂的。&lt;/p&gt;
+&lt;p&gt;以下仅是随意的例子，不可深究。&lt;/p&gt;
+&lt;figure&gt;
+&lt;img data-src=&quot;https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240707/image.8dwqxbpp8o.webp&quot;
+alt=&quot;image&quot; /&gt;
+&lt;figcaption aria-hidden=&quot;true&quot;&gt;image&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;要在转账中加入风控一定也是了解转账的整体流程的。&lt;/p&gt;
+&lt;p&gt;从风控业务的角度出发，接入风控的交易数据就可以称为交易事件🤝&lt;/p&gt;
+&lt;p&gt;虽然说是这么说，风控的接入要熟悉整个交易流程，但是为了简化，其实是可以把所有交易分为事前事中事后的。&lt;/p&gt;
+&lt;h1 id=&quot;事前事中事后风控&quot;&gt;事前事中事后风控&lt;/h1&gt;</summary>
+    
+    
+    
+    
+    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>SpringBoot之Jackson，自动化配置，Java 8 date/time type java.time.LocalTime not supported</title>
     <link href="https://wnhyang.github.io/article/a9589eb9.html"/>
     <id>https://wnhyang.github.io/article/a9589eb9.html</id>
     <published>2024-06-20T11:17:20.000Z</published>
-    <updated>2024-06-22T08:16:26.488Z</updated>
+    <updated>2024-06-22T08:16:46.813Z</updated>
     
     
     <summary type="html">&lt;p&gt;个人博客：&lt;a
@@ -866,60 +908,6 @@ MyBatis-Plus&lt;/a&gt;&lt;/p&gt;
     <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
     <category term="Mybatis/Mybatis-plus" scheme="https://wnhyang.github.io/tags/Mybatis-Mybatis-plus/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>风控系统指标计算/特征提取分析与实现01，Redis、Zset、模版方法</title>
-    <link href="https://wnhyang.github.io/article/103ba1ec.html"/>
-    <id>https://wnhyang.github.io/article/103ba1ec.html</id>
-    <published>2024-03-15T12:04:47.000Z</published>
-    <updated>2024-03-15T14:21:38.277Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;个人博客：&lt;a
-href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
-title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
-title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
-Overview&lt;/a&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;引用&lt;code&gt;AI&lt;/code&gt;对于风控系统的介绍&lt;/p&gt;
-&lt;p&gt;风控系统是一种用于在线业务的安全管理系统，它帮助企业和平台防范潜在的欺诈、信用风险以及不合规行为。简单来说，它的核心作用就是“保安全、防欺诈、控风险”。&lt;/p&gt;
-&lt;p&gt;最近也一直在研究风控系统体系、功能等，看了一些有关的文章，并且也在实践尝试中。&lt;/p&gt;
-&lt;p&gt;其实前一篇可配置“输入参数的接口如何设计”就是实践尝试的一部分，未来还会有更多的。&lt;/p&gt;
-&lt;p&gt;而本篇文章就风控系统的指标计算，或者说是特征提取做一些探讨，以下统一称呼为“指标”。&lt;/p&gt;
-&lt;p&gt;指标不仅可以作为风控系统的一部分配合风控规则或是模型/机器学习使用，而且可以用于离线分析、事后追查、用户画像标签等方面。&lt;/p&gt;
-&lt;h1 id=&quot;参考文章&quot;&gt;参考文章&lt;/h1&gt;
-&lt;p&gt;&lt;a
-href=&quot;https://zhuanlan.zhihu.com/p/626565122&quot;&gt;风控笔记06：一个完整的风控引擎，需要有哪些功能？&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a
-href=&quot;https://zhuanlan.zhihu.com/p/627593352&quot;&gt;风控笔记07：最常用的风控工具-特征库&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&quot;指标分类&quot;&gt;指标分类&lt;/h1&gt;
-&lt;p&gt;指标是由数据流支撑的，指标是时间纬度的数据提取计算。&lt;/p&gt;
-&lt;p&gt;根据指标分类举几个例子：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;次数统计：最近24小时&lt;span
-class=&quot;math inline&quot;&gt;\({客户号}向\)&lt;/span&gt;{银行卡卡号}转账笔数&lt;/li&gt;
-&lt;li&gt;求和：最近2天&lt;span
-class=&quot;math inline&quot;&gt;\({客户号}向\)&lt;/span&gt;{银行卡卡号}转账金额之和&lt;/li&gt;
-&lt;li&gt;平均：最近1个月&lt;span
-class=&quot;math inline&quot;&gt;\({客户号}向\)&lt;/span&gt;{银行卡卡号}转账金额的平均数&lt;/li&gt;
-&lt;li&gt;关联次数：最近72小时&lt;span
-class=&quot;math inline&quot;&gt;\({客户号}关联\)&lt;/span&gt;{设备mac地址}的次数&lt;/li&gt;
-&lt;li&gt;等等&lt;/li&gt;
-&lt;/ul&gt;</summary>
-    
-    
-    
-    
-    <category term="Redis" scheme="https://wnhyang.github.io/tags/Redis/"/>
-    
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
-    <category term="设计模式" scheme="https://wnhyang.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
   </entry>
   

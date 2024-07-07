@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="google-site-verification" content="4zmc5dCOR7a63YXOZx4mwqsC5dPpr0m2iWeI12w6wng">
+  <meta name="baidu-site-verification" content="fe6bba1d0d4e906fed87c9f7c2d1d09d">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="个人博客：无奈何杨（wnhyang） 个人语雀：wnhyang 共享语雀：在线知识共享 Github：wnhyang - Overview  参考 什么是支付风控？包含哪些环节？ 支付风险智能风控应用与评估指引 交易事件及其生命周期 交易事件就是交易，如：登录、注册、转账等，而且这些还只是大类，通常转账有手机号转账、银行卡号转账等，币种又有人民币、外币、数字人民币等，这只是从方式、币种区分，其实还">
+<meta property="og:type" content="article">
+<meta property="og:title" content="交易事件的生命周期，事前事中事后风控，结果通知&#x2F;回调">
+<meta property="og:url" content="https://wnhyang.github.io/article/a2731f17.html">
+<meta property="og:site_name" content="无奈何杨（wnhyang）">
+<meta property="og:description" content="个人博客：无奈何杨（wnhyang） 个人语雀：wnhyang 共享语雀：在线知识共享 Github：wnhyang - Overview  参考 什么是支付风控？包含哪些环节？ 支付风险智能风控应用与评估指引 交易事件及其生命周期 交易事件就是交易，如：登录、注册、转账等，而且这些还只是大类，通常转账有手机号转账、银行卡号转账等，币种又有人民币、外币、数字人民币等，这只是从方式、币种区分，其实还">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240707/image.8dwqxbpp8o.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240707/image.77dfoq1tu5.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240707/image.2yy8ewcb8x.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240707/image.b8s4jjxn1.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240707/image.8vmslwuau2.webp">
+<meta property="og:image" content="https://wnhyang.github.io/images/wechat_channel.webp">
+<meta property="article:published_time" content="2024-07-07T10:03:31.000Z">
+<meta property="article:modified_time" content="2024-07-07T10:22:51.429Z">
+<meta property="article:author" content="无奈何杨（wnhyang）">
+<meta property="article:tag" content="项目">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240707/image.8dwqxbpp8o.webp">
+
+
+<link rel="canonical" href="https://wnhyang.github.io/article/a2731f17.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wnhyang.github.io/article/a2731f17.html","path":"article/a2731f17.html","title":"交易事件的生命周期，事前事中事后风控，结果通知/回调"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>交易事件的生命周期，事前事中事后风控，结果通知/回调 | 无奈何杨（wnhyang）</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="无奈何杨（wnhyang）" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">无奈何杨（wnhyang）</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">I will keep to fight</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">47</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">197</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">1.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%A4%E6%98%93%E4%BA%8B%E4%BB%B6%E5%8F%8A%E5%85%B6%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">2.</span> <span class="nav-text">交易事件及其生命周期</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8B%E5%89%8D%E4%BA%8B%E4%B8%AD%E4%BA%8B%E5%90%8E%E9%A3%8E%E6%8E%A7"><span class="nav-number">3.</span> <span class="nav-text">事前事中事后风控</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E5%89%8D%E9%A3%8E%E6%8E%A7preventive-risk-control"><span class="nav-number">3.1.</span> <span class="nav-text">事前风控（Preventive Risk
+Control）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E4%B8%AD%E9%A3%8E%E6%8E%A7in-process-risk-control"><span class="nav-number">3.2.</span> <span class="nav-text">事中风控（In-process Risk
+Control）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E5%90%8E%E9%A3%8E%E6%8E%A7post-event-risk-control"><span class="nav-number">3.3.</span> <span class="nav-text">事后风控（Post-event Risk
+Control）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">3.4.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E6%9E%9C%E9%80%9A%E7%9F%A5%E5%9B%9E%E8%B0%83"><span class="nav-number">4.</span> <span class="nav-text">结果通知&#x2F;回调</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E5%8A%A8%E5%9B%9E%E8%B0%83"><span class="nav-number">4.1.</span> <span class="nav-text">主动回调</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A2%AB%E5%8A%A8%E9%80%9A%E7%9F%A5"><span class="nav-number">4.2.</span> <span class="nav-text">被动通知</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="nav-number">5.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="无奈何杨（wnhyang）"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">无奈何杨（wnhyang）</p>
+  <div class="site-description" itemprop="description">热爱、分享、生活</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">197</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">47</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wnhyang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wnhyang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/wnhyang" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;wnhyang" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wnhyang@qq.com" title="E-Mail → mailto:wnhyang@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://www.yuque.com/wnh/share" title="https:&#x2F;&#x2F;www.yuque.com&#x2F;wnh&#x2F;share" rel="noopener" target="_blank">语雀分享</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://github.com/wnhyang" title="https:&#x2F;&#x2F;github.com&#x2F;wnhyang" rel="noopener" target="_blank">GitHub</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.zhihu.com/people/wnhyang" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;wnhyang" rel="noopener" target="_blank">知乎</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        <div class="sidebar-inner sidebar-post-related">
+          <div class="animated">
+              <div class="links-of-blogroll-title"><i class="fa fa-signs-post fa-fw"></i>
+    相关文章
+  </div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/d8ad0228.html" rel="bookmark">
+        <time class="popular-posts-time">2024-05-24</time>
+        <br>
+      MybatisPlusGenerator交互式Web生成增删改查、导出导入代码
+      </a>
+    </li>
+  </ul>
+
+          </div>
+        </div>
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/a2731f17.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+      <meta itemprop="description" content="热爱、分享、生活">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="交易事件的生命周期，事前事中事后风控，结果通知/回调 | 无奈何杨（wnhyang）">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          交易事件的生命周期，事前事中事后风控，结果通知/回调
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-07-07 18:03:31 / 修改时间：18:22:51" itemprop="dateCreated datePublished" datetime="2024-07-07T18:03:31+08:00">2024-07-07</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>12 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>个人博客：<a
+href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
+<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
+title="wnhyang">wnhyang</a></p>
+<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
+title="在线知识共享">在线知识共享</a></p>
+<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
+Overview</a></p>
+<hr />
+<h1 id="参考">参考</h1>
+<p><a
+target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1792849006369591131">什么是支付风控？包含哪些环节？</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://cn.unionpay.com/upowhtml/cn/templates/material/a5817a4b821640e5a850c5b9da5687c7/1608729295304.pdf">支付风险智能风控应用与评估指引</a></p>
+<h1 id="交易事件及其生命周期">交易事件及其生命周期</h1>
+<p>交易事件就是交易，如：登录、注册、转账等，而且这些还只是大类，通常转账有手机号转账、银行卡号转账等，币种又有人民币、外币、数字人民币等，这只是从方式、币种区分，其实还有很多，而且流程是相对复杂的。</p>
+<p>以下仅是随意的例子，不可深究。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240707/image.8dwqxbpp8o.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>要在转账中加入风控一定也是了解转账的整体流程的。</p>
+<p>从风控业务的角度出发，接入风控的交易数据就可以称为交易事件🤝</p>
+<p>虽然说是这么说，风控的接入要熟悉整个交易流程，但是为了简化，其实是可以把所有交易分为事前事中事后的。</p>
+<h1 id="事前事中事后风控">事前事中事后风控</h1>
+<span id="more"></span>
+<p>来一波<code>AI</code>的介绍吧</p>
+<h2 id="事前风控preventive-risk-control">事前风控（Preventive Risk
+Control）</h2>
+<p>事前风控是指在风险事件发生之前所采取的预防措施。这一阶段的目的是尽可能减少风险发生的概率和影响。事前风控的重点在于预测和准备，包括：</p>
+<ul>
+<li><strong>风险识别与评估</strong>：识别可能面临的风险类型，评估其发生的可能性及潜在影响。</li>
+<li><strong>制定策略与规则</strong>：根据风险评估结果，制定风险控制策略和规则，如信用审批标准、交易限额等。</li>
+<li><strong>建立预警系统</strong>：设置预警指标和阈值，以便在风险指标接近危险水平时提前警告。</li>
+<li><strong>培训与教育</strong>：对员工进行风险管理培训，提高其风险意识和处理能力。</li>
+<li><strong>合规性审查</strong>：确保所有操作遵循相关的法律法规和行业准则。</li>
+</ul>
+<h2 id="事中风控in-process-risk-control">事中风控（In-process Risk
+Control）</h2>
+<p>事中风控是在风险事件正在发生或业务活动正在进行时实施的控制措施。这一阶段的目标是实时监测风险，及时干预以减轻风险影响。事中风控的特点包括：</p>
+<ul>
+<li><strong>实时监控</strong>：利用数据和分析工具，对关键指标进行实时监测，以识别异常或潜在风险。</li>
+<li><strong>动态调整</strong>：根据实时数据调整策略，如调整信用额度、暂停可疑交易等。</li>
+<li><strong>快速响应</strong>：一旦检测到风险，立即启动应急计划，采取行动阻止风险扩大。</li>
+<li><strong>沟通与协调</strong>：确保信息流通，及时与相关部门沟通，协同应对风险。</li>
+</ul>
+<h2 id="事后风控post-event-risk-control">事后风控（Post-event Risk
+Control）</h2>
+<p>事后风控是在风险事件发生后采取的控制和恢复措施。这一阶段关注的是评估风险影响，学习经验教训，防止未来再次发生类似风险。事后风控包括：</p>
+<ul>
+<li><strong>事件分析</strong>：详细分析风险事件的原因、过程和后果，确定责任归属。</li>
+<li><strong>损失评估</strong>：量化风险事件造成的财务和非财务损失。</li>
+<li><strong>整改与改进</strong>：根据事件分析结果，制定整改措施，优化现有风控体系。</li>
+<li><strong>学习与培训</strong>：总结经验教训，对员工进行再培训，增强风险防范意识。</li>
+<li><strong>报告与反馈</strong>：编写事件报告，向上级管理部门汇报，并将结果反馈给相关部门，促进持续改进。</li>
+</ul>
+<p>这三个阶段的风控措施相互关联，共同构成一个全面的风险管理体系。事前风控侧重于预防，事中风控强调实时反应，而事后风控则致力于从错误中学习并持续改进。在实际操作中，这三个阶段应该被看作是一个连续的闭环过程，而不是孤立的步骤。</p>
+<p>事前、事中、事后风控（风险控制）是风险管理的三个重要阶段，每个阶段都有其独特的目标和实施策略，旨在识别、评估和减轻风险。</p>
+<h2 id="总结">总结</h2>
+<p>事前本质上是交易发生前，这阶段要做的就是预防。建立审批标准流程、交易限额、设置预警阈值、宣贯培训都是预防手段。<code>AI</code>中已经讲了这三个阶段是相互关联、打配合的。</p>
+<p>如：建立审批流程、设置交易限额、预警阈值，这些并不是凭空设置的，而是由事中、事后风控反馈而来的。就比如说，建立个人信用贷款审批标准流程，在0.1版本只需要查询个人征信记录就好，但是从后期接借贷表现，计算出要根据个人收入及其稳定程度，需要阶梯式设置不同的放款金额，这就是流程的配合，其后的表现应该是有完善的反馈机制，有助于流程的开展的。</p>
+<p>如下表示交易发生的流程，不同列表示不同层级。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240707/image.77dfoq1tu5.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>如果在这个流程中加入风控，可以有下面这样的示例图。</p>
+<p>第一个开始与其过程表示事前流程，第二个开始表示交易流程，其通过一系列流程后在过程d进行风控，下面这部分表示风控系统，在风控系统内部再经过一系列流程，最终对交易事件进行决策，返回到过程d，而过程d可以执行也可以不执行决策，不进行决策就进行流程d原本的后面过程，进行决策的话，就会有通过或不通过等结果，而结果最终还是会反馈到风控系统，风控系统再经过一些流程反馈到事前流程中，如计算限额、信用额度等。这就是交易接入风控后的反馈机制的一种体现。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240707/image.2yy8ewcb8x.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<h1 id="结果通知回调">结果通知/回调</h1>
+<p>从前面交易接入风控来看，其实一笔交易是有割裂的，交易接入风控后，拿到了决策结果后执行后续流程，在后续流程中又需要接入风控，用于给予风控决策结果的结果和交易结果。什么意思呢？</p>
+<p>交易结果表示当前交易的结果，说的完全是废话🙂‍↕️简单划分为成功和失败</p>
+<p>成功：1、决策结果就是通过，交易也顺利进行下去了；2、决策并非通过，而是一种验证方式，但是验证通过并且交易顺利完成。</p>
+<p>失败：1、决策结果直接结束，当风控系统认定风险过大就可以设定验证之上的决策，直接干预交易，如拒绝本次交易、锁定账户等；2、决策结果是某种验证方式，但是验证失败导致交易流程提前结束；3、决策结果是通过，但是因为某些异常，交易没能顺利完成。</p>
+<p>这些结果对于风控系统是很重要的，因为这些数据本身就是交易流程中的重要数据，只有把这些数据也给到风控系统才能保证交易事件的完整性。才能构建起完善可靠的风控系统，如果有个用户突然使用非常用设备登录，而且人脸验证又连续失败3次，这应该有够可疑了吧！</p>
+<p>割裂就表现在结果与事中事件分成两步与风控系统交互，所以一定要保证多笔交易可以对应起来。常用方法就是每笔交易都有唯一的交易流水号，风控系统在收到交易事件后首先根据交易事件本身的交易流水号生成唯一的交易事件ID，交易事件ID保证了风控系统中数据唯一性。</p>
+<p>下面是一个简图，从风控系统数据的角度来看。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240707/image.b8s4jjxn1.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>每笔交易事件在风控系统中对应一笔数据，数据包含交易系统字段（包含事件本身数据和扩展计算而来的数据，如：解析数据）、指标计算结果（针对的是当笔交易，其本身可能另有存储方式）、决策链路（因为风控系统的灵活性和实时性，在调整了风控规则和链路后实时生效，所以两笔时间相近的交易可能对应着不用的决策链路）、结果（表示当笔交易命中的策略集、策略、规则，规则又可分为正式规则和模拟规则，模拟规则用于新规则的过渡，调用方可区分使用）。这些数据都是事中交易就可产生的，交易结果是交易事件数据的补充，作为交易结果此时进行决策也没有意义，总不能对于一笔已完成（不管成功失败都算是已完成）的交易再决策吧。</p>
+<p>所以通知有两种区分，1、将其划分为不同交易；2、同笔交易，结果通知。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240707/image.8vmslwuau2.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>如图，第一个开始表示分为不同交易时的通用流程，所有交易都需要校验、入参处理、策略、规则、决策流程，也是因此，事中是需要指标计算和决策等完整流程的，但是作为结果虽然不需要决策，但是还是要进行指标计算的；第二个开始表示同笔交易时，结果通知，事中还是保留所有完整流程，但是结果已经简化了流程，加入了关联事中交易、减去了决策流程。</p>
+<p>举个例子，一笔交易有a：A向B转账的事中风控流程，b：A向B转账的结果。</p>
+<p>将a、b作为两笔不同交易，设置规则时就要注意不能重复累积和多余的决策计算。因为b本身就是a的结果，所以大多数数据都和a保持一致，如金额、账户这些总不能改变。那么要设置一个金额求和指标时就是区分了。指标A向B转账金额求和，计算的就是b结果成功的交易金额之和，而不是a的金额之和，因为a与b成功的关系永远是大于等于。而且前面也讲了既然b是结果，那么其决策没有意义，所有不用决策，但是还是要计算指标的。不同交易优点就是流程相对统一，复杂在于指标和规则的设置上，缺点是数据和计算的冗余。同笔交易的优点是节省数据空间，简化指标规则配置，缺点就是设计上要多花一些心思。</p>
+<p>以下从同笔交易来说明结果通知的交互方式。1、交易结果被动通知，由交易系统发起，将交易结果送给风控系统；2、风控系统主动回调获取交易结果。正好对应着<code>Push</code>和<code>Pull</code>。</p>
+<p>以下引用AI。</p>
+<h2 id="主动回调">主动回调</h2>
+<p>主动回调是指接收方需要定期或在特定时机向发送方请求操作的结果或状态，以获取最新的信息。通知的接收方主动地（pull）信息，通常通过以下方式实现：</p>
+<ul>
+<li><strong>定期轮询</strong>:
+接收方定期发送请求，询问操作的结果或状态。例如，每隔一段时间或在特定事件触发时发送请求。</li>
+<li><strong>条件触发</strong>:
+在特定条件满足时（如用户登录、页面加载完成等），接收方发送请求获取最新的数据。</li>
+<li><strong>API调用</strong>:
+接收方通过调用API获取数据或状态信息，根据操作结果进行后续处理。</li>
+</ul>
+<p>特点是接收方需要主动发起请求，以获取操作结果或状态更新。这种方式，实时性可能稍逊一筹，但适用于一些不需要即时通知的场景，同时能够控制请求频率和资源消耗。</p>
+<h2 id="被动通知">被动通知</h2>
+<p>被动通知是指系统或服务在完成操作后，向事先指定的目标发送通知，无需接收方发出请求。通知的发送方推动（push）消息给接收方，通常通过以下方式实现：</p>
+<ul>
+<li><strong>实时通知</strong>:
+在操作完成或事件发生后，系统即时向事先注册的接收方发送通知，通知内容可以包括操作结果、状态更新等。</li>
+<li><strong>即时推送</strong>:
+使用实时通信协议（如WebSocket）或推送通知服务（如Firebase Cloud
+Messaging、Apple Push Notification
+Service），确保通知能够即刻到达接收方。</li>
+<li><strong>数据推送</strong>:
+将操作结果或状态变更直接推送给接收方，通常通过API调用或异步消息队列实现。</li>
+</ul>
+<p>优势在于实时性强，接收方无需轮询或定期检查操作状态，而是在操作完成后立即得到通知。</p>
+<h1 id="写在最后">写在最后</h1>
+<p>拙作艰辛，字句心血，望诸君垂青，多予支持，不胜感激。</p>
+<hr />
+<p>个人博客：<a
+href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
+<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
+title="wnhyang">wnhyang</a></p>
+<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
+title="在线知识共享">在线知识共享</a></p>
+<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
+Overview</a></p>
+<p><img data-src="https://wnhyang.github.io/images/wechat_channel.webp" /></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.webp" alt="无奈何杨（wnhyang） 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.webp" alt="无奈何杨（wnhyang） 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>无奈何杨（wnhyang）
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://wnhyang.github.io/article/a2731f17.html" title="交易事件的生命周期，事前事中事后风控，结果通知&#x2F;回调">https://wnhyang.github.io/article/a2731f17.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/images/wechat_channel.webp">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://www.zhihu.com/people/wnhyang">
+            <span class="icon">
+              <i class="fab fa-zhihu"></i>
+            </span>
+
+            <span class="label">Zhihu</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E9%A1%B9%E7%9B%AE/" rel="tag"># 项目</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/article/a9589eb9.html" rel="prev" title="SpringBoot之Jackson，自动化配置，Java 8 date/time type java.time.LocalTime not supported">
+                  <i class="fa fa-chevron-left"></i> SpringBoot之Jackson，自动化配置，Java 8 date/time type java.time.LocalTime not supported
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">无奈何杨（wnhyang）</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">254k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">15:24</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/wnhyang" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.2.2/mermaid.min.js","integrity":"sha256-o5AUfgOkNFWuInA78GVCoVdGoN9eTaB3Hxu+ep7TTrY="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://wnhyang.github.io/article/a2731f17.html"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>
