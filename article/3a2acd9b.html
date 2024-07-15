@@ -25,39 +25,36 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="个人博客：无奈何杨（wnhyang） 个人语雀：wnhyang 共享语雀：在线知识共享 Github：wnhyang - Overview  办公三件套，我想不会有人没用过吧，如果你还停留在简单编辑、套模版的的办公三件套时代，那只能说你真的out了！ 这周因为一些工作上的需要，打开WPS创建并使用了一下智能表格，不用不知道，使用后属实是把我惊到了。 智能表格 特性：  多人协作，这个功能其实不算是">
+    <meta name="description" content="个人博客：无奈何杨（wnhyang） 个人语雀：wnhyang 共享语雀：在线知识共享 Github：wnhyang - Overview  起因 突然接收到XX给的任务，要将一批IP数据处理一下，将IP对应的省市区解析出来，很急！ 已知我这边有一个IP解析接口，提供了IP解析到国家省市区ISP等的能力，而且支持批量查询，但问题是仅仅有接口的形式，没有管理应用将接口利用起来，要使用的恐怕也只能是发">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用了智能表格后，不禁感叹现在的生产力工具真牛！">
-<meta property="og:url" content="https://wnhyang.github.io/article/a2229281.html">
+<meta property="og:title" content="记一次IP数据处理过程，文本（CSV文件）处理，IP解析">
+<meta property="og:url" content="https://wnhyang.github.io/article/3a2acd9b.html">
 <meta property="og:site_name" content="无奈何杨（wnhyang）">
-<meta property="og:description" content="个人博客：无奈何杨（wnhyang） 个人语雀：wnhyang 共享语雀：在线知识共享 Github：wnhyang - Overview  办公三件套，我想不会有人没用过吧，如果你还停留在简单编辑、套模版的的办公三件套时代，那只能说你真的out了！ 这周因为一些工作上的需要，打开WPS创建并使用了一下智能表格，不用不知道，使用后属实是把我惊到了。 智能表格 特性：  多人协作，这个功能其实不算是">
+<meta property="og:description" content="个人博客：无奈何杨（wnhyang） 个人语雀：wnhyang 共享语雀：在线知识共享 Github：wnhyang - Overview  起因 突然接收到XX给的任务，要将一批IP数据处理一下，将IP对应的省市区解析出来，很急！ 已知我这边有一个IP解析接口，提供了IP解析到国家省市区ISP等的能力，而且支持批量查询，但问题是仅仅有接口的形式，没有管理应用将接口利用起来，要使用的恐怕也只能是发">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240226/image.pf2vii0bx.webp">
-<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240226/image.9gwb8bnu3n.webp">
-<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240226/image.8s31ob2l4c.webp">
-<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240226/image.58h3yi5fmi.webp">
-<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240226/image.9nzj3rssj6.webp">
-<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240226/image.1aoqhudjve.webp">
-<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240226/image.2yy3f1d2se.webp">
-<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240226/image.4qr29y58eq.webp">
-<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240226/image.8vmnm29cj3.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240714/image.4915vf3e3t.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240714/image.60u4qc6ipc.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240714/image.1vyje7xel0.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240714/image.8ojl0prcn2.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240714/image.6bgyjiwuih.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240714/image.41xy01es9p.webp">
 <meta property="og:image" content="https://wnhyang.github.io/images/wechat_channel.webp">
-<meta property="article:published_time" content="2024-03-03T12:34:46.000Z">
-<meta property="article:modified_time" content="2024-03-04T09:29:59.743Z">
+<meta property="article:published_time" content="2024-07-14T13:29:00.000Z">
+<meta property="article:modified_time" content="2024-07-15T02:12:58.216Z">
 <meta property="article:author" content="无奈何杨（wnhyang）">
-<meta property="article:tag" content="软件&amp;工具">
+<meta property="article:tag" content="项目">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240226/image.pf2vii0bx.webp">
+<meta name="twitter:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240714/image.4915vf3e3t.webp">
 
 
-<link rel="canonical" href="https://wnhyang.github.io/article/a2229281.html">
+<link rel="canonical" href="https://wnhyang.github.io/article/3a2acd9b.html">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wnhyang.github.io/article/a2229281.html","path":"article/a2229281.html","title":"使用了智能表格后，不禁感叹现在的生产力工具真牛！"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wnhyang.github.io/article/3a2acd9b.html","path":"article/3a2acd9b.html","title":"记一次IP数据处理过程，文本（CSV文件）处理，IP解析"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>使用了智能表格后，不禁感叹现在的生产力工具真牛！ | 无奈何杨（wnhyang）</title>
+<title>记一次IP数据处理过程，文本（CSV文件）处理，IP解析 | 无奈何杨（wnhyang）</title>
   
 
 
@@ -160,7 +157,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%99%BA%E8%83%BD%E8%A1%A8%E6%A0%BC"><span class="nav-number">1.</span> <span class="nav-text">智能表格</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A8%A1%E7%89%88%E5%88%9B%E5%BB%BA"><span class="nav-number">2.</span> <span class="nav-text">模版创建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%A1%A8"><span class="nav-number">3.</span> <span class="nav-text">数据表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%81%E7%A8%8B"><span class="nav-number">4.</span> <span class="nav-text">自动化流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD"><span class="nav-number">5.</span> <span class="nav-text">高级功能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BA%94%E7%94%A8"><span class="nav-number">6.</span> <span class="nav-text">应用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="nav-number">8.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B5%B7%E5%9B%A0"><span class="nav-number">1.</span> <span class="nav-text">起因</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B"><span class="nav-number">3.</span> <span class="nav-text">开始</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="nav-number">3.1.</span> <span class="nav-text">原数据处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%AE%9E%E4%BD%93%E7%B1%BB"><span class="nav-number">3.2.</span> <span class="nav-text">一些实体类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82%E6%8E%A5%E5%8F%A3%E6%96%B9%E5%BC%8F"><span class="nav-number">3.3.</span> <span class="nav-text">请求接口方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B8%8E%E8%BE%93%E5%87%BA"><span class="nav-number">3.4.</span> <span class="nav-text">数据处理与输出</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E6%9D%9F"><span class="nav-number">4.</span> <span class="nav-text">结束</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="nav-number">5.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -239,6 +236,13 @@
       </a>
     </li>
     <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/d9f6ee5e.html" rel="bookmark">
+        <time class="popular-posts-time">2024-03-19</time>
+        <br>
+      Spring6.1新特性，四种方式调用REST接口（RestClient、WebClient、RestTemplate、HTTP Interface）
+      </a>
+    </li>
+    <li class="popular-posts-item">
       <a class="popular-posts-link" href="/article/830d76f.html" rel="bookmark">
         <time class="popular-posts-time">2024-04-01</time>
         <br>
@@ -257,13 +261,6 @@
         <time class="popular-posts-time">2024-02-22</time>
         <br>
       Sa-Token事件发布，观察者模式
-      </a>
-    </li>
-    <li class="popular-posts-item">
-      <a class="popular-posts-link" href="/article/c3f9479b.html" rel="bookmark">
-        <time class="popular-posts-time">2024-04-02</time>
-        <br>
-      根据用户角色权限，渲染菜单的一个问题记录
       </a>
     </li>
   </ul>
@@ -287,7 +284,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/a2229281.html">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/3a2acd9b.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -300,12 +297,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="使用了智能表格后，不禁感叹现在的生产力工具真牛！ | 无奈何杨（wnhyang）">
+      <meta itemprop="name" content="记一次IP数据处理过程，文本（CSV文件）处理，IP解析 | 无奈何杨（wnhyang）">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          使用了智能表格后，不禁感叹现在的生产力工具真牛！
+          记一次IP数据处理过程，文本（CSV文件）处理，IP解析
         </h1>
 
         <div class="post-meta-container">
@@ -316,14 +313,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-03-03 20:34:46" itemprop="dateCreated datePublished" datetime="2024-03-03T20:34:46+08:00">2024-03-03</time>
+      <time title="创建时间：2024-07-14 21:29:00" itemprop="dateCreated datePublished" datetime="2024-07-14T21:29:00+08:00">2024-07-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-03-04 17:29:59" itemprop="dateModified" datetime="2024-03-04T17:29:59+08:00">2024-03-04</time>
+      <time title="修改时间：2024-07-15 10:12:58" itemprop="dateModified" datetime="2024-07-15T10:12:58+08:00">2024-07-15</time>
     </span>
 
   
@@ -367,88 +364,122 @@ title="在线知识共享">在线知识共享</a></p>
 <p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
 Overview</a></p>
 <hr />
-<p>办公三件套，我想不会有人没用过吧，如果你还停留在简单编辑、套模版的的办公三件套时代，那只能说你真的out了！</p>
-<p>这周因为一些工作上的需要，打开WPS创建并使用了一下智能表格，不用不知道，使用后属实是把我惊到了。</p>
-<h1 id="智能表格">智能表格</h1>
-<p>特性：</p>
-<ul>
-<li>多人协作，这个功能其实不算是特性的，因为绝大多数表格都可以做到</li>
-<li>简单的在线数据库，高效的管理数据</li>
-<li>搭积木一样建应用，每个人都会用</li>
-</ul>
-<p>接下来我会从模版和自己的实践上重点介绍后两点！</p>
+<h1 id="起因">起因</h1>
+<p>突然接收到<code>XX</code>给的任务，要将一批<code>IP</code>数据处理一下，将<code>IP</code>对应的省市区解析出来，很急！</p>
+<p>已知我这边有一个<code>IP</code>解析接口，提供了<code>IP</code>解析到国家省市区<code>ISP</code>等的能力，而且支持批量查询，但问题是仅仅有接口的形式，没有管理应用将接口利用起来，要使用的恐怕也只能是发接口，而且<code>XX</code>提供的数据有极大可能是<code>Excel</code>格式。另外<code>XX</code>没有说明解析后的数据怎么给出来，如果是<code>Excel</code>最好就是将数据放在一行标记为省市区就好。这么看来只能是临时开发来完成了，经过分析此时已经有了大致的思路了。</p>
+<p>果然！拿到的数据是<code>xls</code>格式，大致如下。共有几百条。</p>
+<table>
+<thead>
+<tr class="header">
+<th>a</th>
+<th>b</th>
+<th>c</th>
+<th>ip</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>123</td>
+<td>234</td>
+<td>345</td>
+<td>127.0.0.1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>那就动手开发吧！从接受到任务到结束大概用了<code>40</code>分钟，这不是炫耀什么，毕竟使用AI可能会更快更好，但这毕竟是临时做的，完成的也还可以，我还挺欣慰的。</p>
+<h1 id="思路">思路</h1>
+<p>任何临时紧急的任务，第一目标都应该在时间要求内是完成它，所以总体思路就是先完成后优化。</p>
+<p>其实做起来也很简单</p>
+<p>1、整理原始数据，也可以叫做数据清理。</p>
+<p>2、读IP数据</p>
+<p>3、整合请求，发接口进行IP解析</p>
+<p>4、解析数据补充在原数据上</p>
+<p>5、输出</p>
+<p>这里提供了示例数据，IP数据来源于<a
+target="_blank" rel="noopener" href="https://www.json.cn/network/iprand/">在线ip地址随机生成器 -
+JSON中文网</a>，其他数据都是随机生成，一共270条。</p>
 <span id="more"></span>
-<h1 id="模版创建">模版创建</h1>
+<p><a
+target="_blank" rel="noopener" href="https://www.yuque.com/attachments/yuque/0/2024/xlsx/21551806/1720963675508-943da8ca-e4e9-4fa5-88af-9e228516dddd.xlsx">📎示例IP.xlsx</a></p>
 <figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240226/image.pf2vii0bx.webp"
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240714/image.4915vf3e3t.webp"
 alt="image" />
 <figcaption aria-hidden="true">image</figcaption>
 </figure>
-<p>废话不多讲，直接从模版来看，这里选择“团队任务项目管理看板”。</p>
+<p>关于接口，这里只能用一些开放的IP解析接口了，这里用的是<a
+target="_blank" rel="noopener" href="https://api.vvhan.com/api/ipInfo?ip=58.154.0.0"
+class="uri">https://api.vvhan.com/api/ipInfo?ip=58.154.0.0</a>。</p>
 <figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240226/image.9gwb8bnu3n.webp"
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240714/image.60u4qc6ipc.webp"
 alt="image" />
 <figcaption aria-hidden="true">image</figcaption>
 </figure>
-<p>可以看到下面有5个<code>sheet</code>，根据图标可知其实有区别的，可以通过最右边的新建<code>sheet</code>看出，模版里是由1个数据表和4个应用构成的。此数据表和应用就是前面提到的“简单的在线数据库，高效的管理数据”和“搭积木一样建应用，每个人都会用”。</p>
+<p>使用如上图所示。</p>
 <figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240226/image.8s31ob2l4c.webp"
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240714/image.1vyje7xel0.webp"
 alt="image" />
 <figcaption aria-hidden="true">image</figcaption>
 </figure>
-<h1 id="数据表">数据表</h1>
-<p>首先从模版第一个<code>sheet</code>来看，也就是数据表。</p>
+<h1 id="开始">开始</h1>
+<h2 id="原数据处理">原数据处理</h2>
+<p>本身数据很完整，所以这个步骤就没有什么参考意义了。</p>
+<p>关于文件格式，不管是<code>xls</code>还是<code>xlsx</code>都属于微软<code>Ecxel</code>标准的电子表格格式，或扩展。都已经进行<code>Office</code>文件处理的范畴了，相比于简单的文本处理还是麻烦了点，这里为了方便将其另存为<code>csv</code>文件，进行文本处理。</p>
 <figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240226/image.58h3yi5fmi.webp"
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240714/image.8ojl0prcn2.webp"
 alt="image" />
 <figcaption aria-hidden="true">image</figcaption>
 </figure>
-<p>其实它和普通的表格区别不是非常大，一眼看去感觉就是普通表格美化了而已。其实不然，智能表格中，每一列叫做“字段”，字段可以先限制其类型，如上图开始日期模版中设置的是日期，在输入时就可以直接通过日历来选择，所有输入最终都会规范成我们设置的格式，这相比于普通的表格好太多了。字段类型非常丰富，如果不是自己摸索着玩，可能永远不用了这么多格式，所以其他的自己探索吧！</p>
-<p>就这！！！就敢说是“智能表格”。</p>
-<p>稍安勿躁，继续看。</p>
-<p>从前一张图可以看到，智能表格工具栏排列在头部了，一般的如：字体颜色、填充色、筛选、排序、分组等，自是不必多讲。比较有意思的是后面几个，这也是“智能表格”智能的体现。</p>
-<h1 id="自动化流程">自动化流程</h1>
-<p>不知道你们之前是否见过这个功能的，反正对我来讲是第一次，挺震惊的。</p>
+<p>工具上使用<a
+target="_blank" rel="noopener" href="https://hutool.cn/docs/#/core/%E6%96%87%E6%9C%AC%E6%93%8D%E4%BD%9C/CSV%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7-CsvUtil?id=csv%e6%96%87%e4%bb%b6%e5%a4%84%e7%90%86%e5%b7%a5%e5%85%b7-csvutil">CSV文件处理工具-CsvUtil</a>。</p>
+<p>这里需要注意了，使用<code>csv</code>工具处理的文本，需要有行头，所以在第一行加入了<code>id,ip</code>，用于读取。</p>
+<h2 id="一些实体类">一些实体类</h2>
+<p>读取<code>csv</code>的<code>JavaBean</code>如下。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">IpItem</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String id;</span><br><span class="line">    <span class="keyword">private</span> String ip;</span><br><span class="line">    <span class="meta">@Alias(&quot;国家&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String country;</span><br><span class="line">    <span class="meta">@Alias(&quot;省份&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String prov;</span><br><span class="line">    <span class="meta">@Alias(&quot;城市&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String city;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以上已将说明了要使用<a
+target="_blank" rel="noopener" href="https://api.vvhan.com/api/ipInfo?ip=58.154.0.0"
+class="uri">https://api.vvhan.com/api/ipInfo?ip=58.154.0.0</a>作本次示例，响应报文如下。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;success&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;ip&quot;</span><span class="punctuation">:</span> <span class="string">&quot;58.154.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;info&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;country&quot;</span><span class="punctuation">:</span> <span class="string">&quot;中国&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;prov&quot;</span><span class="punctuation">:</span> <span class="string">&quot;辽宁省&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;city&quot;</span><span class="punctuation">:</span> <span class="string">&quot;沈阳市&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;isp&quot;</span><span class="punctuation">:</span> <span class="string">&quot;教育网&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>这里可以使用<code>JSON</code>转<code>JavaBean</code>的工具，不管是<code>GsonFormatPlus</code>插件还是其他在线工具都可以。</p>
+<p><a
+target="_blank" rel="noopener" href="https://plugins.jetbrains.com/plugin/14949-gsonformatplus">GsonFormatPlus
+- IntelliJ IDEs Plugin | Marketplace</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://www.json.cn/json2java/">JSON转JAVA实体|在线JSON转JavaBean工具
+- JSON中文网</a></p>
+<p>由此得到<code>IpRespDTO</code>、<code>IpInfo</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">IpRespDTO</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> Boolean success;</span><br><span class="line">    <span class="keyword">private</span> String ip;</span><br><span class="line">    <span class="keyword">private</span> IpInfo info;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">IpInfo</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String country;</span><br><span class="line">    <span class="keyword">private</span> String prov;</span><br><span class="line">    <span class="keyword">private</span> String city;</span><br><span class="line">    <span class="keyword">private</span> String isp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>因为此接口请求比较简单，所以就没有额外的请求类了。</p>
+<h2 id="请求接口方式">请求接口方式</h2>
+<p>关于方式，之前我有两篇文章可以参考，这里使用<code>OpenFeign</code>。</p>
+<p><a
+target="_blank" rel="noopener" href="https://www.yuque.com/wnh/share/lxs2uth745z0nwwm">Spring6.1新特性，四种方式调用REST接口（RestClient、WebClient、RestTemplate、HTTP
+Interface）</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://www.yuque.com/wnh/share/ou7oyqr0vh4iml6q">Spring6｜Spring
+Boot3有哪些HTTP客户端可以选择</a></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-openfeign<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FeignClient(name = &quot;ipAnalysisFeignService&quot;, url = &quot;https://api.vvhan.com/api&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">IpAnalysisFeignService</span> &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/ipInfo&quot;)</span></span><br><span class="line">    IpRespDTO <span class="title function_">getIpInfo</span><span class="params">(<span class="meta">@RequestParam(&quot;ip&quot;)</span> String ip)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="数据处理与输出">数据处理与输出</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">IpAnalysisFeignServiceTest</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> IpAnalysisFeignService ipAnalysisFeignService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">getIpInfo</span><span class="params">()</span> &#123;</span><br><span class="line">        List&lt;IpItem&gt; ipItemList = CsvUtil.getReader().read(</span><br><span class="line">                ResourceUtil.getUtf8Reader(<span class="string">&quot;示例IP.csv&quot;</span>), IpItem.class);</span><br><span class="line">        ipItemList.forEach(ipItem -&gt; &#123;</span><br><span class="line">            <span class="type">IpRespDTO</span> <span class="variable">ipRespDTO</span> <span class="operator">=</span> ipAnalysisFeignService.getIpInfo(ipItem.getIp());</span><br><span class="line">            log.info(<span class="string">&quot;ip:&#123;&#125;,info:&#123;&#125;&quot;</span>, ipItem.getIp(), ipRespDTO);</span><br><span class="line">            <span class="keyword">if</span> (ipRespDTO.getSuccess()) &#123;</span><br><span class="line">                <span class="type">IpInfo</span> <span class="variable">info</span> <span class="operator">=</span> ipRespDTO.getInfo();</span><br><span class="line">                ipItem.setCountry(info.getCountry()).setProv(info.getProv()).setCity(info.getCity());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="type">CsvWriter</span> <span class="variable">writer</span> <span class="operator">=</span> CsvUtil.getWriter(<span class="string">&quot;/Users/wnhyang/Downloads/testWrite.csv&quot;</span>, CharsetUtil.CHARSET_UTF_8);</span><br><span class="line">        writer.writeBeans(ipItemList);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>日志如下，共花费了<code>43</code>秒，没办法这是开放的接口，性能确实差了点，而且是<code>270</code>次请求。</p>
 <figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240226/image.9nzj3rssj6.webp"
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240714/image.6bgyjiwuih.webp"
 alt="image" />
 <figcaption aria-hidden="true">image</figcaption>
 </figure>
-<p>点开自动化流程，显示出来的也只是模版，想要自定义就可以自己编辑。</p>
-<p>如下，设置触发条件和后续操作，相当简单，更多详细的可以查看自动化流程帮助中心。</p>
+<p>输出文件如下，好吧，一些<code>ip</code>可能解析不到，但也是完成了任务。</p>
 <figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240226/image.1aoqhudjve.webp"
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240714/image.41xy01es9p.webp"
 alt="image" />
 <figcaption aria-hidden="true">image</figcaption>
 </figure>
-<h1 id="高级功能">高级功能</h1>
-<p>高级功能主要是两块：自定义打印和高级开发（脚本和定时任务）。</p>
-<p>目前没有需要，还没尝试过，但一定也很有趣。</p>
-<h1 id="应用">应用</h1>
-<p>从前面的图片和介绍，“智能表格”最有趣的地方还是使用“应用”。</p>
-<p>就从此次“团队任务项目管理看板”模版来看吧。</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240226/image.2yy3f1d2se.webp"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
-</figure>
-<p>“📌团队任务汇总”应用如上图，本质上是关联了“团队任务管理看板”数据表，然后通过“状态”字段分组实现的，不要觉得这个毫无意义，首先数据表和应用的数据是双向绑定的，其次数据表对应用是1对多的关系，也是说，通过一份数据表，我们可以从不同角度创建我们需要的的数据，而这些应用因为与数据表本身就是绑定的，所以所有应用其实也是统一的。</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240226/image.4qr29y58eq.webp"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
-</figure>
-<p>来看第三张表“👥负责人看板”应用，它与上一张“📌团队任务汇总”应用区别其实只是分组字段不同，但其实这是两个角度。作为项目管理员，我肯定既希望通过人物状态来看那些任务已完成/未完成/延期，又希望通过任务负责人了解到每个人的任务执行情况，方便我进行人员/任务分配。</p>
-<p>“延期任务预警”应用也差不多，下面的是“任务甘特图”应用。</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240226/image.8vmnm29cj3.webp"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
-</figure>
-<p>从前面创建新sheet的截图可以看出，应用其实有很多分类的，其中甘特图算是比较常见的吧，模版通过配置甘特图时间线的开始/结束时间就实现了上图的效果，非常简单方便。真就是“搭积木一样建应用，每个人都会用”。</p>
-<h1 id="总结">总结</h1>
-<p>最后的最后，我还是表达我的感受，智能表格真牛，现在的生产力工具真不错！</p>
-<p>题外话，从程序员的角度来看，收集数据-存储数据-处理数据-展示数据。。。</p>
+<h1 id="结束">结束</h1>
+<p>当时一共用了<code>40</code>分钟左右，你可能讲了，用<code>Java</code>进行数据处理？咋不用<code>Python</code>？能合并请求吗？能不能再优化一下？</p>
+<p>确实有优化的地方，但是开头我也讲了，临时紧急任务第一目标是在时间要求内完成，在完成后可以再思考优化。</p>
+<p>而且，顺带提一点，平常可以做一些积累，在面对复杂的紧急任务时就会很从容了。https://github.com/wnhyang)</p>
 <h1 id="写在最后">写在最后</h1>
 <p>拙作艰辛，字句心血，望诸君垂青，多予支持，不胜感激。</p>
 <hr />
@@ -496,7 +527,7 @@ Overview</a></p>
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://wnhyang.github.io/article/a2229281.html" title="使用了智能表格后，不禁感叹现在的生产力工具真牛！">https://wnhyang.github.io/article/a2229281.html</a>
+      <a href="https://wnhyang.github.io/article/3a2acd9b.html" title="记一次IP数据处理过程，文本（CSV文件）处理，IP解析">https://wnhyang.github.io/article/3a2acd9b.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -542,21 +573,18 @@ Overview</a></p>
 </div>
 
           <div class="post-tags">
-              <a href="/tags/%E8%BD%AF%E4%BB%B6-%E5%B7%A5%E5%85%B7/" rel="tag"># 软件&工具</a>
+              <a href="/tags/%E9%A1%B9%E7%9B%AE/" rel="tag"># 项目</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/article/cf08a8bf.html" rel="prev" title="Sa-Token事件发布，观察者模式">
-                  <i class="fa fa-chevron-left"></i> Sa-Token事件发布，观察者模式
+                <a href="/article/a2731f17.html" rel="prev" title="交易事件的生命周期，事前事中事后风控，结果通知/回调">
+                  <i class="fa fa-chevron-left"></i> 交易事件的生命周期，事前事中事后风控，结果通知/回调
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/article/61a8fda5.html" rel="next" title="可配置输入参数的接口如何设计">
-                  可配置输入参数的接口如何设计 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -671,7 +699,7 @@ Overview</a></p>
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://wnhyang.github.io/article/a2229281.html"}</script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://wnhyang.github.io/article/3a2acd9b.html"}</script>
   <script src="/js/third-party/quicklink.js"></script>
 
 </body>

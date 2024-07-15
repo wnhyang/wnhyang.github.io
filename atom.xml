@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2024-07-07T10:22:51.429Z</updated>
+  <updated>2024-07-15T02:12:58.216Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,72 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>记一次IP数据处理过程，文本（CSV文件）处理，IP解析</title>
+    <link href="https://wnhyang.github.io/article/3a2acd9b.html"/>
+    <id>https://wnhyang.github.io/article/3a2acd9b.html</id>
+    <published>2024-07-14T13:29:00.000Z</published>
+    <updated>2024-07-15T02:12:58.216Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;个人博客：&lt;a
+href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
+title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
+title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
+Overview&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h1 id=&quot;起因&quot;&gt;起因&lt;/h1&gt;
+&lt;p&gt;突然接收到&lt;code&gt;XX&lt;/code&gt;给的任务，要将一批&lt;code&gt;IP&lt;/code&gt;数据处理一下，将&lt;code&gt;IP&lt;/code&gt;对应的省市区解析出来，很急！&lt;/p&gt;
+&lt;p&gt;已知我这边有一个&lt;code&gt;IP&lt;/code&gt;解析接口，提供了&lt;code&gt;IP&lt;/code&gt;解析到国家省市区&lt;code&gt;ISP&lt;/code&gt;等的能力，而且支持批量查询，但问题是仅仅有接口的形式，没有管理应用将接口利用起来，要使用的恐怕也只能是发接口，而且&lt;code&gt;XX&lt;/code&gt;提供的数据有极大可能是&lt;code&gt;Excel&lt;/code&gt;格式。另外&lt;code&gt;XX&lt;/code&gt;没有说明解析后的数据怎么给出来，如果是&lt;code&gt;Excel&lt;/code&gt;最好就是将数据放在一行标记为省市区就好。这么看来只能是临时开发来完成了，经过分析此时已经有了大致的思路了。&lt;/p&gt;
+&lt;p&gt;果然！拿到的数据是&lt;code&gt;xls&lt;/code&gt;格式，大致如下。共有几百条。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&quot;header&quot;&gt;
+&lt;th&gt;a&lt;/th&gt;
+&lt;th&gt;b&lt;/th&gt;
+&lt;th&gt;c&lt;/th&gt;
+&lt;th&gt;ip&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&quot;odd&quot;&gt;
+&lt;td&gt;123&lt;/td&gt;
+&lt;td&gt;234&lt;/td&gt;
+&lt;td&gt;345&lt;/td&gt;
+&lt;td&gt;127.0.0.1&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;那就动手开发吧！从接受到任务到结束大概用了&lt;code&gt;40&lt;/code&gt;分钟，这不是炫耀什么，毕竟使用AI可能会更快更好，但这毕竟是临时做的，完成的也还可以，我还挺欣慰的。&lt;/p&gt;
+&lt;h1 id=&quot;思路&quot;&gt;思路&lt;/h1&gt;
+&lt;p&gt;任何临时紧急的任务，第一目标都应该在时间要求内是完成它，所以总体思路就是先完成后优化。&lt;/p&gt;
+&lt;p&gt;其实做起来也很简单&lt;/p&gt;
+&lt;p&gt;1、整理原始数据，也可以叫做数据清理。&lt;/p&gt;
+&lt;p&gt;2、读IP数据&lt;/p&gt;
+&lt;p&gt;3、整合请求，发接口进行IP解析&lt;/p&gt;
+&lt;p&gt;4、解析数据补充在原数据上&lt;/p&gt;
+&lt;p&gt;5、输出&lt;/p&gt;
+&lt;p&gt;这里提供了示例数据，IP数据来源于&lt;a
+href=&quot;https://www.json.cn/network/iprand/&quot;&gt;在线ip地址随机生成器 -
+JSON中文网&lt;/a&gt;，其他数据都是随机生成，一共270条。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>交易事件的生命周期，事前事中事后风控，结果通知/回调</title>
     <link href="https://wnhyang.github.io/article/a2731f17.html"/>
     <id>https://wnhyang.github.io/article/a2731f17.html</id>
     <published>2024-07-07T10:03:31.000Z</published>
-    <updated>2024-07-07T10:22:51.429Z</updated>
+    <updated>2024-07-07T10:23:12.400Z</updated>
     
     
     <summary type="html">&lt;p&gt;个人博客：&lt;a
@@ -685,9 +746,9 @@ alt=&quot;image&quot; /&gt;
     
     
     
-    <category term="Vue" scheme="https://wnhyang.github.io/tags/Vue/"/>
-    
     <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
+    
+    <category term="Vue" scheme="https://wnhyang.github.io/tags/Vue/"/>
     
   </entry>
   
@@ -719,9 +780,9 @@ alt=&quot;image&quot; /&gt;
     
     
     
-    <category term="Vue" scheme="https://wnhyang.github.io/tags/Vue/"/>
-    
     <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
+    
+    <category term="Vue" scheme="https://wnhyang.github.io/tags/Vue/"/>
     
   </entry>
   
@@ -868,46 +929,6 @@ implementation.&lt;/li&gt;
     <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
     <category term="Spring Framework" scheme="https://wnhyang.github.io/tags/Spring-Framework/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MybatisPlus-Generator自定义模版生成CRUD、DTO、VO、Convert等</title>
-    <link href="https://wnhyang.github.io/article/bf7337ce.html"/>
-    <id>https://wnhyang.github.io/article/bf7337ce.html</id>
-    <published>2024-03-16T01:48:24.000Z</published>
-    <updated>2024-03-18T03:28:19.224Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;个人博客：&lt;a
-href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
-title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
-title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
-Overview&lt;/a&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h1 id=&quot;简介&quot;&gt;简介&lt;/h1&gt;
-&lt;p&gt;如标题所言，本篇文章介绍如何使用&lt;code&gt;MybatisPlus-Generator&lt;/code&gt;自定义模版生成&lt;code&gt;CRUD&lt;/code&gt;、&lt;code&gt;DTO&lt;/code&gt;、&lt;code&gt;VO&lt;/code&gt;、&lt;code&gt;Convert&lt;/code&gt;等。&lt;/p&gt;
-&lt;p&gt;项目已在开源，可以通过以下&lt;code&gt;Github&lt;/code&gt;/&lt;code&gt;Gitee&lt;/code&gt;链接下载源码使用，目前生成器还不是很灵活，你可以下载源码自定义修改，或者真的有需要可以提&lt;code&gt;Issues&lt;/code&gt;，我们一起来完善。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/wnhyang/crud-quickstart&quot;&gt;GitHub -
-wnhyang/crud-quickstart&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://gitee.com/wnhyang/crud-quickstart&quot;&gt;Gitee -
-wnhyang/crud-quickstart&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Mybatis官网：&lt;a
-href=&quot;https://baomidou.com/pages/981406/&quot;&gt;代码生成器配置新 |
-MyBatis-Plus&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&quot;https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240316/.7ljqxmoerv.webp&quot; /&gt;&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="软件&amp;工具" scheme="https://wnhyang.github.io/tags/%E8%BD%AF%E4%BB%B6-%E5%B7%A5%E5%85%B7/"/>
-    
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
-    <category term="Mybatis/Mybatis-plus" scheme="https://wnhyang.github.io/tags/Mybatis-Mybatis-plus/"/>
     
   </entry>
   
