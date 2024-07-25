@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2024-07-15T02:12:58.216Z</updated>
+  <updated>2024-07-25T12:06:56.431Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>风控系统建设，指标策略规则，LiteFlow</title>
+    <link href="https://wnhyang.github.io/article/3c962920.html"/>
+    <id>https://wnhyang.github.io/article/3c962920.html</id>
+    <published>2024-07-21T09:02:30.000Z</published>
+    <updated>2024-07-25T12:06:56.431Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;个人博客：&lt;a
+href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;个人语雀：&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>记一次IP数据处理过程，文本（CSV文件）处理，IP解析</title>
     <link href="https://wnhyang.github.io/article/3a2acd9b.html"/>
     <id>https://wnhyang.github.io/article/3a2acd9b.html</id>
     <published>2024-07-14T13:29:00.000Z</published>
-    <updated>2024-07-15T02:12:58.216Z</updated>
+    <updated>2024-07-15T02:13:29.254Z</updated>
     
     
     <summary type="html">&lt;p&gt;个人博客：&lt;a
@@ -876,59 +901,6 @@ CORS 规则，若符合则允许数据交互。&lt;/p&gt;
     <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
     <category term="Spring Cloud" scheme="https://wnhyang.github.io/tags/Spring-Cloud/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring6.1新特性，四种方式调用REST接口（RestClient、WebClient、RestTemplate、HTTP Interface）</title>
-    <link href="https://wnhyang.github.io/article/d9f6ee5e.html"/>
-    <id>https://wnhyang.github.io/article/d9f6ee5e.html</id>
-    <published>2024-03-19T11:27:37.000Z</published>
-    <updated>2024-03-20T05:34:10.609Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;个人博客：&lt;a
-href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
-title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
-title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
-Overview&lt;/a&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h1 id=&quot;官网&quot;&gt;官网&lt;/h1&gt;
-&lt;p&gt;&lt;a
-href=&quot;https://docs.spring.io/spring-framework/reference/integration/rest-clients.html&quot;&gt;REST
-Clients :: Spring Framework&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;The Spring Framework provides the following choices for making calls
-to REST endpoints:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a
-href=&quot;https://docs.spring.io/spring-framework/reference/integration/rest-clients.html#rest-restclient&quot;&gt;RestClient&lt;/a&gt;
-- synchronous client with a fluent API.&lt;/li&gt;
-&lt;li&gt;&lt;a
-href=&quot;https://docs.spring.io/spring-framework/reference/integration/rest-clients.html#rest-webclient&quot;&gt;WebClient&lt;/a&gt;
-- non-blocking, reactive client with fluent API.&lt;/li&gt;
-&lt;li&gt;&lt;a
-href=&quot;https://docs.spring.io/spring-framework/reference/integration/rest-clients.html#rest-resttemplate&quot;&gt;RestTemplate&lt;/a&gt;
-- synchronous client with template method API.&lt;/li&gt;
-&lt;li&gt;&lt;a
-href=&quot;https://docs.spring.io/spring-framework/reference/integration/rest-clients.html#rest-http-interface&quot;&gt;HTTP
-Interface&lt;/a&gt; - annotated interface with generated, dynamic proxy
-implementation.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;restclient&quot;&gt;RestClient&lt;/h1&gt;
-&lt;p&gt;官方描述：&lt;code&gt;RestClient&lt;/code&gt;是一个同步&lt;code&gt;HTTP&lt;/code&gt;客户端，它提供了一个现代、流畅的&lt;code&gt;API&lt;/code&gt;。它提供了对&lt;code&gt;HTTP&lt;/code&gt;库的抽象，允许从&lt;code&gt;Java&lt;/code&gt;对象到&lt;code&gt;HTTP&lt;/code&gt;请求的方便转换，以及从&lt;code&gt;HTTP&lt;/code&gt;响应创建对象。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Spring6.1&lt;/code&gt;版本新特性。&lt;/p&gt;
-&lt;h2 id=&quot;创建&quot;&gt;创建&lt;/h2&gt;
-&lt;p&gt;创建&lt;code&gt;RestClient&lt;/code&gt;非常简单，可以使用静态&lt;code&gt;create&lt;/code&gt;方法，也可以使用&lt;code&gt;builder&lt;/code&gt;创建，其提供了非常丰富的定制化选项，请求工厂、消息转换器、拦截器、默认头、请求初始化器等等，简单易懂。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
-    <category term="Spring Framework" scheme="https://wnhyang.github.io/tags/Spring-Framework/"/>
     
   </entry>
   

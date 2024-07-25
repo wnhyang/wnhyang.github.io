@@ -25,26 +25,35 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="热爱、分享、生活">
-<meta property="og:type" content="website">
-<meta property="og:title" content="无奈何杨（wnhyang）">
-<meta property="og:url" content="https://wnhyang.github.io/index.html">
+    <meta name="description" content="个人博客：无奈何杨（wnhyang） 个人语雀：wnhyang 共享语雀：在线知识共享 Github：wnhyang - Overview  简介 前面有很多文章已经说了，我要利用LiteFlow做风控系统。至于进度嘛，只能尽力而为，毕竟我的惰性也很强。 下面是目前Git的提交记录，代码托管在Github和Gitee，但是是私有仓库，因为还不是开放的时候，还有很多要做的。   image  其中能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="风控系统建设，指标策略规则，LiteFlow">
+<meta property="og:url" content="https://wnhyang.github.io/article/3c962920.html">
 <meta property="og:site_name" content="无奈何杨（wnhyang）">
-<meta property="og:description" content="热爱、分享、生活">
+<meta property="og:description" content="个人博客：无奈何杨（wnhyang） 个人语雀：wnhyang 共享语雀：在线知识共享 Github：wnhyang - Overview  简介 前面有很多文章已经说了，我要利用LiteFlow做风控系统。至于进度嘛，只能尽力而为，毕竟我的惰性也很强。 下面是目前Git的提交记录，代码托管在Github和Gitee，但是是私有仓库，因为还不是开放的时候，还有很多要做的。   image  其中能">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240723/image.969n1yux43.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240723/image.9dcuxfaa77.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240721/image.7ljvzj1lzj.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240723/image.73tudyinvv.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240721/image.7sn3uysk7g.webp">
+<meta property="og:image" content="https://wnhyang.github.io/images/wechat_channel.webp">
+<meta property="article:published_time" content="2024-07-21T09:02:30.000Z">
+<meta property="article:modified_time" content="2024-07-25T12:06:56.431Z">
 <meta property="article:author" content="无奈何杨（wnhyang）">
-<meta property="article:tag" content="blog">
+<meta property="article:tag" content="项目">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240723/image.969n1yux43.webp">
 
 
-<link rel="canonical" href="https://wnhyang.github.io/">
+<link rel="canonical" href="https://wnhyang.github.io/article/3c962920.html">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wnhyang.github.io/article/3c962920.html","path":"article/3c962920.html","title":"风控系统建设，指标策略规则，LiteFlow"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>无奈何杨（wnhyang）</title>
+<title>风控系统建设，指标策略规则，LiteFlow | 无奈何杨（wnhyang）</title>
   
 
 
@@ -80,7 +89,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">无奈何杨（wnhyang）</h1>
+      <p class="site-title">无奈何杨（wnhyang）</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">I will keep to fight</p>
@@ -134,7 +143,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -147,6 +156,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BB%E6%B5%81%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">主流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%8E%A5%E5%85%A5"><span class="nav-number">2.1.</span> <span class="nav-text">1、数据接入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C%E7%B3%BB%E7%BB%9F%E5%AD%97%E6%AE%B5%E5%8A%A8%E6%80%81%E5%AD%97%E6%AE%B5%E5%A4%84%E7%90%86"><span class="nav-number">2.2.</span> <span class="nav-text">2、输入参数校验、系统字段&#x2F;动态字段处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E6%A0%87%E8%AE%A1%E7%AE%97"><span class="nav-number">2.3.</span> <span class="nav-text">3、指标计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%96%E7%95%A5%E9%9B%86-%E7%AD%96%E7%95%A5-%E8%A7%84%E5%88%99"><span class="nav-number">2.4.</span> <span class="nav-text">4、策略集-策略-规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%98%E5%82%A8es"><span class="nav-number">2.5.</span> <span class="nav-text">5、存储ES</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%87%BA"><span class="nav-number">2.6.</span> <span class="nav-text">6、输出</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="nav-number">4.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -211,22 +221,68 @@
       </div>
     </div>
         <div class="pjax">
+        <div class="sidebar-inner sidebar-post-related">
+          <div class="animated">
+              <div class="links-of-blogroll-title"><i class="fa fa-signs-post fa-fw"></i>
+    相关文章
+  </div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/d8ad0228.html" rel="bookmark">
+        <time class="popular-posts-time">2024-05-24</time>
+        <br>
+      MybatisPlusGenerator交互式Web生成增删改查、导出导入代码
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/830d76f.html" rel="bookmark">
+        <time class="popular-posts-time">2024-04-01</time>
+        <br>
+      筛选树形菜单时关联其父节点和子节点
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/a949e07.html" rel="bookmark">
+        <time class="popular-posts-time">2024-06-06</time>
+        <br>
+      规则引擎LiteFlow发布v2.12.1版本，决策路由特性
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/bf7337ce.html" rel="bookmark">
+        <time class="popular-posts-time">2024-03-16</time>
+        <br>
+      MybatisPlus-Generator自定义模版生成CRUD、DTO、VO、Convert等
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/c3f9479b.html" rel="bookmark">
+        <time class="popular-posts-time">2024-04-02</time>
+        <br>
+      根据用户角色权限，渲染菜单的一个问题记录
+      </a>
+    </li>
+  </ul>
+
+          </div>
+        </div>
         </div>
   </aside>
 
 
     </div>
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/3c962920.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -240,13 +296,13 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
+      <meta itemprop="name" content="风控系统建设，指标策略规则，LiteFlow | 无奈何杨（wnhyang）">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/3c962920.html" class="post-title-link" itemprop="url">风控系统建设，指标策略规则，LiteFlow</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          风控系统建设，指标策略规则，LiteFlow
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -267,6 +323,13 @@
     </span>
 
   
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
     <span class="post-meta-break"></span>
     <span class="post-meta-item" title="本文字数">
       <span class="post-meta-item-icon">
@@ -291,7 +354,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>个人博客：<a
+        <p>个人博客：<a
 href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
 <p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
 title="wnhyang">wnhyang</a></p>
@@ -416,7 +479,6 @@ title="在线知识共享">在线知识共享</a></p>
 Overview</a></p>
 <p><img data-src="https://wnhyang.github.io/images/wechat_channel.webp" /></p>
 
-      
     </div>
 
     
@@ -424,1163 +486,93 @@ Overview</a></p>
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.webp" alt="无奈何杨（wnhyang） 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.webp" alt="无奈何杨（wnhyang） 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
 </div>
 
+          
 
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/3a2acd9b.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-      <meta itemprop="description" content="热爱、分享、生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/3a2acd9b.html" class="post-title-link" itemprop="url">记一次IP数据处理过程，文本（CSV文件）处理，IP解析</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-07-14 21:29:00" itemprop="dateCreated datePublished" datetime="2024-07-14T21:29:00+08:00">2024-07-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-07-15 10:13:29" itemprop="dateModified" datetime="2024-07-15T10:13:29+08:00">2024-07-15</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.3k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>5 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>个人博客：<a
-href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
-<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
-title="wnhyang">wnhyang</a></p>
-<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
-title="在线知识共享">在线知识共享</a></p>
-<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
-Overview</a></p>
-<hr />
-<h1 id="起因">起因</h1>
-<p>突然接收到<code>XX</code>给的任务，要将一批<code>IP</code>数据处理一下，将<code>IP</code>对应的省市区解析出来，很急！</p>
-<p>已知我这边有一个<code>IP</code>解析接口，提供了<code>IP</code>解析到国家省市区<code>ISP</code>等的能力，而且支持批量查询，但问题是仅仅有接口的形式，没有管理应用将接口利用起来，要使用的恐怕也只能是发接口，而且<code>XX</code>提供的数据有极大可能是<code>Excel</code>格式。另外<code>XX</code>没有说明解析后的数据怎么给出来，如果是<code>Excel</code>最好就是将数据放在一行标记为省市区就好。这么看来只能是临时开发来完成了，经过分析此时已经有了大致的思路了。</p>
-<p>果然！拿到的数据是<code>xls</code>格式，大致如下。共有几百条。</p>
-<table>
-<thead>
-<tr class="header">
-<th>a</th>
-<th>b</th>
-<th>c</th>
-<th>ip</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>123</td>
-<td>234</td>
-<td>345</td>
-<td>127.0.0.1</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>那就动手开发吧！从接受到任务到结束大概用了<code>40</code>分钟，这不是炫耀什么，毕竟使用AI可能会更快更好，但这毕竟是临时做的，完成的也还可以，我还挺欣慰的。</p>
-<h1 id="思路">思路</h1>
-<p>任何临时紧急的任务，第一目标都应该在时间要求内是完成它，所以总体思路就是先完成后优化。</p>
-<p>其实做起来也很简单</p>
-<p>1、整理原始数据，也可以叫做数据清理。</p>
-<p>2、读IP数据</p>
-<p>3、整合请求，发接口进行IP解析</p>
-<p>4、解析数据补充在原数据上</p>
-<p>5、输出</p>
-<p>这里提供了示例数据，IP数据来源于<a
-target="_blank" rel="noopener" href="https://www.json.cn/network/iprand/">在线ip地址随机生成器 -
-JSON中文网</a>，其他数据都是随机生成，一共270条。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/article/3a2acd9b.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/a2731f17.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-      <meta itemprop="description" content="热爱、分享、生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/a2731f17.html" class="post-title-link" itemprop="url">交易事件的生命周期，事前事中事后风控，结果通知/回调</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2024-07-07 18:03:31 / 修改时间：18:23:12" itemprop="dateCreated datePublished" datetime="2024-07-07T18:03:31+08:00">2024-07-07</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>3.4k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>12 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>个人博客：<a
-href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
-<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
-title="wnhyang">wnhyang</a></p>
-<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
-title="在线知识共享">在线知识共享</a></p>
-<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
-Overview</a></p>
-<hr />
-<h1 id="参考">参考</h1>
-<p><a
-target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1792849006369591131">什么是支付风控？包含哪些环节？</a></p>
-<p><a
-target="_blank" rel="noopener" href="https://cn.unionpay.com/upowhtml/cn/templates/material/a5817a4b821640e5a850c5b9da5687c7/1608729295304.pdf">支付风险智能风控应用与评估指引</a></p>
-<h1 id="交易事件及其生命周期">交易事件及其生命周期</h1>
-<p>交易事件就是交易，如：登录、注册、转账等，而且这些还只是大类，通常转账有手机号转账、银行卡号转账等，币种又有人民币、外币、数字人民币等，这只是从方式、币种区分，其实还有很多，而且流程是相对复杂的。</p>
-<p>以下仅是随意的例子，不可深究。</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240707/image.8dwqxbpp8o.webp"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
-</figure>
-<p>要在转账中加入风控一定也是了解转账的整体流程的。</p>
-<p>从风控业务的角度出发，接入风控的交易数据就可以称为交易事件🤝</p>
-<p>虽然说是这么说，风控的接入要熟悉整个交易流程，但是为了简化，其实是可以把所有交易分为事前事中事后的。</p>
-<h1 id="事前事中事后风控">事前事中事后风控</h1>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/article/a2731f17.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/a9589eb9.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-      <meta itemprop="description" content="热爱、分享、生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/a9589eb9.html" class="post-title-link" itemprop="url">SpringBoot之Jackson，自动化配置，Java 8 date/time type java.time.LocalTime not supported</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-06-20 19:17:20" itemprop="dateCreated datePublished" datetime="2024-06-20T19:17:20+08:00">2024-06-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-22 16:16:46" itemprop="dateModified" datetime="2024-06-22T16:16:46+08:00">2024-06-22</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.9k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>7 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>个人博客：<a
-href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
-<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
-title="wnhyang">wnhyang</a></p>
-<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
-title="在线知识共享">在线知识共享</a></p>
-<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
-Overview</a></p>
-<hr />
-<h1 id="参考">参考</h1>
-<p><a
-target="_blank" rel="noopener" href="https://www.iocoder.cn/Spring-MVC/lichhao/HttpMessageConverter/">【相见欢】Spring
-MVC 源码剖析（五） —— 消息转换器 HttpMessageConverter | 芋道源码 ——
-纯源码解析博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7195078889767436346">Spring boot
-中时间类型的序列化与反序列化 - 掘金</a></p>
-<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7195117148140732453">Spring boot 中
-Jackson 的常用配置</a></p>
-<h1 id="failed-to-deserialize-java.time.localdatetime">Failed to
-deserialize java.time.LocalDateTime</h1>
-<p>这是<code>web</code>开发中常见的一个错误，无法完成<code>LocalDataTime</code>的反序列化。</p>
-<p>这是怎么回事？</p>
-<p>其实这个问题在于<code>LocalTime</code>、<code>LocalDate</code>、<code>LocalDateTime</code>的序列化上。</p>
-<p>这就要从<code>SpringMVC</code>说起了！</p>
-<p><code>Spring MVC</code> 是 <code>Spring Framework</code>
-的核心组件之一，与其他模块（如
-<code>Spring Boot</code>、<code>Spring Data</code>、<code>Spring Security</code>
-等）一起构成了完整的 <code>Spring</code> 生态系统。</p>
-<p><code>Spring MVC</code>是<code>Web</code>开发中极其重要，其设计思想是非常值得学习的。</p>
-<p>关于<code>SpringMVC</code>的学习可以参考以下文章</p>
-<p><a target="_blank" rel="noopener" href="https://www.iocoder.cn/categories/Spring-MVC/">Category:
-Spring-MVC | 芋道源码 —— 纯源码解析博客</a></p>
-<p>请求报文在传输中是要进行序列化和反序列化的，有大致经历了如下流程。</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240622/image.3go9hx1v4k.webp"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
-</figure>
-<p>其中这个<code>HttpMessageConver</code>是这个过程中的关键，这个接口继承树如下图。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/article/a9589eb9.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/8c2fabda.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-      <meta itemprop="description" content="热爱、分享、生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/8c2fabda.html" class="post-title-link" itemprop="url">Elasticsearch集群运维，重平衡、分片、宕节点、扩容</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2024-06-13 20:15:01 / 修改时间：21:07:37" itemprop="dateCreated datePublished" datetime="2024-06-13T20:15:01+08:00">2024-06-13</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>3.3k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>12 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>个人博客：<a
-href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
-<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
-title="wnhyang">wnhyang</a></p>
-<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
-title="在线知识共享">在线知识共享</a></p>
-<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
-Overview</a></p>
-<hr />
-<h1 id="参考">参考</h1>
-<p><a target="_blank" rel="noopener" href="https://docs.kilvn.com/elasticsearch/docs/3.html">探索集群 ·
-Elasticsearch 中文文档</a></p>
-<p><a
-target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/8.14/fix-common-cluster-issues.html"
-class="uri">https://www.elastic.co/guide/en/elasticsearch/reference/8.14/fix-common-cluster-issues.html</a></p>
-<p><a
-target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1836799">Elasticsearch运维指南-腾讯云开发者社区-腾讯云</a></p>
-<p><a
-target="_blank" rel="noopener" href="http://t.csdnimg.cn/xECsH">elasticsearch重启后，unassigned索引重新分片失败YELLO、RED恢复处理_es报错分片失败-CSDN博客</a></p>
-<p><a
-target="_blank" rel="noopener" href="https://anonymity94.github.io/articles/elasticsearch-error-cluster-block-exception-forbidden-12-index-read-only-all/#%E5%8F%91%E7%8E%B0%E9%97%AE%E9%A2%98">磁盘空间不足导致
-Elasticsearch 锁定索引无法写入数据 | Anonymity94</a></p>
-<p><a
-target="_blank" rel="noopener" href="https://www.cnblogs.com/kevingrace/category/1099403.html">Elasticsearch
-- 随笔分类 - 散尽浮华 - 博客园</a></p>
-<p>尤其是最后这个链接非常建议看一下，太棒了！</p>
-<h1 id="命令">命令</h1>
-<h2 id="小提示">小提示</h2>
-<p>在请求后加上<code>?v</code>触发详细响应信息，拼上<code>?pretty</code>后<code>json</code>美化。</p>
-<p>如：<code>curl -X GET localhost:9200/_cat/nodes?pretty</code>响应为</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">192.168.168.100 66 99 4 0.45 0.22 0.22 mdi - node-2</span><br><span class="line">192.168.168.101 57 99 4 0.35 0.21 0.21 mdi * node-1</span><br><span class="line">192.168.168.102 52 99 4 0.20 0.15 0.18 mdi - node-3</span><br></pre></td></tr></table></figure>
-<p>改命令为：<code>curl -X GET localhost:9200/_cat/nodes?v&amp;pretty</code>后响应为</p>
-<p>可以看到已经有头信息了。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ip         				heap.percent ram.percent cpu load_1m load_5m load_15m node.role master name</span><br><span class="line">192.168.168.100   60          	99   				4    0.36    0.21     0.22 	mdi       -      node-2</span><br><span class="line">192.168.168.101   56          	99   				4    0.36    0.23     0.22 	mdi       *      node-1</span><br><span class="line">192.168.168.102   52          	99   				4    0.13    0.13     0.18 	mdi       -      node-3</span><br></pre></td></tr></table></figure>
-<h2 id="常用">常用</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">集群健康检查</span></span><br><span class="line">curl -X GET localhost:9200/_cluster/health</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">集群设置</span></span><br><span class="line">curl -X GET localhost:9200/_cluster/settings</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">节点查看</span></span><br><span class="line">curl -X GET localhost:9200/_cat/nodes</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">所有索引查询</span></span><br><span class="line">curl -X GET localhost:9200/_cat/indices</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">指定索引设置查询</span></span><br><span class="line">curl -X GET lcoalhost:9200/$&#123;my_index&#125;/_settings</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">所有分片查询</span></span><br><span class="line">curl -X GET localhost:9200/_cat/shards</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">指定索引分片查询</span></span><br><span class="line">curl -X GET localhost:9200/_cat/shards/$&#123;my_index&#125;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">所有别名查询</span></span><br><span class="line">curl -X GET localhost:9200/_cat/aliases</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">指定别名查询</span></span><br><span class="line">curl -X GET localhost:9200/_cat/aliases/$&#123;my_aliases&#125;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">磁盘使用情况</span></span><br><span class="line">curl -X GET localhost:9200/_cat/allocation</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">筛选未分配的分片</span></span><br><span class="line">curl -X GET localhost:9200/_cat/shards?v | grep UNASSIGNED</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看allocation失败原因</span></span><br><span class="line">curl -X GET localhost:9200/_cluster/allocation/explain?pretty</span><br></pre></td></tr></table></figure>
-<h1 id="检查集群状态">检查集群状态</h1>
-<p>通常使用<code>curl -X GET localhost:9200/_cluster/health?pretty</code>检查<code>es</code>集群状态，如下面的响应数据。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/article/8c2fabda.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/a949e07.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-      <meta itemprop="description" content="热爱、分享、生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/a949e07.html" class="post-title-link" itemprop="url">规则引擎LiteFlow发布v2.12.1版本，决策路由特性</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2024-06-06 09:51:18 / 修改时间：22:11:18" itemprop="dateCreated datePublished" datetime="2024-06-06T09:51:18+08:00">2024-06-06</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.9k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>7 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>个人博客：<a
-href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
-<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
-title="wnhyang">wnhyang</a></p>
-<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
-title="在线知识共享">在线知识共享</a></p>
-<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
-Overview</a></p>
-<hr />
-<h1 id="简介">简介</h1>
-<p>标题其实是不准确的，了解过的会知道在<code>LiteFlow</code>的<code>2.12.0</code>已经有了决策路由的特性，但我为什么标题这么讲呢？且往下看。</p>
-<p>因为这篇文章<a
-target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/KeTx9lZGWn0-mF6ilmO7Fg">LF的重磅特性预告：决策路由</a>，我一直期待着决策路由功能的发布，终于有一天它发布了！</p>
-<p><a
-target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/jONz_vIpIembQDej3TzNiQ">决策路由特性来袭，LiteFlow大版本2.12.0发布，Make
-your code amaing！</a>。</p>
-<p>虽然这次是大更新，发布的不只是决策路由，但是我心心念念的决策路由并没有我期待的那样好用，因为这个版本的路由是全局匹配，没有分组或分级的概念，在实际使用中并不那么好用。虽然能通过一些代码来实现类似的分组功能，但是肯定不如框架实现的好，同时也不想因此将代码来回变动，所以通过社区向作者提意见，正好作者早有此想法，非常nice！</p>
-<p>这次<a
-target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/E-WvrpA2Vanm13xHxaRgeg">规则引擎LiteFlow发布v2.12.1版本，有多猛用过才知道</a>，<code>2.12.1</code>版本带来此功能，我也默默的将许久未编辑的《LiteFlow大版本2.12.0发布，决策路由发布》的文章重命名了标题《规则引擎LiteFlow发布v2.12.1版本，决策路由特性》。</p>
-<h1 id="参考">参考</h1>
-<p><a target="_blank" rel="noopener" href="https://liteflow.cc/pages/ec1ac4/">🏖概念以及介绍 |
-LiteFlow</a></p>
-<p><a target="_blank" rel="noopener" href="https://liteflow.cc/pages/88c2f2/">2.12.0升级指南 |
-LiteFlow</a></p>
-<h1 id="决策路由">决策路由</h1>
-<h2 id="说明">说明</h2>
-<p>关于<code>LiteFlow</code>，不想再过多介绍了。之前的文章也有说明了<a
-target="_blank" rel="noopener" href="https://www.yuque.com/wnh/share/hwelucqo1ln2986m">风控系统之普通规则条件，使用LiteFlow实现</a>。</p>
-<p>非常推荐通过官网来学习，很有帮助！</p>
-<p>路由嘛，知道<code>Nginx</code>吧，可以理解为<code>location</code>的配置，不知道<code>Nginx</code>，类比微服务网关也一样。</p>
-<p>在<code>2.12.0</code>版本加入了路由特性，新增了<code>route</code>和<code>body</code>标签。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/article/a949e07.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/d89f8e10.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-      <meta itemprop="description" content="热爱、分享、生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/d89f8e10.html" class="post-title-link" itemprop="url">风控系统之通用规则条件设计，算术单元/逻辑单元/函数式接口</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2024-06-03 22:01:47 / 修改时间：22:32:39" itemprop="dateCreated datePublished" datetime="2024-06-03T22:01:47+08:00">2024-06-03</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.7k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>6 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>个人博客：<a
-href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
-<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
-title="wnhyang">wnhyang</a></p>
-<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
-title="在线知识共享">在线知识共享</a></p>
-<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
-Overview</a></p>
-<hr />
-<h1 id="简介">简介</h1>
-<p>前面有<a
-target="_blank" rel="noopener" href="https://www.yuque.com/wnh/share/hwelucqo1ln2986m">风控系统之普通规则条件，使用LiteFlow实现</a>，介绍了普通规则条件，并给出简单的示例实现。</p>
-<p>这篇就此进行扩展，介绍其他规则条件。</p>
-<p>说白了，规则条件就是条件，而且并不局限于规则之中，简单讲就是<code>if()</code>括号里的内容，用于判断规则是否需要执行，是规则极其重要的部分。</p>
-<p>规则条件有很多种，他们看似相同，却又不同。作为程序员，应该具备逻辑抽象的思维，通过设计将其统一整合起来。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/article/d89f8e10.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/d8ad0228.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-      <meta itemprop="description" content="热爱、分享、生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/d8ad0228.html" class="post-title-link" itemprop="url">MybatisPlusGenerator交互式Web生成增删改查、导出导入代码</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-05-24 16:59:21" itemprop="dateCreated datePublished" datetime="2024-05-24T16:59:21+08:00">2024-05-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-05-28 08:45:59" itemprop="dateModified" datetime="2024-05-28T08:45:59+08:00">2024-05-28</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>500</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>个人博客：<a
-href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
-<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
-title="wnhyang">wnhyang</a></p>
-<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
-title="在线知识共享">在线知识共享</a></p>
-<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
-Overview</a></p>
-<hr />
-<h1 id="简介">简介</h1>
-<p>前有文章<a
-target="_blank" rel="noopener" href="https://www.yuque.com/wnh/share/vi7ayw11xu0907iz">MybatisPlus-Generator自定义模版生成CRUD、DTO、VO、Convert等</a>介绍如何使用<code>MybatisPlus-Generator</code>自定义模版生成<code>CRUD</code>、<code>DTO</code>、<code>VO</code>、<code>Convert</code>等代码。这次加入了导入导出<code>Excel</code>的接口，并提供最为简单的交互式<code>Web</code>用于生成代码。当然之前的生成方式同样可用，本篇文章就介绍一下如何使用。</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/wnhyang/crud-quickstart">GitHub -
-wnhyang/crud-quickstart</a></p>
-<p><a target="_blank" rel="noopener" href="https://gitee.com/wnhyang/crud-quickstart">Gitee -
-wnhyang/crud-quickstart</a></p>
-<h1 id="配置与启动">配置与启动</h1>
-<p>项目启动其实是用不到数据源配置的，但并没有删除，这样方便直接填入基础的信息。</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://localhost:3306/xxx</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">wnhyang</span></span><br><span class="line">    <span class="attr">password:</span> <span class="number">123456</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">com.mysql.cj.jdbc.Driver</span></span><br></pre></td></tr></table></figure>
-<p>启动即可</p>
-<h1 id="填写生成配置">填写生成配置</h1>
-<h2 id="填写数据库信息">1、填写数据库信息</h2>
-<p>默认读取的是项目启动配置，可直接修改其他数据源，MySQL支持最好。</p>
-<p>这里注意下<code>jdbcUrl</code>，填写到端口就可以，比如<code>jdbc:mysql://localhost:3306</code>。</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240524/image.5q78w144q8.webp"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
-</figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/article/d8ad0228.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/40cfdfc4.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-      <meta itemprop="description" content="热爱、分享、生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/40cfdfc4.html" class="post-title-link" itemprop="url">数据源管理｜JDBC｜JdbcTemplate｜MybatisPlusGenerator</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2024-05-24 09:43:58 / 修改时间：11:30:19" itemprop="dateCreated datePublished" datetime="2024-05-24T09:43:58+08:00">2024-05-24</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.5k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>5 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>个人博客：<a
-href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
-<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
-title="wnhyang">wnhyang</a></p>
-<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
-title="在线知识共享">在线知识共享</a></p>
-<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
-Overview</a></p>
-<hr />
-<p>复杂的项目常常会涉及到多数据源的配置，解决方案也是有很多。但这篇文章不是讲这个的，而是纯粹的数据源管理，通过数据源配置，获取数据库信息、表信息、数据等等，更像是超级简单的数据库管理工具（<code>Dbeaver</code>、<code>Navicat</code>等）。</p>
-<p>这个有什么应用呢？</p>
-<p>1、一些后台类系统常需要查数功能，这个就可以用到。有人问了我们有<code>Dbeaver</code>、<code>Navicat</code>还需要这个？确实，有专业的数据库管理工具，这个就显得非常鸡肋了。但是数据库通常是由专业的<code>DBA</code>管理的，账号和权限都是受管控的，而且数据库账号通常无法和后台类系统用户权限关联，所以这个就显得有点用处了。</p>
-<p>2、作为外部数据源，有时候系统本身的数据不够用，或者说是有局限性，希望能够接上外部更加丰富数据，这时也是可以应用的。</p>
-<p>3、代码生成器</p>
-<p>4、等</p>
-<h1 id="数据库信息">数据库信息</h1>
-<p>因为<code>JDBC</code>，数据源的配置包含<code>jdbcUrl</code>、<code>username</code>、<code>password</code>、<code>driverClassName</code>就可以建立数据库的连接了。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/article/40cfdfc4.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/aa7b535.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-      <meta itemprop="description" content="热爱、分享、生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/aa7b535.html" class="post-title-link" itemprop="url">geoHelper</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-04-30 15:11:46" itemprop="dateCreated datePublished" datetime="2024-04-30T15:11:46+08:00">2024-04-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-05-06 10:39:13" itemprop="dateModified" datetime="2024-05-06T10:39:13+08:00">2024-05-06</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.3k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>5 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>个人博客：<a
-href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
-<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
-title="wnhyang">wnhyang</a></p>
-<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
-title="在线知识共享">在线知识共享</a></p>
-<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
-Overview</a></p>
-<hr />
-<h1 id="简介">简介</h1>
-<p><a target="_blank" rel="noopener" href="https://github.com/wnhyang/geoHelper">GitHub -
-wnhyang/geoHelper</a></p>
-<p><a
-target="_blank" rel="noopener" href="https://gitee.com/wnhyang/geoHelper">无奈何杨/geoHelper</a></p>
-<p><code>geoHelper</code>整合了身份证、手机号、<code>IP</code>、<code>GPS</code>解析方法，基于内存提供离线高性能解析服务。</p>
-<p><a
-target="_blank" rel="noopener" href="https://www.yuque.com/wnh/share/vw03pm5x88atva56">身份证/手机号解析服务</a></p>
-<p><a
-target="_blank" rel="noopener" href="https://www.yuque.com/wnh/share/yusumn415tgh6uwn">IP/GPS解析服务，ip2region，逆地理编码</a></p>
-<h1 id="数据来源">数据来源</h1>
-<table>
-<colgroup>
-<col style="width: 11%" />
-<col style="width: 88%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>数据</th>
-<th>来源</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>行政区划</td>
-<td><a
-target="_blank" rel="noopener" href="https://github.com/modood/Administrative-divisions-of-China">GitHub
-- modood/Administrative-divisions-of-China</a></td>
-</tr>
-<tr class="even">
-<td>手机号</td>
-<td><a target="_blank" rel="noopener" href="https://github.com/EeeMt/phone-number-geo">GitHub -
-EeeMt/phone-number-geo</a></td>
-</tr>
-<tr class="odd">
-<td>IP</td>
-<td><a
-target="_blank" rel="noopener" href="https://gitee.com/lionsoul/ip2region">狮子的魂/ip2region</a></td>
-</tr>
-<tr class="even">
-<td>geo</td>
-<td><a
-target="_blank" rel="noopener" href="https://www.cnblogs.com/henuyuxiang/p/12981201.html">中国城市坐标（最全最完整）</a></td>
-</tr>
-</tbody>
-</table>
-<h1 id="身份证解析">身份证解析</h1>
-<p>适用国内身份证解析，作为<code>Hutool.IdcardUtil</code>的扩展，加入<code>AdocUtil</code>，意为中国行政区划工具。</p>
-<p>方法包括：</p>
+<div class="post-copyright">
 <ul>
-<li><code>getProvince</code> 获取省份</li>
-<li><code>getProvinceName</code> 获取省份名称</li>
-<li><code>getCity</code> 获取城市</li>
-<li><code>getCityName</code> 获取城市名称</li>
-<li><code>getArea</code> 获取区县</li>
-<li><code>getAreaName</code> 获取区县名称</li>
-<li><code>getPca</code> 获取省市区</li>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>无奈何杨（wnhyang）
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://wnhyang.github.io/article/3c962920.html" title="风控系统建设，指标策略规则，LiteFlow">https://wnhyang.github.io/article/3c962920.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
 </ul>
-<p>当然基于<a
-target="_blank" rel="noopener" href="https://github.com/modood/Administrative-divisions-of-China">GitHub
--
-modood/Administrative-divisions-of-China</a>可以扩展到乡级（乡镇街道）、
-村级（村委会居委会），那么数据量会大一些，可以将数据存储在数据库中使用。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/article/aa7b535.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/images/wechat_channel.webp">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://www.zhihu.com/people/wnhyang">
+            <span class="icon">
+              <i class="fab fa-zhihu"></i>
+            </span>
+
+            <span class="label">Zhihu</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E9%A1%B9%E7%9B%AE/" rel="tag"># 项目</a>
+          </div>
+
         
-      
-    </div>
 
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/article/3a2acd9b.html" rel="prev" title="记一次IP数据处理过程，文本（CSV文件）处理，IP解析">
+                  <i class="fa fa-chevron-left"></i> 记一次IP数据处理过程，文本（CSV文件）处理，IP解析
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
     </footer>
   </article>
 </div>
@@ -1588,9 +580,7 @@ modood/Administrative-divisions-of-China</a>可以扩展到乡级（乡镇街道
 
 
 
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+
 
 </div>
   </main>
@@ -1695,7 +685,7 @@ modood/Administrative-divisions-of-China</a>可以扩展到乡级（乡镇街道
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://wnhyang.github.io/"}</script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://wnhyang.github.io/article/3c962920.html"}</script>
   <script src="/js/third-party/quicklink.js"></script>
 
 </body>
