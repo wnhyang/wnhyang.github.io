@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="google-site-verification" content="4zmc5dCOR7a63YXOZx4mwqsC5dPpr0m2iWeI12w6wng">
+  <meta name="baidu-site-verification" content="fe6bba1d0d4e906fed87c9f7c2d1d09d">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="个人博客：无奈何杨（wnhyang） 个人语雀：wnhyang 共享语雀：在线知识共享 Github：wnhyang - Overview  参考 https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;7005869798483558431 🍉组件参数 | LiteFlow 🍍组件标签 | LiteFlow https:&#x2F;&#x2F;gitee.com&#x2F;freshday&#x2F;radar&#x2F;wikis&#x2F;home   i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LiteFlow条件组件的设计组件标签｜组件参数，EL与或非表达式正反解析，元数据管理">
+<meta property="og:url" content="https://wnhyang.github.io/article/68bda3da.html">
+<meta property="og:site_name" content="无奈何杨（wnhyang）">
+<meta property="og:description" content="个人博客：无奈何杨（wnhyang） 个人语雀：wnhyang 共享语雀：在线知识共享 Github：wnhyang - Overview  参考 https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;7005869798483558431 🍉组件参数 | LiteFlow 🍍组件标签 | LiteFlow https:&#x2F;&#x2F;gitee.com&#x2F;freshday&#x2F;radar&#x2F;wikis&#x2F;home   i">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240727/image.1vyjwm3thj.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240727/image.8s37gpks18.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240727/image.3yeckl37ov.webp">
+<meta property="og:image" content="https://wnhyang.github.io/images/wechat_channel.webp">
+<meta property="article:published_time" content="2024-07-27T09:04:15.000Z">
+<meta property="article:modified_time" content="2024-07-27T10:55:30.676Z">
+<meta property="article:author" content="无奈何杨（wnhyang）">
+<meta property="article:tag" content="项目">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240727/image.1vyjwm3thj.webp">
+
+
+<link rel="canonical" href="https://wnhyang.github.io/article/68bda3da.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wnhyang.github.io/article/68bda3da.html","path":"article/68bda3da.html","title":"LiteFlow条件组件的设计组件标签｜组件参数，EL与或非表达式正反解析，元数据管理"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>LiteFlow条件组件的设计组件标签｜组件参数，EL与或非表达式正反解析，元数据管理 | 无奈何杨（wnhyang）</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="无奈何杨（wnhyang）" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">无奈何杨（wnhyang）</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">I will keep to fight</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">47</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">200</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">1.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">条件配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6%E6%A0%87%E7%AD%BE%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.</span> <span class="nav-text">组件标签实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E6%AE%B5"><span class="nav-number">3.1.</span> <span class="nav-text">字段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97"><span class="nav-number">3.2.</span> <span class="nav-text">逻辑运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E7%BB%84%E4%BB%B6%E7%BB%84%E4%BB%B6%E6%A0%87%E7%AD%BE"><span class="nav-number">3.3.</span> <span class="nav-text">条件组件｜组件标签</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6%E5%8F%82%E6%95%B0%E5%AE%9E%E7%8E%B0"><span class="nav-number">4.</span> <span class="nav-text">组件参数实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#el%E4%B8%8E%E6%88%96%E9%9D%9E%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E6%9D%A1%E4%BB%B6json%E7%9A%84%E6%AD%A3%E5%8F%8D%E5%90%91%E8%A7%A3%E6%9E%90"><span class="nav-number">5.</span> <span class="nav-text">EL与或非表达式与条件json的正反向解析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%83%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86"><span class="nav-number">6.</span> <span class="nav-text">元数据管理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="nav-number">8.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="无奈何杨（wnhyang）"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">无奈何杨（wnhyang）</p>
+  <div class="site-description" itemprop="description">热爱、分享、生活</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">200</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">47</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wnhyang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wnhyang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/wnhyang" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;wnhyang" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wnhyang@qq.com" title="E-Mail → mailto:wnhyang@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://www.yuque.com/wnh/share" title="https:&#x2F;&#x2F;www.yuque.com&#x2F;wnh&#x2F;share" rel="noopener" target="_blank">语雀分享</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://github.com/wnhyang" title="https:&#x2F;&#x2F;github.com&#x2F;wnhyang" rel="noopener" target="_blank">GitHub</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.zhihu.com/people/wnhyang" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;wnhyang" rel="noopener" target="_blank">知乎</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        <div class="sidebar-inner sidebar-post-related">
+          <div class="animated">
+              <div class="links-of-blogroll-title"><i class="fa fa-signs-post fa-fw"></i>
+    相关文章
+  </div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/3c962920.html" rel="bookmark">
+        <time class="popular-posts-time">2024-07-21</time>
+        <br>
+      风控系统建设，指标策略规则流程设计，LiteFlow隐式子流程，构造EL和Chain
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/a949e07.html" rel="bookmark">
+        <time class="popular-posts-time">2024-06-06</time>
+        <br>
+      规则引擎LiteFlow发布v2.12.1版本，决策路由特性
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/d89f8e10.html" rel="bookmark">
+        <time class="popular-posts-time">2024-06-03</time>
+        <br>
+      风控系统之通用规则条件设计，算术单元/逻辑单元/函数式接口
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/16f5a6c3.html" rel="bookmark">
+        <time class="popular-posts-time">2024-04-05</time>
+        <br>
+      风控系统之普通规则条件，使用LiteFlow实现
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/d8ad0228.html" rel="bookmark">
+        <time class="popular-posts-time">2024-05-24</time>
+        <br>
+      MybatisPlusGenerator交互式Web生成增删改查、导出导入代码
+      </a>
+    </li>
+  </ul>
+
+          </div>
+        </div>
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/68bda3da.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+      <meta itemprop="description" content="热爱、分享、生活">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="LiteFlow条件组件的设计组件标签｜组件参数，EL与或非表达式正反解析，元数据管理 | 无奈何杨（wnhyang）">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          LiteFlow条件组件的设计组件标签｜组件参数，EL与或非表达式正反解析，元数据管理
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-07-27 17:04:15 / 修改时间：18:55:30" itemprop="dateCreated datePublished" datetime="2024-07-27T17:04:15+08:00">2024-07-27</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>13 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>个人博客：<a
+href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
+<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
+title="wnhyang">wnhyang</a></p>
+<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
+title="在线知识共享">在线知识共享</a></p>
+<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
+Overview</a></p>
+<hr />
+<h1 id="参考">参考</h1>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7005869798483558431"
+class="uri">https://juejin.cn/post/7005869798483558431</a></p>
+<p><a target="_blank" rel="noopener" href="https://liteflow.cc/pages/6e4d15/">🍉组件参数 |
+LiteFlow</a></p>
+<p><a target="_blank" rel="noopener" href="https://liteflow.cc/pages/0f788f/">🍍组件标签 |
+LiteFlow</a></p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/freshday/radar/wikis/home"
+class="uri">https://gitee.com/freshday/radar/wikis/home</a></p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240727/image.1vyjwm3thj.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<h1 id="条件配置">条件配置</h1>
+<p>在需要灵活配置规则的业务系统中，如上图这样的条件配置非常常见。</p>
+<p><a
+target="_blank" rel="noopener" href="https://www.yuque.com/wnh/share/hwelucqo1ln2986m">风控系统之普通规则条件，使用LiteFlow实现</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://www.yuque.com/wnh/share/ldslme4ddf871ltr">风控系统之通用规则条件设计，算术单元/逻辑单元/函数式接口</a></p>
+<p>不管是在第一个参考链接（<a
+target="_blank" rel="noopener" href="https://juejin.cn/post/7005869798483558431"
+class="uri">https://juejin.cn/post/7005869798483558431</a>）里或是从自己的分析中都可以知道条件配置就是对同一逻辑单元的与或非编排。对于<code>LiteFlow</code>相同组件的编排有组件标签和组件参数两种解决方法。</p>
+<h1 id="组件标签实现">组件标签实现</h1>
+<p>通过组件标签实现，就是在编排<code>LiteFlow</code>时加上组件<code>tag</code>。</p>
+<p>那么就将条件存储在数据库中，在组件运行时通过<code>tag</code>再到数据库中去取。</p>
+<span id="more"></span>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 10%" />
+<col style="width: 27%" />
+<col style="width: 16%" />
+<col style="width: 18%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>id</th>
+<th>type</th>
+<th>value</th>
+<th>logic_type</th>
+<th>expect_type</th>
+<th>expect_value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>normal</td>
+<td>N_S_appName</td>
+<td>eq</td>
+<td>input</td>
+<td>phone</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>normal</td>
+<td>N_S_payerAccount</td>
+<td>eq</td>
+<td>input</td>
+<td>123456</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>normal</td>
+<td>N_F_transAmount</td>
+<td>gt</td>
+<td>input</td>
+<td>15</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>normal</td>
+<td>N_S_appName</td>
+<td>eq</td>
+<td>input</td>
+<td>phone</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>normal</td>
+<td>N_F_transAmount</td>
+<td>lt</td>
+<td>input</td>
+<td>100</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>normal</td>
+<td>N_F_transAmount</td>
+<td>gte</td>
+<td>input</td>
+<td>20.0</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>normal</td>
+<td>N_S_appName</td>
+<td>eq</td>
+<td>context</td>
+<td>N_S_ipCity</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>zb</td>
+<td>1</td>
+<td>gt</td>
+<td>input</td>
+<td>20</td>
+</tr>
+</tbody>
+</table>
+<p>如：<code>IF(AND(c_cn.tag("4"),c_cn.tag("5")),r_tcn.tag("2"),r_fcn);</code></p>
+<p>就是对条件组件<code>c_cn.tag("id")</code>进行与或非编排，就能几乎适用于所有条件。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> de_condition</span><br><span class="line">(</span><br><span class="line">  id           <span class="type">bigint</span> auto_increment comment <span class="string">&#x27;主键&#x27;</span> <span class="keyword">primary</span> key,</span><br><span class="line">  type         <span class="type">varchar</span>(<span class="number">20</span>)                 <span class="keyword">default</span> <span class="string">&#x27;normal&#x27;</span>          <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;类型&#x27;</span>,</span><br><span class="line">  <span class="keyword">value</span>        <span class="type">varchar</span>(<span class="number">32</span>)                 <span class="keyword">default</span> <span class="string">&#x27;&#x27;</span>                <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;操作对象&#x27;</span>,</span><br><span class="line">  logic_type   <span class="type">varchar</span>(<span class="number">32</span>)                 <span class="keyword">default</span> <span class="string">&#x27;null&#x27;</span>            <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;逻辑类型&#x27;</span>,</span><br><span class="line">  expect_type  <span class="type">varchar</span>(<span class="number">32</span>)                 <span class="keyword">default</span> <span class="string">&#x27;input&#x27;</span>           <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;期望值类型&#x27;</span>,</span><br><span class="line">  expect_value <span class="type">varchar</span>(<span class="number">32</span>)                 <span class="keyword">default</span> <span class="string">&#x27;&#x27;</span>                <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;期望值&#x27;</span>,</span><br><span class="line">  description  <span class="type">varchar</span>(<span class="number">64</span>) charset utf8mb4 <span class="keyword">default</span> <span class="string">&#x27;&#x27;</span>                <span class="keyword">null</span> comment <span class="string">&#x27;描述&#x27;</span>,</span><br><span class="line">  creator      <span class="type">varchar</span>(<span class="number">64</span>) charset utf8mb4 <span class="keyword">default</span> <span class="string">&#x27;&#x27;</span>                <span class="keyword">null</span> comment <span class="string">&#x27;创建者&#x27;</span>,</span><br><span class="line">  create_time  datetime                    <span class="keyword">default</span> <span class="built_in">CURRENT_TIMESTAMP</span> <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;创建时间&#x27;</span>,</span><br><span class="line">  updater      <span class="type">varchar</span>(<span class="number">64</span>) charset utf8mb4 <span class="keyword">default</span> <span class="string">&#x27;&#x27;</span>                <span class="keyword">null</span> comment <span class="string">&#x27;更新者&#x27;</span>,</span><br><span class="line">  update_time  datetime                    <span class="keyword">default</span> <span class="built_in">CURRENT_TIMESTAMP</span> <span class="keyword">not</span> <span class="keyword">null</span> <span class="keyword">on</span> <span class="keyword">update</span> <span class="built_in">CURRENT_TIMESTAMP</span> comment <span class="string">&#x27;更新时间&#x27;</span>,</span><br><span class="line">  deleted      bit                         <span class="keyword">default</span> b<span class="string">&#x27;0&#x27;</span>              <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;是否删除&#x27;</span></span><br><span class="line">)comment <span class="string">&#x27;规则条件表&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>忽略公共字段，实际上有用的只有<code>type</code>、<code>value</code>、<code>logicType</code>、<code>expect_type</code>、<code>expect_value</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> wnhyang</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/6/18</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">ConditionType</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 普通条件</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">NORMAL</span> <span class="operator">=</span> <span class="string">&quot;normal&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 指标条件</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">ZB</span> <span class="operator">=</span> <span class="string">&quot;zb&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 正则条件</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">REGULAR</span> <span class="operator">=</span> <span class="string">&quot;regular&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 名单条件</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">LIST</span> <span class="operator">=</span> <span class="string">&quot;list&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 脚本条件</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">SCRIPT</span> <span class="operator">=</span> <span class="string">&quot;script&quot;</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>与<code>type</code>相对，<code>value</code>代表的意义不同，<code>type</code>为<code>normal</code>时，<code>value</code>是系统字段名；为<code>zb</code>时，<code>value</code>是指标<code>id</code>，等等，可参考以下组件示例代码。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> wnhyang</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/4/3</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="meta">@Getter</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">LogicType</span> &#123;</span><br><span class="line"></span><br><span class="line">    NULL(<span class="string">&quot;null&quot;</span>),</span><br><span class="line">    NOT_NULL(<span class="string">&quot;not_null&quot;</span>),</span><br><span class="line">    EQ(<span class="string">&quot;eq&quot;</span>),</span><br><span class="line">    NOT_EQ(<span class="string">&quot;not_eq&quot;</span>),</span><br><span class="line">    GT(<span class="string">&quot;gt&quot;</span>),</span><br><span class="line">    GTE(<span class="string">&quot;gte&quot;</span>),</span><br><span class="line">    LT(<span class="string">&quot;lt&quot;</span>),</span><br><span class="line">    LTE(<span class="string">&quot;lte&quot;</span>),</span><br><span class="line">    CONTAINS(<span class="string">&quot;contains&quot;</span>),</span><br><span class="line">    NOT_CONTAINS(<span class="string">&quot;not_contains&quot;</span>),</span><br><span class="line">    PREFIX(<span class="string">&quot;prefix&quot;</span>),</span><br><span class="line">    NOT_PREFIX(<span class="string">&quot;not_prefix&quot;</span>),</span><br><span class="line">    SUFFIX(<span class="string">&quot;suffix&quot;</span>),</span><br><span class="line">    NOT_SUFFIX(<span class="string">&quot;not_suffix&quot;</span>),</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 适用正则、名单条件</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    MATCH(<span class="string">&quot;match&quot;</span>),</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 适用正则、名单条件</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    NOT_MATCH(<span class="string">&quot;not_match&quot;</span>),</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 适用正则条件</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    MATCH_IGNORE_CASE(<span class="string">&quot;match_ignore_case&quot;</span>),</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 适用正则条件</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    NOT_MATCH_IGNORE_CASE(<span class="string">&quot;not_match_ignore_case&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String type;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> LogicType <span class="title function_">getByType</span><span class="params">(String type)</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (LogicType logicType : LogicType.values()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (logicType.getType().equals(type)) &#123;</span><br><span class="line">                <span class="keyword">return</span> logicType;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>logicType</code>取值如上，同样，根据<code>type</code>和<code>value</code>的不同，逻辑适用的也不同，具体不同参考以下普通字段类型和逻辑函数式接口的实现。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> wnhyang</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/5/8</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">ExpectType</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 常量</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">INPUT</span> <span class="operator">=</span> <span class="string">&quot;input&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 上下文</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">CONTEXT</span> <span class="operator">=</span> <span class="string">&quot;context&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 名单集</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">LIST_SET</span> <span class="operator">=</span> <span class="string">&quot;listSet&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>expectType</code>有上，同样适用于不同条件。</p>
+<h2 id="字段">字段</h2>
+<p>字段命名规则为<code>[N/D]_[S/N/F/D/E/B]_&#123;name&#125;</code>。</p>
+<p><code>N</code>普通字段，<code>D</code>动态字段；<code>S/N/F/D/E/B</code>字段类型；<code>name</code>字段名。</p>
+<p>如：<code>N_S_appName</code>表示普通字符字段<code>appName</code>；<code>N_D_transTime</code>表示普通日期字段<code>transTime</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> wnhyang</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/3/13</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="meta">@Getter</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">FieldType</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 字符型，支持【等于、不等于、包含、不包含、前缀、非前缀、后缀、非后缀、为空、不为空、存在于、不存在于】</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    STRING(<span class="string">&quot;S&quot;</span>),</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 整数型，支持【等于、不等于、大于、小于、大于等于、小于等于、为空、不为空、存在于，不存在于】</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    NUMBER(<span class="string">&quot;N&quot;</span>),</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 小数型，支持【等于、不等于、大于、小于、大于等于、小于等于、为空、不为空】</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    FLOAT(<span class="string">&quot;F&quot;</span>),</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 日期型，支持【等于、不等于、大于、小于、大于等于、小于等于、为空、不为空】</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    DATE(<span class="string">&quot;D&quot;</span>),</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 枚举型，支持【等于、不等于、为空、不为空】</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    ENUM(<span class="string">&quot;E&quot;</span>),</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 布尔型，支持【等于、不等于、为空、不为空】</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    BOOLEAN(<span class="string">&quot;B&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String type;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> FieldType <span class="title function_">getByType</span><span class="params">(String type)</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (FieldType value : values()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (value.getType().equals(type)) &#123;</span><br><span class="line">                <span class="keyword">return</span> value;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> FieldType <span class="title function_">getByFieldName</span><span class="params">(String fieldName)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (fieldName.length() &gt;= <span class="number">3</span>) &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">sub</span> <span class="operator">=</span> StrUtil.sub(fieldName, <span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line">            <span class="keyword">return</span> getByType(sub);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="逻辑运算">逻辑运算</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> wnhyang</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/6/14</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">LogicOp</span>&lt;T&gt; &#123;</span><br><span class="line"></span><br><span class="line">    <span class="type">boolean</span> <span class="title function_">apply</span><span class="params">(T a, LogicType logicType, T b)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>逻辑运算实现有下。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> wnhyang</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/5/16</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FunUtil</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">FunUtil</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">FunUtil</span> <span class="variable">INSTANCE</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FunUtil</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> LogicOp&lt;String&gt; stringLogicOp = (a, logicType, b) -&gt; <span class="keyword">switch</span> (Objects.requireNonNull(logicType)) &#123;</span><br><span class="line">        <span class="keyword">case</span> NULL -&gt; StrUtil.isBlank(a);</span><br><span class="line">        <span class="keyword">case</span> NOT_NULL -&gt; !StrUtil.isBlank(a);</span><br><span class="line">        <span class="keyword">case</span> EQ -&gt; a.equals(b);</span><br><span class="line">        <span class="keyword">case</span> NOT_EQ -&gt; !a.equals(b);</span><br><span class="line">        <span class="keyword">case</span> CONTAINS -&gt; a.contains(b);</span><br><span class="line">        <span class="keyword">case</span> NOT_CONTAINS -&gt; !a.contains(b);</span><br><span class="line">        <span class="keyword">case</span> PREFIX -&gt; a.startsWith(b);</span><br><span class="line">        <span class="keyword">case</span> NOT_PREFIX -&gt; !a.startsWith(b);</span><br><span class="line">        <span class="keyword">case</span> SUFFIX -&gt; a.endsWith(b);</span><br><span class="line">        <span class="keyword">case</span> NOT_SUFFIX -&gt; !a.endsWith(b);</span><br><span class="line">        <span class="keyword">default</span> -&gt; <span class="literal">false</span>;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> LogicOp&lt;Integer&gt; integerLogicOp = (a, logicType, b) -&gt; <span class="keyword">switch</span> (Objects.requireNonNull(logicType)) &#123;</span><br><span class="line">        <span class="keyword">case</span> NULL -&gt; a == <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">case</span> NOT_NULL -&gt; a != <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">case</span> EQ -&gt; a.equals(b);</span><br><span class="line">        <span class="keyword">case</span> NOT_EQ -&gt; !a.equals(b);</span><br><span class="line">        <span class="keyword">case</span> LT -&gt; a &lt; b;</span><br><span class="line">        <span class="keyword">case</span> LTE -&gt; a &lt;= b;</span><br><span class="line">        <span class="keyword">case</span> GT -&gt; a &gt; b;</span><br><span class="line">        <span class="keyword">case</span> GTE -&gt; a &gt;= b;</span><br><span class="line">        <span class="keyword">default</span> -&gt; <span class="literal">false</span>;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> LogicOp&lt;Double&gt; doubleLogicOp = (a, logicType, b) -&gt; <span class="keyword">switch</span> (Objects.requireNonNull(logicType)) &#123;</span><br><span class="line">        <span class="keyword">case</span> NULL -&gt; a == <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">case</span> NOT_NULL -&gt; a != <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">case</span> EQ -&gt; a.equals(b);</span><br><span class="line">        <span class="keyword">case</span> NOT_EQ -&gt; !a.equals(b);</span><br><span class="line">        <span class="keyword">case</span> LT -&gt; a &lt; b;</span><br><span class="line">        <span class="keyword">case</span> LTE -&gt; a &lt;= b;</span><br><span class="line">        <span class="keyword">case</span> GT -&gt; a &gt; b;</span><br><span class="line">        <span class="keyword">case</span> GTE -&gt; a &gt;= b;</span><br><span class="line">        <span class="keyword">default</span> -&gt; <span class="literal">false</span>;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> LogicOp&lt;LocalDateTime&gt; dateLogicOp = (a, logicType, b) -&gt; <span class="keyword">switch</span> (Objects.requireNonNull(logicType)) &#123;</span><br><span class="line">        <span class="keyword">case</span> NULL -&gt; a == <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">case</span> NOT_NULL -&gt; a != <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">case</span> EQ -&gt; a.equals(b);</span><br><span class="line">        <span class="keyword">case</span> NOT_EQ -&gt; !a.equals(b);</span><br><span class="line">        <span class="keyword">case</span> LT -&gt; a.isBefore(b);</span><br><span class="line">        <span class="keyword">case</span> LTE -&gt; a.isBefore(b) || a.equals(b);</span><br><span class="line">        <span class="keyword">case</span> GT -&gt; a.isAfter(b);</span><br><span class="line">        <span class="keyword">case</span> GTE -&gt; a.isAfter(b) || a.equals(b);</span><br><span class="line">        <span class="keyword">default</span> -&gt; <span class="literal">false</span>;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> LogicOp&lt;String&gt; enumLogicOp = (a, logicType, b) -&gt; <span class="keyword">switch</span> (Objects.requireNonNull(logicType)) &#123;</span><br><span class="line">        <span class="keyword">case</span> NULL -&gt; a == <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">case</span> NOT_NULL -&gt; a != <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">case</span> EQ -&gt; a.equals(b);</span><br><span class="line">        <span class="keyword">case</span> NOT_EQ -&gt; !a.equals(b);</span><br><span class="line">        <span class="keyword">default</span> -&gt; <span class="literal">false</span>;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> LogicOp&lt;Boolean&gt; booleanLogicOp = (a, logicType, b) -&gt; <span class="keyword">switch</span> (Objects.requireNonNull(logicType)) &#123;</span><br><span class="line">        <span class="keyword">case</span> NULL -&gt; a == <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">case</span> NOT_NULL -&gt; a != <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">case</span> EQ -&gt; a.equals(b);</span><br><span class="line">        <span class="keyword">case</span> NOT_EQ -&gt; !a.equals(b);</span><br><span class="line">        <span class="keyword">default</span> -&gt; <span class="literal">false</span>;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> LogicOp&lt;String&gt; regularLogicOp = (a, logicType, b) -&gt; <span class="keyword">switch</span> (Objects.requireNonNull(logicType)) &#123;</span><br><span class="line">        <span class="keyword">case</span> MATCH -&gt; ReUtil.isMatch(b, a);</span><br><span class="line">        <span class="keyword">case</span> MATCH_IGNORE_CASE -&gt; ReUtil.isMatch(<span class="string">&quot;(?i)&quot;</span> + b, a);</span><br><span class="line">        <span class="keyword">case</span> NOT_MATCH -&gt; !ReUtil.isMatch(b, a);</span><br><span class="line">        <span class="keyword">case</span> NOT_MATCH_IGNORE_CASE -&gt; !ReUtil.isMatch(<span class="string">&quot;(?i)&quot;</span> + b, a);</span><br><span class="line">        <span class="keyword">default</span> -&gt; <span class="literal">false</span>;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样做是为了简化条件组件代码，抽象一些实现。</p>
+<h2 id="条件组件组件标签">条件组件｜组件标签</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@LiteflowMethod(value = LiteFlowMethodEnum.PROCESS_BOOLEAN, nodeId = LFUtil.CONDITION_COMMON_NODE, nodeType = NodeTypeEnum.BOOLEAN)</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">cond</span><span class="params">(NodeComponent bindCmp)</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取当前tag</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">tag</span> <span class="operator">=</span> bindCmp.getTag();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取当前tag对应的条件</span></span><br><span class="line">    <span class="type">Condition</span> <span class="variable">condition</span> <span class="operator">=</span> conditionMapper.selectById(tag);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取上下文</span></span><br><span class="line">    <span class="type">AccessRequest</span> <span class="variable">accessRequest</span> <span class="operator">=</span> bindCmp.getContextBean(AccessRequest.class);</span><br><span class="line"></span><br><span class="line">    <span class="type">String</span> <span class="variable">type</span> <span class="operator">=</span> condition.getType();</span><br><span class="line">    <span class="type">boolean</span> <span class="variable">cond</span> <span class="operator">=</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">LogicType</span> <span class="variable">byType</span> <span class="operator">=</span> LogicType.getByType(condition.getLogicType());</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// 普通条件，适用指标、规则</span></span><br><span class="line">        <span class="keyword">if</span> (ConditionType.NORMAL.equals(type)) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 获取条件字段</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">fieldName</span> <span class="operator">=</span> condition.getValue();</span><br><span class="line">            <span class="type">FieldType</span> <span class="variable">fieldType</span> <span class="operator">=</span> FieldType.getByFieldName(fieldName);</span><br><span class="line"></span><br><span class="line">            <span class="type">String</span> <span class="variable">expectValue</span> <span class="operator">=</span> condition.getExpectValue();</span><br><span class="line">            <span class="keyword">if</span> (ExpectType.CONTEXT.equals(condition.getExpectType())) &#123;</span><br><span class="line">                expectValue = accessRequest.getStringData(expectValue);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (fieldType == <span class="literal">null</span> || byType == <span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">switch</span> (fieldType) &#123;</span><br><span class="line">                <span class="keyword">case</span> STRING:</span><br><span class="line">                    <span class="type">String</span> <span class="variable">stringData</span> <span class="operator">=</span> accessRequest.getStringData(fieldName);</span><br><span class="line">                    log.debug(<span class="string">&quot;字段值:&#123;&#125;, 操作:&#123;&#125;, 期望值:&#123;&#125;&quot;</span>, stringData, byType, expectValue);</span><br><span class="line">                    cond = FunUtil.INSTANCE.stringLogicOp.apply(stringData, byType, expectValue);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> NUMBER:</span><br><span class="line">                    <span class="type">Integer</span> <span class="variable">numberData</span> <span class="operator">=</span> accessRequest.getNumberData(fieldName);</span><br><span class="line">                    <span class="type">Integer</span> <span class="variable">expectInteger</span> <span class="operator">=</span> Integer.parseInt(expectValue);</span><br><span class="line">                    log.debug(<span class="string">&quot;字段值:&#123;&#125;, 操作:&#123;&#125;, 期望值:&#123;&#125;&quot;</span>, numberData, byType, expectInteger);</span><br><span class="line">                    cond = FunUtil.INSTANCE.integerLogicOp.apply(numberData, byType, expectInteger);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> FLOAT:</span><br><span class="line">                    <span class="type">Double</span> <span class="variable">floatData</span> <span class="operator">=</span> accessRequest.getFloatData(fieldName);</span><br><span class="line">                    <span class="type">Double</span> <span class="variable">expectDouble</span> <span class="operator">=</span> Double.parseDouble(expectValue);</span><br><span class="line">                    log.debug(<span class="string">&quot;字段值:&#123;&#125;, 操作:&#123;&#125;, 期望值:&#123;&#125;&quot;</span>, floatData, byType, expectDouble);</span><br><span class="line">                    cond = FunUtil.INSTANCE.doubleLogicOp.apply(floatData, byType, expectDouble);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> DATE:</span><br><span class="line">                    <span class="type">LocalDateTime</span> <span class="variable">dateData</span> <span class="operator">=</span> accessRequest.getDateData(fieldName);</span><br><span class="line">                    <span class="type">LocalDateTime</span> <span class="variable">expectDateTime</span> <span class="operator">=</span> LocalDateTimeUtil.parse(expectValue, DatePattern.NORM_DATETIME_FORMATTER);</span><br><span class="line">                    log.debug(<span class="string">&quot;字段值:&#123;&#125;, 操作:&#123;&#125;, 期望值:&#123;&#125;&quot;</span>, dateData, byType, expectDateTime);</span><br><span class="line">                    cond = FunUtil.INSTANCE.dateLogicOp.apply(dateData, byType, expectDateTime);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> ENUM:</span><br><span class="line">                    <span class="type">String</span> <span class="variable">enumData</span> <span class="operator">=</span> accessRequest.getEnumData(fieldName);</span><br><span class="line">                    log.debug(<span class="string">&quot;字段值:&#123;&#125;, 操作:&#123;&#125;, 期望值:&#123;&#125;&quot;</span>, enumData, byType, expectValue);</span><br><span class="line">                    cond = FunUtil.INSTANCE.enumLogicOp.apply(enumData, byType, expectValue);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> BOOLEAN:</span><br><span class="line">                    <span class="type">Boolean</span> <span class="variable">booleanData</span> <span class="operator">=</span> accessRequest.getBooleanData(fieldName);</span><br><span class="line">                    log.debug(<span class="string">&quot;字段值:&#123;&#125;&quot;</span>, booleanData);</span><br><span class="line">                    cond = FunUtil.INSTANCE.booleanLogicOp.apply(booleanData, byType, Boolean.parseBoolean(expectValue));</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (ConditionType.ZB.equals(type)) &#123;</span><br><span class="line">            log.info(<span class="string">&quot;指标条件&quot;</span>);</span><br><span class="line">            <span class="type">String</span> <span class="variable">indicatorId</span> <span class="operator">=</span> condition.getValue();</span><br><span class="line">            <span class="type">IndicatorContext</span> <span class="variable">indicatorContext</span> <span class="operator">=</span> bindCmp.getContextBean(IndicatorContext.class);</span><br><span class="line">            <span class="type">String</span> <span class="variable">indicatorValue</span> <span class="operator">=</span> indicatorContext.getIndicatorValue(Long.valueOf(indicatorId));</span><br><span class="line">            <span class="type">String</span> <span class="variable">expectValue</span> <span class="operator">=</span> condition.getExpectValue();</span><br><span class="line">            <span class="keyword">if</span> (ExpectType.CONTEXT.equals(condition.getExpectType())) &#123;</span><br><span class="line">                expectValue = accessRequest.getStringData(expectValue);</span><br><span class="line">            &#125;</span><br><span class="line">            cond = FunUtil.INSTANCE.doubleLogicOp.apply(Double.parseDouble(indicatorValue), byType, Double.valueOf(expectValue));</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (ConditionType.REGULAR.equals(type)) &#123;</span><br><span class="line">            log.info(<span class="string">&quot;正则条件&quot;</span>);</span><br><span class="line"></span><br><span class="line">            <span class="type">String</span> <span class="variable">fieldName</span> <span class="operator">=</span> condition.getValue();</span><br><span class="line"></span><br><span class="line">            <span class="type">String</span> <span class="variable">stringData</span> <span class="operator">=</span> accessRequest.getStringData(fieldName);</span><br><span class="line">            cond = FunUtil.INSTANCE.regularLogicOp.apply(stringData, byType, condition.getExpectValue());</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (ConditionType.LIST.equals(type)) &#123;</span><br><span class="line">            log.info(<span class="string">&quot;名单条件&quot;</span>);</span><br><span class="line">            <span class="type">String</span> <span class="variable">fieldName</span> <span class="operator">=</span> condition.getValue();</span><br><span class="line"></span><br><span class="line">            <span class="type">String</span> <span class="variable">stringData</span> <span class="operator">=</span> accessRequest.getStringData(fieldName);</span><br><span class="line">            <span class="comment">// 查名单集做匹配</span></span><br><span class="line">            cond = listDataService.hasListData(Long.valueOf(condition.getExpectValue()), stringData);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (ConditionType.SCRIPT.equals(type)) &#123;</span><br><span class="line">            <span class="comment">// TODO 脚本条件</span></span><br><span class="line">            log.info(<span class="string">&quot;脚本条件&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            log.error(<span class="string">&quot;未知条件类型:&#123;&#125;&quot;</span>, type);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        log.error(<span class="string">&quot;条件:&#123;&#125;, 运行异常:&#123;&#125;&quot;</span>, condition, e.getMessage());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cond;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="组件参数实现">组件参数实现</h1>
+<p>组件参数与组件标签不同，数据就存储在<code>EL</code>表达式中。</p>
+<p>与上面组件标签表达式<code>IF(AND(c_cn.tag("4"),c_cn.tag("5")),r_tcn.tag("2"),r_fcn);</code>对应的组件参数表达式是：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">IF(</span><br><span class="line">    AND(</span><br><span class="line">        c_cn.tag(<span class="string">&#x27;&#123;&quot;type&quot;:&quot;normal&quot;,&quot;value&quot;:&quot;N_S_appName&quot;,&quot;logic_type&quot;:&quot;eq&quot;,&quot;expect_type&quot;:&quot;input&quot;,&quot;expect_value&quot;:&quot;Phone&quot;&#125;&#x27;</span>),</span><br><span class="line">        c_cn.tag(<span class="string">&#x27;&#123;&quot;type&quot;:&quot;normal&quot;,&quot;value&quot;:&quot;N_F_transAmount&quot;,&quot;logic_type&quot;:&quot;lt&quot;,&quot;expect_type&quot;:&quot;input&quot;,&quot;expect_value&quot;:&quot;100&quot;&#125;&#x27;</span>)</span><br><span class="line">    ),</span><br><span class="line">    r_tcn.tag(<span class="string">&quot;2&quot;</span>),</span><br><span class="line">    r_fcn</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>这样在条件组件中就不用再通过tag再次查询数据库来获取数据了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@LiteflowMethod(value = LiteFlowMethodEnum.PROCESS_BOOLEAN, nodeId = LFUtil.CONDITION_COMMON_NODE, nodeType = NodeTypeEnum.BOOLEAN)</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">cond</span><span class="params">(NodeComponent bindCmp)</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取当前tag</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">tag</span> <span class="operator">=</span> bindCmp.getTag();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取当前tag对应的条件</span></span><br><span class="line">    <span class="type">Condition</span> <span class="variable">condition</span> <span class="operator">=</span> conditionMapper.selectById(tag);</span><br></pre></td></tr></table></figure>
+<p>如上的组件标签组件实现替换为以下方法就好。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@LiteflowMethod(value = LiteFlowMethodEnum.PROCESS_BOOLEAN, nodeId = LFUtil.CONDITION_COMMON_NODE, nodeType = NodeTypeEnum.BOOLEAN)</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">cond</span><span class="params">(NodeComponent bindCmp)</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="type">Condition</span> <span class="variable">cmpData</span> <span class="operator">=</span> bindCmp.getCmpData(Condition.class);</span><br></pre></td></tr></table></figure>
+<p>而且对于这样的条件配置几乎不会复用，都是配置即存在删除即无，省去了删除条件配置同时要在数据库中删除多条条件数据的繁琐步骤。对于其缺点，可能就是在需要反向查找时，有点麻烦。因为绝大多数时候都是使用条件配置确认最终的条件，但是如果反向要查找某字段、指标、名单集被引用的地方，就比较麻烦了，这就需要从<code>Chain</code>解析到所有条件，然后再判断，不如数据库中直接能找到引用的。</p>
+<h1
+id="el与或非表达式与条件json的正反向解析">EL与或非表达式与条件json的正反向解析</h1>
+<p>上面都是关于后端条件数据存储的一点想法，但其最终到前端都是要成为统一的结构化数据的。</p>
+<p>配置的规则条件总要反显到前端吧，前端条件<code>json</code>总要送给后端用于组成<code>EL</code>表达式吧。</p>
+<p>如果有这样的条件类，其中<code>logicOp</code>取值有<code>AND｜OR｜NOT</code>，其与<code>children</code>共生共存，与其他条件字段互斥，即<code>logicOp</code>和<code>children</code>要么都有值要么都为空，当其有值时其他条件字段为空，当其为空时，其他一定有值，表示具体的逻辑条件。</p>
+<p>还有一点要注意<code>AND</code>和<code>OR</code>是接受复合子条件的，而<code>NOT</code>仅支持单个子条件。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Cond</span> <span class="keyword">implements</span> <span class="title class_">Serializable</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Serial</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">long</span> <span class="variable">serialVersionUID</span> <span class="operator">=</span> -<span class="number">1831587613757992692L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * AND｜OR｜NOT</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> String logicOp;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> List&lt;Cond&gt; children;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 条件类型</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> String type;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 操作对象</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> String value;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 操作类型</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> String logicType;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 期望类型</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> String expectType;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 期望值</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> String expectValue;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 描述</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> String description;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在以下示例中并不完善，使用仅是字符串的处理，大家可以尝试一下<code>ElBus</code>的构建，而且没有正确性校验，仅供参考。</p>
+<p>其提供了条件类到<code>EL</code>表达式的构建和<code>EL</code>表达式反向解析到类的方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> wnhyang</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/7/18</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LFUtil</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">ObjectMapper</span> <span class="variable">objectMapper</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectMapper</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);</span><br><span class="line">        objectMapper.registerModules(buildJavaTimeModule());</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String[] splitExpressions(String expression) &#123;</span><br><span class="line">        List&lt;String&gt; parts = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="type">int</span> <span class="variable">level</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">startIndex</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; expression.length(); i++) &#123;</span><br><span class="line">            <span class="type">char</span> <span class="variable">c</span> <span class="operator">=</span> expression.charAt(i);</span><br><span class="line">            <span class="keyword">if</span> (c == <span class="string">&#x27;(&#x27;</span>) &#123;</span><br><span class="line">                level++;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">&#x27;)&#x27;</span>) &#123;</span><br><span class="line">                level--;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">&#x27;,&#x27;</span> &amp;&amp; level == <span class="number">0</span>) &#123;</span><br><span class="line">                parts.add(expression.substring(startIndex, i));</span><br><span class="line">                startIndex = i + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        parts.add(expression.substring(startIndex));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> parts.toArray(<span class="keyword">new</span> <span class="title class_">String</span>[<span class="number">0</span>]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@SneakyThrows</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String <span class="title function_">buildCondEl</span><span class="params">(Cond cond)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (cond != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (cond.getLogicOp() != <span class="literal">null</span> &amp;&amp; cond.getChildren() != <span class="literal">null</span> &amp;&amp; !cond.getChildren().isEmpty()) &#123;</span><br><span class="line">                List&lt;String&gt; expressions = cond.getChildren().stream()</span><br><span class="line">                        .map(LFUtil::buildCondEl)</span><br><span class="line">                        .collect(Collectors.toList());</span><br><span class="line">                <span class="keyword">return</span> cond.getLogicOp() + <span class="string">&quot;(&quot;</span> + String.join(<span class="string">&quot;, &quot;</span>, expressions) + <span class="string">&quot;)&quot;</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;c_cn.data(&#x27;&quot;</span> + objectMapper.writeValueAsString(cond) + <span class="string">&quot;&#x27;)&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Cond <span class="title function_">parseToCond</span><span class="params">(String expression)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        expression = expression.replaceAll(<span class="string">&quot;\s+&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> parseExpressionToCond(expression);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Cond <span class="title function_">parseExpressionToCond</span><span class="params">(String expression)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="keyword">if</span> (expression.startsWith(<span class="string">&quot;AND(&quot;</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> parseLogicExpression(<span class="string">&quot;AND&quot;</span>, expression.substring(<span class="number">4</span>, expression.length() - <span class="number">1</span>));</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (expression.startsWith(<span class="string">&quot;OR(&quot;</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> parseLogicExpression(<span class="string">&quot;OR&quot;</span>, expression.substring(<span class="number">3</span>, expression.length() - <span class="number">1</span>));</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (expression.startsWith(<span class="string">&quot;NOT(&quot;</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> parseLogicExpression(<span class="string">&quot;NOT&quot;</span>, expression.substring(<span class="number">4</span>, expression.length() - <span class="number">1</span>));</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> parseVariable(expression);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Cond <span class="title function_">parseVariable</span><span class="params">(String variableExpression)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="keyword">if</span> (variableExpression.contains(<span class="string">&quot;.data(&#x27;&quot;</span>)) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">dataIndex</span> <span class="operator">=</span> variableExpression.indexOf(<span class="string">&quot;.data(&#x27;&quot;</span>);</span><br><span class="line">            <span class="type">String</span> <span class="variable">jsonData</span> <span class="operator">=</span> variableExpression.substring(dataIndex + <span class="number">7</span>, variableExpression.length() - <span class="number">2</span>).trim();</span><br><span class="line">            <span class="keyword">return</span> objectMapper.readValue(jsonData, Cond.class);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Cond</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Cond <span class="title function_">parseLogicExpression</span><span class="params">(String operator, String subExpression)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="type">Cond</span> <span class="variable">cond</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Cond</span>();</span><br><span class="line">        cond.setLogicOp(operator);</span><br><span class="line">        cond.setChildren(<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;());</span><br><span class="line">        String[] subExpressions = splitExpressions(subExpression);</span><br><span class="line">        <span class="keyword">for</span> (String subExp : subExpressions) &#123;</span><br><span class="line">            cond.getChildren().add(parseExpressionToCond(subExp.trim()));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cond;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line"></span><br><span class="line">        <span class="type">Cond</span> <span class="variable">cond</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Cond</span>();</span><br><span class="line">        cond.setLogicOp(<span class="string">&quot;AND&quot;</span>);</span><br><span class="line">        List&lt;Cond&gt; children = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        children.add(<span class="keyword">new</span> <span class="title class_">Cond</span>().setType(<span class="string">&quot;normal&quot;</span>).setValue(<span class="string">&quot;N_S_appName&quot;</span>).setLogicType(<span class="string">&quot;eq&quot;</span>).setExpectType(<span class="string">&quot;input&quot;</span>).setExpectValue(<span class="string">&quot;Phone&quot;</span>));</span><br><span class="line">        children.add(<span class="keyword">new</span> <span class="title class_">Cond</span>().setType(<span class="string">&quot;normal&quot;</span>).setValue(<span class="string">&quot;N_F_transAmount&quot;</span>).setLogicType(<span class="string">&quot;lt&quot;</span>).setExpectType(<span class="string">&quot;input&quot;</span>).setExpectValue(<span class="string">&quot;100&quot;</span>));</span><br><span class="line">        cond.setChildren(children);</span><br><span class="line"></span><br><span class="line">        <span class="type">String</span> <span class="variable">condEl</span> <span class="operator">=</span> buildCondEl(cond);</span><br><span class="line">        System.out.println(condEl);</span><br><span class="line"></span><br><span class="line">        System.out.println(parseToCond(condEl));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试结果</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">AND(c_cn.data(<span class="string">&#x27;&#123;&quot;type&quot;:&quot;normal&quot;,&quot;value&quot;:&quot;N_S_appName&quot;,&quot;logicType&quot;:&quot;eq&quot;,&quot;expectType&quot;:&quot;input&quot;,&quot;expectValue&quot;:&quot;Phone&quot;&#125;&#x27;</span>), c_cn.data(<span class="string">&#x27;&#123;&quot;type&quot;:&quot;normal&quot;,&quot;value&quot;:&quot;N_F_transAmount&quot;,&quot;logicType&quot;:&quot;lt&quot;,&quot;expectType&quot;:&quot;input&quot;,&quot;expectValue&quot;:&quot;100&quot;&#125;&#x27;</span>))</span><br><span class="line">Cond(logicOp=AND, children=[Cond(logicOp=<span class="literal">null</span>, children=<span class="literal">null</span>, type=normal, value=N_S_appName, logicType=eq, expectType=input, expectValue=Phone, description=<span class="literal">null</span>), Cond(logicOp=<span class="literal">null</span>, children=<span class="literal">null</span>, type=normal, value=N_F_transAmount, logicType=lt, expectType=input, expectValue=<span class="number">100</span>, description=<span class="literal">null</span>)], type=<span class="literal">null</span>, value=<span class="literal">null</span>, logicType=<span class="literal">null</span>, expectType=<span class="literal">null</span>, expectValue=<span class="literal">null</span>, description=<span class="literal">null</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="元数据管理">元数据管理</h1>
+<p><a
+target="_blank" rel="noopener" href="https://liteflow.cc/pages/b0bb54/">🫔查看指定规则下的所有组件 |
+LiteFlow</a></p>
+<p>在<code>v2.12.0</code>中加入的元数据管理，可以通过<code>FlowBus</code>获取<code>Chain</code>和<code>Node</code>的信息。</p>
+<p>如下面这样的<code>chain</code>，可以通过<code>FlowBus.getChain</code>和<code>FlowBus.getNodesByChainId</code>分别获取<code>Chain</code>和<code>Chain</code>对应的组件<code>Node</code>。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">chain</span> <span class="attr">name</span>=<span class="string">&quot;R_C#1&quot;</span>&gt;</span></span><br><span class="line">  THEN(IF(</span><br><span class="line">  AND(c_cn.data(&#x27;&#123;&quot;id&quot;:&quot;1&quot;,&quot;name&quot;:&quot;wnhyang&quot;,&quot;phoneNumber&quot;:&quot;123456789&quot;&#125;&#x27;),c_cn.data(&#x27;&#123;&quot;id&quot;:&quot;1&quot;,&quot;name&quot;:&quot;wnhyang&quot;,&quot;phoneNumber&quot;:&quot;123456789&quot;&#125;&#x27;),NOT(c_cn.data(&#x27;&#123;&quot;id&quot;:&quot;1&quot;,&quot;name&quot;:&quot;wnhyang&quot;,&quot;phoneNumber&quot;:&quot;123456789&quot;&#125;&#x27;))),a,b),IF(</span><br><span class="line">  AND(c_cn.data(&#x27;&#123;&quot;id&quot;:&quot;1&quot;,&quot;name&quot;:&quot;wnhyang&quot;,&quot;phoneNumber&quot;:&quot;123456789&quot;&#125;&#x27;),c_cn.data(&#x27;&#123;&quot;id&quot;:&quot;1&quot;,&quot;name&quot;:&quot;wnhyang&quot;,&quot;phoneNumber&quot;:&quot;123456789&quot;&#125;&#x27;)),a,b));</span><br><span class="line"><span class="tag">&lt;/<span class="name">chain</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>测试<code>Debug</code>一下。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">test3</span><span class="params">()</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="type">Chain</span> <span class="variable">chain</span> <span class="operator">=</span> FlowBus.getChain(<span class="string">&quot;R_C#1&quot;</span>);</span><br><span class="line">    log.info(<span class="string">&quot;chain: &#123;&#125;&quot;</span>, chain);</span><br><span class="line"></span><br><span class="line">    List&lt;Node&gt; nodesByChainId = FlowBus.getNodesByChainId(<span class="string">&quot;R_C#1&quot;</span>);</span><br><span class="line">    log.info(<span class="string">&quot;nodesByChainId: &#123;&#125;&quot;</span>, nodesByChainId);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>Chain</code>的所有信息都是有的，不过这个就要求对于<code>LiteFlow</code>的<code>Chain</code>和<code>Node</code>设计理解比较深了。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240727/image.8s37gpks18.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>相比于直接获取<code>Chain</code>，获取<code>Node</code>看起来就简单多了，尤其对于我们在文档中常见的组件标签和组件参数，一览无遗。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240727/image.3yeckl37ov.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<h1 id="总结">总结</h1>
+<p>最后总结一下组件标签和组件参数在以上应用中所带来的差别，简称方式1和2了，下面👇</p>
+<p>其实其带来的差别只有<code>方式1</code>多了一张条件表，所以差别就在这里，废话🤪</p>
+<p>对于创建<code>EL</code>：<code>方式1</code>需要多创建一条数据，<code>方式2</code>就避免这样的麻烦，直接放在<code>EL</code>就好了。</p>
+<p>对于更新<code>EL</code>：如果当作全新的条件，<code>方式1</code>要先删除原有条件，再插入新的条件；如果要对比新老后再修改，那<code>方式1</code>就更麻烦了。而对于<code>方式2</code>，不管是怎样，直接覆盖就好了。</p>
+<p>对于删除<code>EL</code>：<code>方式1</code>需要删除所有的条件数据，<code>方式2</code>就不会有这些烦恼。</p>
+<p>对于运行组件：<code>方式1</code>需要多查一步数据库，<code>方式2</code>更简单了使用获取组件方法就好，而且支持直接转类型，很方便。</p>
+<p>从上面对比来看<code>方式2</code>爆杀啊！但还没对比完呢！</p>
+<p>当需要反向查找时，<code>方式2</code>就有劣势了。反向查找指的是需要查询上面设计条件里的字段、指标、名单集的引用时，<code>方式1</code>可以方便的直接到数据库层查找引用的<code>EL</code>，而<code>方式2</code>就漫无目的了，不经其他设计的话，只能全部<code>EL</code>遍历了。</p>
+<h1 id="写在最后">写在最后</h1>
+<p>拙作艰辛，字句心血，望诸君垂青，多予支持，不胜感激。</p>
+<hr />
+<p>个人博客：<a
+href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
+<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
+title="wnhyang">wnhyang</a></p>
+<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
+title="在线知识共享">在线知识共享</a></p>
+<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
+Overview</a></p>
+<p><img data-src="https://wnhyang.github.io/images/wechat_channel.webp" /></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.webp" alt="无奈何杨（wnhyang） 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.webp" alt="无奈何杨（wnhyang） 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>无奈何杨（wnhyang）
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://wnhyang.github.io/article/68bda3da.html" title="LiteFlow条件组件的设计组件标签｜组件参数，EL与或非表达式正反解析，元数据管理">https://wnhyang.github.io/article/68bda3da.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/images/wechat_channel.webp">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://www.zhihu.com/people/wnhyang">
+            <span class="icon">
+              <i class="fab fa-zhihu"></i>
+            </span>
+
+            <span class="label">Zhihu</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E9%A1%B9%E7%9B%AE/" rel="tag"># 项目</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/article/3c962920.html" rel="prev" title="风控系统建设，指标策略规则流程设计，LiteFlow隐式子流程，构造EL和Chain">
+                  <i class="fa fa-chevron-left"></i> 风控系统建设，指标策略规则流程设计，LiteFlow隐式子流程，构造EL和Chain
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">无奈何杨（wnhyang）</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">261k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">15:48</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/wnhyang" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.2.2/mermaid.min.js","integrity":"sha256-o5AUfgOkNFWuInA78GVCoVdGoN9eTaB3Hxu+ep7TTrY="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://wnhyang.github.io/article/68bda3da.html"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>

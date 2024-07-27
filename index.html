@@ -96,7 +96,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">47</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">199</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">47</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">200</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -161,7 +161,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">199</span>
+          <span class="site-state-item-count">200</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -227,6 +227,132 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/68bda3da.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+      <meta itemprop="description" content="热爱、分享、生活">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/article/68bda3da.html" class="post-title-link" itemprop="url">LiteFlow条件组件的设计组件标签｜组件参数，EL与或非表达式正反解析，元数据管理</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-07-27 17:04:15 / 修改时间：18:55:30" itemprop="dateCreated datePublished" datetime="2024-07-27T17:04:15+08:00">2024-07-27</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>13 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>个人博客：<a
+href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
+<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
+title="wnhyang">wnhyang</a></p>
+<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
+title="在线知识共享">在线知识共享</a></p>
+<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
+Overview</a></p>
+<hr />
+<h1 id="参考">参考</h1>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7005869798483558431"
+class="uri">https://juejin.cn/post/7005869798483558431</a></p>
+<p><a target="_blank" rel="noopener" href="https://liteflow.cc/pages/6e4d15/">🍉组件参数 |
+LiteFlow</a></p>
+<p><a target="_blank" rel="noopener" href="https://liteflow.cc/pages/0f788f/">🍍组件标签 |
+LiteFlow</a></p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/freshday/radar/wikis/home"
+class="uri">https://gitee.com/freshday/radar/wikis/home</a></p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240727/image.1vyjwm3thj.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<h1 id="条件配置">条件配置</h1>
+<p>在需要灵活配置规则的业务系统中，如上图这样的条件配置非常常见。</p>
+<p><a
+target="_blank" rel="noopener" href="https://www.yuque.com/wnh/share/hwelucqo1ln2986m">风控系统之普通规则条件，使用LiteFlow实现</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://www.yuque.com/wnh/share/ldslme4ddf871ltr">风控系统之通用规则条件设计，算术单元/逻辑单元/函数式接口</a></p>
+<p>不管是在第一个参考链接（<a
+target="_blank" rel="noopener" href="https://juejin.cn/post/7005869798483558431"
+class="uri">https://juejin.cn/post/7005869798483558431</a>）里或是从自己的分析中都可以知道条件配置就是对同一逻辑单元的与或非编排。对于<code>LiteFlow</code>相同组件的编排有组件标签和组件参数两种解决方法。</p>
+<h1 id="组件标签实现">组件标签实现</h1>
+<p>通过组件标签实现，就是在编排<code>LiteFlow</code>时加上组件<code>tag</code>。</p>
+<p>那么就将条件存储在数据库中，在组件运行时通过<code>tag</code>再到数据库中去取。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/article/68bda3da.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/3c962920.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -245,7 +371,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/article/3c962920.html" class="post-title-link" itemprop="url">风控系统建设，指标策略规则，LiteFlow</a>
+          <a href="/article/3c962920.html" class="post-title-link" itemprop="url">风控系统建设，指标策略规则流程设计，LiteFlow隐式子流程，构造EL和Chain</a>
         </h2>
 
         <div class="post-meta-container">
@@ -263,7 +389,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-07-25 20:06:56" itemprop="dateModified" datetime="2024-07-25T20:06:56+08:00">2024-07-25</time>
+      <time title="修改时间：2024-07-25 20:14:49" itemprop="dateModified" datetime="2024-07-25T20:14:49+08:00">2024-07-25</time>
     </span>
 
   
@@ -310,112 +436,14 @@ alt="image" />
 </figure>
 <p>其中能梳理的仅是主流程的<code>TODO</code>都有下面这么多，更何况还有管理应用，<code>es</code>存储和检索设计开发还都没开始，更有前端规则/策略配置也还没做，还有在涉及画布的排版、数据的反显都还没有明确的解决方案。所以连个半成品都不算，不是开放的时候。</p>
 <p>另外，也不知道我会不会中途放弃😝</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240723/image.9dcuxfaa77.webp"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
-</figure>
-<p>最近刚好做一点值得说的，就讲一下吧！</p>
-<h1 id="主流程">主流程</h1>
-<p>顺带一提，不谈系统设计及目的直接摆出一堆东西都是耍流氓，但是这个扯起来又是一大堆，这次只能耍流氓了！</p>
-<p>说明：只是现状，之后也许有可能推翻-重做-推翻-重做。</p>
-<h2 id="数据接入">1、数据接入</h2>
-<p>所有数据通过此接入，接入服务配置服务名，输入参数，输出参数，运行的<code>Chain</code>。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/access&quot;)</span></span><br><span class="line"><span class="meta">@RequiredArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AccessController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> AccessService accessService;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 同步接入</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> name   服务名</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> params 参数</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> map</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@PostMapping(&quot;/&#123;name&#125;/sync&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> CommonResult&lt;AccessResponse&gt; <span class="title function_">syncRisk</span><span class="params">(<span class="meta">@PathVariable(&quot;name&quot;)</span> String name, <span class="meta">@RequestBody</span> Map&lt;String, String&gt; params)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> success(accessService.syncRisk(name, params));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 异步接入</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> name   服务名</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> params 参数</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> map</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@PostMapping(&quot;/&#123;name&#125;/async&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> CommonResult&lt;AccessResponse&gt; <span class="title function_">asyncRisk</span><span class="params">(<span class="meta">@PathVariable(&quot;name&quot;)</span> String name, <span class="meta">@RequestBody</span> Map&lt;String, String&gt; params)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> success(accessService.asyncRisk(name, params));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    。。。</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>当前有<code>Chain</code>:<code>THEN(a_icn,nf_cn,df_cn,i_rcn,ps_rcn,a_ocn);</code>。</p>
-<p>分别表示</p>
-<table>
-<thead>
-<tr class="header">
-<th>子流程/组件</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>a_icn</td>
-<td>接入服务输入处理node</td>
-</tr>
-<tr class="even">
-<td>nf_cn</td>
-<td>系统字段处理node</td>
-</tr>
-<tr class="odd">
-<td>df_cn</td>
-<td>动态字段处理node</td>
-</tr>
-<tr class="even">
-<td>i_rcn</td>
-<td>指标计算流程</td>
-</tr>
-<tr class="odd">
-<td>ps_rcn</td>
-<td>策略集流程</td>
-</tr>
-<tr class="even">
-<td>a_ocn</td>
-<td>接入服务输出处理node</td>
-</tr>
-</tbody>
-</table>
-<p>通过<code>Apifox</code>模拟的请求如下。</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240721/image.7ljvzj1lzj.webp"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
-</figure>
-<h2
-id="输入参数校验系统字段动态字段处理">2、输入参数校验、系统字段/动态字段处理</h2>
-<p>接入服务是可配置输入输出和映射系统的。</p>
-<p>通常，需要先创建系统字段和动态字段，动态字段是系统字段的补充，可以加入自定义的处理逻辑。配置了系统字段和动态字段后就可以将其配置在接入服务的输入和输出中，在这一步骤中就会进行映射转换，<code>IP</code>、身份证、<code>GPS</code>解析等。这样设计是为了适应风控多变的规则配置，随时可以在不更改代码的情况下，新增规则和数据的接入。而且后面会使用<code>ES</code>存储数据，这样也是可行的。</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240723/image.73tudyinvv.webp"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
-</figure>
-<h2 id="指标计算">3、指标计算</h2>
-<p>所有符合本次请求的指标都要进行计算，所有指标计算可以并行。如何计算前面也有文章说明了使用<code>Redis</code>做时间窗口的方法。</p>
-<p>指标有应用和策略集场景的区分，这里暂时使用代码构造<code>EL</code>和<code>Chian</code>，并同时使用隐式子流程运行。</p>
-<p>以下仅供参考，大致思路是在创建指标时已经将指标按场景区分加入到对应的<code>Chain</code>中了，每次请求只会运行当次请求的应用和策略集场景下的指标。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@LiteflowMethod(value = LiteFlowMethodEnum.PROCESS, nodeId = LFUtil.INDICATOR_ROUTE_COMMON_NODE, nodeType = NodeTypeEnum.COMMON)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">indicatorRoute</span><span class="params">(NodeComponent bindCmp)</span> &#123;</span><br><span class="line">    <span class="type">AccessRequest</span> <span class="variable">accessRequest</span> <span class="operator">=</span> bindCmp.getContextBean(AccessRequest.class);</span><br><span class="line">    <span class="type">String</span> <span class="variable">appName</span> <span class="operator">=</span> accessRequest.getStringData(FieldName.appName);</span><br><span class="line">    <span class="type">String</span> <span class="variable">policySetCode</span> <span class="operator">=</span> accessRequest.getStringData(FieldName.policySetCode);</span><br><span class="line">    LiteFlowChainELBuilder.createChain().setChainId(LFUtil.INDICATOR_ROUTE_CHAIN).setEL(</span><br><span class="line">            StrUtil.format(LFUtil.INDICATOR_ROUTE_CHAIN_EL, appName, policySetCode)</span><br><span class="line">    ).build();</span><br><span class="line"></span><br><span class="line">    bindCmp.invoke2Resp(LFUtil.INDICATOR_ROUTE_CHAIN, <span class="literal">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>最终的指标<code>Chain</code>是类似于<code>IF(c_cn.tag("3"),i_tcn.tag("2"),i_fcn);</code>这样的<code>IF</code>编排<code>Chain</code>。</p>
-<p><code>c_cn.tag("3")</code>为条件组件，目前是数据库存储的，未来有可能使用组件参数将其替换掉；<code>i_tcn.tag("2")</code>为条件通过后指标计算组件；<code>i_fcn</code>为指标条件失败组件。</p>
-<h2 id="策略集-策略-规则">4、策略集-策略-规则</h2>
-<p>关于策略集/策略/规则的关系，前面也有文章说明了。</p>
-<p>再讲一下就是，每次请求只能对应一个策略集，策略集下有多个策略（有权重、最坏、首次的模式之分），策略有多条规则（有运行、模拟、关闭的状态区别）。策略集可以编排策略与其他组件的运行流程。</p>
-<p>首先通过应用名和策略集确定要运行策略集，然后执行策略集的决策流（当前还没做，默认所有策略并行），策略会因为模式（权重、首次、最坏）的不同采取命中规则处置方式也不同，最终将结果转换返回。</p>
-<p>与指标类似在创建策略、规则时就已经将其<code>EL</code>和<code>Chain</code>创建了。</p>
-<p>策略<code>node</code>加了<code>isAccess</code>方法，用于判断是否执行当前<code>node</code>，因为<code>node</code>设置了开启、关闭、模拟之类的状态。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@LiteflowMethod(value = LiteFlowMethodEnum.IS_ACCESS, nodeId = LFUtil.POLICY_COMMON_NODE, nodeType = NodeTypeEnum.COMMON)</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">policyAccess</span><span class="params">(NodeComponent bindCmp)</span> &#123;</span><br><span class="line">    <span class="type">Policy</span> <span class="variable">policy</span> <span class="operator">=</span> policyMapper.selectById(bindCmp.getTag());</span><br><span class="line">    <span class="keyword">return</span> policy.getStatus();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@LiteflowMethod(value = LiteFlowMethodEnum.PROCESS, nodeId = LFUtil.POLICY_COMMON_NODE, nodeType = NodeTypeEnum.COMMON)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">policy</span><span class="params">(NodeComponent bindCmp)</span> &#123;</span><br><span class="line">    <span class="type">PolicyContext</span> <span class="variable">policyContext</span> <span class="operator">=</span> bindCmp.getContextBean(PolicyContext.class);</span><br><span class="line">    <span class="type">Policy</span> <span class="variable">policy</span> <span class="operator">=</span> policyMapper.selectById(bindCmp.getTag());</span><br><span class="line">    <span class="type">PolicyVO</span> <span class="variable">policyVO</span> <span class="operator">=</span> PolicyConvert.INSTANCE.convert(policy);</span><br><span class="line">    policyContext.addPolicy(policyVO.getId(), policyVO);</span><br><span class="line"></span><br><span class="line">    log.info(<span class="string">&quot;当前策略(id:&#123;&#125;, name:&#123;&#125;, code:&#123;&#125;)&quot;</span>, policy.getId(), policy.getName(), policy.getCode());</span><br><span class="line"></span><br><span class="line">    policyContext.initRuleList(policy.getId());</span><br><span class="line"></span><br><span class="line">    bindCmp.invoke2Resp(StrUtil.format(LFUtil.POLICY_CHAIN, policy.getId()), <span class="literal">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>规则<code>Chain</code>与指标<code>Chian</code>类似<code>IF(AND(c_cn.tag("4"),c_cn.tag("5")),r_tcn.tag("2"),r_fcn);</code>，也是<code>IF</code>编排的<code>Chain</code>，目前只做了决策，未来可以加入打<code>tag</code>、加入名单等等。</p>
-<h2 id="存储es">5、存储ES</h2>
-<p>数据是非常重要的，对于未来的管理应用十分关键。但现在还不涉及，所以目前是单独创建一份日志文件存储了。还使用了<code>Kafka</code>，模拟了生产和消费。</p>
-<p>格式化<code>JSON</code>后如下。</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;result&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;手机登录策略&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;code&quot;</span><span class="punctuation">:</span> <span class="string">&quot;phone_login&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;disposalName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;通过&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;disposalCode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;pass&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;policyResults&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">            <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;手机登录最坏&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;code&quot;</span><span class="punctuation">:</span> <span class="string">&quot;phone_login_worst&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;mode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;worst&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;disposalName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;通过&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;disposalCode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;pass&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;ruleResults&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                    <span class="punctuation">&#123;</span></span><br><span class="line">                        <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;测试规则03&quot;</span><span class="punctuation">,</span></span><br><span class="line">                        <span class="attr">&quot;code&quot;</span><span class="punctuation">:</span> <span class="string">&quot;352452&quot;</span><span class="punctuation">,</span></span><br><span class="line">                        <span class="attr">&quot;disposalName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;通过&quot;</span><span class="punctuation">,</span></span><br><span class="line">                        <span class="attr">&quot;disposalCode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;pass&quot;</span><span class="punctuation">,</span></span><br><span class="line">                        <span class="attr">&quot;score&quot;</span><span class="punctuation">:</span> <span class="number">0</span></span><br><span class="line">                    <span class="punctuation">&#125;</span></span><br><span class="line">                <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;mockRuleResults&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line"></span><br><span class="line">                <span class="punctuation">]</span></span><br><span class="line">            <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;手机登录顺序&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;code&quot;</span><span class="punctuation">:</span> <span class="string">&quot;phone_login_order&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;mode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;order&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;disposalName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;通过&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;disposalCode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;pass&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;ruleResults&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                    <span class="punctuation">&#123;</span></span><br><span class="line">                        <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;测试规则01&quot;</span><span class="punctuation">,</span></span><br><span class="line">                        <span class="attr">&quot;code&quot;</span><span class="punctuation">:</span> <span class="string">&quot;123456&quot;</span><span class="punctuation">,</span></span><br><span class="line">                        <span class="attr">&quot;disposalName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;通过&quot;</span><span class="punctuation">,</span></span><br><span class="line">                        <span class="attr">&quot;disposalCode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;pass&quot;</span><span class="punctuation">,</span></span><br><span class="line">                        <span class="attr">&quot;score&quot;</span><span class="punctuation">:</span> <span class="number">0</span></span><br><span class="line">                    <span class="punctuation">&#125;</span></span><br><span class="line">                <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;mockRuleResults&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line"></span><br><span class="line">                <span class="punctuation">]</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;zbs&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;24小时交易金额之和&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;sum&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;version&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;value&quot;</span><span class="punctuation">:</span> <span class="string">&quot;39.57214&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;24小时交易金额最大&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;max&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;version&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;value&quot;</span><span class="punctuation">:</span> <span class="string">&quot;39.57214&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;fields&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;N_S_ipCity&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;N_S_lonAndLat&quot;</span><span class="punctuation">:</span> <span class="string">&quot;82.6013,58.37&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;N_S_payerType&quot;</span><span class="punctuation">:</span> <span class="string">&quot;路它用决头此&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;N_S_idCardCity&quot;</span><span class="punctuation">:</span> <span class="string">&quot;未知&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;N_S_payeeIDNumber&quot;</span><span class="punctuation">:</span> <span class="string">&quot;450000199306286684&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;N_S_ipProvince&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;N_S_payeeIDCountryRegion&quot;</span><span class="punctuation">:</span> <span class="string">&quot;US&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;N_F_transAmount&quot;</span><span class="punctuation">:</span> <span class="number">39.57214</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;N_S_payerAddress&quot;</span><span class="punctuation">:</span> <span class="string">&quot;南竿乡 湖北省 衢州市&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;N_S_seqId&quot;</span><span class="punctuation">:</span> <span class="string">&quot;629123892af54a4487b6063d49c51354&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;N_S_payeePhoneNumber&quot;</span><span class="punctuation">:</span> <span class="string">&quot;18135474838&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;N_S_transSerialNo&quot;</span><span class="punctuation">:</span> <span class="string">&quot;c156f461-f059-472a-96e4-919d07b04c87&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;N_S_payerAccount&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1234567890&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;N_S_payeeAccount&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1234567890&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;N_S_ip&quot;</span><span class="punctuation">:</span> <span class="string">&quot;39.147.100.232&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;N_S_policyCode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;phone_login_worst&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;N_S_payeeType&quot;</span><span class="punctuation">:</span> <span class="string">&quot;况压养又&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;N_S_payerIDNumber&quot;</span><span class="punctuation">:</span> <span class="string">&quot;640000198603085417&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;N_S_payeeBankName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ABC Bank&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;N_S_phoneNumberProvince&quot;</span><span class="punctuation">:</span> <span class="string">&quot;未知&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;N_S_ipIsp&quot;</span><span class="punctuation">:</span> <span class="string">&quot;移动&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;N_S_payerIDCountryRegion&quot;</span><span class="punctuation">:</span> <span class="string">&quot;US&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;N_D_transTime&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1985-01-27 20:46:50&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;N_S_phoneNumberCity&quot;</span><span class="punctuation">:</span> <span class="string">&quot;江门&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;N_S_phoneNumberIsp&quot;</span><span class="punctuation">:</span> <span class="string">&quot;中国电信&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;N_S_payeeAddress&quot;</span><span class="punctuation">:</span> <span class="string">&quot;和顺县 澳门特别行政区 恩施土家族苗族自治州&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;N_S_payeeRiskRating&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HIGH&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;N_S_policySetCode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;phone_login&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;N_S_payerBankName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;XYZ Bank&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;N_S_idCardDistrict&quot;</span><span class="punctuation">:</span> <span class="string">&quot;未知&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;N_S_appName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;phone&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;N_S_idCardProvince&quot;</span><span class="punctuation">:</span> <span class="string">&quot;宁夏回族自治区&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;N_S_ipCountry&quot;</span><span class="punctuation">:</span> <span class="string">&quot;中国&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;N_S_payeeName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;孔静&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;N_S_payerName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;乔敏&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;N_S_payerPhoneNumber&quot;</span><span class="punctuation">:</span> <span class="string">&quot;18128212188&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;N_S_payerRiskRating&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HIGH&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<h2 id="输出">6、输出</h2>
-<p>请求完成后返回命中结果，大致如下。</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240721/image.7sn3uysk7g.webp"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
-</figure>
-<h1 id="小结">小结</h1>
-<p>大致就介绍这么多了，因为这一片文章根本讲不完。</p>
-<p>自己做项目确实不容易，尤其是我毅力/能力都没那么强，经常遇到问题，就卡一周的。</p>
-<p>但同时也会因为解决了某些问题开心很久的！</p>
-<h1 id="写在最后">写在最后</h1>
-<p>拙作艰辛，字句心血，望诸君垂青，多予支持，不胜感激。</p>
-<hr />
-<p>个人博客：<a
-href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
-<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
-title="wnhyang">wnhyang</a></p>
-<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
-title="在线知识共享">在线知识共享</a></p>
-<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
-Overview</a></p>
-<p><img data-src="https://wnhyang.github.io/images/wechat_channel.webp" /></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/article/3c962920.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1419,175 +1447,6 @@ Overview</a></p>
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/aa7b535.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-      <meta itemprop="description" content="热爱、分享、生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/aa7b535.html" class="post-title-link" itemprop="url">geoHelper</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-04-30 15:11:46" itemprop="dateCreated datePublished" datetime="2024-04-30T15:11:46+08:00">2024-04-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-05-06 10:39:13" itemprop="dateModified" datetime="2024-05-06T10:39:13+08:00">2024-05-06</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.3k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>5 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>个人博客：<a
-href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
-<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
-title="wnhyang">wnhyang</a></p>
-<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
-title="在线知识共享">在线知识共享</a></p>
-<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
-Overview</a></p>
-<hr />
-<h1 id="简介">简介</h1>
-<p><a target="_blank" rel="noopener" href="https://github.com/wnhyang/geoHelper">GitHub -
-wnhyang/geoHelper</a></p>
-<p><a
-target="_blank" rel="noopener" href="https://gitee.com/wnhyang/geoHelper">无奈何杨/geoHelper</a></p>
-<p><code>geoHelper</code>整合了身份证、手机号、<code>IP</code>、<code>GPS</code>解析方法，基于内存提供离线高性能解析服务。</p>
-<p><a
-target="_blank" rel="noopener" href="https://www.yuque.com/wnh/share/vw03pm5x88atva56">身份证/手机号解析服务</a></p>
-<p><a
-target="_blank" rel="noopener" href="https://www.yuque.com/wnh/share/yusumn415tgh6uwn">IP/GPS解析服务，ip2region，逆地理编码</a></p>
-<h1 id="数据来源">数据来源</h1>
-<table>
-<colgroup>
-<col style="width: 11%" />
-<col style="width: 88%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>数据</th>
-<th>来源</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>行政区划</td>
-<td><a
-target="_blank" rel="noopener" href="https://github.com/modood/Administrative-divisions-of-China">GitHub
-- modood/Administrative-divisions-of-China</a></td>
-</tr>
-<tr class="even">
-<td>手机号</td>
-<td><a target="_blank" rel="noopener" href="https://github.com/EeeMt/phone-number-geo">GitHub -
-EeeMt/phone-number-geo</a></td>
-</tr>
-<tr class="odd">
-<td>IP</td>
-<td><a
-target="_blank" rel="noopener" href="https://gitee.com/lionsoul/ip2region">狮子的魂/ip2region</a></td>
-</tr>
-<tr class="even">
-<td>geo</td>
-<td><a
-target="_blank" rel="noopener" href="https://www.cnblogs.com/henuyuxiang/p/12981201.html">中国城市坐标（最全最完整）</a></td>
-</tr>
-</tbody>
-</table>
-<h1 id="身份证解析">身份证解析</h1>
-<p>适用国内身份证解析，作为<code>Hutool.IdcardUtil</code>的扩展，加入<code>AdocUtil</code>，意为中国行政区划工具。</p>
-<p>方法包括：</p>
-<ul>
-<li><code>getProvince</code> 获取省份</li>
-<li><code>getProvinceName</code> 获取省份名称</li>
-<li><code>getCity</code> 获取城市</li>
-<li><code>getCityName</code> 获取城市名称</li>
-<li><code>getArea</code> 获取区县</li>
-<li><code>getAreaName</code> 获取区县名称</li>
-<li><code>getPca</code> 获取省市区</li>
-</ul>
-<p>当然基于<a
-target="_blank" rel="noopener" href="https://github.com/modood/Administrative-divisions-of-China">GitHub
--
-modood/Administrative-divisions-of-China</a>可以扩展到乡级（乡镇街道）、
-村级（村委会居委会），那么数据量会大一些，可以将数据存储在数据库中使用。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/article/aa7b535.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1613,14 +1472,14 @@ modood/Administrative-divisions-of-China</a>可以扩展到乡级（乡镇街道
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">257k</span>
+    <span title="站点总字数">261k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">15:35</span>
+    <span title="站点阅读时长">15:48</span>
   </span>
 </div>
 <div class="busuanzi-count">
