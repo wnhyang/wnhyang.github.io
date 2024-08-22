@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2024-07-27T10:55:30.676Z</updated>
+  <updated>2024-08-22T12:09:55.203Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,61 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>商业软件许可证介绍｜简单原理探究</title>
+    <link href="https://wnhyang.github.io/article/a730c43.html"/>
+    <id>https://wnhyang.github.io/article/a730c43.html</id>
+    <published>2024-08-15T11:15:26.000Z</published>
+    <updated>2024-08-22T12:09:55.203Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;个人博客：&lt;a
+href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
+title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
+title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
+Overview&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h1 id=&quot;引入话题&quot;&gt;引入话题&lt;/h1&gt;
+&lt;p&gt;既然是商业软件，涉及到商业，那目的就是赚钱。&lt;/p&gt;
+&lt;p&gt;就拿&lt;code&gt;IDEA&lt;/code&gt;举例，&lt;code&gt;IDEA&lt;/code&gt;有多个版本，社区版功能少一些，本身使用上没有什么限制，而且省去了版权纠纷等问题；但是如果想要享受&lt;code&gt;JetBrains&lt;/code&gt;的其他服务，那就必须要考虑商业化版本了，缺点可能就是贵一点。&lt;/p&gt;
+&lt;p&gt;像&lt;code&gt;IDEA&lt;/code&gt;、&lt;a
+href=&quot;https://www.navicat.com/en/products/navicat-premium&quot;&gt;Navicat
+Premium&lt;/a&gt;这样的都是提供了客户端的软件服务，好像更加贴合我们对于软件的认识，然而我们日常生活中如&lt;code&gt;iCloud&lt;/code&gt;、&lt;code&gt;Windows&lt;/code&gt;、&lt;code&gt;aliyun&lt;/code&gt;、&lt;code&gt;google&lt;/code&gt;，包括视频会员、&lt;code&gt;VIP&lt;/code&gt;本质上都一样，而且这些都可以与其用户体系打通，形成会员积分系统。&lt;/p&gt;
+&lt;p&gt;可以步入正题了，本篇文章讨论的不是用户会员体系，而是简单的许可证&lt;code&gt;License&lt;/code&gt;。&lt;/p&gt;
+&lt;h1 id=&quot;许可证分类&quot;&gt;许可证分类&lt;/h1&gt;
+&lt;h2 id=&quot;方式分类&quot;&gt;方式分类&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;单用户许可证&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;多用户许可证&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;企业许可证&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;终身许可证&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;订阅许可证&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;免费许可证&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;场景分类&quot;&gt;场景分类&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;商业许可证&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;个人许可证&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;教育许可证&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;许可证存在就是为了限制软件功能，不同的套餐对应不同的功能嘛！&lt;/p&gt;
+&lt;p&gt;如下，语雀套餐。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>LiteFlow条件组件的设计组件标签｜组件参数，EL与或非表达式正反解析，元数据管理</title>
     <link href="https://wnhyang.github.io/article/68bda3da.html"/>
     <id>https://wnhyang.github.io/article/68bda3da.html</id>
     <published>2024-07-27T09:04:15.000Z</published>
-    <updated>2024-07-27T10:55:30.676Z</updated>
+    <updated>2024-07-27T10:55:57.645Z</updated>
     
     
     <summary type="html">&lt;p&gt;个人博客：&lt;a
@@ -832,9 +882,9 @@ alt=&quot;image&quot; /&gt;
     
     
     
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
     <category term="Vue" scheme="https://wnhyang.github.io/tags/Vue/"/>
+    
+    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
   </entry>
   
@@ -866,53 +916,9 @@ alt=&quot;image&quot; /&gt;
     
     
     
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
     <category term="Vue" scheme="https://wnhyang.github.io/tags/Vue/"/>
     
-  </entry>
-  
-  <entry>
-    <title>Spring6｜Spring Boot3有哪些HTTP客户端可以选择</title>
-    <link href="https://wnhyang.github.io/article/70e0da6.html"/>
-    <id>https://wnhyang.github.io/article/70e0da6.html</id>
-    <published>2024-03-24T04:20:52.000Z</published>
-    <updated>2024-03-24T05:19:55.391Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;个人博客：&lt;a
-href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
-title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
-title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
-Overview&lt;/a&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h1 id=&quot;参考&quot;&gt;参考&lt;/h1&gt;
-&lt;p&gt;&lt;a
-href=&quot;https://docs.spring.io/spring-framework/reference/integration/rest-clients.html#rest-http-interface&quot;&gt;REST
-Clients :: Spring Framework&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a
-href=&quot;https://blog.csdn.net/m0_63947499/article/details/131812612&quot;&gt;【微服务|SpringBoot
-3.0】 新特性——内置声明式HTTP客户端_springboot3.0
-内置http服务-CSDN博客&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a
-href=&quot;https://zhuanlan.zhihu.com/p/269208311&quot;&gt;七大主流的HttpClient程序比较&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&quot;java-httpurlconnection&quot;&gt;1、Java HttpURLConnection&lt;/h1&gt;
-&lt;p&gt;&lt;code&gt;JDK&lt;/code&gt;自带的标准&lt;code&gt;HTTP&lt;/code&gt;客户端&lt;code&gt;API&lt;/code&gt;，尽管功能相对基础，但因为内置于&lt;code&gt;JDK&lt;/code&gt;中，无需额外依赖，所以在许多简单场景下仍然被广泛使用。&lt;/p&gt;
-&lt;h1 id=&quot;java11-httpclient&quot;&gt;2、Java11 HttpClient&lt;/h1&gt;
-&lt;p&gt;自&lt;code&gt;Java 11&lt;/code&gt;起，&lt;code&gt;JDK&lt;/code&gt;新增了一个更现代化且功能更完善的&lt;code&gt;HTTP&lt;/code&gt;客户端&lt;code&gt;API&lt;/code&gt;，旨在替代原有的&lt;code&gt;HttpURLConnection&lt;/code&gt;，支持&lt;code&gt;HTTP/2&lt;/code&gt;和异步操作。&lt;/p&gt;
-&lt;h1 id=&quot;apache-httpclient&quot;&gt;3、Apache HttpClient&lt;/h1&gt;
-&lt;p&gt;由&lt;code&gt;Apache&lt;/code&gt;软件基金会提供的成熟的&lt;code&gt;HTTP&lt;/code&gt;客户端库，支持同步和异步操作，具备高度可配置性，提供了强大的连接管理和认证支持。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;SpringBoot&lt;/code&gt;下配合&lt;code&gt;RestTemplate&lt;/code&gt;组件使用示例如下。&lt;/p&gt;</summary>
-    
-    
-    
-    
     <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
-    <category term="Spring Framework" scheme="https://wnhyang.github.io/tags/Spring-Framework/"/>
     
   </entry>
   
