@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="google-site-verification" content="4zmc5dCOR7a63YXOZx4mwqsC5dPpr0m2iWeI12w6wng">
+  <meta name="baidu-site-verification" content="fe6bba1d0d4e906fed87c9f7c2d1d09d">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="个人博客：无奈何杨（wnhyang） 个人语雀：wnhyang 共享语雀：在线知识共享 Github：wnhyang - Overview  背景 一天，小明在风控管理台查看事件数据时，发现一笔决策结果为“拒绝”❌的交易事件，小明点开事件详情发现其触发了一条“24小时内向不同陌生账户转账超过30w”的规则，规则设置的处置方式是“拒绝”❌。小明通过策略规则却查不到那条“24小时内向不同陌生账户转账超">
+<meta property="og:type" content="article">
+<meta property="og:title" content="风控系统之事件溯源，决策流程记录与版本控制">
+<meta property="og:url" content="https://wnhyang.github.io/article/d39ab551.html">
+<meta property="og:site_name" content="无奈何杨（wnhyang）">
+<meta property="og:description" content="个人博客：无奈何杨（wnhyang） 个人语雀：wnhyang 共享语雀：在线知识共享 Github：wnhyang - Overview  背景 一天，小明在风控管理台查看事件数据时，发现一笔决策结果为“拒绝”❌的交易事件，小明点开事件详情发现其触发了一条“24小时内向不同陌生账户转账超过30w”的规则，规则设置的处置方式是“拒绝”❌。小明通过策略规则却查不到那条“24小时内向不同陌生账户转账超">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240828/image.4xuh7a3lgs.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240828/image.9nzq5ovzx2.webp">
+<meta property="og:image" content="https://wnhyang.github.io/images/wechat_channel.webp">
+<meta property="article:published_time" content="2024-08-28T05:46:07.000Z">
+<meta property="article:modified_time" content="2024-08-29T05:55:44.407Z">
+<meta property="article:author" content="无奈何杨（wnhyang）">
+<meta property="article:tag" content="项目">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240828/image.4xuh7a3lgs.webp">
+
+
+<link rel="canonical" href="https://wnhyang.github.io/article/d39ab551.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wnhyang.github.io/article/d39ab551.html","path":"article/d39ab551.html","title":"风控系统之事件溯源，决策流程记录与版本控制"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>风控系统之事件溯源，决策流程记录与版本控制 | 无奈何杨（wnhyang）</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="无奈何杨（wnhyang）" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">无奈何杨（wnhyang）</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">I will keep to fight</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">47</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">202</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E8%AE%B0%E5%BD%95"><span class="nav-number">2.</span> <span class="nav-text">事件记录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6"><span class="nav-number">3.</span> <span class="nav-text">版本控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E8%A1%A8-master-table"><span class="nav-number">3.0.1.</span> <span class="nav-text">1. 主表 (Master Table)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%86%E5%8F%B2%E8%A1%A8-history-table"><span class="nav-number">3.0.2.</span> <span class="nav-text">2. 历史表 (History Table)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="nav-number">4.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="无奈何杨（wnhyang）"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">无奈何杨（wnhyang）</p>
+  <div class="site-description" itemprop="description">热爱、分享、生活</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">202</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">47</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wnhyang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wnhyang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/wnhyang" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;wnhyang" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wnhyang@qq.com" title="E-Mail → mailto:wnhyang@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://www.yuque.com/wnh/share" title="https:&#x2F;&#x2F;www.yuque.com&#x2F;wnh&#x2F;share" rel="noopener" target="_blank">语雀分享</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://github.com/wnhyang" title="https:&#x2F;&#x2F;github.com&#x2F;wnhyang" rel="noopener" target="_blank">GitHub</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.zhihu.com/people/wnhyang" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;wnhyang" rel="noopener" target="_blank">知乎</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        <div class="sidebar-inner sidebar-post-related">
+          <div class="animated">
+              <div class="links-of-blogroll-title"><i class="fa fa-signs-post fa-fw"></i>
+    相关文章
+  </div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/d8ad0228.html" rel="bookmark">
+        <time class="popular-posts-time">2024-05-24</time>
+        <br>
+      MybatisPlusGenerator交互式Web生成增删改查、导出导入代码
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/830d76f.html" rel="bookmark">
+        <time class="popular-posts-time">2024-04-01</time>
+        <br>
+      筛选树形菜单时关联其父节点和子节点
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/bf7337ce.html" rel="bookmark">
+        <time class="popular-posts-time">2024-03-16</time>
+        <br>
+      MybatisPlus-Generator自定义模版生成CRUD、DTO、VO、Convert等
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/837eb52d.html" rel="bookmark">
+        <time class="popular-posts-time">2024-04-26</time>
+        <br>
+      风控系统之数据服务，名单、标签、IP、设备、地理信息、征信等
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/c3f9479b.html" rel="bookmark">
+        <time class="popular-posts-time">2024-04-02</time>
+        <br>
+      根据用户角色权限，渲染菜单的一个问题记录
+      </a>
+    </li>
+  </ul>
+
+          </div>
+        </div>
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/d39ab551.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+      <meta itemprop="description" content="热爱、分享、生活">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="风控系统之事件溯源，决策流程记录与版本控制 | 无奈何杨（wnhyang）">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          风控系统之事件溯源，决策流程记录与版本控制
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-08-28 13:46:07" itemprop="dateCreated datePublished" datetime="2024-08-28T13:46:07+08:00">2024-08-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-08-29 13:55:44" itemprop="dateModified" datetime="2024-08-29T13:55:44+08:00">2024-08-29</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>6 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>个人博客：<a
+href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
+<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
+title="wnhyang">wnhyang</a></p>
+<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
+title="在线知识共享">在线知识共享</a></p>
+<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
+Overview</a></p>
+<hr />
+<h1 id="背景">背景</h1>
+<p>一天，小明在风控管理台查看事件数据时，发现一笔决策结果为“拒绝”❌的交易事件，小明点开事件详情发现其触发了一条“24小时内向不同陌生账户转账超过30w”的规则，规则设置的处置方式是“拒绝”❌。小明通过策略规则却查不到那条“24小时内向不同陌生账户转账超过30w”的规则，经确认原来是这条规则在此交易触发后一段时间内被修改了，已经不知道当时是如何配置的！？</p>
+<p>这该怎么办？</p>
+<p>我们要知道风控等其他系统都需要对于配置实时生效，所以使用了规则引擎，规则引擎具有实时生效优雅热刷新的特性，但也因此，如果规则设置有问题而没有回滚/溯源/复现的机制，将是很大的问题！！！</p>
+<p>所以本质上就是要在规则引擎应用之上打造完善的版本控制，能够对规则历史进行溯源。</p>
+<h1 id="事件记录">事件记录</h1>
+<p>之前的文章<a
+target="_blank" rel="noopener" href="https://www.yuque.com/wnh/share/ouhigg130g2rpzbf">风控系统建设，指标策略规则流程设计，LiteFlow隐式子流程，构造EL和Chain</a>，提到了最终存储在es中大概有哪些数据。以下仅供参考，有部分还没做。</p>
+<p>这里再次梳理一下：</p>
+<p>1、基础数据，保留所有事件字段。</p>
+<p>2、事件处理流程，也就是输入的数据经历了哪些流程和组件处理！</p>
+<p>3、策略集结果，包括策略集、策略、规则的所有决策结果。还要加上特殊配置的策略执行流程。</p>
+<p>4、指标数据，本次事件计算的所有指标数据。</p>
+<span id="more"></span>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;result&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;手机登录策略&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;code&quot;</span><span class="punctuation">:</span> <span class="string">&quot;phone_login&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;disposalName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;通过&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;disposalCode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;pass&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;policyResults&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">      <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;手机登录最坏&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;code&quot;</span><span class="punctuation">:</span> <span class="string">&quot;phone_login_worst&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;mode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;worst&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;disposalName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;通过&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;disposalCode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;pass&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;ruleResults&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">          <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;测试规则03&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;code&quot;</span><span class="punctuation">:</span> <span class="string">&quot;352452&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;disposalName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;通过&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;disposalCode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;pass&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;score&quot;</span><span class="punctuation">:</span> <span class="number">0</span></span><br><span class="line">          <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;mockRuleResults&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line"></span><br><span class="line">        <span class="punctuation">]</span></span><br><span class="line">      <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;手机登录顺序&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;code&quot;</span><span class="punctuation">:</span> <span class="string">&quot;phone_login_order&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;mode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;order&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;disposalName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;通过&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;disposalCode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;pass&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;ruleResults&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line"></span><br><span class="line">        <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;mockRuleResults&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line"></span><br><span class="line">        <span class="punctuation">]</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;zbs&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">&#123;</span><span class="attr">&quot;id&quot;</span><span class="punctuation">:</span><span class="string">&quot;1&quot;</span><span class="punctuation">,</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;24小时交易金额之和&quot;</span><span class="punctuation">,</span><span class="attr">&quot;type&quot;</span><span class="punctuation">:</span><span class="string">&quot;sum&quot;</span><span class="punctuation">,</span><span class="attr">&quot;version&quot;</span><span class="punctuation">:</span><span class="number">0</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;1413.07938&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;id&quot;</span><span class="punctuation">:</span><span class="string">&quot;3&quot;</span><span class="punctuation">,</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;选必于&quot;</span><span class="punctuation">,</span><span class="attr">&quot;type&quot;</span><span class="punctuation">:</span><span class="string">&quot;sum&quot;</span><span class="punctuation">,</span><span class="attr">&quot;version&quot;</span><span class="punctuation">:</span><span class="number">0</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;436864.3324399999&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;id&quot;</span><span class="punctuation">:</span><span class="string">&quot;4&quot;</span><span class="punctuation">,</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;24小时交易金额大于10万求和&quot;</span><span class="punctuation">,</span><span class="attr">&quot;type&quot;</span><span class="punctuation">:</span><span class="string">&quot;sum&quot;</span><span class="punctuation">,</span><span class="attr">&quot;version&quot;</span><span class="punctuation">:</span><span class="number">0</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;1413.07938&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;id&quot;</span><span class="punctuation">:</span><span class="string">&quot;5&quot;</span><span class="punctuation">,</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;规支才公照还&quot;</span><span class="punctuation">,</span><span class="attr">&quot;type&quot;</span><span class="punctuation">:</span><span class="string">&quot;ass&quot;</span><span class="punctuation">,</span><span class="attr">&quot;version&quot;</span><span class="punctuation">:</span><span class="number">0</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;1.0&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;id&quot;</span><span class="punctuation">:</span><span class="string">&quot;6&quot;</span><span class="punctuation">,</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;且者矿&quot;</span><span class="punctuation">,</span><span class="attr">&quot;type&quot;</span><span class="punctuation">:</span><span class="string">&quot;max&quot;</span><span class="punctuation">,</span><span class="attr">&quot;version&quot;</span><span class="punctuation">:</span><span class="number">0</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;988.56238&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;id&quot;</span><span class="punctuation">:</span><span class="string">&quot;7&quot;</span><span class="punctuation">,</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;北在文地&quot;</span><span class="punctuation">,</span><span class="attr">&quot;type&quot;</span><span class="punctuation">:</span><span class="string">&quot;min&quot;</span><span class="punctuation">,</span><span class="attr">&quot;version&quot;</span><span class="punctuation">:</span><span class="number">0</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;424.517&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;id&quot;</span><span class="punctuation">:</span><span class="string">&quot;8&quot;</span><span class="punctuation">,</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;看活历地许&quot;</span><span class="punctuation">,</span><span class="attr">&quot;type&quot;</span><span class="punctuation">:</span><span class="string">&quot;avg&quot;</span><span class="punctuation">,</span><span class="attr">&quot;version&quot;</span><span class="punctuation">:</span><span class="number">0</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;706.53969&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;id&quot;</span><span class="punctuation">:</span><span class="string">&quot;9&quot;</span><span class="punctuation">,</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;情性特问写养八&quot;</span><span class="punctuation">,</span><span class="attr">&quot;type&quot;</span><span class="punctuation">:</span><span class="string">&quot;sum&quot;</span><span class="punctuation">,</span><span class="attr">&quot;version&quot;</span><span class="punctuation">:</span><span class="number">0</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;1413.07938&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span><span class="attr">&quot;id&quot;</span><span class="punctuation">:</span><span class="string">&quot;10&quot;</span><span class="punctuation">,</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;其断子把酸&quot;</span><span class="punctuation">,</span><span class="attr">&quot;type&quot;</span><span class="punctuation">:</span><span class="string">&quot;count&quot;</span><span class="punctuation">,</span><span class="attr">&quot;version&quot;</span><span class="punctuation">:</span><span class="number">0</span><span class="punctuation">,</span><span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;2.0&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;fields&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;N_S_ipCity&quot;</span><span class="punctuation">:</span> <span class="string">&quot;南昌市&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;N_S_lonAndLat&quot;</span><span class="punctuation">:</span> <span class="string">&quot;98.63974,12.4825&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;N_S_payerType&quot;</span><span class="punctuation">:</span> <span class="string">&quot;关在那边员&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;N_S_idCardCity&quot;</span><span class="punctuation">:</span> <span class="string">&quot;未知&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;N_S_payeeIDNumber&quot;</span><span class="punctuation">:</span> <span class="string">&quot;640000198102131788&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;N_S_ipProvince&quot;</span><span class="punctuation">:</span> <span class="string">&quot;江西省&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;N_S_payeeIDCountryRegion&quot;</span><span class="punctuation">:</span> <span class="string">&quot;US&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;N_F_transAmount&quot;</span><span class="punctuation">:</span> <span class="number">424.517</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;N_S_payerAddress&quot;</span><span class="punctuation">:</span> <span class="string">&quot;其它区 山西省 承德市&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;N_S_seqId&quot;</span><span class="punctuation">:</span> <span class="string">&quot;c678bfbfb4c544eaaeb52373702a0aca&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;N_S_payeePhoneNumber&quot;</span><span class="punctuation">:</span> <span class="string">&quot;18643006812&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;N_S_transSerialNo&quot;</span><span class="punctuation">:</span> <span class="string">&quot;809bbad3-1c81-4b59-9e42-fa0b028d1448&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;N_S_payerAccount&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1234567890&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;N_S_payeeAccount&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1234567880&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;N_S_ip&quot;</span><span class="punctuation">:</span> <span class="string">&quot;106.230.80.158&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;N_S_policyCode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;phone_login_worst&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;N_S_payeeType&quot;</span><span class="punctuation">:</span> <span class="string">&quot;济常准属适&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;N_S_payerIDNumber&quot;</span><span class="punctuation">:</span> <span class="string">&quot;420000199805245558&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;N_S_payeeBankName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ABC Bank&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;N_S_phoneNumberProvince&quot;</span><span class="punctuation">:</span> <span class="string">&quot;未知&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;N_S_ipIsp&quot;</span><span class="punctuation">:</span> <span class="string">&quot;电信&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;N_S_payerIDCountryRegion&quot;</span><span class="punctuation">:</span> <span class="string">&quot;US&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;N_D_transTime&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2013-06-21 16:30:09&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;N_S_phoneNumberCity&quot;</span><span class="punctuation">:</span> <span class="string">&quot;成都&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;N_S_phoneNumberIsp&quot;</span><span class="punctuation">:</span> <span class="string">&quot;中国电信&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;N_S_payeeAddress&quot;</span><span class="punctuation">:</span> <span class="string">&quot;- 福建省 抚州市&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;N_S_payeeRiskRating&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HIGH&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;N_S_policySetCode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;phone_login&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;N_S_payerBankName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;XYZ Bank&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;N_S_idCardDistrict&quot;</span><span class="punctuation">:</span> <span class="string">&quot;未知&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;N_S_appName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;phone&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;N_S_idCardProvince&quot;</span><span class="punctuation">:</span> <span class="string">&quot;湖北省&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;N_S_ipCountry&quot;</span><span class="punctuation">:</span> <span class="string">&quot;中国&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;N_S_payeeName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;范明&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;N_S_payerName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;石娜&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;N_S_payerPhoneNumber&quot;</span><span class="punctuation">:</span> <span class="string">&quot;18123341918&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;N_S_payerRiskRating&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HIGH&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>以下仅是示例，表示一笔事件要记录当时处理流程，示例是线性简单的流程，但实际上怎么样，不知道呢🤷</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240828/image.4xuh7a3lgs.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>这样每次事件都具备了溯源的基础了，相当于对于当时场景拍了照片（快照嘛）。但是有了照片怎么找到照片里的人呢？🥺</p>
+<p>请安心，随着时间的变化，照片里人早已变了模样，只能试着找找喽。</p>
+<h1 id="版本控制">版本控制</h1>
+<p>这就要提到一种主表+历史表（或者讲快照表）的设计，这种设计特别适用于需要跟踪数据变更的场景。</p>
+<h3 id="主表-master-table">1. 主表 (Master Table)</h3>
+<p>主表存储的是最新的、有效的数据记录。通常情况下，主表中会包含业务关键字段以及一些基本的元数据信息（如创建时间、最后修改时间等）。</p>
+<p><strong>示例字段</strong>：</p>
+<ul>
+<li><code>id</code>：唯一标识</li>
+<li><code>name</code>：名称</li>
+<li><code>status</code>：状态</li>
+<li><code>created_at</code>：创建时间</li>
+<li><code>updated_at</code>：更新时间</li>
+</ul>
+<h3 id="历史表-history-table">2. 历史表 (History Table)</h3>
+<p>历史表则用来保存所有历史版本的数据记录。每当主表中的数据发生变化时，旧的数据会被复制到历史表中，以便长期保存。</p>
+<p><strong>示例字段</strong>：</p>
+<ul>
+<li><code>id</code>：唯一标识</li>
+<li><code>master_id</code>：与主表中的ID对应</li>
+<li><code>name</code>：名称</li>
+<li><code>status</code>：状态</li>
+<li><code>version</code>：版本号</li>
+<li><code>changed_by</code>：变更操作者</li>
+<li><code>created_at</code>：创建时间</li>
+<li><code>updated_at</code>：更新时间</li>
+</ul>
+<p>上面是大致的思路，具体怎么实现还是取决于具体的业务场景。</p>
+<p>在使用<code>LiteFlow</code>的情况下版本控制又要复杂一些，这里仅提供思路。</p>
+<p>关于风控系统中变化最多的规则配置，先来评估一下数据量。已知策略集-策略-规则，策略集对策略是<code>1-n</code>，策略对规则也是<code>1-n</code>，那么对应数据是<span
+class="math display">\[n^{2}\]</span>。如果<code>n</code>是<code>100</code>（<code>100</code>条规则也不是很夸张🙂‍↕️)，那么一个版本的规则库就有<code>1w</code>条数据，任意修改变更一次，一年变化<code>100</code>次也不多对吧🙄，那么历史表就要再✖️<code>100</code>，也就是<code>100w</code>，好像有点难顶了！</p>
+<p>怎么办呢？</p>
+<p>不想数据行过多的话就降维打击吧🤔</p>
+<p>主表可以设置为`1-n-<span
+class="math display">\[n^{2}\]</span>，但历史表可以简化一下，降一个纬度。</p>
+<p><code>history</code>历史表可以设置字段：</p>
+<ul>
+<li><code>id</code>：主键</li>
+<li><code>policy_set_id</code>：策略集id</li>
+<li><code>policy_set_name</code>：策略集名</li>
+<li><code>policy_id</code>：策略id</li>
+<li><code>policy_name</code>：策略名</li>
+<li><code>version</code>：版本号</li>
+<li><code>changed_by</code>：变更操作者</li>
+<li><code>created_at</code>：创建时间</li>
+<li><code>updated_at</code>：更新时间</li>
+</ul>
+<p>具体的策略对应的信息进行垂直拆分，</p>
+<p><code>history_ext</code>历史扩展表设置字段：</p>
+<ul>
+<li><code>id</code>：与历史表一致</li>
+<li><code>policy_info</code>：策略信息json字符串</li>
+<li><code>rule_info</code>：规则信息json字符串</li>
+<li>等</li>
+</ul>
+<p>这样的话其实就是将策略-规则通过<code>json</code>串压缩在一张表里了，不再是<code>1-n</code>了。</p>
+<p>这样的还有一点注意，<code>status</code>如何定义。</p>
+<ul>
+<li>如果主表表示最新数据，那么主表就是运行区，<code>status</code>应该是表示开关等，只有大的修改后才会进入历史表，历史表最新版本数据不包含主表数据，。</li>
+<li>如果历史表最新版本表示最新数据，那么历史表<code>status</code>就有<code>history</code>和<code>online</code>之分，主表就表示工作区，状态是等待提交、已提交，类似于<code>git</code>工作区。</li>
+</ul>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240828/image.9nzq5ovzx2.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<h1 id="写在最后">写在最后</h1>
+<p>拙作艰辛，字句心血，望诸君垂青，多予支持，不胜感激。</p>
+<hr />
+<p>个人博客：<a
+href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
+<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
+title="wnhyang">wnhyang</a></p>
+<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
+title="在线知识共享">在线知识共享</a></p>
+<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
+Overview</a></p>
+<p><img data-src="https://wnhyang.github.io/images/wechat_channel.webp" /></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.webp" alt="无奈何杨（wnhyang） 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.webp" alt="无奈何杨（wnhyang） 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>无奈何杨（wnhyang）
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://wnhyang.github.io/article/d39ab551.html" title="风控系统之事件溯源，决策流程记录与版本控制">https://wnhyang.github.io/article/d39ab551.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/images/wechat_channel.webp">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://www.zhihu.com/people/wnhyang">
+            <span class="icon">
+              <i class="fab fa-zhihu"></i>
+            </span>
+
+            <span class="label">Zhihu</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E9%A1%B9%E7%9B%AE/" rel="tag"># 项目</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/article/a730c43.html" rel="prev" title="商业软件许可证介绍｜简单原理探究">
+                  <i class="fa fa-chevron-left"></i> 商业软件许可证介绍｜简单原理探究
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">无奈何杨（wnhyang）</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">264k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">16:01</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/wnhyang" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.2.2/mermaid.min.js","integrity":"sha256-o5AUfgOkNFWuInA78GVCoVdGoN9eTaB3Hxu+ep7TTrY="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://wnhyang.github.io/article/d39ab551.html"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>
