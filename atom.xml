@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2024-08-29T05:55:44.407Z</updated>
+  <updated>2024-09-07T11:45:43.876Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,43 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>风控系统之指标回溯，历史数据重跑</title>
+    <link href="https://wnhyang.github.io/article/91b8f482.html"/>
+    <id>https://wnhyang.github.io/article/91b8f482.html</id>
+    <published>2024-09-07T07:49:34.000Z</published>
+    <updated>2024-09-07T11:45:43.876Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;个人博客：&lt;a
+href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
+title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
+title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
+Overview&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h1 id=&quot;回顾&quot;&gt;回顾&lt;/h1&gt;
+&lt;p&gt;默认你已经看过之前那篇&lt;a
+href=&quot;https://www.yuque.com/wnh/share/yqmgyyqs2e9ur1kg&quot;&gt;风控系统指标计算/特征提取分析与实现01，Redis、Zset、模版方法&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;其中已经介绍了如何利用&lt;code&gt;redis&lt;/code&gt;的&lt;code&gt;zset&lt;/code&gt;结构完成指标计算，为了方便这篇文章的介绍，还是在正式开始本篇之前回顾一下。&lt;/p&gt;
+&lt;h1 id=&quot;时间窗口&quot;&gt;时间窗口&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;zset&lt;/code&gt;是&lt;code&gt;redis&lt;/code&gt;中的一种数据结构，表示有序集合，正因此我们可以利用其做时间窗口来计算指标，&lt;code&gt;value&lt;/code&gt;为事件标识，&lt;code&gt;score&lt;/code&gt;为事件时间戳。&lt;/p&gt;
+&lt;p&gt;如下图表示次数、关联、求和类型各两条指标在时间窗口下随着时间分布，其中的黑点也就是事件，散列且线性的分布在时间窗口中。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>风控系统之事件溯源，决策流程记录与版本控制</title>
     <link href="https://wnhyang.github.io/article/d39ab551.html"/>
     <id>https://wnhyang.github.io/article/d39ab551.html</id>
     <published>2024-08-28T05:46:07.000Z</published>
-    <updated>2024-08-29T05:55:44.407Z</updated>
+    <updated>2024-08-29T05:56:06.452Z</updated>
     
     
     <summary type="html">&lt;p&gt;个人博客：&lt;a
@@ -880,49 +912,6 @@ href=&quot;https://www.yuque.com/wnh/share/yqmgyyqs2e9ur1kg&quot;&gt;风控系�
     
     
     <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>根据用户角色权限，渲染菜单的一个问题记录</title>
-    <link href="https://wnhyang.github.io/article/c3f9479b.html"/>
-    <id>https://wnhyang.github.io/article/c3f9479b.html</id>
-    <published>2024-04-02T10:18:35.000Z</published>
-    <updated>2024-04-03T13:02:56.897Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;个人博客：&lt;a
-href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
-title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
-title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
-Overview&lt;/a&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h1 id=&quot;背景&quot;&gt;背景&lt;/h1&gt;
-&lt;p&gt;之前一直讲过自己独立在做一个中后台管理系统，当然这个只是开始，未来会基于此开发其他项目，因为时间的原因，这项目算是搁置了一段时间，最近又重新拾取来完善。&lt;/p&gt;
-&lt;p&gt;项目链接如下&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/wnhyang/okay-boot&quot;&gt;GitHub -
-wnhyang/okay-boot&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/wnhyang/okay-vben-admin&quot;&gt;GitHub -
-wnhyang/okay-vben-admin&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;其前端采用&lt;code&gt;vben&lt;/code&gt;中后台开发框架，后端就是常用的&lt;code&gt;Spirng Boot&lt;/code&gt;那一套，用户角色菜单设计也是最常用&lt;code&gt;RABC&lt;/code&gt;的方案。&lt;/p&gt;
-&lt;h1 id=&quot;问题&quot;&gt;问题&lt;/h1&gt;
-&lt;p&gt;如下是菜单管理查询到的菜单列表，展示为树形结构。&lt;/p&gt;
-&lt;figure&gt;
-&lt;img data-src=&quot;https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240401/image.3d4kb6b684.webp&quot;
-alt=&quot;image&quot; /&gt;
-&lt;figcaption aria-hidden=&quot;true&quot;&gt;image&lt;/figcaption&gt;
-&lt;/figure&gt;
-&lt;p&gt;在给角色分配菜单权限时，使用的是一个&lt;code&gt;TreeSelect&lt;/code&gt;的组件，该组件提供了可多选的树形结构菜单，当然这个组件本身就有很多配置项，可以自定义很多内容。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
-    <category term="Vue" scheme="https://wnhyang.github.io/tags/Vue/"/>
     
   </entry>
   
