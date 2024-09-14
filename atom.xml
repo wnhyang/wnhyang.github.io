@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2024-09-07T11:45:43.876Z</updated>
+  <updated>2024-09-14T05:44:16.284Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Sa-Token的v1.39.0自定义鉴权注解怎么玩</title>
+    <link href="https://wnhyang.github.io/article/a1f688c9.html"/>
+    <id>https://wnhyang.github.io/article/a1f688c9.html</id>
+    <published>2024-09-12T11:39:42.000Z</published>
+    <updated>2024-09-14T05:44:16.284Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;个人博客：&lt;a
+href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;个人语雀：&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>风控系统之指标回溯，历史数据重跑</title>
     <link href="https://wnhyang.github.io/article/91b8f482.html"/>
     <id>https://wnhyang.github.io/article/91b8f482.html</id>
     <published>2024-09-07T07:49:34.000Z</published>
-    <updated>2024-09-07T11:45:43.876Z</updated>
+    <updated>2024-09-07T11:46:15.235Z</updated>
     
     
     <summary type="html">&lt;p&gt;个人博客：&lt;a
@@ -568,7 +593,7 @@ alt=&quot;image&quot; /&gt;
     <link href="https://wnhyang.github.io/article/40cfdfc4.html"/>
     <id>https://wnhyang.github.io/article/40cfdfc4.html</id>
     <published>2024-05-24T01:43:58.000Z</published>
-    <updated>2024-05-24T03:30:19.532Z</updated>
+    <updated>2024-09-14T09:02:40.092Z</updated>
     
     
     <summary type="html">&lt;p&gt;个人博客：&lt;a
@@ -869,49 +894,6 @@ alt=&quot;yuque_diagram&quot; /&gt;
     
     
     <category term="项目实战" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>风控系统之普通规则条件，使用LiteFlow实现</title>
-    <link href="https://wnhyang.github.io/article/16f5a6c3.html"/>
-    <id>https://wnhyang.github.io/article/16f5a6c3.html</id>
-    <published>2024-04-05T06:08:40.000Z</published>
-    <updated>2024-04-05T06:58:51.038Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;个人博客：&lt;a
-href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
-title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
-title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
-Overview&lt;/a&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h1 id=&quot;提要&quot;&gt;提要&lt;/h1&gt;
-&lt;p&gt;参考：&lt;a
-href=&quot;https://zhuanlan.zhihu.com/p/122996523&quot;&gt;智能风控筑基手册：全面了解风控决策引擎&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;前面有&lt;a
-href=&quot;https://www.yuque.com/wnh/share/oocg5a9umyk8oq9a&quot;&gt;可配置输入参数的接口如何设计&lt;/a&gt;和&lt;a
-href=&quot;https://www.yuque.com/wnh/share/yqmgyyqs2e9ur1kg&quot;&gt;风控系统指标计算/特征提取分析与实现01，Redis、Zset、模版方法&lt;/a&gt;两篇文章，分别提出：&lt;/p&gt;
-&lt;p&gt;1、风控系统服务动态选择，根据配置处理输入参数，转换为系统参数&lt;/p&gt;
-&lt;p&gt;2、使用&lt;code&gt;Redis&lt;/code&gt;的&lt;code&gt;zset&lt;/code&gt;结构完成简单的指标计算（特征提取）&lt;/p&gt;
-&lt;p&gt;他们都是一次风控决策流程的一部分，当然完成的风控系统，比较复杂，涉及的功能模块更多，以下仅仅是我的简单梳理。&lt;/p&gt;
-&lt;figure&gt;
-&lt;img data-src=&quot;https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240405/yuque_diagram.5tqsvlmy4l.webp&quot;
-alt=&quot;yuque_diagram&quot; /&gt;
-&lt;figcaption aria-hidden=&quot;true&quot;&gt;yuque_diagram&lt;/figcaption&gt;
-&lt;/figure&gt;
-&lt;p&gt;如上，服务选择和入参处理&lt;a
-href=&quot;https://www.yuque.com/wnh/share/oocg5a9umyk8oq9a&quot;&gt;可配置输入参数的接口如何设计&lt;/a&gt;是这篇文章讨论的内容，&lt;a
-href=&quot;https://www.yuque.com/wnh/share/yqmgyyqs2e9ur1kg&quot;&gt;风控系统指标计算/特征提取分析与实现01，Redis、Zset、模版方法&lt;/a&gt;讨论的是规则集内普通指标计算。&lt;/p&gt;
-&lt;p&gt;本篇文章讨论通过&lt;code&gt;LiteFlow&lt;/code&gt;这款规则引擎框架实现风控系统的普通规则条件。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
   </entry>
   
