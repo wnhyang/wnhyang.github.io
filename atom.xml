@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2024-10-17T13:23:01.924Z</updated>
+  <updated>2024-10-27T13:32:05.901Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,45 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>基于LiteFlow的风控系统开源了！指标策略规则</title>
+    <link href="https://wnhyang.github.io/article/dc2b584f.html"/>
+    <id>https://wnhyang.github.io/article/dc2b584f.html</id>
+    <published>2024-10-27T12:49:23.000Z</published>
+    <updated>2024-10-27T13:32:05.901Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;个人博客：&lt;a
+href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
+title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
+title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
+Overview&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;开篇先道个歉吧，因为大概会让很多人失望了，这次开源仅仅是开源，不是发版，也就是说开源并非非完全体，仅仅是开放源码。如果说1是发版，就算放低一些要求，现在只可能只算是0.2左右，还有很多很多很多事情要做。&lt;/p&gt;
+&lt;p&gt;开源地址：&lt;a href=&quot;https://github.com/wnhyang/coolGuard&quot;
+class=&quot;uri&quot;&gt;https://github.com/wnhyang/coolGuard&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;关注公众号，发送关键字“coolGuard”获取相关文档，但文档也还在编写中😂。&lt;/p&gt;
+&lt;p&gt;wnhyang邀请你加入语雀，注册后在会员信息页填写邀请码 WFC374 即可领取
+30 天语雀会员。前往注册：https://www.yuque.com/about&lt;/p&gt;
+&lt;h1 id=&quot;时间&quot;&gt;时间&lt;/h1&gt;
+&lt;p&gt;为什么要选择&lt;code&gt;10.24&lt;/code&gt;这个时间？因为&lt;code&gt;1024&lt;/code&gt;比较浪漫！&lt;/p&gt;
+&lt;p&gt;我编的，其实是因为开源&lt;code&gt;license&lt;/code&gt;要到期了😂&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>风控系统之规则重复触发</title>
     <link href="https://wnhyang.github.io/article/282abb1e.html"/>
     <id>https://wnhyang.github.io/article/282abb1e.html</id>
     <published>2024-10-17T13:06:12.000Z</published>
-    <updated>2024-10-17T13:23:01.924Z</updated>
+    <updated>2024-10-22T02:40:55.422Z</updated>
     
     
     <summary type="html">&lt;p&gt;个人博客：&lt;a
@@ -63,7 +97,7 @@ Overview&lt;/a&gt;&lt;/p&gt;
     <link href="https://wnhyang.github.io/article/c21b9117.html"/>
     <id>https://wnhyang.github.io/article/c21b9117.html</id>
     <published>2024-10-17T12:49:40.000Z</published>
-    <updated>2024-10-17T12:55:21.038Z</updated>
+    <updated>2024-10-17T13:23:29.805Z</updated>
     
     
     <summary type="html">&lt;p&gt;当你长大了，故乡只有冬，再无春夏秋！&lt;/p&gt;
@@ -857,44 +891,6 @@ alt=&quot;image&quot; /&gt;
     
     
     <category term="项目实战" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>风控系统之数据服务，名单、标签、IP、设备、地理信息、征信等</title>
-    <link href="https://wnhyang.github.io/article/837eb52d.html"/>
-    <id>https://wnhyang.github.io/article/837eb52d.html</id>
-    <published>2024-04-26T06:28:41.000Z</published>
-    <updated>2024-04-26T06:55:21.552Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;个人博客：&lt;a
-href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
-title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
-title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
-Overview&lt;/a&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h1 id=&quot;提要&quot;&gt;提要&lt;/h1&gt;
-&lt;p&gt;早些年，“马云提出，人类已经从&lt;code&gt;IT&lt;/code&gt;时代走向&lt;code&gt;DT&lt;/code&gt;时代，&lt;code&gt;IT&lt;/code&gt;时代是以自我控制、自我管理为主，而&lt;code&gt;DT&lt;/code&gt;(&lt;code&gt;Data technology&lt;/code&gt;)时代，它是以服务大众、激发生产力为主的技术。这两者之间看起来似乎是一种技术的差异，但实际上是思想观念层面的差异。”&lt;/p&gt;
-&lt;p&gt;在这样一个我们自己都不如大数据了解自己的时代，应该都深有体会吧。&lt;/p&gt;
-&lt;p&gt;那么，在风控系统中数据有哪些，他们在风控系统中如何应用？&lt;/p&gt;
-&lt;p&gt;参考：&lt;/p&gt;
-&lt;p&gt;&lt;a
-href=&quot;https://zhuanlan.zhihu.com/p/122996523&quot;&gt;智能风控筑基手册：全面了解风控决策引擎&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;以下两图都来源于此&lt;/p&gt;
-&lt;figure&gt;
-&lt;img data-src=&quot;https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240426/image.32hrhiowx2.webp&quot;
-alt=&quot;image&quot; /&gt;
-&lt;figcaption aria-hidden=&quot;true&quot;&gt;image&lt;/figcaption&gt;
-&lt;/figure&gt;</summary>
-    
-    
-    
-    
-    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
     
   </entry>
   

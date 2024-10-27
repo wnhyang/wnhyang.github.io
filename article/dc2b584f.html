@@ -25,26 +25,33 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="热爱、分享、生活">
-<meta property="og:type" content="website">
-<meta property="og:title" content="无奈何杨（wnhyang）">
-<meta property="og:url" content="https://wnhyang.github.io/tags/%E6%9D%82%E8%B0%88/page/2/index.html">
+    <meta name="description" content="个人博客：无奈何杨（wnhyang） 个人语雀：wnhyang 共享语雀：在线知识共享 Github：wnhyang - Overview  开篇先道个歉吧，因为大概会让很多人失望了，这次开源仅仅是开源，不是发版，也就是说开源并非非完全体，仅仅是开放源码。如果说1是发版，就算放低一些要求，现在只可能只算是0.2左右，还有很多很多很多事情要做。 开源地址：https:&#x2F;&#x2F;github.com&#x2F;wnh">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于LiteFlow的风控系统开源了！指标策略规则">
+<meta property="og:url" content="https://wnhyang.github.io/article/dc2b584f.html">
 <meta property="og:site_name" content="无奈何杨（wnhyang）">
-<meta property="og:description" content="热爱、分享、生活">
+<meta property="og:description" content="个人博客：无奈何杨（wnhyang） 个人语雀：wnhyang 共享语雀：在线知识共享 Github：wnhyang - Overview  开篇先道个歉吧，因为大概会让很多人失望了，这次开源仅仅是开源，不是发版，也就是说开源并非非完全体，仅仅是开放源码。如果说1是发版，就算放低一些要求，现在只可能只算是0.2左右，还有很多很多很多事情要做。 开源地址：https:&#x2F;&#x2F;github.com&#x2F;wnh">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20241027/image.4qrbq0twbk.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240201/1706756812773.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20241027/image.4jo3ukt4wf.webp">
+<meta property="og:image" content="https://wnhyang.github.io/images/wechat_channel.webp">
+<meta property="article:published_time" content="2024-10-27T12:49:23.000Z">
+<meta property="article:modified_time" content="2024-10-27T13:32:05.901Z">
 <meta property="article:author" content="无奈何杨（wnhyang）">
-<meta property="article:tag" content="blog">
+<meta property="article:tag" content="项目">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20241027/image.4qrbq0twbk.webp">
 
 
-<link rel="canonical" href="https://wnhyang.github.io/tags/%E6%9D%82%E8%B0%88/page/2/">
+<link rel="canonical" href="https://wnhyang.github.io/article/dc2b584f.html">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"tags/杂谈/page/2/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wnhyang.github.io/article/dc2b584f.html","path":"article/dc2b584f.html","title":"基于LiteFlow的风控系统开源了！指标策略规则"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>标签: 杂谈 | 无奈何杨（wnhyang）</title>
+<title>基于LiteFlow的风控系统开源了！指标策略规则 | 无奈何杨（wnhyang）</title>
   
 
 
@@ -134,7 +141,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -147,6 +154,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%B6%E9%97%B4"><span class="nav-number">1.</span> <span class="nav-text">时间</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E5%BA%93"><span class="nav-number">2.</span> <span class="nav-text">知识库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%AA%E6%9D%A5"><span class="nav-number">3.</span> <span class="nav-text">未来</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="nav-number">4.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -211,162 +219,300 @@
       </div>
     </div>
         <div class="pjax">
+        <div class="sidebar-inner sidebar-post-related">
+          <div class="animated">
+              <div class="links-of-blogroll-title"><i class="fa fa-signs-post fa-fw"></i>
+    相关文章
+  </div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/d8ad0228.html" rel="bookmark">
+        <time class="popular-posts-time">2024-05-24</time>
+        <br>
+      MybatisPlusGenerator交互式Web生成增删改查、导出导入代码
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/c43aa7dd.html" rel="bookmark">
+        <time class="popular-posts-time">2024-01-31</time>
+        <br>
+      免费申请JetBrains全家桶License，5种方式
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/830d76f.html" rel="bookmark">
+        <time class="popular-posts-time">2024-04-01</time>
+        <br>
+      筛选树形菜单时关联其父节点和子节点
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/c3f9479b.html" rel="bookmark">
+        <time class="popular-posts-time">2024-04-02</time>
+        <br>
+      根据用户角色权限，渲染菜单的一个问题记录
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/cf08a8bf.html" rel="bookmark">
+        <time class="popular-posts-time">2024-02-22</time>
+        <br>
+      Sa-Token事件发布，观察者模式
+      </a>
+    </li>
+  </ul>
+
+          </div>
+        </div>
         </div>
   </aside>
 
 
     </div>
 
-    <div class="main-inner tag posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
+
+
+<div class="post-block">
   
   
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <h1 class="collection-header">杂谈
-          <small>标签</small>
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/dc2b584f.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+      <meta itemprop="description" content="热爱、分享、生活">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="基于LiteFlow的风控系统开源了！指标策略规则 | 无奈何杨（wnhyang）">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          基于LiteFlow的风控系统开源了！指标策略规则
         </h1>
-      </div>
 
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
       
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
+
+      <time title="创建时间：2024-10-27 20:49:23 / 修改时间：21:32:05" itemprop="dateCreated datePublished" datetime="2024-10-27T20:49:23+08:00">2024-10-27</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>926</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>个人博客：<a
+href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
+<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
+title="wnhyang">wnhyang</a></p>
+<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
+title="在线知识共享">在线知识共享</a></p>
+<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
+Overview</a></p>
+<hr />
+<p>开篇先道个歉吧，因为大概会让很多人失望了，这次开源仅仅是开源，不是发版，也就是说开源并非非完全体，仅仅是开放源码。如果说1是发版，就算放低一些要求，现在只可能只算是0.2左右，还有很多很多很多事情要做。</p>
+<p>开源地址：<a target="_blank" rel="noopener" href="https://github.com/wnhyang/coolGuard"
+class="uri">https://github.com/wnhyang/coolGuard</a></p>
+<p>关注公众号，发送关键字“coolGuard”获取相关文档，但文档也还在编写中😂。</p>
+<p>wnhyang邀请你加入语雀，注册后在会员信息页填写邀请码 WFC374 即可领取
+30 天语雀会员。前往注册：https://www.yuque.com/about</p>
+<h1 id="时间">时间</h1>
+<p>为什么要选择<code>10.24</code>这个时间？因为<code>1024</code>比较浪漫！</p>
+<p>我编的，其实是因为开源<code>license</code>要到期了😂</p>
+<span id="more"></span>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20241027/image.4qrbq0twbk.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>按照<code>JetBrains</code>对于开源项目的要求，从到期日2025年1月29日反推，需要保证前三个月有活跃的<code>commit</code>，所以从时间上算应该至少保证10月底开源并积极<code>commit</code>，再往前推一推正好<code>1024</code>是个不错的日子。之前一直不开源除了最重要的拿不出手外，其次就是对自己的和解，我不开源就意味我可以假装没在做，没在做表示不会考虑结果，无论成功失败。如果开源了，那么就要考虑挺多事情了，当然如果只是为了开源而开源，写个<code>demo</code>也不是没有问题，但是人总是有向上的，不服输的的吧！要做就要做到什么程度总要的吧，所以开源对我来讲还是有不少的压力，而且我现在也还没把握做到满意的程度，中途说不定就放弃了。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240201/1706756812773.webp"
+alt="1706756812773" />
+<figcaption aria-hidden="true">1706756812773</figcaption>
+</figure>
+<h1 id="知识库">知识库</h1>
+<p>之前已经陆续发了很多围绕着风控系统的建设的相关文章，但是回头来看其实是相当零散的，毕竟都是进行时，中途想法💡一闪可能就诞生了一些新的东西，也有可能推翻已有的东西，都是有可能的。</p>
+<p>因此，之后所有的关于此系统的文档都会系统化的整理并发布在如上公众号的回复消息的在线文档中，希望能够一起交流，共同进步。同时，零散的文章也是会发，不会停的。</p>
+<p>目前还未发版，所以文档也不存在版本一说，全部都是<code>snapshot</code>，至于之后如何计划，尽请期待吧。</p>
+<p>如果你问我它的价值，我很难回答，只能走一步看一步了。</p>
+<h1 id="未来">未来</h1>
+<p>未来计划</p>
+<p>1、首先肯定要完善项目，至少能用吧。</p>
+<p>下面是之前草草编辑的项目<code>README</code>，只是写了想到的一部分，所以之前也一直在强调还有很对很多很多事情要做。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20241027/image.4jo3ukt4wf.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>2、首先能达成第一步已经是相当不容易了，第二步如何做？还有很多疑问</p>
+<p>希望能在做了一些有价值的东西后能利用这些开启以下篇章</p>
+<ul>
+<li>广告，吃饭不寒颤，但放心，现在根本没有🥹</li>
+<li>增值服务，如部分功能（es设计存储）需要vip，知识付费</li>
+</ul>
+<p>3、算是终极目标，也是幻想时刻</p>
+<p>打造一系列产品，卖，甚至给别人交税</p>
+<h1 id="写在最后">写在最后</h1>
+<p>拙作艰辛，字句心血，望诸君垂青，多予支持，不胜感激。</p>
+<hr />
+<p>个人博客：<a
+href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
+<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
+title="wnhyang">wnhyang</a></p>
+<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
+title="在线知识共享">在线知识共享</a></p>
+<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
+Overview</a></p>
+<p><img data-src="https://wnhyang.github.io/images/wechat_channel.webp" /></p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-03-28T14:08:07+08:00"
-              content="2022-03-28">
-          03-28
-        </time>
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.webp" alt="无奈何杨（wnhyang） 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.webp" alt="无奈何杨（wnhyang） 支付宝">
+        <span>支付宝</span>
       </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/article/d89980ea.html" itemprop="url">
-            <span itemprop="name">职业教育什么时候能被接受？</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-03-26T16:11:21+08:00"
-              content="2022-03-26">
-          03-26
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/article/f7365684.html" itemprop="url">
-            <span itemprop="name">所有人都在教你怎么成功，但没有人告诉你怎么接受失败</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-02-03T20:16:51+08:00"
-              content="2022-02-03">
-          02-03
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/article/da855e87.html" itemprop="url">
-            <span itemprop="name">我们会变得越来越孤独吗</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-01-22T20:38:00+08:00"
-              content="2022-01-22">
-          01-22
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/article/bc5ba5ee.html" itemprop="url">
-            <span itemprop="name">我最想拥有的超能力</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-    <div class="collection-year">
-      <span class="collection-header">2020</span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2020-08-17T13:06:57+08:00"
-              content="2020-08-17">
-          08-17
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/article/e6a33677.html" itemprop="url">
-            <span itemprop="name">欲加之罪何患无辞</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2020-08-12T18:48:33+08:00"
-              content="2020-08-12">
-          08-12
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/article/6433d656.html" itemprop="url">
-            <span itemprop="name">小米10周年</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-    </div>
   </div>
-  
-  
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/tags/%E6%9D%82%E8%B0%88/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/tags/%E6%9D%82%E8%B0%88/">1</a><span class="page-number current">2</span>
-  </nav>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>无奈何杨（wnhyang）
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://wnhyang.github.io/article/dc2b584f.html" title="基于LiteFlow的风控系统开源了！指标策略规则">https://wnhyang.github.io/article/dc2b584f.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/images/wechat_channel.webp">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://www.zhihu.com/people/wnhyang">
+            <span class="icon">
+              <i class="fab fa-zhihu"></i>
+            </span>
+
+            <span class="label">Zhihu</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E9%A1%B9%E7%9B%AE/" rel="tag"># 项目</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/article/282abb1e.html" rel="prev" title="风控系统之规则重复触发">
+                  <i class="fa fa-chevron-left"></i> 风控系统之规则重复触发
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
 
 </div>
   </main>
@@ -471,7 +617,7 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://wnhyang.github.io/tags/%E6%9D%82%E8%B0%88/page/2/"}</script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://wnhyang.github.io/article/dc2b584f.html"}</script>
   <script src="/js/third-party/quicklink.js"></script>
 
 </body>
