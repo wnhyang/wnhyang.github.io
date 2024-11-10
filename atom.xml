@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2024-10-27T13:32:05.901Z</updated>
+  <updated>2024-11-10T12:52:23.694Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,55 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>GeoHash处理经纬度，降维，空间填充曲线</title>
+    <link href="https://wnhyang.github.io/article/3bc09f34.html"/>
+    <id>https://wnhyang.github.io/article/3bc09f34.html</id>
+    <published>2024-11-10T02:31:46.000Z</published>
+    <updated>2024-11-10T12:52:23.694Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;个人博客：&lt;a
+href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
+title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
+title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
+Overview&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h1 id=&quot;参考&quot;&gt;参考&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://segmentfault.com/a/1190000042971576&quot;
+class=&quot;uri&quot;&gt;https://segmentfault.com/a/1190000042971576&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a
+href=&quot;https://blog.csdn.net/qq_43777978/article/details/116426235&quot;&gt;GeoHash原理以及代码实现_geohash编码-CSDN博客&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a
+href=&quot;https://blog.csdn.net/qq_43777978/article/details/116170385&quot;&gt;GeoHash代码实现--java_geohash
+java代码示例-CSDN博客&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a
+href=&quot;https://www.lddgo.net/convert/distance&quot;&gt;在线经纬度距离计算&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://geohash.co/&quot; class=&quot;uri&quot;&gt;http://geohash.co/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://geohash.jorren.nl/&quot;
+class=&quot;uri&quot;&gt;https://geohash.jorren.nl/&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;简介&quot;&gt;简介&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;Geohash&lt;/code&gt;是一种用于标识地理位置的编码方法。它将经纬度坐标转换为一个简短的字符串，这个字符串可以用来表示地球上的任意位置。&lt;code&gt;Geohash&lt;/code&gt;的特点是，编码的长度越长，表示的位置就越精确；反之，编码越短，则表示的位置范围就越大。&lt;/p&gt;
+&lt;p&gt;接下来我们来一起探究一下这是个什么东西，有什么用？&lt;/p&gt;
+&lt;p&gt;参考的文章讲的也是非常不错，这里就啰嗦整理一下，并引申一下了。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="数据结构&amp;算法" scheme="https://wnhyang.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>基于LiteFlow的风控系统开源了！指标策略规则</title>
     <link href="https://wnhyang.github.io/article/dc2b584f.html"/>
     <id>https://wnhyang.github.io/article/dc2b584f.html</id>
     <published>2024-10-27T12:49:23.000Z</published>
-    <updated>2024-10-27T13:32:05.901Z</updated>
+    <updated>2024-10-27T13:32:38.463Z</updated>
     
     
     <summary type="html">&lt;p&gt;个人博客：&lt;a
@@ -856,36 +900,6 @@ href=&quot;https://www.yuque.com/wnh/share/vw03pm5x88atva56&quot;&gt;身份证/�
 &lt;p&gt;历程，1、为了简单方便，直接寻找性能和准确性都不错的&lt;code&gt;api&lt;/code&gt;调用；2、发现这些&lt;code&gt;api&lt;/code&gt;要么有限制，要么要认证，数据还不是很满意，而且性能不能达到我的要求（&lt;code&gt;30ms&lt;/code&gt;以内）；3、发现一些免费有趣的&lt;code&gt;api&lt;/code&gt;，开始跑偏，玩了起来；4、发现&lt;a
 href=&quot;https://gitee.com/lionsoul/ip2region&quot;&gt;狮子的魂/ip2region&lt;/a&gt;这个项目，其提供了&lt;code&gt;IP&lt;/code&gt;数据存储和检索的离线解析方案，由此想尝试自己的离线&lt;code&gt;IP&lt;/code&gt;解析；5、数据从哪里搞呢，本身&lt;a
 href=&quot;https://gitee.com/lionsoul/ip2region&quot;&gt;狮子的魂/ip2region&lt;/a&gt;项目中已经提供了一份数据，但数据比较简单，不大够用，其实项目已经提供了数据修改更新的方法，但认为手动补充有比较麻烦，所以又琢磨起数据源。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="项目实战" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>身份证/手机号解析服务</title>
-    <link href="https://wnhyang.github.io/article/fd200765.html"/>
-    <id>https://wnhyang.github.io/article/fd200765.html</id>
-    <published>2024-04-26T06:34:21.000Z</published>
-    <updated>2024-04-26T06:55:21.550Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;个人博客：&lt;a
-href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
-title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
-title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
-Overview&lt;/a&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;figure&gt;
-&lt;img data-src=&quot;https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240426/image.7sn0fxkiyg.webp&quot;
-alt=&quot;image&quot; /&gt;
-&lt;figcaption aria-hidden=&quot;true&quot;&gt;image&lt;/figcaption&gt;
-&lt;/figure&gt;</summary>
     
     
     

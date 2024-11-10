@@ -96,7 +96,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">47</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">207</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">47</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">208</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -161,7 +161,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">207</span>
+          <span class="site-state-item-count">208</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -227,6 +227,123 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/3bc09f34.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+      <meta itemprop="description" content="热爱、分享、生活">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/article/3bc09f34.html" class="post-title-link" itemprop="url">GeoHash处理经纬度，降维，空间填充曲线</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-11-10 10:31:46 / 修改时间：20:52:23" itemprop="dateCreated datePublished" datetime="2024-11-10T10:31:46+08:00">2024-11-10</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>8 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>个人博客：<a
+href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
+<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
+title="wnhyang">wnhyang</a></p>
+<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
+title="在线知识共享">在线知识共享</a></p>
+<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
+Overview</a></p>
+<hr />
+<h1 id="参考">参考</h1>
+<p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000042971576"
+class="uri">https://segmentfault.com/a/1190000042971576</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43777978/article/details/116426235">GeoHash原理以及代码实现_geohash编码-CSDN博客</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43777978/article/details/116170385">GeoHash代码实现--java_geohash
+java代码示例-CSDN博客</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://www.lddgo.net/convert/distance">在线经纬度距离计算</a></p>
+<p><a target="_blank" rel="noopener" href="http://geohash.co/" class="uri">http://geohash.co/</a></p>
+<p><a target="_blank" rel="noopener" href="https://geohash.jorren.nl/"
+class="uri">https://geohash.jorren.nl/</a></p>
+<h1 id="简介">简介</h1>
+<p><code>Geohash</code>是一种用于标识地理位置的编码方法。它将经纬度坐标转换为一个简短的字符串，这个字符串可以用来表示地球上的任意位置。<code>Geohash</code>的特点是，编码的长度越长，表示的位置就越精确；反之，编码越短，则表示的位置范围就越大。</p>
+<p>接下来我们来一起探究一下这是个什么东西，有什么用？</p>
+<p>参考的文章讲的也是非常不错，这里就啰嗦整理一下，并引申一下了。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/article/3bc09f34.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/dc2b584f.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -257,7 +374,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2024-10-27 20:49:23 / 修改时间：21:32:05" itemprop="dateCreated datePublished" datetime="2024-10-27T20:49:23+08:00">2024-10-27</time>
+      <time title="创建时间：2024-10-27 20:49:23 / 修改时间：21:32:38" itemprop="dateCreated datePublished" datetime="2024-10-27T20:49:23+08:00">2024-10-27</time>
     </span>
 
   
@@ -1269,148 +1386,6 @@ alt="image" />
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/3a2acd9b.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-      <meta itemprop="description" content="热爱、分享、生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/3a2acd9b.html" class="post-title-link" itemprop="url">记一次IP数据处理过程，文本（CSV文件）处理，IP解析</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-07-14 21:29:00" itemprop="dateCreated datePublished" datetime="2024-07-14T21:29:00+08:00">2024-07-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-07-15 10:13:29" itemprop="dateModified" datetime="2024-07-15T10:13:29+08:00">2024-07-15</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.3k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>5 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>个人博客：<a
-href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
-<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
-title="wnhyang">wnhyang</a></p>
-<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
-title="在线知识共享">在线知识共享</a></p>
-<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
-Overview</a></p>
-<hr />
-<h1 id="起因">起因</h1>
-<p>突然接收到<code>XX</code>给的任务，要将一批<code>IP</code>数据处理一下，将<code>IP</code>对应的省市区解析出来，很急！</p>
-<p>已知我这边有一个<code>IP</code>解析接口，提供了<code>IP</code>解析到国家省市区<code>ISP</code>等的能力，而且支持批量查询，但问题是仅仅有接口的形式，没有管理应用将接口利用起来，要使用的恐怕也只能是发接口，而且<code>XX</code>提供的数据有极大可能是<code>Excel</code>格式。另外<code>XX</code>没有说明解析后的数据怎么给出来，如果是<code>Excel</code>最好就是将数据放在一行标记为省市区就好。这么看来只能是临时开发来完成了，经过分析此时已经有了大致的思路了。</p>
-<p>果然！拿到的数据是<code>xls</code>格式，大致如下。共有几百条。</p>
-<table>
-<thead>
-<tr class="header">
-<th>a</th>
-<th>b</th>
-<th>c</th>
-<th>ip</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>123</td>
-<td>234</td>
-<td>345</td>
-<td>127.0.0.1</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>那就动手开发吧！从接受到任务到结束大概用了<code>40</code>分钟，这不是炫耀什么，毕竟使用AI可能会更快更好，但这毕竟是临时做的，完成的也还可以，我还挺欣慰的。</p>
-<h1 id="思路">思路</h1>
-<p>任何临时紧急的任务，第一目标都应该在时间要求内是完成它，所以总体思路就是先完成后优化。</p>
-<p>其实做起来也很简单</p>
-<p>1、整理原始数据，也可以叫做数据清理。</p>
-<p>2、读IP数据</p>
-<p>3、整合请求，发接口进行IP解析</p>
-<p>4、解析数据补充在原数据上</p>
-<p>5、输出</p>
-<p>这里提供了示例数据，IP数据来源于<a
-target="_blank" rel="noopener" href="https://www.json.cn/network/iprand/">在线ip地址随机生成器 -
-JSON中文网</a>，其他数据都是随机生成，一共270条。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/article/3a2acd9b.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1436,14 +1411,14 @@ JSON中文网</a>，其他数据都是随机生成，一共270条。</p>
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">272k</span>
+    <span title="站点总字数">275k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">16:31</span>
+    <span title="站点阅读时长">16:38</span>
   </span>
 </div>
 <div class="busuanzi-count">
