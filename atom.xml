@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2024-11-10T12:52:23.694Z</updated>
+  <updated>2024-11-24T14:10:19.112Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,55 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>基于LiteFlow的风控系统指标版本控制</title>
+    <link href="https://wnhyang.github.io/article/779e706d.html"/>
+    <id>https://wnhyang.github.io/article/779e706d.html</id>
+    <published>2024-11-22T14:01:40.000Z</published>
+    <updated>2024-11-24T14:10:19.112Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;个人博客：&lt;a
+href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
+title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
+title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
+Overview&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h1 id=&quot;更新日志&quot;&gt;更新日志&lt;/h1&gt;
+&lt;p&gt;最近关于&lt;a href=&quot;https://github.com/wnhyang/coolGuard&quot;
+class=&quot;uri&quot;&gt;https://github.com/wnhyang/coolGuard&lt;/a&gt;此项目更新了如下内容：&lt;a
+href=&quot;https://github.com/wnhyang/coolGuard/commits/main/&quot;
+class=&quot;uri&quot;&gt;https://github.com/wnhyang/coolGuard/commits/main/&lt;/a&gt;&lt;/p&gt;
+&lt;figure&gt;
+&lt;img data-src=&quot;https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20241122/image.8s3c5m5y64.webp&quot;
+alt=&quot;image&quot; /&gt;
+&lt;figcaption aria-hidden=&quot;true&quot;&gt;image&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;继前文GeoHash后项目又有了一些更新主要有：&lt;/p&gt;
+&lt;p&gt;1、【一般】增加了新的指标类型，历史取值。&lt;/p&gt;
+&lt;p&gt;2、【重要】更改表的关联关系，使用唯一索引而不是自增id。&lt;/p&gt;
+&lt;p&gt;这里很有必要展开一下，之前的所有表关系都是通过数据库自增id关联的，这有很大的弊端，尤其影响之后的计划（如：策略/规则/指标等导入导出，chain版本控制等），所以这个变化很有必要。&lt;/p&gt;
+&lt;p&gt;3、【一般】增加缓存删除，增加了一些场景的缓存删除，保障缓存-数据库一致性。&lt;/p&gt;
+&lt;p&gt;4、【一般】增加基础参数查询，主要包括一些常量枚举的查询，如指标类型、字段类型、逻辑操作等等。&lt;/p&gt;
+&lt;p&gt;5、【一般】完善注解校验。&lt;/p&gt;
+&lt;p&gt;6、【重要】增加指标版本控制。&lt;/p&gt;
+&lt;p&gt;如题，本篇文章将围绕指标版本控制详细展开，匆匆做完，就来分享，如有问题请指正！&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>GeoHash处理经纬度，降维，空间填充曲线</title>
     <link href="https://wnhyang.github.io/article/3bc09f34.html"/>
     <id>https://wnhyang.github.io/article/3bc09f34.html</id>
     <published>2024-11-10T02:31:46.000Z</published>
-    <updated>2024-11-10T12:52:23.694Z</updated>
+    <updated>2024-11-10T12:52:53.488Z</updated>
     
     
     <summary type="html">&lt;p&gt;个人博客：&lt;a
@@ -863,43 +907,6 @@ href=&quot;https://github.com/modood/Administrative-divisions-of-China&quot;&gt;
 -
 modood/Administrative-divisions-of-China&lt;/a&gt;可以扩展到乡级（乡镇街道）、
 村级（村委会居委会），那么数据量会大一些，可以将数据存储在数据库中使用。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="项目实战" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>IP/GPS解析服务，ip2region，逆地理编码</title>
-    <link href="https://wnhyang.github.io/article/4a83d331.html"/>
-    <id>https://wnhyang.github.io/article/4a83d331.html</id>
-    <published>2024-04-29T06:29:15.000Z</published>
-    <updated>2024-05-05T04:54:40.497Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;个人博客：&lt;a
-href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
-title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
-title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
-Overview&lt;/a&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h1 id=&quot;简介&quot;&gt;简介&lt;/h1&gt;
-&lt;p&gt;放在前面，怕有些人看不下去错过，整合了身份证/手机号/&lt;code&gt;IP&lt;/code&gt;/&lt;code&gt;GPS&lt;/code&gt;解析的工具将在下一篇文章推出，并将全部数据和代码放在&lt;code&gt;Github&lt;/code&gt;和&lt;code&gt;Gitee&lt;/code&gt;上。&lt;/p&gt;
-&lt;p&gt;接着前一篇的的&lt;a
-href=&quot;https://www.yuque.com/wnh/share/vw03pm5x88atva56&quot;&gt;身份证/手机号解析服务&lt;/a&gt;，其四者难度对比是这样的，身份证
-&amp;lt; 手机号 &amp;lt; &lt;code&gt;IP&lt;/code&gt; &amp;lt;
-&lt;code&gt;GPS&lt;/code&gt;。也比较好理解，毕竟是从点到线再到面，难度可想而知。&lt;code&gt;GPS&lt;/code&gt;用词可能不当，我还是解释一下，这里的意思是指通过经纬度解析到行政区划/地理信息，也可以讲是逆地理编码。&lt;/p&gt;
-&lt;p&gt;身份证和手机号都相对简单，数据本身不大，而且规则也比较清晰，所以比较容易。相比之下&lt;code&gt;IP&lt;/code&gt;和&lt;code&gt;GPS&lt;/code&gt;的难度就大了太多了，&lt;code&gt;IP&lt;/code&gt;从&lt;code&gt;v4&lt;/code&gt;到&lt;code&gt;v6&lt;/code&gt;已经是数据量的极大扩展，而且这些数据很难获取，对于&lt;code&gt;ISP&lt;/code&gt;拥有的&lt;code&gt;IP&lt;/code&gt;范围匹配又是很大的难题，是需要算法设计的。好像我一直都是这样，简单的事做着没意思，困难的事情又不知道怎么做，还没开始就准备放弃了。就跟打游戏一样，碾压式的赢没有快感，被碾压的输又没有乐趣，只有均式相持拼尽全力的赢才是畅快。回到正题，身份证和手机都是有规律的，不管是数据的管理和搜素算法都可以自己做。而对于&lt;code&gt;IP&lt;/code&gt;，首先数据量就比较大，数据存储、读取、检索都是考虑的点。这还只是谈到了&lt;code&gt;IP&lt;/code&gt;解析，&lt;code&gt;GPS&lt;/code&gt;的解析就更复杂了。把&lt;code&gt;IP&lt;/code&gt;数据比做标尺上的刻度的话，&lt;code&gt;GPS&lt;/code&gt;数据就是组成标尺分子原子，只是个小小比喻不用在意😂毕竟数据量从有限的线升级为无限的面，而且经纬度是针对的是地球这个不规则的球体，人类又将不规则的大陆海洋划分为更多密密麻麻的不规则多边形，所有的不规则多边形又是由众多经纬度的点连线划分出来的，想想就知道有多复杂了。&lt;/p&gt;
-&lt;h1 id=&quot;ip解析&quot;&gt;IP解析&lt;/h1&gt;
-&lt;p&gt;首先就要谈谈这个IP解析，真的搞的我头都要炸了。&lt;/p&gt;
-&lt;p&gt;历程，1、为了简单方便，直接寻找性能和准确性都不错的&lt;code&gt;api&lt;/code&gt;调用；2、发现这些&lt;code&gt;api&lt;/code&gt;要么有限制，要么要认证，数据还不是很满意，而且性能不能达到我的要求（&lt;code&gt;30ms&lt;/code&gt;以内）；3、发现一些免费有趣的&lt;code&gt;api&lt;/code&gt;，开始跑偏，玩了起来；4、发现&lt;a
-href=&quot;https://gitee.com/lionsoul/ip2region&quot;&gt;狮子的魂/ip2region&lt;/a&gt;这个项目，其提供了&lt;code&gt;IP&lt;/code&gt;数据存储和检索的离线解析方案，由此想尝试自己的离线&lt;code&gt;IP&lt;/code&gt;解析；5、数据从哪里搞呢，本身&lt;a
-href=&quot;https://gitee.com/lionsoul/ip2region&quot;&gt;狮子的魂/ip2region&lt;/a&gt;项目中已经提供了一份数据，但数据比较简单，不大够用，其实项目已经提供了数据修改更新的方法，但认为手动补充有比较麻烦，所以又琢磨起数据源。&lt;/p&gt;</summary>
     
     
     
