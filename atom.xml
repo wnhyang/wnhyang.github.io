@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2024-11-24T14:10:19.112Z</updated>
+  <updated>2024-12-01T13:41:47.701Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,58 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>MybatisPlus字段类型处理器TypeHandler</title>
+    <link href="https://wnhyang.github.io/article/697029c0.html"/>
+    <id>https://wnhyang.github.io/article/697029c0.html</id>
+    <published>2024-12-01T12:05:59.000Z</published>
+    <updated>2024-12-01T13:41:47.701Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;个人博客：&lt;a
+href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
+title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
+title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
+Overview&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;figure&gt;
+&lt;img data-src=&quot;https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20241201/image.8dwwrhquoi.webp&quot;
+alt=&quot;image&quot; /&gt;
+&lt;figcaption aria-hidden=&quot;true&quot;&gt;image&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;h1 id=&quot;简介&quot;&gt;简介&lt;/h1&gt;
+&lt;p&gt;官网：&lt;a
+href=&quot;https://baomidou.com/guides/type-handler/&quot;&gt;字段类型处理器&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;在 MyBatis 中，类型处理器（TypeHandler）扮演着 JavaType 与 JdbcType
+之间转换的桥梁角色。它们用于在执行 SQL 语句时，将 Java 对象的值设置到
+PreparedStatement 中，或者从 ResultSet 或 CallableStatement
+中取出值。&lt;/p&gt;
+&lt;p&gt;具体使用参考官网即可，不再过多&lt;code&gt;copy&lt;/code&gt;了。官方示例工程：👉
+&lt;a
+href=&quot;https://github.com/baomidou/mybatis-plus-samples/tree/master/mybatis-plus-sample-jsonb&quot;&gt;mybatis-plus-sample-jsonb&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;coolguard&quot;&gt;coolGuard&lt;/h1&gt;
+&lt;p&gt;这篇文章的来由还是要提到此项目：&lt;a
+href=&quot;https://github.com/wnhyang/coolGuard/&quot;
+class=&quot;uri&quot;&gt;https://github.com/wnhyang/coolGuard/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;最近在做规则版本控制过程中使用了到了“&lt;code&gt;MybatisPlus&lt;/code&gt;字段类型处理器”，感觉挺好用的。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+    <category term="Mybatis/Mybatis-plus" scheme="https://wnhyang.github.io/tags/Mybatis-Mybatis-plus/"/>
+    
+  </entry>
+  
+  <entry>
     <title>基于LiteFlow的风控系统指标版本控制</title>
     <link href="https://wnhyang.github.io/article/779e706d.html"/>
     <id>https://wnhyang.github.io/article/779e706d.html</id>
     <published>2024-11-22T14:01:40.000Z</published>
-    <updated>2024-11-24T14:10:19.112Z</updated>
+    <updated>2024-11-24T14:10:44.144Z</updated>
     
     
     <summary type="html">&lt;p&gt;个人博客：&lt;a
@@ -824,94 +871,6 @@ Overview&lt;/a&gt;&lt;/p&gt;
     <category term="Mybatis/Mybatis-plus" scheme="https://wnhyang.github.io/tags/Mybatis-Mybatis-plus/"/>
     
     <category term="数据库" scheme="https://wnhyang.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>geoHelper</title>
-    <link href="https://wnhyang.github.io/article/aa7b535.html"/>
-    <id>https://wnhyang.github.io/article/aa7b535.html</id>
-    <published>2024-04-30T07:11:46.000Z</published>
-    <updated>2024-05-06T02:39:13.083Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;个人博客：&lt;a
-href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
-title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
-title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
-Overview&lt;/a&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h1 id=&quot;简介&quot;&gt;简介&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/wnhyang/geoHelper&quot;&gt;GitHub -
-wnhyang/geoHelper&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a
-href=&quot;https://gitee.com/wnhyang/geoHelper&quot;&gt;无奈何杨/geoHelper&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;geoHelper&lt;/code&gt;整合了身份证、手机号、&lt;code&gt;IP&lt;/code&gt;、&lt;code&gt;GPS&lt;/code&gt;解析方法，基于内存提供离线高性能解析服务。&lt;/p&gt;
-&lt;p&gt;&lt;a
-href=&quot;https://www.yuque.com/wnh/share/vw03pm5x88atva56&quot;&gt;身份证/手机号解析服务&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a
-href=&quot;https://www.yuque.com/wnh/share/yusumn415tgh6uwn&quot;&gt;IP/GPS解析服务，ip2region，逆地理编码&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&quot;数据来源&quot;&gt;数据来源&lt;/h1&gt;
-&lt;table&gt;
-&lt;colgroup&gt;
-&lt;col style=&quot;width: 11%&quot; /&gt;
-&lt;col style=&quot;width: 88%&quot; /&gt;
-&lt;/colgroup&gt;
-&lt;thead&gt;
-&lt;tr class=&quot;header&quot;&gt;
-&lt;th&gt;数据&lt;/th&gt;
-&lt;th&gt;来源&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr class=&quot;odd&quot;&gt;
-&lt;td&gt;行政区划&lt;/td&gt;
-&lt;td&gt;&lt;a
-href=&quot;https://github.com/modood/Administrative-divisions-of-China&quot;&gt;GitHub
-- modood/Administrative-divisions-of-China&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&quot;even&quot;&gt;
-&lt;td&gt;手机号&lt;/td&gt;
-&lt;td&gt;&lt;a href=&quot;https://github.com/EeeMt/phone-number-geo&quot;&gt;GitHub -
-EeeMt/phone-number-geo&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&quot;odd&quot;&gt;
-&lt;td&gt;IP&lt;/td&gt;
-&lt;td&gt;&lt;a
-href=&quot;https://gitee.com/lionsoul/ip2region&quot;&gt;狮子的魂/ip2region&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&quot;even&quot;&gt;
-&lt;td&gt;geo&lt;/td&gt;
-&lt;td&gt;&lt;a
-href=&quot;https://www.cnblogs.com/henuyuxiang/p/12981201.html&quot;&gt;中国城市坐标（最全最完整）&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h1 id=&quot;身份证解析&quot;&gt;身份证解析&lt;/h1&gt;
-&lt;p&gt;适用国内身份证解析，作为&lt;code&gt;Hutool.IdcardUtil&lt;/code&gt;的扩展，加入&lt;code&gt;AdocUtil&lt;/code&gt;，意为中国行政区划工具。&lt;/p&gt;
-&lt;p&gt;方法包括：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;getProvince&lt;/code&gt; 获取省份&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;getProvinceName&lt;/code&gt; 获取省份名称&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;getCity&lt;/code&gt; 获取城市&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;getCityName&lt;/code&gt; 获取城市名称&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;getArea&lt;/code&gt; 获取区县&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;getAreaName&lt;/code&gt; 获取区县名称&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;getPca&lt;/code&gt; 获取省市区&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;当然基于&lt;a
-href=&quot;https://github.com/modood/Administrative-divisions-of-China&quot;&gt;GitHub
--
-modood/Administrative-divisions-of-China&lt;/a&gt;可以扩展到乡级（乡镇街道）、
-村级（村委会居委会），那么数据量会大一些，可以将数据存储在数据库中使用。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="项目实战" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/"/>
     
   </entry>
   
