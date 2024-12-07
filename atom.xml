@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2024-12-01T13:41:47.701Z</updated>
+  <updated>2024-12-07T13:29:53.581Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,75 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>规则引擎可以应用于哪些系统，用户画像、触达、风控、推荐、监控...</title>
+    <link href="https://wnhyang.github.io/article/df64c6f6.html"/>
+    <id>https://wnhyang.github.io/article/df64c6f6.html</id>
+    <published>2024-12-07T13:11:35.000Z</published>
+    <updated>2024-12-07T13:29:53.581Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;个人博客：&lt;a
+href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
+title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
+title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
+Overview&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h1 id=&quot;参考&quot;&gt;参考&lt;/h1&gt;
+&lt;p&gt;&lt;a
+href=&quot;https://cloud.tencent.com/developer/article/1610976&quot;&gt;手把手教你做用户画像：3种标签类型、8大系统模块-腾讯云开发者社区-腾讯云&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a
+href=&quot;https://zhuanlan.zhihu.com/p/382137186&quot;&gt;用户画像最全解析,超详细!&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a
+href=&quot;https://www.woshipm.com/pd/2928566.html&quot;&gt;复盘：如何从0到1设计触达系统
+– 人人都是产品经理&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a
+href=&quot;https://www.woshipm.com/user-research/4239618.html&quot;&gt;用户运营：触达系统应该如何搭建
+– 人人都是产品经理&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a
+href=&quot;https://www.woshipm.com/pd/4633109.html&quot;&gt;触达系统进阶篇（一）：自动化消息
+– 人人都是产品经理&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a
+href=&quot;https://blog.csdn.net/aaaa_hsjsueu/article/details/139253607&quot;&gt;【推荐系统】深入理解：从基础到前沿_推荐系统停留时间-CSDN博客&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a
+href=&quot;https://cloud.tencent.com/developer/article/2220394&quot;&gt;推荐系统[一]：超详细知识介绍，一份完整的入门指南，解答推荐系统相关算法流程、衡量指标和应用，以及如何使用jieba分词库进行相似推荐-腾讯云开发者社区-腾讯云&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a
+href=&quot;https://blog.csdn.net/jcfszxc/article/details/136360002&quot;&gt;【机器学习：Recommendation
+System】推荐系统-CSDN博客&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a
+href=&quot;https://zhuanlan.zhihu.com/p/122996523&quot;&gt;智能风控筑基手册：全面了解风控决策引擎&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a
+href=&quot;https://zhuanlan.zhihu.com/p/626565122&quot;&gt;风控笔记06：一个完整的风控引擎，需要有哪些功能？&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a
+href=&quot;https://zhuanlan.zhihu.com/p/627593352&quot;&gt;风控笔记07：最常用的风控工具-特征库&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;之前一直在讨论使用规则引擎搭建风控系统，但其实规则引擎应用可太广了。鲁迅曾经说过（假的😂）：“人类已经从&lt;code&gt;IT&lt;/code&gt;时代走向&lt;code&gt;DT&lt;/code&gt;时代，&lt;code&gt;IT&lt;/code&gt;时代是以自我控制、自我管理为主，而&lt;code&gt;DT&lt;/code&gt;(&lt;code&gt;Data technology&lt;/code&gt;)时代，它是以服务大众、激发生产力为主的技术。这两者之间看起来似乎是一种技术的差异，但实际上是思想观念层面的差异。”&lt;/p&gt;
+&lt;p&gt;说是规则引擎的应用其实是大数据时代下，数据收集整合&amp;amp;分析与挖掘、实时处理、反馈、自动化、智能化过程中需要规则引擎。本文就探讨用户画像、触达、风控、推荐这些系统有哪些核心功能，又在哪里用到了规则引擎，以及它们在日常生活中的应用场景及如何协同工作，共同创造价值。&lt;/p&gt;
+&lt;p&gt;以下AI生成整理而成。&lt;/p&gt;
+&lt;h1 id=&quot;一用户画像构建个性化的桥梁&quot;&gt;一、用户画像：构建个性化的桥梁&lt;/h1&gt;
+&lt;h2 id=&quot;数据聚合与标签化管理&quot;&gt;1.1 数据聚合与标签化管理&lt;/h2&gt;
+&lt;p&gt;用户画像是个性化服务的基础，它通过收集和分析用户的行为数据、偏好信息以及社会属性等多维度数据，形成一个全面且动态的用户形象。这一过程不仅依赖于传统的CRM（客户关系管理）系统中存储的基本信息，还包括来自各种在线平台的行为轨迹，如浏览记录、购买历史、社交媒体互动等。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;标签化管理&lt;/strong&gt;是用户画像的核心之一。通过对用户进行细致入微的分类和标注，企业可以更加精准地识别出不同类型的用户群体，从而为他们提供定制化的产品和服务。例如，电商平台可以根据用户的购物习惯为其打上“时尚爱好者”、“科技发烧友”或“家庭主妇”等标签；内容平台则可能根据用户的阅读偏好设置“新闻迷”、“美食达人”、“健身爱好者”等标签。&lt;/p&gt;
+&lt;figure&gt;
+&lt;img data-src=&quot;https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20241207/image.92q6k5l9bk.webp&quot;
+alt=&quot;image&quot; /&gt;
+&lt;figcaption aria-hidden=&quot;true&quot;&gt;image&lt;/figcaption&gt;
+&lt;/figure&gt;</summary>
+    
+    
+    
+    
+    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>MybatisPlus字段类型处理器TypeHandler</title>
     <link href="https://wnhyang.github.io/article/697029c0.html"/>
     <id>https://wnhyang.github.io/article/697029c0.html</id>
     <published>2024-12-01T12:05:59.000Z</published>
-    <updated>2024-12-01T13:41:47.701Z</updated>
+    <updated>2024-12-01T13:42:14.624Z</updated>
     
     
     <summary type="html">&lt;p&gt;个人博客：&lt;a
@@ -832,41 +896,6 @@ alt=&quot;image&quot; /&gt;
     
     
     <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
-    <category term="Mybatis/Mybatis-plus" scheme="https://wnhyang.github.io/tags/Mybatis-Mybatis-plus/"/>
-    
-    <category term="数据库" scheme="https://wnhyang.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数据源管理｜JDBC｜JdbcTemplate｜MybatisPlusGenerator</title>
-    <link href="https://wnhyang.github.io/article/40cfdfc4.html"/>
-    <id>https://wnhyang.github.io/article/40cfdfc4.html</id>
-    <published>2024-05-24T01:43:58.000Z</published>
-    <updated>2024-09-14T09:02:40.092Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;个人博客：&lt;a
-href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
-title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
-title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
-Overview&lt;/a&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;复杂的项目常常会涉及到多数据源的配置，解决方案也是有很多。但这篇文章不是讲这个的，而是纯粹的数据源管理，通过数据源配置，获取数据库信息、表信息、数据等等，更像是超级简单的数据库管理工具（&lt;code&gt;Dbeaver&lt;/code&gt;、&lt;code&gt;Navicat&lt;/code&gt;等）。&lt;/p&gt;
-&lt;p&gt;这个有什么应用呢？&lt;/p&gt;
-&lt;p&gt;1、一些后台类系统常需要查数功能，这个就可以用到。有人问了我们有&lt;code&gt;Dbeaver&lt;/code&gt;、&lt;code&gt;Navicat&lt;/code&gt;还需要这个？确实，有专业的数据库管理工具，这个就显得非常鸡肋了。但是数据库通常是由专业的&lt;code&gt;DBA&lt;/code&gt;管理的，账号和权限都是受管控的，而且数据库账号通常无法和后台类系统用户权限关联，所以这个就显得有点用处了。&lt;/p&gt;
-&lt;p&gt;2、作为外部数据源，有时候系统本身的数据不够用，或者说是有局限性，希望能够接上外部更加丰富数据，这时也是可以应用的。&lt;/p&gt;
-&lt;p&gt;3、代码生成器&lt;/p&gt;
-&lt;p&gt;4、等&lt;/p&gt;
-&lt;h1 id=&quot;数据库信息&quot;&gt;数据库信息&lt;/h1&gt;
-&lt;p&gt;因为&lt;code&gt;JDBC&lt;/code&gt;，数据源的配置包含&lt;code&gt;jdbcUrl&lt;/code&gt;、&lt;code&gt;username&lt;/code&gt;、&lt;code&gt;password&lt;/code&gt;、&lt;code&gt;driverClassName&lt;/code&gt;就可以建立数据库的连接了。&lt;/p&gt;</summary>
-    
-    
-    
     
     <category term="Mybatis/Mybatis-plus" scheme="https://wnhyang.github.io/tags/Mybatis-Mybatis-plus/"/>
     
