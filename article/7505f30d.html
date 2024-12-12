@@ -25,31 +25,39 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="个人博客：无奈何杨（wnhyang） 个人语雀：wnhyang 共享语雀：在线知识共享 Github：wnhyang - Overview    image">
+    <meta name="description" content="个人博客：无奈何杨（wnhyang） 个人语雀：wnhyang 共享语雀：在线知识共享 Github：wnhyang - Overview  参考 如何理解上下文这个概念？ | LiteFlow 🌯数据上下文的定义和使用 | LiteFlow 我的业务项目是否适合用LiteFlow？ 在选择使用LiteFlow之前应该要对其有一些了解，不求熟悉源码，但对于其设计思想还是了解一下的。这将对于后面使">
 <meta property="og:type" content="article">
-<meta property="og:title" content="身份证&#x2F;手机号解析服务">
-<meta property="og:url" content="https://wnhyang.github.io/article/fd200765.html">
+<meta property="og:title" content="LiteFlow上下文与组件设计，数据依赖梳理">
+<meta property="og:url" content="https://wnhyang.github.io/article/7505f30d.html">
 <meta property="og:site_name" content="无奈何杨（wnhyang）">
-<meta property="og:description" content="个人博客：无奈何杨（wnhyang） 个人语雀：wnhyang 共享语雀：在线知识共享 Github：wnhyang - Overview    image">
+<meta property="og:description" content="个人博客：无奈何杨（wnhyang） 个人语雀：wnhyang 共享语雀：在线知识共享 Github：wnhyang - Overview  参考 如何理解上下文这个概念？ | LiteFlow 🌯数据上下文的定义和使用 | LiteFlow 我的业务项目是否适合用LiteFlow？ 在选择使用LiteFlow之前应该要对其有一些了解，不求熟悉源码，但对于其设计思想还是了解一下的。这将对于后面使">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240426/image.7sn0fxkiyg.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20241212/image.77dlykhhfy.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20241212/image.1lbvkpie7p.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20241212/image.1vypduy2ok.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20241212/image.7sn9kvf02a.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20241212/image.1zibbks04w.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20241212/image.7zqhgb2156.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20241212/image.1hs9mzrhjf.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20241212/image.1sf3g576vu.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20241212/image.86tpbqphsz.webp">
 <meta property="og:image" content="https://wnhyang.github.io/images/wechat_channel.webp">
-<meta property="article:published_time" content="2024-04-26T06:34:21.000Z">
-<meta property="article:modified_time" content="2024-04-26T06:55:21.550Z">
+<meta property="article:published_time" content="2024-12-12T11:24:47.000Z">
+<meta property="article:modified_time" content="2024-12-12T11:57:18.089Z">
 <meta property="article:author" content="无奈何杨（wnhyang）">
-<meta property="article:tag" content="项目实战">
+<meta property="article:tag" content="项目">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240426/image.7sn0fxkiyg.webp">
+<meta name="twitter:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20241212/image.77dlykhhfy.webp">
 
 
-<link rel="canonical" href="https://wnhyang.github.io/article/fd200765.html">
+<link rel="canonical" href="https://wnhyang.github.io/article/7505f30d.html">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wnhyang.github.io/article/fd200765.html","path":"article/fd200765.html","title":"身份证/手机号解析服务"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wnhyang.github.io/article/7505f30d.html","path":"article/7505f30d.html","title":"LiteFlow上下文与组件设计，数据依赖梳理"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>身份证/手机号解析服务 | 无奈何杨（wnhyang）</title>
+<title>LiteFlow上下文与组件设计，数据依赖梳理 | 无奈何杨（wnhyang）</title>
   
 
 
@@ -152,7 +160,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hutool.idcardutil"><span class="nav-number">2.</span> <span class="nav-text">Hutool.IdcardUtil</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%AD%E5%9B%BD%E8%A1%8C%E6%94%BF%E5%8C%BA%E5%88%92"><span class="nav-number">3.</span> <span class="nav-text">中国行政区划</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%9A%84%E8%A7%A3%E6%9E%90"><span class="nav-number">4.</span> <span class="nav-text">手机号的解析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="nav-number">5.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">1.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%98%8E%E7%A1%AE%E6%95%B0%E6%8D%AE%E6%B5%81%E8%BD%AC"><span class="nav-number">2.</span> <span class="nav-text">明确数据流转</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%8A%E4%B8%8B%E6%96%87"><span class="nav-number">3.</span> <span class="nav-text">初始化上下文</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E5%A4%84%E7%90%86"><span class="nav-number">4.</span> <span class="nav-text">输入处理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%99%AE%E9%80%9A%E5%AD%97%E6%AE%B5%E4%B8%8E%E5%8A%A8%E6%80%81%E5%AD%97%E6%AE%B5"><span class="nav-number">5.</span> <span class="nav-text">普通字段与动态字段</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8C%87%E6%A0%87%E8%AE%A1%E7%AE%97"><span class="nav-number">6.</span> <span class="nav-text">指标计算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AD%96%E7%95%A5%E9%9B%86%E7%AD%96%E7%95%A5%E8%A7%84%E5%88%99"><span class="nav-number">7.</span> <span class="nav-text">策略集&#x2F;策略&#x2F;规则</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%96%E7%95%A5%E9%9B%86"><span class="nav-number">7.1.</span> <span class="nav-text">策略集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%96%E7%95%A5"><span class="nav-number">7.2.</span> <span class="nav-text">策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%84%E5%88%99"><span class="nav-number">7.3.</span> <span class="nav-text">规则</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E5%A4%84%E7%90%86"><span class="nav-number">8.</span> <span class="nav-text">输出处理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9E%E9%A1%BE%E7%BB%84%E4%BB%B6%E5%92%8C%E4%B8%8A%E4%B8%8B%E6%96%87"><span class="nav-number">9.</span> <span class="nav-text">回顾组件和上下文</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">10.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="nav-number">11.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -224,38 +232,24 @@
   </div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <a class="popular-posts-link" href="/article/aa7b535.html" rel="bookmark">
-        <time class="popular-posts-time">2024-04-30</time>
+      <a class="popular-posts-link" href="/article/a949e07.html" rel="bookmark">
+        <time class="popular-posts-time">2024-06-06</time>
         <br>
-      geoHelper
+      规则引擎LiteFlow发布v2.12.1版本，决策路由特性
       </a>
     </li>
     <li class="popular-posts-item">
-      <a class="popular-posts-link" href="/article/d8ad0228.html" rel="bookmark">
-        <time class="popular-posts-time">2024-05-24</time>
+      <a class="popular-posts-link" href="/article/16f5a6c3.html" rel="bookmark">
+        <time class="popular-posts-time">2024-04-05</time>
         <br>
-      MybatisPlusGenerator交互式Web生成增删改查、导出导入代码
+      风控系统之普通规则条件，使用LiteFlow实现
       </a>
     </li>
     <li class="popular-posts-item">
-      <a class="popular-posts-link" href="/article/830d76f.html" rel="bookmark">
-        <time class="popular-posts-time">2024-04-01</time>
+      <a class="popular-posts-link" href="/article/68bda3da.html" rel="bookmark">
+        <time class="popular-posts-time">2024-07-27</time>
         <br>
-      筛选树形菜单时关联其父节点和子节点
-      </a>
-    </li>
-    <li class="popular-posts-item">
-      <a class="popular-posts-link" href="/article/c3f9479b.html" rel="bookmark">
-        <time class="popular-posts-time">2024-04-02</time>
-        <br>
-      根据用户角色权限，渲染菜单的一个问题记录
-      </a>
-    </li>
-    <li class="popular-posts-item">
-      <a class="popular-posts-link" href="/article/cf08a8bf.html" rel="bookmark">
-        <time class="popular-posts-time">2024-02-22</time>
-        <br>
-      Sa-Token事件发布，观察者模式
+      LiteFlow条件组件的设计组件标签｜组件参数，EL与或非表达式正反解析，元数据管理
       </a>
     </li>
   </ul>
@@ -279,7 +273,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/fd200765.html">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/7505f30d.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -292,12 +286,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="身份证/手机号解析服务 | 无奈何杨（wnhyang）">
+      <meta itemprop="name" content="LiteFlow上下文与组件设计，数据依赖梳理 | 无奈何杨（wnhyang）">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          身份证/手机号解析服务
+          LiteFlow上下文与组件设计，数据依赖梳理
         </h1>
 
         <div class="post-meta-container">
@@ -309,7 +303,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2024-04-26 14:34:21 / 修改时间：14:55:21" itemprop="dateCreated datePublished" datetime="2024-04-26T14:34:21+08:00">2024-04-26</time>
+      <time title="创建时间：2024-12-12 19:24:47 / 修改时间：19:57:18" itemprop="dateCreated datePublished" datetime="2024-12-12T19:24:47+08:00">2024-12-12</time>
     </span>
 
   
@@ -326,14 +320,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.1k</span>
+      <span>2.4k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>4 分钟</span>
+      <span>9 分钟</span>
     </span>
 </div>
 
@@ -353,70 +347,240 @@ title="在线知识共享">在线知识共享</a></p>
 <p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
 Overview</a></p>
 <hr />
+<h1 id="参考">参考</h1>
+<p><a target="_blank" rel="noopener" href="https://liteflow.cc/pages/e1e61f/">如何理解上下文这个概念？
+| LiteFlow</a></p>
+<p><a target="_blank" rel="noopener" href="https://liteflow.cc/pages/501abf/">🌯数据上下文的定义和使用
+| LiteFlow</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/C7F5Kat6Fv6oLBbBKSdIlg">我的业务项目是否适合用LiteFlow？</a></p>
+<p>在选择使用<code>LiteFlow</code>之前应该要对其有一些了解，不求熟悉源码，但对于其设计思想还是了解一下的。这将对于后面使用有很大帮助，官方文档和源码都是很好的学习路径哦！</p>
+<p>如官网所讲的，为了实现编排，就要消除组件的差异，由此设计了上下文。而使用<code>LiteFlow</code>完成业务，上下文与组件的设计又是极其的关键。方法论还是交给会写论文的人来吧，我只能提供一些经验之谈。</p>
+<p>下面还是通过项目<a target="_blank" rel="noopener" href="https://github.com/wnhyang/coolGuard/"
+class="uri">https://github.com/wnhyang/coolGuard/</a>来讲述吧。</p>
+<span id="more"></span>
 <figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240426/image.7sn0fxkiyg.webp"
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20241212/image.77dlykhhfy.webp"
 alt="image" />
 <figcaption aria-hidden="true">image</figcaption>
 </figure>
-<span id="more"></span>
-<h1 id="简介">简介</h1>
-<p>本篇文章是<a
-target="_blank" rel="noopener" href="https://www.yuque.com/wnh/share/zx2p9w4qod784xun">风控系统之数据服务，名单、标签、IP、设备、地理信息、征信等</a>的扩展。</p>
-<p>既然是上篇文章的扩展，自然离不开风控系统的主题。身份证和手机号解析作为风控事件接入的靠前的步骤是重要的数据处理过程，也是相对最简单的处理过程（与IP、GPS解析相比的话）。</p>
-<h1 id="hutool.idcardutil">Hutool.IdcardUtil</h1>
-<p><a
-target="_blank" rel="noopener" href="https://doc.hutool.cn/pages/IdcardUtil/">身份证工具-IdcardUtil |
-Hutool</a></p>
-<p><code>Hutool</code>的<code>IdcardUtil</code>现在支持大陆15位、18位身份证，港澳台10位身份证。</p>
-<p>工具中主要的方法包括：</p>
-<ol type="1">
-<li><code>isValidCard</code> 验证身份证是否合法</li>
-<li><code>convert15To18</code> 身份证15位转18位</li>
-<li><code>getBirthByIdCard</code> 获取生日</li>
-<li><code>getAgeByIdCard</code> 获取年龄</li>
-<li><code>getYearByIdCard</code> 获取生日年</li>
-<li><code>getMonthByIdCard</code> 获取生日月</li>
-<li><code>getDayByIdCard</code> 获取生日天</li>
-<li><code>getGenderByIdCard</code> 获取性别</li>
-<li><code>getProvinceByIdCard</code> 获取省份</li>
-</ol>
-<p>此工具中包含了国内身份证的规定和验证说明。基本的身份证解析功能都具备了，缺点就是关于身份证归属地只到省级别。</p>
-<h1 id="中国行政区划">中国行政区划</h1>
-<p>身份证的前6位表示省/市/县，<code>Hutool</code>也已经说明了，而且将省份及其对应编码放入了静态<code>Map</code>中了，可能出于内存和行政区划变动的原因，并没有将市/县囊括在内。</p>
-<p><a target="_blank" rel="noopener" href="https://www.mca.gov.cn/mzsj/xzqh/2022/202201xzqh.html"
-class="uri">https://www.mca.gov.cn/mzsj/xzqh/2022/202201xzqh.html</a></p>
-<p><a
-target="_blank" rel="noopener" href="https://github.com/modood/Administrative-divisions-of-China">GitHub
-- modood/Administrative-divisions-of-China:
-中华人民共和国行政区划：省级（省份）、 地级（城市）、 县级（区县）、
-乡级（乡镇街道）、 村级（村委会居委会）
-，中国省市区镇村二级三级四级五级联动地址数据。</a></p>
-<p>非常建议通过这个<code>Github</code>项目来更新中国行政区划数据，该项目提供了<code>json</code>和<code>csv</code>格式的数据，而且数据也比较新。</p>
-<p>以下是通过内存加载省/市/县的示例，因为到县级别数量也不是很大，就放在内存中吧，快嘛。</p>
-<p>使用到了<code>provinces.csv</code>、<code>cities.csv</code>、<code>areas.csv</code>都可以通过<code>Github</code>下载。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * &lt;a href=&quot;https://github.com/modood/Administrative-divisions-of-China&quot;&gt;...&lt;/a&gt;</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> wnhyang</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/4/24</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AdocUtil</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Map&lt;String, Province&gt; PROVINCE_MAP = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;(<span class="number">32</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Map&lt;String, City&gt; CITY_MAP = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;(<span class="number">512</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Map&lt;String, Area&gt; AREA_MAP = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;(<span class="number">4096</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">DONT_KNOW</span> <span class="operator">=</span> <span class="string">&quot;未知&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">AREA_CODE_LENGTH</span> <span class="operator">=</span> <span class="number">6</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">AdocUtil</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">long</span> <span class="variable">start</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            List&lt;Province&gt; provinceList = CsvUtil.getReader().read(</span><br><span class="line">                    ResourceUtil.getUtf8Reader(<span class="string">&quot;provinces.csv&quot;</span>), Province.class);</span><br><span class="line">            provinceList.forEach(province -&gt; PROVINCE_MAP.put(province.getCode(), province));</span><br><span class="line"></span><br><span class="line">            List&lt;City&gt; cityList = CsvUtil.getReader().read(</span><br><span class="line">                    ResourceUtil.getUtf8Reader(<span class="string">&quot;cities.csv&quot;</span>), City.class);</span><br><span class="line">            cityList.forEach(city -&gt; CITY_MAP.put(city.getCode(), city));</span><br><span class="line"></span><br><span class="line">            List&lt;Area&gt; areaList = CsvUtil.getReader().read(</span><br><span class="line">                    ResourceUtil.getUtf8Reader(<span class="string">&quot;areas.csv&quot;</span>), Area.class);</span><br><span class="line">            areaList.forEach(area -&gt; AREA_MAP.put(area.getCode(), area));</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">        &#125;</span><br><span class="line">        log.info(<span class="string">&quot;init success, cost:&#123;&#125;ms&quot;</span>, System.currentTimeMillis() - start);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="手机号的解析">手机号的解析</h1>
-<p>手机号码的归属地可以通过号码的前七位进行判断。前三位如<code>170/150/136</code>等是网络识别号，中间四位是地区编码（归属地），最后四位是用户号码。因此，正确念读手机号的方法是：<code>1xx-xxxx-xxxx</code>。中国大陆地区手机号码格式为：<code>1**####$$$$</code>。星号部分（*）用于区分不同的业务服务提供商，例如移动、联通和电信等。前七位（<code>1**####</code>）可以用来查出手机的归属地。</p>
-<p>可参考以下项目。</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/fighting41love/funNLP">GitHub -
-fighting41love/funNLP</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/ls0f/phone?tab=readme-ov-file">GitHub -
-ls0f/phone: 手机号码归属地库</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/xluohome/phonedata">GitHub -
-xluohome/phonedata: 手机号码归属地信息库、手机号归属地查询 phone.dat
-最后更新：2023年02月</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/fengjiajie/phone-number-geo">GitHub -
-fengjiajie/phone-number-geo: 手机号码归属地本地解析(Java)</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/EeeMt/phone-number-geo">GitHub -
-EeeMt/phone-number-geo: 离线查询手机号归属地</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/AfterShip/phone">GitHub -
-AfterShip/phone: With a given country and phone number, validate and
-reformat the mobile phone number to the E.164 standard. The purpose of
-this is to allow us to send SMS to mobile phones only.</a></p>
-<p>关于开源项目的使用，一般要从代码质量文档、许可证、使用社区活跃度、性能多方面来考虑。</p>
-<p>以下是<a target="_blank" rel="noopener" href="https://github.com/EeeMt/phone-number-geo">GitHub -
-EeeMt/phone-number-geo: 离线查询手机号归属地</a>的一个简单示例。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> wnhyang</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/4/26</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PhoneNumberUtil</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">PhoneNumberLookup</span> <span class="variable">LOOKUP</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PhoneNumberLookup</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">DONT_KNOW</span> <span class="operator">=</span> <span class="string">&quot;未知&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">PhoneNumberUtil</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> PhoneNumberInfo <span class="title function_">lookup</span><span class="params">(String phoneNumber)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> LOOKUP.lookup(phoneNumber).orElseGet(() -&gt; getNotFound(phoneNumber));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> PhoneNumberInfo <span class="title function_">getNotFound</span><span class="params">(String phoneNumber)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">PhoneNumberInfo</span>(phoneNumber, <span class="keyword">new</span> <span class="title class_">Attribution</span>(DONT_KNOW, DONT_KNOW, DONT_KNOW, DONT_KNOW), ISP.UNKNOWN);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="明确数据流转">明确数据流转</h1>
+<p>无论做什么都要对业务足够熟悉，尤其是在使用<code>LiteFlow</code>时更要对数据流转有把控。</p>
+<p><strong>官方讲：其实，使用LiteFlow并不一定要承载你的所有的业务。由于LiteFlow的执行是由执行器对象发起，所以它可以承载你业务中间的任何一小段。</strong></p>
+<p>所以<code>LiteFlow</code>可以承接所有业务中间的任何一小段。而至于选择哪一段是使用者决定的，当然我们在选择使用<code>LiteFlow</code>时当然也是看中了其灵活编排、热刷新等特点，应该也是有些想法的了。</p>
+<p>那下面就从<code>LiteFlow</code>执行器执行开始吧！对应上图服务选择这一步。</p>
+<h1 id="初始化上下文">初始化上下文</h1>
+<p>这时还在<code>execute</code>之外，这一步初始化所有上下文数据，当然使用重载的传入<code>class</code>的方法也行，初始化参数传入也是可以。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20241212/image.1lbvkpie7p.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<h1 id="输入处理">输入处理</h1>
+<p>到此大致执行了：<code>THEN(a_icn)</code>，<code>a_icn</code>表示输入处理组件，用于一些预处理、简单的加工和输入日志打印类工作。</p>
+<p>如下，在使用<code>LiteFow</code>执行器执行时将后面需要使用的上下文作为参数丢给执行器。在下面开始之前需要额外说明一下，虽然上图的整个流程看起来是一部分，但是在实际运行时其实拆分为多个子流程执行的。这一步执行器传入的<code>chainId</code>是个变量，这也意味着从这里开始就具备可编排的可能了。决策与非决策、批量与非批量、同步与异步、字段解析与不解析，等等。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20241212/image.1vypduy2ok.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>对于此步骤能想到的是node(系统字段)、node(动态字段)、node(流控降级组件)等之类吧，目标是做<code>ETL</code>和流量治理一块的，还没想好，所以先搁置一下了。😂😂</p>
+<h1 id="普通字段与动态字段">普通字段与动态字段</h1>
+<p>到此大致执行了：<code>THEN(a_in,nf_cn,df_cn)</code>，项目为了灵活性的数据接入接受参数的为<code>Map&lt;String,Object&gt;</code>，风险一定会存在，这个应该放在前面的校验上，这里重点讨论的是将输入参数转为系统可识别的系统字段，<code>nf_cn</code>表示普通字段处理组件，做的事情包括：根据配置将输入参数转为可识别的系统字段，设计的内置字段的解析（身份中、手机号、ip、经纬度等归属地运营商等），这个解析也预留了接口保留其扩展性，后面可以在讲；<code>df_cn</code>表示动态字段处理组件，普通字段是直接由输入参数转换而来，最多做一下类型判断、小数位数保留等，而动态字段是由普通字段衍生而来，是通过编辑脚本实现的，使用场景很丰富，最简单如取身份证前6位，交易金额是否是5的倍数，都可以。</p>
+<p><code>nf_cn</code>和<code>df_cn</code>都只操作<code>accessRequest</code>输入上下文，解析后的数据也统一设置在<code>accessRequest</code>里。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20241212/image.7sn9kvf02a.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<h1 id="指标计算">指标计算</h1>
+<p>到此大致执行了：<code>THEN(a_in,nf_cn,df_cn,I_F)</code>，<code>I_F</code>不是通用的组件，实际上是一个子流程，表示指标计算，使用了循环编排。大概是这样的<code>FOR(i_fn).parallel(true).DO(i_cn);</code>，<code>i_fn</code>表示指标计算循环次数组件，通过拿<code>accessRequest</code>查询满足本次请求场景的指标集合，然后并行运行这些指标组件<code>i_cn</code>，其也是个子流程，大概是<code>IF(cond,i_tcn,i_fcn)</code>，指标组件首先通过<code>cond</code>条件组件判断是否满足本条指标条件，满足则执行<code>i_tcn</code>组件计算指标，不满足则执行<code>i_fcn</code>，最后将结果设置到<code>IndicatorContext</code>指标上下文中。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20241212/image.1zibbks04w.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<h1 id="策略集策略规则">策略集/策略/规则</h1>
+<h2 id="策略集">策略集</h2>
+<p>到此大致执行了：<code>THEN(a_in,nf_cn,df_cn,I_F,ps_cn)</code>，<code>ps_cn</code>是策略集组件是编排的关键，默认会有并行执行和串行执行策略集下所有策略，当然后面会加入其他丰富的内容，如：A/BTest、冠军挑战、三方、模型之类的吧，还在构思。所以先占位吧大概是<code>WHEN(e_cn,p_cn.tag("1"),p_cn.tag("2"));</code>这种的吧。</p>
+<p>此时会拿<code>accessRequest</code>数据，判断执行哪个策略集，每笔请求只能执行一个策略集，然后将数据放在<code>policyContext</code>策略上下文和<code>EventContext</code>事件上下文中，之后执行策略集编排的<code>EL</code>，结束后整理数据再放<code>accessResponse</code>响应上下文中。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20241212/image.7zqhgb2156.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<h2 id="策略">策略</h2>
+<p>到此还是在：<code>THEN(a_in,nf_cn,df_cn,I_F,ps_cn)</code>，但执行的是策略集的编排<code>EL</code>。<code>LiteFlow</code>的编排特性在这里会有体现，举个例子：一个策略集下有10个策略，每个策略分别对应不同的模式和规则列表，可以在此挑选1、3、4、5作为一类，其他作为一类，在设置分流策略，结果取xxx。</p>
+<p>此子流程大概是<code>FOR(p_fn).DO(r_cn).BREAK(p_bn);</code>和<code>FOR(p_fn).parallel(true).DO(r_cn);</code>，分别对应串行运行和并行运行，对应着不同的策略模式。<code>p_fn</code>表示策略循环次数组件，用于确定需要运行哪些规则，<code>p_bn</code>表示策略停止组件，用于顺序执行规则时满足某些条件停止后续规则执行。这个过程中拿<code>accessRequest</code>和<code>policyContext</code>，计算完策略的结果后放<code>policyContext</code>，最终会有上层策略集将所欲结果按编排放入<code>accessResponse</code>和<code>EventContext</code>，就是栈的模式嘛。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20241212/image.1hs9mzrhjf.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<h2 id="规则">规则</h2>
+<p>到此也还是在：<code>THEN(a_in,nf_cn,df_cn,I_F,ps_cn)</code>，根据策略模式的不同执行<code>FOR(p_fn).DO(r_cn).BREAK(p_bn);</code>或<code>FOR(p_fn).parallel(true).DO(r_cn);</code>，<code>r_cn</code>表示规则组件也还是子流程，大概是：<code>IF(cond,WHEN(ruleTrue,addTag,addList,sendSms,setFiled),ruleFalse)</code>，<code>cond</code>条件组件<code>true</code>则并行执行<code>ruleTrue</code>、<code>addTag</code>、<code>addList</code>、<code>sendSms</code>、<code>setFiled</code>，<code>ruleTrue</code>表示规则结果用于最终决策，除此之外都是可选项，<code>addTag</code>表示增加<code>tag</code>，<code>addList</code>表示添加名单，<code>sendSms</code>表示发送消息，<code>setFiled</code>表示设置字段。这些组件其实应该有更广的应用场景，但目前统一放在规则里，后续可能让其更具灵活性。这个步骤拿<code>accessRequest</code>和<code>policyContext</code>，放<code>policyContext</code>、<code>accessResponse</code>和<code>EventContext</code>。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20241212/image.1sf3g576vu.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<h1 id="输出处理">输出处理</h1>
+<p>到此执行最后一个<code>a_ocn</code>输出处理组件后所有流程就都结束了，此过程主要是放<code>accessResponse</code>。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20241212/image.86tpbqphsz.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<h1 id="回顾组件和上下文">回顾组件和上下文</h1>
+<p>以上所有仅代表个人目前的一些用法，仅供参考。</p>
+<p>在使用<code>LiteFlow</code>进行规则编排设计时，要明确抽象出组件数据来源和操作数据上下文。数据来源针对的是对<code>execute</code>执行后依赖的规则上下文或参数里的数据，自己的<code>tag</code>、<code>data</code>或者其他的组件自有数据（不管是声明式或非声明式使用的其他<code>Bean</code>的能力带来的数据）不算。这样的梳理有利于自己对所有组件和上下文的数据把控，不管是分析某个上下文可能存在的并发访问问题，还是对于组件能否正常执行获取到数据，错误回滚都能有一些把控。</p>
+<table>
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 15%" />
+<col style="width: 30%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>组件</th>
+<th>说明</th>
+<th>依赖数据对象</th>
+<th>目标对象</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>e_cn</td>
+<td>空组件</td>
+<td>无</td>
+<td>无</td>
+</tr>
+<tr class="even">
+<td>a_icn</td>
+<td>输出处理组件</td>
+<td>accessRequest</td>
+<td>无</td>
+</tr>
+<tr class="odd">
+<td>a_ocn</td>
+<td>输出处理组件</td>
+<td>accessRequest</td>
+<td>accessResponse</td>
+</tr>
+<tr class="even">
+<td>nf_cn</td>
+<td>普通字段组件</td>
+<td>accessRequest</td>
+<td>accessRequest</td>
+</tr>
+<tr class="odd">
+<td>df_cn</td>
+<td>动态字段组件</td>
+<td>accessRequest</td>
+<td>accessRequest</td>
+</tr>
+<tr class="even">
+<td>i_fn</td>
+<td>指标循环组件</td>
+<td>accessRequest</td>
+<td>indicatorContext</td>
+</tr>
+<tr class="odd">
+<td>i_cn</td>
+<td>指标普通组件</td>
+<td>indicatorContext</td>
+<td>开启子流程</td>
+</tr>
+<tr class="even">
+<td>i_tcn</td>
+<td>指标true组件</td>
+<td>accessRequest，indicatorContext</td>
+<td>indicatorContext</td>
+</tr>
+<tr class="odd">
+<td>i_fcn</td>
+<td>指标false组件</td>
+<td>accessRequest，indicatorContext</td>
+<td>indicatorContext</td>
+</tr>
+<tr class="even">
+<td>ps_cn</td>
+<td>策略集组件</td>
+<td>accessRequest，policyContext</td>
+<td>policyContext，accessResponse，开启子流程</td>
+</tr>
+<tr class="odd">
+<td>p_cn.tag</td>
+<td>策略组件</td>
+<td>policyContext</td>
+<td>policyContext，开启子流程</td>
+</tr>
+<tr class="even">
+<td>p_fn</td>
+<td>策略循环组件</td>
+<td>policyContext</td>
+<td>policyContext</td>
+</tr>
+<tr class="odd">
+<td>p_bn</td>
+<td>策略循环中断组件</td>
+<td>policyContext</td>
+<td>无</td>
+</tr>
+<tr class="even">
+<td>r_cn</td>
+<td>规则组件</td>
+<td>policyContext</td>
+<td>开启子流程</td>
+</tr>
+<tr class="odd">
+<td>ruleTrue</td>
+<td>规则true组件</td>
+<td>policyContext</td>
+<td>policyContext</td>
+</tr>
+<tr class="even">
+<td>ruleFalse</td>
+<td>规则false组件</td>
+<td>暂无</td>
+<td>暂无</td>
+</tr>
+<tr class="odd">
+<td>addTag.data</td>
+<td>添加标签组件</td>
+<td>无</td>
+<td>eventContext</td>
+</tr>
+<tr class="even">
+<td>addList.data</td>
+<td>添加名单组件</td>
+<td>accessRequest</td>
+<td>db</td>
+</tr>
+<tr class="odd">
+<td>sendSms.data</td>
+<td>发送消息组件</td>
+<td>accessRequest</td>
+<td>消息系统</td>
+</tr>
+<tr class="even">
+<td>setField.data</td>
+<td>设置字段组件</td>
+<td>accessRequest</td>
+<td>accessRequest</td>
+</tr>
+<tr class="odd">
+<td>cond.data</td>
+<td>通用条件组件</td>
+<td>accessRequest，indicatorContext</td>
+<td>无</td>
+</tr>
+</tbody>
+</table>
+<p>当然如果<code>LiteFlow</code>的<code>IDEA</code>插件能帮我们做这个事情就好了。</p>
+<h1 id="小结">小结</h1>
+<p>先这样了，预告一下，下篇大概率是关于策略模式设计，顺序、最坏、权重、投票，顺便更新一下项目进展请情况。</p>
 <h1 id="写在最后">写在最后</h1>
 <p>拙作艰辛，字句心血，望诸君垂青，多予支持，不胜感激。</p>
 <hr />
@@ -464,7 +628,7 @@ Overview</a></p>
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://wnhyang.github.io/article/fd200765.html" title="身份证&#x2F;手机号解析服务">https://wnhyang.github.io/article/fd200765.html</a>
+      <a href="https://wnhyang.github.io/article/7505f30d.html" title="LiteFlow上下文与组件设计，数据依赖梳理">https://wnhyang.github.io/article/7505f30d.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -510,21 +674,18 @@ Overview</a></p>
 </div>
 
           <div class="post-tags">
-              <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/" rel="tag"># 项目实战</a>
+              <a href="/tags/%E9%A1%B9%E7%9B%AE/" rel="tag"># 项目</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/article/837eb52d.html" rel="prev" title="风控系统之数据服务，名单、标签、IP、设备、地理信息、征信等">
-                  <i class="fa fa-chevron-left"></i> 风控系统之数据服务，名单、标签、IP、设备、地理信息、征信等
+                <a href="/article/df64c6f6.html" rel="prev" title="规则引擎可以应用于哪些系统，用户画像、触达、风控、推荐、监控...">
+                  <i class="fa fa-chevron-left"></i> 规则引擎可以应用于哪些系统，用户画像、触达、风控、推荐、监控...
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/article/4a83d331.html" rel="next" title="IP/GPS解析服务，ip2region，逆地理编码">
-                  IP/GPS解析服务，ip2region，逆地理编码 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -639,7 +800,7 @@ Overview</a></p>
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://wnhyang.github.io/article/fd200765.html"}</script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://wnhyang.github.io/article/7505f30d.html"}</script>
   <script src="/js/third-party/quicklink.js"></script>
 
 </body>
