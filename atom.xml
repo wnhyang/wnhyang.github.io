@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2024-12-12T11:57:18.089Z</updated>
+  <updated>2024-12-19T12:01:17.478Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,43 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>LiteFlow决策系统的策略模式，顺序、最坏、投票、权重</title>
+    <link href="https://wnhyang.github.io/article/6a66e1d3.html"/>
+    <id>https://wnhyang.github.io/article/6a66e1d3.html</id>
+    <published>2024-12-19T11:28:00.000Z</published>
+    <updated>2024-12-19T12:01:17.478Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;个人博客：&lt;a
+href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
+title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
+title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
+Overview&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;figure&gt;
+&lt;img data-src=&quot;https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20241219/image.4jo5y81ftv.webp&quot;
+alt=&quot;image&quot; /&gt;
+&lt;figcaption aria-hidden=&quot;true&quot;&gt;image&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;想必大家都有听过或做过职业和性格测试吧，尤其是现在的毕业生，在投了简历之后经常会收到一个什么测评，那些测评真的是又臭又长，做的简直让人崩溃，很多时候都是边骂边做，都什么玩意！？&lt;/p&gt;
+&lt;p&gt;然而，本篇就由此出发，把整个测评作为一个策略的话，其中每一项都是一条规则，通常每一条规则（问答）需要我们输入一个类似1-9的分数，1和9分别代表两个极端，最终这个策略会结合所有的问答结果计算出我们的性格/职业。这是如何做的呢？其实就是一种分类算法，就拿二维平面直角坐标系举例吧！&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>LiteFlow上下文与组件设计，数据依赖梳理</title>
     <link href="https://wnhyang.github.io/article/7505f30d.html"/>
     <id>https://wnhyang.github.io/article/7505f30d.html</id>
     <published>2024-12-12T11:24:47.000Z</published>
-    <updated>2024-12-12T11:57:18.089Z</updated>
+    <updated>2024-12-12T11:57:45.876Z</updated>
     
     
     <summary type="html">&lt;p&gt;个人博客：&lt;a
@@ -856,37 +888,6 @@ href=&quot;https://www.yuque.com/wnh/share/hwelucqo1ln2986m&quot;&gt;风控系�
     <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
     
     <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>风控系统之通用规则条件设计，算术单元/逻辑单元/函数式接口</title>
-    <link href="https://wnhyang.github.io/article/d89f8e10.html"/>
-    <id>https://wnhyang.github.io/article/d89f8e10.html</id>
-    <published>2024-06-03T14:01:47.000Z</published>
-    <updated>2024-06-03T14:32:39.011Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;个人博客：&lt;a
-href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
-title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
-title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
-Overview&lt;/a&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h1 id=&quot;简介&quot;&gt;简介&lt;/h1&gt;
-&lt;p&gt;前面有&lt;a
-href=&quot;https://www.yuque.com/wnh/share/hwelucqo1ln2986m&quot;&gt;风控系统之普通规则条件，使用LiteFlow实现&lt;/a&gt;，介绍了普通规则条件，并给出简单的示例实现。&lt;/p&gt;
-&lt;p&gt;这篇就此进行扩展，介绍其他规则条件。&lt;/p&gt;
-&lt;p&gt;说白了，规则条件就是条件，而且并不局限于规则之中，简单讲就是&lt;code&gt;if()&lt;/code&gt;括号里的内容，用于判断规则是否需要执行，是规则极其重要的部分。&lt;/p&gt;
-&lt;p&gt;规则条件有很多种，他们看似相同，却又不同。作为程序员，应该具备逻辑抽象的思维，通过设计将其统一整合起来。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
     
   </entry>
   
