@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2024-12-19T12:24:31.004Z</updated>
+  <updated>2024-12-29T04:31:05.742Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Vben5登录过期无法再次登录问题，http状态码</title>
+    <link href="https://wnhyang.github.io/article/2b9d32e5.html"/>
+    <id>https://wnhyang.github.io/article/2b9d32e5.html</id>
+    <published>2024-12-29T02:18:09.000Z</published>
+    <updated>2024-12-29T04:31:05.742Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;个人博客：&lt;a
+href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
+title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
+title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
+Overview&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h1 id=&quot;前言&quot;&gt;前言&lt;/h1&gt;
+&lt;p&gt;最近在做项目前端，使用的&lt;a href=&quot;https://doc.vben.pro/&quot;
+class=&quot;uri&quot;&gt;https://doc.vben.pro/&lt;/a&gt;，在登录过期时出现了无法再次登录的问题，在此记录一下。&lt;/p&gt;
+&lt;figure&gt;
+&lt;img data-src=&quot;https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20241229/image.8adbxbcnyv.webp&quot;
+alt=&quot;image&quot; /&gt;
+&lt;figcaption aria-hidden=&quot;true&quot;&gt;image&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;项目前面那些直接略过，如果感兴趣直接看官方文档就可以
+，以下会根据解决过程附带部分官网说明。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+  </entry>
   
   <entry>
     <title>LiteFlow决策系统的策略模式，顺序、最坏、投票、权重</title>
@@ -839,55 +874,6 @@ href=&quot;https://www.cnblogs.com/kevingrace/category/1099403.html&quot;&gt;Ela
     <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
     
     <category term="Elasticsearch" scheme="https://wnhyang.github.io/tags/Elasticsearch/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>规则引擎LiteFlow发布v2.12.1版本，决策路由特性</title>
-    <link href="https://wnhyang.github.io/article/a949e07.html"/>
-    <id>https://wnhyang.github.io/article/a949e07.html</id>
-    <published>2024-06-06T01:51:18.000Z</published>
-    <updated>2024-06-06T14:11:18.622Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;个人博客：&lt;a
-href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
-title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
-title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
-Overview&lt;/a&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h1 id=&quot;简介&quot;&gt;简介&lt;/h1&gt;
-&lt;p&gt;标题其实是不准确的，了解过的会知道在&lt;code&gt;LiteFlow&lt;/code&gt;的&lt;code&gt;2.12.0&lt;/code&gt;已经有了决策路由的特性，但我为什么标题这么讲呢？且往下看。&lt;/p&gt;
-&lt;p&gt;因为这篇文章&lt;a
-href=&quot;https://mp.weixin.qq.com/s/KeTx9lZGWn0-mF6ilmO7Fg&quot;&gt;LF的重磅特性预告：决策路由&lt;/a&gt;，我一直期待着决策路由功能的发布，终于有一天它发布了！&lt;/p&gt;
-&lt;p&gt;&lt;a
-href=&quot;https://mp.weixin.qq.com/s/jONz_vIpIembQDej3TzNiQ&quot;&gt;决策路由特性来袭，LiteFlow大版本2.12.0发布，Make
-your code amaing！&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;虽然这次是大更新，发布的不只是决策路由，但是我心心念念的决策路由并没有我期待的那样好用，因为这个版本的路由是全局匹配，没有分组或分级的概念，在实际使用中并不那么好用。虽然能通过一些代码来实现类似的分组功能，但是肯定不如框架实现的好，同时也不想因此将代码来回变动，所以通过社区向作者提意见，正好作者早有此想法，非常nice！&lt;/p&gt;
-&lt;p&gt;这次&lt;a
-href=&quot;https://mp.weixin.qq.com/s/E-WvrpA2Vanm13xHxaRgeg&quot;&gt;规则引擎LiteFlow发布v2.12.1版本，有多猛用过才知道&lt;/a&gt;，&lt;code&gt;2.12.1&lt;/code&gt;版本带来此功能，我也默默的将许久未编辑的《LiteFlow大版本2.12.0发布，决策路由发布》的文章重命名了标题《规则引擎LiteFlow发布v2.12.1版本，决策路由特性》。&lt;/p&gt;
-&lt;h1 id=&quot;参考&quot;&gt;参考&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&quot;https://liteflow.cc/pages/ec1ac4/&quot;&gt;🏖概念以及介绍 |
-LiteFlow&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://liteflow.cc/pages/88c2f2/&quot;&gt;2.12.0升级指南 |
-LiteFlow&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&quot;决策路由&quot;&gt;决策路由&lt;/h1&gt;
-&lt;h2 id=&quot;说明&quot;&gt;说明&lt;/h2&gt;
-&lt;p&gt;关于&lt;code&gt;LiteFlow&lt;/code&gt;，不想再过多介绍了。之前的文章也有说明了&lt;a
-href=&quot;https://www.yuque.com/wnh/share/hwelucqo1ln2986m&quot;&gt;风控系统之普通规则条件，使用LiteFlow实现&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;非常推荐通过官网来学习，很有帮助！&lt;/p&gt;
-&lt;p&gt;路由嘛，知道&lt;code&gt;Nginx&lt;/code&gt;吧，可以理解为&lt;code&gt;location&lt;/code&gt;的配置，不知道&lt;code&gt;Nginx&lt;/code&gt;，类比微服务网关也一样。&lt;/p&gt;
-&lt;p&gt;在&lt;code&gt;2.12.0&lt;/code&gt;版本加入了路由特性，新增了&lt;code&gt;route&lt;/code&gt;和&lt;code&gt;body&lt;/code&gt;标签。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
-    
-    <category term="Spring Boot" scheme="https://wnhyang.github.io/tags/Spring-Boot/"/>
     
   </entry>
   
