@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="google-site-verification" content="4zmc5dCOR7a63YXOZx4mwqsC5dPpr0m2iWeI12w6wng">
+  <meta name="baidu-site-verification" content="fe6bba1d0d4e906fed87c9f7c2d1d09d">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="个人博客：无奈何杨（wnhyang） 个人语雀：wnhyang 共享语雀：在线知识共享 Github：wnhyang - Overview    image  此前，我们已经成功搭建起最为基础的聚类指标体系，涵盖计数、求和、最大值、最小值、平均值、历史取值以及关联次数等维度，为数据的初步洞察提供了有力支撑。与此同时，规划在未来进一步拓展指标范畴，引入方差、标准差、趋势、连续次数等更为精细化的指标，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="业务链指标，用户行为模式识别">
+<meta property="og:url" content="https://wnhyang.github.io/article/a9488309.html">
+<meta property="og:site_name" content="无奈何杨（wnhyang）">
+<meta property="og:description" content="个人博客：无奈何杨（wnhyang） 个人语雀：wnhyang 共享语雀：在线知识共享 Github：wnhyang - Overview    image  此前，我们已经成功搭建起最为基础的聚类指标体系，涵盖计数、求和、最大值、最小值、平均值、历史取值以及关联次数等维度，为数据的初步洞察提供了有力支撑。与此同时，规划在未来进一步拓展指标范畴，引入方差、标准差、趋势、连续次数等更为精细化的指标，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250111/image.6wqtcc4me2.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250111/image.8vn02ny5fx.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250111/image.9gwnoytuu5.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250111/image.win7lkt6i.webp">
+<meta property="og:image" content="https://p3-search.byteimg.com/obj/pgc-image/cbb24370c94d45bdb098bfede1cc899e">
+<meta property="og:image" content="https://p3-search.byteimg.com/obj/labis/a5fa6f879322ef18d4ef97fb1d2b0d9a">
+<meta property="og:image" content="https://p3-search.byteimg.com/obj/pgc-image/af3f0aac5b8c4e51b039d78ad3fe2a21">
+<meta property="og:image" content="https://p3-search.byteimg.com/obj/labis/1cd08d7c7eaed85fdb7f45c97af6c734">
+<meta property="og:image" content="https://p3-search.byteimg.com/obj/tos-cn-i-tjoges91tu/T83BnDq4wAPfOS">
+<meta property="og:image" content="https://p3-search.byteimg.com/obj/labis/0a701d6b8ad213cb97bb019513f2c852">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250111/image.7zqin0c6yy.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250111/image.2ks04kxfqv.webp">
+<meta property="og:image" content="https://wnhyang.github.io/images/wechat_channel.webp">
+<meta property="article:published_time" content="2025-01-11T05:44:27.000Z">
+<meta property="article:modified_time" content="2025-01-11T13:06:09.644Z">
+<meta property="article:author" content="无奈何杨（wnhyang）">
+<meta property="article:tag" content="blog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250111/image.6wqtcc4me2.webp">
+
+
+<link rel="canonical" href="https://wnhyang.github.io/article/a9488309.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wnhyang.github.io/article/a9488309.html","path":"article/a9488309.html","title":"业务链指标，用户行为模式识别"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>业务链指标，用户行为模式识别 | 无奈何杨（wnhyang）</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="无奈何杨（wnhyang）" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">无奈何杨（wnhyang）</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">I will keep to fight</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">47</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">215</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%9A%E5%8A%A1%E9%93%BE%E5%9F%8B%E7%82%B9%E8%A1%8C%E4%B8%BA%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">业务链｜埋点｜行为模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%E5%BA%8F%E4%B8%9A%E5%8A%A1%E9%93%BE"><span class="nav-number">1.1.</span> <span class="nav-text">无序业务链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E4%B8%9A%E5%8A%A1%E9%93%BE"><span class="nav-number">1.2.</span> <span class="nav-text">顺序业务链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%96%E4%B8%9A%E5%8A%A1%E9%93%BE"><span class="nav-number">1.3.</span> <span class="nav-text">或业务链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E9%97%B4%E9%9A%94%E4%B8%9A%E5%8A%A1%E9%93%BE"><span class="nav-number">1.4.</span> <span class="nav-text">时间间隔业务链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AC%A1%E6%95%B0%E4%B8%9A%E5%8A%A1%E9%93%BE"><span class="nav-number">1.5.</span> <span class="nav-text">次数业务链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%BC%E5%90%88"><span class="nav-number">1.6.</span> <span class="nav-text">综合</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%9A%E5%8A%A1%E9%93%BE%E8%AF%86%E5%88%AB%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">业务链识别的实现方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E6%AD%A3%E5%90%91%E7%8A%B6%E6%80%81%E6%9C%BA"><span class="nav-number">2.1.</span> <span class="nav-text">（一）正向状态机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%8F%8D%E5%90%91%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D"><span class="nav-number">2.2.</span> <span class="nav-text">（二）反向模式匹配</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#flink%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A%E7%9A%84"><span class="nav-number">3.</span> <span class="nav-text">Flink是如何做的</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E8%81%9A%E7%B1%BB%E6%8C%87%E6%A0%87"><span class="nav-number">3.1.</span> <span class="nav-text">简单的聚类指标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AA%97%E5%8F%A3%E8%AE%A1%E7%AE%97"><span class="nav-number">3.2.</span> <span class="nav-text">窗口计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E7%9A%84%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D"><span class="nav-number">3.3.</span> <span class="nav-text">复杂的模式匹配</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E9%99%85%E6%A1%88%E4%BE%8B%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90"><span class="nav-number">4.</span> <span class="nav-text">实际案例深度解析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%B5%E5%95%86-%E9%BB%84%E7%89%9B%E5%85%9A-%E8%A1%8C%E4%B8%BA%E6%A8%A1%E5%BC%8F%E5%89%96%E6%9E%90"><span class="nav-number">4.1.</span> <span class="nav-text">电商 “黄牛党” 行为模式剖析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%91%E8%9E%8D%E8%AF%88%E9%AA%97%E8%A1%8C%E4%B8%BA%E7%9A%84%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB%E5%8E%9F%E7%90%86%E5%92%8C%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95"><span class="nav-number">4.2.</span> <span class="nav-text">金融诈骗行为的模式识别原理和实现方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BE%E4%BA%A4%E5%B9%B3%E5%8F%B0%E8%99%9A%E5%81%87%E8%B4%A6%E5%8F%B7%E7%9A%84%E8%A1%8C%E4%B8%BA%E6%A8%A1%E5%BC%8F%E5%8F%8A%E9%A3%8E%E6%8E%A7%E5%BA%94%E5%AF%B9"><span class="nav-number">4.3.</span> <span class="nav-text">社交平台虚假账号的行为模式及风控应对</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="nav-number">6.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="无奈何杨（wnhyang）"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">无奈何杨（wnhyang）</p>
+  <div class="site-description" itemprop="description">热爱、分享、生活</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">215</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">47</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wnhyang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wnhyang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/wnhyang" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;wnhyang" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wnhyang@qq.com" title="E-Mail → mailto:wnhyang@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://www.yuque.com/wnh/share" title="https:&#x2F;&#x2F;www.yuque.com&#x2F;wnh&#x2F;share" rel="noopener" target="_blank">语雀分享</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://github.com/wnhyang" title="https:&#x2F;&#x2F;github.com&#x2F;wnhyang" rel="noopener" target="_blank">GitHub</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.zhihu.com/people/wnhyang" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;wnhyang" rel="noopener" target="_blank">知乎</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/a9488309.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+      <meta itemprop="description" content="热爱、分享、生活">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="业务链指标，用户行为模式识别 | 无奈何杨（wnhyang）">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          业务链指标，用户行为模式识别
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-01-11 13:44:27 / 修改时间：21:06:09" itemprop="dateCreated datePublished" datetime="2025-01-11T13:44:27+08:00">2025-01-11</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>5.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>20 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>个人博客：<a
+href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
+<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
+title="wnhyang">wnhyang</a></p>
+<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
+title="在线知识共享">在线知识共享</a></p>
+<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
+Overview</a></p>
+<hr />
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250111/image.6wqtcc4me2.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>此前，我们已经成功搭建起最为基础的聚类指标体系，涵盖计数、求和、最大值、最小值、平均值、历史取值以及关联次数等维度，为数据的初步洞察提供了有力支撑。与此同时，规划在未来进一步拓展指标范畴，引入方差、标准差、趋势、连续次数等更为精细化的指标，力求全方位、深层次地挖掘数据价值。而此次探索之旅的重点，则聚焦于业务链指标。</p>
+<p>究竟什么是业务链指标呢？其实，从名称便能直观知晓，业务链即由一系列紧密相连、按特定顺序排列的业务环节所构筑的链条。就拿互联网产品来说，用户从登录应用程序伊始，继而查看头像、切回首页、查看评论，这一连串流畅自然的用户行为轨迹，便是一条典型的业务链。在现实的业务场景之中，业务链的涵盖范畴极其广泛，无论是电商购物流程里的搜索商品、加入购物车、下单支付，还是在线教育平台上的课程选择、试听、报名缴费，无一不是业务链的鲜活例证。这些业务链背后潜藏的海量信息，能够借助业务链指标进行量化呈现，进而助力企业精准把脉业务流程的运行态势、洞悉用户行为的偏好与规律，为优化产品、提升用户体验以及精心制定营销策略筑牢坚实的数据根基。</p>
+<h1 id="业务链埋点行为模式">业务链｜埋点｜行为模式</h1>
+<p>从前面阐述的内容来看，这些业务链本质上不就是对用户行为采集后所做的数据分析嘛！没错，而且在互联网产品的世界里，它还有一个更为人熟知的名字
+—— 埋点系统。</p>
+<span id="more"></span>
+<p>埋点系统作为一种专门用于收集、存储以及分析用户行为数据的强大工具，在当今数字化运营的浪潮中扮演着至关重要的角色。其运作原理在于，通过在前端页面、移动端应用或者后端服务器等不同关键位置植入特定的代码片段（也就是我们所说的埋点），系统便能实时捕捉用户的一举一动，并将这些珍贵的数据迅速传输至数据存储中心。</p>
+<p>从业务链指标的视角审视，埋点系统堪称业务链指标孕育的
+“生命源泉”。它所采集到的海量用户行为数据，历经整理、聚合以及深度分析等一系列工序，最终蜕变成为一个个极具价值的业务链指标。就拿前文提及的电商购物业务链来说，埋点系统会全方位收集各个环节的用户参与数据，通过严谨计算不同阶段的转化率、精准洞察用户流失率等关键指标，直观且精准地反映出业务流程的健康状况。以搜索商品到下单支付这一典型业务链为例，埋点系统能够统计出搜索之后有多少用户毅然将商品加入购物车，又有多少用户最终顺利完成支付，进而水到渠成地得出各环节的转化率，助力企业精准揪出业务链中的瓶颈环节，进而有的放矢地优化购物流程。</p>
+<p>在行为模式匹配的领域，埋点系统同样厥功至伟。它为行为模式匹配源源不断地输送丰富素材，使得企业能够基于海量用户行为数据，慧眼识别出特定的行为模式。例如，在游戏类应用场景中，通过埋点系统详细记录玩家从新手引导、关卡挑战、购买道具直至重复挑战关卡的一系列连贯行为，再巧妙利用精心设计的表达式进行深度解析。一旦发现玩家在某个关卡屡屡受挫、多次失败后频繁购买特定道具，继而重振旗鼓重新挑战的行为模式，企业便可对症下药，针对性地优化关卡难度、灵活调整道具定价策略，或者贴心推送相关引导教程，全方位提升玩家的游戏体验。与此同时，在防范刷单等恶意行为的战场上，埋点系统通过对用户行为展开密集采集与细致入微的分析，结合正向逐个匹配、反向最后匹配等先进的模式识别手段，能够以迅雷不及掩耳之势甄别出异常行为模式，为业务的正常运营保驾护航，营造公平竞争的良好环境。</p>
+<h2 id="无序业务链">无序业务链</h2>
+<p>无序业务链不关注业务发生的先后顺序，只要在特定时间范围内用户产生了某些既定行为，就会计算一次业务链。这种模式增加了数据采集与分析的灵活性，能挖掘不同行为组合的潜在价值。比如在视频网站上，用户在一天内观看了电影、电视剧、综艺节目等不同类型的视频，无论观看顺序如何，都可视为完成了一次无序业务链，通过分析此类数据，网站可了解用户的多样化视频喜好，为内容推荐提供依据。</p>
+<h2 id="顺序业务链">顺序业务链</h2>
+<p>业务链指标通常对事件发生顺序有严格要求。以在线金融借贷业务为例，用户必须依次完成身份认证、填写详细个人资料，才能提交贷款申请，环节顺序不可颠倒。在程序实现时，要设置流程节点的先后校验机制，每触发下一步操作时，需验证前置步骤是否完成。从用户行为逻辑看，遵循顺序是正常流程的体现，关注顺序异常则可防范不法分子跳过关键审核环节骗取贷款，如未认证就提交申请等欺诈行为。</p>
+<h2 id="或业务链">或业务链</h2>
+<p>“或”
+逻辑为风控指标带来灵活性。以社交平台注册环节为例，用户完成手机号验证后，既可以接收短信验证码直接验证，也可以用微信、QQ
+等第三方账号授权登录来完成后续流程，两种方式皆合规有效。开发中需用分支判断语句处理不同路径，引导用户顺利操作。从用户体验角度，多元选择可提高注册转化率；从风控层面，要确保各路径下身份真实性验证，防止虚假账号混入平台扰乱生态、进行恶意营销等。</p>
+<h2 id="时间间隔业务链">时间间隔业务链</h2>
+<p>有时需引入事件时间间隔要素来精准洞察用户行为，即关联事件间的最大允许间隔时长。在证券交易风控领域，若用户频繁大额转账后，短时间内（如
+1
+小时内）又进行异常股票买卖操作，就会触发预警机制。程序员实现时，需用专业时间函数测算事件间隔并与预设阈值比对。正常投资者有思考决策周期，短期内仓促连续操作违背常规投资逻辑，可能是市场操纵、内幕交易前奏，风控及时拦截可维护市场公平公正。</p>
+<h2 id="次数业务链">次数业务链</h2>
+<p>除时间间隔外，有时还需增设次数限定条件。如某游戏平台为防刷道具行为，规定用户一日内登录游戏达
+5
+次后，才可用游戏金币兑换稀有道具。代码编写时要设置计数器变量跟踪用户行为次数，并依规则约束。普通玩家按正常节奏登录积累金币兑换道具，刷子账号则会短期内大量登录突破正常频率薅取虚拟资产，通过次数限制结合其他指标，可精准打击此类破坏游戏经济平衡的行为，保障多数玩家合法权益。</p>
+<h2 id="综合">综合</h2>
+<p>通常各类业务链并非孤立存在，需相互协作配合，协同发挥最大功效。</p>
+<h1 id="业务链识别的实现方法">业务链识别的实现方法</h1>
+<p>为了后面的讲述的方便，这里设定一种表达式表示业务链。</p>
+<ul>
+<li>a b c 无序，同时存在a、b、c即可。</li>
+<li>(a b c)：表示顺序a、b、c。</li>
+<li>a|b|c：表示任意a、b或c（无序）。</li>
+<li>(a <span class="citation" data-cites="1m">@1m</span>
+b)：表示a之后最大间隔1分钟后b。</li>
+<li>(a b|c d)：表示a之后b或c后d。</li>
+<li>*3(a b) ：表示重复3次顺序a、b。</li>
+<li>*n(a|b) ：表示n次a或b。</li>
+</ul>
+<h2 id="一正向状态机">（一）正向状态机</h2>
+<p>正向状态机是依据业务流程顺序精心构建的状态转换模型。以电商购物为例，起始于用户浏览商品，随后依次经过加入购物车、提交订单、支付成功等关键环节，每个环节均可视为一个明确的状态。我们可精心设计一个状态机，将初始状态设定为“浏览”，当用户把商品加入购物车时，触发“加入购物车”事件，状态随即切换至“购物车”状态；接着提交订单，进入“订单提交”状态，依此类推。在代码实现环节，借助如Spring
+Statemachine这类成熟的框架，清晰定义各个状态（如通过枚举类型呈现）以及状态间的转换条件（由特定事件触发）。在一个滑动的时间窗口内，比如统计过去1小时的业务链次数，每发生一次状态转换，就在相应计数器上加1，当窗口滑动时，更新过期状态的计数，这样就能精准算出该时段内业务链的完整次数，从而实时把握业务节奏。</p>
+<p>具体思路：</p>
+<p>在已配置业务链表达式的基础上将其转为一种业务链状态机，使用滑动的时间窗口用于计算一定时间内业务链的次数，如(a
+<span class="citation" data-cites="1m">@1m</span> b
+(c|d))，依次顺序匹配到事件，首先匹配到a将其加入时间窗口。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250111/image.8vn02ny5fx.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>然后的事件可以是a也可以是b，a的话也加入时间窗口，用于在前一个a超过时间窗口时，作为头部。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250111/image.9gwnoytuu5.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>b的话则需要比较与上一个a事件的时间间隔，如果大于最大时间间隔，那么后面匹配就提前失效了，所以状态机不用继续下去了，回到原点a吧。但是如果是在间隔范围内，那么就可以继续下一步，下一步就很复杂了不单单是c或d的事情了，同时还要考虑a和b，a事件再来了怎么办，新的b事件怎么办。要考虑的还是挺多的，而且对于复杂嵌套的业务链更是头疼，难搞。如果你有什么思路手段可以讲一下🥹。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250111/image.win7lkt6i.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<h2 id="二反向模式匹配">（二）反向模式匹配</h2>
+<p>反向模式匹配采用的是从业务链末端逆向回溯的策略。假设在内容创作平台，最终业务链是用户发布文章后获取收益。我们逆向探寻，首先锁定“获得收益”这一终点状态，然后往前匹配是否有“文章审核通过”“文章提交”等前置条件在规定时间内发生。在代码实现方面，可以从存储用户行为日志的数据库入手，以收益记录为起始点，依时间倒序检索相关行为记录，借助正则表达式或精确的字段比对来识别符合业务链模式的记录，一旦匹配成功，对应的业务链次数计数器便增加。这种方式在挖掘潜在风险、追溯异常源头方面非常有效，例如排查刷量骗酬行为时，即便不法分子伪装了中间环节，通过反向追溯也能直击关键起始动作的真伪
+。</p>
+<p>具体思路：</p>
+<p>简单的来讲有点像正则匹配，首先，将所有事件编码成串或是其他的什么形式，甚至是网格、树、网络等数据结构，做一种匹配算法能在这样的数据结构中匹配，还是上面的例子假如有设置这样的业务链(a
+<span class="citation" data-cites="1m">@1m</span> b
+(c|d))，事件数据已经采集下来了有：aabacadcsrgraskborgwnraf表示最新时间窗口内的事件，通过这样的算法能计算出满足这样的业务链的次数，而且算法还可以选择是否可以重复计算，也就是说同一个节点能不能利用多次！</p>
+<p>讲实话，这个一点都不如上面的简单，尤其是想提升性能和灵活调整窗口的时候，数据结构如何设计，就是事件字符串的拼接？还是其他的？能不能说有一种神奇的物质，对于不同的事件能标记不同颜色，要匹配的业务链丢进去，同颜色的亮起来，连接到一起了？会有吧？！</p>
+<h1 id="flink是如何做的">Flink是如何做的</h1>
+<p>前面都是在没有flink情况下的讨论，至于flink我其实也不是特别熟，只是听过，大概是干嘛的，怎么用、核心是什么并不知道。</p>
+<p>说个题外话：不知道你们相不相信有那种人，简单来讲就是天才，不是自夸🤣。比如在未接触过微积分的时候发现微积分的方法，然后偶然发现这个东西几百年前已经被牛顿和莱布尼茨等人搞出来并逐步完善。我想说的是，现实中也许真的有这样的天才，我遇到过，虽然没有发明微积分这么夸张，但是也是挺聪明的。好吧，题外话结束！</p>
+<figure>
+<img data-src="https://p3-search.byteimg.com/obj/pgc-image/cbb24370c94d45bdb098bfede1cc899e"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<h2 id="简单的聚类指标">简单的聚类指标</h2>
+<p>Flink作为一款强大的分布式流处理框架，应用十分广泛。以简单的聚类指标为例，就电商用户行为而言，可借助Flink的K-Means聚类算法来实现。假设对用户的浏览、购买行为进行聚类，将消费模式相近的用户归为一组。首先从数据源（如日志系统收集的用户行为数据）读取数据，再通过Flink的DataStream
+API获取用户浏览商品的类别、价格区间，以及购买的频次、金额等特征来构建数据点。运用K-Means算法时，先初始随机设定几个聚类中心，在每一轮迭代中，Flink依据数据点与聚类中心的欧式距离（通过自定义函数实现距离计算），把数据点分配至最近的聚类中心，随后更新聚类中心位置，经多次迭代直至聚类中心稳定。借此，能够快速识别出高消费、低频浏览，或是低消费、高频浏览等不同行为模式的用户群体，进而针对不同群体优化推荐策略、调整相应侧重点，比如对高消费群体强化交易安全验证，对高频浏览低消费群体防范薅羊毛风险。</p>
+<h2 id="窗口计算">窗口计算</h2>
+<figure>
+<img data-src="https://p3-search.byteimg.com/obj/labis/a5fa6f879322ef18d4ef97fb1d2b0d9a"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>窗口计算是Flink处理流数据的核心技术，具有重要意义。例如在实时监测用户登录行为时，可运用滑动窗口统计一定时间内（如过去1小时）用户的登录次数。基于事件时间语义，能够确保在分布式环境下，无论数据何时到达，都能依据事件发生的真实时间划分窗口。通过Flink的Window
+API，设定窗口大小为1小时，滑动步长为15分钟，当新的登录事件流入时，窗口分配器会将其分配至对应的窗口，然后利用ReduceFunction对窗口内的登录次数进行累加统计。一旦发现某个用户在窗口内的登录次数超出预设阈值（如5次），结合IP地址、设备信息等其他特征，可判定可能存在账号安全风险，此时需及时触发预警，冻结账号或要求二次验证，以保障用户账户安全。</p>
+<h2 id="复杂的模式匹配">复杂的模式匹配</h2>
+<figure>
+<img data-src="https://p3-search.byteimg.com/obj/pgc-image/af3f0aac5b8c4e51b039d78ad3fe2a21"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>Flink CEP（Complex Event
+Processing）库能够处理复杂的事件模式匹配，从而精准识别风险行为模式。以金融交易为例，需监测用户短期内频繁转账且资金流向可疑账户的行为。可定义一个模式，先用.begin("start")指定起始事件为用户发起转账，通过.where()设置条件，如转账金额大于特定阈值（如5万元）；接着.followedBy("middle")表示后续紧跟的事件，再次用.where()限定接收账户为高风险名单中的账户；还可设置.times(3).within(Time.hours(2))，即这种转账到可疑账户的行为在2小时内发生3次及以上。当Flink
+CEP引擎侦测到符合该模式的事件流时，会迅速触发风险处置流程，暂停交易、通知人工审核，阻拦潜在的诈骗资金转移，凭借其强大的模式构建与实时匹配能力，为金融交易保驾护航
+。</p>
+<h1 id="实际案例深度解析">实际案例深度解析</h1>
+<h2 id="电商-黄牛党-行为模式剖析">电商 “黄牛党” 行为模式剖析</h2>
+<figure>
+<img data-src="https://p3-search.byteimg.com/obj/labis/1cd08d7c7eaed85fdb7f45c97af6c734"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>电商大促期间，“黄牛党”十分猖獗，他们的行为有明显特征。他们会批量浏览高端电子产品、限量版运动鞋等高热度、高利润商品，完全不管正常购物顺序，短时间内高频点击商品详情页，这和普通用户精心挑选商品的行为很不一样。普通用户一般遵循浏览
+- 加购 - 下单 -
+支付的流程，而“黄牛”常利用程序脚本直接下单，跳过加购环节，扰乱业务流程。比如在某电商平台抢购茅台，普通用户限购两瓶，“黄牛”却凭借虚拟IP、多账号切换，批量下单抢购，再高价转卖。从购买时间间隔和次数来看，普通消费者买家电等大件商品，决策周期可能有好几天，期间会浏览、收藏、比对不同品牌款式，购买操作间隔久、次数少；“黄牛”为囤货套利，会在几小时内频繁下单，且订单都集中在热门紧俏商品上，与正常消费节奏完全不同。平台通过监测这些异常行为，精准识别并拦截“黄牛”订单，保障公平交易环境。</p>
+<h2
+id="金融诈骗行为的模式识别原理和实现方法">金融诈骗行为的模式识别原理和实现方法</h2>
+<figure>
+<img data-src="https://p3-search.byteimg.com/obj/tos-cn-i-tjoges91tu/T83BnDq4wAPfOS"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>金融诈骗行为很隐蔽，但风控手段能揭开其伪装。以常见的网络贷款诈骗为例，一开始，诈骗分子诱导受害者点击不明链接，受害者会在短时间内访问多个非法金融类网址，这些网址大多没备案、内容粗糙，和正规金融机构官网的严谨风格差别很大。正规贷款流程是用户主动申请
+- 平台审核资质 - 评估额度 -
+放款，诈骗分子却反着来，先以各种理由让受害者缴纳“手续费”“保证金”，跳过资质审核环节。在时间间隔上，正常贷款申请，用户提交资料后要等平台审核，时间以天计算，而诈骗场景下，犯罪分子催促受害者在半小时内连续转账多次，完成“缴费”后迅速失联。平台利用大数据分析用户上网行为、转账时间与频次等，构建风险模型，通过正向状态机追踪业务链异常中断、反向模式匹配追溯资金异常流向起点，识别出诈骗套路，及时冻结相关账户，阻止损失扩大。</p>
+<h2
+id="社交平台虚假账号的行为模式及风控应对">社交平台虚假账号的行为模式及风控应对</h2>
+<figure>
+<img data-src="https://p3-search.byteimg.com/obj/labis/0a701d6b8ad213cb97bb019513f2c852"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>社交平台虚假账号旨在营造虚假热度、传播不良信息。其行为模式表现为无序浏览各类话题，快速点赞、评论，内容多为无意义表情、简单重复语句，如在明星八卦话题下刷大量
+“666”“支持”。注册后，不像真实用户逐步完善资料、寻觅好友互动，而是急于批量添加好友、加入群组，或注册后即刻向大量陌生用户发送广告链接。在注册环节，虚假账号常借助自动化工具，通过批量手机号注册或盗取社交账号权限登录，避开平台实名认证。平台借助机器学习算法，对用户发言内容、行为时间序列聚类分析，识别出行为模式偏离正常区间的账号，结合验证码升级、人脸识别等二次验证手段，阻断虚假账号渗透，净化社交生态。</p>
+<h1 id="小结">小结</h1>
+<p>最近前端项目做了一点，es与kibana看了看。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250111/image.7zqin0c6yy.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250111/image.2ks04kxfqv.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<h1 id="写在最后">写在最后</h1>
+<p>拙作艰辛，字句心血，望诸君垂青，多予支持，不胜感激。</p>
+<hr />
+<p>个人博客：<a
+href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
+<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
+title="wnhyang">wnhyang</a></p>
+<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
+title="在线知识共享">在线知识共享</a></p>
+<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
+Overview</a></p>
+<p><img data-src="https://wnhyang.github.io/images/wechat_channel.webp" /></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.webp" alt="无奈何杨（wnhyang） 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.webp" alt="无奈何杨（wnhyang） 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>无奈何杨（wnhyang）
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://wnhyang.github.io/article/a9488309.html" title="业务链指标，用户行为模式识别">https://wnhyang.github.io/article/a9488309.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/images/wechat_channel.webp">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://www.zhihu.com/people/wnhyang">
+            <span class="icon">
+              <i class="fab fa-zhihu"></i>
+            </span>
+
+            <span class="label">Zhihu</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/article/2b9d32e5.html" rel="prev" title="Vben5登录过期无法再次登录问题，http状态码">
+                  <i class="fa fa-chevron-left"></i> Vben5登录过期无法再次登录问题，http状态码
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">无奈何杨（wnhyang）</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">295k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">17:54</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/wnhyang" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.2.2/mermaid.min.js","integrity":"sha256-o5AUfgOkNFWuInA78GVCoVdGoN9eTaB3Hxu+ep7TTrY="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://wnhyang.github.io/article/a9488309.html"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>
