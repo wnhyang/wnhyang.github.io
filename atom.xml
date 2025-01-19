@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2025-01-11T13:06:09.644Z</updated>
+  <updated>2025-01-19T11:55:18.130Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,46 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>ElasticSearch索引别名的应用</title>
+    <link href="https://wnhyang.github.io/article/1d8f67fc.html"/>
+    <id>https://wnhyang.github.io/article/1d8f67fc.html</id>
+    <published>2025-01-19T11:32:31.000Z</published>
+    <updated>2025-01-19T11:55:18.130Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;个人博客：&lt;a
+href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
+title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
+title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
+Overview&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Elasticsearch
+索引别名是一种极为灵活且强大的功能，它允许用户为一个或多个索引创建逻辑上的别名。这些别名用途广泛，涵盖查询、索引操作以及索引管理等多个方面。以下为一些常见的索引别名应用场景：&lt;/p&gt;
+&lt;h3 id=&quot;简化查询&quot;&gt;简化查询&lt;/h3&gt;
+&lt;p&gt;通过创建别名，用户能够以更简洁的名称访问一个或多个索引。例如，若你有一个索引名为products_2024，可创建别名current_products以简化查询流程：&lt;/p&gt;
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;POST /_aliases&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;actions&amp;quot;: [&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#123; &amp;quot;add&amp;quot;: &amp;#123; &amp;quot;index&amp;quot;: &amp;quot;products_2024&amp;quot;, &amp;quot;alias&amp;quot;: &amp;quot;current_products&amp;quot; &amp;#125; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;在执行查询时，只需使用别名：&lt;/p&gt;
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;GET /current_products/_search&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;query&amp;quot;: &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;quot;match&amp;quot;: &amp;#123; &amp;quot;category&amp;quot;: &amp;quot;electronics&amp;quot; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;如此一来，不仅使查询语句更为简洁，也降低了因索引名称变更而需大规模修改查询代码的风险，提高了代码的可维护性。&lt;/p&gt;
+&lt;h3 id=&quot;索引版本管理&quot;&gt;索引版本管理&lt;/h3&gt;
+&lt;p&gt;当需要滚动更新索引（如按月或按年创建新索引）时，别名可用于指向当前活跃的索引。这种方式下，用户仅需更新别名，而无需对查询代码进行修改。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="ElasticSearch" scheme="https://wnhyang.github.io/tags/ElasticSearch/"/>
+    
+  </entry>
+  
+  <entry>
     <title>业务链指标，用户行为模式识别</title>
     <link href="https://wnhyang.github.io/article/a9488309.html"/>
     <id>https://wnhyang.github.io/article/a9488309.html</id>
     <published>2025-01-11T05:44:27.000Z</published>
-    <updated>2025-01-11T13:06:09.644Z</updated>
+    <updated>2025-01-11T13:06:47.567Z</updated>
     
     
     <summary type="html">&lt;p&gt;个人博客：&lt;a
@@ -798,59 +833,6 @@ alt=&quot;image&quot; /&gt;
     
     
     <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SpringBoot之Jackson，自动化配置，Java 8 date/time type java.time.LocalTime not supported</title>
-    <link href="https://wnhyang.github.io/article/a9589eb9.html"/>
-    <id>https://wnhyang.github.io/article/a9589eb9.html</id>
-    <published>2024-06-20T11:17:20.000Z</published>
-    <updated>2024-06-22T08:16:46.813Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;个人博客：&lt;a
-href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
-title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
-title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
-Overview&lt;/a&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h1 id=&quot;参考&quot;&gt;参考&lt;/h1&gt;
-&lt;p&gt;&lt;a
-href=&quot;https://www.iocoder.cn/Spring-MVC/lichhao/HttpMessageConverter/&quot;&gt;【相见欢】Spring
-MVC 源码剖析（五） —— 消息转换器 HttpMessageConverter | 芋道源码 ——
-纯源码解析博客&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://juejin.cn/post/7195078889767436346&quot;&gt;Spring boot
-中时间类型的序列化与反序列化 - 掘金&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://juejin.cn/post/7195117148140732453&quot;&gt;Spring boot 中
-Jackson 的常用配置&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&quot;failed-to-deserialize-java.time.localdatetime&quot;&gt;Failed to
-deserialize java.time.LocalDateTime&lt;/h1&gt;
-&lt;p&gt;这是&lt;code&gt;web&lt;/code&gt;开发中常见的一个错误，无法完成&lt;code&gt;LocalDataTime&lt;/code&gt;的反序列化。&lt;/p&gt;
-&lt;p&gt;这是怎么回事？&lt;/p&gt;
-&lt;p&gt;其实这个问题在于&lt;code&gt;LocalTime&lt;/code&gt;、&lt;code&gt;LocalDate&lt;/code&gt;、&lt;code&gt;LocalDateTime&lt;/code&gt;的序列化上。&lt;/p&gt;
-&lt;p&gt;这就要从&lt;code&gt;SpringMVC&lt;/code&gt;说起了！&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Spring MVC&lt;/code&gt; 是 &lt;code&gt;Spring Framework&lt;/code&gt;
-的核心组件之一，与其他模块（如
-&lt;code&gt;Spring Boot&lt;/code&gt;、&lt;code&gt;Spring Data&lt;/code&gt;、&lt;code&gt;Spring Security&lt;/code&gt;
-等）一起构成了完整的 &lt;code&gt;Spring&lt;/code&gt; 生态系统。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Spring MVC&lt;/code&gt;是&lt;code&gt;Web&lt;/code&gt;开发中极其重要，其设计思想是非常值得学习的。&lt;/p&gt;
-&lt;p&gt;关于&lt;code&gt;SpringMVC&lt;/code&gt;的学习可以参考以下文章&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.iocoder.cn/categories/Spring-MVC/&quot;&gt;Category:
-Spring-MVC | 芋道源码 —— 纯源码解析博客&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;请求报文在传输中是要进行序列化和反序列化的，有大致经历了如下流程。&lt;/p&gt;
-&lt;figure&gt;
-&lt;img data-src=&quot;https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240622/image.3go9hx1v4k.webp&quot;
-alt=&quot;image&quot; /&gt;
-&lt;figcaption aria-hidden=&quot;true&quot;&gt;image&lt;/figcaption&gt;
-&lt;/figure&gt;
-&lt;p&gt;其中这个&lt;code&gt;HttpMessageConver&lt;/code&gt;是这个过程中的关键，这个接口继承树如下图。&lt;/p&gt;</summary>
-    
-    
-    
     
   </entry>
   

@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="google-site-verification" content="4zmc5dCOR7a63YXOZx4mwqsC5dPpr0m2iWeI12w6wng">
+  <meta name="baidu-site-verification" content="fe6bba1d0d4e906fed87c9f7c2d1d09d">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="个人博客：无奈何杨（wnhyang） 个人语雀：wnhyang 共享语雀：在线知识共享 Github：wnhyang - Overview  Elasticsearch 索引别名是一种极为灵活且强大的功能，它允许用户为一个或多个索引创建逻辑上的别名。这些别名用途广泛，涵盖查询、索引操作以及索引管理等多个方面。以下为一些常见的索引别名应用场景： 简化查询 通过创建别名，用户能够以更简洁的名称访问一个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ElasticSearch索引别名的应用">
+<meta property="og:url" content="https://wnhyang.github.io/article/1d8f67fc.html">
+<meta property="og:site_name" content="无奈何杨（wnhyang）">
+<meta property="og:description" content="个人博客：无奈何杨（wnhyang） 个人语雀：wnhyang 共享语雀：在线知识共享 Github：wnhyang - Overview  Elasticsearch 索引别名是一种极为灵活且强大的功能，它允许用户为一个或多个索引创建逻辑上的别名。这些别名用途广泛，涵盖查询、索引操作以及索引管理等多个方面。以下为一些常见的索引别名应用场景： 简化查询 通过创建别名，用户能够以更简洁的名称访问一个">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wnhyang.github.io/images/wechat_channel.webp">
+<meta property="article:published_time" content="2025-01-19T11:32:31.000Z">
+<meta property="article:modified_time" content="2025-01-19T11:55:18.130Z">
+<meta property="article:author" content="无奈何杨（wnhyang）">
+<meta property="article:tag" content="ElasticSearch">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wnhyang.github.io/images/wechat_channel.webp">
+
+
+<link rel="canonical" href="https://wnhyang.github.io/article/1d8f67fc.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wnhyang.github.io/article/1d8f67fc.html","path":"article/1d8f67fc.html","title":"ElasticSearch索引别名的应用"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ElasticSearch索引别名的应用 | 无奈何杨（wnhyang）</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="无奈何杨（wnhyang）" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">无奈何杨（wnhyang）</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">I will keep to fight</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">48</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">216</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E5%8C%96%E6%9F%A5%E8%AF%A2"><span class="nav-number">1.</span> <span class="nav-text">简化查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">索引版本管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E7%B4%A2%E5%BC%95%E9%87%8D%E5%BB%BA%E5%92%8C%E5%8D%87%E7%BA%A7"><span class="nav-number">3.</span> <span class="nav-text">处理索引重建和升级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%A7%E8%A1%8C%E5%A4%9A%E7%B4%A2%E5%BC%95%E6%9F%A5%E8%AF%A2"><span class="nav-number">4.</span> <span class="nav-text">执行多索引查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%94%E7%A6%BB%E8%AF%BB%E5%86%99%E6%93%8D%E4%BD%9C"><span class="nav-number">5.</span> <span class="nav-text">隔离读写操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB"><span class="nav-number">6.</span> <span class="nav-text">数据迁移</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E5%88%86%E7%BB%84%E7%AE%A1%E7%90%86"><span class="nav-number">7.</span> <span class="nav-text">索引分组管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E5%AD%90%E9%9B%86%E5%88%9B%E5%BB%BA"><span class="nav-number">8.</span> <span class="nav-text">索引子集创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#elasticsearch-%E7%B4%A2%E5%BC%95%E5%88%AB%E5%90%8D%E5%AE%9E%E7%8E%B0%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB"><span class="nav-number">9.</span> <span class="nav-text">Elasticsearch
+索引别名实现读写分离</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF"><span class="nav-number">9.1.</span> <span class="nav-text">实现读写分离的基本思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8%E6%A1%88%E4%BE%8B"><span class="nav-number">9.2.</span> <span class="nav-text">实际应用案例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E5%91%BD%E4%BB%A4"><span class="nav-number">9.3.</span> <span class="nav-text">示例命令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">10.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="nav-number"></span> <span class="nav-text">写在最后</span></a></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="无奈何杨（wnhyang）"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">无奈何杨（wnhyang）</p>
+  <div class="site-description" itemprop="description">热爱、分享、生活</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">216</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wnhyang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wnhyang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/wnhyang" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;wnhyang" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wnhyang@qq.com" title="E-Mail → mailto:wnhyang@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://www.yuque.com/wnh/share" title="https:&#x2F;&#x2F;www.yuque.com&#x2F;wnh&#x2F;share" rel="noopener" target="_blank">语雀分享</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://github.com/wnhyang" title="https:&#x2F;&#x2F;github.com&#x2F;wnhyang" rel="noopener" target="_blank">GitHub</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.zhihu.com/people/wnhyang" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;wnhyang" rel="noopener" target="_blank">知乎</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/1d8f67fc.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+      <meta itemprop="description" content="热爱、分享、生活">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ElasticSearch索引别名的应用 | 无奈何杨（wnhyang）">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ElasticSearch索引别名的应用
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-01-19 19:32:31 / 修改时间：19:55:18" itemprop="dateCreated datePublished" datetime="2025-01-19T19:32:31+08:00">2025-01-19</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>8 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>个人博客：<a
+href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
+<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
+title="wnhyang">wnhyang</a></p>
+<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
+title="在线知识共享">在线知识共享</a></p>
+<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
+Overview</a></p>
+<hr />
+<p>Elasticsearch
+索引别名是一种极为灵活且强大的功能，它允许用户为一个或多个索引创建逻辑上的别名。这些别名用途广泛，涵盖查询、索引操作以及索引管理等多个方面。以下为一些常见的索引别名应用场景：</p>
+<h3 id="简化查询">简化查询</h3>
+<p>通过创建别名，用户能够以更简洁的名称访问一个或多个索引。例如，若你有一个索引名为products_2024，可创建别名current_products以简化查询流程：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">POST /_aliases</span><br><span class="line">&#123;</span><br><span class="line">    &quot;actions&quot;: [</span><br><span class="line">        &#123; &quot;add&quot;: &#123; &quot;index&quot;: &quot;products_2024&quot;, &quot;alias&quot;: &quot;current_products&quot; &#125; &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在执行查询时，只需使用别名：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">GET /current_products/_search</span><br><span class="line">&#123;</span><br><span class="line">    &quot;query&quot;: &#123;</span><br><span class="line">        &quot;match&quot;: &#123; &quot;category&quot;: &quot;electronics&quot; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如此一来，不仅使查询语句更为简洁，也降低了因索引名称变更而需大规模修改查询代码的风险，提高了代码的可维护性。</p>
+<h3 id="索引版本管理">索引版本管理</h3>
+<p>当需要滚动更新索引（如按月或按年创建新索引）时，别名可用于指向当前活跃的索引。这种方式下，用户仅需更新别名，而无需对查询代码进行修改。</p>
+<span id="more"></span>
+<ol type="1">
+<li><strong>创建索引和别名</strong>：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PUT /products_2024</span><br><span class="line">&#123;</span><br><span class="line">    &quot;aliases&quot;: &#123;</span><br><span class="line">        &quot;current_products&quot;: &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol type="1">
+<li><strong>创建新索引并切换别名</strong>：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">PUT /products_2025</span><br><span class="line">&#123;</span><br><span class="line">    &quot;aliases&quot;: &#123;</span><br><span class="line">        &quot;current_products&quot;: &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">POST /_aliases</span><br><span class="line">&#123;</span><br><span class="line">    &quot;actions&quot;: [</span><br><span class="line">        &#123; &quot;remove&quot;: &#123; &quot;index&quot;: &quot;products_2024&quot;, &quot;alias&quot;: &quot;current_products&quot; &#125; &#125;,</span><br><span class="line">        &#123; &quot;add&quot;: &#123; &quot;index&quot;: &quot;products_2025&quot;, &quot;alias&quot;: &quot;current_products&quot; &#125; &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过这种方式，实现了索引版本的平滑过渡，保证了业务查询的连续性，极大地减少了因索引更新带来的系统影响。</p>
+<h3 id="处理索引重建和升级">处理索引重建和升级</h3>
+<p>在对现有索引进行重建或升级（如更改映射或设置）时，可先创建新索引，再通过别名切换至新索引，从而确保服务不中断。</p>
+<ol type="1">
+<li><strong>创建新索引</strong>：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">PUT /products_v2</span><br><span class="line">&#123;</span><br><span class="line">    &quot;mappings&quot;: &#123;</span><br><span class="line">        &quot;properties&quot;: &#123;</span><br><span class="line">            &quot;new_field&quot;: &#123; &quot;type&quot;: &quot;text&quot; &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol type="1">
+<li><strong>切换别名</strong>：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">POST /_aliases</span><br><span class="line">&#123;</span><br><span class="line">    &quot;actions&quot;: [</span><br><span class="line">        &#123; &quot;remove&quot;: &#123; &quot;index&quot;: &quot;products_v1&quot;, &quot;alias&quot;: &quot;products&quot; &#125; &#125;,</span><br><span class="line">        &#123; &quot;add&quot;: &#123; &quot;index&quot;: &quot;products_v2&quot;, &quot;alias&quot;: &quot;products&quot; &#125; &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这种操作方式使得索引重建和升级过程对业务的影响降至最低，保证了系统的稳定性和可用性。</p>
+<h3 id="执行多索引查询">执行多索引查询</h3>
+<p>用户可为多个索引创建一个别名，借此通过该别名对多个索引执行查询操作。例如，假设有多个分区索引，如logs_2023_01、logs_2023_02，可创建别名logs_2023以查询这些索引：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">POST /_aliases</span><br><span class="line">&#123;</span><br><span class="line">    &quot;actions&quot;: [</span><br><span class="line">        &#123; &quot;add&quot;: &#123; &quot;index&quot;: &quot;logs_2023_01&quot;, &quot;alias&quot;: &quot;logs_2023&quot; &#125; &#125;,</span><br><span class="line">        &#123; &quot;add&quot;: &#123; &quot;index&quot;: &quot;logs_2023_02&quot;, &quot;alias&quot;: &quot;logs_2023&quot; &#125; &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>查询时，只需使用logs_2023作为索引名称：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">GET /logs_2023/_search</span><br><span class="line">&#123;</span><br><span class="line">    &quot;query&quot;: &#123;</span><br><span class="line">        &quot;match&quot;: &#123; &quot;status&quot;: &quot;error&quot; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这一功能在处理大规模数据查询时，能够显著提高查询效率，减少重复查询操作。</p>
+<h3 id="隔离读写操作">隔离读写操作</h3>
+<p>通过为写入操作和读取操作分别设置不同别名，可有效隔离读写操作。例如，设置别名write_index用于索引新数据，设置别名read_index用于搜索查询：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">POST /_aliases</span><br><span class="line">&#123;</span><br><span class="line">    &quot;actions&quot;: [</span><br><span class="line">        &#123; &quot;add&quot;: &#123; &quot;index&quot;: &quot;logs_2024&quot;, &quot;alias&quot;: &quot;write_index&quot; &#125; &#125;,</span><br><span class="line">        &#123; &quot;add&quot;: &#123; &quot;index&quot;: &quot;logs_2023&quot;, &quot;alias&quot;: &quot;read_index&quot; &#125; &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在更新时切换写入别名：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">POST /_aliases</span><br><span class="line">&#123;</span><br><span class="line">    &quot;actions&quot;: [</span><br><span class="line">        &#123; &quot;remove&quot;: &#123; &quot;index&quot;: &quot;logs_2023&quot;, &quot;alias&quot;: &quot;write_index&quot; &#125; &#125;,</span><br><span class="line">        &#123; &quot;add&quot;: &#123; &quot;index&quot;: &quot;logs_2024&quot;, &quot;alias&quot;: &quot;write_index&quot; &#125; &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这种隔离机制有助于提高系统性能，防止写操作对读操作产生性能干扰。</p>
+<h3 id="数据迁移">数据迁移</h3>
+<p>在将正常运行集群中的索引迁移到另外一个索引时，使用索引别名可以做到无须停机操作。例如，假设要将old_index迁移至new_index
+，可以先为new_index添加与old_index相同的别名，应用程序在迁移过程中依然通过该别名进行访问，待数据迁移完成，删除old_index以及其相关别名，不会影响业务的正常运行。具体操作如下：</p>
+<ol type="1">
+<li><strong>为新索引添加别名</strong>：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">POST /_aliases</span><br><span class="line">&#123;</span><br><span class="line">    &quot;actions&quot;: [</span><br><span class="line">        &#123; &quot;add&quot;: &#123; &quot;index&quot;: &quot;new_index&quot;, &quot;alias&quot;: &quot;old_index&quot; &#125; &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol type="1">
+<li><strong>数据迁移完成后，删除旧索引别名</strong>：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">POST /_aliases</span><br><span class="line">&#123;</span><br><span class="line">    &quot;actions&quot;: [</span><br><span class="line">        &#123; &quot;remove&quot;: &#123; &quot;index&quot;: &quot;old_index&quot;, &quot;alias&quot;: &quot;old_index&quot; &#125; &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol type="1">
+<li><strong>删除旧索引</strong>：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DELETE /old_index</span><br></pre></td></tr></table></figure>
+<h3 id="索引分组管理">索引分组管理</h3>
+<p>可以将多个索引进行分组，以便于更好的管理。例如，假设有一系列与销售数据相关的索引，sales_2023_q1、sales_2023_q2、sales_2023_q3、sales_2023_q4
+，可以为它们添加一个统一的别名sales_2023，对这一年度的销售数据索引进行统一管理。操作如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">POST /_aliases</span><br><span class="line">&#123;</span><br><span class="line">    &quot;actions&quot;: [</span><br><span class="line">        &#123; &quot;add&quot;: &#123; &quot;index&quot;: &quot;sales_2023_q1&quot;, &quot;alias&quot;: &quot;sales_2023&quot; &#125; &#125;,</span><br><span class="line">        &#123; &quot;add&quot;: &#123; &quot;index&quot;: &quot;sales_2023_q2&quot;, &quot;alias&quot;: &quot;sales_2023&quot; &#125; &#125;,</span><br><span class="line">        &#123; &quot;add&quot;: &#123; &quot;index&quot;: &quot;sales_2023_q3&quot;, &quot;alias&quot;: &quot;sales_2023&quot; &#125; &#125;,</span><br><span class="line">        &#123; &quot;add&quot;: &#123; &quot;index&quot;: &quot;sales_2023_q4&quot;, &quot;alias&quot;: &quot;sales_2023&quot; &#125; &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>之后在进行涉及全年销售数据的查询、统计等操作时，直接使用sales_2023别名即可，方便快捷。</p>
+<h3 id="索引子集创建">索引子集创建</h3>
+<p>给索引创建类似于视图的子集。例如，在一个包含大量用户信息的索引users中，若只想对特定年龄段（如
+18 - 30
+岁）的用户数据进行操作，可以创建一个过滤器别名。假设索引中有age字段，操作如下：</p>
+<ol type="1">
+<li><strong>创建过滤器别名</strong>：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">POST /_aliases</span><br><span class="line">&#123;</span><br><span class="line">    &quot;actions&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;add&quot;: &#123;</span><br><span class="line">                &quot;index&quot;: &quot;users&quot;,</span><br><span class="line">                &quot;alias&quot;: &quot;young_users&quot;,</span><br><span class="line">                &quot;filter&quot;: &#123;</span><br><span class="line">                    &quot;range&quot;: &#123;</span><br><span class="line">                        &quot;age&quot;: &#123;</span><br><span class="line">                            &quot;gte&quot;: 18,</span><br><span class="line">                            &quot;lte&quot;: 30</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol type="1">
+<li><strong>使用过滤器别名查询</strong>：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">GET /young_users/_search</span><br><span class="line">&#123;</span><br><span class="line">    &quot;query&quot;: &#123;</span><br><span class="line">        &quot;match_all&quot;: &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此时通过young_users别名查询，返回的结果就只会是符合年龄范围的用户数据。</p>
+<h3 id="elasticsearch-索引别名实现读写分离">Elasticsearch
+索引别名实现读写分离</h3>
+<p>Elasticsearch
+的索引别名功能可用于实现读写分离，这是一种常见的架构模式，有助于提升系统的可伸缩性和性能。在实际应用中，读写分离可确保写操作不会影响读操作的性能，同时可利用多索引分散读取负载。</p>
+<h4 id="实现读写分离的基本思路">实现读写分离的基本思路</h4>
+<ol type="1">
+<li><p><strong>写入索引</strong>：</p>
+<ul>
+<li>新的写入操作被路由至一个单一的写入索引。</li>
+<li>该索引通常为最新的索引，专门用于接收新的数据写入。</li>
+</ul></li>
+<li><p><strong>读取索引</strong>：</p>
+<ul>
+<li>读取操作被路由至一个或多个读取索引。</li>
+<li>读取索引可包括最新的写入索引以及其他已关闭写入操作的旧索引。</li>
+</ul></li>
+<li><p><strong>使用别名</strong>：</p></li>
+</ol>
+<p>通过使用别名，可将写入操作路由至写入索引，同时将读取操作路由至读取索引组。</p>
+<h4 id="实际应用案例">实际应用案例</h4>
+<p>假设拥有一个日志聚合系统，每天创建一个新索引以存储当天的日志数据。需确保写入操作仅发生在最新的索引上，而读取操作可分布到多个索引上。</p>
+<ol type="1">
+<li><p><strong>步骤 1：创建索引和别名</strong></p>
+<ul>
+<li><p><strong>创建写入索引</strong>：</p>
+<ul>
+<li>创建名为logs_2024-08-01的索引。</li>
+<li>创建别名write_index，使其指向logs_2024-08-01。</li>
+</ul></li>
+<li><p><strong>创建读取索引组</strong>：</p>
+<ul>
+<li>创建别名read_index_group，最初指向logs_2024-08-01。</li>
+</ul></li>
+</ul></li>
+<li><p><strong>步骤 2：写入数据</strong></p></li>
+</ol>
+<p>所有的写入操作都通过write_index别名进行，这些操作会被路由到logs_2024-08-01。</p>
+<ol type="1">
+<li><strong>步骤 3：读取数据</strong></li>
+</ol>
+<p>读取操作通过read_index_group别名进行，最初同样指向logs_2024-08-01。</p>
+<ol type="1">
+<li><p><strong>步骤 4：滚动索引</strong></p>
+<ul>
+<li><p><strong>创建新的写入索引</strong>：</p>
+<ul>
+<li>创建新索引logs_2024-08-02。</li>
+<li>更新write_index别名，使其指向logs_2024-08-02。</li>
+</ul></li>
+<li><p><strong>更新读取索引组</strong>：</p>
+<ul>
+<li>将logs_2024-08-02添加到read_index_group别名中。</li>
+<li>若有需要，可将旧索引logs_2024-08-01从read_index_group别名中移除。</li>
+</ul></li>
+</ul></li>
+</ol>
+<h4 id="示例命令">示例命令</h4>
+<p>假设已创建logs_2024-08-01和logs_2024-08-02索引，且希望更新别名以实现读写分离：</p>
+<ol type="1">
+<li><strong>创建写入索引别名</strong>：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST &quot;localhost:9200/_aliases&quot; -H &#x27;Content-Type: application/json&#x27; -d&#x27;</span><br><span class="line">&#123;</span><br><span class="line">    &quot;actions&quot;: [</span><br><span class="line">        &#123; &quot;add&quot;: &#123; &quot;index&quot;: &quot;logs_2024-08-01&quot;, &quot;alias&quot;: &quot;write_index&quot; &#125; &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line">&#x27;</span><br></pre></td></tr></table></figure>
+<ol type="1">
+<li><strong>创建读取索引组别名</strong>：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST &quot;localhost:9200/_aliases&quot; -H &#x27;Content-Type: application/json&#x27; -d&#x27;</span><br><span class="line">&#123;</span><br><span class="line">    &quot;actions&quot;: [</span><br><span class="line">        &#123; &quot;add&quot;: &#123; &quot;index&quot;: &quot;logs_2024-08-01&quot;, &quot;alias&quot;: &quot;read_index_group&quot; &#125; &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line">&#x27;</span><br></pre></td></tr></table></figure>
+<ol type="1">
+<li><strong>滚动索引</strong>：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST &quot;localhost:9200/_aliases&quot; -H &#x27;Content-Type: application/json&#x27; -d&#x27;</span><br><span class="line">&#123;</span><br><span class="line">    &quot;actions&quot;: [</span><br><span class="line">        &#123; &quot;remove&quot;: &#123; &quot;index&quot;: &quot;logs_2024-08-01&quot;, &quot;alias&quot;: &quot;write_index&quot; &#125; &#125;,</span><br><span class="line">        &#123; &quot;add&quot;: &#123; &quot;index&quot;: &quot;logs_2024-08-02&quot;, &quot;alias&quot;: &quot;write_index&quot; &#125; &#125;,</span><br><span class="line">        &#123; &quot;add&quot;: &#123; &quot;index&quot;: &quot;logs_2024-08-02&quot;, &quot;alias&quot;: &quot;read_index_group&quot; &#125; &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line">&#x27;</span><br></pre></td></tr></table></figure>
+<h3 id="总结">总结</h3>
+<ol type="1">
+<li><strong>写入索引 (</strong> <strong>write_index</strong>
+<strong>)</strong> ：用于接收新的写入操作。</li>
+<li><strong>读取索引组 (</strong> <strong>read_index_group</strong>
+<strong>)</strong> ：用于分散读取操作的负载。</li>
+<li><strong>滚动索引</strong>：定期更新别名，确保新的写入操作被路由到最新的索引，同时保持读取操作分布在多个索引上。</li>
+</ol>
+<p>这种方式在高并发和大数据量的场景下，能够有效提升系统的性能和可伸缩性。</p>
+<h1 id="写在最后">写在最后</h1>
+<p>拙作艰辛，字句心血，望诸君垂青，多予支持，不胜感激。</p>
+<hr />
+<p>个人博客：<a
+href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
+<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
+title="wnhyang">wnhyang</a></p>
+<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
+title="在线知识共享">在线知识共享</a></p>
+<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
+Overview</a></p>
+<p><img data-src="https://wnhyang.github.io/images/wechat_channel.webp" /></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.webp" alt="无奈何杨（wnhyang） 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.webp" alt="无奈何杨（wnhyang） 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>无奈何杨（wnhyang）
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://wnhyang.github.io/article/1d8f67fc.html" title="ElasticSearch索引别名的应用">https://wnhyang.github.io/article/1d8f67fc.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/images/wechat_channel.webp">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://www.zhihu.com/people/wnhyang">
+            <span class="icon">
+              <i class="fab fa-zhihu"></i>
+            </span>
+
+            <span class="label">Zhihu</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/ElasticSearch/" rel="tag"># ElasticSearch</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/article/a9488309.html" rel="prev" title="业务链指标，用户行为模式识别">
+                  <i class="fa fa-chevron-left"></i> 业务链指标，用户行为模式识别
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">无奈何杨（wnhyang）</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">297k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">18:01</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/wnhyang" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.2.2/mermaid.min.js","integrity":"sha256-o5AUfgOkNFWuInA78GVCoVdGoN9eTaB3Hxu+ep7TTrY="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://wnhyang.github.io/article/1d8f67fc.html"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>
