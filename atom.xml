@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2025-01-19T11:55:18.130Z</updated>
+  <updated>2025-02-06T12:48:05.432Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,51 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>风控系统指标版本管理，前端实现</title>
+    <link href="https://wnhyang.github.io/article/8777071f.html"/>
+    <id>https://wnhyang.github.io/article/8777071f.html</id>
+    <published>2025-02-06T11:29:18.000Z</published>
+    <updated>2025-02-06T12:48:05.432Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;个人博客：&lt;a
+href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
+title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
+Overview&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h1 id=&quot;前言&quot;&gt;前言&lt;/h1&gt;
+&lt;p&gt;本文算是前文《&lt;a
+href=&quot;https://www.yuque.com/wnh/share/opf5fthwlak8lg38&quot;&gt;基于LiteFlow的风控系统指标版本控制&lt;/a&gt;》的完善。&lt;/p&gt;
+&lt;p&gt;前文已经说明了在基于规则引擎系统中版本管理的重要性，并说明了主表+历史表的实现思路和实现方法。&lt;/p&gt;
+&lt;p&gt;依照着上篇“历史既是历史又是运行”的思路在前端项目中实现版本管理。开发版本不代表最终效果😂&lt;/p&gt;
+&lt;h1 id=&quot;指标状态流转&quot;&gt;指标状态流转&lt;/h1&gt;
+&lt;figure&gt;
+&lt;img data-src=&quot;https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250206/image.7i0hzqvw7m.webp&quot;
+alt=&quot;image&quot; /&gt;
+&lt;figcaption aria-hidden=&quot;true&quot;&gt;image&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;1、创建：无-待发布，新创建的指标都是待发布状态，数据落在主表中；&lt;/p&gt;
+&lt;p&gt;2、更新：待发布-待发布或已上线-待发布，简单来讲只要是更新都会回到待发布状态，更新并不改变指标的发布状态，只更新主表；&lt;/p&gt;
+&lt;p&gt;3、发布：待发布-已上线，发布后主表指标状态改为已发布，同时在版本库中生成一个最新版本，新增或修改&lt;code&gt;LiteFlow&lt;/code&gt;表&lt;code&gt;chain&lt;/code&gt;的&lt;code&gt;EL&lt;/code&gt;表达式；&lt;/p&gt;
+&lt;p&gt;4、下线：已上线-待发布，下线后指标状态回到待发布状态，对应的&lt;code&gt;LiteFlow&lt;/code&gt;表&lt;code&gt;chain&lt;/code&gt;记录被删除；&lt;/p&gt;
+&lt;p&gt;5、版本切换：版本库-待发布，版本切换生效于版本库中某个版本用于切换某个版本到主表中，还需要再次发布才生效；&lt;/p&gt;
+&lt;p&gt;3、删除：待发布-无，删除某指标，清理指标历史数据。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>ElasticSearch索引别名的应用</title>
     <link href="https://wnhyang.github.io/article/1d8f67fc.html"/>
     <id>https://wnhyang.github.io/article/1d8f67fc.html</id>
     <published>2025-01-19T11:32:31.000Z</published>
-    <updated>2025-01-19T11:55:18.130Z</updated>
+    <updated>2025-01-19T11:55:46.587Z</updated>
     
     
     <summary type="html">&lt;p&gt;个人博客：&lt;a
@@ -786,48 +826,6 @@ Overview&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;这里提供了示例数据，IP数据来源于&lt;a
 href=&quot;https://www.json.cn/network/iprand/&quot;&gt;在线ip地址随机生成器 -
 JSON中文网&lt;/a&gt;，其他数据都是随机生成，一共270条。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>交易事件的生命周期，事前事中事后风控，结果通知/回调</title>
-    <link href="https://wnhyang.github.io/article/a2731f17.html"/>
-    <id>https://wnhyang.github.io/article/a2731f17.html</id>
-    <published>2024-07-07T10:03:31.000Z</published>
-    <updated>2024-07-07T10:23:12.400Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;个人博客：&lt;a
-href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
-title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
-title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
-Overview&lt;/a&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h1 id=&quot;参考&quot;&gt;参考&lt;/h1&gt;
-&lt;p&gt;&lt;a
-href=&quot;https://baijiahao.baidu.com/s?id=1792849006369591131&quot;&gt;什么是支付风控？包含哪些环节？&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a
-href=&quot;https://cn.unionpay.com/upowhtml/cn/templates/material/a5817a4b821640e5a850c5b9da5687c7/1608729295304.pdf&quot;&gt;支付风险智能风控应用与评估指引&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&quot;交易事件及其生命周期&quot;&gt;交易事件及其生命周期&lt;/h1&gt;
-&lt;p&gt;交易事件就是交易，如：登录、注册、转账等，而且这些还只是大类，通常转账有手机号转账、银行卡号转账等，币种又有人民币、外币、数字人民币等，这只是从方式、币种区分，其实还有很多，而且流程是相对复杂的。&lt;/p&gt;
-&lt;p&gt;以下仅是随意的例子，不可深究。&lt;/p&gt;
-&lt;figure&gt;
-&lt;img data-src=&quot;https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240707/image.8dwqxbpp8o.webp&quot;
-alt=&quot;image&quot; /&gt;
-&lt;figcaption aria-hidden=&quot;true&quot;&gt;image&lt;/figcaption&gt;
-&lt;/figure&gt;
-&lt;p&gt;要在转账中加入风控一定也是了解转账的整体流程的。&lt;/p&gt;
-&lt;p&gt;从风控业务的角度出发，接入风控的交易数据就可以称为交易事件🤝&lt;/p&gt;
-&lt;p&gt;虽然说是这么说，风控的接入要熟悉整个交易流程，但是为了简化，其实是可以把所有交易分为事前事中事后的。&lt;/p&gt;
-&lt;h1 id=&quot;事前事中事后风控&quot;&gt;事前事中事后风控&lt;/h1&gt;</summary>
     
     
     
