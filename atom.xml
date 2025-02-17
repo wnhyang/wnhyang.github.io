@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2025-02-15T04:36:05.245Z</updated>
+  <updated>2025-02-17T10:51:23.198Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>基于规则引擎的风控决策系统介绍与演示</title>
+    <link href="https://wnhyang.github.io/article/6843a436.html"/>
+    <id>https://wnhyang.github.io/article/6843a436.html</id>
+    <published>2025-02-17T09:43:10.000Z</published>
+    <updated>2025-02-17T10:51:23.198Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1
+id=&quot;基于规则引擎的风控决策系统介绍与演示&quot;&gt;基于规则引擎的风控决策系统介绍与演示&lt;/h1&gt;
+&lt;h1 id=&quot;项目介绍&quot;&gt;项目介绍&lt;/h1&gt;
+&lt;p&gt;项目地址：&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>从0到1：商业化的系统化路径与关键策略</title>
     <link href="https://wnhyang.github.io/article/ce8ecb06.html"/>
     <id>https://wnhyang.github.io/article/ce8ecb06.html</id>
     <published>2025-02-15T02:32:19.000Z</published>
-    <updated>2025-02-15T04:36:05.245Z</updated>
+    <updated>2025-02-15T04:36:36.724Z</updated>
     
     
       
@@ -44,7 +70,7 @@ id=&quot;从0到1商业化的系统化路径与关键策略&quot;&gt;从0到1：
     <link href="https://wnhyang.github.io/article/5124ff5d.html"/>
     <id>https://wnhyang.github.io/article/5124ff5d.html</id>
     <published>2025-02-13T11:37:11.000Z</published>
-    <updated>2025-02-13T11:52:59.475Z</updated>
+    <updated>2025-02-15T04:36:36.723Z</updated>
     
     
       
@@ -727,57 +753,6 @@ Premium&lt;/a&gt;这样的都是提供了客户端的软件服务，好像更加
 &lt;/ul&gt;
 &lt;p&gt;许可证存在就是为了限制软件功能，不同的套餐对应不同的功能嘛！&lt;/p&gt;
 &lt;p&gt;如下，语雀套餐。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LiteFlow条件组件的设计组件标签｜组件参数，EL与或非表达式正反解析，元数据管理</title>
-    <link href="https://wnhyang.github.io/article/68bda3da.html"/>
-    <id>https://wnhyang.github.io/article/68bda3da.html</id>
-    <published>2024-07-27T09:04:15.000Z</published>
-    <updated>2024-07-27T10:55:57.645Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;个人博客：&lt;a
-href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
-title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
-title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
-Overview&lt;/a&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h1 id=&quot;参考&quot;&gt;参考&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&quot;https://juejin.cn/post/7005869798483558431&quot;
-class=&quot;uri&quot;&gt;https://juejin.cn/post/7005869798483558431&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://liteflow.cc/pages/6e4d15/&quot;&gt;🍉组件参数 |
-LiteFlow&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://liteflow.cc/pages/0f788f/&quot;&gt;🍍组件标签 |
-LiteFlow&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://gitee.com/freshday/radar/wikis/home&quot;
-class=&quot;uri&quot;&gt;https://gitee.com/freshday/radar/wikis/home&lt;/a&gt;&lt;/p&gt;
-&lt;figure&gt;
-&lt;img data-src=&quot;https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240727/image.1vyjwm3thj.webp&quot;
-alt=&quot;image&quot; /&gt;
-&lt;figcaption aria-hidden=&quot;true&quot;&gt;image&lt;/figcaption&gt;
-&lt;/figure&gt;
-&lt;h1 id=&quot;条件配置&quot;&gt;条件配置&lt;/h1&gt;
-&lt;p&gt;在需要灵活配置规则的业务系统中，如上图这样的条件配置非常常见。&lt;/p&gt;
-&lt;p&gt;&lt;a
-href=&quot;https://www.yuque.com/wnh/share/hwelucqo1ln2986m&quot;&gt;风控系统之普通规则条件，使用LiteFlow实现&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a
-href=&quot;https://www.yuque.com/wnh/share/ldslme4ddf871ltr&quot;&gt;风控系统之通用规则条件设计，算术单元/逻辑单元/函数式接口&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;不管是在第一个参考链接（&lt;a
-href=&quot;https://juejin.cn/post/7005869798483558431&quot;
-class=&quot;uri&quot;&gt;https://juejin.cn/post/7005869798483558431&lt;/a&gt;）里或是从自己的分析中都可以知道条件配置就是对同一逻辑单元的与或非编排。对于&lt;code&gt;LiteFlow&lt;/code&gt;相同组件的编排有组件标签和组件参数两种解决方法。&lt;/p&gt;
-&lt;h1 id=&quot;组件标签实现&quot;&gt;组件标签实现&lt;/h1&gt;
-&lt;p&gt;通过组件标签实现，就是在编排&lt;code&gt;LiteFlow&lt;/code&gt;时加上组件&lt;code&gt;tag&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;那么就将条件存储在数据库中，在组件运行时通过&lt;code&gt;tag&lt;/code&gt;再到数据库中去取。&lt;/p&gt;</summary>
     
     
     

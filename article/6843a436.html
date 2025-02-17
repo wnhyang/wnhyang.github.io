@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="google-site-verification" content="4zmc5dCOR7a63YXOZx4mwqsC5dPpr0m2iWeI12w6wng">
+  <meta name="baidu-site-verification" content="fe6bba1d0d4e906fed87c9f7c2d1d09d">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="基于规则引擎的风控决策系统介绍与演示 项目介绍 项目地址：https:&#x2F;&#x2F;github.com&#x2F;wnhyang&#x2F;coolGuard 基于规则引擎的风控决策系统，旨在为企业提供高效、灵活且可扩展的风险控制解决方案。 核心功能 以下是终极目标，部分已经实现，部分未实现，开源版本不会包含所有功能  实时指标计算，同步决策，异步决策，反馈 普通字段与动态字段：普通字段支持字符串、整数、小数、日期、布尔值、">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于规则引擎的风控决策系统介绍与演示">
+<meta property="og:url" content="https://wnhyang.github.io/article/6843a436.html">
+<meta property="og:site_name" content="无奈何杨（wnhyang）">
+<meta property="og:description" content="基于规则引擎的风控决策系统介绍与演示 项目介绍 项目地址：https:&#x2F;&#x2F;github.com&#x2F;wnhyang&#x2F;coolGuard 基于规则引擎的风控决策系统，旨在为企业提供高效、灵活且可扩展的风险控制解决方案。 核心功能 以下是终极目标，部分已经实现，部分未实现，开源版本不会包含所有功能  实时指标计算，同步决策，异步决策，反馈 普通字段与动态字段：普通字段支持字符串、整数、小数、日期、布尔值、">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://files.mdnice.com/user/55163/7b455dc2-54f1-4cdb-96e1-c562574110f5.png">
+<meta property="og:image" content="https://files.mdnice.com/user/55163/7f095c5e-8fdd-4ff8-884e-442b9e613bda.png">
+<meta property="og:image" content="https://files.mdnice.com/user/55163/779ea908-f582-402d-ada0-c3adc3f03fbb.png">
+<meta property="og:image" content="https://files.mdnice.com/user/55163/937798d9-9aa9-4e49-99fd-e1b7c65c095c.png">
+<meta property="og:image" content="https://files.mdnice.com/user/55163/e18b5e72-214b-4671-a11a-29177c109e52.png">
+<meta property="og:image" content="https://files.mdnice.com/user/55163/22fec659-6ed7-4c83-81b3-2938e048e151.png">
+<meta property="og:image" content="https://files.mdnice.com/user/55163/e01751f8-31bc-44ef-a67b-89053e9fa213.png">
+<meta property="og:image" content="https://files.mdnice.com/user/55163/008ea5ea-1a23-4cdc-83d9-5814f98792de.png">
+<meta property="og:image" content="https://files.mdnice.com/user/55163/c8a84875-a5cf-4b2c-91e7-c5d5cd74bd4f.png">
+<meta property="og:image" content="https://files.mdnice.com/user/55163/bcf27361-d2a6-452e-854d-bfbb15e8e36d.png">
+<meta property="og:image" content="https://files.mdnice.com/user/55163/1b0a8035-e27b-4a51-85c7-3a5ae4a2799a.png">
+<meta property="og:image" content="https://files.mdnice.com/user/55163/a0965fe9-8bc6-4565-8b21-5d972b957062.png">
+<meta property="og:image" content="https://files.mdnice.com/user/55163/5d00b3c3-b35a-4cd8-ad98-615c71a2b2b5.png">
+<meta property="og:image" content="https://files.mdnice.com/user/55163/f74a8080-e8a0-48ed-837b-b99217beed38.png">
+<meta property="og:image" content="https://files.mdnice.com/user/55163/16f6b335-d092-445e-acaf-55c3d276bd92.png">
+<meta property="og:image" content="https://files.mdnice.com/user/55163/9980c01b-f2f8-4f64-8c81-e6a7c36b2f39.png">
+<meta property="og:image" content="https://files.mdnice.com/user/55163/858cdf51-5561-4880-9fcc-0a5f4aefd58f.png">
+<meta property="og:image" content="https://files.mdnice.com/user/55163/80dfddf4-2d9b-4c54-a121-d690a8db7ab6.png">
+<meta property="og:image" content="https://files.mdnice.com/user/55163/1e2c51e3-e50a-4e42-be2c-6db32fc84d22.png">
+<meta property="og:image" content="https://files.mdnice.com/user/55163/27f1c13c-c552-49d7-bdee-bd98f9cbe35e.png">
+<meta property="article:published_time" content="2025-02-17T09:43:10.000Z">
+<meta property="article:modified_time" content="2025-02-17T10:51:23.198Z">
+<meta property="article:author" content="无奈何杨（wnhyang）">
+<meta property="article:tag" content="项目">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://files.mdnice.com/user/55163/7b455dc2-54f1-4cdb-96e1-c562574110f5.png">
+
+
+<link rel="canonical" href="https://wnhyang.github.io/article/6843a436.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wnhyang.github.io/article/6843a436.html","path":"article/6843a436.html","title":"基于规则引擎的风控决策系统介绍与演示"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>基于规则引擎的风控决策系统介绍与演示 | 无奈何杨（wnhyang）</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="无奈何杨（wnhyang）" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">无奈何杨（wnhyang）</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">I will keep to fight</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">49</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">220</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E5%BC%95%E6%93%8E%E7%9A%84%E9%A3%8E%E6%8E%A7%E5%86%B3%E7%AD%96%E7%B3%BB%E7%BB%9F%E4%BB%8B%E7%BB%8D%E4%B8%8E%E6%BC%94%E7%A4%BA"><span class="nav-number">1.</span> <span class="nav-text">基于规则引擎的风控决策系统介绍与演示</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.</span> <span class="nav-text">项目介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD"><span class="nav-number">2.1.</span> <span class="nav-text">核心功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E6%A0%88"><span class="nav-number">2.2.</span> <span class="nav-text">技术栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E4%B8%8E%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="nav-number">2.3.</span> <span class="nav-text">存储与中间件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%B6%E6%9E%84"><span class="nav-number">2.4.</span> <span class="nav-text">架构</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BC%94%E7%A4%BA"><span class="nav-number">3.</span> <span class="nav-text">演示</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E6%AE%B5"><span class="nav-number">3.1.</span> <span class="nav-text">字段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A5%E5%85%A5"><span class="nav-number">3.2.</span> <span class="nav-text">接入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%94%E7%94%A8"><span class="nav-number">3.3.</span> <span class="nav-text">应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E6%A0%87"><span class="nav-number">3.4.</span> <span class="nav-text">指标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%84%E7%BD%AE"><span class="nav-number">3.5.</span> <span class="nav-text">处置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%96%E7%95%A5%E9%9B%86"><span class="nav-number">3.6.</span> <span class="nav-text">策略集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%96%E7%95%A5"><span class="nav-number">3.7.</span> <span class="nav-text">策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%84%E5%88%99"><span class="nav-number">3.8.</span> <span class="nav-text">规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6"><span class="nav-number">3.9.</span> <span class="nav-text">事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">3.10.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%A8%E7%BA%BF%E4%BD%93%E9%AA%8C"><span class="nav-number">4.</span> <span class="nav-text">在线体验</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E"><span class="nav-number">5.</span> <span class="nav-text">声明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%81%94%E7%B3%BB"><span class="nav-number">6.</span> <span class="nav-text">联系</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E4%B8%8E%E6%94%AF%E6%8C%81"><span class="nav-number">7.</span> <span class="nav-text">服务与支持</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="无奈何杨（wnhyang）"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">无奈何杨（wnhyang）</p>
+  <div class="site-description" itemprop="description">热爱、分享、生活</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">220</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wnhyang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wnhyang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/wnhyang" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;wnhyang" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wnhyang@qq.com" title="E-Mail → mailto:wnhyang@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://www.yuque.com/wnh/share" title="https:&#x2F;&#x2F;www.yuque.com&#x2F;wnh&#x2F;share" rel="noopener" target="_blank">语雀分享</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://github.com/wnhyang" title="https:&#x2F;&#x2F;github.com&#x2F;wnhyang" rel="noopener" target="_blank">GitHub</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.zhihu.com/people/wnhyang" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;wnhyang" rel="noopener" target="_blank">知乎</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/6843a436.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+      <meta itemprop="description" content="热爱、分享、生活">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="基于规则引擎的风控决策系统介绍与演示 | 无奈何杨（wnhyang）">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          基于规则引擎的风控决策系统介绍与演示
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-02-17 17:43:10 / 修改时间：18:51:23" itemprop="dateCreated datePublished" datetime="2025-02-17T17:43:10+08:00">2025-02-17</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>7 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1
+id="基于规则引擎的风控决策系统介绍与演示">基于规则引擎的风控决策系统介绍与演示</h1>
+<h1 id="项目介绍">项目介绍</h1>
+<p>项目地址：<a target="_blank" rel="noopener" href="https://github.com/wnhyang/coolGuard"
+class="uri">https://github.com/wnhyang/coolGuard</a></p>
+<p>基于规则引擎的风控决策系统，旨在为企业提供高效、灵活且可扩展的风险控制解决方案。</p>
+<h2 id="核心功能">核心功能</h2>
+<p>以下是终极目标，部分已经实现，部分未实现，开源版本不会包含所有功能</p>
+<ul>
+<li><p>实时指标计算，同步决策，异步决策，反馈</p></li>
+<li><p>普通字段与动态字段：普通字段支持字符串、整数、小数、日期、布尔值、枚举，动态字段通过普通计算计算而来，高度可配置</p></li>
+<li><p>数据接入：灵活配置数据接入的入参和出参</p></li>
+<li><p>指标：基于时间计算的指标，目前已有：求和、次数统计、最大值、最小值、平均值、关联次数、历史取值，未来计划加入：移动距离、移动速度、趋势、方差、标准差、业务链、连续次数（不同与次数统计，中间插入其他状态则重新统计）、公式等</p></li>
+<li><p>规则：条件支持：普通条件、指标条件、名单条件、正则条件、公式/脚本条件，动作支持：添加标签、添加名单、设置字段、发送消息，可设置正式和模拟状态</p></li>
+<li><p>策略：模式分为：顺序模式、最坏模式、投票模式、权重模式</p></li>
+<li><p>策略集：编排策略，是规则引擎核心作用的体现</p></li>
+<li><p>指标、规则、策略、策略集版本管理</p></li>
+<li><p>事件中心：事件数据分析、可视化、报表</p></li>
+<li><p>豁免管理：配置式豁免决策，临时通行</p></li>
+<li><p>数据服务：名单、标签、IP/证件号/经纬度/手机解析</p></li>
+<li><p>三方集成：将三方以配置的方式接入系统</p></li>
+<li><p>流量治理：熔断、限流、降级</p></li>
+<li><p>监控中心：指标/规则/策略/执行、结果、效率监控等</p></li>
+<li><p>系统管理：用户管理、角色管理、权限管理、日志管理、系统配置等</p></li>
+<li><p>高级实验特性：A/BTest、冠军挑战、回测、仿真、模型、图谱分析</p></li>
+</ul>
+<h2 id="技术栈">技术栈</h2>
+<ul>
+<li><p>JDK 17</p></li>
+<li><p>Maven 3.5+</p></li>
+<li><p>Spring Boot 3</p></li>
+<li><p>MyBatis-Plus</p></li>
+<li><p>Redisson</p></li>
+<li><p>MapStruct</p></li>
+<li><p>SaToken</p></li>
+<li><p>LiteFlow</p></li>
+</ul>
+<h2 id="存储与中间件">存储与中间件</h2>
+<ul>
+<li><p>MySQL 5.7+</p></li>
+<li><p>Redis</p></li>
+<li><p>Kafka</p></li>
+<li><p>Elasticsearch</p></li>
+</ul>
+<h2 id="架构">架构</h2>
+<p>待补充</p>
+<h1 id="演示">演示</h1>
+<h2 id="字段">字段</h2>
+<p><img data-src="https://files.mdnice.com/user/55163/7b455dc2-54f1-4cdb-96e1-c562574110f5.png" /></p>
+<p>字段分为普通字段与动态字段，普通字段就是基础字段，表示接入系统的变量，类型有布尔、日期、枚举、小数、整数、字符串。动态字段是普通字段的初步加工，可以将其理解为函数，需要设置动态字段脚本，也就是公式，这里是用的是<a
+target="_blank" rel="noopener" href="https://github.com/alibaba/QLExpress">QLExpress</a>。这里动态字段脚本只是普通的文本域，这是最简单的实现方式，如果想扩展考<a
+target="_blank" rel="noopener" href="https://www.antdv.com/components/mentions-cn">Mentions</a>组件，像聊天输入框一样可以@某字段，终极方案就是使用编辑器组件，不仅能提示关键字还能提示方法等。</p>
+<p><img data-src="https://files.mdnice.com/user/55163/7f095c5e-8fdd-4ff8-884e-442b9e613bda.png" /></p>
+<p>字段是系统的基础，用于后面的指标计算、规则配置、数据存储等等方面，非常重要。</p>
+<p>另外，字段组是将字段进行分类，目前规划其主要作用是用于后面数据展示更清晰。</p>
+<p><img data-src="https://files.mdnice.com/user/55163/779ea908-f582-402d-ada0-c3adc3f03fbb.png" /></p>
+<h2 id="接入">接入</h2>
+<p>字段定义了系统可以处理哪些变量，接入决定了数据接入的方式与转换方法。</p>
+<p><img data-src="https://files.mdnice.com/user/55163/937798d9-9aa9-4e49-99fd-e1b7c65c095c.png" /></p>
+<p><img data-src="https://files.mdnice.com/user/55163/e18b5e72-214b-4671-a11a-29177c109e52.png" /></p>
+<p>接入的输入和输出都是可配置的，未来可以考虑加入加解密或者是身份认证等安全保障措施。</p>
+<p>另外每个接入配置对应三个RequestMapping，分别是{accessCode}/test、{accessCode}/async、{accessCode}/sync，test用于接口测试，async用于异步决策，通常用于事后事件，计划是可以通过读取数据源或者订阅MQ方式接入，sync用于同步实时决策，这也是风控决策的重要体现。</p>
+<p><img data-src="https://files.mdnice.com/user/55163/22fec659-6ed7-4c83-81b3-2938e048e151.png" /></p>
+<p>已有的接入配置提供了前端快捷测试页面，参数根据配置的字段类型动态生成的，有的是输入框，有的是日期选择框，有的是开关，有的是选择框等。</p>
+<h2 id="应用">应用</h2>
+<p><img data-src="https://files.mdnice.com/user/55163/e01751f8-31bc-44ef-a67b-89053e9fa213.png" /></p>
+<p>应用是对事件的定级划分，未来可以考虑以此做数据权限。图中展示的密钥暂时还没用。</p>
+<h2 id="指标">指标</h2>
+<p><img data-src="https://files.mdnice.com/user/55163/008ea5ea-1a23-4cdc-83d9-5814f98792de.png" /></p>
+<p>前面已经有很多篇关于指标的文章了，这里还是说一下。</p>
+<p>之前的指标管理设置两个tab（运行区和编辑区），但后面在做策略集/策略/规则的管理时，将这个舍弃了，因为运行区的功能都能在编辑区体现，而且这样稍微有些割裂。优化后，运行的就体现在名称右面的标签上了，有历史版本但未运行的也体现了，可以通过搜索条件筛选。</p>
+<p><img data-src="https://files.mdnice.com/user/55163/c8a84875-a5cf-4b2c-91e7-c5d5cd74bd4f.png" /></p>
+<p>目前只支持了图上这些类型，要注意的是不同的指标配置是不同的，所以整个表单也是动态的。</p>
+<p>另外再讲一下指标有场景的划分，目前场景类型有应用和策略集，这是有点缺憾的。</p>
+<p>如下，可以从应用和策略集的角度选择，但是缺少跨应用的，当然你说策略集角度时选择policy1.2和policy2.2这不就是跨应用吗？</p>
+<p><img data-src="https://files.mdnice.com/user/55163/bcf27361-d2a6-452e-854d-bfbb15e8e36d.png" />确实，这样也没错，但是更好方法是为策略集设置多标签，从标签的角度选择。</p>
+<p>如下，策略加上标签后，从标签角度选择就行了。这样既做到跨应用也有利于后面的事件分析。</p>
+<p>比如app1和app2都有相关与登录的策略集</p>
+<h2 id="处置"><img data-src="https://files.mdnice.com/user/55163/1b0a8035-e27b-4a51-85c7-3a5ae4a2799a.png" />处置</h2>
+<p><img data-src="https://files.mdnice.com/user/55163/a0965fe9-8bc6-4565-8b21-5d972b957062.png" /></p>
+<p>处置就是风控决策结果，划分了等级，用于比较。</p>
+<h2 id="策略集">策略集</h2>
+<p><img data-src="https://files.mdnice.com/user/55163/5d00b3c3-b35a-4cd8-ad98-615c71a2b2b5.png" /></p>
+<p>策略集编排的重要体现，目前只是文本域输入的方式写<a
+target="_blank" rel="noopener" href="https://liteflow.cc/pages/16eca9/">LiteFlow</a>的EL，未来会做成像<a
+target="_blank" rel="noopener" href="https://site.logic-flow.cn/examples">LogicFlow</a>这样的。</p>
+<p>可编排的不仅是策略，还有三方（其实除了本系统外都可以算三方，包含公司内部的，通常会是一些数据解析服务提供方、征信、公安涉诈等等，而且这些一般是付费通过包年包月或是计量的，未来还会加入这方面的管理），组合这些组件除了简单的条件分流，还可以是A/BTEST，仿真等等。</p>
+<h2 id="策略">策略</h2>
+<p><img data-src="https://files.mdnice.com/user/55163/f74a8080-e8a0-48ed-837b-b99217beed38.png" /></p>
+<p>策略我也发了好几篇文章讲过了，尤其是关于<a
+target="_blank" rel="noopener" href="https://www.yuque.com/wnh/share/mqk2iflq0zaq99gr">策略模式</a>（顺序、最坏、权重、投票）推荐一看。</p>
+<h2 id="规则">规则</h2>
+<p><img data-src="https://files.mdnice.com/user/55163/16f6b335-d092-445e-acaf-55c3d276bd92.png" /></p>
+<p>简单来讲规则就是IF(x){a}ELSE{b}，如上条件是组合形式，命中后未命中都可以设置额外的内容，如：将本次事件中某些字段加入某些名单，为整个事件打标签，取事件中的手机、关联邮箱或webhook等等发送消息。</p>
+<h2 id="事件"><img data-src="https://files.mdnice.com/user/55163/9980c01b-f2f8-4f64-8c81-e6a7c36b2f39.png" />事件</h2>
+<p>决策的流程已经介绍完了，每笔事件都通过Kafka异步记录在ElasticSearch里，数据至少包含：1、字段；2、指标（信息、版本、结果）；3、策略集（即最终结果，包括策略集、策略与规则的信息、版本、结果等）；4、标签等等</p>
+<p><img data-src="https://files.mdnice.com/user/55163/858cdf51-5561-4880-9fcc-0a5f4aefd58f.png" /></p>
+<p>es数据检索还未集成在项目中，计划是收费内容，敬请期待吧。</p>
+<p>可视化是使用Kibana配置的DashBoard通过iFrame或外链方式还是使用Echart还待确定。</p>
+<p><img data-src="https://files.mdnice.com/user/55163/80dfddf4-2d9b-4c54-a121-d690a8db7ab6.png" /></p>
+<h2 id="其他">其他</h2>
+<p><img data-src="https://files.mdnice.com/user/55163/1e2c51e3-e50a-4e42-be2c-6db32fc84d22.png" /></p>
+<p>基础的系统管理就不过多介绍了。</p>
+<h1 id="在线体验">在线体验</h1>
+<p>计划中，方案后面再讲吧。</p>
+<p>大致是：关注公众号，分配一个有效期为当天的账号密码，限制访问时间和权限，每天定时清空数据。</p>
+<h1 id="声明">声明</h1>
+<p>前端源码仅对企业级用户开放，需付费购买。
+未经授权，禁止使用本项目源码申请软著和专利，保留追究法律责任的权力！</p>
+<h1 id="联系">联系</h1>
+<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang/coolGuard"
+class="uri">https://github.com/wnhyang/coolGuard</a>，关注项目发展</p>
+<p>公众号：无奈何杨，关注多元内容</p>
+<p>B站：无奈何杨，关注视频分享</p>
+<p>QQ频道：<a target="_blank" rel="noopener" href="https://pd.qq.com/s/crz7xwtsg"
+class="uri">https://pd.qq.com/s/crz7xwtsg</a>，关注讨论聊天</p>
+<h1 id="服务与支持">服务与支持</h1>
+<p><img data-src="https://files.mdnice.com/user/55163/27f1c13c-c552-49d7-bdee-bd98f9cbe35e.png" /></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.webp" alt="无奈何杨（wnhyang） 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.webp" alt="无奈何杨（wnhyang） 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>无奈何杨（wnhyang）
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://wnhyang.github.io/article/6843a436.html" title="基于规则引擎的风控决策系统介绍与演示">https://wnhyang.github.io/article/6843a436.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/images/wechat_channel.webp">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://www.zhihu.com/people/wnhyang">
+            <span class="icon">
+              <i class="fab fa-zhihu"></i>
+            </span>
+
+            <span class="label">Zhihu</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E9%A1%B9%E7%9B%AE/" rel="tag"># 项目</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/article/ce8ecb06.html" rel="prev" title="从0到1：商业化的系统化路径与关键策略">
+                  <i class="fa fa-chevron-left"></i> 从0到1：商业化的系统化路径与关键策略
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">无奈何杨（wnhyang）</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">304k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">18:25</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/wnhyang" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.2.2/mermaid.min.js","integrity":"sha256-o5AUfgOkNFWuInA78GVCoVdGoN9eTaB3Hxu+ep7TTrY="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://wnhyang.github.io/article/6843a436.html"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>

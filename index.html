@@ -96,7 +96,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">49</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">219</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">49</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">220</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -161,7 +161,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">219</span>
+          <span class="site-state-item-count">220</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -227,6 +227,208 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/6843a436.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+      <meta itemprop="description" content="热爱、分享、生活">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/article/6843a436.html" class="post-title-link" itemprop="url">基于规则引擎的风控决策系统介绍与演示</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-02-17 17:43:10 / 修改时间：18:51:23" itemprop="dateCreated datePublished" datetime="2025-02-17T17:43:10+08:00">2025-02-17</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>7 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1
+id="基于规则引擎的风控决策系统介绍与演示">基于规则引擎的风控决策系统介绍与演示</h1>
+<h1 id="项目介绍">项目介绍</h1>
+<p>项目地址：<a target="_blank" rel="noopener" href="https://github.com/wnhyang/coolGuard"
+class="uri">https://github.com/wnhyang/coolGuard</a></p>
+<p>基于规则引擎的风控决策系统，旨在为企业提供高效、灵活且可扩展的风险控制解决方案。</p>
+<h2 id="核心功能">核心功能</h2>
+<p>以下是终极目标，部分已经实现，部分未实现，开源版本不会包含所有功能</p>
+<ul>
+<li><p>实时指标计算，同步决策，异步决策，反馈</p></li>
+<li><p>普通字段与动态字段：普通字段支持字符串、整数、小数、日期、布尔值、枚举，动态字段通过普通计算计算而来，高度可配置</p></li>
+<li><p>数据接入：灵活配置数据接入的入参和出参</p></li>
+<li><p>指标：基于时间计算的指标，目前已有：求和、次数统计、最大值、最小值、平均值、关联次数、历史取值，未来计划加入：移动距离、移动速度、趋势、方差、标准差、业务链、连续次数（不同与次数统计，中间插入其他状态则重新统计）、公式等</p></li>
+<li><p>规则：条件支持：普通条件、指标条件、名单条件、正则条件、公式/脚本条件，动作支持：添加标签、添加名单、设置字段、发送消息，可设置正式和模拟状态</p></li>
+<li><p>策略：模式分为：顺序模式、最坏模式、投票模式、权重模式</p></li>
+<li><p>策略集：编排策略，是规则引擎核心作用的体现</p></li>
+<li><p>指标、规则、策略、策略集版本管理</p></li>
+<li><p>事件中心：事件数据分析、可视化、报表</p></li>
+<li><p>豁免管理：配置式豁免决策，临时通行</p></li>
+<li><p>数据服务：名单、标签、IP/证件号/经纬度/手机解析</p></li>
+<li><p>三方集成：将三方以配置的方式接入系统</p></li>
+<li><p>流量治理：熔断、限流、降级</p></li>
+<li><p>监控中心：指标/规则/策略/执行、结果、效率监控等</p></li>
+<li><p>系统管理：用户管理、角色管理、权限管理、日志管理、系统配置等</p></li>
+<li><p>高级实验特性：A/BTest、冠军挑战、回测、仿真、模型、图谱分析</p></li>
+</ul>
+<h2 id="技术栈">技术栈</h2>
+<ul>
+<li><p>JDK 17</p></li>
+<li><p>Maven 3.5+</p></li>
+<li><p>Spring Boot 3</p></li>
+<li><p>MyBatis-Plus</p></li>
+<li><p>Redisson</p></li>
+<li><p>MapStruct</p></li>
+<li><p>SaToken</p></li>
+<li><p>LiteFlow</p></li>
+</ul>
+<h2 id="存储与中间件">存储与中间件</h2>
+<ul>
+<li><p>MySQL 5.7+</p></li>
+<li><p>Redis</p></li>
+<li><p>Kafka</p></li>
+<li><p>Elasticsearch</p></li>
+</ul>
+<h2 id="架构">架构</h2>
+<p>待补充</p>
+<h1 id="演示">演示</h1>
+<h2 id="字段">字段</h2>
+<p><img data-src="https://files.mdnice.com/user/55163/7b455dc2-54f1-4cdb-96e1-c562574110f5.png" /></p>
+<p>字段分为普通字段与动态字段，普通字段就是基础字段，表示接入系统的变量，类型有布尔、日期、枚举、小数、整数、字符串。动态字段是普通字段的初步加工，可以将其理解为函数，需要设置动态字段脚本，也就是公式，这里是用的是<a
+target="_blank" rel="noopener" href="https://github.com/alibaba/QLExpress">QLExpress</a>。这里动态字段脚本只是普通的文本域，这是最简单的实现方式，如果想扩展考<a
+target="_blank" rel="noopener" href="https://www.antdv.com/components/mentions-cn">Mentions</a>组件，像聊天输入框一样可以@某字段，终极方案就是使用编辑器组件，不仅能提示关键字还能提示方法等。</p>
+<p><img data-src="https://files.mdnice.com/user/55163/7f095c5e-8fdd-4ff8-884e-442b9e613bda.png" /></p>
+<p>字段是系统的基础，用于后面的指标计算、规则配置、数据存储等等方面，非常重要。</p>
+<p>另外，字段组是将字段进行分类，目前规划其主要作用是用于后面数据展示更清晰。</p>
+<p><img data-src="https://files.mdnice.com/user/55163/779ea908-f582-402d-ada0-c3adc3f03fbb.png" /></p>
+<h2 id="接入">接入</h2>
+<p>字段定义了系统可以处理哪些变量，接入决定了数据接入的方式与转换方法。</p>
+<p><img data-src="https://files.mdnice.com/user/55163/937798d9-9aa9-4e49-99fd-e1b7c65c095c.png" /></p>
+<p><img data-src="https://files.mdnice.com/user/55163/e18b5e72-214b-4671-a11a-29177c109e52.png" /></p>
+<p>接入的输入和输出都是可配置的，未来可以考虑加入加解密或者是身份认证等安全保障措施。</p>
+<p>另外每个接入配置对应三个RequestMapping，分别是{accessCode}/test、{accessCode}/async、{accessCode}/sync，test用于接口测试，async用于异步决策，通常用于事后事件，计划是可以通过读取数据源或者订阅MQ方式接入，sync用于同步实时决策，这也是风控决策的重要体现。</p>
+<p><img data-src="https://files.mdnice.com/user/55163/22fec659-6ed7-4c83-81b3-2938e048e151.png" /></p>
+<p>已有的接入配置提供了前端快捷测试页面，参数根据配置的字段类型动态生成的，有的是输入框，有的是日期选择框，有的是开关，有的是选择框等。</p>
+<h2 id="应用">应用</h2>
+<p><img data-src="https://files.mdnice.com/user/55163/e01751f8-31bc-44ef-a67b-89053e9fa213.png" /></p>
+<p>应用是对事件的定级划分，未来可以考虑以此做数据权限。图中展示的密钥暂时还没用。</p>
+<h2 id="指标">指标</h2>
+<p><img data-src="https://files.mdnice.com/user/55163/008ea5ea-1a23-4cdc-83d9-5814f98792de.png" /></p>
+<p>前面已经有很多篇关于指标的文章了，这里还是说一下。</p>
+<p>之前的指标管理设置两个tab（运行区和编辑区），但后面在做策略集/策略/规则的管理时，将这个舍弃了，因为运行区的功能都能在编辑区体现，而且这样稍微有些割裂。优化后，运行的就体现在名称右面的标签上了，有历史版本但未运行的也体现了，可以通过搜索条件筛选。</p>
+<p><img data-src="https://files.mdnice.com/user/55163/c8a84875-a5cf-4b2c-91e7-c5d5cd74bd4f.png" /></p>
+<p>目前只支持了图上这些类型，要注意的是不同的指标配置是不同的，所以整个表单也是动态的。</p>
+<p>另外再讲一下指标有场景的划分，目前场景类型有应用和策略集，这是有点缺憾的。</p>
+<p>如下，可以从应用和策略集的角度选择，但是缺少跨应用的，当然你说策略集角度时选择policy1.2和policy2.2这不就是跨应用吗？</p>
+<p><img data-src="https://files.mdnice.com/user/55163/bcf27361-d2a6-452e-854d-bfbb15e8e36d.png" />确实，这样也没错，但是更好方法是为策略集设置多标签，从标签的角度选择。</p>
+<p>如下，策略加上标签后，从标签角度选择就行了。这样既做到跨应用也有利于后面的事件分析。</p>
+<p>比如app1和app2都有相关与登录的策略集</p>
+<h2 id="处置"><img data-src="https://files.mdnice.com/user/55163/1b0a8035-e27b-4a51-85c7-3a5ae4a2799a.png" />处置</h2>
+<p><img data-src="https://files.mdnice.com/user/55163/a0965fe9-8bc6-4565-8b21-5d972b957062.png" /></p>
+<p>处置就是风控决策结果，划分了等级，用于比较。</p>
+<h2 id="策略集">策略集</h2>
+<p><img data-src="https://files.mdnice.com/user/55163/5d00b3c3-b35a-4cd8-ad98-615c71a2b2b5.png" /></p>
+<p>策略集编排的重要体现，目前只是文本域输入的方式写<a
+target="_blank" rel="noopener" href="https://liteflow.cc/pages/16eca9/">LiteFlow</a>的EL，未来会做成像<a
+target="_blank" rel="noopener" href="https://site.logic-flow.cn/examples">LogicFlow</a>这样的。</p>
+<p>可编排的不仅是策略，还有三方（其实除了本系统外都可以算三方，包含公司内部的，通常会是一些数据解析服务提供方、征信、公安涉诈等等，而且这些一般是付费通过包年包月或是计量的，未来还会加入这方面的管理），组合这些组件除了简单的条件分流，还可以是A/BTEST，仿真等等。</p>
+<h2 id="策略">策略</h2>
+<p><img data-src="https://files.mdnice.com/user/55163/f74a8080-e8a0-48ed-837b-b99217beed38.png" /></p>
+<p>策略我也发了好几篇文章讲过了，尤其是关于<a
+target="_blank" rel="noopener" href="https://www.yuque.com/wnh/share/mqk2iflq0zaq99gr">策略模式</a>（顺序、最坏、权重、投票）推荐一看。</p>
+<h2 id="规则">规则</h2>
+<p><img data-src="https://files.mdnice.com/user/55163/16f6b335-d092-445e-acaf-55c3d276bd92.png" /></p>
+<p>简单来讲规则就是IF(x){a}ELSE{b}，如上条件是组合形式，命中后未命中都可以设置额外的内容，如：将本次事件中某些字段加入某些名单，为整个事件打标签，取事件中的手机、关联邮箱或webhook等等发送消息。</p>
+<h2 id="事件"><img data-src="https://files.mdnice.com/user/55163/9980c01b-f2f8-4f64-8c81-e6a7c36b2f39.png" />事件</h2>
+<p>决策的流程已经介绍完了，每笔事件都通过Kafka异步记录在ElasticSearch里，数据至少包含：1、字段；2、指标（信息、版本、结果）；3、策略集（即最终结果，包括策略集、策略与规则的信息、版本、结果等）；4、标签等等</p>
+<p><img data-src="https://files.mdnice.com/user/55163/858cdf51-5561-4880-9fcc-0a5f4aefd58f.png" /></p>
+<p>es数据检索还未集成在项目中，计划是收费内容，敬请期待吧。</p>
+<p>可视化是使用Kibana配置的DashBoard通过iFrame或外链方式还是使用Echart还待确定。</p>
+<p><img data-src="https://files.mdnice.com/user/55163/80dfddf4-2d9b-4c54-a121-d690a8db7ab6.png" /></p>
+<h2 id="其他">其他</h2>
+<p><img data-src="https://files.mdnice.com/user/55163/1e2c51e3-e50a-4e42-be2c-6db32fc84d22.png" /></p>
+<p>基础的系统管理就不过多介绍了。</p>
+<h1 id="在线体验">在线体验</h1>
+<p>计划中，方案后面再讲吧。</p>
+<p>大致是：关注公众号，分配一个有效期为当天的账号密码，限制访问时间和权限，每天定时清空数据。</p>
+<h1 id="声明">声明</h1>
+<p>前端源码仅对企业级用户开放，需付费购买。
+未经授权，禁止使用本项目源码申请软著和专利，保留追究法律责任的权力！</p>
+<h1 id="联系">联系</h1>
+<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang/coolGuard"
+class="uri">https://github.com/wnhyang/coolGuard</a>，关注项目发展</p>
+<p>公众号：无奈何杨，关注多元内容</p>
+<p>B站：无奈何杨，关注视频分享</p>
+<p>QQ频道：<a target="_blank" rel="noopener" href="https://pd.qq.com/s/crz7xwtsg"
+class="uri">https://pd.qq.com/s/crz7xwtsg</a>，关注讨论聊天</p>
+<h1 id="服务与支持">服务与支持</h1>
+<p><img data-src="https://files.mdnice.com/user/55163/27f1c13c-c552-49d7-bdee-bd98f9cbe35e.png" /></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/ce8ecb06.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -257,7 +459,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2025-02-15 10:32:19 / 修改时间：12:36:05" itemprop="dateCreated datePublished" datetime="2025-02-15T10:32:19+08:00">2025-02-15</time>
+      <time title="创建时间：2025-02-15 10:32:19 / 修改时间：12:36:36" itemprop="dateCreated datePublished" datetime="2025-02-15T10:32:19+08:00">2025-02-15</time>
     </span>
 
   
@@ -464,9 +666,15 @@ alt="商业化" />
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2025-02-13 19:37:11 / 修改时间：19:52:59" itemprop="dateCreated datePublished" datetime="2025-02-13T19:37:11+08:00">2025-02-13</time>
+      <time title="创建时间：2025-02-13 19:37:11" itemprop="dateCreated datePublished" datetime="2025-02-13T19:37:11+08:00">2025-02-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-02-15 12:36:36" itemprop="dateModified" datetime="2025-02-15T12:36:36+08:00">2025-02-15</time>
     </span>
 
   
@@ -1425,126 +1633,6 @@ alt="image" />
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/697029c0.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-      <meta itemprop="description" content="热爱、分享、生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/697029c0.html" class="post-title-link" itemprop="url">MybatisPlus字段类型处理器TypeHandler</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2024-12-01 20:05:59 / 修改时间：21:42:14" itemprop="dateCreated datePublished" datetime="2024-12-01T20:05:59+08:00">2024-12-01</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.3k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>5 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>个人博客：<a
-href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
-<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
-title="wnhyang">wnhyang</a></p>
-<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
-title="在线知识共享">在线知识共享</a></p>
-<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
-Overview</a></p>
-<hr />
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20241201/image.8dwwrhquoi.webp"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
-</figure>
-<h1 id="简介">简介</h1>
-<p>官网：<a
-target="_blank" rel="noopener" href="https://baomidou.com/guides/type-handler/">字段类型处理器</a></p>
-<p>在 MyBatis 中，类型处理器（TypeHandler）扮演着 JavaType 与 JdbcType
-之间转换的桥梁角色。它们用于在执行 SQL 语句时，将 Java 对象的值设置到
-PreparedStatement 中，或者从 ResultSet 或 CallableStatement
-中取出值。</p>
-<p>具体使用参考官网即可，不再过多<code>copy</code>了。官方示例工程：👉
-<a
-target="_blank" rel="noopener" href="https://github.com/baomidou/mybatis-plus-samples/tree/master/mybatis-plus-sample-jsonb">mybatis-plus-sample-jsonb</a></p>
-<h1 id="coolguard">coolGuard</h1>
-<p>这篇文章的来由还是要提到此项目：<a
-target="_blank" rel="noopener" href="https://github.com/wnhyang/coolGuard/"
-class="uri">https://github.com/wnhyang/coolGuard/</a></p>
-<p>最近在做规则版本控制过程中使用了到了“<code>MybatisPlus</code>字段类型处理器”，感觉挺好用的。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/article/697029c0.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1570,14 +1658,14 @@ class="uri">https://github.com/wnhyang/coolGuard/</a></p>
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">302k</span>
+    <span title="站点总字数">304k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">18:18</span>
+    <span title="站点阅读时长">18:25</span>
   </span>
 </div>
 <div class="busuanzi-count">
