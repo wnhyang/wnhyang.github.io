@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2025-02-21T05:50:27.387Z</updated>
+  <updated>2025-02-23T02:04:34.872Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,23 +17,67 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>免费使用满血版DeepSeak-R1的多种方案</title>
+    <link href="https://wnhyang.github.io/article/82289aac.html"/>
+    <id>https://wnhyang.github.io/article/82289aac.html</id>
+    <published>2025-02-22T08:26:05.000Z</published>
+    <updated>2025-02-23T02:04:34.872Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;排名不分先后&lt;/p&gt;
+&lt;h2 id=&quot;一综合型ai平台&quot;&gt;一、综合型AI平台&lt;/h2&gt;
+&lt;p&gt;1、DeepSeek官方：&lt;a href=&quot;https://chat.deepseek.com/&quot;
+class=&quot;uri&quot;&gt;https://chat.deepseek.com/&lt;/a&gt;，支持网页端与 APP 端使用&lt;/p&gt;
+&lt;figure&gt;
+&lt;img data-src=&quot;https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250222/image.64dzie2njs.webp&quot;
+alt=&quot;image&quot; /&gt;
+&lt;figcaption aria-hidden=&quot;true&quot;&gt;image&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;2、腾讯元宝：&lt;a href=&quot;https://yuanbao.tencent.com/chat&quot;
+class=&quot;uri&quot;&gt;https://yuanbao.tencent.com/chat&lt;/a&gt;，支持网页端与 APP
+端使用&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="软件/工具" scheme="https://wnhyang.github.io/tags/%E8%BD%AF%E4%BB%B6-%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
     <title>基于规则引擎的风控决策系统介绍与演示</title>
     <link href="https://wnhyang.github.io/article/6843a436.html"/>
     <id>https://wnhyang.github.io/article/6843a436.html</id>
     <published>2025-02-17T09:43:10.000Z</published>
-    <updated>2025-02-21T05:50:27.387Z</updated>
+    <updated>2025-02-23T02:04:19.952Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;h1
 id=&quot;基于规则引擎的风控决策系统介绍与演示&quot;&gt;基于规则引擎的风控决策系统介绍与演示&lt;/h1&gt;
 &lt;h1 id=&quot;项目介绍&quot;&gt;项目介绍&lt;/h1&gt;
-&lt;p&gt;项目地址：&lt;a</summary>
-        
-      
+&lt;p&gt;项目地址：&lt;a href=&quot;https://github.com/wnhyang/coolGuard&quot;
+class=&quot;uri&quot;&gt;https://github.com/wnhyang/coolGuard&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;基于规则引擎的风控决策系统，旨在为企业提供高效、灵活且可扩展的风险控制解决方案。&lt;/p&gt;
+&lt;h2 id=&quot;核心功能&quot;&gt;核心功能&lt;/h2&gt;
+&lt;p&gt;以下是终极目标，部分已经实现，部分未实现，开源版本不会包含所有功能&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;实时指标计算，同步决策，异步决策，反馈&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;普通字段与动态字段：普通字段支持字符串、整数、小数、日期、布尔值、枚举，动态字段通过普通计算计算而来，高度可配置&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;数据接入：灵活配置数据接入的入参和出参&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;指标：基于时间计算的指标，目前已有：求和、次数统计、最大值、最小值、平均值、关联次数、历史取值，未来计划加入：移动距离、移动速度、趋势、方差、标准差、业务链、连续次数（不同与次数统计，中间插入其他状态则重新统计）、公式等&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;规则：条件支持：普通条件、指标条件、名单条件、正则条件、公式/脚本条件，动作支持：添加标签、添加名单、设置字段、发送消息，可设置正式和模拟状态&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;策略：模式分为：顺序模式、最坏模式、投票模式、权重模式&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;策略集：编排策略，是规则引擎核心作用的体现&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;指标、规则、策略、策略集版本管理&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;事件中心：事件数据分析、可视化、报表&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;豁免管理：配置式豁免决策，临时通行&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;数据服务：名单、标签、IP/证件号/经纬度/手机解析&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;三方集成：将三方以配置的方式接入系统&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;流量治理：熔断、限流、降级&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;监控中心：指标/规则/策略/执行、结果、效率监控等&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;系统管理：用户管理、角色管理、权限管理、日志管理、系统配置等&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;高级实验特性：A/BTest、冠军挑战、回测、仿真、模型、图谱分析&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;</summary>
     
     
     
@@ -47,18 +91,30 @@ id=&quot;基于规则引擎的风控决策系统介绍与演示&quot;&gt;基于�
     <link href="https://wnhyang.github.io/article/ce8ecb06.html"/>
     <id>https://wnhyang.github.io/article/ce8ecb06.html</id>
     <published>2025-02-15T02:32:19.000Z</published>
-    <updated>2025-02-15T04:36:36.724Z</updated>
+    <updated>2025-02-23T02:04:09.988Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;h3
 id=&quot;从0到1商业化的系统化路径与关键策略&quot;&gt;从0到1：商业化的系统化路径与关键策略&lt;/h3&gt;
-&lt;p&gt;在互联网与全球化竞争时代，商业化的成功早已不再是“灵光一现”的偶然，而是对市场规律、用户需求与资源整合的系统性实践。无论是科技初创企业还是传统行业转型，以下八个维度构成</summary>
-        
-      
+&lt;p&gt;在互联网与全球化竞争时代，商业化的成功早已不再是“灵光一现”的偶然，而是对市场规律、用户需求与资源整合的系统性实践。无论是科技初创企业还是传统行业转型，以下八个维度构成了商业化落地的核心框架。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4
+id=&quot;一市场验证从假设到数据的科学决策&quot;&gt;&lt;strong&gt;一、市场验证：从假设到数据的科学决策&lt;/strong&gt;&lt;/h4&gt;
+&lt;figure&gt;
+&lt;img data-src=&quot;https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250215/pexels-energepic-com-27411-159888.13lwggzlw8.webp&quot;
+alt=&quot;pexels-energepic-com-27411-159888&quot; /&gt;
+&lt;figcaption
+aria-hidden=&quot;true&quot;&gt;pexels-energepic-com-27411-159888&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;商业化的第一步是&lt;strong&gt;验证需求是否存在&lt;/strong&gt;。以共享办公巨头WeWork为例，其早期通过小范围测试（MVP）发现：企业用户不仅需要灵活租赁空间，更依赖社群资源与增值服务。这一发现使其将盈利模式从“工位出租”转向“会员服务+企业生态”。&lt;br /&gt;
+&lt;strong&gt;关键动作&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;精准用户分层&lt;/strong&gt;：例如拼多多通过聚焦“价格敏感型下沉市场”，避开与京东、天猫的直接竞争。&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;量化市场需求&lt;/strong&gt;：使用TAM（潜在市场总量）、SAM（可服务市场）与SOM（可获得市场）模型，如智能硬件企业需评估技术渗透率与替代品威胁。&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;动态竞争分析&lt;/strong&gt;：Netflix通过持续监测迪士尼+、HBO的内容投入与用户留存率，调整原创内容投资比例。&lt;/li&gt;
+&lt;/ul&gt;</summary>
     
     
     
@@ -70,18 +126,32 @@ id=&quot;从0到1商业化的系统化路径与关键策略&quot;&gt;从0到1：
     <link href="https://wnhyang.github.io/article/5124ff5d.html"/>
     <id>https://wnhyang.github.io/article/5124ff5d.html</id>
     <published>2025-02-13T11:37:11.000Z</published>
-    <updated>2025-02-15T04:36:36.723Z</updated>
+    <updated>2025-02-23T02:03:58.056Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;p&gt;国内社交App市场呈现“一超多强、垂直分化”的竞争格局，各平台在用户争夺、内容生态和商业化之间艰难平衡。以下为针对主流社交App的锐评，直指痛点与趋势：&lt;/p&gt;
 &lt;hr /&gt;
-&lt;h3</summary>
-        
-      
+&lt;h3 id=&quot;微信国民级工具的社交霸权与生态困局&quot;&gt;&lt;strong&gt;1.
+微信：国民级工具的“社交霸权”与生态困局&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;锐评&lt;/strong&gt;：&lt;br /&gt;
+微信早已不是单纯的社交工具，而是集支付、内容、服务于一体的“数字生活操作系统”。其垄断性地位带来两大矛盾：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!----&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;社交绑架&lt;/strong&gt;：朋友圈沦为“人设橱窗”，三天可见、分组屏蔽成为当代社交礼仪的讽刺；公众号打开率暴跌，订阅制被算法推荐击溃。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;生态过载&lt;/strong&gt;：小程序、视频号、直播强行缝合，功能臃肿消耗用户体验，年轻用户开始用“小号”逃离熟人社交压力。&lt;br /&gt;
+&lt;strong&gt;核心矛盾&lt;/strong&gt;：张小龙的“克制”理想 vs 腾讯的商业化焦虑。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h3 id=&quot;抖音快手短视频帝国的社交幻觉&quot;&gt;&lt;strong&gt;2.
+抖音/快手：短视频帝国的“社交幻觉”&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;锐评&lt;/strong&gt;：&lt;br /&gt;
+短视频平台以“杀时间”能力称王，但社交属性始终薄弱：&lt;/li&gt;
+&lt;/ul&gt;</summary>
     
     
     
@@ -703,56 +773,6 @@ href=&quot;https://www.yuque.com/wnh/share/ouhigg130g2rpzbf&quot;&gt;风控系�
 &lt;p&gt;2、事件处理流程，也就是输入的数据经历了哪些流程和组件处理！&lt;/p&gt;
 &lt;p&gt;3、策略集结果，包括策略集、策略、规则的所有决策结果。还要加上特殊配置的策略执行流程。&lt;/p&gt;
 &lt;p&gt;4、指标数据，本次事件计算的所有指标数据。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>商业软件许可证介绍｜简单原理探究</title>
-    <link href="https://wnhyang.github.io/article/a730c43.html"/>
-    <id>https://wnhyang.github.io/article/a730c43.html</id>
-    <published>2024-08-15T11:15:26.000Z</published>
-    <updated>2024-08-22T12:10:21.928Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;个人博客：&lt;a
-href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
-title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
-title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
-Overview&lt;/a&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h1 id=&quot;引入话题&quot;&gt;引入话题&lt;/h1&gt;
-&lt;p&gt;既然是商业软件，涉及到商业，那目的就是赚钱。&lt;/p&gt;
-&lt;p&gt;就拿&lt;code&gt;IDEA&lt;/code&gt;举例，&lt;code&gt;IDEA&lt;/code&gt;有多个版本，社区版功能少一些，本身使用上没有什么限制，而且省去了版权纠纷等问题；但是如果想要享受&lt;code&gt;JetBrains&lt;/code&gt;的其他服务，那就必须要考虑商业化版本了，缺点可能就是贵一点。&lt;/p&gt;
-&lt;p&gt;像&lt;code&gt;IDEA&lt;/code&gt;、&lt;a
-href=&quot;https://www.navicat.com/en/products/navicat-premium&quot;&gt;Navicat
-Premium&lt;/a&gt;这样的都是提供了客户端的软件服务，好像更加贴合我们对于软件的认识，然而我们日常生活中如&lt;code&gt;iCloud&lt;/code&gt;、&lt;code&gt;Windows&lt;/code&gt;、&lt;code&gt;aliyun&lt;/code&gt;、&lt;code&gt;google&lt;/code&gt;，包括视频会员、&lt;code&gt;VIP&lt;/code&gt;本质上都一样，而且这些都可以与其用户体系打通，形成会员积分系统。&lt;/p&gt;
-&lt;p&gt;可以步入正题了，本篇文章讨论的不是用户会员体系，而是简单的许可证&lt;code&gt;License&lt;/code&gt;。&lt;/p&gt;
-&lt;h1 id=&quot;许可证分类&quot;&gt;许可证分类&lt;/h1&gt;
-&lt;h2 id=&quot;方式分类&quot;&gt;方式分类&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;单用户许可证&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;多用户许可证&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;企业许可证&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;终身许可证&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;订阅许可证&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;免费许可证&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;场景分类&quot;&gt;场景分类&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;商业许可证&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;个人许可证&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;教育许可证&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;许可证存在就是为了限制软件功能，不同的套餐对应不同的功能嘛！&lt;/p&gt;
-&lt;p&gt;如下，语雀套餐。&lt;/p&gt;</summary>
     
     
     
