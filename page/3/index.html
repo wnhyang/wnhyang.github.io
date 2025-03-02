@@ -96,7 +96,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">50</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">221</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">50</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">222</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -161,7 +161,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">221</span>
+          <span class="site-state-item-count">222</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -218,6 +218,125 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/d39ab551.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+      <meta itemprop="description" content="热爱、分享、生活">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/article/d39ab551.html" class="post-title-link" itemprop="url">风控系统之事件溯源，决策流程记录与版本控制</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-08-28 13:46:07" itemprop="dateCreated datePublished" datetime="2024-08-28T13:46:07+08:00">2024-08-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-08-29 13:56:06" itemprop="dateModified" datetime="2024-08-29T13:56:06+08:00">2024-08-29</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>6 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>个人博客：<a
+href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
+<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
+title="wnhyang">wnhyang</a></p>
+<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
+title="在线知识共享">在线知识共享</a></p>
+<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
+Overview</a></p>
+<hr />
+<h1 id="背景">背景</h1>
+<p>一天，小明在风控管理台查看事件数据时，发现一笔决策结果为“拒绝”❌的交易事件，小明点开事件详情发现其触发了一条“24小时内向不同陌生账户转账超过30w”的规则，规则设置的处置方式是“拒绝”❌。小明通过策略规则却查不到那条“24小时内向不同陌生账户转账超过30w”的规则，经确认原来是这条规则在此交易触发后一段时间内被修改了，已经不知道当时是如何配置的！？</p>
+<p>这该怎么办？</p>
+<p>我们要知道风控等其他系统都需要对于配置实时生效，所以使用了规则引擎，规则引擎具有实时生效优雅热刷新的特性，但也因此，如果规则设置有问题而没有回滚/溯源/复现的机制，将是很大的问题！！！</p>
+<p>所以本质上就是要在规则引擎应用之上打造完善的版本控制，能够对规则历史进行溯源。</p>
+<h1 id="事件记录">事件记录</h1>
+<p>之前的文章<a
+target="_blank" rel="noopener" href="https://www.yuque.com/wnh/share/ouhigg130g2rpzbf">风控系统建设，指标策略规则流程设计，LiteFlow隐式子流程，构造EL和Chain</a>，提到了最终存储在es中大概有哪些数据。以下仅供参考，有部分还没做。</p>
+<p>这里再次梳理一下：</p>
+<p>1、基础数据，保留所有事件字段。</p>
+<p>2、事件处理流程，也就是输入的数据经历了哪些流程和组件处理！</p>
+<p>3、策略集结果，包括策略集、策略、规则的所有决策结果。还要加上特殊配置的策略执行流程。</p>
+<p>4、指标数据，本次事件计算的所有指标数据。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/article/d39ab551.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1344,132 +1463,6 @@ target="_blank" rel="noopener" href="https://www.yuque.com/wnh/share/hwelucqo1ln
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/d8ad0228.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-      <meta itemprop="description" content="热爱、分享、生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/d8ad0228.html" class="post-title-link" itemprop="url">MybatisPlusGenerator交互式Web生成增删改查、导出导入代码</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-05-24 16:59:21" itemprop="dateCreated datePublished" datetime="2024-05-24T16:59:21+08:00">2024-05-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-05-28 08:45:59" itemprop="dateModified" datetime="2024-05-28T08:45:59+08:00">2024-05-28</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>500</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>个人博客：<a
-href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
-<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
-title="wnhyang">wnhyang</a></p>
-<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
-title="在线知识共享">在线知识共享</a></p>
-<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
-Overview</a></p>
-<hr />
-<h1 id="简介">简介</h1>
-<p>前有文章<a
-target="_blank" rel="noopener" href="https://www.yuque.com/wnh/share/vi7ayw11xu0907iz">MybatisPlus-Generator自定义模版生成CRUD、DTO、VO、Convert等</a>介绍如何使用<code>MybatisPlus-Generator</code>自定义模版生成<code>CRUD</code>、<code>DTO</code>、<code>VO</code>、<code>Convert</code>等代码。这次加入了导入导出<code>Excel</code>的接口，并提供最为简单的交互式<code>Web</code>用于生成代码。当然之前的生成方式同样可用，本篇文章就介绍一下如何使用。</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/wnhyang/crud-quickstart">GitHub -
-wnhyang/crud-quickstart</a></p>
-<p><a target="_blank" rel="noopener" href="https://gitee.com/wnhyang/crud-quickstart">Gitee -
-wnhyang/crud-quickstart</a></p>
-<h1 id="配置与启动">配置与启动</h1>
-<p>项目启动其实是用不到数据源配置的，但并没有删除，这样方便直接填入基础的信息。</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://localhost:3306/xxx</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">wnhyang</span></span><br><span class="line">    <span class="attr">password:</span> <span class="number">123456</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">com.mysql.cj.jdbc.Driver</span></span><br></pre></td></tr></table></figure>
-<p>启动即可</p>
-<h1 id="填写生成配置">填写生成配置</h1>
-<h2 id="填写数据库信息">1、填写数据库信息</h2>
-<p>默认读取的是项目启动配置，可直接修改其他数据源，MySQL支持最好。</p>
-<p>这里注意下<code>jdbcUrl</code>，填写到端口就可以，比如<code>jdbc:mysql://localhost:3306</code>。</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240524/image.5q78w144q8.webp"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
-</figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/article/d8ad0228.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1495,14 +1488,14 @@ alt="image" />
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">306k</span>
+    <span title="站点总字数">308k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">18:33</span>
+    <span title="站点阅读时长">18:40</span>
   </span>
 </div>
 <div class="busuanzi-count">

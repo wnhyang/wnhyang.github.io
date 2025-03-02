@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2025-02-23T02:04:34.872Z</updated>
+  <updated>2025-03-02T14:12:14.583Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>风控系统之规则条件&amp;操作增强，名单&amp;标签&amp;消息模版管理</title>
+    <link href="https://wnhyang.github.io/article/a1a51094.html"/>
+    <id>https://wnhyang.github.io/article/a1a51094.html</id>
+    <published>2025-03-02T11:32:33.000Z</published>
+    <updated>2025-03-02T14:12:14.583Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;提要&quot;&gt;提要&lt;/h1&gt;
+&lt;p&gt;前文：&lt;a
+href=&quot;https://mp.weixin.qq.com/s/u5FmDX2kVDyeZ8FSTgDh2Q&quot;&gt;基于规则引擎的风控决策系统介绍与演示&lt;/a&gt;&lt;/p&gt;
+&lt;figure&gt;
+&lt;img</summary>
+        
+      
+    
+    
+    
+    
+    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>免费使用满血版DeepSeak-R1的多种方案</title>
     <link href="https://wnhyang.github.io/article/82289aac.html"/>
     <id>https://wnhyang.github.io/article/82289aac.html</id>
     <published>2025-02-22T08:26:05.000Z</published>
-    <updated>2025-02-23T02:04:34.872Z</updated>
+    <updated>2025-02-23T02:05:12.726Z</updated>
     
     
     <summary type="html">&lt;p&gt;排名不分先后&lt;/p&gt;
@@ -735,44 +762,6 @@ href=&quot;https://www.yuque.com/wnh/share/yqmgyyqs2e9ur1kg&quot;&gt;风控系�
 &lt;h1 id=&quot;时间窗口&quot;&gt;时间窗口&lt;/h1&gt;
 &lt;p&gt;&lt;code&gt;zset&lt;/code&gt;是&lt;code&gt;redis&lt;/code&gt;中的一种数据结构，表示有序集合，正因此我们可以利用其做时间窗口来计算指标，&lt;code&gt;value&lt;/code&gt;为事件标识，&lt;code&gt;score&lt;/code&gt;为事件时间戳。&lt;/p&gt;
 &lt;p&gt;如下图表示次数、关联、求和类型各两条指标在时间窗口下随着时间分布，其中的黑点也就是事件，散列且线性的分布在时间窗口中。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>风控系统之事件溯源，决策流程记录与版本控制</title>
-    <link href="https://wnhyang.github.io/article/d39ab551.html"/>
-    <id>https://wnhyang.github.io/article/d39ab551.html</id>
-    <published>2024-08-28T05:46:07.000Z</published>
-    <updated>2024-08-29T05:56:06.452Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;个人博客：&lt;a
-href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
-title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
-title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
-Overview&lt;/a&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h1 id=&quot;背景&quot;&gt;背景&lt;/h1&gt;
-&lt;p&gt;一天，小明在风控管理台查看事件数据时，发现一笔决策结果为“拒绝”❌的交易事件，小明点开事件详情发现其触发了一条“24小时内向不同陌生账户转账超过30w”的规则，规则设置的处置方式是“拒绝”❌。小明通过策略规则却查不到那条“24小时内向不同陌生账户转账超过30w”的规则，经确认原来是这条规则在此交易触发后一段时间内被修改了，已经不知道当时是如何配置的！？&lt;/p&gt;
-&lt;p&gt;这该怎么办？&lt;/p&gt;
-&lt;p&gt;我们要知道风控等其他系统都需要对于配置实时生效，所以使用了规则引擎，规则引擎具有实时生效优雅热刷新的特性，但也因此，如果规则设置有问题而没有回滚/溯源/复现的机制，将是很大的问题！！！&lt;/p&gt;
-&lt;p&gt;所以本质上就是要在规则引擎应用之上打造完善的版本控制，能够对规则历史进行溯源。&lt;/p&gt;
-&lt;h1 id=&quot;事件记录&quot;&gt;事件记录&lt;/h1&gt;
-&lt;p&gt;之前的文章&lt;a
-href=&quot;https://www.yuque.com/wnh/share/ouhigg130g2rpzbf&quot;&gt;风控系统建设，指标策略规则流程设计，LiteFlow隐式子流程，构造EL和Chain&lt;/a&gt;，提到了最终存储在es中大概有哪些数据。以下仅供参考，有部分还没做。&lt;/p&gt;
-&lt;p&gt;这里再次梳理一下：&lt;/p&gt;
-&lt;p&gt;1、基础数据，保留所有事件字段。&lt;/p&gt;
-&lt;p&gt;2、事件处理流程，也就是输入的数据经历了哪些流程和组件处理！&lt;/p&gt;
-&lt;p&gt;3、策略集结果，包括策略集、策略、规则的所有决策结果。还要加上特殊配置的策略执行流程。&lt;/p&gt;
-&lt;p&gt;4、指标数据，本次事件计算的所有指标数据。&lt;/p&gt;</summary>
     
     
     

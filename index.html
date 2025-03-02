@@ -96,7 +96,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">50</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">221</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">50</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">222</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -161,7 +161,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">221</span>
+          <span class="site-state-item-count">222</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -227,6 +227,298 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/a1a51094.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+      <meta itemprop="description" content="热爱、分享、生活">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/article/a1a51094.html" class="post-title-link" itemprop="url">风控系统之规则条件&操作增强，名单&标签&消息模版管理</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-03-02 19:32:33 / 修改时间：22:12:14" itemprop="dateCreated datePublished" datetime="2025-03-02T19:32:33+08:00">2025-03-02</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.9k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>7 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="提要">提要</h1>
+<p>前文：<a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/u5FmDX2kVDyeZ8FSTgDh2Q">基于规则引擎的风控决策系统介绍与演示</a></p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.5xaryketbz.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>再次说明，此项目还在开发中，还有很多事情要做，并不完善。回想起来，我也觉得挺不可思议的，最开始只是尝试着做，想着把后端做的差不多就行了，可做着做着，愈发确信前端是必不可少的，也因此项目发展到了现在的地步。可以从<code>Github</code>的<code>commit</code>看出来，也是最近半年比较活跃，也是这期间，学到的最多，进展比较快。</p>
+<p>本篇文章主要围绕着规则条件与操作、名单&amp;标签&amp;消息模版的管理。</p>
+<p>再强调一下，开发版本不代表最终成品。</p>
+<h1 id="名单标签消息模版">名单&amp;标签&amp;消息模版</h1>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/yuque_diagram.3gojjrh9np.webp"
+alt="yuque_diagram" />
+<figcaption aria-hidden="true">yuque_diagram</figcaption>
+</figure>
+<p>还是回顾一下之前讲的，规则就是<code>IF(x)&#123;a&#125;ELSE&#123;b&#125;</code>，其中<code>x</code>为条件，<code>a</code>和<code>b</code>是动作/操作。在规划中，条件不仅仅是简单的普通类条件，还有指标、名单、正则、脚本等，最近也完善了这部分。开始之前我必须要从名单&amp;标签&amp;消息模版说起，方便下面的规则操作展开。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.83a6kd9g9z.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<h2 id="名单">名单</h2>
+<p>名单在规划中分为名单集和名单数据，有点像字典和字典数据的关系。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.3gojjomd80.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>名单集顾名思义，名单数据的集合，归类名单数据用的。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.6wqvbs416i.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>名单数据，选择名单集，输入数据，并标记来源。</p>
+<p>名单集可以用在规则条件判断上，也可用在命中或未命中规则操作上，往下看就知道了。</p>
+<h1 id="标签">标签</h1>
+<p>需要注意标签是事件纬度的标签，不是用户纬度的，不同于用户画像，当然也可以这么做。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.4g4mwuwqsa.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>标签可以手动为事件添加，也可以通过规则添加（作为规则操作）。</p>
+<h1 id="消息模版">消息模版</h1>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.8adefw4f73.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>消息模版就是如短信、邮件、webhook等消息的模版，比较常见的场景就是非常用设备/IP登录预警等等，甚至可以是主动的触达推送，新活动等等。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.4n7usd9agw.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>比较不同的是这里使用<code>Mentions</code>组件方便对于字段的引用。</p>
+<h1 id="指标字段类型限制">指标字段类型限制</h1>
+<p>这个是标题里没有提及的，指标配置中字段类型的限制增强。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.9nzxjv33qt.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>在之前已经讲过了，但是一直没时间做，这次终于完善了，简单来讲就是不同指标对于计算字段要求是不同的，如通常的聚类指标（求和、最大值、最小值、平均等）指标计算字段只能是整数和小数，新增不同的指标的话还会有些不同。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.2yyhv6jxfh.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>同时指标的返回类型也不都是整数和小数，还有历史取值等指标返回值是配置时确定好的。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.51eaj65ik5.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<h1 id="规则条件操作">规则条件&amp;操作</h1>
+<p>终于到正题了，前面说的那些都是要在这里再次被提到的。正如标题所说，这次主要是增强条件和操作。</p>
+<h2 id="条件">条件</h2>
+<h3 id="条件右变量类型同左变量类型">1、条件右变量类型同左变量类型</h3>
+<p>如下，当左变量选择日期字段，常量都是无所谓的，输入的（未来要不要根据类型变化数据录入组件？还不确定），但是如果是变量，那么右变量只能是左变量同类型的。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.7axb2of5vk.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<h3
+id="丰富的条件类型指标条件名单条件正则条件脚本条件">2、丰富的条件类型，指标条件、名单条件、正则条件、脚本条件</h3>
+<p>如下，条件组件增强，支持各种条件类型，这里分别添加了指标条件、名单条件、正则条件、脚本条件，他们是不同的。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.70ah9kpb8b.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>普通条件，之前使用的都是此类型，不过多介绍了。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.70ah9j7j8m.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>指标条件，只能选择已上线的指标，其他使用和普通字段一致，包括左变量右变量类型一致限制。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.54xwgye4c4.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>名单条件，名单条件左变量不变，主要还是字段，逻辑操作为在/不在，右变量选择名单集。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.1lbyr3v7kv.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>正则条件，依然左变量字段，逻辑操作如下，右变量是自定义的正则表达式。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.7sncr9stj1.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>脚本条件，只有一个输入框，这个还待完善，有点想做成<code>QLExpress</code>的表达式形式。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.1e8qvppum6.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>小结一下，虽然看上去只是变化了这么一点，但是其实是对条件数据结构和条件组件的抽象与实现，不仅仅是后端，还有前端很多都是抽象的组件和可复用的函数等等，是一种工程化的体现。</p>
+<p>简单一说，条件组件可以设置组合的深度，如上都是配置的两层，理论上可以配置任意层，不过这没必要，还有就是条件组件只有一套，所以规则和指标用的是一套，但是指标不会有这些复杂的丰富条件，这也是需要组件抽象设计的。</p>
+<h2 id="操作">操作</h2>
+<p>如果有看之前的介绍文章，其实可以看出规则条件多了一块内容，如下，就是规则操作，目前包含添加标签、添加名单、发送消息、设置字段。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.4cl0z6shr6.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<h3 id="添加标签">添加标签</h3>
+<p>添加标签就是为当前事件配置添加的标签，是个多选框。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.39lboc3854.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<h3 id="添加名单">添加名单</h3>
+<p>添加名单就是选择某的名单集和字段，最终会将字段数据作为名单集数据添加，同时来源设置为规则。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.361pqmalv6.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.4g4mwxswi6.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<h3 id="发送消息">发送消息</h3>
+<p>发送消息就更容易理解了，预警、推送都可以，不过目前设计的还有些问题，消息目标是谁呢？本次手机号？邮箱？还是其他？还待完善。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.7pfn438ve.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<h3 id="设置字段">设置字段</h3>
+<p>设置字段也是待完善，尤其是使用场景，是用做流程编排中，还是其他的什么？</p>
+<p>当然作为简单的临时变量使用也是可以的。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.2dou8uwlhy.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<h3 id="小结">小结</h3>
+<p>以上这些都是简单的介绍，这些在<code>LiteFlow</code>的设计中都是组件，可以任意定制化。</p>
+<p>另外如果细想其实是有问题的，已知之前的设计规则的集合是策略，如果是多条规则命中，这些操作是如何之行的，全部都执行，还是以最终的一个为结果执行？不能同时发送几条奇怪的消息吧？标签和名单倒是可以一起做。</p>
+<h1 id="其他文章推荐">其他文章推荐</h1>
+<p>目前还比较零散，未来有时间会系统整理一下。</p>
+<p>全局</p>
+<p><a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/bCZvLLrtAvp3vGaIluHYyA">规则引擎可以应用于哪些系统，用户画像、触达、风控、推荐、监控...</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/u5FmDX2kVDyeZ8FSTgDh2Q">基于规则引擎的风控决策系统介绍与演示</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/FQ6PgCjppuZiTUCawD9lVQ">风控系统之规则重复触发</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/soyeu4iC19dM2VkPeqZZPQ">LiteFlow上下文与组件设计，数据依赖梳理</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/ycAInj9obPa9ZJqXsskx6A">交易事件的生命周期，事前事中事后风控，结果通知/回调</a></p>
+<p>策略/规则篇</p>
+<p><a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/m0isU0Gd9unHZLaf5wd0-g">风控系统之普通规则条件，使用LiteFlow实现</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/XHkJFLormIKteoBiAygFew">风控系统之通用规则条件设计，算术单元/逻辑单元/函数式接口</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/_5Cc5IMd1nmJa3asVVV05g">LiteFlow决策系统的策略模式，顺序、最坏、投票、权重</a></p>
+<p>指标篇</p>
+<p><a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/DDtkjJUGjI7WehADtiWL9A">风控系统指标计算/特征提取分析与实现01，Redis、Zset、模版方法</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/aWwGnSMLRtLA-ZMPUkbJoA">基于LiteFlow的风控系统指标版本控制</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/tNoM8uVHUsxD_YHEzMtFQA">风控系统指标版本管理，前端实现</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/jYMaOFMfJ8h_TCeqmqNGKA">风控系统之指标回溯，历史数据重跑</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/4ngljYekpiklpfpxuG3Wkw">业务链指标，用户行为模式识别，埋点系统</a></p>
+<p>数据篇</p>
+<p><a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/FIj6cV61bTi9YRMizj4gRQ">风控系统之数据服务，名单、标签、IP、设备、地理信息、征信等</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/oFsyvhc-BrBDxLedPW7VkQ">GeoHash处理经纬度，降维，空间填充曲线</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/82289aac.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -263,7 +555,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-02-23 10:04:34" itemprop="dateModified" datetime="2025-02-23T10:04:34+08:00">2025-02-23</time>
+      <time title="修改时间：2025-02-23 10:05:12" itemprop="dateModified" datetime="2025-02-23T10:05:12+08:00">2025-02-23</time>
     </span>
 
   
@@ -1241,117 +1533,6 @@ alt="image" />
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/7505f30d.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-      <meta itemprop="description" content="热爱、分享、生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/7505f30d.html" class="post-title-link" itemprop="url">LiteFlow上下文与组件设计，数据依赖梳理</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2024-12-12 19:24:47 / 修改时间：19:57:45" itemprop="dateCreated datePublished" datetime="2024-12-12T19:24:47+08:00">2024-12-12</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>2.4k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>9 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>个人博客：<a
-href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
-<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
-title="wnhyang">wnhyang</a></p>
-<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
-title="在线知识共享">在线知识共享</a></p>
-<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
-Overview</a></p>
-<hr />
-<h1 id="参考">参考</h1>
-<p><a target="_blank" rel="noopener" href="https://liteflow.cc/pages/e1e61f/">如何理解上下文这个概念？
-| LiteFlow</a></p>
-<p><a target="_blank" rel="noopener" href="https://liteflow.cc/pages/501abf/">🌯数据上下文的定义和使用
-| LiteFlow</a></p>
-<p><a
-target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/C7F5Kat6Fv6oLBbBKSdIlg">我的业务项目是否适合用LiteFlow？</a></p>
-<p>在选择使用<code>LiteFlow</code>之前应该要对其有一些了解，不求熟悉源码，但对于其设计思想还是了解一下的。这将对于后面使用有很大帮助，官方文档和源码都是很好的学习路径哦！</p>
-<p>如官网所讲的，为了实现编排，就要消除组件的差异，由此设计了上下文。而使用<code>LiteFlow</code>完成业务，上下文与组件的设计又是极其的关键。方法论还是交给会写论文的人来吧，我只能提供一些经验之谈。</p>
-<p>下面还是通过项目<a target="_blank" rel="noopener" href="https://github.com/wnhyang/coolGuard/"
-class="uri">https://github.com/wnhyang/coolGuard/</a>来讲述吧。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/article/7505f30d.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1377,14 +1558,14 @@ class="uri">https://github.com/wnhyang/coolGuard/</a>来讲述吧。</p>
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">306k</span>
+    <span title="站点总字数">308k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">18:33</span>
+    <span title="站点阅读时长">18:40</span>
   </span>
 </div>
 <div class="busuanzi-count">

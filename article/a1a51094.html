@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="google-site-verification" content="4zmc5dCOR7a63YXOZx4mwqsC5dPpr0m2iWeI12w6wng">
+  <meta name="baidu-site-verification" content="fe6bba1d0d4e906fed87c9f7c2d1d09d">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wnhyang.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="提要 前文：基于规则引擎的风控决策系统介绍与演示   image  再次说明，此项目还在开发中，还有很多事情要做，并不完善。回想起来，我也觉得挺不可思议的，最开始只是尝试着做，想着把后端做的差不多就行了，可做着做着，愈发确信前端是必不可少的，也因此项目发展到了现在的地步。可以从Github的commit看出来，也是最近半年比较活跃，也是这期间，学到的最多，进展比较快。 本篇文章主要围绕着规则条件与">
+<meta property="og:type" content="article">
+<meta property="og:title" content="风控系统之规则条件&amp;操作增强，名单&amp;标签&amp;消息模版管理">
+<meta property="og:url" content="https://wnhyang.github.io/article/a1a51094.html">
+<meta property="og:site_name" content="无奈何杨（wnhyang）">
+<meta property="og:description" content="提要 前文：基于规则引擎的风控决策系统介绍与演示   image  再次说明，此项目还在开发中，还有很多事情要做，并不完善。回想起来，我也觉得挺不可思议的，最开始只是尝试着做，想着把后端做的差不多就行了，可做着做着，愈发确信前端是必不可少的，也因此项目发展到了现在的地步。可以从Github的commit看出来，也是最近半年比较活跃，也是这期间，学到的最多，进展比较快。 本篇文章主要围绕着规则条件与">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.5xaryketbz.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/yuque_diagram.3gojjrh9np.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.83a6kd9g9z.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.3gojjomd80.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.6wqvbs416i.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.4g4mwuwqsa.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.8adefw4f73.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.4n7usd9agw.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.9nzxjv33qt.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.2yyhv6jxfh.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.51eaj65ik5.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.7axb2of5vk.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.70ah9kpb8b.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.70ah9j7j8m.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.54xwgye4c4.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.1lbyr3v7kv.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.7sncr9stj1.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.1e8qvppum6.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.4cl0z6shr6.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.39lboc3854.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.361pqmalv6.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.4g4mwxswi6.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.7pfn438ve.webp">
+<meta property="og:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.2dou8uwlhy.webp">
+<meta property="article:published_time" content="2025-03-02T11:32:33.000Z">
+<meta property="article:modified_time" content="2025-03-02T14:12:14.583Z">
+<meta property="article:author" content="无奈何杨（wnhyang）">
+<meta property="article:tag" content="项目">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.5xaryketbz.webp">
+
+
+<link rel="canonical" href="https://wnhyang.github.io/article/a1a51094.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wnhyang.github.io/article/a1a51094.html","path":"article/a1a51094.html","title":"风控系统之规则条件&操作增强，名单&标签&消息模版管理"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>风控系统之规则条件&操作增强，名单&标签&消息模版管理 | 无奈何杨（wnhyang）</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="无奈何杨（wnhyang）" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">无奈何杨（wnhyang）</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">I will keep to fight</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">50</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">222</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8F%90%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">提要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8D%E5%8D%95%E6%A0%87%E7%AD%BE%E6%B6%88%E6%81%AF%E6%A8%A1%E7%89%88"><span class="nav-number">2.</span> <span class="nav-text">名单&amp;标签&amp;消息模版</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8D%E5%8D%95"><span class="nav-number">2.1.</span> <span class="nav-text">名单</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE"><span class="nav-number">3.</span> <span class="nav-text">标签</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E6%A8%A1%E7%89%88"><span class="nav-number">4.</span> <span class="nav-text">消息模版</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8C%87%E6%A0%87%E5%AD%97%E6%AE%B5%E7%B1%BB%E5%9E%8B%E9%99%90%E5%88%B6"><span class="nav-number">5.</span> <span class="nav-text">指标字段类型限制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%84%E5%88%99%E6%9D%A1%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="nav-number">6.</span> <span class="nav-text">规则条件&amp;操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6"><span class="nav-number">6.1.</span> <span class="nav-text">条件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E5%8F%B3%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B%E5%90%8C%E5%B7%A6%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B"><span class="nav-number">6.1.1.</span> <span class="nav-text">1、条件右变量类型同左变量类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%B0%E5%AF%8C%E7%9A%84%E6%9D%A1%E4%BB%B6%E7%B1%BB%E5%9E%8B%E6%8C%87%E6%A0%87%E6%9D%A1%E4%BB%B6%E5%90%8D%E5%8D%95%E6%9D%A1%E4%BB%B6%E6%AD%A3%E5%88%99%E6%9D%A1%E4%BB%B6%E8%84%9A%E6%9C%AC%E6%9D%A1%E4%BB%B6"><span class="nav-number">6.1.2.</span> <span class="nav-text">2、丰富的条件类型，指标条件、名单条件、正则条件、脚本条件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C"><span class="nav-number">6.2.</span> <span class="nav-text">操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%A0%87%E7%AD%BE"><span class="nav-number">6.2.1.</span> <span class="nav-text">添加标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E5%90%8D%E5%8D%95"><span class="nav-number">6.2.2.</span> <span class="nav-text">添加名单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%91%E9%80%81%E6%B6%88%E6%81%AF"><span class="nav-number">6.2.3.</span> <span class="nav-text">发送消息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%AD%97%E6%AE%B5"><span class="nav-number">6.2.4.</span> <span class="nav-text">设置字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">6.2.5.</span> <span class="nav-text">小结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E6%96%87%E7%AB%A0%E6%8E%A8%E8%8D%90"><span class="nav-number">7.</span> <span class="nav-text">其他文章推荐</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="无奈何杨（wnhyang）"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">无奈何杨（wnhyang）</p>
+  <div class="site-description" itemprop="description">热爱、分享、生活</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">222</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">50</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wnhyang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wnhyang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/wnhyang" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;wnhyang" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wnhyang@qq.com" title="E-Mail → mailto:wnhyang@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://www.yuque.com/wnh/share" title="https:&#x2F;&#x2F;www.yuque.com&#x2F;wnh&#x2F;share" rel="noopener" target="_blank">语雀分享</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://github.com/wnhyang" title="https:&#x2F;&#x2F;github.com&#x2F;wnhyang" rel="noopener" target="_blank">GitHub</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.zhihu.com/people/wnhyang" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;wnhyang" rel="noopener" target="_blank">知乎</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        <div class="sidebar-inner sidebar-post-related">
+          <div class="animated">
+              <div class="links-of-blogroll-title"><i class="fa fa-signs-post fa-fw"></i>
+    相关文章
+  </div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/2b9d32e5.html" rel="bookmark">
+        <time class="popular-posts-time">2024-12-29</time>
+        <br>
+      Vben5登录过期无法再次登录问题，http状态码
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/6843a436.html" rel="bookmark">
+        <time class="popular-posts-time">2025-02-17</time>
+        <br>
+      基于规则引擎的风控决策系统介绍与演示
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/82289aac.html" rel="bookmark">
+        <time class="popular-posts-time">2025-02-22</time>
+        <br>
+      免费使用满血版DeepSeak-R1的多种方案
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/bf7337ce.html" rel="bookmark">
+        <time class="popular-posts-time">2024-03-16</time>
+        <br>
+      MybatisPlus-Generator自定义模版生成CRUD、DTO、VO、Convert等
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/article/d8ad0228.html" rel="bookmark">
+        <time class="popular-posts-time">2024-05-24</time>
+        <br>
+      MybatisPlusGenerator交互式Web生成增删改查、导出导入代码
+      </a>
+    </li>
+  </ul>
+
+          </div>
+        </div>
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/a1a51094.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+      <meta itemprop="description" content="热爱、分享、生活">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="风控系统之规则条件&操作增强，名单&标签&消息模版管理 | 无奈何杨（wnhyang）">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          风控系统之规则条件&操作增强，名单&标签&消息模版管理
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-03-02 19:32:33 / 修改时间：22:12:14" itemprop="dateCreated datePublished" datetime="2025-03-02T19:32:33+08:00">2025-03-02</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.9k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>7 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="提要">提要</h1>
+<p>前文：<a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/u5FmDX2kVDyeZ8FSTgDh2Q">基于规则引擎的风控决策系统介绍与演示</a></p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.5xaryketbz.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>再次说明，此项目还在开发中，还有很多事情要做，并不完善。回想起来，我也觉得挺不可思议的，最开始只是尝试着做，想着把后端做的差不多就行了，可做着做着，愈发确信前端是必不可少的，也因此项目发展到了现在的地步。可以从<code>Github</code>的<code>commit</code>看出来，也是最近半年比较活跃，也是这期间，学到的最多，进展比较快。</p>
+<p>本篇文章主要围绕着规则条件与操作、名单&amp;标签&amp;消息模版的管理。</p>
+<p>再强调一下，开发版本不代表最终成品。</p>
+<h1 id="名单标签消息模版">名单&amp;标签&amp;消息模版</h1>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/yuque_diagram.3gojjrh9np.webp"
+alt="yuque_diagram" />
+<figcaption aria-hidden="true">yuque_diagram</figcaption>
+</figure>
+<p>还是回顾一下之前讲的，规则就是<code>IF(x)&#123;a&#125;ELSE&#123;b&#125;</code>，其中<code>x</code>为条件，<code>a</code>和<code>b</code>是动作/操作。在规划中，条件不仅仅是简单的普通类条件，还有指标、名单、正则、脚本等，最近也完善了这部分。开始之前我必须要从名单&amp;标签&amp;消息模版说起，方便下面的规则操作展开。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.83a6kd9g9z.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<h2 id="名单">名单</h2>
+<p>名单在规划中分为名单集和名单数据，有点像字典和字典数据的关系。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.3gojjomd80.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>名单集顾名思义，名单数据的集合，归类名单数据用的。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.6wqvbs416i.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>名单数据，选择名单集，输入数据，并标记来源。</p>
+<p>名单集可以用在规则条件判断上，也可用在命中或未命中规则操作上，往下看就知道了。</p>
+<h1 id="标签">标签</h1>
+<p>需要注意标签是事件纬度的标签，不是用户纬度的，不同于用户画像，当然也可以这么做。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.4g4mwuwqsa.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>标签可以手动为事件添加，也可以通过规则添加（作为规则操作）。</p>
+<h1 id="消息模版">消息模版</h1>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.8adefw4f73.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>消息模版就是如短信、邮件、webhook等消息的模版，比较常见的场景就是非常用设备/IP登录预警等等，甚至可以是主动的触达推送，新活动等等。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.4n7usd9agw.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>比较不同的是这里使用<code>Mentions</code>组件方便对于字段的引用。</p>
+<h1 id="指标字段类型限制">指标字段类型限制</h1>
+<p>这个是标题里没有提及的，指标配置中字段类型的限制增强。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.9nzxjv33qt.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>在之前已经讲过了，但是一直没时间做，这次终于完善了，简单来讲就是不同指标对于计算字段要求是不同的，如通常的聚类指标（求和、最大值、最小值、平均等）指标计算字段只能是整数和小数，新增不同的指标的话还会有些不同。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.2yyhv6jxfh.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>同时指标的返回类型也不都是整数和小数，还有历史取值等指标返回值是配置时确定好的。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.51eaj65ik5.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<h1 id="规则条件操作">规则条件&amp;操作</h1>
+<p>终于到正题了，前面说的那些都是要在这里再次被提到的。正如标题所说，这次主要是增强条件和操作。</p>
+<h2 id="条件">条件</h2>
+<h3 id="条件右变量类型同左变量类型">1、条件右变量类型同左变量类型</h3>
+<p>如下，当左变量选择日期字段，常量都是无所谓的，输入的（未来要不要根据类型变化数据录入组件？还不确定），但是如果是变量，那么右变量只能是左变量同类型的。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.7axb2of5vk.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<h3
+id="丰富的条件类型指标条件名单条件正则条件脚本条件">2、丰富的条件类型，指标条件、名单条件、正则条件、脚本条件</h3>
+<p>如下，条件组件增强，支持各种条件类型，这里分别添加了指标条件、名单条件、正则条件、脚本条件，他们是不同的。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.70ah9kpb8b.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>普通条件，之前使用的都是此类型，不过多介绍了。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.70ah9j7j8m.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>指标条件，只能选择已上线的指标，其他使用和普通字段一致，包括左变量右变量类型一致限制。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.54xwgye4c4.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>名单条件，名单条件左变量不变，主要还是字段，逻辑操作为在/不在，右变量选择名单集。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.1lbyr3v7kv.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>正则条件，依然左变量字段，逻辑操作如下，右变量是自定义的正则表达式。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.7sncr9stj1.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>脚本条件，只有一个输入框，这个还待完善，有点想做成<code>QLExpress</code>的表达式形式。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.1e8qvppum6.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>小结一下，虽然看上去只是变化了这么一点，但是其实是对条件数据结构和条件组件的抽象与实现，不仅仅是后端，还有前端很多都是抽象的组件和可复用的函数等等，是一种工程化的体现。</p>
+<p>简单一说，条件组件可以设置组合的深度，如上都是配置的两层，理论上可以配置任意层，不过这没必要，还有就是条件组件只有一套，所以规则和指标用的是一套，但是指标不会有这些复杂的丰富条件，这也是需要组件抽象设计的。</p>
+<h2 id="操作">操作</h2>
+<p>如果有看之前的介绍文章，其实可以看出规则条件多了一块内容，如下，就是规则操作，目前包含添加标签、添加名单、发送消息、设置字段。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.4cl0z6shr6.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<h3 id="添加标签">添加标签</h3>
+<p>添加标签就是为当前事件配置添加的标签，是个多选框。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.39lboc3854.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<h3 id="添加名单">添加名单</h3>
+<p>添加名单就是选择某的名单集和字段，最终会将字段数据作为名单集数据添加，同时来源设置为规则。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.361pqmalv6.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.4g4mwxswi6.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<h3 id="发送消息">发送消息</h3>
+<p>发送消息就更容易理解了，预警、推送都可以，不过目前设计的还有些问题，消息目标是谁呢？本次手机号？邮箱？还是其他？还待完善。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.7pfn438ve.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<h3 id="设置字段">设置字段</h3>
+<p>设置字段也是待完善，尤其是使用场景，是用做流程编排中，还是其他的什么？</p>
+<p>当然作为简单的临时变量使用也是可以的。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.2dou8uwlhy.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<h3 id="小结">小结</h3>
+<p>以上这些都是简单的介绍，这些在<code>LiteFlow</code>的设计中都是组件，可以任意定制化。</p>
+<p>另外如果细想其实是有问题的，已知之前的设计规则的集合是策略，如果是多条规则命中，这些操作是如何之行的，全部都执行，还是以最终的一个为结果执行？不能同时发送几条奇怪的消息吧？标签和名单倒是可以一起做。</p>
+<h1 id="其他文章推荐">其他文章推荐</h1>
+<p>目前还比较零散，未来有时间会系统整理一下。</p>
+<p>全局</p>
+<p><a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/bCZvLLrtAvp3vGaIluHYyA">规则引擎可以应用于哪些系统，用户画像、触达、风控、推荐、监控...</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/u5FmDX2kVDyeZ8FSTgDh2Q">基于规则引擎的风控决策系统介绍与演示</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/FQ6PgCjppuZiTUCawD9lVQ">风控系统之规则重复触发</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/soyeu4iC19dM2VkPeqZZPQ">LiteFlow上下文与组件设计，数据依赖梳理</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/ycAInj9obPa9ZJqXsskx6A">交易事件的生命周期，事前事中事后风控，结果通知/回调</a></p>
+<p>策略/规则篇</p>
+<p><a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/m0isU0Gd9unHZLaf5wd0-g">风控系统之普通规则条件，使用LiteFlow实现</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/XHkJFLormIKteoBiAygFew">风控系统之通用规则条件设计，算术单元/逻辑单元/函数式接口</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/_5Cc5IMd1nmJa3asVVV05g">LiteFlow决策系统的策略模式，顺序、最坏、投票、权重</a></p>
+<p>指标篇</p>
+<p><a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/DDtkjJUGjI7WehADtiWL9A">风控系统指标计算/特征提取分析与实现01，Redis、Zset、模版方法</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/aWwGnSMLRtLA-ZMPUkbJoA">基于LiteFlow的风控系统指标版本控制</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/tNoM8uVHUsxD_YHEzMtFQA">风控系统指标版本管理，前端实现</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/jYMaOFMfJ8h_TCeqmqNGKA">风控系统之指标回溯，历史数据重跑</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/4ngljYekpiklpfpxuG3Wkw">业务链指标，用户行为模式识别，埋点系统</a></p>
+<p>数据篇</p>
+<p><a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/FIj6cV61bTi9YRMizj4gRQ">风控系统之数据服务，名单、标签、IP、设备、地理信息、征信等</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/oFsyvhc-BrBDxLedPW7VkQ">GeoHash处理经纬度，降维，空间填充曲线</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.webp" alt="无奈何杨（wnhyang） 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.webp" alt="无奈何杨（wnhyang） 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>无奈何杨（wnhyang）
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://wnhyang.github.io/article/a1a51094.html" title="风控系统之规则条件&amp;操作增强，名单&amp;标签&amp;消息模版管理">https://wnhyang.github.io/article/a1a51094.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/images/wechat_channel.webp">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://www.zhihu.com/people/wnhyang">
+            <span class="icon">
+              <i class="fab fa-zhihu"></i>
+            </span>
+
+            <span class="label">Zhihu</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E9%A1%B9%E7%9B%AE/" rel="tag"># 项目</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/article/82289aac.html" rel="prev" title="免费使用满血版DeepSeak-R1的多种方案">
+                  <i class="fa fa-chevron-left"></i> 免费使用满血版DeepSeak-R1的多种方案
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">无奈何杨（wnhyang）</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">308k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">18:40</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/wnhyang" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.2.2/mermaid.min.js","integrity":"sha256-o5AUfgOkNFWuInA78GVCoVdGoN9eTaB3Hxu+ep7TTrY="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://wnhyang.github.io/article/a1a51094.html"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>
