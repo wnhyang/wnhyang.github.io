@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2025-03-02T14:12:14.583Z</updated>
+  <updated>2025-03-09T14:53:32.110Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,24 +17,71 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>阿里TTL+Log4j2+MDC实现轻量级日志链路追踪</title>
+    <link href="https://wnhyang.github.io/article/12003acf.html"/>
+    <id>https://wnhyang.github.io/article/12003acf.html</id>
+    <published>2025-03-09T13:18:17.000Z</published>
+    <updated>2025-03-09T14:53:32.110Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;参考&quot;&gt;参考&lt;/h1&gt;
+&lt;p&gt;阿里TTL：&lt;a
+href=&quot;https://github.com/alibaba/transmittable-thread-local&quot;
+class=&quot;uri&quot;&gt;https://github.com/alibaba/transmittable-thread-local&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;TLog：&lt;a href=&quot;https://tlog.yomahub.com/&quot;
+class=&quot;uri&quot;&gt;https://tlog.yomahub.com/&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;背景&quot;&gt;背景&lt;/h1&gt;
+&lt;figure&gt;
+&lt;img data-src=&quot;https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250309/image.1zies002b6.webp&quot;
+alt=&quot;image&quot; /&gt;
+&lt;figcaption aria-hidden=&quot;true&quot;&gt;image&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;推荐阅读：&lt;a href=&quot;https://tlog.yomahub.com/pages/5b7bd2/&quot;
+class=&quot;uri&quot;&gt;https://tlog.yomahub.com/pages/5b7bd2/&lt;/a&gt;，本篇文章也是看了TLog的官方文档和相关源码而产生的。&lt;/p&gt;
+&lt;p&gt;在微服务架构中，由于线程池复用、异步调用等机制的存在，传统的线程级日志标识（如&lt;code&gt;ThreadLocal&lt;/code&gt;）会导致请求链路断裂。例如，当主线程将任务提交到线程池时，子线程无法自动继承主线程的上下文信息，使得日志中的&lt;code&gt;traceId&lt;/code&gt;丢失。&lt;/p&gt;
+&lt;h1 id=&quot;核心组件原理&quot;&gt;核心组件原理&lt;/h1&gt;
+&lt;h2 id=&quot;mdc机制&quot;&gt;MDC机制&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;Log4j2&lt;/code&gt;的&lt;code&gt;Mapped Diagnostic Context（MDC）&lt;/code&gt;通过&lt;code&gt;ThreadLocal&lt;/code&gt;存储线程级上下文数据。例如，在&lt;code&gt;HTTP&lt;/code&gt;请求进入时，通过拦截器将&lt;code&gt;traceId&lt;/code&gt;存入&lt;code&gt;MDC&lt;/code&gt;，日志模板中通过&lt;code&gt;%X&amp;#123;traceId&amp;#125;&lt;/code&gt;动态替换值。&lt;/p&gt;
+&lt;h2
+id=&quot;transmittablethreadlocalttl&quot;&gt;TransmittableThreadLocal（TTL）&lt;/h2&gt;
+&lt;p&gt;阿里的&lt;code&gt;TTL&lt;/code&gt;组件解决了线程池场景下的上下文传递问题。通过装饰线程池，&lt;code&gt;TTL&lt;/code&gt;在任务提交时自动拷贝父线程的上下文到子线程，并在任务结束后清理副本，确保多级线程池调用链路完整。&lt;/p&gt;
+&lt;h2 id=&quot;日志模板配置&quot;&gt;日志模板配置&lt;/h2&gt;
+&lt;p&gt;在&lt;code&gt;log4j2.xml&lt;/code&gt;中配置&lt;code&gt;PatternLayout&lt;/code&gt;，添加&lt;code&gt;%X&amp;#123;traceId&amp;#125;&lt;/code&gt;占位符即可实现日志标识嵌入。&lt;/p&gt;
+&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;Property&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&amp;quot;LOG_PATTERN&amp;quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;value&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&amp;quot;%d&amp;#123;yyyy-MM-dd HH:mm:ss.SSS&amp;#125; [%X&amp;#123;traceId&amp;#125;] [%t] %-5level %logger&amp;#123;36&amp;#125; - %msg%n&amp;quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    
+    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>风控系统之规则条件&amp;操作增强，名单&amp;标签&amp;消息模版管理</title>
     <link href="https://wnhyang.github.io/article/a1a51094.html"/>
     <id>https://wnhyang.github.io/article/a1a51094.html</id>
     <published>2025-03-02T11:32:33.000Z</published>
-    <updated>2025-03-02T14:12:14.583Z</updated>
+    <updated>2025-03-02T14:13:50.799Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;h1 id=&quot;提要&quot;&gt;提要&lt;/h1&gt;
 &lt;p&gt;前文：&lt;a
 href=&quot;https://mp.weixin.qq.com/s/u5FmDX2kVDyeZ8FSTgDh2Q&quot;&gt;基于规则引擎的风控决策系统介绍与演示&lt;/a&gt;&lt;/p&gt;
 &lt;figure&gt;
-&lt;img</summary>
-        
-      
+&lt;img data-src=&quot;https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/image.5xaryketbz.webp&quot;
+alt=&quot;image&quot; /&gt;
+&lt;figcaption aria-hidden=&quot;true&quot;&gt;image&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;再次说明，此项目还在开发中，还有很多事情要做，并不完善。回想起来，我也觉得挺不可思议的，最开始只是尝试着做，想着把后端做的差不多就行了，可做着做着，愈发确信前端是必不可少的，也因此项目发展到了现在的地步。可以从&lt;code&gt;Github&lt;/code&gt;的&lt;code&gt;commit&lt;/code&gt;看出来，也是最近半年比较活跃，也是这期间，学到的最多，进展比较快。&lt;/p&gt;
+&lt;p&gt;本篇文章主要围绕着规则条件与操作、名单&amp;amp;标签&amp;amp;消息模版的管理。&lt;/p&gt;
+&lt;p&gt;再强调一下，开发版本不代表最终成品。&lt;/p&gt;
+&lt;h1 id=&quot;名单标签消息模版&quot;&gt;名单&amp;amp;标签&amp;amp;消息模版&lt;/h1&gt;
+&lt;figure&gt;
+&lt;img data-src=&quot;https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250302/yuque_diagram.3gojjrh9np.webp&quot;
+alt=&quot;yuque_diagram&quot; /&gt;
+&lt;figcaption aria-hidden=&quot;true&quot;&gt;yuque_diagram&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;还是回顾一下之前讲的，规则就是&lt;code&gt;IF(x)&amp;#123;a&amp;#125;ELSE&amp;#123;b&amp;#125;&lt;/code&gt;，其中&lt;code&gt;x&lt;/code&gt;为条件，&lt;code&gt;a&lt;/code&gt;和&lt;code&gt;b&lt;/code&gt;是动作/操作。在规划中，条件不仅仅是简单的普通类条件，还有指标、名单、正则、脚本等，最近也完善了这部分。开始之前我必须要从名单&amp;amp;标签&amp;amp;消息模版说起，方便下面的规则操作展开。&lt;/p&gt;</summary>
     
     
     
@@ -730,38 +777,6 @@ alt=&quot;image&quot; /&gt;
 &lt;p&gt;正巧最近有看一个关于鉴权的东西，顺便看一下吧！&lt;/p&gt;
 &lt;h1 id=&quot;常见的自定义注解鉴权&quot;&gt;常见的自定义注解鉴权&lt;/h1&gt;
 &lt;p&gt;目标：对于后端开放的&lt;code&gt;api&lt;/code&gt;进行鉴权。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>风控系统之指标回溯，历史数据重跑</title>
-    <link href="https://wnhyang.github.io/article/91b8f482.html"/>
-    <id>https://wnhyang.github.io/article/91b8f482.html</id>
-    <published>2024-09-07T07:49:34.000Z</published>
-    <updated>2024-09-07T11:46:15.235Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;个人博客：&lt;a
-href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
-title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
-title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
-Overview&lt;/a&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h1 id=&quot;回顾&quot;&gt;回顾&lt;/h1&gt;
-&lt;p&gt;默认你已经看过之前那篇&lt;a
-href=&quot;https://www.yuque.com/wnh/share/yqmgyyqs2e9ur1kg&quot;&gt;风控系统指标计算/特征提取分析与实现01，Redis、Zset、模版方法&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;其中已经介绍了如何利用&lt;code&gt;redis&lt;/code&gt;的&lt;code&gt;zset&lt;/code&gt;结构完成指标计算，为了方便这篇文章的介绍，还是在正式开始本篇之前回顾一下。&lt;/p&gt;
-&lt;h1 id=&quot;时间窗口&quot;&gt;时间窗口&lt;/h1&gt;
-&lt;p&gt;&lt;code&gt;zset&lt;/code&gt;是&lt;code&gt;redis&lt;/code&gt;中的一种数据结构，表示有序集合，正因此我们可以利用其做时间窗口来计算指标，&lt;code&gt;value&lt;/code&gt;为事件标识，&lt;code&gt;score&lt;/code&gt;为事件时间戳。&lt;/p&gt;
-&lt;p&gt;如下图表示次数、关联、求和类型各两条指标在时间窗口下随着时间分布，其中的黑点也就是事件，散列且线性的分布在时间窗口中。&lt;/p&gt;</summary>
     
     
     
