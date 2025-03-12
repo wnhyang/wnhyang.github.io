@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2025-03-09T14:53:32.110Z</updated>
+  <updated>2025-03-12T14:51:54.267Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,67 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>大语言模型（LLM）应用开发平台</title>
+    <link href="https://wnhyang.github.io/article/aab4179a.html"/>
+    <id>https://wnhyang.github.io/article/aab4179a.html</id>
+    <published>2025-03-12T13:50:22.000Z</published>
+    <updated>2025-03-12T14:51:54.267Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;介绍&quot;&gt;介绍&lt;/h1&gt;
+&lt;p&gt;在前文&lt;a
+href=&quot;https://mp.weixin.qq.com/s/9zxIHcIZCfhNjMgsoWQGog&quot;&gt;免费使用满血版DeepSeek-R1的多种方案&lt;/a&gt;中已经对大语言模型（LLM）应用开发平台有了相关介绍了，如下：&lt;/p&gt;
+&lt;p&gt;以 Dify 为代表的生成式 AI 应用平台，具备以下显著特性，为 AI
+应用开发带来了新的变革：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;低代码 /
+无代码开发&lt;/strong&gt;：提供了极为直观的可视化界面，用户无需深入了解复杂的底层技术细节，只需通过简单的拖拽和配置操作，就能快速定义
+Prompt、上下文、插件以及工作流。这一特性大大降低了开发门槛，使得非技术人员也能够参与到
+AI 应用的构建和迭代过程中，加速了 AI 应用的开发进程。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;多模型支持与灵活编排&lt;/strong&gt;：支持
+OpenAI、Claude、通义千问、讯飞星火等众多主流大语言模型，同时允许用户通过
+API
+集成自定义模型，充分满足了不同业务场景的多样化需求。通过模型编排（Agent
+Design）技术，用户可以将不同的智能体进行组合，将复杂任务进行分解并协同完成，有效突破了单一模型的能力边界。例如，在一个智能问答系统中，一个智能体负责解析用户输入的问题，另一个智能体根据问题生成回答内容，第三个智能体则对生成的回答进行优化，从而为用户提供更准确、更优质的答案。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;模块化设计与丰富功能组件&lt;/strong&gt;：采用了先进的模块化架构，提供了包括
+RAG（检索增强生成）引擎、Agent
+框架、工作流编排、模型管理等一系列丰富的功能组件，全面覆盖了从原型设计到生产部署的整个生命周期。其中，RAG
+引擎支持 PDF、PPT、CSV
+等多种常见文档格式的文本提取与索引，并且提供了高质量的向量检索模式和经济实惠的关键词索引模式，用户可以根据自身需求和成本预算进行选择，在保证准确性的同时，有效控制成本。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;企业级功能与 LLMOps 支持&lt;/strong&gt;：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!----&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;知识库管理&lt;/strong&gt;：支持将企业的私有数据进行集成，通过科学合理的分段策略和清洗规则对检索效果进行优化，确保
+AI 在回答问题时能够基于准确、专业的知识，为企业提供可靠的智能服务。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;监控与优化&lt;/strong&gt;：提供了全面的应用性能监控、交互数据分析以及成本跟踪功能，能够根据生产过程中产生的数据，对应用进行持续的优化和改进，这完全符合
+LLMOps 的核心理念，有助于企业不断提升 AI 应用的质量和效率。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;灵活部署&lt;/strong&gt;：支持本地化私有部署（如
+Docker）和云端托管两种方式，企业可以根据自身对数据安全和合规性的要求，选择最适合的部署方案，确保数据的安全性和业务的合规运营。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!----&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;广泛的应用场景&lt;/strong&gt;：涵盖了智能客服、内容生成、代码辅助、知识问答等多种常见场景，支持快速构建
+MVP（最小可行产品），也可以方便地集成到企业现有的业务系统中。例如，通过
+Agent 工具调用外部 API（如 Google 搜索、Stable Diffusion），能够扩展 LLM
+的能力，使其能够完成如联网检索、图像生成等复杂任务，为用户提供更强大、更全面的服务。&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    
+    <category term="AI" scheme="https://wnhyang.github.io/tags/AI/"/>
+    
+  </entry>
+  
+  <entry>
     <title>阿里TTL+Log4j2+MDC实现轻量级日志链路追踪</title>
     <link href="https://wnhyang.github.io/article/12003acf.html"/>
     <id>https://wnhyang.github.io/article/12003acf.html</id>
     <published>2025-03-09T13:18:17.000Z</published>
-    <updated>2025-03-09T14:53:32.110Z</updated>
+    <updated>2025-03-09T14:54:05.576Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;参考&quot;&gt;参考&lt;/h1&gt;
@@ -742,46 +798,6 @@ Overview&lt;/a&gt;&lt;/p&gt;
     <category term="思考" scheme="https://wnhyang.github.io/tags/%E6%80%9D%E8%80%83/"/>
     
     <category term="杂谈" scheme="https://wnhyang.github.io/tags/%E6%9D%82%E8%B0%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Sa-Token的v1.39.0自定义鉴权注解怎么玩</title>
-    <link href="https://wnhyang.github.io/article/a1f688c9.html"/>
-    <id>https://wnhyang.github.io/article/a1f688c9.html</id>
-    <published>2024-09-12T11:39:42.000Z</published>
-    <updated>2024-09-17T08:21:27.233Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;个人博客：&lt;a
-href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
-title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
-title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
-Overview&lt;/a&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;figure&gt;
-&lt;img data-src=&quot;https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240912/image.3d4qtle9gi.webp&quot;
-alt=&quot;image&quot; /&gt;
-&lt;figcaption aria-hidden=&quot;true&quot;&gt;image&lt;/figcaption&gt;
-&lt;/figure&gt;
-&lt;h1 id=&quot;简介&quot;&gt;简介&lt;/h1&gt;
-&lt;p&gt;在&lt;code&gt;Sa-Token&lt;/code&gt;最新的&lt;code&gt;v1.39.0&lt;/code&gt;版本的更新日志中有这么一句话&lt;/p&gt;
-&lt;p&gt;核心：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;升级：重构注解鉴权底层，支持自定义鉴权注解了。
-&lt;strong&gt;[重要]&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;正巧最近有看一个关于鉴权的东西，顺便看一下吧！&lt;/p&gt;
-&lt;h1 id=&quot;常见的自定义注解鉴权&quot;&gt;常见的自定义注解鉴权&lt;/h1&gt;
-&lt;p&gt;目标：对于后端开放的&lt;code&gt;api&lt;/code&gt;进行鉴权。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
     
   </entry>
   

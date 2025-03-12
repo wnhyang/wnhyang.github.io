@@ -96,7 +96,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">50</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">223</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">50</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">224</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -161,7 +161,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">223</span>
+          <span class="site-state-item-count">224</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -227,6 +227,137 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/aab4179a.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+      <meta itemprop="description" content="热爱、分享、生活">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/article/aab4179a.html" class="post-title-link" itemprop="url">大语言模型（LLM）应用开发平台</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-03-12 21:50:22 / 修改时间：22:51:54" itemprop="dateCreated datePublished" datetime="2025-03-12T21:50:22+08:00">2025-03-12</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>7 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="介绍">介绍</h1>
+<p>在前文<a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/9zxIHcIZCfhNjMgsoWQGog">免费使用满血版DeepSeek-R1的多种方案</a>中已经对大语言模型（LLM）应用开发平台有了相关介绍了，如下：</p>
+<p>以 Dify 为代表的生成式 AI 应用平台，具备以下显著特性，为 AI
+应用开发带来了新的变革：</p>
+<ul>
+<li><strong>低代码 /
+无代码开发</strong>：提供了极为直观的可视化界面，用户无需深入了解复杂的底层技术细节，只需通过简单的拖拽和配置操作，就能快速定义
+Prompt、上下文、插件以及工作流。这一特性大大降低了开发门槛，使得非技术人员也能够参与到
+AI 应用的构建和迭代过程中，加速了 AI 应用的开发进程。</li>
+<li><strong>多模型支持与灵活编排</strong>：支持
+OpenAI、Claude、通义千问、讯飞星火等众多主流大语言模型，同时允许用户通过
+API
+集成自定义模型，充分满足了不同业务场景的多样化需求。通过模型编排（Agent
+Design）技术，用户可以将不同的智能体进行组合，将复杂任务进行分解并协同完成，有效突破了单一模型的能力边界。例如，在一个智能问答系统中，一个智能体负责解析用户输入的问题，另一个智能体根据问题生成回答内容，第三个智能体则对生成的回答进行优化，从而为用户提供更准确、更优质的答案。</li>
+<li><strong>模块化设计与丰富功能组件</strong>：采用了先进的模块化架构，提供了包括
+RAG（检索增强生成）引擎、Agent
+框架、工作流编排、模型管理等一系列丰富的功能组件，全面覆盖了从原型设计到生产部署的整个生命周期。其中，RAG
+引擎支持 PDF、PPT、CSV
+等多种常见文档格式的文本提取与索引，并且提供了高质量的向量检索模式和经济实惠的关键词索引模式，用户可以根据自身需求和成本预算进行选择，在保证准确性的同时，有效控制成本。</li>
+<li><strong>企业级功能与 LLMOps 支持</strong>：</li>
+</ul>
+<!---->
+<ul>
+<li><ul>
+<li><strong>知识库管理</strong>：支持将企业的私有数据进行集成，通过科学合理的分段策略和清洗规则对检索效果进行优化，确保
+AI 在回答问题时能够基于准确、专业的知识，为企业提供可靠的智能服务。</li>
+<li><strong>监控与优化</strong>：提供了全面的应用性能监控、交互数据分析以及成本跟踪功能，能够根据生产过程中产生的数据，对应用进行持续的优化和改进，这完全符合
+LLMOps 的核心理念，有助于企业不断提升 AI 应用的质量和效率。</li>
+<li><strong>灵活部署</strong>：支持本地化私有部署（如
+Docker）和云端托管两种方式，企业可以根据自身对数据安全和合规性的要求，选择最适合的部署方案，确保数据的安全性和业务的合规运营。</li>
+</ul></li>
+</ul>
+<!---->
+<ul>
+<li><strong>广泛的应用场景</strong>：涵盖了智能客服、内容生成、代码辅助、知识问答等多种常见场景，支持快速构建
+MVP（最小可行产品），也可以方便地集成到企业现有的业务系统中。例如，通过
+Agent 工具调用外部 API（如 Google 搜索、Stable Diffusion），能够扩展 LLM
+的能力，使其能够完成如联网检索、图像生成等复杂任务，为用户提供更强大、更全面的服务。</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/article/aab4179a.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/12003acf.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -257,7 +388,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2025-03-09 21:18:17 / 修改时间：22:53:32" itemprop="dateCreated datePublished" datetime="2025-03-09T21:18:17+08:00">2025-03-09</time>
+      <time title="创建时间：2025-03-09 21:18:17 / 修改时间：22:54:05" itemprop="dateCreated datePublished" datetime="2025-03-09T21:18:17+08:00">2025-03-09</time>
     </span>
 
   
@@ -1248,116 +1379,6 @@ alt="image" />
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/2b9d32e5.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-      <meta itemprop="description" content="热爱、分享、生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/2b9d32e5.html" class="post-title-link" itemprop="url">Vben5登录过期无法再次登录问题，http状态码</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2024-12-29 10:18:09 / 修改时间：12:31:31" itemprop="dateCreated datePublished" datetime="2024-12-29T10:18:09+08:00">2024-12-29</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.5k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>5 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>个人博客：<a
-href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
-<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
-title="wnhyang">wnhyang</a></p>
-<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
-title="在线知识共享">在线知识共享</a></p>
-<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
-Overview</a></p>
-<hr />
-<h1 id="前言">前言</h1>
-<p>最近在做项目前端，使用的<a target="_blank" rel="noopener" href="https://doc.vben.pro/"
-class="uri">https://doc.vben.pro/</a>，在登录过期时出现了无法再次登录的问题，在此记录一下。</p>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20241229/image.8adbxbcnyv.webp"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
-</figure>
-<p>项目前面那些直接略过，如果感兴趣直接看官方文档就可以
-，以下会根据解决过程附带部分官网说明。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/article/2b9d32e5.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1383,14 +1404,14 @@ alt="image" />
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">310k</span>
+    <span title="站点总字数">311k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">18:45</span>
+    <span title="站点阅读时长">18:52</span>
   </span>
 </div>
 <div class="busuanzi-count">

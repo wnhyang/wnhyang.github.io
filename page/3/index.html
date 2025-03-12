@@ -96,7 +96,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">50</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">223</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">50</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">224</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -161,7 +161,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">223</span>
+          <span class="site-state-item-count">224</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -218,6 +218,127 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/a1f688c9.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+      <meta itemprop="description" content="热爱、分享、生活">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/article/a1f688c9.html" class="post-title-link" itemprop="url">Sa-Token的v1.39.0自定义鉴权注解怎么玩</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-09-12 19:39:42" itemprop="dateCreated datePublished" datetime="2024-09-12T19:39:42+08:00">2024-09-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-09-17 16:21:27" itemprop="dateModified" datetime="2024-09-17T16:21:27+08:00">2024-09-17</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>个人博客：<a
+href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
+<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
+title="wnhyang">wnhyang</a></p>
+<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
+title="在线知识共享">在线知识共享</a></p>
+<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
+Overview</a></p>
+<hr />
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20240912/image.3d4qtle9gi.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<h1 id="简介">简介</h1>
+<p>在<code>Sa-Token</code>最新的<code>v1.39.0</code>版本的更新日志中有这么一句话</p>
+<p>核心：</p>
+<ul>
+<li>升级：重构注解鉴权底层，支持自定义鉴权注解了。
+<strong>[重要]</strong></li>
+</ul>
+<p>正巧最近有看一个关于鉴权的东西，顺便看一下吧！</p>
+<h1 id="常见的自定义注解鉴权">常见的自定义注解鉴权</h1>
+<p>目标：对于后端开放的<code>api</code>进行鉴权。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/article/a1f688c9.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1342,128 +1463,6 @@ target="_blank" rel="noopener" href="https://www.cnblogs.com/kevingrace/category
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/a949e07.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-      <meta itemprop="description" content="热爱、分享、生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/a949e07.html" class="post-title-link" itemprop="url">规则引擎LiteFlow发布v2.12.1版本，决策路由特性</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2024-06-06 09:51:18 / 修改时间：22:11:18" itemprop="dateCreated datePublished" datetime="2024-06-06T09:51:18+08:00">2024-06-06</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.9k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>7 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>个人博客：<a
-href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
-<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
-title="wnhyang">wnhyang</a></p>
-<p>共享语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnh"
-title="在线知识共享">在线知识共享</a></p>
-<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
-Overview</a></p>
-<hr />
-<h1 id="简介">简介</h1>
-<p>标题其实是不准确的，了解过的会知道在<code>LiteFlow</code>的<code>2.12.0</code>已经有了决策路由的特性，但我为什么标题这么讲呢？且往下看。</p>
-<p>因为这篇文章<a
-target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/KeTx9lZGWn0-mF6ilmO7Fg">LF的重磅特性预告：决策路由</a>，我一直期待着决策路由功能的发布，终于有一天它发布了！</p>
-<p><a
-target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/jONz_vIpIembQDej3TzNiQ">决策路由特性来袭，LiteFlow大版本2.12.0发布，Make
-your code amaing！</a>。</p>
-<p>虽然这次是大更新，发布的不只是决策路由，但是我心心念念的决策路由并没有我期待的那样好用，因为这个版本的路由是全局匹配，没有分组或分级的概念，在实际使用中并不那么好用。虽然能通过一些代码来实现类似的分组功能，但是肯定不如框架实现的好，同时也不想因此将代码来回变动，所以通过社区向作者提意见，正好作者早有此想法，非常nice！</p>
-<p>这次<a
-target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/E-WvrpA2Vanm13xHxaRgeg">规则引擎LiteFlow发布v2.12.1版本，有多猛用过才知道</a>，<code>2.12.1</code>版本带来此功能，我也默默的将许久未编辑的《LiteFlow大版本2.12.0发布，决策路由发布》的文章重命名了标题《规则引擎LiteFlow发布v2.12.1版本，决策路由特性》。</p>
-<h1 id="参考">参考</h1>
-<p><a target="_blank" rel="noopener" href="https://liteflow.cc/pages/ec1ac4/">🏖概念以及介绍 |
-LiteFlow</a></p>
-<p><a target="_blank" rel="noopener" href="https://liteflow.cc/pages/88c2f2/">2.12.0升级指南 |
-LiteFlow</a></p>
-<h1 id="决策路由">决策路由</h1>
-<h2 id="说明">说明</h2>
-<p>关于<code>LiteFlow</code>，不想再过多介绍了。之前的文章也有说明了<a
-target="_blank" rel="noopener" href="https://www.yuque.com/wnh/share/hwelucqo1ln2986m">风控系统之普通规则条件，使用LiteFlow实现</a>。</p>
-<p>非常推荐通过官网来学习，很有帮助！</p>
-<p>路由嘛，知道<code>Nginx</code>吧，可以理解为<code>location</code>的配置，不知道<code>Nginx</code>，类比微服务网关也一样。</p>
-<p>在<code>2.12.0</code>版本加入了路由特性，新增了<code>route</code>和<code>body</code>标签。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/article/a949e07.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1489,14 +1488,14 @@ target="_blank" rel="noopener" href="https://www.yuque.com/wnh/share/hwelucqo1ln
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">310k</span>
+    <span title="站点总字数">311k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">18:45</span>
+    <span title="站点阅读时长">18:52</span>
   </span>
 </div>
 <div class="busuanzi-count">
