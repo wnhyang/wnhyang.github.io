@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2025-03-12T14:51:54.267Z</updated>
+  <updated>2025-03-16T11:39:08.832Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,52 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>实时决策系统中的核心组件——实时指标计算</title>
+    <link href="https://wnhyang.github.io/article/79137ca.html"/>
+    <id>https://wnhyang.github.io/article/79137ca.html</id>
+    <published>2025-03-16T11:14:11.000Z</published>
+    <updated>2025-03-16T11:39:08.832Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;参考&quot;&gt;参考&lt;/h2&gt;
+&lt;p&gt;《风控要略：互联网业务反欺诈之路 (马传雷,孙奇,高岳)》第8章&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&quot;https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250316/image.70ahtfru5o.webp&quot;
+alt=&quot;image&quot; /&gt; ## 一、核心概念&lt;/p&gt;
+&lt;ol type=&quot;1&quot;&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;指标定义&lt;/strong&gt;：在风控反欺诈业务中，无论是基于专家规则还是风控模型，都需要依赖对一定时间范围数据进行回溯加工的变量，这些变量被称为指标。例如“1天内设备上登录的账户过多”这一规则，就需要回溯24小时的历史数据，计算该设备在这段时间内登录的账户个数，并与配置的阈值进行比较判断。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;指标类型&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;频度-出现次数统计&lt;/strong&gt;：如IP最近5分钟注册次数、手机号最近1小时接收短信次数，次数过多可能对应垃圾注册、短信轰炸等风险。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;频度-关联个数统计&lt;/strong&gt;：像1天内同一设备接收短信的手机号个数、7天内同一设备充值的账户个数，个数过多可能涉及群控设备、群控账号等风险。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;活跃天数&lt;/strong&gt;：例如账户最近7天活跃次数、设备最近1个月活跃次数，活跃次数过少可能意味着是僵尸用户。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;移动距离&lt;/strong&gt;：如设备最近1小时移动距离、设备最近24小时移动距离，移动距离过远可能存在虚假定位的风险。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;常用习惯&lt;/strong&gt;：包括账户最近7天常用设备型号、账户最近30天常用登录城市，常用型号或城市不一致可能暗示账户被盗等情况。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;趋势计算&lt;/strong&gt;：如账户最近1天多笔交易支付金额递增、账户最近1天先小额后大额支付，支付趋势异常可能与盗卡试探等风险相关。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;其他&lt;/strong&gt;：例如账号最近5分钟密码连续错误次数，连续错误可能是账户遭受暴力破解的迹象。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;指标特征&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;时间窗口&lt;/strong&gt;：指标计算所针对的特定时间段，如5分钟、1小时、1天等。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;事件&lt;/strong&gt;：与指标相关的业务活动，如注册、登录、交易等。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;主属性&lt;/strong&gt;：指标计算所围绕的主要对象，如IP、手机号、设备、账户等。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;副属性&lt;/strong&gt;：辅助主属性进行指标计算的属性，如在计算设备接收短信的手机号个数时，手机号就是副属性。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;计算逻辑&lt;/strong&gt;：对数据进行处理和计算的方式，如求和、去重求和、统计出现次数最多的设备型号等。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;</summary>
+    
+    
+    
+    
+    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>大语言模型（LLM）应用开发平台</title>
     <link href="https://wnhyang.github.io/article/aab4179a.html"/>
     <id>https://wnhyang.github.io/article/aab4179a.html</id>
     <published>2025-03-12T13:50:22.000Z</published>
-    <updated>2025-03-12T14:51:54.267Z</updated>
+    <updated>2025-03-12T14:56:07.630Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;介绍&quot;&gt;介绍&lt;/h1&gt;
@@ -773,31 +814,6 @@ Overview&lt;/a&gt;&lt;/p&gt;
     
     
     <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>10.1国庆从杭州回河南农村的一点真实感受</title>
-    <link href="https://wnhyang.github.io/article/c21b9117.html"/>
-    <id>https://wnhyang.github.io/article/c21b9117.html</id>
-    <published>2024-10-17T12:49:40.000Z</published>
-    <updated>2024-10-17T13:23:29.805Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;当你长大了，故乡只有冬，再无春夏秋！&lt;/p&gt;
-&lt;p&gt;小学，每天都回家；初中、高中，一周一次；大学，半年1-2次；工作了，一年一次，而且每次都是在春节的冬季，相信有在北方小县城下生活过的朋友都有体会过北方萧瑟肃杀的冬季，所以这次趁着国庆，这个夏去秋来的时节去看看这段时间家里会不会有些不一样。但是，不出意外，一样的破败，可能是大城市到小县城到农村的再到农村的反差，又或是我真的变了，“清高了”！&lt;/p&gt;
-&lt;p&gt;接下来从几个角度讲一下吧！个人所见所闻的纯主观感受。&lt;/p&gt;
-&lt;h1 id=&quot;公共基础设施&quot;&gt;1、公共基础设施&lt;/h1&gt;
-&lt;p&gt;不得不说，这几年是有些变化的。&lt;/p&gt;
-&lt;h2 id=&quot;水电燃路&quot;&gt;水电燃路&lt;/h2&gt;
-&lt;p&gt;去年整个县都在改造，很多马路开膛破肚，修缮水管，如今用的是南水北调的水。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="思考" scheme="https://wnhyang.github.io/tags/%E6%80%9D%E8%80%83/"/>
-    
-    <category term="杂谈" scheme="https://wnhyang.github.io/tags/%E6%9D%82%E8%B0%88/"/>
     
   </entry>
   
