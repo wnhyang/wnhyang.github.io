@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2025-03-16T11:39:08.832Z</updated>
+  <updated>2025-03-19T14:19:09.461Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>构建智能安全的三方数据管理体系：技术驱动下的数据协同与创新</title>
+    <link href="https://wnhyang.github.io/article/925a46b9.html"/>
+    <id>https://wnhyang.github.io/article/925a46b9.html</id>
+    <published>2025-03-19T14:18:40.000Z</published>
+    <updated>2025-03-19T14:19:09.461Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;参考&quot;&gt;参考&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.woshipm.com/it/5662657.html&quot;
+class=&quot;uri&quot;&gt;https://www.woshipm.com/it/5662657.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>实时决策系统中的核心组件——实时指标计算</title>
     <link href="https://wnhyang.github.io/article/79137ca.html"/>
     <id>https://wnhyang.github.io/article/79137ca.html</id>
     <published>2025-03-16T11:14:11.000Z</published>
-    <updated>2025-03-16T11:39:08.832Z</updated>
+    <updated>2025-03-16T11:39:40.008Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;参考&quot;&gt;参考&lt;/h2&gt;
@@ -767,48 +793,6 @@ class=&quot;uri&quot;&gt;https://github.com/wnhyang/coolGuard&lt;/a&gt;&lt;/p&gt
 &lt;h1 id=&quot;时间&quot;&gt;时间&lt;/h1&gt;
 &lt;p&gt;为什么要选择&lt;code&gt;10.24&lt;/code&gt;这个时间？因为&lt;code&gt;1024&lt;/code&gt;比较浪漫！&lt;/p&gt;
 &lt;p&gt;我编的，其实是因为开源&lt;code&gt;license&lt;/code&gt;要到期了😂&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>风控系统之规则重复触发</title>
-    <link href="https://wnhyang.github.io/article/282abb1e.html"/>
-    <id>https://wnhyang.github.io/article/282abb1e.html</id>
-    <published>2024-10-17T13:06:12.000Z</published>
-    <updated>2024-10-22T02:40:55.422Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;个人博客：&lt;a
-href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
-title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
-title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
-Overview&lt;/a&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h1 id=&quot;简介&quot;&gt;简介&lt;/h1&gt;
-&lt;p&gt;前面已经发了很多关于风控系统的一些文章，是比较零碎的，这也是我知道的，但在边构思边实践时是这样的。&lt;/p&gt;
-&lt;p&gt;从0到1中还有很多0.0001、0.0023424、0.1243，这些都是不可忽视，他们也是成长的一部分啊！&lt;/p&gt;
-&lt;p&gt;这里提前预告一下（毕竟有人看不到文末），下周大概是10.24会将这段时间关于风控系统的实践项目开源，具体信息请期待下一篇文章吧！&lt;/p&gt;
-&lt;p&gt;好了，开始本篇“风控系统之规则重复触发”。&lt;/p&gt;
-&lt;p&gt;风控系统包含如下这些内容，本篇讨论的归属于“反馈与自适应学习”之中。&lt;/p&gt;
-&lt;p&gt;1、数据处理与分析&lt;/p&gt;
-&lt;p&gt;2、规则引擎&lt;/p&gt;
-&lt;p&gt;3、机器学习&lt;/p&gt;
-&lt;p&gt;4、实时计算&lt;/p&gt;
-&lt;p&gt;5、决策树与图算法&lt;/p&gt;
-&lt;p&gt;6、系统集成与api&lt;/p&gt;
-&lt;p&gt;7、反馈与自适应学习&lt;/p&gt;
-&lt;p&gt;8、安全&lt;/p&gt;
-&lt;p&gt;9、可扩展&lt;/p&gt;
-&lt;p&gt;10、合规与监管&lt;/p&gt;
-&lt;p&gt;11、用户体验&lt;/p&gt;</summary>
     
     
     
