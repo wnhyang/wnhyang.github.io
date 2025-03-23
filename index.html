@@ -96,7 +96,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">50</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">226</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">50</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">227</span></a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -161,7 +161,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">226</span>
+          <span class="site-state-item-count">227</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -227,6 +227,731 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/55f89c19.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无奈何杨（wnhyang）">
+      <meta itemprop="description" content="热爱、分享、生活">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/article/55f89c19.html" class="post-title-link" itemprop="url">三方数据管理-远程接口调用，供应商&服务接口抽象分析</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-03-23 22:17:39 / 修改时间：22:46:58" itemprop="dateCreated datePublished" datetime="2025-03-23T22:17:39+08:00">2025-03-23</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>8 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="前言">前言</h1>
+<ol type="1">
+<li><p><strong>远程接口调用模式</strong></p>
+<ul>
+<li><strong>技术特征</strong>：基于HTTP/API实时交互，需实现三方服务接口的协议适配（如RESTful、GraphQL、gRPC），并内置重试、熔断、限流等容错机制。</li>
+<li><strong>核心约束</strong>：
+<ul>
+<li>依赖服务商的接口稳定性与性能上限（如QPS、TPS阈值）；</li>
+<li>受限于套餐化流量配额（如API调用次数、数据返回量）；</li>
+<li>数据实时性高，但无法脱离三方系统进行深度加工或长期存储。</li>
+</ul></li>
+</ul></li>
+<li><p><strong>数据源批量同步模式</strong></p>
+<ul>
+<li><strong>技术特征</strong>：通过ETL/CDC工具（如Airbyte、Debezium）周期同步全量或增量数据至本地/私有化存储（如HDFS、数据湖），支持自定义计算引擎（如Spark、Flink）进行分布式处理。</li>
+<li><strong>核心优势</strong>：
+<ul>
+<li><strong>服务自主性</strong>：可基于业务需求动态扩缩容计算与存储集群（如Kubernetes弹性调度），支撑高吞吐、低延迟场景；</li>
+<li><strong>数据治理自由度</strong>：支持灵活定义数据清洗、脱敏、聚合等加工链路。</li>
+</ul></li>
+<li><strong>实施挑战</strong>：
+<ul>
+<li>需严格遵循服务商的数据安全策略（如访问权限审批、加密传输协议、存储隔离机制）；</li>
+<li>数据同步时效性受服务商同步接口开放粒度影响（如仅允许T+1全量导出）。</li>
+</ul></li>
+</ul></li>
+</ol>
+<p>本篇只展开远程接口调用模式，以地理信息数据服务举例，重点分析高德和天地图。</p>
+<h1 id="供应商">1、供应商</h1>
+<p>这里指的就是高德和天地图，其作为供应商，同时也是数据源。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250323/image.26ln7hv0e9.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>如在高德开发平台（天地图也是按应用分的），会以应用纬度再划分，同时服务是多种的。据此可以抽象供应商（供应商id、供应商名称、应用、应用密钥、合同编号、合同其他信息等等）。</p>
+<h1 id="服务">2、服务</h1>
+<p>供应商对多个应用，高德和天地图是一致的，但是下面服务就不一致了，天地图所有服务密钥就是应用密钥，高德是应用下新建服务后服务密钥是独立的。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250323/image.pfi5qrk15.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>每种服务对应不同的接口和请求响应配置。</p>
+<p><a target="_blank" rel="noopener" href="https://lbs.amap.com/api/webservice/guide/api/georegeo"
+class="uri">https://lbs.amap.com/api/webservice/guide/api/georegeo</a></p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250323/image.5c156fqtr3.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p><a target="_blank" rel="noopener" href="http://lbs.tianditu.gov.cn/server/geocoding.html"
+class="uri">http://lbs.tianditu.gov.cn/server/geocoding.html</a></p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250323/image.3d4yg3m3ez.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>那么可以抽象服务（服务id、供应商id、服务类型、请求方法、请求路径、请求头、参数、请求体、超时时间、重试策略），当然所有这些都可以硬编码实现，但是本篇目标是抽象通用设计方案，用于后面的灵活配置。</p>
+<h1 id="套餐与计费">3、套餐与计费</h1>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250323/image.2obow2z3ya.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>套餐与服务是关联的，通常模式有每天/月/年免费额度，超量阶梯计费，包年/季/月等。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250323/image.7w6zj2sj9x.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p>作为服务调用方，出于成本的考虑，费用当然相当关键，但是不同服务商的套餐与计费模式又不是那么容易抽象统一，从另一方面来讲灵活的服务调用（包含降级、重试策略等）只需关心接口相关的配置就好了，至于具体的费用，我比较建议不做，首先增加了复杂度，另外高德这样的三方数据服务商都会有开放平台，提供控制台用于服务的管理、流量分析、费用结算等等功能，非常丰富，作为服务使用方最好数据调用明细记录就已经不错了。</p>
+<p>就像dify、coze的工作流编排时，重点是接口的配置，而不是数据服务商和费用的管理（当然不是说这些不重要）。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250323/image.4cl1t9qa1q.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<h1 id="缓存与预警">4、缓存与预警</h1>
+<p>缓存除了可以是接口的配置，如请求体配置模版外，还可以是具体的三方数据缓存，当然这个要慎重，一致性和资源问题要考虑清楚了。</p>
+<p>其实不管是上面讲的流量治理（降级、熔断、重试、超时、限流等等）和预警都是通用型设计，是现代高可用服务必然考虑的事情。</p>
+<h1 id="ai设计方案">AI设计方案</h1>
+<p>AI设计方案仅供参考</p>
+<h3 id="一三方数据管理模块"><strong>一、三方数据管理模块</strong></h3>
+<h4 id="供应商表supplier新增字段">1.
+供应商表（<code>supplier</code>）<strong>新增字段</strong></h4>
+<table>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 50%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>字段名</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>billing_mode</td>
+<td>ENUM('FREE_TIER','PAY_AS_YOU_GO','SUBSCRIPTION')</td>
+<td>计费模式（免费/按量/包月包年）</td>
+</tr>
+<tr class="even">
+<td>free_quota</td>
+<td>INT</td>
+<td>每月免费额度（次数/数据量）</td>
+</tr>
+<tr class="odd">
+<td>circuit_breaker</td>
+<td>JSON</td>
+<td>熔断配置（失败率阈值、降级策略）</td>
+</tr>
+</tbody>
+</table>
+<h4 id="供应商套餐表supplier_plan">2.
+供应商套餐表（<code>supplier_plan</code>）</h4>
+<table>
+<thead>
+<tr class="header">
+<th>字段名</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>plan_id</td>
+<td>VARCHAR(36)</td>
+<td>套餐ID（主键）</td>
+</tr>
+<tr class="even">
+<td>supplier_id</td>
+<td>VARCHAR(36)</td>
+<td>关联供应商</td>
+</tr>
+<tr class="odd">
+<td>plan_type</td>
+<td>ENUM('MONTHLY','YEARLY')</td>
+<td>包月/包年</td>
+</tr>
+<tr class="even">
+<td>price</td>
+<td>DECIMAL(8,2)</td>
+<td>套餐价格</td>
+</tr>
+<tr class="odd">
+<td>max_requests</td>
+<td>INT</td>
+<td>套餐内最大请求次数</td>
+</tr>
+<tr class="even">
+<td>validity_days</td>
+<td>INT</td>
+<td>有效期（天）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="二计费管理模块"><strong>二、计费管理模块</strong></h3>
+<h4 id="计费价格配置表price_config扩展">1.
+计费价格配置表（<code>price_config</code>）<strong>扩展</strong></h4>
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 13%" />
+<col style="width: 68%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>新增字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>tiered_pricing</td>
+<td>JSON</td>
+<td>阶梯计价规则（如 <code>[&#123; "min": 1000, "price": 0.1 &#125;]</code>）</td>
+</tr>
+<tr class="even">
+<td>currency</td>
+<td>VARCHAR(3)</td>
+<td>货币类型（如CNY、USD）</td>
+</tr>
+</tbody>
+</table>
+<h4 id="用户套餐订阅表user_subscription">2.
+用户套餐订阅表（<code>user_subscription</code>）</h4>
+<table>
+<thead>
+<tr class="header">
+<th>字段名</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>subscription_id</td>
+<td>VARCHAR(36)</td>
+<td>订阅ID（主键）</td>
+</tr>
+<tr class="even">
+<td>account_id</td>
+<td>VARCHAR(36)</td>
+<td>关联用户账户</td>
+</tr>
+<tr class="odd">
+<td>plan_id</td>
+<td>VARCHAR(36)</td>
+<td>关联供应商套餐</td>
+</tr>
+<tr class="even">
+<td>start_date</td>
+<td>DATE</td>
+<td>订阅开始日期</td>
+</tr>
+<tr class="odd">
+<td>end_date</td>
+<td>DATE</td>
+<td>订阅结束日期</td>
+</tr>
+<tr class="even">
+<td>used_quota</td>
+<td>INT</td>
+<td>已使用额度</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3
+id="三请求与响应管理模块"><strong>三、请求与响应管理模块</strong></h3>
+<h4 id="api请求配置表api_config">1.
+API请求配置表（<code>api_config</code>）</h4>
+<table>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 21%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>字段名</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>config_id</td>
+<td>VARCHAR(36)</td>
+<td>配置ID（主键）</td>
+</tr>
+<tr class="even">
+<td>supplier_id</td>
+<td>VARCHAR(36)</td>
+<td>关联供应商</td>
+</tr>
+<tr class="odd">
+<td>api_method</td>
+<td>VARCHAR(20)</td>
+<td>接口方法（如<code>GET_DATA</code>）</td>
+</tr>
+<tr class="even">
+<td>http_method</td>
+<td>ENUM('GET','POST')</td>
+<td>请求方法</td>
+</tr>
+<tr class="odd">
+<td>path</td>
+<td>VARCHAR(100)</td>
+<td>API路径（如<code>/v1/data</code>）</td>
+</tr>
+<tr class="even">
+<td>headers</td>
+<td>JSON</td>
+<td>固定请求头（如<code>&#123;"Authorization": "Bearer &#123;token&#125;"&#125;</code>）</td>
+</tr>
+<tr class="odd">
+<td>body_template</td>
+<td>JSON</td>
+<td>请求体模板（支持变量插值）</td>
+</tr>
+<tr class="even">
+<td>timeout_ms</td>
+<td>INT</td>
+<td>超时时间（毫秒）</td>
+</tr>
+<tr class="odd">
+<td>retry_policy</td>
+<td>JSON</td>
+<td>重试策略（次数、间隔）</td>
+</tr>
+</tbody>
+</table>
+<h4 id="参数校验表api_param">2.
+参数校验表（<code>api_param</code>）</h4>
+<table>
+<thead>
+<tr class="header">
+<th>字段名</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>param_id</td>
+<td>VARCHAR(36)</td>
+<td>参数ID（主键）</td>
+</tr>
+<tr class="even">
+<td>config_id</td>
+<td>VARCHAR(36)</td>
+<td>关联API配置</td>
+</tr>
+<tr class="odd">
+<td>param_name</td>
+<td>VARCHAR(20)</td>
+<td>参数名</td>
+</tr>
+<tr class="even">
+<td>param_type</td>
+<td>ENUM('STRING','NUMBER','BOOLEAN')</td>
+<td>参数类型</td>
+</tr>
+<tr class="odd">
+<td>required</td>
+<td>BOOLEAN</td>
+<td>是否必填</td>
+</tr>
+<tr class="even">
+<td>default_value</td>
+<td>VARCHAR(50)</td>
+<td>默认值</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="四缓存管理模块"><strong>四、缓存管理模块</strong></h3>
+<h4 id="缓存配置表cache_config">1.
+缓存配置表（<code>cache_config</code>）</h4>
+<table>
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 17%" />
+<col style="width: 65%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>字段名</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>cache_key</td>
+<td>VARCHAR(36)</td>
+<td>缓存键（主键）</td>
+</tr>
+<tr class="even">
+<td>supplier_id</td>
+<td>VARCHAR(36)</td>
+<td>关联供应商</td>
+</tr>
+<tr class="odd">
+<td>api_method</td>
+<td>VARCHAR(20)</td>
+<td>接口方法</td>
+</tr>
+<tr class="even">
+<td>ttl_seconds</td>
+<td>INT</td>
+<td>缓存有效期（秒）</td>
+</tr>
+<tr class="odd">
+<td>key_pattern</td>
+<td>VARCHAR(100)</td>
+<td>缓存键生成规则（如<code>data:&#123;param1&#125;:&#123;param2&#125;</code>）</td>
+</tr>
+</tbody>
+</table>
+<h4 id="缓存记录表cache_data">2.
+缓存记录表（<code>cache_data</code>）</h4>
+<table>
+<thead>
+<tr class="header">
+<th>字段名</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>cache_id</td>
+<td>VARCHAR(36)</td>
+<td>缓存ID（主键）</td>
+</tr>
+<tr class="even">
+<td>cache_key</td>
+<td>VARCHAR(100)</td>
+<td>完整缓存键</td>
+</tr>
+<tr class="odd">
+<td>data</td>
+<td>LONGTEXT</td>
+<td>缓存数据（JSON/文本）</td>
+</tr>
+<tr class="even">
+<td>expires_at</td>
+<td>TIMESTAMP</td>
+<td>过期时间</td>
+</tr>
+<tr class="odd">
+<td>last_used</td>
+<td>TIMESTAMP</td>
+<td>最后访问时间</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="五监控与预警模块"><strong>五、监控与预警模块</strong></h3>
+<h4 id="预警规则表alert_rule">1.
+预警规则表（<code>alert_rule</code>）</h4>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 47%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>字段名</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>rule_id</td>
+<td>VARCHAR(36)</td>
+<td>规则ID（主键）</td>
+</tr>
+<tr class="even">
+<td>trigger_type</td>
+<td>ENUM('ERROR_RATE','LATENCY','BALANCE')</td>
+<td>触发类型（错误率/延迟/余额）</td>
+</tr>
+<tr class="odd">
+<td>threshold</td>
+<td>DECIMAL(5,2)</td>
+<td>阈值（如错误率&gt;5%）</td>
+</tr>
+<tr class="even">
+<td>severity</td>
+<td>ENUM('WARNING','CRITICAL')</td>
+<td>严重级别</td>
+</tr>
+<tr class="odd">
+<td>notify_channel</td>
+<td>JSON</td>
+<td>通知渠道（邮件、钉钉、短信）</td>
+</tr>
+</tbody>
+</table>
+<h4 id="预警日志表alert_log">2.
+预警日志表（<code>alert_log</code>）</h4>
+<table>
+<thead>
+<tr class="header">
+<th>字段名</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>alert_id</td>
+<td>VARCHAR(36)</td>
+<td>预警ID（主键）</td>
+</tr>
+<tr class="even">
+<td>rule_id</td>
+<td>VARCHAR(36)</td>
+<td>关联预警规则</td>
+</tr>
+<tr class="odd">
+<td>trigger_value</td>
+<td>DECIMAL(10,2)</td>
+<td>触发时的实际值（如错误率6%）</td>
+</tr>
+<tr class="even">
+<td>triggered_at</td>
+<td>TIMESTAMP</td>
+<td>触发时间</td>
+</tr>
+<tr class="odd">
+<td>resolved</td>
+<td>BOOLEAN</td>
+<td>是否已处理</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="六降级与熔断模块"><strong>六、降级与熔断模块</strong></h3>
+<h4 id="降级策略表fallback_policy">1.
+降级策略表（<code>fallback_policy</code>）</h4>
+<table>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 39%" />
+<col style="width: 44%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>字段名</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>policy_id</td>
+<td>VARCHAR(36)</td>
+<td>策略ID（主键）</td>
+</tr>
+<tr class="even">
+<td>supplier_id</td>
+<td>VARCHAR(36)</td>
+<td>关联供应商</td>
+</tr>
+<tr class="odd">
+<td>condition</td>
+<td>JSON</td>
+<td>触发条件（如连续失败3次）</td>
+</tr>
+<tr class="even">
+<td>fallback_type</td>
+<td>ENUM('DEFAULT_DATA','BACKUP_API')</td>
+<td>降级类型（返回默认数据/切换备用接口）</td>
+</tr>
+<tr class="odd">
+<td>backup_api_id</td>
+<td>VARCHAR(36)</td>
+<td>备用接口ID（若降级类型为备用接口）</td>
+</tr>
+<tr class="even">
+<td>default_data</td>
+<td>JSON</td>
+<td>默认返回数据</td>
+</tr>
+</tbody>
+</table>
+<h4 id="熔断日志表circuit_breaker_log">2.
+熔断日志表（<code>circuit_breaker_log</code>）</h4>
+<table>
+<thead>
+<tr class="header">
+<th>字段名</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>log_id</td>
+<td>VARCHAR(36)</td>
+<td>日志ID（主键）</td>
+</tr>
+<tr class="even">
+<td>supplier_id</td>
+<td>VARCHAR(36)</td>
+<td>供应商ID</td>
+</tr>
+<tr class="odd">
+<td>trigger_reason</td>
+<td>VARCHAR(50)</td>
+<td>触发原因（如错误率超限）</td>
+</tr>
+<tr class="even">
+<td>triggered_at</td>
+<td>TIMESTAMP</td>
+<td>触发时间</td>
+</tr>
+<tr class="odd">
+<td>restored_at</td>
+<td>TIMESTAMP</td>
+<td>恢复时间</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="七表关系与优化"><strong>七、表关系与优化</strong></h3>
+<ol type="1">
+<li><strong>核心关系</strong><br />
+• <code>supplier_plan.supplier_id</code> →
+<code>supplier.supplier_id</code><br />
+• <code>api_param.config_id</code> →
+<code>api_config.config_id</code><br />
+• <code>fallback_policy.backup_api_id</code> →
+<code>api_config.config_id</code></li>
+<li><strong>索引优化</strong><br />
+•
+高频查询字段：<code>supplier_id</code>、<code>api_method</code>、<code>triggered_at</code><br />
+•
+分区策略：按时间范围对日志类表（如<code>api_request_log</code>、<code>alert_log</code>）进行分区。</li>
+<li><strong>性能扩展</strong><br />
+•
+使用读写分离和分库分表策略，分离高频操作表（如<code>api_request_log</code>）和低频配置表。</li>
+</ol>
+<hr />
+<h3 id="八关键流程示例"><strong>八、关键流程示例</strong></h3>
+<ol type="1">
+<li><strong>计费流程</strong><br />
+• 用户调用API → 检查<code>user_subscription</code>剩余额度 →
+若超出免费额度，按<code>price_config</code>阶梯价扣费 →
+记录<code>billing_detail</code>并更新<code>balance_transaction</code>。</li>
+<li><strong>降级流程</strong><br />
+• API连续失败 → 触发<code>circuit_breaker</code>熔断 →
+查询<code>fallback_policy</code> →
+返回<code>default_data</code>或调用<code>backup_api_id</code>备用接口。</li>
+<li><strong>缓存流程</strong><br />
+• 请求到达 → 根据<code>cache_config.key_pattern</code>生成缓存键 →
+查询<code>cache_data</code> →
+若命中且未过期，直接返回数据；否则调用三方接口并缓存结果。</li>
+</ol>
+<h1 id="小结">小结</h1>
+<p>为什么会有这篇文章，当然还是离不开此项目<a
+target="_blank" rel="noopener" href="https://github.com/wnhyang/coolGuard"
+class="uri">https://github.com/wnhyang/coolGuard</a></p>
+<p>因为这是计划中的一部分，而且不可或缺。</p>
+<figure>
+<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250323/image.64e0o6a9c0.webp"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/925a46b9.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -257,7 +982,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2025-03-19 22:18:40 / 修改时间：22:19:09" itemprop="dateCreated datePublished" datetime="2025-03-19T22:18:40+08:00">2025-03-19</time>
+      <time title="创建时间：2025-03-19 22:18:40 / 修改时间：22:19:43" itemprop="dateCreated datePublished" datetime="2025-03-19T22:18:40+08:00">2025-03-19</time>
     </span>
 
   
@@ -1408,121 +2133,6 @@ aria-hidden="true">pexels-energepic-com-27411-159888</figcaption>
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wnhyang.github.io/article/8777071f.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="无奈何杨（wnhyang）">
-      <meta itemprop="description" content="热爱、分享、生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 无奈何杨（wnhyang）">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/8777071f.html" class="post-title-link" itemprop="url">风控系统指标版本管理，前端实现</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-02-06 19:29:18 / 修改时间：20:48:34" itemprop="dateCreated datePublished" datetime="2025-02-06T19:29:18+08:00">2025-02-06</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>2k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>7 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>个人博客：<a
-href="https://wnhyang.github.io/">无奈何杨（wnhyang）</a></p>
-<p>个人语雀：<a target="_blank" rel="noopener" href="https://www.yuque.com/wnhyang"
-title="wnhyang">wnhyang</a></p>
-<p>Github：<a target="_blank" rel="noopener" href="https://github.com/wnhyang">wnhyang -
-Overview</a></p>
-<hr />
-<h1 id="前言">前言</h1>
-<p>本文算是前文《<a
-target="_blank" rel="noopener" href="https://www.yuque.com/wnh/share/opf5fthwlak8lg38">基于LiteFlow的风控系统指标版本控制</a>》的完善。</p>
-<p>前文已经说明了在基于规则引擎系统中版本管理的重要性，并说明了主表+历史表的实现思路和实现方法。</p>
-<p>依照着上篇“历史既是历史又是运行”的思路在前端项目中实现版本管理。开发版本不代表最终效果😂</p>
-<h1 id="指标状态流转">指标状态流转</h1>
-<figure>
-<img data-src="https://jsd.cdn.zzko.cn/gh/wnhyang/picx-images-hosting@master/20250206/image.7i0hzqvw7m.webp"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
-</figure>
-<p>1、创建：无-待发布，新创建的指标都是待发布状态，数据落在主表中；</p>
-<p>2、更新：待发布-待发布或已上线-待发布，简单来讲只要是更新都会回到待发布状态，更新并不改变指标的发布状态，只更新主表；</p>
-<p>3、发布：待发布-已上线，发布后主表指标状态改为已发布，同时在版本库中生成一个最新版本，新增或修改<code>LiteFlow</code>表<code>chain</code>的<code>EL</code>表达式；</p>
-<p>4、下线：已上线-待发布，下线后指标状态回到待发布状态，对应的<code>LiteFlow</code>表<code>chain</code>记录被删除；</p>
-<p>5、版本切换：版本库-待发布，版本切换生效于版本库中某个版本用于切换某个版本到主表中，还需要再次发布才生效；</p>
-<p>3、删除：待发布-无，删除某指标，清理指标历史数据。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/article/8777071f.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1548,14 +2158,14 @@ alt="image" />
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">315k</span>
+    <span title="站点总字数">317k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">19:06</span>
+    <span title="站点阅读时长">19:14</span>
   </span>
 </div>
 <div class="busuanzi-count">

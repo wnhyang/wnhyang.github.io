@@ -6,7 +6,7 @@
   <link href="https://wnhyang.github.io/atom.xml" rel="self"/>
   
   <link href="https://wnhyang.github.io/"/>
-  <updated>2025-03-19T14:19:09.461Z</updated>
+  <updated>2025-03-23T14:46:58.739Z</updated>
   <id>https://wnhyang.github.io/</id>
   
   <author>
@@ -17,11 +17,35 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>三方数据管理-远程接口调用，供应商&amp;服务接口抽象分析</title>
+    <link href="https://wnhyang.github.io/article/55f89c19.html"/>
+    <id>https://wnhyang.github.io/article/55f89c19.html</id>
+    <published>2025-03-23T14:17:39.000Z</published>
+    <updated>2025-03-23T14:46:58.739Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;前言&lt;/h1&gt;
+&lt;ol</summary>
+        
+      
+    
+    
+    
+    
+    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>构建智能安全的三方数据管理体系：技术驱动下的数据协同与创新</title>
     <link href="https://wnhyang.github.io/article/925a46b9.html"/>
     <id>https://wnhyang.github.io/article/925a46b9.html</id>
     <published>2025-03-19T14:18:40.000Z</published>
-    <updated>2025-03-19T14:19:09.461Z</updated>
+    <updated>2025-03-19T14:19:43.750Z</updated>
     
     
       
@@ -762,40 +786,6 @@ class=&quot;uri&quot;&gt;https://geohash.jorren.nl/&lt;/a&gt;&lt;/p&gt;
     
     
     <category term="数据结构&amp;算法" scheme="https://wnhyang.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%AE%97%E6%B3%95/"/>
-    
-    <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>基于LiteFlow的风控系统开源了！指标策略规则</title>
-    <link href="https://wnhyang.github.io/article/dc2b584f.html"/>
-    <id>https://wnhyang.github.io/article/dc2b584f.html</id>
-    <published>2024-10-27T12:49:23.000Z</published>
-    <updated>2024-10-27T13:32:38.463Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;个人博客：&lt;a
-href=&quot;https://wnhyang.github.io/&quot;&gt;无奈何杨（wnhyang）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;个人语雀：&lt;a href=&quot;https://www.yuque.com/wnhyang&quot;
-title=&quot;wnhyang&quot;&gt;wnhyang&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;共享语雀：&lt;a href=&quot;https://www.yuque.com/wnh&quot;
-title=&quot;在线知识共享&quot;&gt;在线知识共享&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Github：&lt;a href=&quot;https://github.com/wnhyang&quot;&gt;wnhyang -
-Overview&lt;/a&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;开篇先道个歉吧，因为大概会让很多人失望了，这次开源仅仅是开源，不是发版，也就是说开源并非非完全体，仅仅是开放源码。如果说1是发版，就算放低一些要求，现在只可能只算是0.2左右，还有很多很多很多事情要做。&lt;/p&gt;
-&lt;p&gt;开源地址：&lt;a href=&quot;https://github.com/wnhyang/coolGuard&quot;
-class=&quot;uri&quot;&gt;https://github.com/wnhyang/coolGuard&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;关注公众号，发送关键字“coolGuard”获取相关文档，但文档也还在编写中😂。&lt;/p&gt;
-&lt;p&gt;wnhyang邀请你加入语雀，注册后在会员信息页填写邀请码 WFC374 即可领取
-30 天语雀会员。前往注册：https://www.yuque.com/about&lt;/p&gt;
-&lt;h1 id=&quot;时间&quot;&gt;时间&lt;/h1&gt;
-&lt;p&gt;为什么要选择&lt;code&gt;10.24&lt;/code&gt;这个时间？因为&lt;code&gt;1024&lt;/code&gt;比较浪漫！&lt;/p&gt;
-&lt;p&gt;我编的，其实是因为开源&lt;code&gt;license&lt;/code&gt;要到期了😂&lt;/p&gt;</summary>
-    
-    
-    
     
     <category term="项目" scheme="https://wnhyang.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
     
